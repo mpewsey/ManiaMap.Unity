@@ -9,20 +9,20 @@ namespace MPewsey.ManiaMap.Unity
     public class CollectableSpot : MonoBehaviour
     {
         /// <summary>
-        /// The collectable ID.
-        /// </summary>
-        public int Id { get; set; } = int.MinValue;
-
-        /// <summary>
-        /// The collectable cell position.
+        /// The cell in which the collectable is located.
         /// </summary>
         [field: SerializeField]
-        public Vector2 Position { get; set; }
+        public Cell Cell { get; set; }
 
         /// <summary>
         /// The event triggered when a collectable spot does not exist at this location.
         /// </summary>
         [field: SerializeField]
         public UnityEvent OnNoSpotExists { get; set; }
+
+        /// <summary>
+        /// The collectable ID.
+        /// </summary>
+        public int Id { get; set; } = int.MinValue;
     }
 }
