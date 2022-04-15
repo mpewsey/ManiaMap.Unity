@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 /[Uu]ser[Ss]ettings/
 
+/[Aa]ssets/[Dd]ocs/output/
 .DS_Store
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
