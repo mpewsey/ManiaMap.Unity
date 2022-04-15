@@ -1,3 +1,3 @@
 # Plugins
 
-* MPewsey.ManiaMap v1.0.0
+* MPewsey.ManiaMap v1.1.0 - https://github.com/mpewsey/ManiaMap
