@@ -1,5 +1,7 @@
 # ManiaMap.Unity
 
+[![Docs](https://github.com/mpewsey/ManiaMap.Unity/workflows/Docs/badge.svg?event=push)](https://mpewsey.github.io/ManiaMap.Unity)
+
 ## Installation
 
 To add the package to a project, in Unity, select `Window > Package Manager`.
