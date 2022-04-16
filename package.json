@@ -1,0 +1,19 @@
+{
+    "name": "com.mpewsey.maniamap.unity",
+    "author": "Matt Pewsey",
+    "displayName": "ManiaMap.Unity",
+    "version": "1.0.0",
+    "unity": "2018.1",
+    "keywords": [
+      "unity",
+      "metroidvania"
+    ],
+    "description": "Graph-based procedural generation of metroidvania style maps.",
+    "samples": [
+    {
+      "displayName": "Samples",
+      "description": "Samples for usage of the procedural generator components.",
+      "path": "Samples~"
+    }
+    ]
+}
