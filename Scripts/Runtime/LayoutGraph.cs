@@ -17,6 +17,12 @@ namespace MPewsey.ManiaMap.Unity
         public int Id { get; set; }
 
         /// <summary>
+        /// The graph name.
+        /// </summary>
+        [field: SerializeField]
+        public string Name { get; set; } = "<None>";
+
+        /// <summary>
         /// A list of nodes in the graph.
         /// </summary>
         [field: SerializeField]
@@ -145,6 +151,46 @@ namespace MPewsey.ManiaMap.Unity
         public IReadOnlyList<LayoutEdge> GetEdges()
         {
             return Edges;
+        }
+
+        /// <summary>
+        /// Creates a new Mania Map layout graph.
+        /// </summary>
+        public ManiaMap.LayoutGraph GetLayoutGraph()
+        {
+            var graph = new ManiaMap.LayoutGraph(Id, Name);
+
+            foreach (var node in Nodes.OrderBy(x => x.Id))
+            {
+                var other = graph.AddNode(node.Id);
+                other.Name = node.Name;
+                other.Z = node.Z;
+                other.TemplateGroup = node.TemplateGroup;
+                other.Color = ConvertColor(node.Color);
+            }
+
+            foreach (var edge in Edges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
+            {
+                var other = graph.AddEdge(edge.FromNode, edge.ToNode);
+                other.Name = edge.Name;
+                other.Direction = edge.Direction;
+                other.DoorCode = edge.DoorCode;
+                other.Z = edge.Z;
+                other.RoomChance = edge.RoomChance;
+                other.TemplateGroup = edge.TemplateGroup;
+                other.Color = ConvertColor(edge.Color);
+            }
+
+            return graph;
+        }
+
+        /// <summary>
+        /// Converts a Unity color to a System.Drawing color.
+        /// </summary>
+        /// <param name="color">The unity color.</param>
+        private static System.Drawing.Color ConvertColor(Color32 color)
+        {
+            return System.Drawing.Color.FromArgb(color.a, color.r, color.g, color.b);
         }
     }
 }
