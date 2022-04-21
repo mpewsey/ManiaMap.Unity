@@ -30,11 +30,5 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         [field: SerializeField]
         public Vector2 CellSize { get; set; } = Vector2.one;
-
-        private void OnValidate()
-        {
-            Size = Vector2Int.Max(Size, Vector2Int.zero);
-            CellSize = Vector2.Max(CellSize, new Vector2(0.01f, 0.01f));
-        }
     }
 }
