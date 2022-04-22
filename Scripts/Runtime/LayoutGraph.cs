@@ -10,29 +10,33 @@ namespace MPewsey.ManiaMap.Unity
     [CreateAssetMenu(menuName = "Mania Map/Layout Graph")]
     public class LayoutGraph : ScriptableObject
     {
+        [SerializeField]
+        private int _id;
         /// <summary>
         /// The unique ID.
         /// </summary>
-        [field: SerializeField]
-        public int Id { get; set; }
+        public int Id { get => _id; set => _id = value; }
 
+        [SerializeField]
+        private string _name = "<None>";
         /// <summary>
         /// The graph name.
         /// </summary>
-        [field: SerializeField]
-        public string Name { get; set; } = "<None>";
+        public string Name { get => _name; set => _name = value; }
 
+        [SerializeField]
+        private List<LayoutNode> _nodes = new List<LayoutNode> { new LayoutNode(0) };
         /// <summary>
         /// A list of nodes in the graph.
         /// </summary>
-        [field: SerializeField]
-        private List<LayoutNode> Nodes { get; set; } = new List<LayoutNode>();
+        private List<LayoutNode> Nodes { get => _nodes; set => _nodes = value; }
 
+        [SerializeField]
+        private List<LayoutEdge> _edges = new List<LayoutEdge>();
         /// <summary>
         /// A list of edges in the graph.
         /// </summary>
-        [field: SerializeField]
-        private List<LayoutEdge> Edges { get; set; } = new List<LayoutEdge>();
+        private List<LayoutEdge> Edges { get => _edges; set => _edges = value; }
 
         /// <summary>
         /// Returns the next available unique node ID.
@@ -97,6 +101,15 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Returns the node index for the ID.
+        /// </summary>
+        /// <param name="id">The node ID.</param>
+        public int GetNodeIndex(int id)
+        {
+            return Nodes.FindIndex(x => x.Id == id);
+        }
+
+        /// <summary>
         /// Adds an edge to the graph between the specified nodes and returns it.
         /// If an edge between the nodes already exists, returns the existing edge.
         /// </summary>
@@ -135,6 +148,16 @@ namespace MPewsey.ManiaMap.Unity
         public LayoutEdge GetEdge(int node1, int node2)
         {
             return Edges.Find(x => (x.FromNode == node1 && x.ToNode == node2) || (x.FromNode == node2 && x.ToNode == node1));
+        }
+
+        /// <summary>
+        /// Returns the index of the edge.
+        /// </summary>
+        /// <param name="node1">The first node ID.</param>
+        /// <param name="node2">The second node ID.</param>
+        public int GetEdgeIndex(int node1, int node2)
+        {
+            return Edges.FindIndex(x => (x.FromNode == node1 && x.ToNode == node2) || (x.FromNode == node2 && x.ToNode == node1));
         }
 
         /// <summary>

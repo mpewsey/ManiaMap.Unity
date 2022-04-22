@@ -16,7 +16,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             // Add edit button at top of view.
             if (GUILayout.Button("Edit"))
-                LayoutGraphWindow.ShowWindow(serializedObject);
+            {
+                var graph = (LayoutGraph)serializedObject.targetObject;
+                LayoutGraphWindow.ShowWindow(graph);
+            }
 
             // Loop over serialized fields and draw them.
             var prop = serializedObject.GetIterator();
@@ -24,7 +27,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             while (prop.NextVisible(enterChildren))
             {
-                GUI.enabled = GUIEnabledProperty(prop.displayName);
+                GUI.enabled = GUIEnabledProperty(prop.name);
                 EditorGUILayout.PropertyField(prop, true);
                 enterChildren = false;
             }
@@ -38,8 +41,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="name">The property name.</param>
         private static bool GUIEnabledProperty(string name)
         {
-            return name == "Id"
-                || name == "Name";
+            return name == "_id"
+                || name == "_name";
         }
     }
 }

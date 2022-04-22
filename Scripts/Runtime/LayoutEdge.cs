@@ -13,60 +13,74 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private static Color MidnightBlue { get; } = new Color(43, 23, 115);
 
+        [SerializeField]
+        private string _name = "<None>";
         /// <summary>
         /// The edge name.
         /// </summary>
-        [field: SerializeField]
-        public string Name { get; set; } = "<None>";
+        public string Name { get => _name; set => _name = value; }
 
+
+        [SerializeField]
+        private int _fromNode;
         /// <summary>
         /// The from node ID.
         /// </summary>
-        [field: SerializeField]
-        public int FromNode { get; private set; }
+        public int FromNode { get => _fromNode; private set => _fromNode = value; }
 
+        [SerializeField]
+        private int _toNode;
         /// <summary>
         /// The to node ID.
         /// </summary>
-        [field: SerializeField]
-        public int ToNode { get; private set; }
+        public int ToNode { get => _toNode; private set => _toNode = value; }
 
+        [SerializeField]
+        private EdgeDirection _direction;
         /// <summary>
         /// The edge direction.
         /// </summary>
-        [field: SerializeField]
-        public EdgeDirection Direction { get; set; }
+        public EdgeDirection Direction { get => _direction; set => _direction = value; }
 
+        private int _doorCode;
         /// <summary>
         /// The door code.
         /// </summary>
-        [field: SerializeField]
-        public int DoorCode { get; set; }
+        public int DoorCode { get => _doorCode; set => _doorCode = value; }
 
+        [SerializeField]
+        private int _z;
         /// <summary>
         /// The z (layer) coordinate.
         /// </summary>
-        [field: SerializeField]
-        public int Z { get; set; }
+        public int Z { get => _z; set => _z = value; }
 
+        [Range(0, 1)]
+        [SerializeField]
+        private float _roomChance;
         /// <summary>
         /// The chance of inserting a room.
         /// </summary>
-        [field: Range(0, 1)]
-        [field: SerializeField]
-        public float RoomChance { get; set; }
+        public float RoomChance { get => _roomChance; set => _roomChance = value; }
 
+        [SerializeField]
+        private string _templateGroup = "<None>";
         /// <summary>
         /// The template group name.
         /// </summary>
-        [field: SerializeField]
-        public string TemplateGroup { get; set; } = "<None>";
+        public string TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
+        [SerializeField]
+        private Color _color = MidnightBlue;
         /// <summary>
         /// The color.
         /// </summary>
-        [field: SerializeField]
-        public Color Color { get; set; } = MidnightBlue;
+        public Color Color { get => _color; set => _color = value; }
+
+        /// <summary>
+        /// The room ID.
+        /// </summary>
+        public Uid RoomId => new Uid(FromNode, ToNode, 1);
 
         /// <summary>
         /// Initializes a new edge.

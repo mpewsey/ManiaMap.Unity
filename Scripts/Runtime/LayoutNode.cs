@@ -13,35 +13,45 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private static Color MidnightBlue { get; } = new Color(43, 23, 115);
 
+        [SerializeField]
+        private int _id;
         /// <summary>
         /// The unique ID.
         /// </summary>
-        [field: SerializeField]
-        public int Id { get; private set; }
+        public int Id { get => _id; private set => _id = value; }
 
+        [SerializeField]
+        private string _name = "<None>";
         /// <summary>
         /// The node name.
         /// </summary>
-        [field: SerializeField]
-        public string Name { get; set; } = "<None>";
+        public string Name { get => _name; set => _name = value; }
 
+        [SerializeField]
+        private int _z;
         /// <summary>
         /// The z (layer) coordinate.
         /// </summary>
-        [field: SerializeField]
-        public int Z { get; set; }
+        public int Z { get => _z; set => _z = value; }
 
+        [SerializeField]
+        private string _templateGroup = "<None>";
         /// <summary>
         /// The template group name.
         /// </summary>
-        [field: SerializeField]
-        public string TemplateGroup { get; set; } = "<None>";
+        public string TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
+        [SerializeField]
+        private Color _color = MidnightBlue;
         /// <summary>
         /// The color.
         /// </summary>
-        [field: SerializeField]
-        public Color Color { get; set; } = MidnightBlue;
+        public Color Color { get => _color; set => _color = value; }
+
+        /// <summary>
+        /// The room ID.
+        /// </summary>
+        public Uid RoomId => new Uid(Id);
 
         /// <summary>
         /// Initializes a new node.
