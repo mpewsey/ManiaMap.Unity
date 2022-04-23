@@ -21,7 +21,7 @@ namespace MPewsey.ManiaMap.Unity
         public int Id { get => _id; private set => _id = value; }
 
         [SerializeField]
-        private string _name = "<None>";
+        private string _name;
         /// <summary>
         /// The node name.
         /// </summary>
@@ -60,6 +60,7 @@ namespace MPewsey.ManiaMap.Unity
         public LayoutNode(int id)
         {
             Id = id;
+            Name = $"<Node {id}>";
         }
     }
 }

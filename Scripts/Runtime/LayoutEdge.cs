@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMap.Unity
         public int ToNode { get => _toNode; private set => _toNode = value; }
 
         [SerializeField]
-        private string _name = "<None>";
+        private string _name;
         /// <summary>
         /// The edge name.
         /// </summary>
@@ -90,6 +90,7 @@ namespace MPewsey.ManiaMap.Unity
         {
             FromNode = fromNode;
             ToNode = toNode;
+            Name = $"<Edge ({fromNode}, {toNode})>";
         }
     }
 }

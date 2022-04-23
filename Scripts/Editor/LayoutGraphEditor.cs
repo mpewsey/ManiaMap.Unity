@@ -11,7 +11,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
     {
         public override void OnInspectorGUI()
         {
-            // Update the object.
             serializedObject.Update();
 
             // Add edit button at top of view.
@@ -27,22 +26,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             while (prop.NextVisible(enterChildren))
             {
-                GUI.enabled = GUIEnabledProperty(prop.name);
+                GUI.enabled = prop.name == "_id" || prop.name == "_name";
                 EditorGUILayout.PropertyField(prop, true);
                 enterChildren = false;
+                GUI.enabled = true;
             }
 
             serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Returns true if the property name is GUI enabled.
-        /// </summary>
-        /// <param name="name">The property name.</param>
-        private static bool GUIEnabledProperty(string name)
-        {
-            return name == "_id"
-                || name == "_name";
         }
     }
 }
