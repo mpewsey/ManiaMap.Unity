@@ -48,6 +48,13 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Color32 Color { get => _color; set => _color = value; }
 
+        [SerializeField]
+        private Vector2 _position;
+        /// <summary>
+        /// The draw position of the node in the graph.
+        /// </summary>
+        public Vector2 Position { get => _position; set => _position = value; }
+
         /// <summary>
         /// The room ID.
         /// </summary>

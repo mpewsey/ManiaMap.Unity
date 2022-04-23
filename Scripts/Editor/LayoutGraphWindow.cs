@@ -11,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// The number of visible node properties.
         /// </summary>
-        private const int NodePropertyCount = 5;
+        private const int NodePropertyCount = 6;
 
         /// <summary>
         /// The number of visible edge properties.
@@ -21,12 +21,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// The width of the inspector pane.
         /// </summary>
-        private const float InspectorWidth = 350;
+        private const float InspectorWidth = 325;
 
         /// <summary>
-        /// The inspector pane background color.
+        /// The width of the inspector labels.
         /// </summary>
-        private static Color32 InspectorBackgroundColor { get; } = new Color32(45, 45, 45, 255);
+        private const float InspectorLabelWidth = 100;
 
         /// <summary>
         /// The target serialized object.
@@ -91,8 +91,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawInspector()
         {
-            GUILayout.BeginArea(new Rect(0, 0, InspectorWidth, position.height));
-            EditorGUI.DrawRect(new Rect(0, 0, InspectorWidth, position.height), InspectorBackgroundColor);
+            GUILayout.BeginArea(new Rect(0, 0, InspectorWidth, position.height), GUI.skin.box);
             InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition, GUILayout.Width(InspectorWidth), GUILayout.Height(position.height));
 
             if (SelectionId.Value3 == 0)
@@ -129,6 +128,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 return;
             }
 
+            EditorGUIUtility.labelWidth = InspectorLabelWidth;
             EditorGUILayout.LabelField(string.Empty);
             EditorGUILayout.LabelField("Selected Node", EditorStyles.boldLabel);
             var prop = SerializedObject.FindProperty("_nodes").GetArrayElementAtIndex(index);
@@ -136,7 +136,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             for (int i = 0; i < NodePropertyCount; i++)
             {
-                GUI.enabled = prop.name != "_id";
+                GUI.enabled = prop.name != "_id" && prop.name != "_position";
                 EditorGUILayout.PropertyField(prop, true);
                 prop.NextVisible(false);
                 GUI.enabled = true;
@@ -168,6 +168,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 return;
             }
 
+            EditorGUIUtility.labelWidth = InspectorLabelWidth;
             EditorGUILayout.LabelField(string.Empty);
             EditorGUILayout.LabelField("Selected Edge", EditorStyles.boldLabel);
             var prop = SerializedObject.FindProperty("_edges").GetArrayElementAtIndex(index);
