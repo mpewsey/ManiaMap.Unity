@@ -38,6 +38,10 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private List<LayoutEdge> Edges { get => _edges; set => _edges = value; }
 
+        public int NodeCount => Nodes.Count;
+
+        public int EdgeCount => Edges.Count;
+
         /// <summary>
         /// Returns the next available unique node ID.
         /// </summary>

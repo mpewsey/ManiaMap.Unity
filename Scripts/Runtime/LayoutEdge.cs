@@ -11,15 +11,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The midnight blue color.
         /// </summary>
-        private static Color MidnightBlue { get; } = new Color(43, 23, 115);
-
-        [SerializeField]
-        private string _name = "<None>";
-        /// <summary>
-        /// The edge name.
-        /// </summary>
-        public string Name { get => _name; set => _name = value; }
-
+        private static Color32 MidnightBlue { get; } = new Color32(43, 23, 115, 255);
 
         [SerializeField]
         private int _fromNode;
@@ -34,6 +26,13 @@ namespace MPewsey.ManiaMap.Unity
         /// The to node ID.
         /// </summary>
         public int ToNode { get => _toNode; private set => _toNode = value; }
+
+        [SerializeField]
+        private string _name = "<None>";
+        /// <summary>
+        /// The edge name.
+        /// </summary>
+        public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
         private EdgeDirection _direction;
@@ -71,11 +70,11 @@ namespace MPewsey.ManiaMap.Unity
         public string TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
         [SerializeField]
-        private Color _color = MidnightBlue;
+        private Color32 _color = MidnightBlue;
         /// <summary>
         /// The color.
         /// </summary>
-        public Color Color { get => _color; set => _color = value; }
+        public Color32 Color { get => _color; set => _color = value; }
 
         /// <summary>
         /// The room ID.
