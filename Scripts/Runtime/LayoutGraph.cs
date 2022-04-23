@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<LayoutNode> _nodes = new List<LayoutNode> { new LayoutNode(0) };
+        private List<LayoutNode> _nodes = new List<LayoutNode>();
         /// <summary>
         /// A list of nodes in the graph.
         /// </summary>
