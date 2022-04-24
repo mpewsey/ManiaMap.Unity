@@ -43,9 +43,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 GUI.enabled = prop.name == "_id" || prop.name == "_name";
                 EditorGUILayout.PropertyField(prop, true);
-                GUI.enabled = true;
                 enterChildren = false;
             }
+
+            GUI.enabled = true;
         }
     }
 }
