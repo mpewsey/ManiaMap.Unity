@@ -28,18 +28,18 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
+        private TemplateGroup _templateGroup;
+        /// <summary>
+        /// The template group name.
+        /// </summary>
+        public TemplateGroup TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
+
+        [SerializeField]
         private int _z;
         /// <summary>
         /// The z (layer) coordinate.
         /// </summary>
         public int Z { get => _z; set => _z = value; }
-
-        [SerializeField]
-        private string _templateGroup = "<None>";
-        /// <summary>
-        /// The template group name.
-        /// </summary>
-        public string TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
         [SerializeField]
         private Color32 _color = MidnightBlue;

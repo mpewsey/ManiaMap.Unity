@@ -63,11 +63,11 @@ namespace MPewsey.ManiaMap.Unity
         public float RoomChance { get => _roomChance; set => _roomChance = value; }
 
         [SerializeField]
-        private string _templateGroup = "<None>";
+        private TemplateGroup _templateGroup;
         /// <summary>
         /// The template group name.
         /// </summary>
-        public string TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
+        public TemplateGroup TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
         [SerializeField]
         private Color32 _color = MidnightBlue;

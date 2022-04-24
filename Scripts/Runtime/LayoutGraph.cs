@@ -198,7 +198,7 @@ namespace MPewsey.ManiaMap.Unity
                 var other = graph.AddNode(node.Id);
                 other.Name = node.Name;
                 other.Z = node.Z;
-                other.TemplateGroup = node.TemplateGroup;
+                other.TemplateGroup = node.TemplateGroup.Name;
                 other.Color = ConvertColor(node.Color);
             }
 
@@ -210,7 +210,7 @@ namespace MPewsey.ManiaMap.Unity
                 other.DoorCode = edge.DoorCode;
                 other.Z = edge.Z;
                 other.RoomChance = edge.RoomChance;
-                other.TemplateGroup = edge.TemplateGroup;
+                other.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : string.Empty;
                 other.Color = ConvertColor(edge.Color);
             }
 

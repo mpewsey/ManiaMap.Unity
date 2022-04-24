@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,6 +30,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private const float InspectorLabelWidth = 100;
 
         /// <summary>
+        /// The size of a plotted node.
+        /// </summary>
+        private static Vector2 NodeSize { get; } = new Vector2(250, 80);
+
+        /// <summary>
         /// The target serialized object.
         /// </summary>
         private static SerializedObject SerializedObject { get; set; }
@@ -42,6 +48,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// The current scroll position of the inspector pane.
         /// </summary>
         private Vector2 InspectorScrollPosition { get; set; }
+
+        /// <summary>
+        /// A list of rects for plotted node elements.
+        /// </summary>
+        private List<Rect> NodeRects { get; } = new List<Rect>();
 
         /// <summary>
         /// Shows the editor window for the layout graph.
@@ -66,7 +77,34 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             SerializedObject.Update();
             DrawInspector();
+            DrawNodes();
             SerializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawNodes()
+        {
+            NodeRects.Clear();
+            var graph = GetLayoutGraph();
+            GUILayout.BeginArea(new Rect(InspectorWidth, 0, position.width - InspectorWidth, position.height));
+            EditorGUIUtility.labelWidth = 100;
+
+            foreach (var node in graph.GetNodes())
+            {
+                var rect = new Rect(node.Position, NodeSize);
+                NodeRects.Add(rect);
+                GUILayout.BeginArea(rect);
+                EditorGUI.DrawRect(rect, node.Color);
+                GUILayout.FlexibleSpace();
+                GUI.enabled = false;
+                EditorGUILayout.IntField("Id", node.Id);
+                EditorGUILayout.TextField("Name", node.Name);
+                EditorGUILayout.ObjectField("Template Group", node.TemplateGroup, typeof(TemplateGroup), false);
+                GUI.enabled = true;
+                GUILayout.FlexibleSpace();
+                GUILayout.EndArea();
+            }
+
+            GUILayout.EndArea();
         }
 
         /// <summary>
