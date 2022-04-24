@@ -86,6 +86,7 @@ namespace MPewsey.ManiaMap.Unity
             {
                 node = new LayoutNode(id);
                 Nodes.Add(node);
+                SortNodes();
             }
 
             return node;
@@ -135,6 +136,7 @@ namespace MPewsey.ManiaMap.Unity
             {
                 edge = new LayoutEdge(node1, node2);
                 Edges.Add(edge);
+                SortEdges();
             }
 
             return edge;
@@ -191,9 +193,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public ManiaMap.LayoutGraph GetLayoutGraph()
         {
+            SortNodes();
+            SortEdges();
             var graph = new ManiaMap.LayoutGraph(Id, Name);
 
-            foreach (var node in Nodes.OrderBy(x => x.Id))
+            foreach (var node in Nodes)
             {
                 var other = graph.AddNode(node.Id);
                 other.Name = node.Name;
@@ -202,7 +206,7 @@ namespace MPewsey.ManiaMap.Unity
                 other.Color = ConvertColor(node.Color);
             }
 
-            foreach (var edge in Edges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
+            foreach (var edge in Edges)
             {
                 var other = graph.AddEdge(edge.FromNode, edge.ToNode);
                 other.Name = edge.Name;
@@ -210,7 +214,7 @@ namespace MPewsey.ManiaMap.Unity
                 other.DoorCode = edge.DoorCode;
                 other.Z = edge.Z;
                 other.RoomChance = edge.RoomChance;
-                other.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : string.Empty;
+                other.TemplateGroup = edge.TemplateGroup.Name;
                 other.Color = ConvertColor(edge.Color);
             }
 
@@ -224,6 +228,22 @@ namespace MPewsey.ManiaMap.Unity
         private static System.Drawing.Color ConvertColor(Color32 color)
         {
             return System.Drawing.Color.FromArgb(color.a, color.r, color.g, color.b);
+        }
+
+        /// <summary>
+        /// Sorts the nodes by ID.
+        /// </summary>
+        public void SortNodes()
+        {
+            Nodes.Sort((x, y) => x.Id.CompareTo(y.Id));
+        }
+
+        /// <summary>
+        /// Sorts the edges by from and to nodes.
+        /// </summary>
+        public void SortEdges()
+        {
+            Edges.Sort((x, y) => new EdgeIndexes(x.FromNode, x.ToNode).CompareTo(new EdgeIndexes(y.FromNode, y.ToNode)));
         }
     }
 }
