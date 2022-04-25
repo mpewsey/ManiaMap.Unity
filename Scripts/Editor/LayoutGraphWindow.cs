@@ -7,17 +7,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindow : EditorWindow
     {
+        private const float MenuHeight = 20;
         private const int NodePropertyCount = 5;
         private const int EdgePropertyCount = 8;
-        private const float NodePadding = 4;
-        private const float EdgePadding = 4;
-        private static Vector2 NodeSize { get; } = new Vector2(300, 150);
+        
+        private static Vector2 NodeSize { get; } = new Vector2(275, 150);
         private static Vector2 EdgeSize { get; } = new Vector2(300, 300);
         private static SerializedObject SerializedObject { get; set; }
 
         private Vector2 ScrollPosition { get; set; }
-        private List<Rect> NodeRects { get; } = new List<Rect>();
-        private List<Rect> EdgeRects { get; } = new List<Rect>();
+        private bool Dragging { get; set; }
 
         private static LayoutGraph GetLayoutGraph()
         {
@@ -75,7 +74,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
-                menu.DropDown(new Rect(0, 8, 0, 16));
+                menu.DropDown(new Rect(0, 5, 0, 16));
             }
         }
 
@@ -109,27 +108,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private Rect InnerEdgeRect()
-        {
-            var position = EdgePadding * Vector2.one;
-            var size = EdgeSize - 2 * position;
-            return new Rect(position, size);
-        }
-
-        private Rect InnerNodeRect()
-        {
-            var position = NodePadding * Vector2.one;
-            var size = NodeSize - 2 * position;
-            return new Rect(position, size);
-        }
-
         private void DrawEdge(SerializedProperty prop)
         {
+            GUI.color = prop.FindPropertyRelative("_color").colorValue;
             var position = Vector2.zero;
-            var color = prop.FindPropertyRelative("_color").colorValue;
-            GUILayout.BeginArea(new Rect(position, NodeSize));
-            EditorGUI.DrawRect(new Rect(Vector2.zero, NodeSize), color);
-            GUILayout.BeginArea(InnerEdgeRect(), GUI.skin.window);
+            GUILayout.BeginArea(new Rect(position, EdgeSize), GUI.skin.window);
+            GUI.color = Color.white;
             EditorGUIUtility.labelWidth = 100;
             var enterChildren = true;
 
@@ -143,16 +127,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             GUI.enabled = true;
             GUILayout.EndArea();
-            GUILayout.EndArea();
         }
 
         private void DrawNode(SerializedProperty prop)
         {
+            GUI.color = prop.FindPropertyRelative("_color").colorValue;
             var position = prop.FindPropertyRelative("_position").vector2Value;
-            var color = prop.FindPropertyRelative("_color").colorValue;
-            GUILayout.BeginArea(new Rect(position, NodeSize));
-            EditorGUI.DrawRect(new Rect(Vector2.zero, NodeSize), color);
-            GUILayout.BeginArea(InnerNodeRect(), GUI.skin.window);
+            GUILayout.BeginArea(new Rect(position, NodeSize), GUI.skin.window);
+            GUI.color = Color.white;
             EditorGUIUtility.labelWidth = 100;
             var enterChildren = true;
 
@@ -166,19 +148,44 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             GUI.enabled = true;
             GUILayout.EndArea();
-            GUILayout.EndArea();
         }
 
         private void ProcessMouseEvents()
         {
+            const int LeftMouseButton = 0;
             const int RightMouseButton = 1;
-            var window = new Rect(0, 0, position.width, position.height);
+            var window = new Rect(0, MenuHeight, position.width, position.height);
 
             if (!window.Contains(Event.current.mousePosition))
                 return;
 
-            if (Event.current.button == RightMouseButton)
-                DrawContextMenu();
+            if (Event.current.type == EventType.MouseDown)
+            {
+                if (Event.current.button == LeftMouseButton)
+                {
+                    if (Dragging)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if (Event.current.button == RightMouseButton)
+                {
+                    DrawContextMenu();
+                }
+            }
+            else if (Event.current.type == EventType.MouseUp)
+            {
+                CancelDragging();
+            }
+        }
+
+        private void CancelDragging()
+        {
+            Dragging = false;
         }
 
         private void DrawContextMenu()

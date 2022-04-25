@@ -8,11 +8,6 @@ namespace MPewsey.ManiaMap.Unity
     [System.Serializable]
     public class LayoutNode
     {
-        /// <summary>
-        /// The midnight blue color.
-        /// </summary>
-        private static Color32 MidnightBlue { get; } = new Color32(43, 23, 115, 255);
-
         [SerializeField]
         private int _id;
         /// <summary>
@@ -42,7 +37,7 @@ namespace MPewsey.ManiaMap.Unity
         public int Z { get => _z; set => _z = value; }
 
         [SerializeField]
-        private Color32 _color = MidnightBlue;
+        private Color32 _color = new Color32(0, 255, 0, 255);
         /// <summary>
         /// The color.
         /// </summary>
