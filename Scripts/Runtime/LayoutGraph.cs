@@ -225,5 +225,38 @@ namespace MPewsey.ManiaMap.Unity
         {
             return System.Drawing.Color.FromArgb(color.a, color.r, color.g, color.b);
         }
+
+        /// <summary>
+        /// Spaces the nodes apart based on the specified spacing.
+        /// </summary>
+        /// <param name="spacing">The required horizontal and vertical spacing.</param>
+        public void ApplyNodeSpacing(Vector2 spacing)
+        {
+            for (int k = 0; k < 1000; k++)
+            {
+                var changed = false;
+                
+                for (int i = 0; i < Nodes.Count; i++)
+                {
+                    for (int j = i + 1; j < Nodes.Count; j++)
+                    {
+                        var iNode = Nodes[i];
+                        var jNode = Nodes[j];
+                        var delta = jNode.Position - iNode.Position;
+
+                        if (Mathf.Abs(delta.x) > spacing.x || Mathf.Abs(delta.y) > spacing.y)
+                            continue;
+
+                        delta = 0.5f * (spacing - delta);
+                        jNode.Position += delta;
+                        iNode.Position -= delta;
+                        changed = true;
+                    }
+                }
+
+                if (!changed)
+                    return;
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,34 +9,28 @@ namespace MPewsey.ManiaMap.Unity.Editor
     public class LayoutGraphWindow : EditorWindow
     {
         private const float MenuHeight = 20;
-        private const int NodePropertyCount = 5;
-        private const int EdgePropertyCount = 8;
-        
-        private static Vector2 NodeSize { get; } = new Vector2(275, 150);
-        private static Vector2 EdgeSize { get; } = new Vector2(300, 300);
+        private const float InspectorWidth = 300;
+        private const float InspectorLabelWidth = 100;
+        private const float NodeSpacing = 20;
+        private static Vector2 NodePlotSize { get; } = new Vector2(150, 40);
+        private static Vector2 EdgePlotSize { get; } = new Vector2(100, 50);
         private static SerializedObject SerializedObject { get; set; }
-
-        private Vector2 ScrollPosition { get; set; }
-        private bool Dragging { get; set; }
-
-        private static LayoutGraph GetLayoutGraph()
-        {
-            return SerializedObject.targetObject as LayoutGraph;
-        }
+        
+        private Vector2 InspectorScrollPosition { get; set; }
+        private Vector2 PlotScrollPosition { get; set; }
 
         public static void ShowWindow(LayoutGraph graph)
         {
             SerializedObject = new SerializedObject(graph);
             var window = GetWindow<LayoutGraphWindow>();
             window.titleContent = new GUIContent("Graph");
-            window.minSize = new Vector2(600, 200);
+            window.minSize = new Vector2(450, 200);
             window.maxSize = new Vector2(1920, 720);
         }
 
-        private static bool LayoutGraphExists()
+        private static LayoutGraph GetLayoutGraph()
         {
-            return SerializedObject != null
-                && GetLayoutGraph() != null;
+            return SerializedObject.targetObject as LayoutGraph;
         }
 
         public void OnGUI()
@@ -49,9 +44,15 @@ namespace MPewsey.ManiaMap.Unity.Editor
             SerializedObject.Update();
             SetWindowTitle();
             DrawMenuBar();
-            DrawGraph();
-            ProcessMouseEvents();
+            DrawPlot();
+            DrawInspector();
             SerializedObject.ApplyModifiedProperties();
+        }
+
+        private static bool LayoutGraphExists()
+        {
+            return SerializedObject != null
+                && GetLayoutGraph() != null;
         }
 
         private void SetWindowTitle()
@@ -78,125 +79,101 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private void DrawGraph()
+        private void DrawInspector()
         {
-            ScrollPosition = GUILayout.BeginScrollView(ScrollPosition);
+            GUILayout.BeginArea(new Rect(0, MenuHeight, InspectorWidth, position.height - MenuHeight), GUI.skin.box);    
+            InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
+            DrawLayoutGraphInspector();
+            DrawHorizontalLine();
+            GUILayout.EndScrollView();
+            GUILayout.EndArea();
+        }
+
+        private void DrawLayoutGraphInspector()
+        {
+            EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            var prop = SerializedObject.GetIterator();
+            var enterChildren = true;
+
+            while (prop.NextVisible(enterChildren))
+            {
+                if (prop.name != "_nodes" && prop.name != "_edges")
+                {
+                    GUI.enabled = prop.name == "_id" || prop.name == "_name";
+                    EditorGUILayout.PropertyField(prop, true);
+                }
+                
+                enterChildren = false;
+            }
+        }
+
+        private static void DrawHorizontalLine()
+        {
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        }
+
+        private void DrawPlot()
+        {
+            GUILayout.BeginArea(new Rect(InspectorWidth, MenuHeight, position.width - InspectorWidth, position.height - MenuHeight));
+            PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
+            ApplyNodeSpacing();
             DrawEdges();
             DrawNodes();
             GUILayout.EndScrollView();
+            GUILayout.EndArea();
+        }
+
+        private void ApplyNodeSpacing()
+        {
+            var graph = GetLayoutGraph();
+            var spacing = NodePlotSize + NodeSpacing * Vector2.one;
+            graph.ApplyNodeSpacing(spacing);
+        }
+
+        private static GUIStyle ElementAreaStyle()
+        {
+            var style = new GUIStyle(GUI.skin.window);
+            style.padding.top = 10;
+            style.padding.bottom = 10;
+            return style;
+        }
+
+        private static GUIStyle ElementLabelStyle()
+        {
+            var style = new GUIStyle(GUI.skin.label);
+            style.alignment = TextAnchor.MiddleCenter;
+            return style;
         }
 
         private void DrawEdges()
         {
-            var edges = SerializedObject.FindProperty("_edges");
+            var graph = GetLayoutGraph();
+            var positions = graph.GetNodes().ToDictionary(x => x.Id, x => x.Position);
 
-            for (int i = 0; i < edges.arraySize; i++)
+            foreach (var edge in graph.GetEdges())
             {
-                var prop = edges.GetArrayElementAtIndex(i);
-                DrawEdge(prop);
+                var position = Vector2.Lerp(positions[edge.FromNode], positions[edge.ToNode], 0.5f);
+                position += 0.5f * (NodePlotSize - EdgePlotSize);
+                GUI.color = edge.Color;
+                GUILayout.BeginArea(new Rect(position, EdgePlotSize), ElementAreaStyle());
+                GUI.color = Color.white;
+                GUILayout.Label(edge.Name, ElementLabelStyle());
+                GUILayout.EndArea();
             }
         }
 
         private void DrawNodes()
         {
-            var nodes = SerializedObject.FindProperty("_nodes");
+            var graph = GetLayoutGraph();
 
-            for (int i = 0; i < nodes.arraySize; i++)
+            foreach (var node in graph.GetNodes())
             {
-                var prop = nodes.GetArrayElementAtIndex(i);
-                DrawNode(prop);
+                GUI.color = node.Color;
+                GUILayout.BeginArea(new Rect(node.Position, NodePlotSize), ElementAreaStyle());
+                GUI.color = Color.white;
+                GUILayout.Label($"({node.Id}) : {node.Name}", ElementLabelStyle());
+                GUILayout.EndArea();
             }
-        }
-
-        private void DrawEdge(SerializedProperty prop)
-        {
-            GUI.color = prop.FindPropertyRelative("_color").colorValue;
-            var position = Vector2.zero;
-            GUILayout.BeginArea(new Rect(position, EdgeSize), GUI.skin.window);
-            GUI.color = Color.white;
-            EditorGUIUtility.labelWidth = 100;
-            var enterChildren = true;
-
-            for (int i = 0; i < EdgePropertyCount; i++)
-            {
-                prop.NextVisible(enterChildren);
-                GUI.enabled = prop.name != "_fromNode" && prop.name != "_toNode";
-                EditorGUILayout.PropertyField(prop, true);
-                enterChildren = false;
-            }
-
-            GUI.enabled = true;
-            GUILayout.EndArea();
-        }
-
-        private void DrawNode(SerializedProperty prop)
-        {
-            GUI.color = prop.FindPropertyRelative("_color").colorValue;
-            var position = prop.FindPropertyRelative("_position").vector2Value;
-            GUILayout.BeginArea(new Rect(position, NodeSize), GUI.skin.window);
-            GUI.color = Color.white;
-            EditorGUIUtility.labelWidth = 100;
-            var enterChildren = true;
-
-            for (int i = 0; i < NodePropertyCount; i++)
-            {
-                prop.NextVisible(enterChildren);
-                GUI.enabled = prop.name != "_id" && prop.name != "_position";
-                EditorGUILayout.PropertyField(prop, true);
-                enterChildren = false;
-            }
-
-            GUI.enabled = true;
-            GUILayout.EndArea();
-        }
-
-        private void ProcessMouseEvents()
-        {
-            const int LeftMouseButton = 0;
-            const int RightMouseButton = 1;
-            var window = new Rect(0, MenuHeight, position.width, position.height);
-
-            if (!window.Contains(Event.current.mousePosition))
-                return;
-
-            if (Event.current.type == EventType.MouseDown)
-            {
-                if (Event.current.button == LeftMouseButton)
-                {
-                    if (Dragging)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else if (Event.current.button == RightMouseButton)
-                {
-                    DrawContextMenu();
-                }
-            }
-            else if (Event.current.type == EventType.MouseUp)
-            {
-                CancelDragging();
-            }
-        }
-
-        private void CancelDragging()
-        {
-            Dragging = false;
-        }
-
-        private void DrawContextMenu()
-        {
-            var menu = new GenericMenu();
-            menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
-            menu.AddItem(new GUIContent("Create Edge"), false, () => Debug.Log("Create Edge"));
-            menu.AddSeparator("");
-            menu.AddItem(new GUIContent("Delete Node"), false, () => Debug.Log("Delete Node"));
-            menu.AddItem(new GUIContent("Delete Edge"), false, () => Debug.Log("Delete Edge"));
-            menu.DropDown(new Rect(Event.current.mousePosition, Vector2.zero));
         }
 
         private void CreateNode()

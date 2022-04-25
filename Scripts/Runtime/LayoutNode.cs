@@ -48,7 +48,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The draw position of the node in the graph.
         /// </summary>
-        public Vector2 Position { get => _position; set => _position = value; }
+        public Vector2 Position { get => _position; set => _position = Vector2.Max(value, Vector2.zero); }
 
         /// <summary>
         /// The room ID.
