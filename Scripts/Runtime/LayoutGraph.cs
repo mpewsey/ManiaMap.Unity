@@ -242,5 +242,41 @@ namespace MPewsey.ManiaMap.Unity
 
             return new Rect(min, max - min);
         }
+
+        /// <summary>
+        /// Adjusts the positions of the nodes to provide the specified spacing.
+        /// </summary>
+        /// <param name="size">The size of the nodes.</param>
+        /// <param name="spacing">The minimum spacing between the nodes.</param>
+        public void Paginate(Vector2 size, Vector2 spacing)
+        {
+            for (int k = 0; k < 1000; k++)
+            {
+                var changed = false;
+                
+                for (int i = 0; i < Nodes.Count; i++)
+                {
+                    for (int j = i + 1; j < Nodes.Count; j++)
+                    {
+                        var iNode = Nodes[i];
+                        var jNode = Nodes[j];
+                        var delta = jNode.Position - iNode.Position;
+
+                        if (Mathf.Abs(delta.x) > size.x + spacing.x)
+                            continue;
+                        if (Mathf.Abs(delta.y) > size.y + spacing.y)
+                            continue;
+
+                        var move = 0.5f * (size + spacing - delta);
+                        jNode.Position += move;
+                        iNode.Position -= move;
+                        changed = true;
+                    }
+                }
+
+                if (!changed)
+                    return;
+            }
+        }
     }
 }

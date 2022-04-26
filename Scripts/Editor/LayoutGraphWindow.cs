@@ -6,7 +6,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindow : EditorWindow
     {
+        /// <summary>
+        /// The number of node properties to display.
+        /// </summary>
         private const int NodePropertyCount = 5;
+
+        /// <summary>
+        /// The number of edge properties to display.
+        /// </summary>
         private const int EdgePropertyCount = 8;
 
         /// <summary>
@@ -38,6 +45,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// The size of the plotted edge elements.
         /// </summary>
         private Vector2 EdgeSize { get; } = new Vector2(125, 30);
+
+        /// <summary>
+        /// The minimum spacing between node elements.
+        /// </summary>
+        private Vector2 Spacing { get; } = new Vector2(20, 20);
 
         /// <summary>
         /// The padding added to the right and bottom of the plot area.
@@ -86,10 +98,23 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 return;
 
             SerializedObject.Update();
+            PaginateGraph();
             DrawMenuBar();
             DrawPlot();
             DrawInspector();
+            HandleWindowClick();
             SerializedObject.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// If the window is clicked anywhere, remove focus from the current control.
+        /// </summary>
+        private void HandleWindowClick()
+        {
+            if (GUI.Button(new Rect(0, 0, position.width, position.height), "", GUIStyle.none))
+            {
+                GUI.FocusControl(null);
+            }
         }
 
         private void DrawNodeInspector()
@@ -100,7 +125,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var index = GetLayoutGraph().GetNodeIndex(Selection.Value1);
 
             if (index < 0)
+            {
+                ClearSelection();
                 return;
+            }
 
             EditorGUIUtility.labelWidth = InspectorLabelWidth;
             GUILayout.Label("Selected Node", EditorStyles.boldLabel);
@@ -125,7 +153,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var index = GetLayoutGraph().GetEdgeIndex(Selection.Value1, Selection.Value2);
 
             if (index < 0)
+            {
+                ClearSelection();
                 return;
+            }
 
             EditorGUIUtility.labelWidth = InspectorLabelWidth;
             GUILayout.Label("Selected Edge", EditorStyles.boldLabel);
@@ -182,7 +213,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             GUILayout.BeginArea(new Rect(0, MenuHeight, InspectorWidth, position.height - MenuHeight), GUI.skin.box);
             InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
-            DrawLayoutGraphInspector();
+            DrawGraphInspector();
             DrawHorizontalSeparator();
             DrawNodeInspector();
             DrawEdgeInspector();
@@ -193,7 +224,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Draws the layout graph properties in the inspector.
         /// </summary>
-        private void DrawLayoutGraphInspector()
+        private void DrawGraphInspector()
         {
             EditorGUIUtility.labelWidth = InspectorLabelWidth;
             GUILayout.Label(SerializedObject.targetObject.name, EditorStyles.boldLabel);
@@ -263,7 +294,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 GUI.backgroundColor = edge.Color;
 
                 if (GUI.Button(new Rect(position, EdgeSize), edge.Name))
+                {
+                    GUI.FocusControl(null);
                     Selection = edge.RoomId;
+                }
 
                 GUI.backgroundColor = Color.white;
             }
@@ -281,10 +315,26 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 GUI.backgroundColor = node.Color;
 
                 if (GUI.Button(new Rect(node.Position, NodeSize), $"({node.Id}) : {node.Name}"))
+                {
+                    GUI.FocusControl(null);
                     Selection = node.RoomId;
+                }
 
                 GUI.backgroundColor = Color.white;
             }
+        }
+
+        private void ClearSelection()
+        {
+            Selection = new Uid(0, 0, 2);
+        }
+
+        /// <summary>
+        /// Paginates the graph elements.
+        /// </summary>
+        private void PaginateGraph()
+        {
+            GetLayoutGraph().Paginate(NodeSize, Spacing);
         }
 
         /// <summary>
@@ -292,7 +342,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void CreateNode()
         {
-            GetLayoutGraph().CreateNode();
+            GUI.FocusControl(null);
+            var node = GetLayoutGraph().CreateNode();
+            Selection = node.RoomId;
         }
     }
 }
