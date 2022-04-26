@@ -227,36 +227,20 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Spaces the nodes apart based on the specified spacing.
+        /// Returns a rectangle containing all node positions.
         /// </summary>
-        /// <param name="spacing">The required horizontal and vertical spacing.</param>
-        public void ApplyNodeSpacing(Vector2 spacing)
+        public Rect GetRect()
         {
-            for (int k = 0; k < 1000; k++)
+            var min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+            var max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+
+            foreach (var node in Nodes)
             {
-                var changed = false;
-                
-                for (int i = 0; i < Nodes.Count; i++)
-                {
-                    for (int j = i + 1; j < Nodes.Count; j++)
-                    {
-                        var iNode = Nodes[i];
-                        var jNode = Nodes[j];
-                        var delta = jNode.Position - iNode.Position;
-
-                        if (Mathf.Abs(delta.x) > spacing.x || Mathf.Abs(delta.y) > spacing.y)
-                            continue;
-
-                        delta = 0.5f * (spacing - delta);
-                        jNode.Position += delta;
-                        iNode.Position -= delta;
-                        changed = true;
-                    }
-                }
-
-                if (!changed)
-                    return;
+                min = Vector2.Min(min, node.Position);
+                max = Vector2.Max(max, node.Position);
             }
+
+            return new Rect(min, max - min);
         }
     }
 }
