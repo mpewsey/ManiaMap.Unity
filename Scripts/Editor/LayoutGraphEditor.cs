@@ -47,5 +47,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             GUI.enabled = true;
         }
+
+        /// <summary>
+        /// Shows the layout graph editor window.
+        /// </summary>
+        [UnityEditor.Callbacks.OnOpenAsset]
+        public static bool OnOpen(int instanceId, int line)
+        {
+            var path = AssetDatabase.GetAssetPath(instanceId);
+            var graph = AssetDatabase.LoadAssetAtPath<LayoutGraph>(path);
+
+            if (graph == null)
+                return false;
+
+            LayoutGraphWindow.ShowWindow(graph);
+            return true;
+        }
     }
 }

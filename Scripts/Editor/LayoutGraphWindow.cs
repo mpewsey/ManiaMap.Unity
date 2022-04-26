@@ -6,6 +6,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindow : EditorWindow
     {
+        private const int NodePropertyCount = 5;
+        private const int EdgePropertyCount = 8;
+
         /// <summary>
         /// The height of the menu.
         /// </summary>
@@ -29,12 +32,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// The size of the plotted node elements.
         /// </summary>
-        private Vector2 NodeSize { get; } = new Vector2(150, 40);
+        private Vector2 NodeSize { get; } = new Vector2(150, 30);
 
         /// <summary>
         /// The size of the plotted edge elements.
         /// </summary>
-        private Vector2 EdgeSize { get; } = new Vector2(125, 40);
+        private Vector2 EdgeSize { get; } = new Vector2(125, 30);
 
         /// <summary>
         /// The padding added to the right and bottom of the plot area.
@@ -52,17 +55,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private Vector2 PlotScrollPosition { get; set; }
 
         /// <summary>
-        /// The index of the top node at the current mouse position.
+        /// The selection ID.
         /// </summary>
-        private int HoveredNode { get; set; } = -1;
-
-        /// <summary>
-        /// The index of the top edge at the current mouse position.
-        /// </summary>
-        private int HoveredEdge { get; set; } = -1;
-
-        private int SelectedNode { get; set; } = -1;
-        private int SelectedEdge { get; set; } = -1;
+        private Uid Selection { get; set; } = new Uid(0, 0, 2);
 
         /// <summary>
         /// Shows the window for the specified layout graph.
@@ -72,7 +67,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             SerializedObject = new SerializedObject(graph);
             var window = GetWindow<LayoutGraphWindow>();
-            window.titleContent = new GUIContent("Graph");
+            window.titleContent = new GUIContent("Layout Graph Editor");
             window.minSize = new Vector2(450, 200);
             window.maxSize = new Vector2(1920, 720);
         }
@@ -88,13 +83,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public void OnGUI()
         {
             if (!LayoutGraphExists())
-            {
-                Close();
                 return;
-            }
 
             SerializedObject.Update();
-            SetWindowTitle();
             DrawMenuBar();
             DrawPlot();
             DrawInspector();
@@ -103,12 +94,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void DrawNodeInspector()
         {
-            var count = typeof(LayoutNode).GetProperties().Length - 2;
+            if (Selection.Value3 != 0)
+                return;
+
+            var index = GetLayoutGraph().GetNodeIndex(Selection.Value1);
+
+            if (index < 0)
+                return;
+
+            EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            GUILayout.Label("Selected Node", EditorStyles.boldLabel);
             var nodes = SerializedObject.FindProperty("_nodes");
-            var prop = nodes.GetArrayElementAtIndex(HoveredNode);
+            var prop = nodes.GetArrayElementAtIndex(index);
             var enterChildren = true;
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < NodePropertyCount; i++)
             {
                 prop.NextVisible(enterChildren);
                 GUI.enabled = prop.name != "_id" && prop.name != "_position";
@@ -119,7 +119,27 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void DrawEdgeInspector()
         {
+            if (Selection.Value3 != 1)
+                return;
 
+            var index = GetLayoutGraph().GetEdgeIndex(Selection.Value1, Selection.Value2);
+
+            if (index < 0)
+                return;
+
+            EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            GUILayout.Label("Selected Edge", EditorStyles.boldLabel);
+            var edges = SerializedObject.FindProperty("_edges");
+            var prop = edges.GetArrayElementAtIndex(index);
+            var enterChildren = true;
+
+            for (int i = 0; i < EdgePropertyCount; i++)
+            {
+                prop.NextVisible(enterChildren);
+                GUI.enabled = prop.name != "_fromNode" && prop.name != "_toNode";
+                EditorGUILayout.PropertyField(prop, true);
+                enterChildren = false;
+            }
         }
 
         /// <summary>
@@ -129,15 +149,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             return SerializedObject != null
                 && GetLayoutGraph() != null;
-        }
-
-        /// <summary>
-        /// Sets the window title.
-        /// </summary>
-        private void SetWindowTitle()
-        {
-            var name = SerializedObject.targetObject.name;
-            titleContent.text = $"Graph [{name}]";
         }
 
         /// <summary>
@@ -173,32 +184,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
             DrawLayoutGraphInspector();
             DrawHorizontalSeparator();
-
-            Debug.Log(Event.current.type);
-
-            if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
-            {
-                if (HoveredNode >= 0)
-                {
-                    SelectedNode = HoveredNode;
-                    SelectedEdge = -1;
-                }
-                else if (HoveredEdge >= 0)
-                {
-                    SelectedNode = -1;
-                    SelectedEdge = HoveredEdge;
-                }
-            }
-
-            if (SelectedNode >= 0)
-            {
-                DrawNodeInspector();
-            }
-            else if (SelectedEdge >= 0)
-            {
-                DrawEdgeInspector();
-            }
-
+            DrawNodeInspector();
+            DrawEdgeInspector();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
@@ -209,18 +196,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void DrawLayoutGraphInspector()
         {
             EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            GUILayout.Label(SerializedObject.targetObject.name, EditorStyles.boldLabel);
             var prop = SerializedObject.GetIterator();
-            var enterChildren = true;
+            prop.NextVisible(true);
 
-            while (prop.NextVisible(enterChildren))
+            while (prop.NextVisible(false))
             {
                 if (prop.name != "_nodes" && prop.name != "_edges")
                 {
                     GUI.enabled = prop.name == "_id" || prop.name == "_name";
                     EditorGUILayout.PropertyField(prop, true);
                 }
-
-                enterChildren = false;
             }
         }
 
@@ -267,28 +253,19 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawEdges()
         {
-            HoveredNode = -1;
             var graph = GetLayoutGraph();
-            var areaStyle = ElementAreaStyle();
-            var labelStyle = ElementLabelStyle();
             var positions = graph.GetNodes().ToDictionary(x => x.Id, x => x.Position);
-            var edges = graph.GetEdges();
-            var edgeRect = new Rect(Vector2.zero, EdgeSize);
 
-            for (int i = 0; i < edges.Count; i++)
+            foreach (var edge in graph.GetEdges())
             {
-                var edge = edges[i];
                 var position = 0.5f * (positions[edge.FromNode] + positions[edge.ToNode]);
                 position += 0.5f * (NodeSize - EdgeSize);
-                GUI.color = edge.Color;
-                GUILayout.BeginArea(new Rect(position, EdgeSize), areaStyle);
-                GUI.color = Color.white;
-                GUILayout.Label(edge.Name, labelStyle);
+                GUI.backgroundColor = edge.Color;
 
-                if (edgeRect.Contains(Event.current.mousePosition))
-                    HoveredEdge = i;
+                if (GUI.Button(new Rect(position, EdgeSize), edge.Name))
+                    Selection = edge.RoomId;
 
-                GUILayout.EndArea();
+                GUI.backgroundColor = Color.white;
             }
         }
 
@@ -297,47 +274,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawNodes()
         {
-            HoveredNode = -1;
             var graph = GetLayoutGraph();
-            var areaStyle = ElementAreaStyle();
-            var labelStyle = ElementLabelStyle();
-            var nodes = graph.GetNodes();
-            var nodeRect = new Rect(Vector2.zero, NodeSize);
 
-            for (int i = 0; i < nodes.Count; i++)
+            foreach (var node in graph.GetNodes())
             {
-                var node = nodes[i];
-                GUI.color = node.Color;
-                GUILayout.BeginArea(new Rect(node.Position, NodeSize), areaStyle);
-                GUI.color = Color.white;
-                GUILayout.Label($"({node.Id}) : {node.Name}", labelStyle);
+                GUI.backgroundColor = node.Color;
 
-                if (nodeRect.Contains(Event.current.mousePosition))
-                    HoveredNode = i;
+                if (GUI.Button(new Rect(node.Position, NodeSize), $"({node.Id}) : {node.Name}"))
+                    Selection = node.RoomId;
 
-                GUILayout.EndArea();
+                GUI.backgroundColor = Color.white;
             }
-        }
-
-        /// <summary>
-        /// The style of the node and edge area elements.
-        /// </summary>
-        private static GUIStyle ElementAreaStyle()
-        {
-            var style = new GUIStyle(GUI.skin.button);
-            style.padding.top = 10;
-            style.padding.bottom = 10;
-            return style;
-        }
-
-        /// <summary>
-        /// The style of the node and edge label elements.
-        /// </summary>
-        private static GUIStyle ElementLabelStyle()
-        {
-            var style = new GUIStyle(GUI.skin.label);
-            style.alignment = TextAnchor.MiddleCenter;
-            return style;
         }
 
         /// <summary>
