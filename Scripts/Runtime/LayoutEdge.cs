@@ -5,10 +5,10 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// An edge in a LayoutGraph.
     /// </summary>
-    [System.Serializable]
-    public class LayoutEdge
+    public class LayoutEdge : ScriptableObject
     {
         [SerializeField]
+        [HideInInspector]
         private int _fromNode;
         /// <summary>
         /// The from node ID.
@@ -16,6 +16,7 @@ namespace MPewsey.ManiaMap.Unity
         public int FromNode { get => _fromNode; private set => _fromNode = value; }
 
         [SerializeField]
+        [HideInInspector]
         private int _toNode;
         /// <summary>
         /// The to node ID.
@@ -77,15 +78,17 @@ namespace MPewsey.ManiaMap.Unity
         public Uid RoomId => new Uid(FromNode, ToNode, 1);
 
         /// <summary>
-        /// Initializes a new edge.
+        /// Creates a new edge.
         /// </summary>
         /// <param name="fromNode">The from node ID.</param>
         /// <param name="toNode">The to node ID.</param>
-        public LayoutEdge(int fromNode, int toNode)
+        public static LayoutEdge Create(int fromNode, int toNode)
         {
-            FromNode = fromNode;
-            ToNode = toNode;
-            Name = $"<Edge ({fromNode}, {toNode})>";
+            var edge = CreateInstance<LayoutEdge>();
+            edge.FromNode = fromNode;
+            edge.ToNode = toNode;
+            edge.Name = $"<Edge ({fromNode}, {toNode})>";
+            return edge;
         }
     }
 }

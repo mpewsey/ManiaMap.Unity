@@ -5,10 +5,10 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A node in a LayoutGraph.
     /// </summary>
-    [System.Serializable]
-    public class LayoutNode
+    public class LayoutNode : ScriptableObject
     {
         [SerializeField]
+        [HideInInspector]
         private int _id;
         /// <summary>
         /// The unique ID.
@@ -44,6 +44,7 @@ namespace MPewsey.ManiaMap.Unity
         public Color32 Color { get => _color; set => _color = value; }
 
         [SerializeField]
+        [HideInInspector]
         private Vector2 _position;
         /// <summary>
         /// The draw position of the node in the graph.
@@ -56,13 +57,15 @@ namespace MPewsey.ManiaMap.Unity
         public Uid RoomId => new Uid(Id);
 
         /// <summary>
-        /// Initializes a new node.
+        /// Creates a new node.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public LayoutNode(int id)
+        public static LayoutNode Create(int id)
         {
-            Id = id;
-            Name = $"<Node {id}>";
+            var node = CreateInstance<LayoutNode>();
+            node.Id = id;
+            node.Name = $"<Node {id}>";
+            return node;
         }
     }
 }

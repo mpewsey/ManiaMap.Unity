@@ -86,7 +86,7 @@ namespace MPewsey.ManiaMap.Unity
 
             if (node == null)
             {
-                node = new LayoutNode(id);
+                node = LayoutNode.Create(id);
                 Nodes.Add(node);
             }
 
@@ -135,7 +135,7 @@ namespace MPewsey.ManiaMap.Unity
 
             if (edge == null)
             {
-                edge = new LayoutEdge(node1, node2);
+                edge = LayoutEdge.Create(node1, node2);
                 Edges.Add(edge);
             }
 
