@@ -334,7 +334,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void PaginateGraph()
         {
-            GetLayoutGraph().Paginate(NodeSize, Spacing);
+            GetLayoutGraph().Paginate(NodeSize + Spacing);
         }
 
         /// <summary>

@@ -52,7 +52,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Shows the layout graph editor window.
         /// </summary>
         [UnityEditor.Callbacks.OnOpenAsset]
-        public static bool OnOpen(int instanceId, int line)
+        public static bool OnOpenAsset(int instanceId, int line)
         {
             var path = AssetDatabase.GetAssetPath(instanceId);
             var graph = AssetDatabase.LoadAssetAtPath<LayoutGraph>(path);
