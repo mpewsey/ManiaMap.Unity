@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// A window for editing a LayoutGraph.
+    /// </summary>
     public class LayoutGraphWindow : EditorWindow
     {
         /// <summary>
@@ -113,10 +116,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUI.Button(new Rect(0, 0, position.width, position.height), "", GUIStyle.none))
             {
-                GUI.FocusControl(null);
+                ClearControl();
             }
         }
 
+        /// <summary>
+        /// Draws the node inspector.
+        /// </summary>
         private void DrawNodeInspector()
         {
             if (Selection.Value3 != 0)
@@ -145,6 +151,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Draws the edge inspector.
+        /// </summary>
         private void DrawEdgeInspector()
         {
             if (Selection.Value3 != 1)
@@ -226,18 +235,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawGraphInspector()
         {
+            GUI.enabled = false;
             EditorGUIUtility.labelWidth = InspectorLabelWidth;
-            GUILayout.Label(SerializedObject.targetObject.name, EditorStyles.boldLabel);
+            EditorGUILayout.TextField("Filename", SerializedObject.targetObject.name);
             var prop = SerializedObject.GetIterator();
             prop.NextVisible(true);
+            GUI.enabled = true;
 
             while (prop.NextVisible(false))
             {
-                if (prop.name != "_nodes" && prop.name != "_edges")
-                {
-                    GUI.enabled = prop.name == "_id" || prop.name == "_name";
-                    EditorGUILayout.PropertyField(prop, true);
-                }
+                EditorGUILayout.PropertyField(prop, true);
             }
         }
 
@@ -264,7 +271,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Adds an empty label with the bounds of the plot. Without this, the scroll view won't work.
+        /// Adds an empty label with the size of the bounds of the plot.
+        /// Without this, the scroll view won't work.
         /// </summary>
         private void SetPlotBounds()
         {
@@ -295,7 +303,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
                 if (GUI.Button(new Rect(position, EdgeSize), edge.Name))
                 {
-                    GUI.FocusControl(null);
+                    ClearControl();
                     Selection = edge.RoomId;
                 }
 
@@ -316,7 +324,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
                 if (GUI.Button(new Rect(node.Position, NodeSize), $"({node.Id}) : {node.Name}"))
                 {
-                    GUI.FocusControl(null);
+                    ClearControl();
                     Selection = node.RoomId;
                 }
 
@@ -324,9 +332,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Clears the current selection.
+        /// </summary>
         private void ClearSelection()
         {
             Selection = new Uid(0, 0, 2);
+        }
+
+        /// <summary>
+        /// Clears focus control.
+        /// </summary>
+        private void ClearControl()
+        {
+            GUI.FocusControl(null);
         }
 
         /// <summary>
@@ -342,7 +361,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void CreateNode()
         {
-            GUI.FocusControl(null);
+            ClearControl();
             var node = GetLayoutGraph().CreateNode();
             Selection = node.RoomId;
         }

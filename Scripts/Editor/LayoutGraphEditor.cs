@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             serializedObject.Update();
             DrawEditButton();
-            DrawProperties();
+            DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -27,25 +27,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 var graph = (LayoutGraph)serializedObject.targetObject;
                 LayoutGraphWindow.ShowWindow(graph);
             }
-        }
-
-        /// <summary>
-        /// Draws the graph properties.
-        /// </summary>
-        private void DrawProperties()
-        {
-            var prop = serializedObject.GetIterator();
-            var enterChildren = true;
-            GUI.enabled = false;
-
-            while (prop.NextVisible(enterChildren))
-            {
-                GUI.enabled = prop.name == "_id" || prop.name == "_name";
-                EditorGUILayout.PropertyField(prop, true);
-                enterChildren = false;
-            }
-
-            GUI.enabled = true;
         }
 
         /// <summary>

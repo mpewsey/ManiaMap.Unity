@@ -25,6 +25,7 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
+        [HideInInspector]
         private List<LayoutNode> _nodes = new List<LayoutNode>();
         /// <summary>
         /// A list of nodes in the graph.
@@ -32,6 +33,7 @@ namespace MPewsey.ManiaMap.Unity
         private List<LayoutNode> Nodes { get => _nodes; set => _nodes = value; }
 
         [SerializeField]
+        [HideInInspector]
         private List<LayoutEdge> _edges = new List<LayoutEdge>();
         /// <summary>
         /// A list of edges in the graph.
