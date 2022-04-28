@@ -56,6 +56,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         public Vector2 PlotPadding { get => _plotPadding; set => _plotPadding = Vector2.Max(value, Vector2.zero); }
 
+        [SerializeField]
+        private Color32 _hoverColor = new Color(1, 1, 1, 0.2f);
+        /// <summary>
+        /// The color overlayed on hovered node and edge elements.
+        /// </summary>
+        public Color32 HoverColor { get => _hoverColor; set => _hoverColor = value; }
+
+        [SerializeField]
+        private Color32 _selectedColor = new Color(0, 0, 0, 0.2f);
+        /// <summary>
+        /// The color overlayed on selected node and edge elements.
+        /// </summary>
+        public Color32 SelectedColor { get => _selectedColor; set => _selectedColor = value; }
+
         /// <summary>
         /// Returns the layout graph window settings. If the settings exist in the project,
         /// these settings are loaded and returned. Otherwise, the default settings are returned.

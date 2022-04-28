@@ -23,12 +23,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// A list of currently selected nodes.
         /// </summary>
-        private List<Object> TargetNodes { get; set; } = new List<Object>();
+        private List<LayoutNode> TargetNodes { get; set; } = new List<LayoutNode>();
 
         /// <summary>
         /// A list of currently selected edges.
         /// </summary>
-        private List<Object> TargetEdges { get; set; } = new List<Object>();
+        private List<LayoutEdge> TargetEdges { get; set; } = new List<LayoutEdge>();
 
         /// <summary>
         /// The current graph editor.
@@ -59,6 +59,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// The currently displayed menu.
         /// </summary>
         private string CurrentMenu { get; set; }
+
+        /// <summary>
+        /// True if the cursor is currently dragging elements.
+        /// </summary>
+        private bool Dragging { get; set; }
+
+        /// <summary>
+        /// The starting mouse position.
+        /// </summary>
+        private Vector2 StartPosition { get; set; }
 
         /// <summary>
         /// Shows the window for the specified layout graph.
@@ -122,8 +132,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (GUI.Button(new Rect(Settings.InspectorWidth, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUIStyle.none))
             {
                 ClearControl();
+                Dragging = false;
                 TargetNodes.Clear();
                 TargetEdges.Clear();
+                StartPosition = Vector2.zero;
             }
         }
 
@@ -135,6 +147,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (GUI.Button(new Rect(0, 0, position.width, position.height), "", GUIStyle.none))
             {
                 ClearControl();
+                Dragging = false;
+                StartPosition = Vector2.zero;
             }
         }
 
@@ -233,7 +247,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
             GUILayout.Label("Selected Nodes", EditorStyles.boldLabel);
             GUI.enabled = false;
-            var ids = TargetNodes.Cast<LayoutNode>().Select(x => x.Id);
+            var ids = TargetNodes.Select(x => x.Id);
             EditorGUILayout.TextField("Id", string.Join(", ", ids));
             UnityEditor.Editor.CreateCachedEditor(TargetNodes.ToArray(), null, ref nodeEditor);
             nodeEditor.OnInspectorGUI();
@@ -252,7 +266,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
             GUILayout.Label("Selected Edges", EditorStyles.boldLabel);
             GUI.enabled = false;
-            var ids = TargetEdges.Cast<LayoutEdge>().Select(x => $"({x.FromNode}, {x.ToNode})");
+            var ids = TargetEdges.Select(x => $"({x.FromNode}, {x.ToNode})");
             EditorGUILayout.TextField("Id", string.Join(", ", ids));
             UnityEditor.Editor.CreateCachedEditor(TargetEdges.ToArray(), null, ref edgeEditor);
             edgeEditor.OnInspectorGUI();
@@ -333,17 +347,84 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             foreach (var node in graph.GetNodes())
             {
-                GUI.backgroundColor = node.Color;
-
-                if (GUI.Button(new Rect(node.Position, Settings.NodeSize), $"({node.Id}) : {node.Name}"))
-                {
-                    ClearControl();
-                    TargetNodes.Clear();
-                    TargetNodes.Add(node);
-                }
-
-                GUI.backgroundColor = Color.white;
+                DrawNode(node);
             }
+        }
+
+        /// <summary>
+        /// Draws a node element.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void DrawNode(LayoutNode node)
+        {
+            GUI.backgroundColor = node.Color;
+            var rect = new Rect(node.Position, Settings.NodeSize);
+            GUI.Box(rect, $"({node.Id}) : {node.Name}", GUI.skin.button);
+
+            if (rect.Contains(Event.current.mousePosition))
+            {
+                switch (Event.current.type)
+                {
+                    case EventType.MouseUp:
+                        OnNodeMouseUp(node);
+                        break;
+                    case EventType.MouseDown:
+                        OnNodeMouseDown(node);
+                        break;
+                    default:
+                        OnNodeHover(node);
+                        break;
+                }
+            }
+
+            GUI.backgroundColor = Color.white;
+        }
+
+        /// <summary>
+        /// Event called when the mouse up event is triggered within a node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void OnNodeMouseUp(LayoutNode node)
+        {
+            if (new Rect(node.Position, Settings.NodeSize).Contains(StartPosition))
+            {
+                ClearControl();
+                Dragging = false;
+                TargetNodes.Clear();
+                TargetNodes.Add(node);
+                Event.current.Use();
+            }
+        }
+
+        /// <summary>
+        /// The event called when the mouse down event is triggered within a node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void OnNodeMouseDown(LayoutNode node)
+        {
+            StartPosition = Event.current.mousePosition;
+            
+            if (!TargetNodes.Contains(node))
+            {
+                ClearControl();
+                Event.current.Use();
+                return;
+            }
+
+            ClearControl();
+            Dragging = true;
+            Event.current.Use();
+        }
+
+        /// <summary>
+        /// The event called when the mouse hovers a node with no other handled events.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void OnNodeHover(LayoutNode node)
+        {
+            GUI.backgroundColor = Settings.HoverColor;
+            GUI.Box(new Rect(node.Position, Settings.NodeSize), "", GUI.skin.button);
+            GUI.backgroundColor = Color.white;
         }
 
         /// <summary>
@@ -359,7 +440,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void PaginateGraph()
         {
-            GetLayoutGraph().Paginate(Settings.NodeSize + Settings.Spacing);
+            var graph = GetLayoutGraph();
+
+            if (graph.Paginate(Settings.NodeSize + Settings.Spacing))
+            {
+                EditorUtility.SetDirty(graph);
+            }
         }
 
         /// <summary>
@@ -385,7 +471,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var graph = GetLayoutGraph();
             var edges = graph.GetEdges().ToList();
 
-            foreach (var node in TargetNodes.Cast<LayoutNode>())
+            foreach (var node in TargetNodes)
             {
                 graph.RemoveNode(node.Id);
                 AssetDatabase.RemoveObjectFromAsset(node);
@@ -409,7 +495,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             ClearControl();
             var graph = GetLayoutGraph();
 
-            foreach (var edge in TargetEdges.Cast<LayoutEdge>())
+            foreach (var edge in TargetEdges)
             {
                 graph.RemoveEdge(edge.FromNode, edge.ToNode);
                 AssetDatabase.RemoveObjectFromAsset(edge);
