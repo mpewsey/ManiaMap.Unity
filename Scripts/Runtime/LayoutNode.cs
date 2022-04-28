@@ -65,6 +65,7 @@ namespace MPewsey.ManiaMap.Unity
             var node = CreateInstance<LayoutNode>();
             node.Id = id;
             node.Name = $"<Node {id}>";
+            node.name = node.Name;
             return node;
         }
     }

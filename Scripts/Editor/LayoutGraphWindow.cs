@@ -11,24 +11,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
     public class LayoutGraphWindow : EditorWindow
     {
         /// <summary>
-        /// The height of the menu.
-        /// </summary>
-        private const float MenuHeight = 20;
-
-        /// <summary>
-        /// The width of the inspector.
-        /// </summary>
-        private const float InspectorWidth = 300;
-
-        /// <summary>
-        /// The width of the labels in the inspector.
-        /// </summary>
-        private const float InspectorLabelWidth = 100;
-
-        /// <summary>
         /// The target serialized object.
         /// </summary>
-        private static SerializedObject SerializedObject { get; set; }
+        private SerializedObject SerializedObject { get; set; }
+
+        /// <summary>
+        /// The current window settings.
+        /// </summary>
+        private LayoutGraphWindowSettings Settings { get; set; }
 
         /// <summary>
         /// A list of currently selected nodes.
@@ -43,37 +33,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// The current graph editor.
         /// </summary>
-        private UnityEditor.Editor GraphEditor { get; set; }
+        private UnityEditor.Editor graphEditor;
 
         /// <summary>
         /// The current node editor.
         /// </summary>
-        private UnityEditor.Editor NodeEditor { get; set; }
+        private UnityEditor.Editor nodeEditor;
 
         /// <summary>
         /// The current edge editor.
         /// </summary>
-        private UnityEditor.Editor EdgeEditor { get; set; }
-
-        /// <summary>
-        /// The size of the plotted node elements.
-        /// </summary>
-        private Vector2 NodeSize { get; } = new Vector2(150, 30);
-
-        /// <summary>
-        /// The size of the plotted edge elements.
-        /// </summary>
-        private Vector2 EdgeSize { get; } = new Vector2(125, 30);
-
-        /// <summary>
-        /// The minimum spacing between node elements.
-        /// </summary>
-        private Vector2 Spacing { get; } = new Vector2(20, 20);
-
-        /// <summary>
-        /// The padding added to the right and bottom of the plot area.
-        /// </summary>
-        private Vector2 PlotPadding { get; } = new Vector2(20, 20);
+        private UnityEditor.Editor edgeEditor;
 
         /// <summary>
         /// The current inspector scroll position.
@@ -86,22 +56,28 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private Vector2 PlotScrollPosition { get; set; }
 
         /// <summary>
+        /// The currently displayed menu.
+        /// </summary>
+        private string CurrentMenu { get; set; }
+
+        /// <summary>
         /// Shows the window for the specified layout graph.
         /// </summary>
         /// <param name="graph">The target layout graph.</param>
         public static void ShowWindow(LayoutGraph graph)
         {
-            SerializedObject = new SerializedObject(graph);
             var window = GetWindow<LayoutGraphWindow>();
             window.titleContent = new GUIContent("Layout Graph Editor");
             window.minSize = new Vector2(450, 200);
             window.maxSize = new Vector2(1920, 720);
+            window.SerializedObject = new SerializedObject(graph);
+            window.Settings = LayoutGraphWindowSettings.GetSettings();
         }
 
         /// <summary>
         /// Returns the target layout graph.
         /// </summary>
-        private static LayoutGraph GetLayoutGraph()
+        private LayoutGraph GetLayoutGraph()
         {
             return SerializedObject.targetObject as LayoutGraph;
         }
@@ -116,71 +92,39 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenuBar();
             DrawPlot();
             DrawInspector();
+            HandlePlotAreaClick();
             HandleWindowClick();
             SerializedObject.ApplyModifiedProperties();
         }
 
         private void OnDestroy()
         {
-            DestroyImmediate(GraphEditor);
-            DestroyImmediate(NodeEditor);
-            DestroyImmediate(EdgeEditor);
+            SaveAsset();
         }
 
         /// <summary>
-        /// Returns the layout graph editor.
+        /// Saves the layout graph.
         /// </summary>
-        private UnityEditor.Editor GetGraphEditor()
+        private void SaveAsset()
         {
-            if (GraphEditor != null)
-                return GraphEditor;
-
-            GraphEditor = UnityEditor.Editor.CreateEditor(SerializedObject.targetObject, typeof(LayoutGraphWindowEditor));
-            return GraphEditor;
+            if (LayoutGraphExists())
+            {
+                SerializedObject.ApplyModifiedProperties();
+                AssetDatabase.SaveAssetIfDirty(SerializedObject.targetObject);
+            }
         }
 
         /// <summary>
-        /// Returns the node editor.
+        /// If the plot area is clicked anywhere, clears the selected nodes and edges.
         /// </summary>
-        /// <param name="nodes">A list of nodes to assign to the editor.</param>
-        private UnityEditor.Editor GetNodeEditor(List<Object> nodes)
+        private void HandlePlotAreaClick()
         {
-            if (NodeEditor == null)
+            if (GUI.Button(new Rect(Settings.InspectorWidth, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUIStyle.none))
             {
-                NodeEditor = UnityEditor.Editor.CreateEditor(nodes.ToArray());
-                return NodeEditor;
+                ClearControl();
+                TargetNodes.Clear();
+                TargetEdges.Clear();
             }
-
-            if (!nodes.SequenceEqual(NodeEditor.targets))
-            {
-                DestroyImmediate(NodeEditor);
-                NodeEditor = UnityEditor.Editor.CreateEditor(nodes.ToArray());
-                return NodeEditor;
-            }
-
-            return NodeEditor;
-        }
-
-        /// <summary>
-        /// Returns the edge editor.
-        /// </summary>
-        /// <param name="edges">A list of edges to assign to the editor.</param>
-        private UnityEditor.Editor GetEdgeEditor(List<Object> edges)
-        {
-            if (EdgeEditor == null)
-            {
-                EdgeEditor = UnityEditor.Editor.CreateEditor(edges.ToArray());
-                return EdgeEditor;
-            }
-
-            if (!edges.SequenceEqual(EdgeEditor.targets))
-            {
-                DestroyImmediate(EdgeEditor);
-                EdgeEditor = UnityEditor.Editor.CreateEditor(edges.ToArray());
-                return EdgeEditor;
-            }
-
-            return EdgeEditor;
         }
 
         /// <summary>
@@ -197,7 +141,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Returns true if the serialized object and target layout graph are not null.
         /// </summary>
-        private static bool LayoutGraphExists()
+        private bool LayoutGraphExists()
         {
             return SerializedObject != null
                 && GetLayoutGraph() != null;
@@ -221,8 +165,32 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUILayout.Button("Edit", EditorStyles.toolbarDropDown))
             {
+                if (CurrentMenu == "Edit")
+                {
+                    CurrentMenu = null;
+                    return;
+                }
+
+                CurrentMenu = "Edit";
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
+                menu.AddSeparator("");
+
+                if (TargetNodes.Count > 0 || TargetEdges.Count > 0)
+                    menu.AddItem(new GUIContent("Delete Selection"), false, DeleteElements);
+                else
+                    menu.AddDisabledItem(new GUIContent("Delete Selection"));
+
+                if (TargetNodes.Count > 0)
+                    menu.AddItem(new GUIContent("Delete Selected Nodes"), false, DeleteNodes);
+                else
+                    menu.AddDisabledItem(new GUIContent("Delete Selected Nodes"));
+
+                if (TargetEdges.Count > 0)
+                    menu.AddItem(new GUIContent("Delete Selected Edges"), false, DeleteEdges);
+                else
+                    menu.AddDisabledItem(new GUIContent("Delete Selected Edges"));
+
                 menu.DropDown(new Rect(0, 5, 0, 16));
             }
         }
@@ -232,7 +200,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawInspector()
         {
-            GUILayout.BeginArea(new Rect(0, MenuHeight, InspectorWidth, position.height - MenuHeight), GUI.skin.box);
+            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight), GUI.skin.box);
             InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
             DrawGraphInspector();
             DrawHorizontalSeparator();
@@ -247,9 +215,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawGraphInspector()
         {
-            EditorGUIUtility.labelWidth = InspectorLabelWidth;
-            var editor = GetGraphEditor();
-            editor.OnInspectorGUI();
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
+            UnityEditor.Editor.CreateCachedEditor(SerializedObject.targetObject, typeof(LayoutGraphWindowEditor), ref graphEditor);
+            graphEditor.OnInspectorGUI();
         }
 
         /// <summary>
@@ -262,13 +230,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (TargetNodes.Count == 0)
                 return;
 
-            EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
             GUILayout.Label("Selected Nodes", EditorStyles.boldLabel);
             GUI.enabled = false;
             var ids = TargetNodes.Cast<LayoutNode>().Select(x => x.Id);
             EditorGUILayout.TextField("Id", string.Join(", ", ids));
-            var editor = GetNodeEditor(TargetNodes);
-            editor.OnInspectorGUI();
+            UnityEditor.Editor.CreateCachedEditor(TargetNodes.ToArray(), null, ref nodeEditor);
+            nodeEditor.OnInspectorGUI();
         }
 
         /// <summary>
@@ -281,13 +249,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (TargetEdges.Count == 0)
                 return;
 
-            EditorGUIUtility.labelWidth = InspectorLabelWidth;
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
             GUILayout.Label("Selected Edges", EditorStyles.boldLabel);
             GUI.enabled = false;
             var ids = TargetEdges.Cast<LayoutEdge>().Select(x => $"({x.FromNode}, {x.ToNode})");
             EditorGUILayout.TextField("Id", string.Join(", ", ids));
-            var editor = GetEdgeEditor(TargetEdges);
-            editor.OnInspectorGUI();
+            UnityEditor.Editor.CreateCachedEditor(TargetEdges.ToArray(), null, ref edgeEditor);
+            edgeEditor.OnInspectorGUI();
         }
 
         /// <summary>
@@ -305,7 +273,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawPlot()
         {
-            GUILayout.BeginArea(new Rect(InspectorWidth, MenuHeight, position.width - InspectorWidth, position.height - MenuHeight));
+            GUILayout.BeginArea(new Rect(Settings.InspectorWidth, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
             SetPlotBounds();
             DrawEdges();
@@ -325,8 +293,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (graph.NodeCount > 0)
             {
                 var rect = graph.GetRect();
-                var width = rect.width + rect.x + NodeSize.x + PlotPadding.x;
-                var height = rect.height + rect.y + NodeSize.y + PlotPadding.y;
+                var width = rect.width + rect.x + Settings.NodeSize.x + Settings.PlotPadding.x;
+                var height = rect.height + rect.y + Settings.NodeSize.y + Settings.PlotPadding.y;
                 GUILayout.Label("", GUILayout.Width(width), GUILayout.Height(height));
             }
         }
@@ -342,10 +310,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             foreach (var edge in graph.GetEdges())
             {
                 var position = 0.5f * (positions[edge.FromNode] + positions[edge.ToNode]);
-                position += 0.5f * (NodeSize - EdgeSize);
+                position += 0.5f * (Settings.NodeSize - Settings.EdgeSize);
                 GUI.backgroundColor = edge.Color;
 
-                if (GUI.Button(new Rect(position, EdgeSize), edge.Name))
+                if (GUI.Button(new Rect(position, Settings.EdgeSize), edge.Name))
                 {
                     ClearControl();
                     TargetEdges.Clear();
@@ -367,7 +335,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 GUI.backgroundColor = node.Color;
 
-                if (GUI.Button(new Rect(node.Position, NodeSize), $"({node.Id}) : {node.Name}"))
+                if (GUI.Button(new Rect(node.Position, Settings.NodeSize), $"({node.Id}) : {node.Name}"))
                 {
                     ClearControl();
                     TargetNodes.Clear();
@@ -391,7 +359,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void PaginateGraph()
         {
-            GetLayoutGraph().Paginate(NodeSize + Spacing);
+            GetLayoutGraph().Paginate(Settings.NodeSize + Settings.Spacing);
         }
 
         /// <summary>
@@ -400,10 +368,64 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void CreateNode()
         {
             ClearControl();
-            var node = GetLayoutGraph().CreateNode();
+            var graph = GetLayoutGraph();
+            var node = graph.CreateNode();
             AssetDatabase.AddObjectToAsset(node, SerializedObject.targetObject);
             TargetNodes.Clear();
             TargetNodes.Add(node);
+            EditorUtility.SetDirty(graph);
+        }
+
+        /// <summary>
+        /// Deletes the selected nodes.
+        /// </summary>
+        private void DeleteNodes()
+        {
+            ClearControl();
+            var graph = GetLayoutGraph();
+            var edges = graph.GetEdges().ToList();
+
+            foreach (var node in TargetNodes.Cast<LayoutNode>())
+            {
+                graph.RemoveNode(node.Id);
+                AssetDatabase.RemoveObjectFromAsset(node);
+            }
+
+            foreach (var edge in edges.Except(graph.GetEdges()))
+            {
+                AssetDatabase.RemoveObjectFromAsset(edge);
+            }
+
+            TargetNodes.Clear();
+            TargetEdges.Clear();
+            EditorUtility.SetDirty(graph);
+        }
+
+        /// <summary>
+        /// Deletes the selected edges.
+        /// </summary>
+        private void DeleteEdges()
+        {
+            ClearControl();
+            var graph = GetLayoutGraph();
+
+            foreach (var edge in TargetEdges.Cast<LayoutEdge>())
+            {
+                graph.RemoveEdge(edge.FromNode, edge.ToNode);
+                AssetDatabase.RemoveObjectFromAsset(edge);
+            }
+
+            TargetEdges.Clear();
+            EditorUtility.SetDirty(graph);
+        }
+
+        /// <summary>
+        /// Deletes the selected edges and nodes.
+        /// </summary>
+        private void DeleteElements()
+        {
+            DeleteEdges();
+            DeleteNodes();
         }
     }
 }

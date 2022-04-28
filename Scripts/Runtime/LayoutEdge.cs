@@ -88,6 +88,7 @@ namespace MPewsey.ManiaMap.Unity
             edge.FromNode = fromNode;
             edge.ToNode = toNode;
             edge.Name = $"<Edge ({fromNode}, {toNode})>";
+            edge.name = edge.Name;
             return edge;
         }
     }
