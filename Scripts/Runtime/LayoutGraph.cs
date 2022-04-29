@@ -95,12 +95,16 @@ namespace MPewsey.ManiaMap.Unity
 
         /// <summary>
         /// Removes the node from the graph, along with any attached edges.
+        /// Returns true if a node is removed.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public void RemoveNode(int id)
+        public bool RemoveNode(int id)
         {
+            var nodeCount = Nodes.Count;
+            var edgeCount = Edges.Count;
             Nodes.RemoveAll(x => x.Id == id);
             Edges.RemoveAll(x => x.FromNode == id || x.ToNode == id);
+            return nodeCount != Nodes.Count || edgeCount != Edges.Count;
         }
 
         /// <summary>
@@ -143,13 +147,15 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Removes the edge from the graph.
+        /// Removes the edge from the graph. Returns true if an edge was removed.
         /// </summary>
         /// <param name="node1">The first node ID.</param>
         /// <param name="node2">The second node ID.</param>
-        public void RemoveEdge(int node1, int node2)
+        public bool RemoveEdge(int node1, int node2)
         {
+            var count = Edges.Count;
             Edges.RemoveAll(x => (x.FromNode == node1 && x.ToNode == node2) || (x.FromNode == node2 && x.ToNode == node1));
+            return Edges.Count != count;
         }
 
         /// <summary>
@@ -253,10 +259,11 @@ namespace MPewsey.ManiaMap.Unity
         public bool Paginate(Vector2 spacing)
         {
             var result = false;
+            var changed = true;
 
-            for (int k = 0; k < 1000; k++)
+            for (int k = 0; changed && k < 1000; k++)
             {
-                var changed = false;
+                changed = false;
 
                 for (int i = 0; i < Nodes.Count; i++)
                 {
@@ -266,21 +273,17 @@ namespace MPewsey.ManiaMap.Unity
                         var jNode = Nodes[j];
                         var delta = jNode.Position - iNode.Position;
 
-                        if (Mathf.Abs(delta.x) > spacing.x)
-                            continue;
-                        if (Mathf.Abs(delta.y) > spacing.y)
+                        if (Mathf.Abs(delta.x) > spacing.x || Mathf.Abs(delta.y) > spacing.y)
                             continue;
 
                         var move = 0.5f * (spacing - delta);
                         iNode.Position -= move;
                         jNode.Position += move;
                         changed = true;
-                        result = true;
                     }
                 }
 
-                if (!changed)
-                    break;
+                result |= changed;
             }
 
             return result;
