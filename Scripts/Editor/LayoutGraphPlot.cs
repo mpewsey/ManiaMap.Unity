@@ -25,6 +25,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             return SerializedObject.targetObject as LayoutGraph;
         }
 
+        private LayoutGraphWindow GetWindow()
+        {
+            return EditorWindow.GetWindow<LayoutGraphWindow>();
+        }
+
         public void OnGUI()
         {
             SerializedObject.Update();
@@ -33,10 +38,25 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawEdges();
             DrawNodes();
             DrawPlotBounds();
+            HandleAreaExit();
             HandleAreaClick();
             LastMousePosition = Event.current.mousePosition;
             GUILayout.EndScrollView();
             SerializedObject.ApplyModifiedProperties();
+            RepaintIfDragging();
+        }
+
+        public void OnLostFocus()
+        {
+            Dragging = false;
+        }
+
+        private void RepaintIfDragging()
+        {
+            if (Dragging)
+            {
+                GetWindow().Repaint();
+            }
         }
 
         private void Paginate()
@@ -60,10 +80,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
                 if (mouse.x >= 0 && mouse.y >= 0)
                 {
+                    GUI.FocusControl(null);
                     SelectedNodes.Clear();
                     SelectedEdges.Clear();
                     Event.current.Use();
                 }
+            }
+        }
+
+        private void HandleAreaExit()
+        {
+            var mouse = Event.current.mousePosition;
+
+            if (mouse.x < 0 || mouse.y < 0)
+            {
+                Dragging = false;
             }
         }
 
@@ -109,7 +140,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var rect = new Rect(node.Position, Settings.NodeSize);
             GUI.backgroundColor = node.Color;
-            GUI.Box(rect, $"ID {node.Id} : {node.Name}", GUI.skin.button);
+            GUI.Box(rect, $"{node.Id} : {node.Name}", GUI.skin.button);
             GUI.backgroundColor = Color.white;
 
             if (Event.current.type == EventType.MouseUp)
@@ -121,12 +152,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 if (Event.current.type == EventType.MouseUp)
                 {
+                    GUI.FocusControl(null);
                     SelectedNodes.Clear();
                     SelectedNodes.Add(node);
                     Event.current.Use();
                 }
                 else if (Event.current.type == EventType.MouseDown)
                 {
+                    GUI.FocusControl(null);
                     Dragging = true;
                     SelectedNodes.Add(node);
                     Event.current.Use();
