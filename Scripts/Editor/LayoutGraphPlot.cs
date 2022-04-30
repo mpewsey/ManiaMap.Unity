@@ -14,7 +14,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool Dragging { get; set; }
         private Vector2 LastMousePosition { get; set; }
         private Vector2 ScrollPosition { get; set; }
-        private Dictionary<int, Vector2> NodePositions { get; set; } = new Dictionary<int, Vector2>();
+        private Dictionary<int, Vector2> NodePositions { get; } = new Dictionary<int, Vector2>();
 
         public LayoutGraphPlot(LayoutGraph graph)
         {
@@ -170,12 +170,23 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 if (Event.current.type == EventType.MouseUp)
                 {
+                    if (!Event.current.control)
+                    {
+                        SelectedNodes.Clear();
+                        SelectedEdges.Clear();
+                    }
+
                     GUI.FocusControl(null);
-                    SelectedEdges.Clear();
                     SelectedEdges.Add(edge);
                     Event.current.Use();
                 }
-                
+                else if (Event.current.type == EventType.MouseDown)
+                {
+                    GUI.FocusControl(null);
+                    Dragging = true;
+                    Event.current.Use();
+                }
+
                 GUI.backgroundColor = Settings.HoverColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
@@ -215,13 +226,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 if (Event.current.type == EventType.MouseUp)
                 {
+                    if (!Event.current.control)
+                    {
+                        SelectedNodes.Clear();
+                        SelectedEdges.Clear();
+                    }
+
                     GUI.FocusControl(null);
-                    SelectedNodes.Clear();
                     SelectedNodes.Add(node);
                     Event.current.Use();
                 }
                 else if (Event.current.type == EventType.MouseDown)
                 {
+                    if (!Event.current.control)
+                    {
+                        SelectedNodes.Clear();
+                        SelectedEdges.Clear();
+                    }
+
                     GUI.FocusControl(null);
                     Dragging = true;
                     SelectedNodes.Add(node);

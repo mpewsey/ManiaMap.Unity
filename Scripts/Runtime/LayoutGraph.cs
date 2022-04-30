@@ -276,9 +276,19 @@ namespace MPewsey.ManiaMap.Unity
                         if (Mathf.Abs(delta.x) > spacing.x || Mathf.Abs(delta.y) > spacing.y)
                             continue;
 
-                        var move = 0.5f * (spacing - delta);
-                        iNode.Position -= move;
-                        jNode.Position += move;
+                        var sign = new Vector2(Mathf.Sign(delta.x), Mathf.Sign(delta.y));
+                        delta = spacing * sign - delta;
+
+                        if (Mathf.Abs(delta.x) * spacing.y > Mathf.Abs(delta.y) * spacing.x)
+                            delta.x = 0;
+                        else
+                            delta.y = 0;
+
+                        if ((k & 1) == 0)
+                            jNode.Position += delta;
+                        else
+                            iNode.Position -= delta;
+
                         changed = true;
                     }
                 }
