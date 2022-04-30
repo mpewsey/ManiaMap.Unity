@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool Dragging { get; set; }
         private Vector2 LastMousePosition { get; set; }
         private Vector2 ScrollPosition { get; set; }
+        private Dictionary<int, Vector2> NodePositions { get; set; } = new Dictionary<int, Vector2>();
 
         public LayoutGraphPlot(LayoutGraph graph)
         {
@@ -35,9 +37,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             SerializedObject.Update();
             ScrollPosition = GUILayout.BeginScrollView(ScrollPosition);
             Paginate();
-            DrawEdges();
+            SetNodePositions();
+            DrawEdgeLines();
             DrawNodes();
-            DrawPlotBounds();
+            DrawEdges();
+            SetPlotBounds();
             HandleAreaExit();
             HandleAreaClick();
             LastMousePosition = Event.current.mousePosition;
@@ -72,6 +76,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        private void SetNodePositions()
+        {
+            var graph = GetLayoutGraph();
+
+            foreach (var node in graph.GetNodes())
+            {
+                NodePositions[node.Id] = node.Position;
+            }
+        }
+
         private void HandleAreaClick()
         {
             if (Event.current.type == EventType.MouseUp)
@@ -98,7 +112,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private void DrawPlotBounds()
+        private void SetPlotBounds()
         {
             var graph = GetLayoutGraph();
 
@@ -109,6 +123,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 var height = rect.height + rect.y + Settings.NodeSize.y + Settings.PlotPadding.y;
                 GUILayout.Label("", GUILayout.Width(width), GUILayout.Height(height));
             }
+        }
+
+        private void DrawEdgeLines()
+        {
+            var graph = GetLayoutGraph();
+
+            foreach (var edge in graph.GetEdges())
+            {
+                DrawEdgeLine(edge);
+            }
+        }
+
+        private void DrawEdgeLine(LayoutEdge edge)
+        {
+            var start = NodePositions[edge.FromNode] + 0.5f * Settings.NodeSize;
+            var end = NodePositions[edge.ToNode] + 0.5f * Settings.NodeSize;
+            Handles.color = edge.Color;
+            Handles.DrawLine(start, end);
         }
 
         private void DrawEdges()
@@ -123,7 +155,38 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void DrawEdge(LayoutEdge edge)
         {
+            var position = 0.5f * (NodePositions[edge.FromNode] - Settings.EdgeSize + NodePositions[edge.ToNode]);
+            var rect = new Rect(position, Settings.EdgeSize);
+            GUI.backgroundColor = edge.Color;
+            GUI.Box(rect, edge.Name, GUI.skin.button);
+            GUI.backgroundColor = Color.white;
 
+            if (Event.current.type == EventType.MouseUp)
+            {
+                Dragging = false;
+            }
+
+            if (rect.Contains(Event.current.mousePosition))
+            {
+                if (Event.current.type == EventType.MouseUp)
+                {
+                    GUI.FocusControl(null);
+                    SelectedEdges.Clear();
+                    SelectedEdges.Add(edge);
+                    Event.current.Use();
+                }
+                
+                GUI.backgroundColor = Settings.HoverColor;
+                GUI.Box(rect, "", GUI.skin.button);
+                GUI.backgroundColor = Color.white;
+            }
+
+            if (SelectedEdges.Contains(edge))
+            {
+                GUI.backgroundColor = Settings.SelectedColor;
+                GUI.Box(rect, "", GUI.skin.button);
+                GUI.backgroundColor = Color.white;
+            }
         }
 
         private void DrawNodes()
@@ -182,5 +245,86 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 }
             }
         }
+
+        #region Actions
+        public void CreateNode()
+        {
+            GUI.FocusControl(null);
+            var graph = GetLayoutGraph();
+            var node = graph.CreateNode();
+            SelectedNodes.Clear();
+            SelectedNodes.Add(node);
+            AssetDatabase.AddObjectToAsset(node, graph);
+            EditorUtility.SetDirty(graph);
+        }
+
+        public void DeleteSelectedNodes()
+        {
+            GUI.FocusControl(null);
+            var graph = GetLayoutGraph();
+            var edges = graph.GetEdges().ToList();
+
+            foreach (var node in SelectedNodes)
+            {
+                graph.RemoveNode(node.Id);
+                AssetDatabase.RemoveObjectFromAsset(node);
+            }
+
+            foreach (var edge in edges.Except(graph.GetEdges()))
+            {
+                AssetDatabase.RemoveObjectFromAsset(edge);
+            }
+
+            SelectedNodes.Clear();
+            EditorUtility.SetDirty(graph);
+        }
+
+        public void DeleteSelectedEdges()
+        {
+            GUI.FocusControl(null);
+            var graph = GetLayoutGraph();
+
+            foreach (var edge in SelectedEdges)
+            {
+                graph.RemoveEdge(edge.FromNode, edge.ToNode);
+                AssetDatabase.RemoveObjectFromAsset(edge);
+            }
+
+            SelectedEdges.Clear();
+            EditorUtility.SetDirty(graph);
+        }
+
+        public void DeleteSelectedElements()
+        {
+            DeleteSelectedEdges();
+            DeleteSelectedNodes();
+        }
+
+        public void SelectAllNodes()
+        {
+            var graph = GetLayoutGraph();
+
+            foreach (var node in graph.GetNodes())
+            {
+                SelectedNodes.Add(node);
+            }
+        }
+
+        public void SelectAllEdges()
+        {
+            var graph = GetLayoutGraph();
+
+            foreach (var edge in graph.GetEdges())
+            {
+                SelectedEdges.Add(edge);
+            }
+        }
+
+        public void SelectAllElements()
+        {
+            SelectAllEdges();
+            SelectAllNodes();
+        }
+        #endregion
     }
 }
