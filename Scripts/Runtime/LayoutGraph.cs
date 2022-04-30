@@ -218,11 +218,32 @@ namespace MPewsey.ManiaMap.Unity
                 other.DoorCode = edge.DoorCode;
                 other.Z = edge.Z;
                 other.RoomChance = edge.RoomChance;
-                other.TemplateGroup = edge.TemplateGroup.Name;
+                other.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
                 other.Color = ConvertColor(edge.Color);
             }
 
             return graph;
+        }
+
+        /// <summary>
+        /// Returns the template groups for all groups in the graph.
+        /// </summary>
+        public TemplateGroups GetTemplateGroups()
+        {
+            var result = new TemplateGroups();
+            var nodeGroups = Nodes.Select(x => x.TemplateGroup);
+            var edgeGroups = Edges.Select(x => x.TemplateGroup).Where(x => x != null);
+            var groups = nodeGroups.Concat(edgeGroups);
+
+            foreach (var group in groups)
+            {
+                if (!result.Groups.ContainsKey(group.Name))
+                {
+                    result.Add(group.Name, group.LoadTemplates());
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
