@@ -29,11 +29,11 @@ namespace MPewsey.ManiaMap.Unity
         public Transform CellContainer { get => _cellContainer; set => _cellContainer = value; }
 
         [SerializeField]
-        private Vector2Int _size;
+        private Vector2Int _size = Vector2Int.one;
         /// <summary>
         /// The size of the room template grid.
         /// </summary>
-        public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.zero); }
+        public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
 
         [SerializeField]
         private Vector2 _cellSize = Vector2.one;
@@ -42,65 +42,75 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2 CellSize { get => _cellSize; set => _cellSize = Vector2.Max(value, Vector2.one); }
 
+        [SerializeField]
+        private List<Cell> _cells = new List<Cell>();
+        public List<Cell> Cells { get => _cells; set => _cells = value; }
+
         private void OnValidate()
         {
             Size = Size;
             CellSize = CellSize;
         }
 
-        public Array2D<Cell> GetCells()
+        public Cell GetCell(int row, int column)
         {
-            var result = new Array2D<Cell>(Size.x, Size.y);
-            var cells = CellContainer.GetComponentsInChildren<Cell>();
-            int k = 0;
+            if (!CellIndexExists(row, column))
+                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column}).");
+            return Cells[FlatCellIndex(row, column)];
+        }
 
-            for (int i = 0; i < Size.x; i++)
+        public bool CellIndexExists(int row, int column)
+        {
+            return (uint)row < Size.x && (uint)column < Size.y;
+        }
+
+        private int FlatCellIndex(int row, int column)
+        {
+            return row * Size.y + column;
+        }
+
+        public void CreateCellContainer()
+        {
+            if (CellContainer == null)
             {
-                for (int j = 0; j < Size.y; j++)
-                {
-                    result[i, j] = cells[k++];
-                }
+                var obj = new GameObject("<Cells>");
+                obj.transform.SetParent(transform);
+                CellContainer = obj.transform;
             }
-
-            return result;
         }
 
         public void CreateCells()
         {
-            var cells = CellContainer.GetComponentsInChildren<Cell>();
+            CreateCellContainer();
+            Cells.RemoveAll(x => x == null);
+
+            // Destroy extra cells.
+            while (Cells.Count > Size.x * Size.y)
+            {
+                var cell = Cells[Cells.Count - 1];
+                Cells.RemoveAt(Cells.Count - 1);
+                DestroyImmediate(cell.gameObject);
+            }
+
+            // Create new cells.
+            while (Cells.Count < Size.x * Size.y)
+            {
+                var obj = new GameObject();
+                obj.transform.SetParent(CellContainer);
+                var cell = obj.AddComponent<Cell>();
+                Cells.Add(cell);
+            }
+
+            // Initialize cells
             int k = 0;
 
             for (int i = 0; i < Size.x; i++)
             {
                 for (int j = 0; j < Size.y; j++)
                 {
-                    var name = $"<Cell ({i}, {j})>";
                     var index = new Vector2Int(i, j);
-                    var position = index * CellSize;
-
-                    if (k < cells.Length)
-                    {
-                        var cell = cells[k];
-                        cell.name = name;
-                        cell.Position = index;
-                        cell.transform.position = position;
-                    }
-                    else
-                    {
-                        var obj = new GameObject(name);
-                        obj.transform.SetParent(CellContainer);
-                        var cell = obj.AddComponent<Cell>();
-                        cell.Position = index;
-                        cell.transform.position = position;
-                    }
-
-                    k++;
+                    Cells[k++].Init(this, index);
                 }
-            }
-
-            for (int i = k; i < cells.Length; i++)
-            {
-                DestroyImmediate(cells[i].gameObject);
             }
         }
     }

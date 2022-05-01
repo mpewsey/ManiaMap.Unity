@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             window.Plot = new LayoutGraphPlot(graph);
         }
 
-        public void OnGUI()
+        private void OnGUI()
         {
             if (!LayoutGraphExists())
                 return;
@@ -35,12 +35,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawPlot();
         }
 
-        public void OnLostFocus()
+        private void OnLostFocus()
         {
             Plot.OnLostFocus();
         }
 
-        public void OnDestroy()
+        private void OnDestroy()
         {
             SaveAsset();
         }

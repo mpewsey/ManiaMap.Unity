@@ -36,10 +36,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public static void CreateRoomTemplate()
         {
             var obj = new GameObject("Room Template");
-            var cellContainer = new GameObject("<Cells>");
-            cellContainer.transform.SetParent(obj.transform);
             var template = obj.AddComponent<RoomTemplate>();
-            template.CellContainer = cellContainer.transform;
+            template.CreateCellContainer();
             obj.transform.SetParent(Selection.activeTransform);
         }
     }
