@@ -82,10 +82,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         #region Plot
         private void DrawPlot()
         {
-            var width = position.width - Settings.InspectorWidth;
-            var height = position.height - Settings.MenuHeight;
-            var rect = new Rect(Settings.InspectorWidth, Settings.MenuHeight, width, height);
-            GUILayout.BeginArea(rect);
+            GUILayout.BeginArea(new Rect(Settings.InspectorWidth, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
             PaginateGraph();
             SetNodePositions();
@@ -318,9 +315,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void HandleMenuClick()
         {
-            var rect = new Rect(0, 0, position.width, Settings.MenuHeight);
-
-            if (GUI.Button(rect, "", GUIStyle.none))
+            if (GUI.Button(new Rect(0, 0, position.width, Settings.MenuHeight), "", GUIStyle.none))
             {
                 GUI.FocusControl(null);
             }
@@ -376,8 +371,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         #region Inspector
         private void DrawInspector()
         {
-            var rect = new Rect(0, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight);
-            GUILayout.BeginArea(rect, GUI.skin.box);
+            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight), GUI.skin.box);
             InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
             EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
             DrawGraphInspector();
@@ -391,9 +385,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void HandleInspectorClick()
         {
-            var rect = new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight);
-
-            if (GUI.Button(rect, "", GUIStyle.none))
+            if (GUI.Button(new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUIStyle.none))
             {
                 GUI.FocusControl(null);
             }
