@@ -13,6 +13,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private SerializedObject SerializedObject { get; set; }
         private LayoutGraphWindowSettings Settings { get; set; }
         private bool Dragging { get; set; }
+        private bool CreatingEdge { get; set; }
+        private LayoutNode StartNode { get; set; }
         private Vector2 InspectorScrollPosition { get; set; }
         private Vector2 PlotScrollPosition { get; set; }
         private Vector2 LastMousePosition { get; set; }
@@ -192,7 +194,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void DrawEdge(LayoutEdge edge)
         {
-            var position = 0.5f * (NodePositions[edge.FromNode] + NodePositions[edge.ToNode] - Settings.EdgeSize);
+            var position = 0.5f * (NodePositions[edge.FromNode] + NodePositions[edge.ToNode] - Settings.EdgeSize + Settings.NodeSize);
             var rect = new Rect(position, Settings.EdgeSize);
             GUI.backgroundColor = edge.Color;
             GUI.Box(rect, edge.Name, GUI.skin.button);
@@ -269,6 +271,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         GUI.FocusControl(null);
                         SelectedNodes.Add(node);
                         Event.current.Use();
+                    }
+                    else if (Event.current.button == RightMouseButton)
+                    {
+                        if (CreatingEdge)
+                        {
+                            GUI.FocusControl(null);
+                            AddEdge(node);
+                            Event.current.Use();
+                        }
+                        else
+                        {
+                            GUI.FocusControl(null);
+                            BeginAddEdge(node);
+                            Event.current.Use();
+                        }
                     }
                 }
                 else if (Event.current.type == EventType.MouseDown)
@@ -423,6 +440,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             if (SelectedEdges.Count > 0)
             {
+                if (SelectedNodes.Count > 0)
+                    DrawHorizontalSeparator();
+
                 GUILayout.Label("Selected Edges", EditorStyles.boldLabel);
                 GUI.enabled = false;
                 EditorGUILayout.TextField("Id", string.Join(", ", SelectedEdges.Select(x => $"({x.FromNode}, {x.ToNode})")));
@@ -433,7 +453,23 @@ namespace MPewsey.ManiaMap.Unity.Editor
         #endregion
 
         #region Actions
-        public void CreateNode()
+        private void BeginAddEdge(LayoutNode node)
+        {
+            CreatingEdge = true;
+            StartNode = node;
+        }
+
+        private void AddEdge(LayoutNode endNode)
+        {
+            var graph = GetLayoutGraph();
+            var edge = graph.AddEdge(StartNode.Id, endNode.Id);
+            AssetDatabase.AddObjectToAsset(edge, graph);
+            EditorUtility.SetDirty(graph);
+            CreatingEdge = false;
+            StartNode = null;
+        }
+
+        private void CreateNode()
         {
             GUI.FocusControl(null);
             var graph = GetLayoutGraph();
@@ -444,7 +480,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             EditorUtility.SetDirty(graph);
         }
 
-        public void DeleteSelectedNodes()
+        private void DeleteSelectedNodes()
         {
             GUI.FocusControl(null);
             var graph = GetLayoutGraph();
@@ -465,7 +501,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             EditorUtility.SetDirty(graph);
         }
 
-        public void DeleteSelectedEdges()
+        private void DeleteSelectedEdges()
         {
             GUI.FocusControl(null);
             var graph = GetLayoutGraph();
@@ -480,13 +516,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
             EditorUtility.SetDirty(graph);
         }
 
-        public void DeleteSelectedElements()
+        private void DeleteSelectedElements()
         {
             DeleteSelectedEdges();
             DeleteSelectedNodes();
         }
 
-        public void SelectAllNodes()
+        private void SelectAllNodes()
         {
             var graph = GetLayoutGraph();
 
@@ -496,7 +532,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        public void SelectAllEdges()
+        private void SelectAllEdges()
         {
             var graph = GetLayoutGraph();
 
@@ -506,7 +542,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        public void SelectAllElements()
+        private void SelectAllElements()
         {
             SelectAllEdges();
             SelectAllNodes();
