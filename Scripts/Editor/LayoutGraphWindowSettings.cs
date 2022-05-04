@@ -57,14 +57,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public Vector2 PlotPadding { get => _plotPadding; set => _plotPadding = Vector2.Max(value, Vector2.zero); }
 
         [SerializeField]
-        private Color32 _hoverColor = new Color(0, 0, 1, 0.6f);
+        private Color32 _hoverColor = new Color(1, 1, 1, 0.01f);
         /// <summary>
         /// The color overlayed on hovered node and edge elements.
         /// </summary>
         public Color32 HoverColor { get => _hoverColor; set => _hoverColor = value; }
 
         [SerializeField]
-        private Color32 _selectedColor = new Color(1, 0, 0, 0.6f);
+        private Color32 _selectedColor = new Color(0, 0, 0, 0.4f);
         /// <summary>
         /// The color overlayed on selected node and edge elements.
         /// </summary>

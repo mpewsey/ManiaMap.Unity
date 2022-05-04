@@ -7,6 +7,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindow : EditorWindow
     {
+        const int LeftMouseButton = 0;
+        const int RightMouseButton = 1;
+
         private SerializedObject SerializedObject { get; set; }
         private LayoutGraphWindowSettings Settings { get; set; }
         private bool Dragging { get; set; }
@@ -189,7 +192,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         private void DrawEdge(LayoutEdge edge)
         {
-            var position = 0.5f * (NodePositions[edge.FromNode] - Settings.EdgeSize + NodePositions[edge.ToNode]);
+            var position = 0.5f * (NodePositions[edge.FromNode] + NodePositions[edge.ToNode] - Settings.EdgeSize);
             var rect = new Rect(position, Settings.EdgeSize);
             GUI.backgroundColor = edge.Color;
             GUI.Box(rect, edge.Name, GUI.skin.button);
@@ -204,21 +207,22 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 if (Event.current.type == EventType.MouseUp)
                 {
-                    if (!Event.current.control)
+                    if (Event.current.button == LeftMouseButton)
                     {
-                        SelectedNodes.Clear();
-                        SelectedEdges.Clear();
+                        GUI.FocusControl(null);
+                        SelectedEdges.Add(edge);
+                        Event.current.Use();
                     }
-
-                    GUI.FocusControl(null);
-                    SelectedEdges.Add(edge);
-                    Event.current.Use();
                 }
                 else if (Event.current.type == EventType.MouseDown)
                 {
-                    GUI.FocusControl(null);
-                    Dragging = true;
-                    Event.current.Use();
+                    if (Event.current.button == LeftMouseButton)
+                    {
+                        GUI.FocusControl(null);
+                        Dragging = true;
+                        SelectedEdges.Add(edge);
+                        Event.current.Use();
+                    }
                 }
 
                 GUI.backgroundColor = Settings.HoverColor;
@@ -260,28 +264,22 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 if (Event.current.type == EventType.MouseUp)
                 {
-                    if (!Event.current.control)
+                    if (Event.current.button == LeftMouseButton)
                     {
-                        SelectedNodes.Clear();
-                        SelectedEdges.Clear();
+                        GUI.FocusControl(null);
+                        SelectedNodes.Add(node);
+                        Event.current.Use();
                     }
-
-                    GUI.FocusControl(null);
-                    SelectedNodes.Add(node);
-                    Event.current.Use();
                 }
                 else if (Event.current.type == EventType.MouseDown)
                 {
-                    if (!Event.current.control)
+                    if (Event.current.button == LeftMouseButton)
                     {
-                        SelectedNodes.Clear();
-                        SelectedEdges.Clear();
+                        GUI.FocusControl(null);
+                        Dragging = true;
+                        SelectedNodes.Add(node);
+                        Event.current.Use();
                     }
-
-                    GUI.FocusControl(null);
-                    Dragging = true;
-                    SelectedNodes.Add(node);
-                    Event.current.Use();
                 }
 
                 GUI.backgroundColor = Settings.HoverColor;
