@@ -43,12 +43,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenu();
             DrawInspector();
             DrawPlot();
-            RepaintIfDragging();
+            RepaintIfEditing();
         }
 
         private void OnLostFocus()
         {
             Dragging = false;
+            CreatingEdge = false;
         }
 
         private void OnDestroy()
@@ -76,9 +77,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private void RepaintIfDragging()
+        private void RepaintIfEditing()
         {
-            if (Dragging)
+            if (Dragging || CreatingEdge)
             {
                 Repaint();
             }
@@ -97,9 +98,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
             SetPlotBounds();
             HandlePlotAreaExit();
             HandlePlotAreaClick();
+            DrawEdgeMouseLine();
             LastMousePosition = Event.current.mousePosition;
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+        }
+
+        private void DrawEdgeMouseLine()
+        {
+            if (CreatingEdge)
+            {
+                var start = StartNode.Position + 0.5f * Settings.NodeSize;
+                var end = Event.current.mousePosition;
+                Handles.color = Color.black;
+                Handles.DrawLine(start, end);
+            }
         }
 
         private void PaginateGraph()
@@ -107,8 +120,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (!Dragging)
             {
                 var graph = GetLayoutGraph();
+                var spacing = Settings.NodeSize + Settings.EdgeSize + 2 * Settings.Spacing;
 
-                if (graph.Paginate(Settings.NodeSize + Settings.Spacing))
+                if (graph.Paginate(spacing))
                 {
                     EditorUtility.SetDirty(graph);
                 }
@@ -136,6 +150,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     GUI.FocusControl(null);
                     SelectedNodes.Clear();
                     SelectedEdges.Clear();
+                    CreatingEdge = false;
                     Event.current.Use();
                 }
             }
@@ -148,6 +163,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (mouse.x < 0 || mouse.y < 0)
             {
                 Dragging = false;
+                CreatingEdge = false;
             }
         }
 
@@ -274,18 +290,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     }
                     else if (Event.current.button == RightMouseButton)
                     {
-                        if (CreatingEdge)
-                        {
-                            GUI.FocusControl(null);
-                            AddEdge(node);
-                            Event.current.Use();
-                        }
-                        else
-                        {
-                            GUI.FocusControl(null);
-                            BeginAddEdge(node);
-                            Event.current.Use();
-                        }
+                        GUI.FocusControl(null);
+                        AddEdge(node);
+                        Event.current.Use();
                     }
                 }
                 else if (Event.current.type == EventType.MouseDown)
@@ -403,6 +410,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (GUI.Button(new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUIStyle.none))
             {
                 GUI.FocusControl(null);
+                CreatingEdge = false;
             }
         }
 
@@ -453,20 +461,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
         #endregion
 
         #region Actions
-        private void BeginAddEdge(LayoutNode node)
+        private void AddEdge(LayoutNode node)
         {
-            CreatingEdge = true;
-            StartNode = node;
-        }
+            if (!CreatingEdge)
+            {
+                CreatingEdge = true;
+                StartNode = node;
+                return;
+            }
 
-        private void AddEdge(LayoutNode endNode)
-        {
+            CreatingEdge = false;
             var graph = GetLayoutGraph();
-            var edge = graph.AddEdge(StartNode.Id, endNode.Id);
+            var edge = graph.AddEdge(StartNode.Id, node.Id);
+            AssetDatabase.RemoveObjectFromAsset(edge);
             AssetDatabase.AddObjectToAsset(edge, graph);
             EditorUtility.SetDirty(graph);
-            CreatingEdge = false;
-            StartNode = null;
         }
 
         private void CreateNode()

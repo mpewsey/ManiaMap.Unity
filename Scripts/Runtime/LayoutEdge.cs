@@ -31,6 +31,13 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
+        private TemplateGroup _templateGroup;
+        /// <summary>
+        /// The template group name.
+        /// </summary>
+        public TemplateGroup TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
+
+        [SerializeField]
         private EdgeDirection _direction;
         /// <summary>
         /// The edge direction.
@@ -57,13 +64,6 @@ namespace MPewsey.ManiaMap.Unity
         /// The chance of inserting a room.
         /// </summary>
         public float RoomChance { get => _roomChance; set => _roomChance = value; }
-
-        [SerializeField]
-        private TemplateGroup _templateGroup;
-        /// <summary>
-        /// The template group name.
-        /// </summary>
-        public TemplateGroup TemplateGroup { get => _templateGroup; set => _templateGroup = value; }
 
         [SerializeField]
         private Color32 _color = new Color32(0, 255, 0, 255);
