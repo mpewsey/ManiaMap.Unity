@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (GUILayout.Button("Edit"))
             {
                 var graph = (LayoutGraph)serializedObject.targetObject;
-                LayoutGraphWindow.ShowWindow(graph);
+                NewLayoutGraphWindow.ShowWindow(graph);
             }
         }
 
@@ -41,7 +41,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (graph == null)
                 return false;
 
-            LayoutGraphWindow.ShowWindow(graph);
+            NewLayoutGraphWindow.ShowWindow(graph);
             return true;
         }
     }
