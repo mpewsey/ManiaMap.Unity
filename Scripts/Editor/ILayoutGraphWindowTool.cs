@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MPewsey.ManiaMap.Unity.Editor
 {
     public interface ILayoutGraphWindowTool
     {
-        void OnAreaMouseDown();
-        void OnAreaMouseUp();
-        void OnNodeMouseDown(LayoutNode node);
-        void OnNodeMouseUp(LayoutNode node);
-        void OnEdgeMouseDown(LayoutEdge edge);
-        void OnEdgeMouseUp(LayoutEdge edge);
+        void OnAreaEvent();
+        void OnNodeEvent(LayoutNode node);
+        void OnEdgeEvent(LayoutEdge edge);
         void OnLostFocus();
+        void OnGUIEnd();
+        void OnDrawPlotEnd();
     }
 }

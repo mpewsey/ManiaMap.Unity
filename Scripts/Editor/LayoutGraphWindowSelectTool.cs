@@ -1,44 +1,148 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindowSelectTool : ILayoutGraphWindowTool
     {
-        public void OnAreaMouseDown()
+        private const int LeftMouseButton = 0;
+        private const int RightMouseButton = 1;
+
+        private bool Dragging { get; set; }
+        private Vector2 DragStart { get; set; }
+        private Object DownObject { get; set; }
+
+        public void OnAreaEvent()
         {
-            throw new System.NotImplementedException();
+            switch (Event.current.type)
+            {
+                case EventType.MouseUp when Event.current.button == LeftMouseButton:
+                    OnAreaLeftMouseUp();
+                    break;
+                case EventType.MouseUp when Event.current.button == RightMouseButton:
+                    OnAreaRightMouseUp();
+                    break;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    OnAreaLeftMouseDown();
+                    break;
+            }
         }
 
-        public void OnAreaMouseUp()
+        private void OnAreaRightMouseUp()
         {
-            throw new System.NotImplementedException();
+            GUI.FocusControl(null);
+            Dragging = false;
+            DownObject = null;
+            var window = EditorWindow.GetWindow<NewLayoutGraphWindow>();
+            window.SelectedEdges.Clear();
+            window.SelectedNodes.Clear();
+            Event.current.Use();
         }
 
-        public void OnEdgeMouseDown(LayoutEdge edge)
+        private void OnAreaLeftMouseUp()
         {
-            throw new System.NotImplementedException();
+            Dragging = false;
+            DownObject = null;
         }
 
-        public void OnEdgeMouseUp(LayoutEdge edge)
+        private void OnAreaLeftMouseDown()
         {
-            throw new System.NotImplementedException();
+            Dragging = true;
+            DownObject = null;
+            DragStart = Event.current.mousePosition;
+        }
+
+        public void OnEdgeEvent(LayoutEdge edge)
+        {
+            switch (Event.current.type)
+            {
+                case EventType.MouseUp when Event.current.button == LeftMouseButton:
+                    OnElementLeftMouseUp(edge);
+                    break;
+                case EventType.MouseUp when Event.current.button == RightMouseButton:
+                    OnElementRightMouseUp();
+                    break;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    OnElementLeftMouseDown(edge);
+                    break;
+            }
+        }
+
+        public void OnGUIEnd()
+        {
+            RepaintIfDragging();
+        }
+
+        private void RepaintIfDragging()
+        {
+            if (Dragging)
+            {
+                var window = EditorWindow.GetWindow<NewLayoutGraphWindow>();
+                window.Repaint();
+            }
+        }
+
+        public void OnDrawPlotEnd()
+        {
+            DrawDragArea();
+        }
+
+        private void DrawDragArea()
+        {
+            if (Dragging)
+            {
+                var window = EditorWindow.GetWindow<NewLayoutGraphWindow>();
+                window.DrawDragArea(DragStart);
+            }
         }
 
         public void OnLostFocus()
         {
-            throw new System.NotImplementedException();
+            Dragging = false;
+            DownObject = null;
         }
 
-        public void OnNodeMouseDown(LayoutNode node)
+        public void OnNodeEvent(LayoutNode node)
         {
-            throw new System.NotImplementedException();
+            switch (Event.current.type)
+            {
+                case EventType.MouseUp when Event.current.button == LeftMouseButton:
+                    OnElementLeftMouseUp(node);
+                    break;
+                case EventType.MouseUp when Event.current.button == RightMouseButton:
+                    OnElementRightMouseUp();
+                    break;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    OnElementLeftMouseDown(node);
+                    break;
+            }
         }
 
-        public void OnNodeMouseUp(LayoutNode node)
+        private void OnElementRightMouseUp()
         {
-            throw new System.NotImplementedException();
+            OnAreaRightMouseUp();
+        }
+
+        private void OnElementLeftMouseUp(Object element)
+        {
+            if (element == DownObject && element != null)
+            {
+                var window = EditorWindow.GetWindow<NewLayoutGraphWindow>();
+                window.ToggleElementSelection(element);
+            }
+
+            GUI.FocusControl(null);
+            Dragging = false;
+            DownObject = null;
+            Event.current.Use();
+        }
+
+        private void OnElementLeftMouseDown(Object element)
+        {
+            GUI.FocusControl(null);
+            Dragging = false;
+            DownObject = element;
+            Event.current.Use();
         }
     }
 }

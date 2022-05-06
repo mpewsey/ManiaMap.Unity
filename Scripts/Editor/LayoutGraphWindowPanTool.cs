@@ -1,27 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MPewsey.ManiaMap.Unity.Editor
 {
     public class LayoutGraphWindowPanTool : ILayoutGraphWindowTool
     {
-        public void OnAreaMouseDown()
+        public void OnAreaEvent()
         {
             throw new System.NotImplementedException();
         }
 
-        public void OnAreaMouseUp()
+        public void OnDrawPlotEnd()
         {
             throw new System.NotImplementedException();
         }
 
-        public void OnEdgeMouseDown(LayoutEdge edge)
+        public void OnEdgeEvent(LayoutEdge edge)
         {
             throw new System.NotImplementedException();
         }
 
-        public void OnEdgeMouseUp(LayoutEdge edge)
+        public void OnGUIEnd()
         {
             throw new System.NotImplementedException();
         }
@@ -31,12 +27,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             throw new System.NotImplementedException();
         }
 
-        public void OnNodeMouseDown(LayoutNode node)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnNodeMouseUp(LayoutNode node)
+        public void OnNodeEvent(LayoutNode node)
         {
             throw new System.NotImplementedException();
         }

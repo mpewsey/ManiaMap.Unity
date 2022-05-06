@@ -13,18 +13,25 @@ namespace MPewsey.ManiaMap.Unity.Editor
         [Header("Inspector Pane")]
 
         [SerializeField]
-        private float _inspectorWidth = 300;
+        private float _inspectorWidth = 325;
         /// <summary>
         /// The width of the inspector pane.
         /// </summary>
         public float InspectorWidth { get => _inspectorWidth; set => _inspectorWidth = Mathf.Max(value, 300); }
 
         [SerializeField]
-        private float _inspectorLabelWidth = 100;
+        private float _inspectorLabelWidth = 125;
         /// <summary>
         /// The width of the labels in the inspector.
         /// </summary>
         public float InspectorLabelWidth { get => _inspectorLabelWidth; set => _inspectorLabelWidth = Mathf.Max(value, 100); }
+
+        [SerializeField]
+        private Color32 _headingColor = Color.black;
+        /// <summary>
+        /// The mixin color for headings.
+        /// </summary>
+        public Color32 HeadingColor { get => _headingColor; set => _headingColor = value; }
 
         [Header("Plot Area")]
 
@@ -70,6 +77,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         public Color32 SelectedColor { get => _selectedColor; set => _selectedColor = value; }
 
+        [SerializeField]
+        private Color32 _dragOutlineColor = Color.grey;
+        /// <summary>
+        /// The color of the drag area outline.
+        /// </summary>
+        public Color32 DragOutlineColor { get => _dragOutlineColor; set => _dragOutlineColor = value; }
+
+        [SerializeField]
+        private Color32 _dragAreaColor = Color.clear;
+        /// <summary>
+        /// The color of the drag area interior.
+        /// </summary>
+        public Color32 DragAreaColor { get => _dragAreaColor; set => _dragAreaColor = value; }
+
         /// <summary>
         /// Returns the layout graph window settings. If the settings exist in the project,
         /// these settings are loaded and returned. Otherwise, the default settings are returned.
@@ -79,9 +100,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var guids = AssetDatabase.FindAssets("t:LayoutGraphWindowSettings");
 
             if (guids.Length == 0)
-            {
                 return CreateInstance<LayoutGraphWindowSettings>();
-            }
 
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
             return AssetDatabase.LoadAssetAtPath<LayoutGraphWindowSettings>(path);
