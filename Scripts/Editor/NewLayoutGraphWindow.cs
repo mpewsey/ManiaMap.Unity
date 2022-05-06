@@ -9,7 +9,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
     {
         private SerializedObject SerializedObject { get; set; }
         private LayoutGraphWindowSettings Settings { get; set; }
-        private ILayoutGraphWindowTool ActiveTool { get; set; } = new LayoutGraphWindowSelectTool();
         private bool ShowNodeFoldout { get; set; } = true;
         private bool ShowEdgeFoldout { get; set; } = true;
         private Vector2 PlotScrollPosition { get; set; }
@@ -38,12 +37,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenu();
             DrawInspector();
             DrawPlot();
-            ActiveTool.OnGUIEnd();
         }
 
         private void OnLostFocus()
         {
-            ActiveTool.OnLostFocus();
+
         }
 
         private void OnDestroy()
@@ -62,37 +60,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             return SerializedObject.targetObject as LayoutGraph;
         }
 
-        public void ToggleElementSelection(Object element)
-        {
-            switch (element)
-            {
-                case LayoutNode node:
-                    ToggleNodeSelection(node);
-                    break;
-                case LayoutEdge edge:
-                    ToggleEdgeSelection(edge);
-                    break;
-            }
-        }
-
-        private void ToggleNodeSelection(LayoutNode node)
-        {
-            if (!SelectedNodes.Add(node))
-                SelectedNodes.Remove(node);
-        }
-
-        private void ToggleEdgeSelection(LayoutEdge edge)
-        {
-            if (!SelectedEdges.Add(edge))
-                SelectedEdges.Remove(edge);
-        }
-
-        public void DrawDragArea(Vector2 dragStart)
-        {
-            var rect = new Rect(dragStart, Event.current.mousePosition - dragStart);
-            Handles.DrawSolidRectangleWithOutline(rect, Settings.DragAreaColor, Settings.DragOutlineColor);
-        }
-
         private void SaveAsset()
         {
             if (LayoutGraphExists())
@@ -105,44 +72,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void DrawMenu()
         {
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
-            DrawToolsMenu();
             GUILayout.FlexibleSpace();
             DrawMenuAreaButton();
             GUILayout.EndHorizontal();
-        }
-
-        private void ChooseSelectTool()
-        {
-            ActiveTool = new LayoutGraphWindowSelectTool();
-        }
-
-        private void ChooseDrawTool()
-        {
-            ActiveTool = new LayoutGraphWindowDrawTool();
-        }
-
-        private void ChooseMoveTool()
-        {
-            ActiveTool = new LayoutGraphWindowMoveTool();
-        }
-
-        private void ChoosePanTool()
-        {
-            ActiveTool = new LayoutGraphWindowPanTool();
-        }
-
-        private void DrawToolsMenu()
-        {
-            if (GUILayout.Button("Tools", EditorStyles.toolbarDropDown))
-            {
-                GUI.FocusControl(null);
-                var menu = new GenericMenu();
-                menu.AddItem(new GUIContent("Select\t1"), ActiveTool is LayoutGraphWindowSelectTool, ChooseSelectTool);
-                menu.AddItem(new GUIContent("Draw\t2"), ActiveTool is LayoutGraphWindowDrawTool, ChooseDrawTool);
-                menu.AddItem(new GUIContent("Move\t3"), ActiveTool is LayoutGraphWindowMoveTool, ChooseMoveTool);
-                menu.AddItem(new GUIContent("Pan\t4"), ActiveTool is LayoutGraphWindowPanTool, ChoosePanTool);
-                menu.DropDown(new Rect(0, 5, 0, 16));
-            }
         }
 
         private void DrawMenuAreaButton()
@@ -254,7 +186,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawEdges();
             DrawNodes();
             DrawPlotArea();
-            ActiveTool.OnDrawPlotEnd();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
@@ -266,7 +197,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             if (rect.Contains(Event.current.mousePosition))
             {
-                ActiveTool.OnAreaEvent();
+
             }
         }
 
@@ -340,7 +271,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 GUI.backgroundColor = Settings.HoverColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
-                ActiveTool.OnEdgeEvent(edge);
             }
 
             if (SelectedEdges.Contains(edge))
@@ -367,7 +297,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 GUI.backgroundColor = Settings.HoverColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
-                ActiveTool.OnNodeEvent(node);
             }
 
             if (SelectedNodes.Contains(node))
