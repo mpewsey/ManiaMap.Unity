@@ -96,6 +96,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             window.Settings = LayoutGraphWindowSettings.GetSettings();
             window.minSize = window.Settings.MinWindowSize;
             window.maxSize = window.Settings.MaxWindowSize;
+            window.SelectedNodes.Clear();
+            window.SelectedEdges.Clear();
         }
 
         private void OnGUI()
@@ -180,6 +182,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawGraphInspector();
             DrawNodeInspector();
             DrawEdgeInspector();
+            EditorGUILayout.Space();
+            LayoutGraphEditor.DrawNodeTemplateGroupWarningBox(GetLayoutGraph());
+            LayoutGraphEditor.DrawEdgeTemplateGroupWarningBox(GetLayoutGraph());
             DrawInspectorAreaButton();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
@@ -265,7 +270,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawEdgeInspectorFields()
         {
-            if (SelectedEdges.Count == 0 || !ShowEdges)
+            if (!ShowEdges || SelectedEdges.Count == 0)
             {
                 EditorGUILayout.LabelField("None");
                 return;
@@ -300,6 +305,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawNodes();
             DrawPlotBoundsLabel();
             HandlePlotAreaEvent();
+            HandleKeyEvent();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
@@ -470,13 +476,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 switch (Event.current.type)
                 {
                     case EventType.MouseDown when Event.current.button == LeftMouseButton:
-                        // Begin drag select.
+                        // TODO: Begin drag select.
+                        Event.current.Use();
                         break;
                     case EventType.MouseDown when Event.current.button == RightMouseButton:
-                        // Show create node context menu.
+                        // TODO: Show create node context menu.
+                        Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
-                        // End drag select.
+                        // TODO: End drag select.
+                        Event.current.Use();
                         break;
                 }
             }
@@ -491,13 +500,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
             switch (Event.current.type)
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
-                    // Select or begin drag.
+                    // TODO: Select or begin drag.
+                    Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    // Multiselect.
+                    // TODO: Multiselect.
+                    Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
-                    // Show create node context menu.
+                    // TODO: Show create node context menu.
+                    Event.current.Use();
                     break;
             }
         }
@@ -511,13 +523,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
             switch (Event.current.type)
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
-                    // Select or begin drag.
+                    // TODO: Select or begin drag.
+                    Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    // Multiselect.
+                    // TODO: Multiselect.
+                    Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
-                    // Show create edge context menu.
+                    // TODO: Show create edge context menu.
+                    Event.current.Use();
                     break;
             }
         }
@@ -532,13 +547,119 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 switch (Event.current.keyCode)
                 {
                     case KeyCode.Escape:
-                        // Deselect all.
+                        // TODO: Add cancel out of current command.
+                        DeselectAll();
+                        Event.current.Use();
                         break;
                     case KeyCode.Delete:
-                        // Delete selected.
+                        DeleteSelected();
+                        Event.current.Use();
+                        break;
+                    case KeyCode.A when Event.current.control:
+                        SelectAll();
+                        Event.current.Use();
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Selects all nodes and edges in the graph.
+        /// </summary>
+        private void SelectAll()
+        {
+            SelectAllEdges();
+            SelectAllNodes();
+        }
+
+        /// <summary>
+        /// Selects all nodes in the graph.
+        /// </summary>
+        private void SelectAllNodes()
+        {
+            var graph = GetLayoutGraph();
+            SelectedNodes.Clear();
+
+            foreach (var node in graph.GetNodes())
+            {
+                SelectedNodes.Add(node);
+            }
+        }
+
+        /// <summary>
+        /// Selects all edges in the graph.
+        /// </summary>
+        private void SelectAllEdges()
+        {
+            var graph = GetLayoutGraph();
+            SelectedEdges.Clear();
+
+            if (ShowEdges)
+            {
+                foreach (var edge in graph.GetEdges())
+                {
+                    SelectedEdges.Add(edge);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deselects all nodes and edges.
+        /// </summary>
+        private void DeselectAll()
+        {
+            SelectedNodes.Clear();
+            SelectedEdges.Clear();
+        }
+
+        /// <summary>
+        /// Deletes all selected nodes and edges.
+        /// </summary>
+        private void DeleteSelected()
+        {
+            DeleteEdges();
+            DeleteNodes();
+        }
+
+        /// <summary>
+        /// Deletes all selected edges.
+        /// </summary>
+        private void DeleteEdges()
+        {
+            if (ShowEdges)
+            {
+                var graph = GetLayoutGraph();
+
+                foreach (var edge in SelectedEdges)
+                {
+                    graph.RemoveEdge(edge.FromNode, edge.ToNode);
+                    AssetDatabase.RemoveObjectFromAsset(edge);
+                }
+
+                EditorUtility.SetDirty(graph);
+            }
+        }
+
+        /// <summary>
+        /// Deletes all selected nodes.
+        /// </summary>
+        private void DeleteNodes()
+        {
+            var graph = GetLayoutGraph();
+            var edges = graph.GetEdges().ToList();
+
+            foreach (var node in SelectedNodes)
+            {
+                graph.RemoveNode(node.Id);
+                AssetDatabase.RemoveObjectFromAsset(node);
+            }
+
+            foreach (var edge in edges.Except(graph.GetEdges()))
+            {
+                AssetDatabase.RemoveObjectFromAsset(edge);
+            }
+
+            EditorUtility.SetDirty(graph);
         }
     }
 }

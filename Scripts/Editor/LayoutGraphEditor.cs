@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,7 +16,15 @@ namespace MPewsey.ManiaMap.Unity.Editor
             serializedObject.Update();
             DrawEditButton();
             DrawDefaultInspector();
+            EditorGUILayout.Space();
+            DrawNodeTemplateGroupWarningBox(GetLayoutGraph());
+            DrawEdgeTemplateGroupWarningBox(GetLayoutGraph());
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private LayoutGraph GetLayoutGraph()
+        {
+            return (LayoutGraph)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -24,8 +34,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUILayout.Button("Edit"))
             {
-                var graph = (LayoutGraph)serializedObject.targetObject;
-                NewLayoutGraphWindow.ShowWindow(graph);
+                NewLayoutGraphWindow.ShowWindow(GetLayoutGraph());
             }
         }
 
@@ -43,6 +52,43 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             NewLayoutGraphWindow.ShowWindow(graph);
             return true;
+        }
+
+        /// <summary>
+        /// Draws a warning box if any nodes in the graph do not have template groups assigned.
+        /// </summary>
+        public static void DrawNodeTemplateGroupWarningBox(LayoutGraph graph)
+        {
+            var messages = new List<string>();
+            messages.Add("Nodes are missing template groups:");
+
+            foreach (var node in graph.GetNodes().OrderBy(x => x.Id))
+            {
+                if (node.TemplateGroup == null)
+                    messages.Add($"  * {node.Id} : {node.Name}");
+            }
+
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Warning, true);
+        }
+
+        /// <summary>
+        /// Draws a warning box if any edges in the graph with non-zero room chances do not
+        /// have template groups assigned.
+        /// </summary>
+        public static void DrawEdgeTemplateGroupWarningBox(LayoutGraph graph)
+        {
+            var messages = new List<string>();
+            messages.Add("Edges with non-zero room chances are missing template groups:");
+
+            foreach (var edge in graph.GetEdges().OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
+            {
+                if (edge.RoomChance > 0 && edge.TemplateGroup == null)
+                    messages.Add($"  * ({edge.FromNode}, {edge.ToNode}) : {edge.Name}");
+            }
+
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Warning, true);
         }
     }
 }
