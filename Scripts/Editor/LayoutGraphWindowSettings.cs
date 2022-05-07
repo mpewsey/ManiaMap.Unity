@@ -3,12 +3,32 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// Contains settings related to the LayoutGraphWindow.
+    /// 
+    /// An instance of this asset may be placed anywhere in your project to override the default settings.
+    /// </summary>
+    [CreateAssetMenu(menuName = "Mania Map/Layout Graph Window Settings")]
     public class LayoutGraphWindowSettings : ScriptableObject
     {
         /// <summary>
         /// The height of the menu.
         /// </summary>
         public float MenuHeight { get; } = 20;
+
+        [SerializeField]
+        private Vector2 _minWindowSize = new Vector2(450, 200);
+        /// <summary>
+        /// The minimum size of the window.
+        /// </summary>
+        public Vector2 MinWindowSize { get => _minWindowSize; set => _minWindowSize = value; }
+
+        [SerializeField]
+        private Vector2 _maxWindowSize = new Vector2(1920, 720);
+        /// <summary>
+        /// The maximum size of the window.
+        /// </summary>
+        public Vector2 MaxWindowSize { get => _maxWindowSize; set => _maxWindowSize = value; }
 
         [Header("Inspector Pane")]
 
