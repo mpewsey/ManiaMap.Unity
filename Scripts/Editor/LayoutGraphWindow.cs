@@ -5,34 +5,99 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// A window for viewing and editing a LayoutGraph.
+    /// </summary>
     public class LayoutGraphWindow : EditorWindow
     {
-        const int LeftMouseButton = 0;
-        const int RightMouseButton = 1;
+        /// <summary>
+        /// The number corresponding to the left mouse button.
+        /// </summary>
+        private const int LeftMouseButton = 0;
 
+        /// <summary>
+        /// The number corresponding to the right mouse button.
+        /// </summary>
+        private const int RightMouseButton = 1;
+
+        /// <summary>
+        /// The target serialized object.
+        /// </summary>
         private SerializedObject SerializedObject { get; set; }
+
+        /// <summary>
+        /// The window settings.
+        /// </summary>
         private LayoutGraphWindowSettings Settings { get; set; }
-        private bool Dragging { get; set; }
-        private bool CreatingEdge { get; set; }
-        private LayoutNode StartNode { get; set; }
-        private Vector2 InspectorScrollPosition { get; set; }
+
+        /// <summary>
+        /// If true, shows the foldout for the selected nodes.
+        /// </summary>
+        private bool ShowNodeFoldout { get; set; } = true;
+
+        /// <summary>
+        /// If true shows the foldout for the selected edges.
+        /// </summary>
+        private bool ShowEdgeFoldout { get; set; } = true;
+
+        /// <summary>
+        /// If true, displays the edge elements.
+        /// </summary>
+        private bool ShowEdges { get; set; } = true;
+
+        /// <summary>
+        /// The position of the plot scroll view.
+        /// </summary>
         private Vector2 PlotScrollPosition { get; set; }
-        private Vector2 LastMousePosition { get; set; }
-        private HashSet<LayoutNode> SelectedNodes { get; } = new HashSet<LayoutNode>();
-        private HashSet<LayoutEdge> SelectedEdges { get; } = new HashSet<LayoutEdge>();
+
+        /// <summary>
+        /// The position of the inspector scroll view.
+        /// </summary>
+        private Vector2 InspectorScrollPosition { get; set; }
+
+        /// <summary>
+        /// A set of selected nodes.
+        /// </summary>
+        public HashSet<LayoutNode> SelectedNodes { get; } = new HashSet<LayoutNode>();
+
+        /// <summary>
+        /// A set of selected edges.
+        /// </summary>
+        public HashSet<LayoutEdge> SelectedEdges { get; } = new HashSet<LayoutEdge>();
+
+        /// <summary>
+        /// A dictionary of node positions by ID.
+        /// </summary>
         private Dictionary<int, Vector2> NodePositions { get; } = new Dictionary<int, Vector2>();
+
+        /// <summary>
+        /// The cached graph editor for the inspector pane.
+        /// </summary>
         private UnityEditor.Editor graphEditor;
+
+        /// <summary>
+        /// The cached node editor for the inspector pane.
+        /// </summary>
         private UnityEditor.Editor nodeEditor;
+
+        /// <summary>
+        /// The cached edge editor for the inspector pane.
+        /// </summary>
         private UnityEditor.Editor edgeEditor;
 
+        /// <summary>
+        /// Show the layout graph window for the specified graph.
+        /// </summary>
+        /// <param name="graph">The layout graph.</param>
         public static void ShowWindow(LayoutGraph graph)
         {
-            var window = GetWindow<LayoutGraphWindow>();
-            window.titleContent = new GUIContent("Layout Graph Editor");
-            window.minSize = new Vector2(450, 200);
-            window.maxSize = new Vector2(1920, 720);
+            var window = GetWindow<LayoutGraphWindow>("Layout Graph");
             window.SerializedObject = new SerializedObject(graph);
             window.Settings = LayoutGraphWindowSettings.GetSettings();
+            window.minSize = window.Settings.MinWindowSize;
+            window.maxSize = window.Settings.MaxWindowSize;
+            window.SelectedNodes.Clear();
+            window.SelectedEdges.Clear();
         }
 
         private void OnGUI()
@@ -43,13 +108,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenu();
             DrawInspector();
             DrawPlot();
-            RepaintIfEditing();
         }
 
         private void OnLostFocus()
         {
-            Dragging = false;
-            CreatingEdge = false;
+
         }
 
         private void OnDestroy()
@@ -57,17 +120,27 @@ namespace MPewsey.ManiaMap.Unity.Editor
             SaveAsset();
         }
 
+        /// <summary>
+        /// Returns true if the serialized object and target layout graph exist.
+        /// </summary>
         private bool LayoutGraphExists()
         {
             return SerializedObject != null
                 && GetLayoutGraph() != null;
         }
 
+        /// <summary>
+        /// Returns the target layout graph.
+        /// </summary>
         private LayoutGraph GetLayoutGraph()
         {
             return SerializedObject.targetObject as LayoutGraph;
         }
 
+        /// <summary>
+        /// If the layout graph exists, applies the serialized properties and
+        /// saves the asset if it is dirty.
+        /// </summary>
         private void SaveAsset()
         {
             if (LayoutGraphExists())
@@ -77,58 +150,186 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private void RepaintIfEditing()
+        /// <summary>
+        /// Draws the window's menu bar.
+        /// </summary>
+        private void DrawMenu()
         {
-            if (Dragging || CreatingEdge)
+            GUILayout.BeginHorizontal(EditorStyles.toolbar);
+            GUILayout.FlexibleSpace();
+            DrawMenuAreaButton();
+            GUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// Draws an invisible button over the menu area to catch otherwise unprocessed clicks.
+        /// </summary>
+        private void DrawMenuAreaButton()
+        {
+            if (GUI.Button(new Rect(0, 0, position.width, Settings.MenuHeight), "", GUIStyle.none))
             {
-                Repaint();
+                GUI.FocusControl(null);
             }
         }
 
-        #region Plot
-        private void DrawPlot()
+        /// <summary>
+        /// Draws the window's inspector pane.
+        /// </summary>
+        private void DrawInspector()
         {
-            GUILayout.BeginArea(new Rect(Settings.InspectorWidth, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
-            PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
-            PaginateGraph();
-            SetNodePositions();
-            DrawEdgeLines();
-            DrawNodes();
-            DrawEdges();
-            SetPlotBounds();
-            HandlePlotAreaExit();
-            HandlePlotAreaClick();
-            DrawEdgeMouseLine();
-            LastMousePosition = Event.current.mousePosition;
+            GUILayout.BeginArea(new Rect(position.width - Settings.InspectorWidth, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight), GUI.skin.box);
+            InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
+            DrawGraphInspector();
+            DrawNodeInspector();
+            DrawEdgeInspector();
+            EditorGUILayout.Space();
+            LayoutGraphEditor.DrawNodeTemplateGroupWarningBox(GetLayoutGraph());
+            LayoutGraphEditor.DrawEdgeTemplateGroupWarningBox(GetLayoutGraph());
+            DrawInspectorAreaButton();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
 
-        private void DrawEdgeMouseLine()
+        /// <summary>
+        /// Draws a box colored by the heading color specified in the settings.
+        /// </summary>
+        /// <param name="rect">The rect defining the area.</param>
+        private void DrawHeadingBox(Rect rect)
         {
-            if (CreatingEdge)
+            GUI.backgroundColor = Settings.HeadingColor;
+            GUI.Box(rect, "", GUI.skin.box);
+            GUI.backgroundColor = Color.white;
+        }
+
+        /// <summary>
+        /// Draws the inspector for the layout graph fields.
+        /// </summary>
+        private void DrawGraphInspector()
+        {
+            UnityEditor.Editor.CreateCachedEditor(SerializedObject.targetObject, typeof(LayoutGraphWindowEditor), ref graphEditor);
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
+            EditorGUILayout.LabelField(SerializedObject.targetObject.name);
+            DrawHeadingBox(GUILayoutUtility.GetLastRect());
+            graphEditor.OnInspectorGUI();
+        }
+
+        /// <summary>
+        /// Draws the inspector for the selected nodes.
+        /// </summary>
+        private void DrawNodeInspector()
+        {
+            UnityEditor.Editor.CreateCachedEditor(SelectedNodes.ToArray(), null, ref nodeEditor);
+            EditorGUILayout.Space();
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
+            ShowNodeFoldout = EditorGUILayout.Foldout(ShowNodeFoldout, "Selected Nodes");
+            DrawHeadingBox(GUILayoutUtility.GetLastRect());
+            EditorGUI.indentLevel++;
+
+            if (ShowNodeFoldout)
+                DrawNodeInspectorFields();
+
+            EditorGUI.indentLevel--;
+        }
+
+        /// <summary>
+        /// Draws the fields for the selected nodes inspector.
+        /// </summary>
+        private void DrawNodeInspectorFields()
+        {
+            if (SelectedNodes.Count == 0)
             {
-                var start = StartNode.Position + 0.5f * Settings.NodeSize;
-                var end = Event.current.mousePosition;
-                Handles.color = Color.black;
-                Handles.DrawLine(start, end);
+                EditorGUILayout.LabelField("None");
+                return;
+            }
+
+            var ids = string.Join(", ", SelectedNodes.OrderBy(x => x.Id).Select(x => x.Id));
+            EditorGUILayout.LabelField("ID", ids);
+            nodeEditor.OnInspectorGUI();
+        }
+
+        /// <summary>
+        /// Draws the inspector for the selected edges.
+        /// </summary>
+        private void DrawEdgeInspector()
+        {
+            UnityEditor.Editor.CreateCachedEditor(SelectedEdges.ToArray(), null, ref edgeEditor);
+            EditorGUILayout.Space();
+            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
+            ShowEdgeFoldout = EditorGUILayout.Foldout(ShowEdgeFoldout, "Selected Edges");
+            DrawHeadingBox(GUILayoutUtility.GetLastRect());
+            EditorGUI.indentLevel++;
+
+            if (ShowEdgeFoldout)
+                DrawEdgeInspectorFields();
+
+            EditorGUI.indentLevel--;
+        }
+
+        /// <summary>
+        /// Draws the fields for the selected edges inspector.
+        /// </summary>
+        private void DrawEdgeInspectorFields()
+        {
+            if (!ShowEdges || SelectedEdges.Count == 0)
+            {
+                EditorGUILayout.LabelField("None");
+                return;
+            }
+
+            var ids = string.Join(", ", SelectedEdges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)).Select(x => $"({x.FromNode}, {x.ToNode})"));
+            EditorGUILayout.LabelField("ID", ids);
+            edgeEditor.OnInspectorGUI();
+        }
+
+        /// <summary>
+        /// Draws an invisible button over the inspector area to handle otherwise unprocessed events.
+        /// </summary>
+        private void DrawInspectorAreaButton()
+        {
+            if (GUI.Button(new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUI.skin.box))
+            {
+                GUI.FocusControl(null);
             }
         }
 
-        private void PaginateGraph()
+        /// <summary>
+        /// Draws the layout graph plot.
+        /// </summary>
+        private void DrawPlot()
         {
-            if (!Dragging)
-            {
-                var graph = GetLayoutGraph();
-                var spacing = Settings.NodeSize + Settings.EdgeSize + 2 * Settings.Spacing;
+            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
+            PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
+            SetNodePositions();
+            DrawEdgeLines();
+            DrawEdges();
+            DrawNodes();
+            DrawPlotBoundsLabel();
+            HandlePlotAreaEvent();
+            HandleKeyEvent();
+            GUILayout.EndScrollView();
+            GUILayout.EndArea();
+        }
 
-                if (graph.Paginate(spacing))
-                {
-                    EditorUtility.SetDirty(graph);
-                }
+        /// <summary>
+        /// Adds an invisible label the size of the plot bounds so that the plot scroll view works.
+        /// </summary>
+        private void DrawPlotBoundsLabel()
+        {
+            var graph = GetLayoutGraph();
+
+            if (graph.NodeCount > 0)
+            {
+                var rect = graph.GetRect();
+                var size = Settings.NodeSize + Settings.PlotPadding;
+                size.x += rect.width + rect.x;
+                size.y += rect.height + rect.y;
+                GUILayout.Label("", GUILayout.Width(size.x), GUILayout.Height(size.y));
             }
         }
 
+        /// <summary>
+        /// Adds the current node positions to the node positions dictionary for fast lookup.
+        /// </summary>
         private void SetNodePositions()
         {
             var graph = GetLayoutGraph();
@@ -139,47 +340,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
-        private void HandlePlotAreaClick()
-        {
-            if (Event.current.type == EventType.MouseUp)
-            {
-                var mouse = Event.current.mousePosition;
-
-                if (mouse.x >= 0 && mouse.y >= 0)
-                {
-                    GUI.FocusControl(null);
-                    SelectedNodes.Clear();
-                    SelectedEdges.Clear();
-                    CreatingEdge = false;
-                    Event.current.Use();
-                }
-            }
-        }
-
-        private void HandlePlotAreaExit()
-        {
-            var mouse = Event.current.mousePosition;
-
-            if (mouse.x < 0 || mouse.y < 0)
-            {
-                Dragging = false;
-                CreatingEdge = false;
-            }
-        }
-
-        private void SetPlotBounds()
-        {
-            var graph = GetLayoutGraph();
-
-            if (graph.NodeCount > 0)
-            {
-                var rect = graph.GetRect();
-                var width = rect.width + rect.x + Settings.NodeSize.x + Settings.PlotPadding.x;
-                var height = rect.height + rect.y + Settings.NodeSize.y + Settings.PlotPadding.y;
-                GUILayout.Label("", GUILayout.Width(width), GUILayout.Height(height));
-            }
-        }
-
+        /// <summary>
+        /// Draws lines for the edges of the graph.
+        /// </summary>
         private void DrawEdgeLines()
         {
             var graph = GetLayoutGraph();
@@ -190,72 +353,75 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Draws the line for the specified edge.
+        /// </summary>
+        /// <param name="edge">The graph edge.</param>
         private void DrawEdgeLine(LayoutEdge edge)
         {
-            var start = NodePositions[edge.FromNode] + 0.5f * Settings.NodeSize;
-            var end = NodePositions[edge.ToNode] + 0.5f * Settings.NodeSize;
+            var offset = 0.5f * Settings.NodeSize;
+            var fromPosition = NodePositions[edge.FromNode] + offset;
+            var toPosition = NodePositions[edge.ToNode] + offset;
+
+            // Draw line.
             Handles.color = edge.Color;
-            Handles.DrawLine(start, end);
+            Handles.DrawLine(fromPosition, toPosition);
+            Handles.color = Color.white;
         }
 
+        /// <summary>
+        /// Draws the elements for the edges of the graph.
+        /// </summary>
         private void DrawEdges()
         {
-            var graph = GetLayoutGraph();
-
-            foreach (var edge in graph.GetEdges())
+            if (ShowEdges)
             {
-                DrawEdge(edge);
+                var graph = GetLayoutGraph();
+
+                foreach (var edge in graph.GetEdges())
+                {
+                    DrawEdge(edge);
+                }
             }
         }
 
+        /// <summary>
+        /// Draws the element for the specified edge.
+        /// </summary>
+        /// <param name="edge">The graph edge.</param>
         private void DrawEdge(LayoutEdge edge)
         {
-            var position = 0.5f * (NodePositions[edge.FromNode] + NodePositions[edge.ToNode] - Settings.EdgeSize + Settings.NodeSize);
+            var fromPosition = NodePositions[edge.FromNode];
+            var toPosition = NodePositions[edge.ToNode];
+            var position = 0.5f * (fromPosition + toPosition + Settings.NodeSize - Settings.EdgeSize);
             var rect = new Rect(position, Settings.EdgeSize);
+
+            // Draw edge button.
             GUI.backgroundColor = edge.Color;
             GUI.Box(rect, edge.Name, GUI.skin.button);
             GUI.backgroundColor = Color.white;
 
-            if (Event.current.type == EventType.MouseUp)
-            {
-                Dragging = false;
-            }
-
             if (rect.Contains(Event.current.mousePosition))
             {
-                if (Event.current.type == EventType.MouseUp)
-                {
-                    if (Event.current.button == LeftMouseButton)
-                    {
-                        GUI.FocusControl(null);
-                        SelectedEdges.Add(edge);
-                        Event.current.Use();
-                    }
-                }
-                else if (Event.current.type == EventType.MouseDown)
-                {
-                    if (Event.current.button == LeftMouseButton)
-                    {
-                        GUI.FocusControl(null);
-                        Dragging = true;
-                        SelectedEdges.Add(edge);
-                        Event.current.Use();
-                    }
-                }
-
+                // Draw hover graphic.
                 GUI.backgroundColor = Settings.HoverColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
+                HandleEdgeEvent(edge);
             }
 
             if (SelectedEdges.Contains(edge))
             {
+                // Draw selected graphic.
                 GUI.backgroundColor = Settings.SelectedColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
             }
         }
 
+        /// <summary>
+        /// Draws the nodes of the graph.
+        /// </summary>
         private void DrawNodes()
         {
             var graph = GetLayoutGraph();
@@ -266,232 +432,288 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Draws the specified node.
+        /// </summary>
+        /// <param name="node">The graph node.</param>
         private void DrawNode(LayoutNode node)
         {
             var rect = new Rect(node.Position, Settings.NodeSize);
+
+            // Draw node button.
             GUI.backgroundColor = node.Color;
             GUI.Box(rect, $"{node.Id} : {node.Name}", GUI.skin.button);
             GUI.backgroundColor = Color.white;
 
-            if (Event.current.type == EventType.MouseUp)
-            {
-                Dragging = false;
-            }
-
             if (rect.Contains(Event.current.mousePosition))
             {
-                if (Event.current.type == EventType.MouseUp)
-                {
-                    if (Event.current.button == LeftMouseButton)
-                    {
-                        GUI.FocusControl(null);
-                        SelectedNodes.Add(node);
-                        Event.current.Use();
-                    }
-                    else if (Event.current.button == RightMouseButton)
-                    {
-                        GUI.FocusControl(null);
-                        AddEdge(node);
-                        Event.current.Use();
-                    }
-                }
-                else if (Event.current.type == EventType.MouseDown)
-                {
-                    if (Event.current.button == LeftMouseButton)
-                    {
-                        GUI.FocusControl(null);
-                        Dragging = true;
-                        SelectedNodes.Add(node);
-                        Event.current.Use();
-                    }
-                }
-
+                // Draw hover graphic.
                 GUI.backgroundColor = Settings.HoverColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
+                HandleNodeEvent(node);
             }
 
             if (SelectedNodes.Contains(node))
             {
+                // Draw selected graphic.
                 GUI.backgroundColor = Settings.SelectedColor;
                 GUI.Box(rect, "", GUI.skin.button);
                 GUI.backgroundColor = Color.white;
+            }
+        }
 
-                if (Dragging)
+        /// <summary>
+        /// Handles events if the cursor is in the plot area.
+        /// </summary>
+        private void HandlePlotAreaEvent()
+        {
+            var size = new Vector2(position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight);
+            var rect = new Rect(InspectorScrollPosition, size);
+
+            if (rect.Contains(Event.current.mousePosition))
+            {
+                switch (Event.current.type)
                 {
-                    node.Position += Event.current.mousePosition - LastMousePosition;
+                    case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                        // TODO: Begin drag select.
+                        Event.current.Use();
+                        break;
+                    case EventType.MouseDown when Event.current.button == RightMouseButton:
+                        ShowAreaContextMenu();
+                        Event.current.Use();
+                        break;
+                    case EventType.MouseUp when Event.current.button == LeftMouseButton:
+                        // TODO: End drag select.
+                        Event.current.Use();
+                        break;
                 }
             }
         }
-        #endregion
 
-        #region Menu
-        private void DrawMenu()
+        /// <summary>
+        /// Handles events if the cursor is in an edge element.
+        /// </summary>
+        /// <param name="edge">The hovered edge.</param>
+        private void HandleEdgeEvent(LayoutEdge edge)
         {
-            GUILayout.BeginHorizontal(EditorStyles.toolbar);
-            DrawEditMenuButton();
-            HandleMenuClick();
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-        }
-
-        private void HandleMenuClick()
-        {
-            if (GUI.Button(new Rect(0, 0, position.width, Settings.MenuHeight), "", GUIStyle.none))
+            switch (Event.current.type)
             {
-                GUI.FocusControl(null);
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && !Event.current.control:
+                    // TODO: Select or begin drag.
+                    SelectEdge(edge);
+                    Event.current.Use();
+                    break;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
+                    MultiselectEdge(edge);
+                    Event.current.Use();
+                    break;
+                case EventType.MouseDown when Event.current.button == RightMouseButton:
+                    ShowAreaContextMenu();
+                    Event.current.Use();
+                    break;
             }
         }
 
-        private void DrawEditMenuButton()
+        /// <summary>
+        /// Handles events if the cursor is in a node element.
+        /// </summary>
+        /// <param name="node">The hovered node.</param>
+        private void HandleNodeEvent(LayoutNode node)
         {
-            if (GUILayout.Button("Edit", EditorStyles.toolbarDropDown))
+            switch (Event.current.type)
             {
-                GUI.FocusControl(null);
-                var graph = GetLayoutGraph();
-                var menu = new GenericMenu();
-                menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
-                menu.AddSeparator("");
-
-                if (graph.NodeCount > 0 || graph.EdgeCount > 0)
-                    menu.AddItem(new GUIContent("Select All"), false, SelectAllElements);
-                else
-                    menu.AddDisabledItem(new GUIContent("Select All"));
-
-                if (graph.NodeCount > 0)
-                    menu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes);
-                else
-                    menu.AddDisabledItem(new GUIContent("Select All Nodes"));
-
-                if (graph.EdgeCount > 0)
-                    menu.AddItem(new GUIContent("Select All Edges"), false, SelectAllEdges);
-                else
-                    menu.AddDisabledItem(new GUIContent("Select All Edges"));
-
-                menu.AddSeparator("");
-
-                if (SelectedNodes.Count > 0 || SelectedEdges.Count > 0)
-                    menu.AddItem(new GUIContent("Delete Selected"), false, DeleteSelectedElements);
-                else
-                    menu.AddDisabledItem(new GUIContent("Delete Selected"));
-
-                if (SelectedNodes.Count > 0)
-                    menu.AddItem(new GUIContent("Delete Selected Nodes"), false, DeleteSelectedNodes);
-                else
-                    menu.AddDisabledItem(new GUIContent("Delete Selected Nodes"));
-
-                if (SelectedEdges.Count > 0)
-                    menu.AddItem(new GUIContent("Delete Selected Edges"), false, DeleteSelectedEdges);
-                else
-                    menu.AddDisabledItem(new GUIContent("Delete Selected Edges"));
-
-                menu.DropDown(new Rect(0, 5, 0, 16));
-            }
-        }
-        #endregion
-
-        #region Inspector
-        private void DrawInspector()
-        {
-            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight), GUI.skin.box);
-            InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
-            EditorGUIUtility.labelWidth = Settings.InspectorLabelWidth;
-            DrawGraphInspector();
-            DrawHorizontalSeparator();
-            DrawNodeInspector();
-            DrawEdgeInspector();
-            HandleInspectorClick();
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
-        }
-
-        private void HandleInspectorClick()
-        {
-            if (GUI.Button(new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUIStyle.none))
-            {
-                GUI.FocusControl(null);
-                CreatingEdge = false;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && !Event.current.control:
+                    // TODO: Select or begin drag.
+                    SelectNode(node);
+                    Event.current.Use();
+                    break;
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
+                    MultiselectNode(node);
+                    Event.current.Use();
+                    break;
+                case EventType.MouseDown when Event.current.button == RightMouseButton:
+                    ShowNodeContextMenu();
+                    Event.current.Use();
+                    break;
             }
         }
 
-        private void DrawHorizontalSeparator()
+        /// <summary>
+        /// Handles events if a key is pressed.
+        /// </summary>
+        private void HandleKeyEvent()
         {
-            var style = new GUIStyle(GUI.skin.horizontalSlider);
-            style.fixedHeight = 1;
-            EditorGUILayout.LabelField("", style);
+            if (Event.current.type == EventType.KeyDown)
+            {
+                switch (Event.current.keyCode)
+                {
+                    case KeyCode.Escape:
+                        // TODO: Add cancel out of current command.
+                        DeselectAll();
+                        Event.current.Use();
+                        break;
+                    case KeyCode.Delete:
+                        DeleteSelected();
+                        Event.current.Use();
+                        break;
+                    case KeyCode.A when Event.current.control:
+                        SelectAll();
+                        Event.current.Use();
+                        break;
+                }
+            }
         }
 
-        private void DrawGraphInspector()
+        private void ShowAreaContextMenu()
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
+            menu.ShowAsContext();
+        }
+
+        private void ShowNodeContextMenu()
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Add Edge"), false, () => Debug.Log("Add Edge"));
+            menu.ShowAsContext();
+        }
+
+        /// <summary>
+        /// Clears the selected elements and adds the edge.
+        /// </summary>
+        /// <param name="edge">The edge.</param>
+        private void SelectEdge(LayoutEdge edge)
+        {
+            SelectedNodes.Clear();
+            SelectedEdges.Clear();
+            SelectedEdges.Add(edge);
+        }
+
+        /// <summary>
+        /// Clears the selected elements and adds the node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void SelectNode(LayoutNode node)
+        {
+            SelectedNodes.Clear();
+            SelectedEdges.Clear();
+            SelectedNodes.Add(node);
+        }
+
+        /// <summary>
+        /// Toggles the selection of the edge.
+        /// </summary>
+        /// <param name="edge">The edge.</param>
+        private void MultiselectEdge(LayoutEdge edge)
+        {
+            if (!SelectedEdges.Add(edge))
+                SelectedEdges.Remove(edge);
+        }
+
+        /// <summary>
+        /// Toggles the selection of the node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        private void MultiselectNode(LayoutNode node)
+        {
+            if (!SelectedNodes.Add(node))
+                SelectedNodes.Remove(node);
+        }
+
+        /// <summary>
+        /// Selects all nodes and edges in the graph.
+        /// </summary>
+        private void SelectAll()
+        {
+            SelectAllEdges();
+            SelectAllNodes();
+        }
+
+        /// <summary>
+        /// Selects all nodes in the graph.
+        /// </summary>
+        private void SelectAllNodes()
         {
             var graph = GetLayoutGraph();
-            UnityEditor.Editor.CreateCachedEditor(graph, typeof(LayoutGraphWindowEditor), ref graphEditor);
-            graphEditor.OnInspectorGUI();
-        }
+            SelectedNodes.Clear();
 
-        private void DrawNodeInspector()
-        {
-            UnityEditor.Editor.CreateCachedEditor(SelectedNodes.ToArray(), null, ref nodeEditor);
-
-            if (SelectedNodes.Count > 0)
+            foreach (var node in graph.GetNodes())
             {
-                GUILayout.Label("Selected Nodes", EditorStyles.boldLabel);
-                GUI.enabled = false;
-                EditorGUILayout.TextField("Id", string.Join(", ", SelectedNodes.Select(x => x.Id)));
-                GUI.enabled = true;
-                nodeEditor.OnInspectorGUI();
+                SelectedNodes.Add(node);
             }
         }
 
-        private void DrawEdgeInspector()
+        /// <summary>
+        /// Selects all edges in the graph.
+        /// </summary>
+        private void SelectAllEdges()
         {
-            UnityEditor.Editor.CreateCachedEditor(SelectedEdges.ToArray(), null, ref edgeEditor);
-
-            if (SelectedEdges.Count > 0)
-            {
-                if (SelectedNodes.Count > 0)
-                    DrawHorizontalSeparator();
-
-                GUILayout.Label("Selected Edges", EditorStyles.boldLabel);
-                GUI.enabled = false;
-                EditorGUILayout.TextField("Id", string.Join(", ", SelectedEdges.Select(x => $"({x.FromNode}, {x.ToNode})")));
-                GUI.enabled = true;
-                edgeEditor.OnInspectorGUI();
-            }
-        }
-        #endregion
-
-        #region Actions
-        private void AddEdge(LayoutNode node)
-        {
-            if (!CreatingEdge)
-            {
-                CreatingEdge = true;
-                StartNode = node;
-                return;
-            }
-
-            CreatingEdge = false;
             var graph = GetLayoutGraph();
-            var edge = graph.AddEdge(StartNode.Id, node.Id);
-            AssetDatabase.RemoveObjectFromAsset(edge);
-            AssetDatabase.AddObjectToAsset(edge, graph);
-            EditorUtility.SetDirty(graph);
+            SelectedEdges.Clear();
+
+            if (ShowEdges)
+            {
+                foreach (var edge in graph.GetEdges())
+                {
+                    SelectedEdges.Add(edge);
+                }
+            }
         }
 
+        /// <summary>
+        /// Creates a new node.
+        /// </summary>
         private void CreateNode()
         {
-            GUI.FocusControl(null);
             var graph = GetLayoutGraph();
             var node = graph.CreateNode();
-            SelectedNodes.Clear();
-            SelectedNodes.Add(node);
             AssetDatabase.AddObjectToAsset(node, graph);
             EditorUtility.SetDirty(graph);
         }
 
-        private void DeleteSelectedNodes()
+        /// <summary>
+        /// Deselects all nodes and edges.
+        /// </summary>
+        private void DeselectAll()
         {
-            GUI.FocusControl(null);
+            SelectedNodes.Clear();
+            SelectedEdges.Clear();
+        }
+
+        /// <summary>
+        /// Deletes all selected nodes and edges.
+        /// </summary>
+        private void DeleteSelected()
+        {
+            DeleteEdges();
+            DeleteNodes();
+        }
+
+        /// <summary>
+        /// Deletes all selected edges.
+        /// </summary>
+        private void DeleteEdges()
+        {
+            if (ShowEdges)
+            {
+                var graph = GetLayoutGraph();
+
+                foreach (var edge in SelectedEdges)
+                {
+                    graph.RemoveEdge(edge.FromNode, edge.ToNode);
+                    AssetDatabase.RemoveObjectFromAsset(edge);
+                }
+
+                EditorUtility.SetDirty(graph);
+            }
+        }
+
+        /// <summary>
+        /// Deletes all selected nodes.
+        /// </summary>
+        private void DeleteNodes()
+        {
             var graph = GetLayoutGraph();
             var edges = graph.GetEdges().ToList();
 
@@ -506,56 +728,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 AssetDatabase.RemoveObjectFromAsset(edge);
             }
 
-            SelectedNodes.Clear();
             EditorUtility.SetDirty(graph);
         }
-
-        private void DeleteSelectedEdges()
-        {
-            GUI.FocusControl(null);
-            var graph = GetLayoutGraph();
-
-            foreach (var edge in SelectedEdges)
-            {
-                graph.RemoveEdge(edge.FromNode, edge.ToNode);
-                AssetDatabase.RemoveObjectFromAsset(edge);
-            }
-
-            SelectedEdges.Clear();
-            EditorUtility.SetDirty(graph);
-        }
-
-        private void DeleteSelectedElements()
-        {
-            DeleteSelectedEdges();
-            DeleteSelectedNodes();
-        }
-
-        private void SelectAllNodes()
-        {
-            var graph = GetLayoutGraph();
-
-            foreach (var node in graph.GetNodes())
-            {
-                SelectedNodes.Add(node);
-            }
-        }
-
-        private void SelectAllEdges()
-        {
-            var graph = GetLayoutGraph();
-
-            foreach (var edge in graph.GetEdges())
-            {
-                SelectedEdges.Add(edge);
-            }
-        }
-
-        private void SelectAllElements()
-        {
-            SelectAllEdges();
-            SelectAllNodes();
-        }
-        #endregion
     }
 }

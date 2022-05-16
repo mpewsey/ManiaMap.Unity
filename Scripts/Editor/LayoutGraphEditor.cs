@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUILayout.Button("Edit"))
             {
-                NewLayoutGraphWindow.ShowWindow(GetLayoutGraph());
+                LayoutGraphWindow.ShowWindow(GetLayoutGraph());
             }
         }
 
@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (graph == null)
                 return false;
 
-            NewLayoutGraphWindow.ShowWindow(graph);
+            LayoutGraphWindow.ShowWindow(graph);
             return true;
         }
 
