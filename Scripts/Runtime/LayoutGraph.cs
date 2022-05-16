@@ -274,7 +274,7 @@ namespace MPewsey.ManiaMap.Unity
 
         /// <summary>
         /// Adjusts the positions of the nodes to provide the specified spacing.
-        /// Returns true if ajustments are made.
+        /// Returns true if adjustments are made.
         /// </summary>
         /// <param name="spacing">The minimum x and y spacing between the node positions.</param>
         public bool Paginate(Vector2 spacing)

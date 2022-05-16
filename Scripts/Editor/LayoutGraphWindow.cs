@@ -46,6 +46,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool ShowEdges { get; set; } = true;
 
         /// <summary>
+        /// True if a drag operation is in progress.
+        /// </summary>
+        private bool Dragging { get; set; }
+
+        /// <summary>
         /// The position of the plot scroll view.
         /// </summary>
         private Vector2 PlotScrollPosition { get; set; }
@@ -54,6 +59,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// The position of the inspector scroll view.
         /// </summary>
         private Vector2 InspectorScrollPosition { get; set; }
+
+        /// <summary>
+        /// The last position of the mouse in the plot area.
+        /// </summary>
+        private Vector2 LastMousePlotPosition { get; set; }
+
+        /// <summary>
+        /// The position of the mouse in the plot area when starting a drag.
+        /// </summary>
+        private Vector2 StartMousePlotPosition { get; set; }
 
         /// <summary>
         /// A set of selected nodes.
@@ -108,16 +123,26 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenu();
             DrawInspector();
             DrawPlot();
+            RepaintIfDragging();
         }
 
         private void OnLostFocus()
         {
-
+            Dragging = false;
         }
 
         private void OnDestroy()
         {
             SaveAsset();
+        }
+
+        /// <summary>
+        /// Repaints the window if the user is currently dragging.
+        /// </summary>
+        private void RepaintIfDragging()
+        {
+            if (Dragging)
+                Repaint();
         }
 
         /// <summary>
@@ -299,6 +324,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
+            PaginatePlot();
             SetNodePositions();
             DrawEdgeLines();
             DrawEdges();
@@ -306,8 +332,22 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawPlotBoundsLabel();
             HandlePlotAreaEvent();
             HandleKeyEvent();
+            DrawDragArea();
+            LastMousePlotPosition = Event.current.mousePosition;
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+        }
+
+        /// <summary>
+        /// Adjusts the node positions to prevent overlapping elements.
+        /// </summary>
+        private void PaginatePlot()
+        {
+            var graph = GetLayoutGraph();
+            var spacing = Settings.NodeSize + Settings.Spacing;
+
+            if (graph.Paginate(spacing))
+                EditorUtility.SetDirty(graph);
         }
 
         /// <summary>
@@ -476,7 +516,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 switch (Event.current.type)
                 {
                     case EventType.MouseDown when Event.current.button == LeftMouseButton:
-                        // TODO: Begin drag select.
+                        DeselectAll();
+                        BeginDragSelect();
                         Event.current.Use();
                         break;
                     case EventType.MouseDown when Event.current.button == RightMouseButton:
@@ -484,7 +525,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
-                        // TODO: End drag select.
+                        EndDragSelect();
                         Event.current.Use();
                         break;
                 }
@@ -499,13 +540,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             switch (Event.current.type)
             {
-                case EventType.MouseDown when Event.current.button == LeftMouseButton && !Event.current.control:
-                    // TODO: Select or begin drag.
-                    SelectEdge(edge);
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
+                    ToggleEdgeSelection(edge);
                     Event.current.Use();
                     break;
-                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    MultiselectEdge(edge);
+                case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    SelectEdge(edge);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
@@ -523,13 +563,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             switch (Event.current.type)
             {
-                case EventType.MouseDown when Event.current.button == LeftMouseButton && !Event.current.control:
-                    // TODO: Select or begin drag.
-                    SelectNode(node);
+                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
+                    ToggleNodeSelection(node);
                     Event.current.Use();
                     break;
-                case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    MultiselectNode(node);
+                case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    SelectNode(node);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
@@ -565,6 +604,38 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Sets dragging to true and stores the current mouse position.
+        /// </summary>
+        private void BeginDragSelect()
+        {
+            Dragging = true;
+            StartMousePlotPosition = Event.current.mousePosition;
+        }
+
+        /// <summary>
+        /// Sets dragging to false.
+        /// </summary>
+        private void EndDragSelect()
+        {
+            Dragging = false;
+        }
+
+        /// <summary>
+        /// If the user is dragging, draws the drag area rectangle.
+        /// </summary>
+        private void DrawDragArea()
+        {
+            if (Dragging)
+            {
+                var rect = new Rect(StartMousePlotPosition, Event.current.mousePosition - StartMousePlotPosition);
+                Handles.DrawSolidRectangleWithOutline(rect, Settings.DragAreaColor, Settings.DragOutlineColor);
+            }
+        }
+
+        /// <summary>
+        /// Displays the context menu when clicking in the plot area.
+        /// </summary>
         private void ShowAreaContextMenu()
         {
             var menu = new GenericMenu();
@@ -572,6 +643,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             menu.ShowAsContext();
         }
 
+        /// <summary>
+        /// Displays the context menu when clicking in a node element.
+        /// </summary>
         private void ShowNodeContextMenu()
         {
             var menu = new GenericMenu();
@@ -605,7 +679,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Toggles the selection of the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void MultiselectEdge(LayoutEdge edge)
+        private void ToggleEdgeSelection(LayoutEdge edge)
         {
             if (!SelectedEdges.Add(edge))
                 SelectedEdges.Remove(edge);
@@ -615,7 +689,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Toggles the selection of the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void MultiselectNode(LayoutNode node)
+        private void ToggleNodeSelection(LayoutNode node)
         {
             if (!SelectedNodes.Add(node))
                 SelectedNodes.Remove(node);

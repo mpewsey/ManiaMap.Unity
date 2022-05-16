@@ -98,14 +98,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public Color32 SelectedColor { get => _selectedColor; set => _selectedColor = value; }
 
         [SerializeField]
-        private Color32 _dragOutlineColor = Color.grey;
+        private Color32 _dragOutlineColor = new Color32(0, 102, 204, 50);
         /// <summary>
         /// The color of the drag area outline.
         /// </summary>
         public Color32 DragOutlineColor { get => _dragOutlineColor; set => _dragOutlineColor = value; }
 
         [SerializeField]
-        private Color32 _dragAreaColor = Color.clear;
+        private Color32 _dragAreaColor = new Color32(0, 120, 215, 12);
         /// <summary>
         /// The color of the drag area interior.
         /// </summary>
