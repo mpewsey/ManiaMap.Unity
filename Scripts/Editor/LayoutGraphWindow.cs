@@ -46,9 +46,19 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool ShowEdges { get; set; } = true;
 
         /// <summary>
+        /// True if the move operation is in progress.
+        /// </summary>
+        private bool Moving { get; set; }
+
+        /// <summary>
         /// True if a drag operation is in progress.
         /// </summary>
         private bool Dragging { get; set; }
+
+        /// <summary>
+        /// True if the user has multiselected elements.
+        /// </summary>
+        private bool Multiselecting { get; set; }
 
         /// <summary>
         /// The position of the plot scroll view.
@@ -137,11 +147,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Repaints the window if the user is currently dragging.
+        /// Repaints the window if the user is in a drag operation.
         /// </summary>
         private void RepaintIfDragging()
         {
-            if (Dragging)
+            if (Dragging || Moving)
                 Repaint();
         }
 
@@ -332,6 +342,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawPlotBoundsLabel();
             HandlePlotAreaEvent();
             HandleKeyEvent();
+            MoveNodes();
             DrawDragArea();
             LastMousePlotPosition = Event.current.mousePosition;
             GUILayout.EndScrollView();
@@ -339,15 +350,34 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Adjusts the node positions to prevent overlapping elements.
+        /// If in movement mode, moves the positions of the nodes based on the change in the mouse position.
+        /// </summary>
+        private void MoveNodes()
+        {
+            if (Moving)
+            {
+                var delta = Event.current.mousePosition - LastMousePlotPosition;
+
+                foreach (var node in SelectedNodes)
+                {
+                    node.Position += delta;
+                }
+            }
+        }
+
+        /// <summary>
+        /// If not in moving mode, adjusts the node positions to prevent overlapping elements.
         /// </summary>
         private void PaginatePlot()
         {
-            var graph = GetLayoutGraph();
-            var spacing = Settings.NodeSize + Settings.Spacing;
+            if (!Moving)
+            {
+                var graph = GetLayoutGraph();
+                var spacing = Settings.NodeSize + Settings.Spacing;
 
-            if (graph.Paginate(spacing))
-                EditorUtility.SetDirty(graph);
+                if (graph.Paginate(spacing))
+                    EditorUtility.SetDirty(graph);
+            }
         }
 
         /// <summary>
@@ -525,7 +555,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
-                        EndDragSelect();
+                        Moving = false;
+                        Dragging = false;
                         Event.current.Use();
                         break;
                 }
@@ -541,10 +572,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             switch (Event.current.type)
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    ToggleEdgeSelection(edge);
+                    MultiselectEdge(edge);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    // TODO: If multiselecting, move selected nodes.
                     SelectEdge(edge);
                     Event.current.Use();
                     break;
@@ -564,10 +596,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             switch (Event.current.type)
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
-                    ToggleNodeSelection(node);
+                    MultiselectNode(node);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
+                    // TODO: If multiselecting, move selected nodes.
                     SelectNode(node);
                     Event.current.Use();
                     break;
@@ -614,14 +647,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Sets dragging to false.
-        /// </summary>
-        private void EndDragSelect()
-        {
-            Dragging = false;
-        }
-
-        /// <summary>
         /// If the user is dragging, draws the drag area rectangle.
         /// </summary>
         private void DrawDragArea()
@@ -659,9 +684,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="edge">The edge.</param>
         private void SelectEdge(LayoutEdge edge)
         {
-            SelectedNodes.Clear();
-            SelectedEdges.Clear();
+            if (!Multiselecting)
+            {
+                SelectedNodes.Clear();
+                SelectedEdges.Clear();
+            }
+
             SelectedEdges.Add(edge);
+            Moving = SelectedNodes.Count > 0;
         }
 
         /// <summary>
@@ -670,17 +700,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="node">The node.</param>
         private void SelectNode(LayoutNode node)
         {
-            SelectedNodes.Clear();
-            SelectedEdges.Clear();
+            if (!Multiselecting)
+            {
+                SelectedNodes.Clear();
+                SelectedEdges.Clear();
+            }
+
             SelectedNodes.Add(node);
+            Moving = true;
         }
 
         /// <summary>
         /// Toggles the selection of the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void ToggleEdgeSelection(LayoutEdge edge)
+        private void MultiselectEdge(LayoutEdge edge)
         {
+            Multiselecting = true;
+
             if (!SelectedEdges.Add(edge))
                 SelectedEdges.Remove(edge);
         }
@@ -689,8 +726,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Toggles the selection of the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void ToggleNodeSelection(LayoutNode node)
+        private void MultiselectNode(LayoutNode node)
         {
+            Multiselecting = true;
+
             if (!SelectedNodes.Add(node))
                 SelectedNodes.Remove(node);
         }
@@ -700,6 +739,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectAll()
         {
+            Multiselecting = true;
             SelectAllEdges();
             SelectAllNodes();
         }
@@ -709,6 +749,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectAllNodes()
         {
+            Multiselecting = true;
             var graph = GetLayoutGraph();
             SelectedNodes.Clear();
 
@@ -723,6 +764,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectAllEdges()
         {
+            Multiselecting = true;
             var graph = GetLayoutGraph();
             SelectedEdges.Clear();
 
@@ -744,6 +786,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var node = graph.CreateNode();
             AssetDatabase.AddObjectToAsset(node, graph);
             EditorUtility.SetDirty(graph);
+            SelectedNodes.Clear();
+            SelectedNodes.Add(node);
         }
 
         /// <summary>
@@ -751,6 +795,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DeselectAll()
         {
+            Moving = false;
+            Multiselecting = false;
             SelectedNodes.Clear();
             SelectedEdges.Clear();
         }
@@ -760,6 +806,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DeleteSelected()
         {
+            Moving = false;
+            Multiselecting = false;
             DeleteEdges();
             DeleteNodes();
         }

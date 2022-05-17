@@ -69,7 +69,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             if (messages.Count > 1)
-                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Warning, true);
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
 
         /// <summary>
