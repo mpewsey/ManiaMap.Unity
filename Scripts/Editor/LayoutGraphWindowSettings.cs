@@ -98,6 +98,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public Color32 SelectedColor { get => _selectedColor; set => _selectedColor = value; }
 
         [SerializeField]
+        private Color32 _addEdgeColor = Color.black;
+        /// <summary>
+        /// The color of the mouse line when adding an edge.
+        /// </summary>
+        public Color32 AddEdgeColor { get => _addEdgeColor; set => _addEdgeColor = value; }
+
+        [SerializeField]
         private Color32 _dragOutlineColor = new Color32(0, 102, 204, 50);
         /// <summary>
         /// The color of the drag area outline.
