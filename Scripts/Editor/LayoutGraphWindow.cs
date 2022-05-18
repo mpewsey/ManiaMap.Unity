@@ -46,19 +46,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool ShowEdges { get; set; } = true;
 
         /// <summary>
-        /// True if the move operation is in progress.
-        /// </summary>
-        private bool Moving { get; set; }
-
-        /// <summary>
-        /// True if a drag operation is in progress.
-        /// </summary>
-        private bool Dragging { get; set; }
-
-        /// <summary>
         /// True if the user has multiselected elements.
         /// </summary>
         private bool Multiselecting { get; set; }
+
+        /// <summary>
+        /// The active window tool.
+        /// </summary>
+        private Tool ActiveTool { get; set; }
 
         /// <summary>
         /// The position of the plot scroll view.
@@ -79,6 +74,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// The position of the mouse in the plot area when starting a drag.
         /// </summary>
         private Vector2 StartMousePlotPosition { get; set; }
+
+        /// <summary>
+        /// The position set to a node when it is created.
+        /// </summary>
+        private Vector2 CreateNodePosition { get; set; }
 
         /// <summary>
         /// A set of selected nodes.
@@ -133,12 +133,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawMenu();
             DrawInspector();
             DrawPlot();
-            RepaintIfDragging();
+            RepaintIfToolActive();
         }
 
         private void OnLostFocus()
         {
-            Dragging = false;
+            ActiveTool = Tool.None;
         }
 
         private void OnDestroy()
@@ -147,11 +147,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Repaints the window if the user is in a drag operation.
+        /// Repaints the window if a tool is currently active.
         /// </summary>
-        private void RepaintIfDragging()
+        private void RepaintIfToolActive()
         {
-            if (Dragging || Moving)
+            if (ActiveTool != Tool.None)
                 Repaint();
         }
 
@@ -191,9 +191,67 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void DrawMenu()
         {
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
+            DrawEditMenu();
+            DrawViewMenu();
             GUILayout.FlexibleSpace();
             DrawMenuAreaButton();
             GUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// Draws the edit menu.
+        /// </summary>
+        private void DrawEditMenu()
+        {
+            if (GUILayout.Button("Edit", EditorStyles.toolbarDropDown))
+            {
+                CreateNodePosition = PlotScrollPosition;
+                var graph = GetLayoutGraph();
+                var menu = new GenericMenu();
+                menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
+                menu.AddSeparator("");
+                AddMenuItem(menu, "Deselect All _esc", SelectedNodes.Count + SelectedEdges.Count > 0, DeselectAll);
+                AddMenuItem(menu, "Select All ^a", graph.NodeCount + graph.EdgeCount > 0, SelectAll);
+                AddMenuItem(menu, "Select All Nodes", graph.NodeCount > 0, SelectAllNodes);
+                AddMenuItem(menu, "Select All Edges", graph.EdgeCount > 0, SelectAllEdges);
+                menu.AddSeparator("");
+                AddMenuItem(menu, "Delete Selected _del", SelectedNodes.Count + SelectedEdges.Count > 0, DeleteSelected);
+                AddMenuItem(menu, "Delete Selected Nodes", SelectedNodes.Count > 0, DeleteNodes);
+                AddMenuItem(menu, "Delete Selected Edges", SelectedEdges.Count > 0, DeleteEdges);
+                menu.DropDown(new Rect(0, 5, 0, 16));
+            }
+        }
+
+        /// <summary>
+        /// Adds a menu item that may be disabled to the menu.
+        /// </summary>
+        /// <param name="menu">The menu.</param>
+        /// <param name="label">The item label.</param>
+        /// <param name="enabled">True if the menu item is enabled.</param>
+        /// <param name="func">The menu item function, called when the item is enabled.</param>
+        private void AddMenuItem(GenericMenu menu, string label, bool enabled, GenericMenu.MenuFunction func)
+        {
+            if (enabled)
+            {
+                menu.AddItem(new GUIContent(label), false, func);
+            }
+            else
+            {
+                menu.AddDisabledItem(new GUIContent(label), false);
+            }
+        }
+
+        /// <summary>
+        /// Draws the view menu.
+        /// </summary>
+        private void DrawViewMenu()
+        {
+            if (GUILayout.Button("View", EditorStyles.toolbarDropDown))
+            {
+                var menu = new GenericMenu();
+                menu.AddItem(new GUIContent("Toggle Edge Display"), ShowEdges, ToggleShowEdges);
+                menu.DropDown(new Rect(40, 5, 0, 16));
+            }
         }
 
         /// <summary>
@@ -354,7 +412,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void MoveNodes()
         {
-            if (Moving)
+            if (ActiveTool == Tool.Move)
             {
                 var delta = Event.current.mousePosition - LastMousePlotPosition;
 
@@ -370,7 +428,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void PaginatePlot()
         {
-            if (!Moving)
+            if (ActiveTool != Tool.Move)
             {
                 var graph = GetLayoutGraph();
                 var spacing = Settings.NodeSize + Settings.Spacing;
@@ -555,8 +613,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
-                        Moving = false;
-                        Dragging = false;
+                        ActiveTool = Tool.None;
                         Event.current.Use();
                         break;
                 }
@@ -642,7 +699,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void BeginDragSelect()
         {
-            Dragging = true;
+            ActiveTool = Tool.DragSelect;
             StartMousePlotPosition = Event.current.mousePosition;
         }
 
@@ -651,7 +708,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawDragArea()
         {
-            if (Dragging)
+            if (ActiveTool == Tool.DragSelect)
             {
                 var rect = new Rect(StartMousePlotPosition, Event.current.mousePosition - StartMousePlotPosition);
                 Handles.DrawSolidRectangleWithOutline(rect, Settings.DragAreaColor, Settings.DragOutlineColor);
@@ -663,6 +720,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void ShowAreaContextMenu()
         {
+            CreateNodePosition = Event.current.mousePosition;
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Create Node"), false, CreateNode);
             menu.ShowAsContext();
@@ -691,7 +749,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             SelectedEdges.Add(edge);
-            Moving = SelectedNodes.Count > 0;
+            ActiveTool = SelectedNodes.Count > 0 ? Tool.Move : Tool.None;
         }
 
         /// <summary>
@@ -707,7 +765,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             SelectedNodes.Add(node);
-            Moving = true;
+            ActiveTool = Tool.Move;
         }
 
         /// <summary>
@@ -782,8 +840,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void CreateNode()
         {
+            ActiveTool = Tool.None;
             var graph = GetLayoutGraph();
             var node = graph.CreateNode();
+            node.Position = CreateNodePosition;
             AssetDatabase.AddObjectToAsset(node, graph);
             EditorUtility.SetDirty(graph);
             SelectedNodes.Clear();
@@ -795,7 +855,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DeselectAll()
         {
-            Moving = false;
+            ActiveTool = Tool.None;
             Multiselecting = false;
             SelectedNodes.Clear();
             SelectedEdges.Clear();
@@ -806,7 +866,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DeleteSelected()
         {
-            Moving = false;
+            ActiveTool = Tool.None;
             Multiselecting = false;
             DeleteEdges();
             DeleteNodes();
@@ -819,6 +879,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (ShowEdges)
             {
+                ActiveTool = Tool.None;
                 var graph = GetLayoutGraph();
 
                 foreach (var edge in SelectedEdges)
@@ -836,6 +897,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DeleteNodes()
         {
+            ActiveTool = Tool.None;
             var graph = GetLayoutGraph();
             var edges = graph.GetEdges().ToList();
 
@@ -851,6 +913,29 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             EditorUtility.SetDirty(graph);
+        }
+
+        /// <summary>
+        /// Toggles whether edges are shown.
+        /// </summary>
+        private void ToggleShowEdges()
+        {
+            ShowEdges = !ShowEdges;
+        }
+
+        /// <summary>
+        /// The window tool.
+        /// </summary>
+        private enum Tool
+        {
+            /// No tool.
+            None,
+            /// The drag select tool. Enabled when the user drags the mouse in the plot area.
+            DragSelect,
+            /// The move nodes tool. Enabled when the user drags the mouse in a node or edge.
+            Move,
+            /// The add edge tool. Enabled when the user is adding an edge.
+            AddEdge,
         }
     }
 }
