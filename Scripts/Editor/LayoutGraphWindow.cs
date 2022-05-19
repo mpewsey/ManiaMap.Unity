@@ -403,7 +403,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
             PaginatePlot();
             SetNodePositions();
-            // SelectDraggedElements();
             DrawEdgeLines();
             DrawEdges();
             DrawNodes();
@@ -412,7 +411,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             HandleKeyEvent();
             MoveNodes();
             DrawMouseLine();
-            // DrawDragArea();
+            DrawDragArea();
             LastMousePlotPosition = Event.current.mousePosition;
             GUILayout.EndScrollView();
             GUILayout.EndArea();
@@ -423,17 +422,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectDraggedElements()
         {
-            if (ActiveTool == Tool.DragSelect)
-            {
-                if (!Multiselecting)
-                {
-                    SelectedNodes.Clear();
-                    SelectedEdges.Clear();
-                }
-
-                SelectDraggedNodes();
-                SelectDraggedEdges();
-            }
+            ActiveTool = Tool.None;
+            Multiselecting = true;
+            SelectDraggedNodes();
+            SelectDraggedEdges();
         }
 
         /// <summary>
@@ -441,8 +433,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectDraggedNodes()
         {
+            SelectedNodes.Clear();
             var graph = GetLayoutGraph();
-            var rect = new Rect(StartMousePlotPosition, Event.current.mousePosition - StartMousePlotPosition);
+            var rect = GetDragRect();
 
             foreach (var node in graph.GetNodes())
             {
@@ -458,8 +451,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SelectDraggedEdges()
         {
+            SelectedEdges.Clear();
             var graph = GetLayoutGraph();
-            var rect = new Rect(StartMousePlotPosition, Event.current.mousePosition - StartMousePlotPosition);
+            var rect = GetDragRect();
 
             foreach (var edge in graph.GetEdges())
             {
@@ -472,6 +466,30 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     SelectedEdges.Add(edge);
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the rect for the drag area. The position and size of the rect are adjusted
+        /// so that the size is positive. Otherwise, the contains method will not work on points.
+        /// </summary>
+        private Rect GetDragRect()
+        {
+            var position = Event.current.mousePosition;
+            var size = StartMousePlotPosition - position;
+
+            if (size.x < 0)
+            {
+                size.x = -size.x;
+                position.x = StartMousePlotPosition.x;
+            }
+
+            if (size.y < 0)
+            {
+                size.y = -size.y;
+                position.y = StartMousePlotPosition.y;
+            }
+
+            return new Rect(position, size);
         }
 
         /// <summary>
@@ -679,6 +697,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         break;
                     case EventType.MouseDown when Event.current.button == RightMouseButton:
                         ShowAreaContextMenu();
+                        Event.current.Use();
+                        break;
+                    case EventType.MouseUp when Event.current.button == LeftMouseButton && ActiveTool == Tool.DragSelect:
+                        SelectDraggedElements();
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
@@ -985,8 +1007,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             Multiselecting = false;
             DeleteEdges();
             DeleteNodes();
-            SelectedEdges.Clear();
-            SelectedNodes.Clear();
         }
 
         /// <summary>
@@ -1006,8 +1026,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 }
 
                 EditorUtility.SetDirty(graph);
-                SelectedEdges.Clear();
             }
+
+            SelectedEdges.Clear();
         }
 
         /// <summary>
@@ -1035,7 +1056,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// The window tool.
+        /// The layout graph window tool.
         /// </summary>
         private enum Tool
         {
