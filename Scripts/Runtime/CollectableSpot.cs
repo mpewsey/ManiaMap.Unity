@@ -16,6 +16,13 @@ namespace MPewsey.ManiaMap.Unity
         public Cell Cell { get => _cell; set => _cell = value; }
 
         [SerializeField]
+        private UnityEvent _onSpotExists = new UnityEvent();
+        /// <summary>
+        /// The event triggered when a collectable spot exists at this location.
+        /// </summary>
+        public UnityEvent OnSpotExists { get => _onSpotExists; set => _onSpotExists = value; }
+
+        [SerializeField]
         private UnityEvent _onNoSpotExists = new UnityEvent();
         /// <summary>
         /// The event triggered when a collectable spot does not exist at this location.

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -58,31 +58,51 @@ namespace MPewsey.ManiaMap.Unity
             CellSize = CellSize;
         }
 
-        public Vector3 GetPlaneVector(Vector2 vector)
+        /// <summary>
+        /// Returns a swizzled vector for a given 2D vector.
+        /// </summary>
+        /// <param name="vector">The local 2D vector.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">Raised if the cell plane is unhandled.</exception>
+        public Vector3 Swizzle(Vector2 vector)
         {
             switch (CellPlane)
             {
                 case Plane.XY:
-                    return new Vector3(vector.x, -vector.y, 0);
+                    return new Vector3(vector.x, vector.y, 0);
                 case Plane.XZ:
-                    return new Vector3(vector.x, 0, -vector.y);
+                    return new Vector3(vector.x, 0, vector.y);
                 default:
-                    throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
+                    throw new ArgumentException($"Unhandled cell plane: {CellPlane}.");
             }
         }
 
+        /// <summary>
+        /// Returns the cell at the specified index.
+        /// </summary>
+        /// <param name="row">The row index.</param>
+        /// <param name="column">The column index.</param>
+        /// <exception cref="IndexOutOfRangeException">Raised if the index is out of range.</exception>
         public Cell GetCell(int row, int column)
         {
             if (!CellIndexExists(row, column))
-                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column}).");
+                throw new IndexOutOfRangeException($"Index out of range: ({row}, {column}).");
             return CellContainer.GetChild(row).GetChild(column).GetComponent<Cell>();
         }
 
+        /// <summary>
+        /// Returns true if the cell index exists.
+        /// </summary>
+        /// <param name="row">The row index.</param>
+        /// <param name="column">The column index.</param>
         private bool CellIndexExists(int row, int column)
         {
             return (uint)row < Size.x && (uint)column < Size.y;
         }
 
+        /// <summary>
+        /// Creates the cell container if it does not exist and assigns it to the object.
+        /// </summary>
         public void CreateCellContainer()
         {
             if (CellContainer == null)
@@ -95,6 +115,10 @@ namespace MPewsey.ManiaMap.Unity
             CellContainer.gameObject.hideFlags = HideFlags.NotEditable;
         }
 
+        /// <summary>
+        /// Creates and initializes the room template cells. This method will attempt
+        /// to reuse existing objects if it can. Extra cells are also destroyed.
+        /// </summary>
         public void CreateCells()
         {
             CreateCellContainer();
@@ -113,12 +137,17 @@ namespace MPewsey.ManiaMap.Unity
                 obj.transform.SetParent(CellContainer);
             }
 
-            for (int i = 0; i < Size.x; i++)
+            for (int i = 0; i < CellContainer.childCount; i++)
             {
                 CreateRow(i);
             }
         }
 
+        /// <summary>
+        /// Creates the row and cells for the specified index. This method will attempt
+        /// to reuse existing objects if it can. Extra cells are also destroyed.
+        /// </summary>
+        /// <param name="row">The row index.</param>
         private void CreateRow(int row)
         {
             var container = CellContainer.GetChild(row);
@@ -141,7 +170,7 @@ namespace MPewsey.ManiaMap.Unity
                 obj.AddComponent<Cell>();
             }
 
-            for (int j = 0; j < Size.y; j++)
+            for (int j = 0; j < container.childCount; j++)
             {
                 var index = new Vector2Int(row, j);
                 var cell = container.GetChild(j).GetComponent<Cell>();
@@ -149,9 +178,14 @@ namespace MPewsey.ManiaMap.Unity
             }
         }
 
+        /// <summary>
+        /// The cell plane.
+        /// </summary>
         public enum Plane
         {
+            /// The XY plane.
             XY,
+            /// The XZ plane.
             XZ,
         }
     }
