@@ -166,9 +166,7 @@ namespace MPewsey.ManiaMap.Unity
             if (collectableSpots.Count > 1)
                 throw new Exception($"Multiple collectable spots assigned to cell: {Index}.");
             if (collectableSpots.Count > 0)
-                throw new NotImplementedException();
-
-            // TODO: Need to add collectable spot assignment.
+                cell.CollectableGroup = collectableSpots[0].Group.Name;
         }
 
         /// <summary>
