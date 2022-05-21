@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -103,6 +106,112 @@ namespace MPewsey.ManiaMap.Unity
                 size.z = float.PositiveInfinity;
 
             return new Bounds(transform.position, size);
+        }
+
+        /// <summary>
+        /// Returns a list of doors assigned to the cell.
+        /// </summary>
+        public List<Door> FindDoors()
+        {
+            return FindObjectsOfType<Door>().Where(x => x.Cell == this).ToList();
+        }
+
+        /// <summary>
+        /// Returns a list of collectable spots assigned to the cell.
+        /// </summary>
+        public List<CollectableSpot> FindCollectableSpots()
+        {
+            return FindObjectsOfType<CollectableSpot>().Where(x => x.Cell == this).ToList();
+        }
+
+        /// <summary>
+        /// Returns a new generation cell.
+        /// </summary>
+        public ManiaMap.Cell GetCell()
+        {
+            if (IsEmpty)
+            {
+                ValidateEmptyCell();
+                return ManiaMap.Cell.Empty;
+            }
+
+            var cell = ManiaMap.Cell.New;
+            SetCellDoors(cell);
+            SetCellCollectableSpot(cell);
+            return cell;
+        }
+
+        /// <summary>
+        /// Checks that no doors or collectable spots are assigned to the cell.
+        /// Raises exceptions if there are.
+        /// </summary>
+        /// <exception cref="Exception">Raised if a door or collectable spot is assigned to the cell.</exception>
+        private void ValidateEmptyCell()
+        {
+            if (FindDoors().Count > 0)
+                throw new Exception($"Doors assigned to empty cell: {Index}.");
+            if (FindCollectableSpots().Count > 0)
+                throw new Exception($"Collectable spots assigned to empty cell: {Index}.");
+        }
+
+        /// <summary>
+        /// Sets the collectable spot to the generation cell.
+        /// </summary>
+        /// <param name="cell">The generation cell.</param>
+        /// <exception cref="Exception">Raised if multiple collectable spots are assigned to the cell.</exception>
+        private void SetCellCollectableSpot(ManiaMap.Cell cell)
+        {
+            var collectableSpots = FindCollectableSpots();
+
+            if (collectableSpots.Count > 1)
+                throw new Exception($"Multiple collectable spots assigned to cell: {Index}.");
+            if (collectableSpots.Count > 0)
+                throw new NotImplementedException();
+
+            // TODO: Need to add collectable spot assignment.
+        }
+
+        /// <summary>
+        /// Sets the doors to the generation cell.
+        /// </summary>
+        /// <param name="cell">The generation cell.</param>
+        /// <exception cref="Exception">Raised if a door is already assigned to the door direction.</exception>
+        /// <exception cref="ArgumentException">Raised if the door direction is unhandled.</exception>
+        private void SetCellDoors(ManiaMap.Cell cell)
+        {
+            foreach (var door in FindDoors())
+            {
+                switch (door.Direction)
+                {
+                    case DoorDirection.North when cell.NorthDoor != null:
+                    case DoorDirection.South when cell.SouthDoor != null:
+                    case DoorDirection.East when cell.EastDoor != null:
+                    case DoorDirection.West when cell.WestDoor != null:
+                    case DoorDirection.Top when cell.TopDoor != null:
+                    case DoorDirection.Bottom when cell.BottomDoor != null:
+                        throw new Exception($"Door direction already exists: ({Index}, {door.Direction}).");
+                    case DoorDirection.North:
+                        cell.NorthDoor = door.GetDoor();
+                        break;
+                    case DoorDirection.South:
+                        cell.SouthDoor = door.GetDoor();
+                        break;
+                    case DoorDirection.East:
+                        cell.EastDoor = door.GetDoor();
+                        break;
+                    case DoorDirection.West:
+                        cell.WestDoor = door.GetDoor();
+                        break;
+                    case DoorDirection.Top:
+                        cell.TopDoor = door.GetDoor();
+                        break;
+                    case DoorDirection.Bottom:
+                        cell.BottomDoor = door.GetDoor();
+                        break;
+                    default:
+                        throw new ArgumentException($"Unhandled door direction: {door.Direction}.");
+                }
+            }
         }
     }
 }

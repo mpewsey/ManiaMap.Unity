@@ -179,6 +179,25 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Returns a new generation room template.
+        /// </summary>
+        public ManiaMap.RoomTemplate GetTemplate()
+        {
+            CreateCells();
+            var cells = new Array2D<ManiaMap.Cell>(Size.x, Size.y);
+
+            for (int i = 0; i < cells.Rows; i++)
+            {
+                for (int j = 0; j < cells.Columns; j++)
+                {
+                    cells[i, j] = GetCell(i, j).GetCell();
+                }
+            }
+
+            return new ManiaMap.RoomTemplate(Id, Name, cells);
+        }
+
+        /// <summary>
         /// The cell plane.
         /// </summary>
         public enum Plane

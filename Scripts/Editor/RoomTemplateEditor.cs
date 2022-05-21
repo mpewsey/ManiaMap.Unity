@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUILayout.Button("Save"))
             {
-                Debug.Log("Not implemented.");
+                SaveTemplate();
             }
         }
 
@@ -30,6 +31,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 var template = (RoomTemplate)serializedObject.targetObject;
                 template.CreateCells();
             }
+        }
+
+        private void SaveTemplate()
+        {
+            var target = (RoomTemplate)serializedObject.targetObject;
+            var template = target.GetTemplate();
+            var path = Path.Combine("Assets", "ManiaMap", "RoomTemplates", $"{template.Id}_{template.Name}.xml");
+
+            // Create Mania Map directory if it doesn't exist.
+            if (!AssetDatabase.IsValidFolder("Assets/ManiaMap"))
+                AssetDatabase.CreateFolder("Assets", "ManiaMap");
+
+            // Create Room Templates directory if it doesn't exist.
+            if (!AssetDatabase.IsValidFolder("Assets/ManiaMap/RoomTemplates"))
+                AssetDatabase.CreateFolder("Assets/ManiaMap", "RoomTemplates");
+
+            Serialization.SaveXml(path, template);
+            AssetDatabase.Refresh();
         }
 
         [MenuItem("GameObject/Mania Map/Room Template")]

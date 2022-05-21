@@ -49,5 +49,17 @@ namespace MPewsey.ManiaMap.Unity
         /// The event invoked when no door exists at the location.
         /// </summary>
         public UnityEvent OnNoDoorExists { get => _onNoDoorExists; set => _onNoDoorExists = value; }
+
+        /// <summary>
+        /// Returns a new generation door.
+        /// </summary>
+        public ManiaMap.Door GetDoor()
+        {
+            return new ManiaMap.Door
+            {
+                Type = Type,
+                Code = Code,
+            };
+        }
     }
 }
