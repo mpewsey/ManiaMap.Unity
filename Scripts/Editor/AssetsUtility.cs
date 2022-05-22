@@ -50,17 +50,23 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="replacement">The replacement character.</param>
         public static string ReplaceCharacters(string str, char[] characters, char replacement)
         {
+            var index = str.IndexOfAny(characters);
+
+            if (index < 0)
+                return str;
+
             var builder = new StringBuilder(str);
+            builder[index] = replacement;
 
-            for (int i = 0; i < str.Length; i++)
+            for (int i = index + 1; i < str.Length; i++)
             {
-                var index = str.IndexOfAny(characters, i);
+                index = str.IndexOfAny(characters, i);
 
-                if (index >= 0)
-                {
-                    i = index;
-                    builder[index] = replacement;
-                }
+                if (index < 0)
+                    break;
+
+                i = index;
+                builder[index] = replacement;
             }
 
             return builder.ToString();
