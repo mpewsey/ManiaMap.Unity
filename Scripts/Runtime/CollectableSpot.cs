@@ -39,6 +39,37 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The collectable ID.
         /// </summary>
-        public int Id { get; set; } = int.MinValue;
+        public int CollectableId { get; set; } = int.MinValue;
+
+        /// <summary>
+        /// True if the collectable is acquired.
+        /// </summary>
+        public bool IsAcquired { get; set; } = true;
+
+        /// <summary>
+        /// True if the collectable spot exists.
+        /// </summary>
+        public bool Exists { get; set; }
+
+        private void Awake()
+        {
+            Init();
+        }
+
+        /// <summary>
+        /// Initializes the collectable spot based on the current room.
+        /// </summary>
+        private void Init()
+        {
+            var manager = ManiaManager.Current;
+            CollectableId = manager.GetCollectableId(Cell.Index);
+            IsAcquired = manager.CollectableAcquired(Cell.Index);
+            Exists = manager.CollectableExists(Cell.Index);
+
+            if (Exists)
+                OnSpotExists.Invoke();
+            else
+                OnNoSpotExists.Invoke();
+        }
     }
 }
