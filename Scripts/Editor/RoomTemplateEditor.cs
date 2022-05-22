@@ -1,5 +1,4 @@
 using System.IO;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             serializedObject.Update();
             DrawSaveButton();
-            DrawCreateCellsButton();
+            DrawUpdateCellsButton();
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
         }
@@ -29,40 +28,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// draws the create cells button.
+        /// Draws the update cells button.
         /// </summary>
-        private void DrawCreateCellsButton()
+        private void DrawUpdateCellsButton()
         {
-            if (GUILayout.Button("Create Cells"))
+            if (GUILayout.Button("Update Cells"))
             {
-                var template = (RoomTemplate)serializedObject.targetObject;
-                template.CreateCells();
+                UpdateCells();
             }
         }
 
         /// <summary>
-        /// Returns the filename for the generator room template. Invalid filename
-        /// characters are replaced with underscores.
+        /// Creates or updates the room template cells.
         /// </summary>
-        /// <param name="template">The generator room template.</param>
-        private string GetFilename(ManiaMap.RoomTemplate template)
+        private void UpdateCells()
         {
-            var name = $"{template.Id}_{template.Name}.xml";
-            var builder = new StringBuilder(name);
-            var chars = Path.GetInvalidFileNameChars();
-
-            for (int i = 0; i < name.Length; i++)
-            {
-                var index = name.IndexOfAny(chars, i);
-
-                if (index >= 0)
-                {
-                    i = index;
-                    builder[index] = '_';
-                }
-            }
-
-            return builder.ToString();
+            var template = (RoomTemplate)serializedObject.targetObject;
+            template.CreateCells();
+            Debug.Log("<color=#00FF00><b>Cells updated.</b></color>");
         }
 
         /// <summary>
@@ -73,18 +56,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var target = (RoomTemplate)serializedObject.targetObject;
             var template = target.GetTemplate();
-            var path = Path.Combine("Assets", "ManiaMap", "RoomTemplates", GetFilename(template));
-
-            // Create Mania Map directory if it doesn't exist.
-            if (!AssetDatabase.IsValidFolder("Assets/ManiaMap"))
-                AssetDatabase.CreateFolder("Assets", "ManiaMap");
-
-            // Create Room Templates directory if it doesn't exist.
-            if (!AssetDatabase.IsValidFolder("Assets/ManiaMap/RoomTemplates"))
-                AssetDatabase.CreateFolder("Assets/ManiaMap", "RoomTemplates");
-
+            var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates");
+            var filename = AssetsUtility.ReplaceInvalidFileNameCharacters($"{template.Id}_{template.Name}.xml", '_');
+            var path = Path.Combine(root, filename);
+            AssetsUtility.CreateDirectory(root);
             Serialization.SaveXml(path, template);
             AssetDatabase.Refresh();
+            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
         }
 
         /// <summary>
