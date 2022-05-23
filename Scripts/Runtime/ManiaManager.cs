@@ -98,5 +98,11 @@ namespace MPewsey.ManiaMap.Unity
             return Layout.Rooms.TryGetValue(CurrentRoom, out Room room)
                 && room.Collectables.ContainsKey(locationId);
         }
+
+        public bool AcquireCollectable(Uid locationId)
+        {
+            return LayoutState.RoomStates.TryGetValue(CurrentRoom, out RoomState state)
+                && state.CollectedLocations.Add(locationId);
+        }
     }
 }

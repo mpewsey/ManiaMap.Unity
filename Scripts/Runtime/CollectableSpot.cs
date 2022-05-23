@@ -8,6 +8,9 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class CollectableSpot : MonoBehaviour
     {
+        [System.Serializable]
+        public class CollectableSpotEvent : UnityEvent<CollectableSpot> { }
+
         [SerializeField]
         private int _id;
         /// <summary>
@@ -30,33 +33,43 @@ namespace MPewsey.ManiaMap.Unity
         public CollectableGroup Group { get => _group; set => _group = value; }
 
         [SerializeField]
-        private UnityEvent _onSpotExists = new UnityEvent();
+        private CollectableSpotEvent _onAcquisition = new CollectableSpotEvent();
         /// <summary>
-        /// The event triggered when a collectable spot exists at this location.
+        /// The event triggered when the collectable spot is acquired.
+        /// The collectable spot is passed to the event.
         /// </summary>
-        public UnityEvent OnSpotExists { get => _onSpotExists; set => _onSpotExists = value; }
+        public CollectableSpotEvent OnAcquisition { get => _onAcquisition; set => _onAcquisition = value; }
 
         [SerializeField]
-        private UnityEvent _onNoSpotExists = new UnityEvent();
+        private CollectableSpotEvent _onSpotExists = new CollectableSpotEvent();
+        /// <summary>
+        /// The event triggered when a collectable spot exists at this location.
+        /// The collectable spot is passed to the event.
+        /// </summary>
+        public CollectableSpotEvent OnSpotExists { get => _onSpotExists; set => _onSpotExists = value; }
+
+        [SerializeField]
+        private CollectableSpotEvent _onNoSpotExists = new CollectableSpotEvent();
         /// <summary>
         /// The event triggered when a collectable spot does not exist at this location.
+        /// The collectable spot is passed to the event.
         /// </summary>
-        public UnityEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
+        public CollectableSpotEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
 
         /// <summary>
         /// The collectable ID.
         /// </summary>
-        public int CollectableId { get; set; } = int.MinValue;
+        public int CollectableId => ManiaManager.Current.GetCollectableId(LocationId);
 
         /// <summary>
         /// True if the collectable is acquired.
         /// </summary>
-        public bool IsAcquired { get; set; } = true;
+        public bool IsAcquired => ManiaManager.Current.CollectableAcquired(LocationId);
 
         /// <summary>
         /// True if the collectable spot exists.
         /// </summary>
-        public bool Exists { get; set; }
+        public bool Exists => ManiaManager.Current.CollectableExists(LocationId);
 
         /// <summary>
         /// The location ID, consisting of the cell index and unique ID.
@@ -73,15 +86,57 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Init()
         {
-            var manager = ManiaManager.Current;
-            CollectableId = manager.GetCollectableId(LocationId);
-            IsAcquired = manager.CollectableAcquired(LocationId);
-            Exists = manager.CollectableExists(LocationId);
-
             if (Exists)
-                OnSpotExists.Invoke();
+                OnSpotExists.Invoke(this);
             else
-                OnNoSpotExists.Invoke();
+                OnNoSpotExists.Invoke(this);
+        }
+
+        /// <summary>
+        /// Acquires the collectable if it has not already been acquired.
+        /// Triggers the On Acquisition event if the collectable has not already been acquired.
+        /// Returns true if the collectable is acquired.
+        /// </summary>
+        public bool Acquire()
+        {
+            if (Exists && ManiaManager.Current.AcquireCollectable(LocationId))
+            {
+                OnAcquisition.Invoke(this);
+                return true;
+            }
+
+            return false;
+        }
+
+        public void AssignClosestCell()
+        {
+            var cell = FindClosestCell();
+
+            if (cell != null)
+                Cell = cell;
+        }
+
+        public Cell FindClosestCell()
+        {
+            Cell closest = null;
+            var minDistance = float.PositiveInfinity;
+
+            foreach (var cell in FindObjectsOfType<Cell>())
+            {
+                if (cell.IsEmpty)
+                    continue;
+
+                var delta = cell.transform.position - transform.position;
+                var distance = delta.sqrMagnitude;
+
+                if (distance < minDistance)
+                {
+                    closest = cell;
+                    minDistance = distance;
+                }
+            }
+
+            return closest;
         }
     }
 }

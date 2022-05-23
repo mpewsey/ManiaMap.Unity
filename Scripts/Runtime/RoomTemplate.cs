@@ -111,8 +111,6 @@ namespace MPewsey.ManiaMap.Unity
                 obj.transform.SetParent(transform);
                 CellContainer = obj.transform;
             }
-
-            CellContainer.gameObject.hideFlags = HideFlags.NotEditable;
         }
 
         /// <summary>
@@ -151,7 +149,6 @@ namespace MPewsey.ManiaMap.Unity
         private void CreateRow(int row)
         {
             var container = CellContainer.GetChild(row);
-            container.gameObject.hideFlags = HideFlags.NotEditable;
             container.name = $"<Row {row}>";
 
             // Destroy extra cells.
@@ -166,7 +163,6 @@ namespace MPewsey.ManiaMap.Unity
             {
                 var obj = new GameObject("<New Cell>");
                 obj.transform.SetParent(container);
-                obj.transform.hideFlags = HideFlags.NotEditable;
                 obj.AddComponent<Cell>();
             }
 
