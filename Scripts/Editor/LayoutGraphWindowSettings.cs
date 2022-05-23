@@ -56,6 +56,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
         [Header("Plot Area")]
 
         [SerializeField]
+        private float _scrollSpeed = 10;
+        /// <summary>
+        /// The scroll speed when using the arrow keys.
+        /// </summary>
+        public float ScrollSpeed { get => _scrollSpeed; set => _scrollSpeed = value; }
+
+        [SerializeField]
         private Vector2 _nodeSize = new Vector2(150, 30);
         /// <summary>
         /// The size of the plotted node elements.
@@ -130,6 +137,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 return CreateInstance<LayoutGraphWindowSettings>();
 
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
+
+            if (guids.Length > 1)
+                Debug.LogWarning($"Multiple Layout Graph Window Settings exist in the project. Using {path}.");
+
             return AssetDatabase.LoadAssetAtPath<LayoutGraphWindowSettings>(path);
         }
 

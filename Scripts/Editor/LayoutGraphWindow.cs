@@ -46,6 +46,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private bool ShowEdges { get; set; } = true;
 
         /// <summary>
+        /// If true, displays the inspector.
+        /// </summary>
+        private bool ShowInspector { get; set; } = true;
+
+        /// <summary>
         /// True if the user has multiselected elements.
         /// </summary>
         private bool Multiselecting { get; set; }
@@ -235,6 +240,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (GUILayout.Button("View", EditorStyles.toolbarDropDown))
             {
                 var menu = new GenericMenu();
+                menu.AddItem(new GUIContent("Toggle Inspector Display"), ShowInspector, ToggleShowInspector);
                 menu.AddItem(new GUIContent("Toggle Edge Display"), ShowEdges, ToggleShowEdges);
                 menu.DropDown(new Rect(40, 5, 0, 16));
             }
@@ -267,6 +273,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
+        /// Toggles whether the inspector is shown.
+        /// </summary>
+        private void ToggleShowInspector()
+        {
+            ShowInspector = !ShowInspector;
+        }
+
+        /// <summary>
         /// Toggles whether edges are shown.
         /// </summary>
         private void ToggleShowEdges()
@@ -279,17 +293,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawInspector()
         {
-            GUILayout.BeginArea(new Rect(position.width - Settings.InspectorWidth, Settings.MenuHeight, Settings.InspectorWidth, position.height - Settings.MenuHeight), GUI.skin.box);
-            InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
-            DrawGraphInspector();
-            DrawNodeInspector();
-            DrawEdgeInspector();
-            EditorGUILayout.Space();
-            LayoutGraphEditor.DrawNodeTemplateGroupWarningBox(GetLayoutGraph());
-            LayoutGraphEditor.DrawEdgeTemplateGroupWarningBox(GetLayoutGraph());
-            DrawInspectorAreaButton();
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
+            if (ShowInspector)
+            {
+                GUILayout.BeginArea(new Rect(position.width - GetInspectorWidth(), Settings.MenuHeight, GetInspectorWidth(), position.height - Settings.MenuHeight), GUI.skin.box);
+                InspectorScrollPosition = GUILayout.BeginScrollView(InspectorScrollPosition);
+                DrawGraphInspector();
+                DrawNodeInspector();
+                DrawEdgeInspector();
+                EditorGUILayout.Space();
+                LayoutGraphEditor.DrawNodeTemplateGroupWarningBox(GetLayoutGraph());
+                LayoutGraphEditor.DrawEdgeTemplateGroupWarningBox(GetLayoutGraph());
+                DrawInspectorAreaButton();
+                GUILayout.EndScrollView();
+                GUILayout.EndArea();
+            }
         }
 
         /// <summary>
@@ -388,10 +405,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawInspectorAreaButton()
         {
-            if (GUI.Button(new Rect(0, 0, Settings.InspectorWidth, position.height - Settings.MenuHeight), "", GUI.skin.box))
+            if (GUI.Button(new Rect(0, 0, GetInspectorWidth(), position.height - Settings.MenuHeight), "", GUI.skin.box))
             {
                 GUI.FocusControl(null);
             }
+        }
+
+        /// <summary>
+        /// Returns the inspector width if it is visible. Otherwise, returns 0.
+        /// </summary>
+        private float GetInspectorWidth()
+        {
+            if (ShowInspector)
+                return Settings.InspectorWidth;
+            return 0;
         }
 
         /// <summary>
@@ -399,7 +426,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawPlot()
         {
-            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight));
+            GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - GetInspectorWidth(), position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
             PaginatePlot();
             SetNodePositions();
@@ -683,8 +710,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void HandlePlotAreaEvent()
         {
-            var size = new Vector2(position.width - Settings.InspectorWidth, position.height - Settings.MenuHeight);
-            var rect = new Rect(InspectorScrollPosition, size);
+            var size = new Vector2(position.width - GetInspectorWidth(), position.height - Settings.MenuHeight);
+            var rect = new Rect(PlotScrollPosition, size);
 
             if (rect.Contains(Event.current.mousePosition))
             {
@@ -780,6 +807,26 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         break;
                     case KeyCode.A when Event.current.control:
                         SelectAll();
+                        Event.current.Use();
+                        break;
+                    case KeyCode.RightArrow:
+                    case KeyCode.D:
+                        PlotScrollPosition += Vector2.right * Settings.ScrollSpeed;
+                        Event.current.Use();
+                        break;
+                    case KeyCode.LeftArrow:
+                    case KeyCode.A:
+                        PlotScrollPosition += Vector2.left * Settings.ScrollSpeed;
+                        Event.current.Use();
+                        break;
+                    case KeyCode.DownArrow:
+                    case KeyCode.S:
+                        PlotScrollPosition += Vector2.up * Settings.ScrollSpeed;
+                        Event.current.Use();
+                        break;
+                    case KeyCode.UpArrow:
+                    case KeyCode.W:
+                        PlotScrollPosition += Vector2.down * Settings.ScrollSpeed;
                         Event.current.Use();
                         break;
                 }
