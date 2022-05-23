@@ -79,24 +79,24 @@ namespace MPewsey.ManiaMap.Unity
                 Current = null;
         }
 
-        public int GetCollectableId(Vector2Int index)
+        public int GetCollectableId(Uid locationId)
         {
             if (Layout.Rooms.TryGetValue(CurrentRoom, out Room room)
-                && room.Collectables.TryGetValue(new Vector2DInt(index.x, index.y), out int id))
+                && room.Collectables.TryGetValue(locationId, out int id))
                 return id;
             return int.MinValue;
         }
 
-        public bool CollectableAcquired(Vector2Int index)
+        public bool CollectableAcquired(Uid locationId)
         {
             return LayoutState.RoomStates.TryGetValue(CurrentRoom, out RoomState state)
-                && state.CollectedIndexes.Contains(new Vector2DInt(index.x, index.y));
+                && state.CollectedLocations.Contains(locationId);
         }
 
-        public bool CollectableExists(Vector2Int index)
+        public bool CollectableExists(Uid locationId)
         {
             return Layout.Rooms.TryGetValue(CurrentRoom, out Room room)
-                && room.Collectables.ContainsKey(new Vector2DInt(index.x, index.y));
+                && room.Collectables.ContainsKey(locationId);
         }
     }
 }

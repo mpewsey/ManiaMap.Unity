@@ -137,7 +137,7 @@ namespace MPewsey.ManiaMap.Unity
 
             var cell = ManiaMap.Cell.New;
             SetCellDoors(cell);
-            SetCellCollectableSpot(cell);
+            AddCollectableGroups(cell);
             return cell;
         }
 
@@ -155,18 +155,15 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Sets the collectable spot to the generation cell.
+        /// Adds the collectable groups to the generation cell.
         /// </summary>
         /// <param name="cell">The generation cell.</param>
-        /// <exception cref="Exception">Raised if multiple collectable spots are assigned to the cell.</exception>
-        private void SetCellCollectableSpot(ManiaMap.Cell cell)
+        private void AddCollectableGroups(ManiaMap.Cell cell)
         {
-            var collectableSpots = FindCollectableSpots();
-
-            if (collectableSpots.Count > 1)
-                throw new Exception($"Multiple collectable spots assigned to cell: {Index}.");
-            if (collectableSpots.Count > 0)
-                cell.CollectableGroup = collectableSpots[0].Group.Name;
+            foreach (var spot in FindCollectableSpots())
+            {
+                cell.AddCollectableGroup(spot.Id, spot.Group.Name);
+            }
         }
 
         /// <summary>

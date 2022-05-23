@@ -9,6 +9,13 @@ namespace MPewsey.ManiaMap.Unity
     public class CollectableSpot : MonoBehaviour
     {
         [SerializeField]
+        private int _id;
+        /// <summary>
+        /// The unique location ID, relative to the cell.
+        /// </summary>
+        public int Id { get => _id; set => _id = value; }
+
+        [SerializeField]
         private Cell _cell;
         /// <summary>
         /// The cell in which the collectable is located.
@@ -51,6 +58,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool Exists { get; set; }
 
+        /// <summary>
+        /// The location ID, consisting of the cell index and unique ID.
+        /// </summary>
+        public Uid LocationId => new Uid(Cell.Index.x, Cell.Index.y, Id);
+
         private void Awake()
         {
             Init();
@@ -62,9 +74,9 @@ namespace MPewsey.ManiaMap.Unity
         private void Init()
         {
             var manager = ManiaManager.Current;
-            CollectableId = manager.GetCollectableId(Cell.Index);
-            IsAcquired = manager.CollectableAcquired(Cell.Index);
-            Exists = manager.CollectableExists(Cell.Index);
+            CollectableId = manager.GetCollectableId(LocationId);
+            IsAcquired = manager.CollectableAcquired(LocationId);
+            Exists = manager.CollectableExists(LocationId);
 
             if (Exists)
                 OnSpotExists.Invoke();
