@@ -720,18 +720,22 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     case EventType.MouseDown when Event.current.button == LeftMouseButton:
                         DeselectAll();
                         BeginDragSelect();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case EventType.MouseDown when Event.current.button == RightMouseButton:
                         ShowAreaContextMenu();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton && ActiveTool == Tool.DragSelect:
                         SelectDraggedElements();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
                         ActiveTool = Tool.None;
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                 }
@@ -748,14 +752,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
                     MultiselectEdge(edge);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
                     SelectEdge(edge);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
                     ShowAreaContextMenu();
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
             }
@@ -771,18 +778,22 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && Event.current.control:
                     MultiselectNode(node);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton && ActiveTool == Tool.AddEdge:
                     AddEdge(node);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == LeftMouseButton:
                     SelectNode(node);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
                 case EventType.MouseDown when Event.current.button == RightMouseButton:
                     ShowNodeContextMenu(node);
+                    GUI.FocusControl(null);
                     Event.current.Use();
                     break;
             }
@@ -799,34 +810,41 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 {
                     case KeyCode.Escape:
                         DeselectAll();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.Delete:
                         DeleteSelected();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.A when Event.current.control:
                         SelectAll();
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.RightArrow:
                     case KeyCode.D:
                         PlotScrollPosition += Vector2.right * Settings.ScrollSpeed;
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.LeftArrow:
                     case KeyCode.A:
                         PlotScrollPosition += Vector2.left * Settings.ScrollSpeed;
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.DownArrow:
                     case KeyCode.S:
                         PlotScrollPosition += Vector2.up * Settings.ScrollSpeed;
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.UpArrow:
                     case KeyCode.W:
                         PlotScrollPosition += Vector2.down * Settings.ScrollSpeed;
+                        GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                 }
