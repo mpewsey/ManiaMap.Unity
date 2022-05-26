@@ -55,28 +55,5 @@ namespace MPewsey.ManiaMap.Unity
         /// The collectable spot is passed to the event.
         /// </summary>
         public CollectableSpotEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
-
-        public Cell FindClosestCell()
-        {
-            Cell closest = null;
-            var minDistance = float.PositiveInfinity;
-
-            foreach (var cell in FindObjectsOfType<Cell>())
-            {
-                if (cell.IsEmpty)
-                    continue;
-
-                var delta = cell.transform.position - transform.position;
-                var distance = delta.sqrMagnitude;
-
-                if (distance < minDistance)
-                {
-                    closest = cell;
-                    minDistance = distance;
-                }
-            }
-
-            return closest;
-        }
     }
 }

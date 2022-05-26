@@ -208,5 +208,34 @@ namespace MPewsey.ManiaMap.Unity
                 }
             }
         }
+
+        public static Cell FindClosestCell(Transform transform)
+        {
+            Cell closest = null;
+            var minDistance = float.PositiveInfinity;
+            var room = transform.GetComponentInParent<Room>();
+
+            for (int i = 0; i < room.Size.x; i++)
+            {
+                for (int j = 0; j < room.Size.y; j++)
+                {
+                    var cell = room.GetCell(i, j);
+
+                    if (cell.IsEmpty)
+                        continue;
+
+                    var delta = cell.transform.position - transform.position;
+                    var distance = delta.sqrMagnitude;
+
+                    if (distance < minDistance)
+                    {
+                        closest = cell;
+                        minDistance = distance;
+                    }
+                }
+            }
+
+            return closest;
+        }
     }
 }
