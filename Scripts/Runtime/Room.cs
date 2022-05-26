@@ -4,9 +4,9 @@ using UnityEngine;
 namespace MPewsey.ManiaMap.Unity
 {
     /// <summary>
-    /// A component for creating a room template.
+    /// A component for creating a room.
     /// </summary>
-    public class RoomTemplate : MonoBehaviour
+    public class Room : MonoBehaviour
     {
         [SerializeField]
         private int _id;
@@ -48,7 +48,7 @@ namespace MPewsey.ManiaMap.Unity
         [SerializeField]
         private Vector2Int _size = Vector2Int.one;
         /// <summary>
-        /// The size of the room template grid.
+        /// The size of the room grid.
         /// </summary>
         public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
 
@@ -114,7 +114,7 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Creates and initializes the room template cells. This method will attempt
+        /// Creates and initializes the room cells. This method will attempt
         /// to reuse existing objects if it can. Extra cells are also destroyed.
         /// </summary>
         public void CreateCells()

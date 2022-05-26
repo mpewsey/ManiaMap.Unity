@@ -58,14 +58,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var builder = new StringBuilder(str);
             builder[index] = replacement;
 
-            for (int i = index + 1; i < str.Length; i++)
+            while (index + 1 < str.Length)
             {
-                index = str.IndexOfAny(characters, i);
+                index = str.IndexOfAny(characters, index + 1);
 
                 if (index < 0)
                     break;
 
-                i = index;
                 builder[index] = replacement;
             }
 

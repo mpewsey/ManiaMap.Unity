@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
-    [CustomEditor(typeof(RoomTemplate))]
-    public class RoomTemplateEditor : UnityEditor.Editor
+    [CustomEditor(typeof(Room))]
+    public class RoomEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -39,11 +39,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Creates or updates the room template cells.
+        /// Creates or updates the room cells.
         /// </summary>
         private void UpdateCells()
         {
-            var template = (RoomTemplate)serializedObject.targetObject;
+            var template = (Room)serializedObject.targetObject;
             template.CreateCells();
             Debug.Log("<color=#00FF00><b>Cells updated.</b></color>");
         }
@@ -54,7 +54,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SaveTemplate()
         {
-            var target = (RoomTemplate)serializedObject.targetObject;
+            var target = (Room)serializedObject.targetObject;
             var template = target.GetTemplate();
             var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates");
             var filename = AssetsUtility.ReplaceInvalidFileNameCharacters($"{template.Id}_{template.Name}.xml", '_');
@@ -66,13 +66,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Creates a Game Object with the room template component.
+        /// Creates a Game Object with the Room component.
         /// </summary>
-        [MenuItem("GameObject/Mania Map/Room Template")]
+        [MenuItem("GameObject/Mania Map/Room")]
         public static void CreateRoomTemplate()
         {
-            var obj = new GameObject("Room Template");
-            var template = obj.AddComponent<RoomTemplate>();
+            var obj = new GameObject("Room");
+            var template = obj.AddComponent<Room>();
             template.CreateCellContainer();
             obj.transform.SetParent(Selection.activeTransform);
         }

@@ -24,14 +24,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             if (GUILayout.Button("Assign Closest Cell"))
             {
-                AssignClosestCell();
-                Debug.Log($"<color=#00FF00><b>Assigned to cell: {GetCollectableSpot().Cell.name}.</b></color>");
+                var spot = GetCollectableSpot();
+                var cell = spot.FindClosestCell();
+                spot.Cell = cell;
+                var name = cell == null ? "None" : cell.name;
+                Debug.Log($"<color=#00FF00><b>Assigned to cell: {name}.</b></color>");
             }
         }
 
-        private void AssignClosestCell()
+        [MenuItem("GameObject/Mania Map/Collectable Spot")]
+        public static void CreateCollectableSpot()
         {
-            GetCollectableSpot().AssignClosestCell();
+            var obj = new GameObject("Collectable Spot");
+            obj.AddComponent<CollectableSpot>();
+            obj.transform.SetParent(Selection.activeTransform);
         }
     }
 }

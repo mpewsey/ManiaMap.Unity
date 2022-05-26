@@ -12,11 +12,11 @@ namespace MPewsey.ManiaMap.Unity
     {
         [SerializeField]
         [HideInInspector]
-        private RoomTemplate _template;
+        private Room _room;
         /// <summary>
         /// The parent room template.
         /// </summary>
-        public RoomTemplate Template { get => _template; set => _template = value; }
+        public Room Room { get => _room; set => _room = value; }
 
         [SerializeField]
         [HideInInspector]
@@ -38,10 +38,10 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="template">The parent room template.</param>
         /// <param name="index">The index position of the cell in the room template.</param>
-        public void Init(RoomTemplate template, Vector2Int index)
+        public void Init(Room template, Vector2Int index)
         {
             name = $"<Cell ({index.x}, {index.y})>";
-            Template = template;
+            Room = template;
             Index = index;
             transform.localPosition = template.Swizzle(Center());
         }
@@ -55,20 +55,20 @@ namespace MPewsey.ManiaMap.Unity
         {
             // Draw fill color.
             Gizmos.color = IsEmpty ? new Color(0, 0, 0, 0.25f) : new Color(0.5f, 0.5f, 0.5f, 0.25f);
-            Gizmos.DrawCube(transform.position, Template.Swizzle(Template.CellSize));
+            Gizmos.DrawCube(transform.position, Room.Swizzle(Room.CellSize));
 
             // Draw outline.
             Gizmos.color = Color.grey;
-            Gizmos.DrawWireCube(transform.position, Template.Swizzle(Template.CellSize));
+            Gizmos.DrawWireCube(transform.position, Room.Swizzle(Room.CellSize));
 
             // If empty, draw an X through the cell.
             if (IsEmpty)
             {
                 var origin = Origin();
-                var from1 = Template.Swizzle(origin);
-                var to1 = Template.Swizzle(origin + Template.CellSize);
-                var from2 = Template.Swizzle(origin + new Vector2(Template.CellSize.x, 0));
-                var to2 = Template.Swizzle(origin + new Vector2(0, Template.CellSize.y));
+                var from1 = Room.Swizzle(origin);
+                var to1 = Room.Swizzle(origin + Room.CellSize);
+                var from2 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, 0));
+                var to2 = Room.Swizzle(origin + new Vector2(0, Room.CellSize.y));
                 Gizmos.color = Color.grey;
                 Gizmos.DrawLine(from1, to1);
                 Gizmos.DrawLine(from2, to2);
@@ -80,7 +80,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2 Origin()
         {
-            return Template.CellSize * new Vector2(Index.y, Template.Size.x - Index.x - 1);
+            return Room.CellSize * new Vector2(Index.y, Room.Size.x - Index.x - 1);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2 Center()
         {
-            return Origin() + 0.5f * Template.CellSize;
+            return Origin() + 0.5f * Room.CellSize;
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Bounds GetBounds()
         {
-            var size = Template.Swizzle(Template.CellSize);
+            var size = Room.Swizzle(Room.CellSize);
 
             if (size.x == 0)
                 size.x = float.PositiveInfinity;

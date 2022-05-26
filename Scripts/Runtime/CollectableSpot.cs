@@ -56,66 +56,6 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public CollectableSpotEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
 
-        /// <summary>
-        /// The collectable ID.
-        /// </summary>
-        public int CollectableId => ManiaManager.Current.GetCollectableId(LocationId);
-
-        /// <summary>
-        /// True if the collectable is acquired.
-        /// </summary>
-        public bool IsAcquired => ManiaManager.Current.CollectableAcquired(LocationId);
-
-        /// <summary>
-        /// True if the collectable spot exists.
-        /// </summary>
-        public bool Exists => ManiaManager.Current.CollectableExists(LocationId);
-
-        /// <summary>
-        /// The location ID, consisting of the cell index and unique ID.
-        /// </summary>
-        public Uid LocationId => new Uid(Cell.Index.x, Cell.Index.y, Id);
-
-        private void Awake()
-        {
-            Init();
-        }
-
-        /// <summary>
-        /// Initializes the collectable spot based on the current room.
-        /// </summary>
-        private void Init()
-        {
-            if (Exists)
-                OnSpotExists.Invoke(this);
-            else
-                OnNoSpotExists.Invoke(this);
-        }
-
-        /// <summary>
-        /// Acquires the collectable if it has not already been acquired.
-        /// Triggers the On Acquisition event if the collectable has not already been acquired.
-        /// Returns true if the collectable is acquired.
-        /// </summary>
-        public bool Acquire()
-        {
-            if (Exists && ManiaManager.Current.AcquireCollectable(LocationId))
-            {
-                OnAcquisition.Invoke(this);
-                return true;
-            }
-
-            return false;
-        }
-
-        public void AssignClosestCell()
-        {
-            var cell = FindClosestCell();
-
-            if (cell != null)
-                Cell = cell;
-        }
-
         public Cell FindClosestCell()
         {
             Cell closest = null;
