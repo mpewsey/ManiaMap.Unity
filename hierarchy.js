@@ -29,6 +29,7 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", null ],
       [ "MPewsey.ManiaMap.Unity.TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", null ]
     ] ],
+    [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ],
     [ "UnityEvent", null, [
       [ "MPewsey.ManiaMap.Unity.CollectableSpot.CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_1_1_collectable_spot_event.html", null ],
       [ "MPewsey.ManiaMap.Unity.Door.DoorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_1_1_door_event.html", null ],
