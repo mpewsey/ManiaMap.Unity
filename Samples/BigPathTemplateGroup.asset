@@ -13,4 +13,19 @@ MonoBehaviour:
   m_Name: BigPathTemplateGroup
   m_EditorClassIdentifier: 
   _name: Big Path Template Group
-  _templates: []
+  _templates:
+  - {fileID: 4900000, guid: 6e66510c5c40a844eb233d05cf76420e, type: 3}
+  - {fileID: 4900000, guid: fdce0e3868d1aa7498a0b404af9341c9, type: 3}
+  - {fileID: 4900000, guid: 579f3357372fb944fa1f7dcce9b96a39, type: 3}
+  - {fileID: 4900000, guid: 642c36a0d1bd8014fa6bc54d33bc26fd, type: 3}
+  - {fileID: 4900000, guid: e37cb2084990fd94d894e4298f852aed, type: 3}
+  - {fileID: 4900000, guid: d6cc25023aaec7e4889353c495dc3f48, type: 3}
+  - {fileID: 4900000, guid: a3e99b35f5ada004387887d42b401aff, type: 3}
+  - {fileID: 4900000, guid: 1196435e631dcc7468ced3053216d993, type: 3}
+  - {fileID: 4900000, guid: 1b74904da46e8d140ba98f30dee0de1d, type: 3}
+  - {fileID: 4900000, guid: 3d5b29d8893ff274fae3a9eeb5e417c5, type: 3}
+  - {fileID: 4900000, guid: 8a6f09048f4f77843b37ac742f4f6525, type: 3}
+  - {fileID: 4900000, guid: 68418f54bb6290a4f9618ecd33f45b62, type: 3}
+  - {fileID: 4900000, guid: 8086ed8440e08254fa028f90a98f5f18, type: 3}
+  - {fileID: 4900000, guid: 7339cbe577f7dee48b18a98f14aed678, type: 3}
+  - {fileID: 4900000, guid: 9c022822e383afc4ba135282e2120958, type: 3}
