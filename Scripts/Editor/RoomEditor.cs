@@ -98,6 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Creates a Game Object with the Room component.
         /// </summary>
         [MenuItem("GameObject/Mania Map/Room", priority = 20)]
+        [MenuItem("Mania Map/Create Room", priority = 100)]
         public static void CreateRoomTemplate()
         {
             var obj = new GameObject("Room");
@@ -110,7 +111,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Searches the project for all prefabs with Room components and saves
         /// room templates for the rooms to the project.
         /// </summary>
-        [MenuItem("Mania Map/Batch Save Room Templates")]
+        [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
         public static void SaveAllTemplates()
         {
             var guids = AssetDatabase.FindAssets("t:prefab");

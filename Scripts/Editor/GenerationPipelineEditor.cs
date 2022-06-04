@@ -61,6 +61,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         [MenuItem("GameObject/Mania Map/Generation Pipeline", priority = 20)]
+        [MenuItem("Mania Map/Create Generation Pipeline", priority = 100)]
         public static void CreatePipeline()
         {
             var obj = new GameObject("Generation Pipeline");
