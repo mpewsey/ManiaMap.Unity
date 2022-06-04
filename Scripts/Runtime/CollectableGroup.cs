@@ -28,15 +28,21 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<Collectable> _collectables = new List<Collectable>();
+        private List<CollectableEntry> _collectables = new List<CollectableEntry>();
         /// <summary>
         /// A list of collectables.
         /// </summary>
-        public List<Collectable> Collectables { get => _collectables; set => _collectables = value; }
+        public List<CollectableEntry> Collectables { get => _collectables; set => _collectables = value; }
 
         public IEnumerable<int> GetCollectableIds()
         {
-            return Collectables.Select(x => x.Id);
+            foreach (var entry in Collectables)
+            {
+                for (int i = 0; i < entry.Quantity; i++)
+                {
+                    yield return entry.Collectable.Id;
+                }
+            }
         }
     }
 }
