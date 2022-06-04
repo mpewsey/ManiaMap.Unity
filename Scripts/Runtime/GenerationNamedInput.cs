@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
 {
-    public class GenerationNamedInput<T> : GenerationInput
+    public abstract class GenerationNamedInput<T> : GenerationInput
     {
         [SerializeField]
         protected string _name = "<None>";

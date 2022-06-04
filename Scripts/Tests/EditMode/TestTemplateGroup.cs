@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Tests
@@ -29,7 +30,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             }
 
             File.Delete(path);
-            var copies = templateGroup.LoadTemplates();
+            var copies = templateGroup.LoadTemplates().ToList();
 
             for (int i = 0; i < templates.Count; i++)
             {

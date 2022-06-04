@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -17,10 +15,20 @@ namespace MPewsey.ManiaMap.Unity
         [SerializeField]
         private int _initialNeighborWeight = 1000;
         public int InitialNeighborWeight { get => _initialNeighborWeight; set => _initialNeighborWeight = value; }
-        
+
         public override IGenerationStep GetStep()
         {
             return new ManiaMap.CollectableGenerator(DoorPower, NeighborPower, InitialNeighborWeight);
+        }
+
+        public override string[] InputNames()
+        {
+            return new string[] { "Layout", "CollectableGroups", "RandomSeed" };
+        }
+
+        public override string[] OutputNames()
+        {
+            return System.Array.Empty<string>();
         }
     }
 }

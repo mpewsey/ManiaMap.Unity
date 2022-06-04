@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MPewsey.ManiaMap.Unity
 {
     public class LayoutGraphRandomizer : GenerationStep
@@ -9,6 +5,16 @@ namespace MPewsey.ManiaMap.Unity
         public override IGenerationStep GetStep()
         {
             return new ManiaMap.LayoutGraphRandomizer();
+        }
+
+        public override string[] InputNames()
+        {
+            return new string[] { "LayoutGraph", "RandomSeed" };
+        }
+
+        public override string[] OutputNames()
+        {
+            return new string[] { "LayoutGraph" };
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -28,6 +26,16 @@ namespace MPewsey.ManiaMap.Unity
         public override IGenerationStep GetStep()
         {
             return new ManiaMap.LayoutGenerator(MaxRebases, RebaseDecayRate, MaxBranchLength);
+        }
+
+        public override string[] InputNames()
+        {
+            return new string[] { "LayoutId", "LayoutGraph", "TemplateGroups", "RandomSeed" };
+        }
+
+        public override string[] OutputNames()
+        {
+            return new string[] { "Layout" };
         }
     }
 }
