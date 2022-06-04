@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -32,5 +33,10 @@ namespace MPewsey.ManiaMap.Unity
         /// A list of collectables.
         /// </summary>
         public List<Collectable> Collectables { get => _collectables; set => _collectables = value; }
+
+        public IEnumerable<int> GetCollectableIds()
+        {
+            return Collectables.Select(x => x.Id);
+        }
     }
 }
