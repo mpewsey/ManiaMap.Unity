@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoomTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/MPewsey.ManiaMap">
+	<Id>953596193</Id>
+	<Name>LTemplate_MirroredHorizontally_Rotated180</Name>
+	<Cells>
+		<Rows>4</Rows>
+		<Columns>3</Columns>
+		<Array>
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>North</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>West</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Top</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Bottom</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+				</Doors>
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>South</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>North</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>East</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Top</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Bottom</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+				</Doors>
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell i:nil="true" />
+			<Cell i:nil="true" />
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell i:nil="true" />
+			<Cell i:nil="true" />
+			<Cell>
+				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>South</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>East</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>West</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Top</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+					<d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+						<d5p1:Key>Bottom</d5p1:Key>
+						<d5p1:Value>
+							<Type>TwoWay</Type>
+							<Code>0</Code>
+						</d5p1:Value>
+					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+				</Doors>
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</Cell>
+			<Cell i:nil="true" />
+			<Cell i:nil="true" />
+		</Array>
+	</Cells>
+</RoomTemplate>

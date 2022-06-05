@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107d86a69bd129469101849ad2d02e1, type: 3}
+  m_Name: BigRoomTemplateGroup
+  m_EditorClassIdentifier: 
+  _name: Big Room Template Group
+  _templates:
+  - {fileID: 4900000, guid: 0ac4841f99ebbc44f82177b3830e8515, type: 3}
+  - {fileID: 4900000, guid: c40d63558cb8e4640823b614222032c6, type: 3}
+  - {fileID: 4900000, guid: 3767886b240ed154b8da2cdbce4f6e29, type: 3}
+  - {fileID: 4900000, guid: 08cb92cbb146fb64e853544b29a1efe9, type: 3}
+  - {fileID: 4900000, guid: 798f832c13313fb438adbb6601260107, type: 3}
+  - {fileID: 4900000, guid: 9914ae0a4a6660c4f80015a5e4e1ec00, type: 3}

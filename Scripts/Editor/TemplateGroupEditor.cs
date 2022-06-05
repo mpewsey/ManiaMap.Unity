@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 {
     public static class TemplateGroupEditor
     {
-        [MenuItem("Mania Map/Save Sample Templates")]
+        [MenuItem("Mania Map/Save Sample Templates", priority = 0)]
         public static void SaveTemplates()
         {
             var templates = new List<RoomTemplate>()

@@ -53,6 +53,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         [MenuItem("GameObject/Mania Map/Door", priority = 20)]
+        [MenuItem("Mania Map/Create Door", priority = 100)]
         public static void CreateDoor()
         {
             var obj = new GameObject("Door");

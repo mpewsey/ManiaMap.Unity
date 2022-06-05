@@ -60,6 +60,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         [MenuItem("GameObject/Mania Map/Collectable Spot", priority = 20)]
+        [MenuItem("Mania Map/Create Collectable Spot", priority = 100)]
         public static void CreateCollectableSpot()
         {
             var obj = new GameObject("Collectable Spot");

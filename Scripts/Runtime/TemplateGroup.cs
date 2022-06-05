@@ -24,19 +24,32 @@ namespace MPewsey.ManiaMap.Unity
         public List<TextAsset> Templates { get => _templates; set => _templates = value; }
 
         /// <summary>
-        /// Loads the room templates in the group and returns a list.
+        /// Returns an enumerable of loaded room templates in the group.
         /// </summary>
-        public List<RoomTemplate> LoadTemplates()
+        public IEnumerable<RoomTemplate> LoadTemplates()
         {
-            var templates = new List<RoomTemplate>(Templates.Count);
-
             foreach (var asset in Templates)
             {
-                var template = Serialization.LoadXml<RoomTemplate>(asset.bytes);
-                templates.Add(template);
+                yield return Serialization.LoadXml<RoomTemplate>(asset.bytes);
             }
+        }
 
-            return templates;
+        /// <summary>
+        /// Returns an enumerable of loaded room templates in the group.
+        /// </summary>
+        /// <param name="pool">A dictionary of loaded templates that are queried first.</param>
+        public IEnumerable<RoomTemplate> LoadTemplates(Dictionary<TextAsset, RoomTemplate> pool)
+        {
+            foreach (var asset in Templates)
+            {
+                if (!pool.TryGetValue(asset, out RoomTemplate template))
+                {
+                    template = Serialization.LoadXml<RoomTemplate>(asset.bytes);
+                    pool.Add(asset, template);
+                }
+
+                yield return template;
+            }
         }
     }
 }
