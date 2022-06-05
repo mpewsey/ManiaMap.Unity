@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -21,14 +22,21 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Object.DestroyImmediate(Container);
         }
 
-        [Test]
-        public void TestBigLayoutGenerator()
+        private GenerationPipeline LoadBigLayoutGenerator()
         {
-            var prefab = Resources.Load<GameObject>("ManiaMap/BigLayoutGenerator");
+            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/BigLayoutGenerator.prefab";
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             Assert.IsNotNull(prefab);
             var obj = Object.Instantiate(prefab, Container.transform);
             var generator = obj.GetComponent<GenerationPipeline>();
             Assert.IsNotNull(generator);
+            return generator;
+        }
+
+        [Test]
+        public void TestBigLayoutGenerator()
+        {
+            var generator = LoadBigLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -38,11 +46,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [UnityTest]
         public IEnumerator TestBigLayoutGeneratorAsync()
         {
-            var prefab = Resources.Load<GameObject>("ManiaMap/BigLayoutGenerator");
-            Assert.IsNotNull(prefab);
-            var obj = Object.Instantiate(prefab, Container.transform);
-            var generator = obj.GetComponent<GenerationPipeline>();
-            Assert.IsNotNull(generator);
+            var generator = LoadBigLayoutGenerator();
             Random.InitState(12345);
             var task = generator.GenerateAsync();
             yield return new WaitUntil(() => task.IsCompleted);
@@ -56,11 +60,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [UnityTest]
         public IEnumerator TestSeededBigLayoutGeneratorAsync()
         {
-            var prefab = Resources.Load<GameObject>("ManiaMap/BigLayoutGenerator");
-            Assert.IsNotNull(prefab);
-            var obj = Object.Instantiate(prefab, Container.transform);
-            var generator = obj.GetComponent<GenerationPipeline>();
-            Assert.IsNotNull(generator);
+            var generator = LoadBigLayoutGenerator();
             var task = generator.GenerateAsync(12345);
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
