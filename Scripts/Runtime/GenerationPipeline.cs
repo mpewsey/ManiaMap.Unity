@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -24,6 +25,21 @@ namespace MPewsey.ManiaMap.Unity
             var pipeline = GetPipeline();
             var inputs = GetInputs(seed);
             return pipeline.Generate(inputs);
+        }
+
+        public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync()
+        {
+            var seed = Random.Range(1, int.MaxValue);
+            var pipeline = GetPipeline();
+            var inputs = GetInputs(seed);
+            return Task.Run(() => pipeline.Generate(inputs));
+        }
+
+        public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync(int seed)
+        {
+            var pipeline = GetPipeline();
+            var inputs = GetInputs(seed);
+            return Task.Run(() => pipeline.Generate(inputs));
         }
 
         public GenerationStep[] GetGenerationSteps()
