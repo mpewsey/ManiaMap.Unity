@@ -154,14 +154,15 @@ $(document).ready(function(){initNavTree('_door_editor_8cs_source.html',''); ini
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        [MenuItem(<span class="stringliteral">&quot;GameObject/Mania Map/Door&quot;</span>, priority = 20)]</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CreateDoor()</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            var obj = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;Door&quot;</span>);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            obj.AddComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html">Door</a>&gt;();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            obj.transform.SetParent(Selection.activeTransform);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        [MenuItem(<span class="stringliteral">&quot;Mania Map/Create Door&quot;</span>, priority = 100)]</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CreateDoor()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            var obj = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;Door&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            obj.AddComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html">Door</a>&gt;();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            obj.transform.SetParent(Selection.activeTransform);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html">MPewsey.ManiaMap.Unity.Cell</a></div><div class="ttdoc">A component representing a RoomTemplate cell.</div><div class="ttdef"><b>Definition:</b> <a href="_cell_8cs_source.html#l00011">Cell.cs:12</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html">MPewsey.ManiaMap.Unity.Door</a></div><div class="ttdoc">A component representing a door.</div><div class="ttdef"><b>Definition:</b> <a href="_door_8cs_source.html#l00009">Door.cs:10</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html">MPewsey.ManiaMap.Unity.Editor.DoorEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_door_editor_8cs_source.html#l00008">DoorEditor.cs:9</a></div></div>
