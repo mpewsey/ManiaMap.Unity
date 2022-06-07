@@ -3,6 +3,11 @@ var annotated_dup =
     [ "MPewsey", "namespace_m_pewsey.html", [
       [ "ManiaMap", "namespace_m_pewsey_1_1_mania_map.html", [
         [ "Unity", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html", [
+          [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", [
+            [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
+            [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", null ],
+            [ "Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding" ]
+          ] ],
           [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html", [
             [ "CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", null ],
             [ "DoorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html", null ],

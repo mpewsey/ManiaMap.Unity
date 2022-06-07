@@ -20,10 +20,14 @@ var hierarchy =
     [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< int >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", [
       [ "MPewsey.ManiaMap.Unity.GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", null ]
     ] ],
+    [ "IEquatable", null, [
+      [ "MPewsey.ManiaMap.Unity.Drawing.Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", null ]
+    ] ],
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", null ],
       [ "MPewsey.ManiaMap.Unity.Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Drawing.LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", null ],
       [ "MPewsey.ManiaMap.Unity.GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", [
         [ "MPewsey.ManiaMap.Unity.CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", null ],
@@ -43,6 +47,7 @@ var hierarchy =
     [ "ScriptableObject", null, [
       [ "MPewsey.ManiaMap.Unity.Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Drawing.MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", null ],
