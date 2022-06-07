@@ -53,6 +53,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assert.IsTrue(task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);
             var results = task.Result;
+            Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
         }
@@ -66,6 +67,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assert.IsTrue(task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);
             var results = task.Result;
+            Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
         }
