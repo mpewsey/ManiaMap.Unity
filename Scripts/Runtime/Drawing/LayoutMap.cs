@@ -212,9 +212,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 for (int j = 0; j < TileSize.x; j++)
                 {
-                    var x = i + point.x;
-                    var y = j + point.y;
-                    var index = x * texture.width + y;
+                    var x = j + point.x;
+                    var y = i + point.y;
+                    var index = y * texture.width + x;
                     pixels[index] = CompositeColors(color, pixels[index]);
                 }
             }
@@ -232,9 +232,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 for (int j = 0; j < tileTexture.width; j++)
                 {
-                    var x = i + point.x;
-                    var y = j + point.y;
-                    var index = x * texture.width + y;
+                    var x = j + point.x;
+                    var y = i + point.y;
+                    var index = y * texture.width + x;
                     var color = tile[i * tileTexture.width + j];
                     pixels[index] = CompositeColors(color, pixels[index]);
                 }
