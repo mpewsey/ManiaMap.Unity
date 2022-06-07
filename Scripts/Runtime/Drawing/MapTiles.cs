@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public class MapTiles : ScriptableObject
     {
         [SerializeField]
-        private Texture2D _grid;
-        public Texture2D Grid { get => _grid; set => _grid = value; }
+        private Vector2Int _tileSize = new Vector2Int(16, 16);
+        public Vector2Int TileSize { get => _tileSize; set => _tileSize = value; }
 
         [Header("Walls")]
 
@@ -53,6 +53,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         [SerializeField]
         private Texture2D _bottomDoor;
         public Texture2D BottomDoor { get => _bottomDoor; set => _bottomDoor = value; }
+
+        [Header("Grid")]
+
+        [SerializeField]
+        private Texture2D _grid;
+        public Texture2D Grid { get => _grid; set => _grid = value; }
 
         public Texture2D GetTile(MapTileType tileType)
         {

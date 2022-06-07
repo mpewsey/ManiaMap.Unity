@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+
 using NUnit.Framework;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
 {
@@ -43,9 +41,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutMap = LoadLayoutMap();
-            layoutMap.Init(layout);
             Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/BigLayoutMap.png");
+            layoutMap.SaveImages("Tests/BigLayoutMap.png", layout);
         }
     }
 }
