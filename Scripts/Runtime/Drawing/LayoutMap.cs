@@ -252,7 +252,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 var roomState = LayoutState?.RoomStates[room.Id];
                 var cells = room.Template.Cells;
                 var x0 = (room.Position.Y - LayoutBounds.X + Padding.Left) * TileSize.x;
-                var y0 = (room.Position.X - LayoutBounds.Y + Padding.Top) * TileSize.y;
+                var y0 = (LayoutBounds.Height + Padding.Bottom - room.Position.X + LayoutBounds.Y - 1) * TileSize.y;
                 var color = ConvertColor(room.Color);
 
                 for (int i = 0; i < cells.Rows; i++)
@@ -271,8 +271,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                             continue;
 
                         // Calculate draw position
-                        var x = TileSize.x * j + x0;
-                        var y = TileSize.y * i + y0;
+                        var x = x0 + TileSize.x * j;
+                        var y = y0 - TileSize.y * i;
                         var point = new Vector2Int(x, y);
 
                         // Get adjacent cells
