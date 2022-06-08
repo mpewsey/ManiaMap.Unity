@@ -44,14 +44,6 @@ namespace MPewsey.ManiaMap.Unity
         public CollectableGroup Group { get => _group; set => _group = value; }
 
         [SerializeField]
-        private CollectableSpotEvent _onAcquisition = new CollectableSpotEvent();
-        /// <summary>
-        /// The event triggered when the collectable spot is acquired.
-        /// The collectable spot is passed to the event.
-        /// </summary>
-        public CollectableSpotEvent OnAcquisition { get => _onAcquisition; set => _onAcquisition = value; }
-
-        [SerializeField]
         private CollectableSpotEvent _onSpotExists = new CollectableSpotEvent();
         /// <summary>
         /// The event triggered when a collectable spot exists at this location.
@@ -82,39 +74,55 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsAcquired { get; private set; } = true;
 
-        private void Awake()
-        {
-            Cell.Room.OnRoomInit.AddListener(OnRoomInit);
-        }
-
         private void OnValidate()
         {
             AutoAssignId();
         }
 
-        private void OnDestroy()
-        {
-            Cell.Room.OnRoomInit.RemoveListener(OnRoomInit);
-        }
-
         /// <summary>
         /// Initializes the collectable spot based on the layout and layout state.
         /// </summary>
-        /// <param name="room">The parent room.</param>
-        private void OnRoomInit(Room room)
+        public void OnRoomInit()
         {
             var manager = ManiaManager.Current;
-            var roomData = manager.Layout.Rooms[room.RoomId];
-            var state = manager.LayoutState.RoomStates[room.RoomId];
+
+            if (!manager.RoomIsValid(Cell))
+            {
+                IsAcquired = true;
+                Exists = false;
+                CollectableId = int.MinValue;
+                OnNoSpotExists.Invoke(this);
+                return;
+            }
+
+            var roomId = Cell.Room.RoomId;
+            var room = manager.Layout.Rooms[roomId];
+            var state = manager.LayoutState.RoomStates[roomId];
 
             IsAcquired = state.AcquiredCollectables.Contains(Id);
-            Exists = roomData.Collectables.TryGetValue(Id, out int collectableId);
+            Exists = room.Collectables.TryGetValue(Id, out int collectableId);
             CollectableId = Exists ? collectableId : int.MinValue;
 
             if (Exists)
                 OnSpotExists.Invoke(this);
             else
                 OnNoSpotExists.Invoke(this);
+        }
+
+        public bool Acquire()
+        {
+            var manager = ManiaManager.Current;
+            
+            if (!IsAcquired && Exists && manager.RoomIsValid(Cell))
+            {
+                IsAcquired = true;
+                var roomId = Cell.Room.RoomId;
+                var state = manager.LayoutState.RoomStates[roomId];
+                state.AcquiredCollectables.Add(Id);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

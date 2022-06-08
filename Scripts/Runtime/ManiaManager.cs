@@ -81,17 +81,6 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Initializes the manager based on a layout.
-        /// </summary>
-        /// <param name="layout">The layout.</param>
-        public void Init(Layout layout)
-        {
-            Layout = layout;
-            LayoutState = new LayoutState(layout);
-            RoomAdjacencies = layout.RoomAdjacencies();
-        }
-
-        /// <summary>
         /// Initializes the manager based on a layout and layout state.
         /// </summary>
         /// <param name="layout">The layout.</param>
@@ -101,6 +90,21 @@ namespace MPewsey.ManiaMap.Unity
             Layout = layout;
             LayoutState = state;
             RoomAdjacencies = layout.RoomAdjacencies();
+        }
+
+        public bool RoomIsValid(Cell cell)
+        {
+            return cell != null
+                && RoomIsValid(cell.Room);
+        }
+
+        public bool RoomIsValid(Room room)
+        {
+            return room != null
+                && Layout != null
+                && LayoutState != null
+                && Layout.Rooms.ContainsKey(room.RoomId)
+                && LayoutState.RoomStates.ContainsKey(room.RoomId);
         }
     }
 }

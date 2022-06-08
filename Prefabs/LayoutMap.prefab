@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapTiles: {fileID: 11400000, guid: 2a7488c9f2fbc7f4fbc16d2cf79e293b, type: 2}
-  _tileSize: {x: 16, y: 16}
   _backgroundColor:
     serializedVersion: 2
     rgba: 4278190080

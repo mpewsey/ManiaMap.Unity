@@ -69,7 +69,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// Destroys any existing textures and clears the map layers dictionary.
         /// </summary>
-        private void ReleaseTextures()
+        public void ReleaseTextures()
         {
             foreach (var map in MapLayers.Values)
             {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,11 +9,6 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class Room : MonoBehaviour
     {
-        /// <summary>
-        /// An event that passes a Room argument.
-        /// </summary>
-        public class RoomEvent : UnityEvent<Room> { }
-
         [SerializeField]
         private int _id;
         /// <summary>
@@ -58,16 +54,25 @@ namespace MPewsey.ManiaMap.Unity
         public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
 
         [SerializeField]
-        private RoomEvent _onRoomInit = new RoomEvent();
+        [HideInInspector]
+        private List<Door> _doors = new List<Door>();
         /// <summary>
-        /// Event invoked when the room is initialized.
+        /// A list of doors that are children to the room.
         /// </summary>
-        public RoomEvent OnRoomInit { get => _onRoomInit; set => _onRoomInit = value; }
+        public List<Door> Doors { get => _doors; set => _doors = value; }
+
+        [SerializeField]
+        [HideInInspector]
+        private List<CollectableSpot> _collectableSpots = new List<CollectableSpot>();
+        /// <summary>
+        /// A list of collectable spots that are children to the room.
+        /// </summary>
+        public List<CollectableSpot> CollectableSpots { get => _collectableSpots; set => _collectableSpots = value; }
 
         /// <summary>
         /// The room ID.
         /// </summary>
-        public Uid RoomId { get; private set; }
+        public Uid RoomId { get; private set; } = new Uid(-1, -1, -1);
 
         private void OnValidate()
         {
@@ -83,7 +88,18 @@ namespace MPewsey.ManiaMap.Unity
         public void Init(Uid roomId)
         {
             RoomId = roomId;
-            OnRoomInit.Invoke(this);
+            
+            foreach (var door in Doors)
+            {
+                if (door != null)
+                    door.OnRoomInit();
+            }
+
+            foreach (var spot in CollectableSpots)
+            {
+                if (spot != null)
+                    spot.OnRoomInit();
+            }
         }
 
         /// <summary>
@@ -93,17 +109,17 @@ namespace MPewsey.ManiaMap.Unity
         {
             AutoAssignId();
             CreateCells();
+            Doors = new List<Door>(GetComponentsInChildren<Door>());
+            CollectableSpots = new List<CollectableSpot>(GetComponentsInChildren<CollectableSpot>());
 
-            // Auto assign collectable spots.
-            foreach (var spot in GetComponentsInChildren<CollectableSpot>())
-            {
-                spot.AutoAssign();
-            }
-
-            // Auto assign doors.
-            foreach (var door in GetComponentsInChildren<Door>())
+            foreach (var door in Doors)
             {
                 door.AutoAssign();
+            }
+
+            foreach (var spot in CollectableSpots)
+            {
+                spot.AutoAssign();
             }
         }
 
