@@ -73,11 +73,6 @@ namespace MPewsey.ManiaMap.Unity
         public Color32 Color { get => _color; set => _color = value; }
 
         /// <summary>
-        /// The room ID.
-        /// </summary>
-        public Uid RoomId => new Uid(FromNode, ToNode, 1);
-
-        /// <summary>
         /// Creates a new edge.
         /// </summary>
         /// <param name="fromNode">The from node ID.</param>

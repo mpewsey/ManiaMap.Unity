@@ -52,11 +52,6 @@ namespace MPewsey.ManiaMap.Unity
         public Vector2 Position { get => _position; set => _position = Vector2.Max(value, Vector2.zero); }
 
         /// <summary>
-        /// The room ID.
-        /// </summary>
-        public Uid RoomId => new Uid(Id);
-
-        /// <summary>
         /// Creates a new node.
         /// </summary>
         /// <param name="id">The unique ID.</param>
