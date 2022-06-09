@@ -72,7 +72,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             layoutId.Name = "LayoutId";
             layoutId.Value = Random.Range(1, int.MaxValue);
             inputs.AddComponent<LayoutGraphsInput>();
-            inputs.AddComponent<TemplateGroupsInput>();
             inputs.AddComponent<CollectableGroupsInput>();
             inputs.transform.SetParent(Selection.activeTransform);
             inputs.transform.SetParent(obj.transform);

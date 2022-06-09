@@ -24,7 +24,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
         private GenerationPipeline LoadBigLayoutGenerator()
         {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/BigLayoutGenerator.prefab";
+            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/BigLayout/BigLayoutGenerator.prefab";
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             Assert.IsNotNull(prefab);
             var obj = Object.Instantiate(prefab, Container.transform);

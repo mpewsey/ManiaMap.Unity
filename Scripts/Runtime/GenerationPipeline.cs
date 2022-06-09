@@ -30,9 +30,7 @@ namespace MPewsey.ManiaMap.Unity
         public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync()
         {
             var seed = Random.Range(1, int.MaxValue);
-            var pipeline = GetPipeline();
-            var inputs = GetInputs(seed);
-            return Task.Run(() => pipeline.Generate(inputs));
+            return GenerateAsync(seed);
         }
 
         public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync(int seed)
