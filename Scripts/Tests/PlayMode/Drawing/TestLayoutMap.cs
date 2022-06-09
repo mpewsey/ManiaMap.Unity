@@ -1,4 +1,3 @@
-
 using NUnit.Framework;
 using System.IO;
 using UnityEditor;
@@ -22,6 +21,22 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Object.DestroyImmediate(Container);
         }
 
+        private GenerationPipeline LoadGenerationPipeline(string path)
+        {
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            Assert.IsNotNull(prefab);
+            var obj = Object.Instantiate(prefab, Container.transform);
+            var generator = obj.GetComponent<GenerationPipeline>();
+            Assert.IsNotNull(generator);
+            return generator;
+        }
+
+        private GenerationPipeline LoadBigLayoutGenerator()
+        {
+            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/BigLayoutGenerator.prefab";
+            return LoadGenerationPipeline(path);
+        }
+
         private LayoutMap LoadLayoutMap()
         {
             var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/LayoutMap.prefab";
@@ -34,15 +49,29 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         }
 
         [Test]
-        public void TestSaveImages()
+        public void TestSaveBigLayoutImages()
         {
-            var results = Samples.BigLayoutSample.Generate(12345);
+            var pipeline = LoadBigLayoutGenerator();
+            var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutMap = LoadLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/BigLayoutMap.png", layout);
+        }
+
+        [Test]
+        public void TestCreateBigLayoutImages()
+        {
+            var pipeline = LoadBigLayoutGenerator();
+            var results = pipeline.Generate(12345);
+            Assert.IsTrue(results.Success);
+            var layout = (Layout)results.Outputs["Layout"];
+            Assert.IsNotNull(layout);
+            var layoutMap = LoadLayoutMap();
+            var images = layoutMap.CreateImages(layout);
+            Assert.AreEqual(1, images.Count);
         }
     }
 }

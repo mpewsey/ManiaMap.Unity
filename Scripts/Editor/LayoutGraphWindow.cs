@@ -43,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// If true, displays the edge elements.
         /// </summary>
-        private bool ShowEdges { get; set; } = true;
+        private bool ShowEdges { get; set; }
 
         /// <summary>
         /// If true, displays the inspector.
@@ -735,6 +735,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         break;
                     case EventType.MouseUp when Event.current.button == LeftMouseButton:
                         ActiveTool = Tool.None;
+                        Multiselecting = false;
                         GUI.FocusControl(null);
                         Event.current.Use();
                         break;

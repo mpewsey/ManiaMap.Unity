@@ -328,7 +328,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4285536537
-  _position: {x: 632, y: 249}
+  _position: {x: 674, y: 256}
 --- !u!114 &8938497128140566846
 MonoBehaviour:
   m_ObjectHideFlags: 0

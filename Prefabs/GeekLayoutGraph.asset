@@ -18,7 +18,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 291, y: 275}
 --- !u!114 &-5539531943343789445
 MonoBehaviour:
@@ -38,7 +38,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 218, y: 364}
 --- !u!114 &-4944520880735077245
 MonoBehaviour:
@@ -61,7 +61,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-4507780045031114605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-3877079046100591384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-3837275464147838223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 53, y: 46}
 --- !u!114 &-3001299264220238600
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-2309228401037944357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-2141556559655724881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &-1389535965337958170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 208, y: 538}
 --- !u!114 &-769974077553588446
 MonoBehaviour:
@@ -233,7 +233,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 147, y: 440}
 --- !u!114 &1045902089942021378
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 556, y: 489}
 --- !u!114 &1399308593494917619
 MonoBehaviour:
@@ -335,7 +335,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 708, y: 260}
 --- !u!114 &1440723941026940004
 MonoBehaviour:
@@ -355,7 +355,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 818, y: 603}
 --- !u!114 &1457764133269965054
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &3325997243113204690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 457, y: 436}
 --- !u!114 &4196406729354763319
 MonoBehaviour:
@@ -420,7 +420,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &4198337360375220741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 247, y: 141}
 --- !u!114 &5229039623736488406
 MonoBehaviour:
@@ -462,7 +462,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &5532504118935441663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &5550846892625763190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &5560865420944602168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 539, y: 330}
 --- !u!114 &7597420215314414895
 MonoBehaviour:
@@ -548,7 +548,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &8139645086917410206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 673, y: 548}
 --- !u!114 &8416319649412739501
 MonoBehaviour:
@@ -590,7 +590,7 @@ MonoBehaviour:
   _roomChance: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
 --- !u!114 &8780174448912247861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,5 +609,5 @@ MonoBehaviour:
   _z: 0
   _color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4285536537
   _position: {x: 861, y: 506}
