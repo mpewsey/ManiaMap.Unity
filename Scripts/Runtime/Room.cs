@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -88,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity
         public void Init(Uid roomId)
         {
             RoomId = roomId;
-            
+
             foreach (var door in Doors)
             {
                 if (door != null)

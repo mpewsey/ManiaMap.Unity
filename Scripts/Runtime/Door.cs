@@ -89,7 +89,7 @@ namespace MPewsey.ManiaMap.Unity
         public void OnRoomInit()
         {
             var manager = ManiaManager.Current;
-            
+
             if (!manager.RoomIsValid(Cell))
             {
                 Connection = null;
@@ -97,7 +97,7 @@ namespace MPewsey.ManiaMap.Unity
                 OnNoDoorExists.Invoke(this);
                 return;
             }
-            
+
             Connection = FindDoorConnection();
             Exists = Connection != null;
 

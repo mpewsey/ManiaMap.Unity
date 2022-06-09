@@ -112,7 +112,7 @@ namespace MPewsey.ManiaMap.Unity
         public bool Acquire()
         {
             var manager = ManiaManager.Current;
-            
+
             if (!IsAcquired && Exists && manager.RoomIsValid(Cell))
             {
                 IsAcquired = true;
