@@ -60,6 +60,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         }
 
         [Test]
+        public void TestSaveBigLayoutJpegImages()
+        {
+            var pipeline = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            var results = pipeline.Generate(12345);
+            Assert.IsTrue(results.Success);
+            var layout = (Layout)results.Outputs["Layout"];
+            Assert.IsNotNull(layout);
+            var layoutMap = LoadLayoutMap();
+            Directory.CreateDirectory("Tests");
+            layoutMap.SaveImages("Tests/BigLayoutMap.jpg", layout);
+        }
+
+        [Test]
         public void TestSaveCrossLayoutImages()
         {
             var pipeline = TestAssets.LoadCrossLayoutGenerator(Container.transform);
