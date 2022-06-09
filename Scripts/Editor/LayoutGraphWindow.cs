@@ -811,16 +811,19 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 {
                     case KeyCode.Escape:
                         DeselectAll();
+                        Multiselecting = false;
                         GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.Delete:
                         DeleteSelected();
+                        Multiselecting = false;
                         GUI.FocusControl(null);
                         Event.current.Use();
                         break;
                     case KeyCode.A when Event.current.control:
                         SelectAll();
+                        Multiselecting = false;
                         GUI.FocusControl(null);
                         Event.current.Use();
                         break;
