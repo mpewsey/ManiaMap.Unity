@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
 using System.IO;
 using UnityEditor;
@@ -21,46 +22,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Object.DestroyImmediate(Container);
         }
 
-        private GenerationPipeline LoadGenerationPipeline(string path)
-        {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-            Assert.IsNotNull(prefab);
-            var obj = Object.Instantiate(prefab, Container.transform);
-            var generator = obj.GetComponent<GenerationPipeline>();
-            Assert.IsNotNull(generator);
-            return generator;
-        }
-
-        private GenerationPipeline LoadBigLayoutGenerator()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/BigLayout/BigLayoutGenerator.prefab";
-            return LoadGenerationPipeline(path);
-        }
-
-        private GenerationPipeline LoadCrossLayoutGenerator()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/CrossLayout/CrossLayoutGenerator.prefab";
-            return LoadGenerationPipeline(path);
-        }
-
-        private GenerationPipeline LoadGeekLayoutGenerator()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/GeekLayout/GeekLayoutGenerator.prefab";
-            return LoadGenerationPipeline(path);
-        }
-
-        private GenerationPipeline LoadLoopLayoutGenerator()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/LoopLayout/LoopLayoutGenerator.prefab";
-            return LoadGenerationPipeline(path);
-        }
-
-        private GenerationPipeline LoadStackedLoopLayoutGenerator()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/StackedLoopLayout/StackedLoopLayoutGenerator.prefab";
-            return LoadGenerationPipeline(path);
-        }
-
         private LayoutMap LoadLayoutMap()
         {
             var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/LayoutMap.prefab";
@@ -75,7 +36,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestCreateBigLayoutImages()
         {
-            var pipeline = LoadBigLayoutGenerator();
+            var pipeline = TestAssets.LoadBigLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
@@ -88,7 +49,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveBigLayoutImages()
         {
-            var pipeline = LoadBigLayoutGenerator();
+            var pipeline = TestAssets.LoadBigLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
@@ -101,7 +62,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveCrossLayoutImages()
         {
-            var pipeline = LoadCrossLayoutGenerator();
+            var pipeline = TestAssets.LoadCrossLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
@@ -114,7 +75,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveGeekLayoutImages()
         {
-            var pipeline = LoadGeekLayoutGenerator();
+            var pipeline = TestAssets.LoadGeekLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
@@ -127,7 +88,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveLoopLayoutImages()
         {
-            var pipeline = LoadLoopLayoutGenerator();
+            var pipeline = TestAssets.LoadLoopLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
@@ -140,7 +101,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveStackedLoopLayoutImages()
         {
-            var pipeline = LoadStackedLoopLayoutGenerator();
+            var pipeline = TestAssets.LoadStackedLoopLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
