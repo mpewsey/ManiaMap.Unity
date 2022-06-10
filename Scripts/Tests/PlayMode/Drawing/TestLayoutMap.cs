@@ -1,7 +1,6 @@
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests

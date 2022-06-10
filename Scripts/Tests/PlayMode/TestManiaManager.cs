@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -10,13 +9,13 @@ namespace MPewsey.ManiaMap.Unity.Tests
     public class TestManiaManager
     {
         private GameObject Container { get; set; }
-        
+
         [SetUp]
         public void SetUp()
         {
             Container = new GameObject("TestManiaManager");
         }
-        
+
         [TearDown]
         public void TearDown()
         {
@@ -24,7 +23,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var managers = Object.FindObjectsOfType<ManiaManager>().ToList();
             managers.ForEach(x => Object.DestroyImmediate(x));
         }
-        
+
         [Test]
         public void TestFindExistingSingleton()
         {

@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMap.Unity.Tests
 {
     public class TestRoom
     {
         private GameObject Container { get; set; }
-        
+
         [SetUp]
         public void SetUp()
         {
@@ -54,7 +51,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var seed = new RandomSeed(12345);
             var room = TestAssets.LoadAngle3x4Room(Container.transform);
             var template = room.GetTemplate();
-            
+
             // Create fake layout.
             var layout = new Layout(1, "Test", seed);
             var node = new ManiaMap.LayoutNode(1);
