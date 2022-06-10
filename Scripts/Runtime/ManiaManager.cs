@@ -43,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// A dictionary of room adjacencies based on the layout.
         /// </summary>
-        public Dictionary<Uid, List<Uid>> RoomAdjacencies { get; private set; }
+        private Dictionary<Uid, List<Uid>> RoomAdjacencies { get; set; }
 
         /// <summary>
         /// Returns the first manager component in the scene. If a manager does
@@ -51,7 +51,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private static ManiaManager FindManager()
         {
-            return GameObject.FindObjectOfType<ManiaManager>();
+            return FindObjectOfType<ManiaManager>();
         }
 
         /// <summary>
@@ -92,19 +92,11 @@ namespace MPewsey.ManiaMap.Unity
             RoomAdjacencies = layout.RoomAdjacencies();
         }
 
-        public bool RoomIsValid(Cell cell)
+        public IEnumerable<Uid> GetAdjacentRooms(Uid id)
         {
-            return cell != null
-                && RoomIsValid(cell.Room);
-        }
-
-        public bool RoomIsValid(Room room)
-        {
-            return room != null
-                && Layout != null
-                && LayoutState != null
-                && Layout.Rooms.ContainsKey(room.RoomId)
-                && LayoutState.RoomStates.ContainsKey(room.RoomId);
+            if (RoomAdjacencies.TryGetValue(id, out List<Uid> rooms))
+                return rooms;
+            return System.Array.Empty<Uid>();
         }
     }
 }

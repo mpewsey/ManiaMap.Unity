@@ -373,10 +373,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTiles.GetTile(GetDoorTileType(direction));
 
-            var wallType = GetWallTileType(direction);
-
-            if (wallType != MapTileType.None && neighbor == null)
-                return MapTiles.GetTile(wallType);
+            if (neighbor == null)
+                return MapTiles.GetTile(GetWallTileType(direction));
 
             return null;
         }

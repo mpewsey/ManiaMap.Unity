@@ -74,6 +74,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsAcquired { get; private set; } = true;
 
+        /// <summary>
+        /// Returns the room ID.
+        /// </summary>
+        public Uid RoomId { get => Cell.Room.RoomId; }
+
         private void OnValidate()
         {
             AutoAssignId();
@@ -85,19 +90,8 @@ namespace MPewsey.ManiaMap.Unity
         public void OnRoomInit()
         {
             var manager = ManiaManager.Current;
-
-            if (!manager.RoomIsValid(Cell))
-            {
-                IsAcquired = true;
-                Exists = false;
-                CollectableId = int.MinValue;
-                OnNoSpotExists.Invoke(this);
-                return;
-            }
-
-            var roomId = Cell.Room.RoomId;
-            var room = manager.Layout.Rooms[roomId];
-            var state = manager.LayoutState.RoomStates[roomId];
+            var room = manager.Layout.Rooms[RoomId];
+            var state = manager.LayoutState.RoomStates[RoomId];
 
             IsAcquired = state.AcquiredCollectables.Contains(Id);
             Exists = room.Collectables.TryGetValue(Id, out int collectableId);
@@ -113,12 +107,11 @@ namespace MPewsey.ManiaMap.Unity
         {
             var manager = ManiaManager.Current;
 
-            if (!IsAcquired && Exists && manager.RoomIsValid(Cell))
+            if (!IsAcquired && Exists)
             {
-                IsAcquired = true;
-                var roomId = Cell.Room.RoomId;
-                var state = manager.LayoutState.RoomStates[roomId];
+                var state = manager.LayoutState.RoomStates[RoomId];
                 state.AcquiredCollectables.Add(Id);
+                IsAcquired = true;
                 return true;
             }
 

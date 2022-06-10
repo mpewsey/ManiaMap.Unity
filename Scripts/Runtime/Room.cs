@@ -110,16 +110,8 @@ namespace MPewsey.ManiaMap.Unity
             CreateCells();
             Doors = new List<Door>(GetComponentsInChildren<Door>());
             CollectableSpots = new List<CollectableSpot>(GetComponentsInChildren<CollectableSpot>());
-
-            foreach (var door in Doors)
-            {
-                door.AutoAssign();
-            }
-
-            foreach (var spot in CollectableSpots)
-            {
-                spot.AutoAssign();
-            }
+            Doors.ForEach(x => x.AutoAssign());
+            CollectableSpots.ForEach(x => x.AutoAssign());
         }
 
         /// <summary>

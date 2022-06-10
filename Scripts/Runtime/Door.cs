@@ -83,21 +83,16 @@ namespace MPewsey.ManiaMap.Unity
         public DoorConnection Connection { get; private set; }
 
         /// <summary>
+        /// The room ID.
+        /// </summary>
+        public Uid RoomId { get => Cell.Room.RoomId; }
+
+        /// <summary>
         /// Initializes the door based on the layout and layout state.
         /// </summary>
         /// <param name="room">The parent room.</param>
         public void OnRoomInit()
         {
-            var manager = ManiaManager.Current;
-
-            if (!manager.RoomIsValid(Cell))
-            {
-                Connection = null;
-                Exists = false;
-                OnNoDoorExists.Invoke(this);
-                return;
-            }
-
             Connection = FindDoorConnection();
             Exists = Connection != null;
 
@@ -111,23 +106,16 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the door connection in the layout associated with the door.
         /// Returns null if the door connection does not exist in the layout.
         /// </summary>
-        /// <param name="room">The parent room.</param>
         private DoorConnection FindDoorConnection()
         {
             var manager = ManiaManager.Current;
-
-            if (!manager.RoomIsValid(Cell))
-                return null;
-
-            var roomId = Cell.Room.RoomId;
-            var neighbors = manager.RoomAdjacencies[roomId];
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-            foreach (var neighbor in neighbors)
+            foreach (var neighbor in manager.GetAdjacentRooms(RoomId))
             {
-                var connection = manager.Layout.GetDoorConnection(roomId, neighbor);
+                var connection = manager.Layout.GetDoorConnection(RoomId, neighbor);
 
-                if (connection.ContainsDoor(roomId, position, Direction))
+                if (connection.ContainsDoor(RoomId, position, Direction))
                 {
                     return connection;
                 }
