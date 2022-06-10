@@ -47,10 +47,22 @@ MonoBehaviour:
   _autoAssignCell: 1
   _id: 0
   _cell: {fileID: 0}
-  _group: {fileID: 0}
+  _group: {fileID: 11400000, guid: 23184fe9755460d42a66e96f5cc86e39, type: 2}
   _onSpotExists:
     m_PersistentCalls:
       m_Calls: []
   _onNoSpotExists:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6486645759811280013}
+        m_TargetAssemblyTypeName: MPewsey.ManiaMap.Unity.CollectableSpot, MPewsey.ManiaMap.Unity
+        m_MethodName: DestroyTarget
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 910383129152956582}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

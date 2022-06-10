@@ -20,6 +20,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TearDown()
         {
             Object.DestroyImmediate(Container);
+            Object.DestroyImmediate(ManiaManager.Current);
         }
 
         [Test]
@@ -37,6 +38,31 @@ namespace MPewsey.ManiaMap.Unity.Tests
             room.CreateCells();
             Assert.AreEqual(room.Size.x, room.CellContainer.childCount);
             Assert.AreEqual(room.Size.y, room.CellContainer.GetChild(0).childCount);
+        }
+
+        [Test]
+        public void TestGetTemplate()
+        {
+            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var template = room.GetTemplate();
+            Assert.IsNotNull(template);
+        }
+
+        [Test]
+        public void TestInit()
+        {
+            var seed = new RandomSeed(12345);
+            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var template = room.GetTemplate();
+            
+            // Create fake layout.
+            var layout = new Layout(1, "Test", seed);
+            var node = new ManiaMap.LayoutNode(1);
+            var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            layout.Rooms.Add(roomData.Id, roomData);
+
+            ManiaManager.Current.Init(layout, new LayoutState(layout));
+            room.Init(roomData.Id);
         }
     }
 }

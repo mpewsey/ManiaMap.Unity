@@ -88,9 +88,9 @@ namespace MPewsey.ManiaMap.Unity
         public Uid RoomId { get => Cell.Room.RoomId; }
 
         /// <summary>
-        /// Initializes the door based on the layout and layout state.
+        /// Initializes the door based on the layout and layout state
+        /// assigned to the current manager.
         /// </summary>
-        /// <param name="room">The parent room.</param>
         public void OnRoomInit()
         {
             Connection = FindDoorConnection();

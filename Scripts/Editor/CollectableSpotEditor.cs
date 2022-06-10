@@ -11,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             serializedObject.Update();
 
-            if (!MultipleTargetsSelected())
+            if (!MultipleTargetsSelected() && !TargetIsPrefabAsset())
             {
                 DrawAutoAssignButton();
             }
@@ -20,6 +20,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
             DrawCellErrorBox();
             DrawCollectableGroupErrorBox();
             serializedObject.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// Returns true if the target object is an unopened prefab being inspected.
+        /// </summary>
+        private bool TargetIsPrefabAsset()
+        {
+            return GetCollectableSpot().gameObject.scene.name == null;
         }
 
         private bool MultipleTargetsSelected()

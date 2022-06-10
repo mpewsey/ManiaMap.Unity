@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Geek Template Group
   _templates:
-  - {fileID: 4900000, guid: 94385fc294af7574ebb4650499b96096, type: 3}
+  - {fileID: 4900000, guid: 7b1e83d2442d6d64aa3f518b45f0a765, type: 3}

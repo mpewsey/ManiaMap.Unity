@@ -80,7 +80,8 @@ namespace MPewsey.ManiaMap.Unity
         public Uid RoomId { get => Cell.Room.RoomId; }
 
         /// <summary>
-        /// Initializes the collectable spot based on the layout and layout state.
+        /// Initializes the collectable spot based on the layout and layout state
+        /// assigned to the current manager.
         /// </summary>
         public void OnRoomInit()
         {
@@ -98,12 +99,16 @@ namespace MPewsey.ManiaMap.Unity
                 OnNoSpotExists.Invoke(this);
         }
 
+        /// <summary>
+        /// If the collectable spot exists and has not already been acquired,
+        /// adds it to the current layout state's acquired collectables
+        /// and marks it as acquired. Returns true if this action is performed.
+        /// </summary>
         public bool Acquire()
         {
-            var manager = ManiaManager.Current;
-
             if (!IsAcquired && Exists)
             {
+                var manager = ManiaManager.Current;
                 var state = manager.LayoutState.RoomStates[RoomId];
                 state.AcquiredCollectables.Add(Id);
                 IsAcquired = true;
@@ -139,6 +144,15 @@ namespace MPewsey.ManiaMap.Unity
         public void AssignClosestCell()
         {
             Cell = Cell.FindClosestCell(transform);
+        }
+
+        /// <summary>
+        /// Destroys the target GameObject.
+        /// </summary>
+        /// <param name="obj">The GameObject.</param>
+        public void DestroyTarget(GameObject obj)
+        {
+            Destroy(obj);
         }
     }
 }

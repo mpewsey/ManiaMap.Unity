@@ -22,17 +22,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Object.DestroyImmediate(Container);
         }
 
-        private LayoutMap LoadLayoutMap()
-        {
-            var path = "Packages/com.mpewsey.maniamap.unity/Prefabs/LayoutMap.prefab";
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-            Assert.IsNotNull(prefab);
-            var obj = Object.Instantiate(prefab, Container.transform);
-            var layoutMap = obj.GetComponent<LayoutMap>();
-            Assert.IsNotNull(layoutMap);
-            return layoutMap;
-        }
-
         [Test]
         public void TestCreateBigLayoutImages()
         {
@@ -41,7 +30,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             var images = layoutMap.CreateImages(layout);
             Assert.AreEqual(1, images.Count);
         }
@@ -54,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/BigLayoutMap.png", layout);
         }
@@ -67,7 +56,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/BigLayoutMap.jpg", layout);
         }
@@ -80,7 +69,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/CrossLayoutMap.png", layout);
         }
@@ -93,7 +82,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/GeekLayoutMap.png", layout);
         }
@@ -106,7 +95,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/LoopLayoutMap.png", layout);
         }
@@ -119,7 +108,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = LoadLayoutMap();
+            var layoutMap = TestAssets.LoadLayoutMap(Container.transform);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/StackedLoopLayoutMap.png", layout);
         }
