@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Exceptions;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
@@ -98,6 +99,40 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
+        }
+
+        [Test]
+        public void TestIsValid()
+        {
+            var generator1 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            Assert.IsTrue(generator1.IsValid());
+
+            var generator2 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            var groups = generator2.GetComponentInChildren<CollectableGroupsInput>();
+            Assert.IsNotNull(groups);
+            Object.DestroyImmediate(groups);
+            Assert.IsFalse(generator2.IsValid());
+
+            var generator3 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            generator3.InputsContainer.AddComponent<CollectableGroupsInput>();
+            Assert.IsFalse(generator3.IsValid());
+        }
+
+        [Test]
+        public void TestValidate()
+        {
+            var generator1 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            generator1.Validate();
+
+            var generator2 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            var groups = generator2.GetComponentInChildren<CollectableGroupsInput>();
+            Assert.IsNotNull(groups);
+            Object.DestroyImmediate(groups);
+            Assert.Throws<MissingInputException>(generator2.Validate);
+
+            var generator3 = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            generator3.InputsContainer.AddComponent<CollectableGroupsInput>();
+            Assert.Throws<DuplicateInputException>(generator3.Validate);
         }
     }
 }
