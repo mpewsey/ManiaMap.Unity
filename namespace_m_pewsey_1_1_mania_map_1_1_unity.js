@@ -2,6 +2,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
 [
     [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing" ],
     [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor" ],
+    [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions" ],
     [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
     [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],
     [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
@@ -24,6 +25,5 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node" ],
     [ "ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager" ],
     [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
-    [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
-    [ "TemplateGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_groups_input.html", null ]
+    [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
 ];

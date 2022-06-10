@@ -1,6 +1,7 @@
 var dir_bd02518d4f499cf99d7b393e1af10b35 =
 [
     [ "Drawing", "dir_4a582f0a844f56abb6e6b9b2636bc4b3.html", "dir_4a582f0a844f56abb6e6b9b2636bc4b3" ],
+    [ "Exceptions", "dir_9e922acdfeb25ce1c48825c9c587bf72.html", "dir_9e922acdfeb25ce1c48825c9c587bf72" ],
     [ "__Docs__.cs", "_runtime_2_____docs_____8cs_source.html", null ],
     [ "Cell.cs", "_cell_8cs_source.html", null ],
     [ "Collectable.cs", "_collectable_8cs_source.html", null ],
@@ -24,6 +25,5 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "LayoutNode.cs", "_layout_node_8cs_source.html", null ],
     [ "ManiaManager.cs", "_mania_manager_8cs_source.html", null ],
     [ "Room.cs", "_room_8cs_source.html", null ],
-    [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ],
-    [ "TemplateGroupsInput.cs", "_template_groups_input_8cs_source.html", null ]
+    [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ]
 ];

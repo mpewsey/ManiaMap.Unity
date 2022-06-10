@@ -13,7 +13,6 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph =
     [ "GetNodeIndex", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a4950fe123a6e446cd974e87c840efc09", null ],
     [ "GetNodes", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a9e390ae01b535c4abf2c4c5641df781a", null ],
     [ "GetRect", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a6b3536f13852ef9c29e4f5de6121b1fc", null ],
-    [ "GetTemplateGroups", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a49f1a54674e55aa6ae4c9d89172a0236", null ],
     [ "Paginate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a86d0452841bf1d5fec0ee8d3b3a51f9b", null ],
     [ "RemoveEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a60a3b04a3cad2803c2ad116bd1d2e627", null ],
     [ "RemoveNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a4e0f071058d07c90b8cc02cc2f031ca0", null ],

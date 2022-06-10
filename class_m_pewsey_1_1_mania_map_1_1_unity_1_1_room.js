@@ -1,6 +1,5 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room =
 [
-    [ "RoomEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_1_1_room_event.html", null ],
     [ "Plane", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af5d70b74be4ab48c0a638af19dc40cac", [
       [ "XY", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af5d70b74be4ab48c0a638af19dc40caca74c53bcd3dcb2bb79993b2fec37d362a", null ],
       [ "XZ", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af5d70b74be4ab48c0a638af19dc40caca27db3b98d01e664c17a6620b222c6469", null ]
@@ -18,9 +17,10 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room =
     [ "CellContainer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a4dbc46d061b7be0685762f1dc243970f", null ],
     [ "CellPlane", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a9f8d8ae9e61d4aa611700f1ce73082cf", null ],
     [ "CellSize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad328a3c58e5ac97ef98b57f9cfca2ad7", null ],
+    [ "CollectableSpots", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#aae9b47a4dee5d531a7d18934d5851fe7", null ],
+    [ "Doors", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a18450cd16637142ff527612fb73bfb28", null ],
     [ "Id", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#afadca7b070b74f1a036fe718fb950e94", null ],
     [ "Name", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a5d19d696a6784da9778965d7ff15615f", null ],
-    [ "OnRoomInit", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a5e69e00a3e059cd2f8b0734bf9104c84", null ],
     [ "RoomId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#aff328985f676ae20be430fe3bf880fd3", null ],
     [ "Size", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a6e82d18ef48e78e5e813b753b32bf442", null ]
 ];

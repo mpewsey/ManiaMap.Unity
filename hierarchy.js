@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "MPewsey.ManiaMap.Unity.CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
     [ "UnityEditor.Editor", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.DoorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html", null ],
@@ -16,11 +15,19 @@ var hierarchy =
     [ "EditorWindow", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html", null ]
     ] ],
+    [ "Exception", null, [
+      [ "MPewsey.ManiaMap.Unity.Exceptions.DuplicateDirectionException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_direction_exception.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Exceptions.DuplicateInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_input_exception.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Exceptions.EmptyCellException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Exceptions.MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Exceptions.UnassignedCollectableGroupException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_unassigned_collectable_group_exception.html", null ]
+    ] ],
     [ "MPewsey.ManiaMap.Unity.Editor.FileUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html", null ],
     [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< int >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", [
       [ "MPewsey.ManiaMap.Unity.GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", null ]
     ] ],
     [ "IEquatable", null, [
+      [ "MPewsey.ManiaMap.Unity.CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", null ]
     ] ],
     [ "MonoBehaviour", null, [
@@ -31,8 +38,7 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", [
         [ "MPewsey.ManiaMap.Unity.CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", null ],
-        [ "MPewsey.ManiaMap.Unity.LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html", null ],
-        [ "MPewsey.ManiaMap.Unity.TemplateGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_groups_input.html", null ]
+        [ "MPewsey.ManiaMap.Unity.LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html", null ]
       ] ],
       [ "MPewsey.ManiaMap.Unity.GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", null ],
       [ "MPewsey.ManiaMap.Unity.GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html", [
@@ -57,7 +63,6 @@ var hierarchy =
     [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ],
     [ "UnityEvent", null, [
       [ "MPewsey.ManiaMap.Unity.CollectableSpot.CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_1_1_collectable_spot_event.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Door.DoorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_1_1_door_event.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Room.RoomEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_1_1_room_event.html", null ]
+      [ "MPewsey.ManiaMap.Unity.Door.DoorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_1_1_door_event.html", null ]
     ] ]
 ];
