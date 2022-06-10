@@ -82,23 +82,18 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public DoorConnection Connection { get; private set; }
 
-        private void Awake()
-        {
-            Cell.Room.OnRoomInit.AddListener(OnRoomInit);
-        }
-
-        private void OnDestroy()
-        {
-            Cell.Room.OnRoomInit.RemoveListener(OnRoomInit);
-        }
+        /// <summary>
+        /// The room ID.
+        /// </summary>
+        public Uid RoomId { get => Cell.Room.RoomId; }
 
         /// <summary>
-        /// Initializes the door based on the layout and layout state.
+        /// Initializes the door based on the layout and layout state
+        /// assigned to the current manager.
         /// </summary>
-        /// <param name="room">The parent room.</param>
-        private void OnRoomInit(Room room)
+        public void OnRoomInit()
         {
-            Connection = FindDoorConnection(room);
+            Connection = FindDoorConnection();
             Exists = Connection != null;
 
             if (Exists)
@@ -111,18 +106,16 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the door connection in the layout associated with the door.
         /// Returns null if the door connection does not exist in the layout.
         /// </summary>
-        /// <param name="room">The parent room.</param>
-        private DoorConnection FindDoorConnection(Room room)
+        private DoorConnection FindDoorConnection()
         {
             var manager = ManiaManager.Current;
-            var neighbors = manager.RoomAdjacencies[room.RoomId];
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-            foreach (var neighbor in neighbors)
+            foreach (var neighbor in manager.GetAdjacentRooms(RoomId))
             {
-                var connection = manager.Layout.GetDoorConnection(room.RoomId, neighbor);
+                var connection = manager.Layout.GetDoorConnection(RoomId, neighbor);
 
-                if (connection.ContainsDoor(room.RoomId, position, Direction))
+                if (connection.ContainsDoor(RoomId, position, Direction))
                 {
                     return connection;
                 }

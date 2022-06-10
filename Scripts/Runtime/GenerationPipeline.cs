@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace MPewsey.ManiaMap.Unity
 
         public ManiaMap.GenerationPipeline.Results Generate(int seed)
         {
+            Validate();
             var pipeline = GetPipeline();
             var inputs = GetInputs(seed);
             return pipeline.Generate(inputs);
@@ -30,13 +32,12 @@ namespace MPewsey.ManiaMap.Unity
         public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync()
         {
             var seed = Random.Range(1, int.MaxValue);
-            var pipeline = GetPipeline();
-            var inputs = GetInputs(seed);
-            return Task.Run(() => pipeline.Generate(inputs));
+            return GenerateAsync(seed);
         }
 
         public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync(int seed)
         {
+            Validate();
             var pipeline = GetPipeline();
             var inputs = GetInputs(seed);
             return Task.Run(() => pipeline.Generate(inputs));
@@ -79,6 +80,68 @@ namespace MPewsey.ManiaMap.Unity
             }
 
             return result;
+        }
+
+        public void Validate()
+        {
+            var arguments = new HashSet<string>() { "RandomSeed" };
+            var inputs = GetGenerationInputs();
+            var steps = GetGenerationSteps();
+
+            foreach (var input in inputs)
+            {
+                foreach (var name in input.OutputNames())
+                {
+                    if (!arguments.Add(name))
+                        throw new DuplicateInputException($"Duplicate input name: {name} <{input.GetType().Name}>.");
+                }
+            }
+
+            foreach (var step in steps)
+            {
+                foreach (var name in step.InputNames())
+                {
+                    if (!arguments.Contains(name))
+                        throw new MissingInputException($"Missing input name: {name} <{step.GetType().Name}>.");
+                }
+
+                foreach (var name in step.OutputNames())
+                {
+                    arguments.Add(name);
+                }
+            }
+        }
+
+        public bool IsValid()
+        {
+            var arguments = new HashSet<string>() { "RandomSeed" };
+            var inputs = GetGenerationInputs();
+            var steps = GetGenerationSteps();
+
+            foreach (var input in inputs)
+            {
+                foreach (var name in input.OutputNames())
+                {
+                    if (!arguments.Add(name))
+                        return false;
+                }
+            }
+
+            foreach (var step in steps)
+            {
+                foreach (var name in step.InputNames())
+                {
+                    if (!arguments.Contains(name))
+                        return false;
+                }
+
+                foreach (var name in step.OutputNames())
+                {
+                    arguments.Add(name);
+                }
+            }
+
+            return true;
         }
     }
 }

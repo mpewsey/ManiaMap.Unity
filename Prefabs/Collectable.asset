@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c107d86a69bd129469101849ad2d02e1, type: 3}
-  m_Name: CrossTemplateGroup
+  m_Script: {fileID: 11500000, guid: d9d10b1a4c97b984e88c5a03496ee98a, type: 3}
+  m_Name: Collectable
   m_EditorClassIdentifier: 
-  _name: Cross Template Group
-  _templates: []
+  _id: 2016096964

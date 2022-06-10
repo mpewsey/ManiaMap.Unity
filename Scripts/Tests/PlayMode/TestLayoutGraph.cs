@@ -59,5 +59,71 @@ namespace MPewsey.ManiaMap.Unity.Tests
             graph.RemoveEdge(2, 1);
             Assert.AreEqual(0, graph.GetEdges().Count);
         }
+
+        [Test]
+        public void TestGetRect()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var node1 = graph.AddNode(1);
+            var node2 = graph.AddNode(2);
+            node1.Position = new Vector2(10, 20);
+            node2.Position = new Vector2(20, 50);
+            var rect = graph.GetRect();
+            var expected = new Rect(10, 20, 10, 30);
+            Assert.AreEqual(expected, rect);
+        }
+
+        [Test]
+        public void TestPaginate()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            graph.AddNode(1);
+            graph.AddNode(2);
+            graph.AddNode(3);
+            graph.AddNode(4);
+            graph.Paginate(new Vector2(20, 10));
+        }
+
+        [Test]
+        public void TestGetEdgeIndex()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            graph.AddEdge(1, 2);
+            graph.AddEdge(2, 3);
+            graph.AddEdge(7, 8);
+            Assert.AreEqual(1, graph.GetEdgeIndex(2, 3));
+            Assert.AreEqual(-1, graph.GetEdgeIndex(4, 5));
+        }
+
+        [Test]
+        public void TestGetNodeIndex()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            graph.AddNode(1);
+            graph.AddNode(2);
+            graph.AddNode(3);
+            Assert.AreEqual(2, graph.GetNodeIndex(3));
+            Assert.AreEqual(-1, graph.GetNodeIndex(10));
+        }
+
+        [Test]
+        public void TestNodeCount()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            graph.AddNode(1);
+            graph.AddNode(2);
+            graph.AddNode(3);
+            Assert.AreEqual(3, graph.NodeCount);
+        }
+
+        [Test]
+        public void TestEdgeCount()
+        {
+            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            graph.AddEdge(1, 2);
+            graph.AddEdge(2, 3);
+            graph.AddEdge(3, 4);
+            Assert.AreEqual(3, graph.EdgeCount);
+        }
     }
 }

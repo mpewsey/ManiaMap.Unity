@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7857813210935542109}
   - component: {fileID: 2201287762363942290}
   - component: {fileID: 2116752562054146149}
-  - component: {fileID: 38434824358083410}
   - component: {fileID: 8690576374896087005}
   m_Layer: 0
   m_Name: <Inputs>
@@ -63,21 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layoutGraphs:
   - {fileID: 11400000, guid: 1d3acb60a310ef744a5c7f9443b57642, type: 2}
---- !u!114 &38434824358083410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4875147763663652296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1a63acca52e44240941de72ba98e96c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _templateGroups:
-  - {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
-  - {fileID: 11400000, guid: 4053aa7909e090a4c945fcfaa9feae6c, type: 2}
 --- !u!114 &8690576374896087005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad8e251b029a94795353da0d2e7db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collectableGroups: []
+  _collectableGroups:
+  - {fileID: 11400000, guid: 23184fe9755460d42a66e96f5cc86e39, type: 2}
 --- !u!1 &5997400350144511561
 GameObject:
   m_ObjectHideFlags: 0

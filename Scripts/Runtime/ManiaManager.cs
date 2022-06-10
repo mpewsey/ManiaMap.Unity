@@ -41,9 +41,14 @@ namespace MPewsey.ManiaMap.Unity
         public LayoutState LayoutState { get; private set; }
 
         /// <summary>
-        /// A dictionary of room adjacencies based on the layout.
+        /// A dictionary of adjacent rooms by room ID.
         /// </summary>
-        public Dictionary<Uid, List<Uid>> RoomAdjacencies { get; private set; }
+        private Dictionary<Uid, List<Uid>> RoomAdjacencies { get; set; } = new Dictionary<Uid, List<Uid>>();
+
+        /// <summary>
+        /// A dictionary of room clusters by room ID.
+        /// </summary>
+        private Dictionary<Uid, HashSet<Uid>> RoomClusters { get; set; } = new Dictionary<Uid, HashSet<Uid>>();
 
         /// <summary>
         /// Returns the first manager component in the scene. If a manager does
@@ -51,7 +56,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private static ManiaManager FindManager()
         {
-            return GameObject.FindObjectOfType<ManiaManager>();
+            return FindObjectOfType<ManiaManager>();
         }
 
         /// <summary>
@@ -81,26 +86,39 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Initializes the manager based on a layout.
-        /// </summary>
-        /// <param name="layout">The layout.</param>
-        public void Init(Layout layout)
-        {
-            Layout = layout;
-            LayoutState = new LayoutState(layout);
-            RoomAdjacencies = layout.RoomAdjacencies();
-        }
-
-        /// <summary>
         /// Initializes the manager based on a layout and layout state.
         /// </summary>
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
-        public void Init(Layout layout, LayoutState state)
+        /// <param name="maxClusterDepth">The maximum depth for calculating room clusters.</param>
+        public void Init(Layout layout, LayoutState state, int maxClusterDepth = 1)
         {
             Layout = layout;
             LayoutState = state;
             RoomAdjacencies = layout.RoomAdjacencies();
+            RoomClusters = layout.FindClusters(maxClusterDepth);
+        }
+
+        /// <summary>
+        /// Returns a list of adjacent room ID's.
+        /// </summary>
+        /// <param name="id">The room ID for which adjacent rooms will be returned.</param>
+        public IReadOnlyList<Uid> GetAdjacentRooms(Uid id)
+        {
+            if (RoomAdjacencies.TryGetValue(id, out List<Uid> rooms))
+                return rooms;
+            return System.Array.Empty<Uid>();
+        }
+
+        /// <summary>
+        /// Returns an enumerable of rooms belonging to the room cluster.
+        /// </summary>
+        /// <param name="id">The room ID for which the cluster will be returned.</param>
+        public IEnumerable<Uid> GetRoomCluster(Uid id)
+        {
+            if (RoomClusters.TryGetValue(id, out HashSet<Uid> cluster))
+                return cluster;
+            return System.Array.Empty<Uid>();
         }
     }
 }

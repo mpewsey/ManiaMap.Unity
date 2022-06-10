@@ -31,6 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             Random.InitState(12345);
             var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates", "Samples");
             FileUtility.CreateDirectory(root);
+            int k = 0;
 
             foreach (var template in templates)
             {
@@ -39,6 +40,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     var id = Random.Range(1, int.MaxValue);
                     var room = new RoomTemplate(id, variation.Name, variation.Cells);
                     var path = Path.Combine(root, $"{room.Name}_{room.Id}.xml");
+
+                    foreach (var cell in room.Cells.Array)
+                    {
+                        if (cell != null)
+                            cell.AddCollectableSpot(k++, "Default");
+                    }
+
                     Serialization.SavePrettyXml(path, room);
                 }
             }

@@ -102,8 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 4
   _name: <Node 4>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
-  _z: 0
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
+  _z: -1
   _color:
     serializedVersion: 2
     rgba: 4285536537
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 8
   _name: <Node 8>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
   _z: 0
   _color:
     serializedVersion: 2
@@ -160,10 +160,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15805794f0986b047a1aa88f3edf0b14, type: 3}
-  m_Name: LoopLayoutGraph
+  m_Name: StackedLoopLayoutGraph
   m_EditorClassIdentifier: 
-  _id: 2
-  _name: Loop Layout Graph
+  _id: 4
+  _name: Stacked Loop Layout Graph
   _nodes:
   - {fileID: 1803793163648920226}
   - {fileID: 7505148671528191739}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 5
   _name: <Node 5>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
   _z: 0
   _color:
     serializedVersion: 2
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 1
   _name: <Node 1>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
-  _z: 0
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
+  _z: 2
   _color:
     serializedVersion: 2
     rgba: 4285536537
@@ -303,8 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 2
   _name: <Node 2>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
-  _z: 0
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
+  _z: 2
   _color:
     serializedVersion: 2
     rgba: 4285536537
@@ -323,12 +323,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 7
   _name: <Node 7>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
   _z: 0
   _color:
     serializedVersion: 2
     rgba: 4285536537
-  _position: {x: 632, y: 249}
+  _position: {x: 677, y: 255}
 --- !u!114 &8938497128140566846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 6
   _name: <Node 6>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
   _z: 0
   _color:
     serializedVersion: 2
@@ -385,8 +385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _name: <Node 3>
-  _templateGroup: {fileID: 11400000, guid: ab55d025c6a10ba4a98afa82d50e68ca, type: 2}
-  _z: 0
+  _templateGroup: {fileID: 11400000, guid: 9b749215b713dd845a65a25c1d531246, type: 2}
+  _z: 2
   _color:
     serializedVersion: 2
     rgba: 4285536537

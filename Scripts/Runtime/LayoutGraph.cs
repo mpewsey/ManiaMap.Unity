@@ -226,24 +226,6 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Returns the template groups for all groups in the graph.
-        /// </summary>
-        public TemplateGroups GetTemplateGroups()
-        {
-            var result = new TemplateGroups();
-            var nodeGroups = Nodes.Select(x => x.TemplateGroup);
-            var edgeGroups = Edges.Select(x => x.TemplateGroup).Where(x => x != null);
-            var groups = new HashSet<TemplateGroup>(nodeGroups.Concat(edgeGroups));
-
-            foreach (var group in groups)
-            {
-                result.Add(group.Name, group.LoadTemplates());
-            }
-
-            return result;
-        }
-
-        /// <summary>
         /// Converts a Unity color to a System.Drawing color.
         /// </summary>
         /// <param name="color">The unity color.</param>

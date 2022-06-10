@@ -47,14 +47,24 @@
 						</d5p1:Value>
 					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
 				</Doors>
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>134</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 			<Cell i:nil="true" />
 			<Cell i:nil="true" />
 			<Cell i:nil="true" />
 			<Cell>
 				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>135</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 			<Cell>
 				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -94,15 +104,30 @@
 						</d5p1:Value>
 					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
 				</Doors>
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>136</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 			<Cell>
 				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>137</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 			<Cell>
 				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>138</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 			<Cell>
 				<Doors xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -135,7 +160,12 @@
 						</d5p1:Value>
 					</d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
 				</Doors>
-				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<CollectableSpots xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:KeyValueOfintstring>
+						<d5p1:Key>139</d5p1:Key>
+						<d5p1:Value>Default</d5p1:Value>
+					</d5p1:KeyValueOfintstring>
+				</CollectableSpots>
 			</Cell>
 		</Array>
 	</Cells>

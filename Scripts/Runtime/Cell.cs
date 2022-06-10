@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,6 +112,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a new generation cell.
         /// </summary>
+        /// <exception cref="EmptyCellException">Raised if the cell is empty and a door or collectable spot is assigned to it.</exception>
+        /// <exception cref="DuplicateDirectionException">Raised if multiple doors with the same direction are assigned to the cell.</exception>
+        /// <exception cref="UnassignedCollectableGroupException">Raised if a collectable group is not assigned to a collectable spot.</exception>
         public ManiaMap.Cell GetCell()
         {
             var doors = FindDoors();
@@ -119,9 +123,9 @@ namespace MPewsey.ManiaMap.Unity
             if (IsEmpty)
             {
                 if (doors.Count > 0)
-                    throw new Exception($"Doors assigned to empty cell: {Index}.");
+                    throw new EmptyCellException($"Doors assigned to empty cell: {Index}.");
                 if (spots.Count > 0)
-                    throw new Exception($"Collectable spots assigned to empty cell: {Index}.");
+                    throw new EmptyCellException($"Collectable spots assigned to empty cell: {Index}.");
                 return ManiaMap.Cell.Empty;
             }
 
@@ -131,7 +135,7 @@ namespace MPewsey.ManiaMap.Unity
             foreach (var door in doors)
             {
                 if (cell.GetDoor(door.Direction) != null)
-                    throw new Exception($"Door direction already exists: Index = {Index}, Direction = {door.Direction}.");
+                    throw new DuplicateDirectionException($"Door direction already exists: Index = {Index}, Direction = {door.Direction}.");
                 cell.SetDoor(door.Direction, door.GetDoor());
             }
 
@@ -139,7 +143,7 @@ namespace MPewsey.ManiaMap.Unity
             foreach (var spot in spots)
             {
                 if (spot.Group == null)
-                    throw new Exception($"Collectable group not assigned to collectable spot: {spot.name}.");
+                    throw new UnassignedCollectableGroupException($"Collectable group not assigned to collectable spot: {spot.name}.");
                 cell.AddCollectableSpot(spot.Id, spot.Group.Name);
             }
 

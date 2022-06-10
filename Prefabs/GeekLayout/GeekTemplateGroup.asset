@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c107d86a69bd129469101849ad2d02e1, type: 3}
-  m_Name: LoopTemplateGroup
+  m_Name: GeekTemplateGroup
   m_EditorClassIdentifier: 
-  _name: Loop Template Group
-  _templates: []
+  _name: Geek Template Group
+  _templates:
+  - {fileID: 4900000, guid: 7b1e83d2442d6d64aa3f518b45f0a765, type: 3}

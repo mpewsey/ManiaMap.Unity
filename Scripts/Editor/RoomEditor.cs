@@ -114,7 +114,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
         public static void SaveAllTemplates()
         {
-            var guids = AssetDatabase.FindAssets("t:prefab");
+            var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
 
             foreach (var guid in guids)
             {
