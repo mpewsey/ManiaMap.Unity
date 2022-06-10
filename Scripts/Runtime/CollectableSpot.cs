@@ -79,11 +79,6 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Uid RoomId { get => Cell.Room.RoomId; }
 
-        private void OnValidate()
-        {
-            AutoAssignId();
-        }
-
         /// <summary>
         /// Initializes the collectable spot based on the layout and layout state.
         /// </summary>
