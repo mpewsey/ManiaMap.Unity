@@ -8,24 +8,16 @@ namespace MPewsey.ManiaMap.Unity.Tests
 {
     public class TestGenerationPipeline
     {
-        private GameObject Container { get; set; }
-
         [SetUp]
         public void SetUp()
         {
-            Container = new GameObject("TestGenerationPipeline");
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Object.DestroyImmediate(Container);
+            AssetLoader.LoadEmptyScene();
         }
 
         [Test]
         public void TestBigLayoutGenerator()
         {
-            var generator = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadBigLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -35,7 +27,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestCrossLayoutGenerator()
         {
-            var generator = Prefabs.LoadCrossLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadCrossLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -45,7 +37,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGeekLayoutGenerator()
         {
-            var generator = Prefabs.LoadGeekLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadGeekLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -55,7 +47,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestLoopLayoutGenerator()
         {
-            var generator = Prefabs.LoadLoopLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadLoopLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -65,7 +57,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestStackedLoopLayoutGenerator()
         {
-            var generator = Prefabs.LoadStackedLoopLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadStackedLoopLayoutGenerator();
             Random.InitState(12345);
             var results = generator.Generate();
             var layout = (Layout)results.Outputs["Layout"];
@@ -75,7 +67,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [UnityTest]
         public IEnumerator TestBigLayoutGeneratorAsync()
         {
-            var generator = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadBigLayoutGenerator();
             Random.InitState(12345);
             var task = generator.GenerateAsync();
             yield return new WaitUntil(() => task.IsCompleted);
@@ -90,7 +82,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [UnityTest]
         public IEnumerator TestSeededBigLayoutGeneratorAsync()
         {
-            var generator = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator = AssetLoader.LoadBigLayoutGenerator();
             var task = generator.GenerateAsync(12345);
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
@@ -104,16 +96,16 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestIsValid()
         {
-            var generator1 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator1 = AssetLoader.LoadBigLayoutGenerator();
             Assert.IsTrue(generator1.IsValid());
 
-            var generator2 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator2 = AssetLoader.LoadBigLayoutGenerator();
             var groups = generator2.GetComponentInChildren<CollectableGroupsInput>();
             Assert.IsNotNull(groups);
             Object.DestroyImmediate(groups);
             Assert.IsFalse(generator2.IsValid());
 
-            var generator3 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator3 = AssetLoader.LoadBigLayoutGenerator();
             generator3.InputsContainer.AddComponent<CollectableGroupsInput>();
             Assert.IsFalse(generator3.IsValid());
         }
@@ -121,16 +113,16 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestValidate()
         {
-            var generator1 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator1 = AssetLoader.LoadBigLayoutGenerator();
             generator1.Validate();
 
-            var generator2 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator2 = AssetLoader.LoadBigLayoutGenerator();
             var groups = generator2.GetComponentInChildren<CollectableGroupsInput>();
             Assert.IsNotNull(groups);
             Object.DestroyImmediate(groups);
             Assert.Throws<MissingInputException>(generator2.Validate);
 
-            var generator3 = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var generator3 = AssetLoader.LoadBigLayoutGenerator();
             generator3.InputsContainer.AddComponent<CollectableGroupsInput>();
             Assert.Throws<DuplicateInputException>(generator3.Validate);
         }

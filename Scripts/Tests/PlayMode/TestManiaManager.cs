@@ -8,20 +8,16 @@ namespace MPewsey.ManiaMap.Unity.Tests
 {
     public class TestManiaManager
     {
-        private GameObject Container { get; set; }
-
         [SetUp]
         public void SetUp()
         {
-            Container = new GameObject("TestManiaManager");
+            AssetLoader.LoadEmptyScene();
         }
 
         [TearDown]
         public void TearDown()
         {
-            Object.DestroyImmediate(Container);
-            var managers = Object.FindObjectsOfType<ManiaManager>().ToList();
-            managers.ForEach(x => Object.DestroyImmediate(x));
+            Object.DestroyImmediate(ManiaManager.Current);
         }
 
         [Test]
@@ -56,7 +52,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestInit()
         {
-            var pipeline = Prefabs.LoadBigLayoutGenerator(Container.transform);
+            var pipeline = AssetLoader.LoadBigLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
