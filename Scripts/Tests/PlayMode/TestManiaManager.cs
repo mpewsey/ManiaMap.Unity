@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestInit()
         {
-            var pipeline = TestAssets.LoadBigLayoutGenerator(Container.transform);
+            var pipeline = Prefabs.LoadBigLayoutGenerator(Container.transform);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];

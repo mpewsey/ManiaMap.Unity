@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGetTemplate()
         {
-            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var room = Prefabs.LoadAngle3x4Room(Container.transform);
             var template = room.GetTemplate();
             Assert.IsNotNull(template);
         }
@@ -49,7 +49,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestInit()
         {
             var seed = new RandomSeed(12345);
-            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var room = Prefabs.LoadAngle3x4Room(Container.transform);
             var template = room.GetTemplate();
 
             // Create fake layout.

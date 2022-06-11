@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Tests
 {
-    public static class TestAssets
+    public static class Prefabs
     {
         private const string PrefabsDirectory = "Packages/com.mpewsey.maniamap.unity/Prefabs";
 
