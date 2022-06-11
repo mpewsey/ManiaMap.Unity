@@ -8,13 +8,8 @@
     "unity",
     "metroidvania"
   ],
-  "description": "Graph-based procedural generation of metroidvania style maps.",
+  "description": "Procedural generation of metroidvania style maps for Unity.",
   "samples": [
-    {
-      "displayName": "Samples",
-      "description": "Samples for usage of the procedural generator components.",
-      "path": "Samples~"
-    }
   ],
   "type": "library"
 }
