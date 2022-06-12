@@ -54,9 +54,9 @@ namespace MPewsey.ManiaMap.Unity
             {
                 var origin = Origin();
                 var from1 = Room.Swizzle(origin);
-                var to1 = Room.Swizzle(origin + Room.CellSize);
+                var to1 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, -Room.CellSize.y));
                 var from2 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, 0));
-                var to2 = Room.Swizzle(origin + new Vector2(0, Room.CellSize.y));
+                var to2 = Room.Swizzle(origin + new Vector2(0, -Room.CellSize.y));
                 Gizmos.color = Color.grey;
                 Gizmos.DrawLine(from1, to1);
                 Gizmos.DrawLine(from2, to2);
@@ -81,7 +81,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2 Origin()
         {
-            var index = new Vector2(Index.y, Room.Size.x - Index.x - 1);
+            var index = new Vector2(Index.y, -Index.x);
             return Room.CellSize * index;
         }
 
@@ -90,7 +90,8 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2 Center()
         {
-            return Origin() + 0.5f * Room.CellSize;
+            var offset = new Vector2(0.5f, -0.5f) * Room.CellSize;
+            return Origin() + offset;
         }
 
         /// <summary>

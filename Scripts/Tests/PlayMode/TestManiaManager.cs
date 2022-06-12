@@ -52,7 +52,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestInit()
         {
-            var pipeline = AssetLoader.LoadBigLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];

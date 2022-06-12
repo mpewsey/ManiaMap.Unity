@@ -9,12 +9,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
 {
     public static class AssetLoader
     {
-        private const string PrefabsDirectory = "Packages/com.mpewsey.maniamap.unity/Prefabs";
-        private const string SceneDirectory = "Packages/com.mpewsey.maniamap.unity/Scenes";
+        public static string GetPackagePath(string path)
+        {
+            return Path.Combine("Packages/com.mpewsey.maniamap.unity", path);
+        }
 
         public static void LoadEmptyScene()
         {
-            var path = Path.Combine(SceneDirectory, "EmptyScene.unity");
+            var path = GetPackagePath("Scenes/EmptyScene.unity");
             EditorSceneManager.LoadSceneInPlayMode(path, new LoadSceneParameters());
         }
 
@@ -25,45 +27,45 @@ namespace MPewsey.ManiaMap.Unity.Tests
             return obj.GetComponent<T>();
         }
 
-        public static LayoutMap LoadLayoutMap()
+        public static LayoutMap InstantiateLayoutMap()
         {
-            var path = Path.Combine(PrefabsDirectory, "LayoutMap.prefab");
+            var path = GetPackagePath("Prefabs/LayoutMap.prefab");
             return InstantiatePrefab<LayoutMap>(path);
         }
 
-        public static Room LoadAngle3x4Room()
+        public static Room InstantiateAngle3x4Room()
         {
-            var path = Path.Combine(PrefabsDirectory, "Angle3x4Room.prefab");
+            var path = GetPackagePath("Prefabs/Rooms/Angle3x4Room.prefab");
             return InstantiatePrefab<Room>(path);
         }
 
-        public static GenerationPipeline LoadBigLayoutGenerator()
+        public static GenerationPipeline InstantiateBigLayoutGenerator()
         {
-            var path = Path.Combine(PrefabsDirectory, "BigLayout/BigLayoutGenerator.prefab");
+            var path = GetPackagePath("Prefabs/BigLayout/BigLayoutGenerator.prefab");
             return InstantiatePrefab<GenerationPipeline>(path);
         }
 
-        public static GenerationPipeline LoadCrossLayoutGenerator()
+        public static GenerationPipeline InstantiateCrossLayoutGenerator()
         {
-            var path = Path.Combine(PrefabsDirectory, "CrossLayout/CrossLayoutGenerator.prefab");
+            var path = GetPackagePath("Prefabs/CrossLayout/CrossLayoutGenerator.prefab");
             return InstantiatePrefab<GenerationPipeline>(path);
         }
 
-        public static GenerationPipeline LoadGeekLayoutGenerator()
+        public static GenerationPipeline InstantiateGeekLayoutGenerator()
         {
-            var path = Path.Combine(PrefabsDirectory, "GeekLayout/GeekLayoutGenerator.prefab");
+            var path = GetPackagePath("Prefabs/GeekLayout/GeekLayoutGenerator.prefab");
             return InstantiatePrefab<GenerationPipeline>(path);
         }
 
-        public static GenerationPipeline LoadLoopLayoutGenerator()
+        public static GenerationPipeline InstantiateLoopLayoutGenerator()
         {
-            var path = Path.Combine(PrefabsDirectory, "LoopLayout/LoopLayoutGenerator.prefab");
+            var path = GetPackagePath("Prefabs/LoopLayout/LoopLayoutGenerator.prefab");
             return InstantiatePrefab<GenerationPipeline>(path);
         }
 
-        public static GenerationPipeline LoadStackedLoopLayoutGenerator()
+        public static GenerationPipeline InstantiateStackedLoopLayoutGenerator()
         {
-            var path = Path.Combine(PrefabsDirectory, "StackedLoopLayout/StackedLoopLayoutGenerator.prefab");
+            var path = GetPackagePath("Prefabs/StackedLoopLayout/StackedLoopLayoutGenerator.prefab");
             return InstantiatePrefab<GenerationPipeline>(path);
         }
     }

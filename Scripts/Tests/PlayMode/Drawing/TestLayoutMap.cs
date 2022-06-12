@@ -16,12 +16,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestCreateBigLayoutImages()
         {
-            var pipeline = AssetLoader.LoadBigLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             var images = layoutMap.CreateImages(layout);
             Assert.AreEqual(1, images.Count);
         }
@@ -29,12 +29,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveBigLayoutImages()
         {
-            var pipeline = AssetLoader.LoadBigLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/BigLayoutMap.png", layout);
         }
@@ -42,12 +42,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveBigLayoutJpegImages()
         {
-            var pipeline = AssetLoader.LoadBigLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/BigLayoutMap.jpg", layout);
         }
@@ -55,12 +55,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveCrossLayoutImages()
         {
-            var pipeline = AssetLoader.LoadCrossLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateCrossLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/CrossLayoutMap.png", layout);
         }
@@ -68,12 +68,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveGeekLayoutImages()
         {
-            var pipeline = AssetLoader.LoadGeekLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateGeekLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/GeekLayoutMap.png", layout);
         }
@@ -81,12 +81,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveLoopLayoutImages()
         {
-            var pipeline = AssetLoader.LoadLoopLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateLoopLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/LoopLayoutMap.png", layout);
         }
@@ -94,12 +94,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [Test]
         public void TestSaveStackedLoopLayoutImages()
         {
-            var pipeline = AssetLoader.LoadStackedLoopLayoutGenerator();
+            var pipeline = AssetLoader.InstantiateStackedLoopLayoutGenerator();
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.LoadLayoutMap();
+            var layoutMap = AssetLoader.InstantiateLayoutMap();
             Directory.CreateDirectory("Tests");
             layoutMap.SaveImages("Tests/StackedLoopLayoutMap.png", layout);
         }
