@@ -81,12 +81,31 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Instantiates a room prefab and initializes it.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="prefab">The room prefab.</param>
+        /// <param name="parent">The parent of the instantiated room.</param>
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, bool assignPosition = false)
+        {
+            var obj = Instantiate(prefab, parent);
+            var room = obj.GetComponent<Room>();
+            room.Init(id, assignPosition);
+            return room;
+        }
+
+        /// <summary>
         /// Initializes the room and its registered children.
         /// </summary>
         /// <param name="roomId">The room ID.</param>
-        public void Init(Uid roomId)
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        public void Init(Uid roomId, bool assignPosition = false)
         {
             RoomId = roomId;
+
+            if (assignPosition)
+                AssignPosition();
 
             foreach (var door in Doors)
             {
@@ -99,6 +118,17 @@ namespace MPewsey.ManiaMap.Unity
                 if (spot != null)
                     spot.OnRoomInit();
             }
+        }
+
+        /// <summary>
+        /// Assigns the local position of the room based on the position in the current layout.
+        /// </summary>
+        public void AssignPosition()
+        {
+            var manager = ManiaManager.Current;
+            var room = manager.Layout.Rooms[RoomId];
+            var position = new Vector2(room.Position.Y, -room.Position.X) * CellSize;
+            transform.localPosition = Swizzle(position);
         }
 
         /// <summary>

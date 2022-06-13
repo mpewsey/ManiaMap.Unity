@@ -5,18 +5,15 @@ namespace MPewsey.ManiaMap.Unity.Tests
 {
     public class TestRoom
     {
-        private GameObject Container { get; set; }
-
         [SetUp]
         public void SetUp()
         {
-            Container = new GameObject("TestRoom");
+            AssetLoader.LoadEmptyScene();
         }
 
         [TearDown]
         public void TearDown()
         {
-            Object.DestroyImmediate(Container);
             Object.DestroyImmediate(ManiaManager.Current);
         }
 
@@ -24,7 +21,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestCreateCells()
         {
             var obj = new GameObject("Room");
-            obj.transform.SetParent(Container.transform);
             var room = obj.AddComponent<Room>();
             room.CellSize = new Vector2(10, 10);
             room.Size = new Vector2Int(4, 5);
@@ -40,7 +36,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGetTemplate()
         {
-            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var room = AssetLoader.InstantiateAngle3x4Room();
             var template = room.GetTemplate();
             Assert.IsNotNull(template);
         }
@@ -49,7 +45,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestInit()
         {
             var seed = new RandomSeed(12345);
-            var room = TestAssets.LoadAngle3x4Room(Container.transform);
+            var room = AssetLoader.InstantiateAngle3x4Room();
             var template = room.GetTemplate();
 
             // Create fake layout.
