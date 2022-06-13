@@ -30,6 +30,7 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", null ]
     ] ],
+    [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", null ],

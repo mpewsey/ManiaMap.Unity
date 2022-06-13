@@ -4,6 +4,9 @@ var annotated_dup =
       [ "ManiaMap", "namespace_m_pewsey_1_1_mania_map.html", [
         [ "Unity", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html", [
           [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", [
+            [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html", [
+              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ]
+            ] ],
             [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
             [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", null ],
             [ "Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding" ]
