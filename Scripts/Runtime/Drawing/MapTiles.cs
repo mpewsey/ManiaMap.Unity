@@ -7,6 +7,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public class MapTiles : ScriptableObject
     {
         [SerializeField]
+        private int _pixelsPerUnit = 16;
+        public int PixelsPerUnit { get => _pixelsPerUnit; set => _pixelsPerUnit = value; }
+
+        [SerializeField]
         private Vector2Int _tileSize = new Vector2Int(16, 16);
         public Vector2Int TileSize { get => _tileSize; set => _tileSize = value; }
 
@@ -95,12 +99,43 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         public Texture2D GetDoorTile(DoorDirection direction)
         {
-            return GetTile(GetDoorTileType(direction));
+            switch (direction)
+            {
+                case DoorDirection.North:
+                    return NorthDoor;
+                case DoorDirection.South:
+                    return SouthDoor;
+                case DoorDirection.East:
+                    return EastDoor;
+                case DoorDirection.West:
+                    return WestDoor;
+                case DoorDirection.Top:
+                    return TopDoor;
+                case DoorDirection.Bottom:
+                    return BottomDoor;
+                default:
+                    throw new ArgumentException($"Unhandled direction: {direction}.");
+            }
         }
 
         public Texture2D GetWallTile(DoorDirection direction)
         {
-            return GetTile(GetWallTileType(direction));
+            switch (direction)
+            {
+                case DoorDirection.North:
+                    return NorthWall;
+                case DoorDirection.South:
+                    return SouthWall;
+                case DoorDirection.East:
+                    return EastWall;
+                case DoorDirection.West:
+                    return WestWall;
+                case DoorDirection.Top:
+                case DoorDirection.Bottom:
+                    return null;
+                default:
+                    throw new ArgumentException($"Unhandled direction: {direction}.");
+            }
         }
 
         /// <summary>

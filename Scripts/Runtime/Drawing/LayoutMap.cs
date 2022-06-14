@@ -53,26 +53,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private System.Drawing.Rectangle LayoutBounds { get; set; }
 
         /// <summary>
-        /// A dictionary of rendered managed textures.
+        /// A dictionary of rendered layer textures.
         /// </summary>
-        private Dictionary<int, Texture2D> MapLayers { get; } = new Dictionary<int, Texture2D>();
+        private Dictionary<int, Texture2D> Textures { get; } = new Dictionary<int, Texture2D>();
 
-        private void OnDestroy()
+        public void ClearTextures()
         {
-            ReleaseTextures();
-        }
-
-        /// <summary>
-        /// Destroys any existing textures and clears the map layers dictionary.
-        /// </summary>
-        public void ReleaseTextures()
-        {
-            foreach (var map in MapLayers.Values)
-            {
-                Destroy(map);
-            }
-
-            MapLayers.Clear();
+            Textures.Clear();
         }
 
         /// <summary>
@@ -102,23 +89,21 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private void CreateTextures()
         {
-            var width = MapTiles.TileSize.x * (Padding.Left + Padding.Right + LayoutBounds.Width);
-            var height = MapTiles.TileSize.y * (Padding.Top + Padding.Bottom + LayoutBounds.Height);
+            var size = GetTextureSize();
             var layers = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
-            var removeLayers = MapLayers.Keys.Where(x => !layers.Contains(x)).ToList();
+            var removeLayers = Textures.Keys.Where(x => !layers.Contains(x)).ToList();
 
             foreach (var z in removeLayers)
             {
-                Destroy(MapLayers[z]);
-                MapLayers.Remove(z);
+                Textures.Remove(z);
             }
 
             foreach (var z in layers)
             {
-                if (!MapLayers.TryGetValue(z, out Texture2D map))
-                    MapLayers.Add(z, new Texture2D(width, height));
-                else if (map.width != width || map.height != height)
-                    map.Reinitialize(width, height);
+                if (!Textures.TryGetValue(z, out Texture2D map))
+                    Textures.Add(z, new Texture2D(size.x, size.y));
+                else if (map.width != size.x || map.height != size.y)
+                    map.Reinitialize(size.x, size.y);
             }
         }
 
@@ -135,12 +120,22 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             LayoutBounds = layout.GetBounds();
             CreateTextures();
 
-            foreach (var pair in MapLayers)
+            foreach (var pair in Textures)
             {
                 DrawMap(pair.Value, pair.Key);
             }
 
-            return new Dictionary<int, Texture2D>(MapLayers);
+            return new Dictionary<int, Texture2D>(Textures);
+        }
+
+        /// <summary>
+        /// Returns the width and height of the texture in pixels.
+        /// </summary>
+        private Vector2Int GetTextureSize()
+        {
+            var width = MapTiles.TileSize.x * (Padding.Left + Padding.Right + LayoutBounds.Width);
+            var height = MapTiles.TileSize.y * (Padding.Top + Padding.Bottom + LayoutBounds.Height);
+            return new Vector2Int(width, height);
         }
 
         /// <summary>
@@ -169,9 +164,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 foreach (var door in doors)
                 {
                     if (door.Matches(position, direction))
-                    {
                         return true;
-                    }
                 }
             }
 
@@ -195,7 +188,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 var cells = room.Template.Cells;
                 var x0 = (room.Position.Y - LayoutBounds.X + Padding.Left) * MapTiles.TileSize.x;
                 var y0 = (LayoutBounds.Height + Padding.Bottom - room.Position.X + LayoutBounds.Y - 1) * MapTiles.TileSize.y;
-                Color color = ColorUtility.ConvertColor(room.Color);
 
                 for (int i = 0; i < cells.Rows; i++)
                 {
@@ -233,7 +225,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                         // Add cell background fill
                         var rect = new RectInt(point, MapTiles.TileSize);
-                        TextureUtility.CompositeFill(texture, color, rect);
+                        TextureUtility.CompositeFill(texture, ColorUtility.ConvertColor(room.Color), rect);
 
                         // Superimpose applicable map tiles
                         TextureUtility.DrawImage(texture, northTile, point);

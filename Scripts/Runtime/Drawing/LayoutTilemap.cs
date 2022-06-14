@@ -18,14 +18,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public MapTiles MapTiles { get => _mapTiles; set => _mapTiles = value; }
 
-        [SerializeField]
-        private int _spritePadding = 4;
-        public int SpritePadding { get => _spritePadding; set => _spritePadding = Mathf.Max(value, 0); }
-
-        [SerializeField]
-        private Vector2Int _textureSize = new Vector2Int(25, 25);
-        public Vector2Int TextureSize { get => _textureSize; set => _textureSize = Vector2Int.Max(value, Vector2Int.one); }
-
         /// <summary>
         /// The room layout.
         /// </summary>
@@ -41,94 +33,153 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; }
 
-        private bool TextureIsDirty { get; set; }
-
-        private Texture2D Texture { get; set; }
-
         /// <summary>
         /// A dictionary of rendered managed textures.
         /// </summary>
-        private Dictionary<MapTileHash, Sprite> Tiles { get; } = new Dictionary<MapTileHash, Sprite>();
+        private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
 
-        private void OnDestroy()
+        private Dictionary<int, Tilemap> Tilemaps { get; } = new Dictionary<int, Tilemap>();
+
+        public void ClearTiles()
         {
-            ReleaseSprites();
-            Destroy(Texture);
-        }
-
-        private void OnValidate()
-        {
-            SpritePadding = SpritePadding;
-            TextureSize = TextureSize;
-        }
-
-        public void ReleaseSprites()
-        {
-            foreach (var tile in Tiles.Values)
-            {
-                Destroy(tile);
-            }
-
             Tiles.Clear();
         }
 
-        private void CreateTexture()
-        {
-            var width = TextureSize.y * (MapTiles.TileSize.x + SpritePadding) + SpritePadding;
-            var height = TextureSize.x * (MapTiles.TileSize.y + SpritePadding) + SpritePadding;
-
-            if (Texture == null)
-            {
-                Texture = new Texture2D(width, height);
-                ReleaseSprites();
-            }
-            else if (Texture.width != width || Texture.height != height)
-            {
-                Texture.Reinitialize(width, height);
-                ReleaseSprites();
-            } 
-        }
-
-        private Vector2Int NextSpritePosition()
-        {
-            var row = Tiles.Count / TextureSize.y;
-            var column = Tiles.Count % TextureSize.y;
-            var x = column * (MapTiles.TileSize.x + SpritePadding) + SpritePadding;
-            var y = row * (MapTiles.TileSize.y + SpritePadding) + SpritePadding;
-            return new Vector2Int(x, y);
-        }
-
-        private Sprite GetTile(MapTileTypes tileTypes, Color32 color)
+        private Tile GetTile(MapTileTypes tileTypes, Color32 color)
         {
             var hash = new MapTileHash(tileTypes, color);
 
-            if (!Tiles.TryGetValue(hash, out Sprite tile))
+            if (!Tiles.TryGetValue(hash, out Tile tile))
             {
                 tile = CreateTile(tileTypes, color);
                 Tiles.Add(hash, tile);
-                TextureIsDirty = true;
             }
 
             return tile;
         }
 
-        private Sprite CreateTile(MapTileTypes tileTypes, Color32 color)
+        private Texture2D CreateTexture(MapTileTypes tileTypes, Color32 color)
         {
-            var point = NextSpritePosition();
-            var area = new RectInt(point, MapTiles.TileSize);
-            TextureUtility.Fill(Texture, color, area);
+            var texture = new Texture2D(MapTiles.TileSize.x, MapTiles.TileSize.y);
+            TextureUtility.Fill(texture, color);
 
             foreach (var flag in Bitwise.GetFlagEnumerable((int)tileTypes))
             {
                 var type = (MapTileTypes)flag;
                 var tile = MapTiles.GetTile(type);
-                TextureUtility.DrawImage(Texture, tile, point);
+                TextureUtility.DrawImage(texture, tile, Vector2Int.zero);
             }
 
+            texture.Apply();
+            return texture;
+        }
+
+        private Sprite CreateSprite(Texture2D texture)
+        {
             var pivot = new Vector2(0.5f, 0.5f);
-            var rect = new Rect(area.x, area.y, area.width, area.height);
-            var pixelsPerUnit = Mathf.Min(MapTiles.TileSize.x, MapTiles.TileSize.y);
-            return Sprite.Create(Texture, rect, pivot, pixelsPerUnit);
+            var rect = new Rect(0, 0, texture.width, texture.height);
+            return Sprite.Create(texture, rect, pivot, MapTiles.PixelsPerUnit);
+        }
+
+        private Tile CreateTile(MapTileTypes tileTypes, Color32 color)
+        {
+            var tile = ScriptableObject.CreateInstance<Tile>();
+            tile.sprite = CreateSprite(CreateTexture(tileTypes, color));
+            return tile;
+        }
+
+        /// <summary>
+        /// Returns true if the door exists for the room.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="position">The local position of the door.</param>
+        /// <param name="direction">The direction of the door.</param>
+        private bool DoorExists(ManiaMap.Room room, Vector2DInt position, DoorDirection direction)
+        {
+            if (RoomDoors.TryGetValue(room.Id, out var doors))
+            {
+                foreach (var door in doors)
+                {
+                    if (door.Matches(position, direction))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Dictionary<int, Tilemap> CreateMaps(Layout layout, LayoutState state = null)
+        {
+            Layout = layout;
+            LayoutState = state;
+            RoomDoors = layout.GetRoomDoors();
+
+            return new Dictionary<int, Tilemap>(Tilemaps);
+        }
+
+        private void DrawMapTiles(Tilemap tilemap, int z)
+        {
+            tilemap.ClearAllTiles();
+            
+            foreach (var room in Layout.Rooms.Values)
+            {
+                // If room Z (layer) value is not equal, go to next room.
+                if (room.Position.Z != z)
+                    continue;
+
+                var roomState = LayoutState?.RoomStates[room.Id];
+                var cells = room.Template.Cells;
+
+                for (int i = 0; i < cells.Rows; i++)
+                {
+                    for (int j = 0; j < cells.Columns; j++)
+                    {
+                        var cell = cells[i, j];
+                        var position = new Vector2DInt(i, j);
+
+                        // If cell it empty, go to next cell.
+                        if (cell == null)
+                            continue;
+
+                        // If room state is defined and is not visible, go to next cell.
+                        if (roomState != null && !roomState.VisibleIndexes.Contains(position))
+                            continue;
+
+                        // Calculate draw position
+                        var x = room.Position.Y + j;
+                        var y = -room.Position.X - i;
+                        var point = new Vector3Int(x, y, 0);
+
+                        // Get adjacent cells
+                        var north = cells.GetOrDefault(i - 1, j);
+                        var south = cells.GetOrDefault(i + 1, j);
+                        var west = cells.GetOrDefault(i, j - 1);
+                        var east = cells.GetOrDefault(i, j + 1);
+
+                        var tileTypes = MapTileTypes.None;
+                        tileTypes |= GetTileType(room, cell, null, position, DoorDirection.Top);
+                        tileTypes |= GetTileType(room, cell, null, position, DoorDirection.Bottom);
+                        tileTypes |= GetTileType(room, cell, north, position, DoorDirection.North);
+                        tileTypes |= GetTileType(room, cell, south, position, DoorDirection.South);
+                        tileTypes |= GetTileType(room, cell, west, position, DoorDirection.West);
+                        tileTypes |= GetTileType(room, cell, east, position, DoorDirection.East);
+
+                        var tile = GetTile(tileTypes, ColorUtility.ConvertColor(room.Color));
+                        tilemap.SetTile(point, tile);
+                    }
+                }
+            }
+        }
+
+        private MapTileTypes GetTileType(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
+        {
+            if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+                return MapTiles.GetDoorTileType(direction);
+
+            if (neighbor == null)
+                return MapTiles.GetWallTileType(direction);
+
+            return MapTileTypes.None;
         }
     }
 }
