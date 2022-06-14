@@ -237,7 +237,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var x = i % gridTile.height;
                         var y = j % gridTile.width;
                         var color = grid[x * gridTile.width + y];
-                        pixels[index] = CompositeColors(color, pixels[index]);
+                        pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
                     }
                 }
             }
@@ -260,7 +260,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                     var x = j + point.x;
                     var y = i + point.y;
                     var index = y * texture.width + x;
-                    pixels[index] = CompositeColors(color, pixels[index]);
+                    pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
                 }
             }
         }
@@ -286,7 +286,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var y = i + point.y;
                         var index = y * texture.width + x;
                         var color = tile[i * tileTexture.width + j];
-                        pixels[index] = CompositeColors(color, pixels[index]);
+                        pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
                     }
                 }
             }
@@ -345,7 +345,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var eastTile = GetTile(room, cell, east, position, DoorDirection.East);
 
                         // Add cell background fill
-                        DrawTileFill(texture, ConvertColor(room.Color), point);
+                        DrawTileFill(texture, ColorUtility.ConvertColor(room.Color), point);
 
                         // Superimpose applicable map tiles
                         DrawMapTile(texture, northTile, point);
@@ -428,33 +428,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 default:
                     throw new ArgumentException($"Unhandled direction: {direction}.");
             }
-        }
-
-        /// <summary>
-        /// Converts a System.Drawing.Color to a Unity Color32.
-        /// </summary>
-        /// <param name="color">The System.Drawing.Color</param>
-        private static Color32 ConvertColor(System.Drawing.Color color)
-        {
-            return new Color32(color.R, color.G, color.B, color.A);
-        }
-
-        /// <summary>
-        /// Calculates the composite of top color A onto bottom color B.
-        /// </summary>
-        /// <param name="colorA">The top color.</param>
-        /// <param name="colorB">The bottom color.</param>
-        private static Color CompositeColors(Color colorA, Color colorB)
-        {
-            var alpha1 = colorA.a;
-            var alpha2 = colorB.a * (1 - colorA.a);
-            var alpha = alpha1 + alpha2;
-            alpha1 /= alpha;
-            alpha2 /= alpha;
-            var red = colorA.r * alpha1 + colorB.r * alpha2;
-            var green = colorA.g * alpha1 + colorB.g * alpha2;
-            var blue = colorA.b * alpha1 + colorB.b * alpha2;
-            return new Color(red, green, blue, alpha);
         }
     }
 }

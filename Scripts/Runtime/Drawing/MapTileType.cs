@@ -6,16 +6,16 @@
     public enum MapTileType
     {
         None,
-        Grid,
-        NorthDoor,
-        SouthDoor,
-        EastDoor,
-        WestDoor,
-        TopDoor,
-        BottomDoor,
-        NorthWall,
-        SouthWall,
-        EastWall,
-        WestWall,
+        Grid = 1 << 0,
+        NorthDoor = 1 << 1,
+        SouthDoor = 1 << 2,
+        EastDoor = 1 << 3,
+        WestDoor = 1 << 4,
+        TopDoor = 1 << 5,
+        BottomDoor = 1 << 6,
+        NorthWall = 1 << 7,
+        SouthWall = 1 << 8,
+        EastWall = 1 << 9,
+        WestWall = 1 << 10,
     }
 }
