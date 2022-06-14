@@ -7,10 +7,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 {
     public struct MapTileHash : IEquatable<MapTileHash>
     {
-        public int Types { get; }
+        public MapTileTypes Types { get; }
         public Color32 Color { get; }
 
-        public MapTileHash(int types, Color32 color)
+        public MapTileHash(MapTileTypes types, Color32 color)
         {
             Types = types;
             Color = color;

@@ -4,6 +4,13 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
 {
+    /// <summary>
+    /// Contains methods for manipulating colors.
+    /// 
+    /// References
+    /// ----------
+    /// * Wikipedia contributors. (2022, May 30). Alpha compositing. In Wikipedia, The Free Encyclopedia. Retrieved June 7, 2022, from https://en.wikipedia.org/w/index.php?title=Alpha_compositing&oldid=1090611617
+    /// </summary>
     public static class ColorUtility
     {
         /// <summary>
