@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
 {
-    public static class Bitwise
+    public static class FlagUtility
     {
         public static IEnumerable<int> GetFlagEnumerable(int flags)
         {

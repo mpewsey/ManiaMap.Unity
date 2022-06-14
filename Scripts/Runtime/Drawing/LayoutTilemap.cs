@@ -63,7 +63,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             var texture = new Texture2D(MapTiles.TileSize.x, MapTiles.TileSize.y);
             TextureUtility.Fill(texture, color);
 
-            foreach (var flag in Bitwise.GetFlagEnumerable((int)tileTypes))
+            foreach (var flag in FlagUtility.GetFlagEnumerable((int)tileTypes))
             {
                 var type = (MapTileTypes)flag;
                 var tile = MapTiles.GetTile(type);
