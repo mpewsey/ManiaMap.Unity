@@ -25,10 +25,7 @@
 var NAVTREE =
 [
   [ "ManiaMap.Unity", "index.html", [
-    [ "Installation", "index.html#autotoc_md3", null ],
-    [ "Changelog", "md__github_workspace__c_h_a_n_g_e_l_o_g.html", [
-      [ "Development", "md__github_workspace__c_h_a_n_g_e_l_o_g.html#autotoc_md1", null ]
-    ] ],
+    [ "Installation", "index.html#autotoc_md1", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -59,7 +56,7 @@ var NAVTREEINDEX =
 "_cell_8cs_source.html",
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_editor.html#a72c1598bb79826e7b38abfff0c087e43",
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_input_exception.html",
-"namespaces.html"
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
