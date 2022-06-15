@@ -12,7 +12,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Editor
         public static void CreateLayoutMap()
         {
             var obj = new GameObject("Layout Map");
-            obj.AddComponent<LayoutMap>();
+            var layoutMap = obj.AddComponent<LayoutMap>();
+            layoutMap.CreateContainer();
             obj.transform.SetParent(Selection.activeTransform);
         }
     }

@@ -8,13 +8,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 {
     /// <summary>
     /// A component for creating maps of Layout layers.
-    /// 
-    /// References
-    /// ----------
-    /// * Wikipedia contributors. (2022, May 30). Alpha compositing. In Wikipedia, The Free Encyclopedia. Retrieved June 7, 2022, from https://en.wikipedia.org/w/index.php?title=Alpha_compositing&oldid=1090611617
     /// </summary>
     public class LayoutMap : MonoBehaviour
     {
+        [SerializeField]
+        private Transform _layerContainer;
+        public Transform LayerContainer { get => _layerContainer; set => _layerContainer = value; }
+        
         [SerializeField]
         private MapTiles _mapTiles;
         /// <summary>
@@ -57,26 +57,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private System.Drawing.Rectangle LayoutBounds { get; set; }
 
         /// <summary>
-        /// A dictionary of rendered managed textures.
+        /// A dictionary of rendered layer textures.
         /// </summary>
-        private Dictionary<int, Texture2D> MapLayers { get; } = new Dictionary<int, Texture2D>();
+        private Dictionary<int, Texture2D> Textures { get; } = new Dictionary<int, Texture2D>();
 
-        private void OnDestroy()
+        public void ClearTextures()
         {
-            ReleaseTextures();
+            Textures.Clear();
         }
 
-        /// <summary>
-        /// Destroys any existing textures and clears the map layers dictionary.
-        /// </summary>
-        public void ReleaseTextures()
+        public void CreateContainer()
         {
-            foreach (var map in MapLayers.Values)
+            if (LayerContainer == null)
             {
-                Destroy(map);
+                var obj = new GameObject("Layers");
+                obj.transform.SetParent(transform);
+                LayerContainer = obj.transform;
             }
-
-            MapLayers.Clear();
         }
 
         /// <summary>
@@ -94,28 +91,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             foreach (var pair in layers)
             {
-                var bytes = GetImageBytes(pair.Value, ext);
+                var bytes = TextureUtility.EncodeToBytes(pair.Value, ext);
                 File.WriteAllBytes($"{name}_Z={pair.Key}{ext}", bytes);
-            }
-        }
-
-        /// <summary>
-        /// Returns the image format bytes for the texture corresponding to the file extension (.png or .jpg).
-        /// </summary>
-        /// <param name="texture">The texture.</param>
-        /// <param name="ext">The file extension.</param>
-        /// <exception cref="ArgumentException">Raised if the file extension is not handled.</exception>
-        private static byte[] GetImageBytes(Texture2D texture, string ext)
-        {
-            switch (ext.ToLower())
-            {
-                case ".png":
-                    return texture.EncodeToPNG();
-                case ".jpg":
-                case ".jpeg":
-                    return texture.EncodeToJPG();
-                default:
-                    throw new ArgumentException($"Unhandled file extension: {ext}");
             }
         }
 
@@ -126,23 +103,21 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private void CreateTextures()
         {
-            var width = MapTiles.TileSize.x * (Padding.Left + Padding.Right + LayoutBounds.Width);
-            var height = MapTiles.TileSize.y * (Padding.Top + Padding.Bottom + LayoutBounds.Height);
+            var size = GetTextureSize();
             var layers = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
-            var removeLayers = MapLayers.Keys.Where(x => !layers.Contains(x)).ToList();
+            var removeLayers = Textures.Keys.Where(x => !layers.Contains(x)).ToList();
 
             foreach (var z in removeLayers)
             {
-                Destroy(MapLayers[z]);
-                MapLayers.Remove(z);
+                Textures.Remove(z);
             }
 
             foreach (var z in layers)
             {
-                if (!MapLayers.TryGetValue(z, out Texture2D map))
-                    MapLayers.Add(z, new Texture2D(width, height));
-                else if (map.width != width || map.height != height)
-                    map.Reinitialize(width, height);
+                if (!Textures.TryGetValue(z, out Texture2D map))
+                    Textures.Add(z, new Texture2D(size.x, size.y));
+                else if (map.width != size.x || map.height != size.y)
+                    map.Reinitialize(size.x, size.y);
             }
         }
 
@@ -159,12 +134,22 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             LayoutBounds = layout.GetBounds();
             CreateTextures();
 
-            foreach (var pair in MapLayers)
+            foreach (var pair in Textures)
             {
                 DrawMap(pair.Value, pair.Key);
             }
 
-            return new Dictionary<int, Texture2D>(MapLayers);
+            return new Dictionary<int, Texture2D>(Textures);
+        }
+
+        /// <summary>
+        /// Returns the width and height of the texture in pixels.
+        /// </summary>
+        private Vector2Int GetTextureSize()
+        {
+            var width = MapTiles.TileSize.x * (Padding.Left + Padding.Right + LayoutBounds.Width);
+            var height = MapTiles.TileSize.y * (Padding.Top + Padding.Bottom + LayoutBounds.Height);
+            return new Vector2Int(width, height);
         }
 
         /// <summary>
@@ -174,8 +159,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="z">The layer.</param>
         private void DrawMap(Texture2D texture, int z)
         {
-            FillBackground(texture);
-            DrawGrid(texture);
+            TextureUtility.Fill(texture, BackgroundColor);
+            TextureUtility.TileImage(texture, MapTiles.GetTile(MapTileTypes.Grid));
             DrawMapTiles(texture, z);
             texture.Apply();
         }
@@ -193,103 +178,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 foreach (var door in doors)
                 {
                     if (door.Matches(position, direction))
-                    {
                         return true;
-                    }
                 }
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Fills the background of the image with the specified background color.
-        /// </summary>
-        /// <param name="texture">The texture.</param>
-        private void FillBackground(Texture2D texture)
-        {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < pixels.Length; i++)
-            {
-                pixels[i] = BackgroundColor;
-            }
-        }
-
-        /// <summary>
-        /// If the grid tile exists, tiles it onto the texture.
-        /// </summary>
-        /// <param name="texture">The texture.</param>
-        private void DrawGrid(Texture2D texture)
-        {
-            var gridTile = MapTiles.GetTile(MapTileType.Grid);
-
-            if (gridTile != null)
-            {
-                var grid = gridTile.GetRawTextureData<Color32>();
-                var pixels = texture.GetRawTextureData<Color32>();
-
-                for (int i = 0; i < texture.height; i++)
-                {
-                    for (int j = 0; j < texture.width; j++)
-                    {
-                        var index = i * texture.width + j;
-                        var x = i % gridTile.height;
-                        var y = j % gridTile.width;
-                        var color = grid[x * gridTile.width + y];
-                        pixels[index] = CompositeColors(color, pixels[index]);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Draws the specified tile color onto the texture at the specified point.
-        /// </summary>
-        /// <param name="texture">The texture.</param>
-        /// <param name="color">The tile color.</param>
-        /// <param name="point">The tile coordinate.</param>
-        private void DrawTileFill(Texture2D texture, Color32 color, Vector2Int point)
-        {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < MapTiles.TileSize.y; i++)
-            {
-                for (int j = 0; j < MapTiles.TileSize.x; j++)
-                {
-                    var x = j + point.x;
-                    var y = i + point.y;
-                    var index = y * texture.width + x;
-                    pixels[index] = CompositeColors(color, pixels[index]);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Draws the map tile onto the texture at the specified point.
-        /// </summary>
-        /// <param name="texture">The texture.</param>
-        /// <param name="tileTexture">The tile texture.</param>
-        /// <param name="point">The tile coordinate.</param>
-        private void DrawMapTile(Texture2D texture, Texture2D tileTexture, Vector2Int point)
-        {
-            if (tileTexture != null)
-            {
-                var pixels = texture.GetRawTextureData<Color32>();
-                var tile = tileTexture.GetRawTextureData<Color32>();
-
-                for (int i = 0; i < tileTexture.height; i++)
-                {
-                    for (int j = 0; j < tileTexture.width; j++)
-                    {
-                        var x = j + point.x;
-                        var y = i + point.y;
-                        var index = y * texture.width + x;
-                        var color = tile[i * tileTexture.width + j];
-                        pixels[index] = CompositeColors(color, pixels[index]);
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -345,15 +238,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var eastTile = GetTile(room, cell, east, position, DoorDirection.East);
 
                         // Add cell background fill
-                        DrawTileFill(texture, ConvertColor(room.Color), point);
+                        var rect = new RectInt(point, MapTiles.TileSize);
+                        TextureUtility.CompositeFill(texture, ColorUtility.ConvertColor(room.Color), rect);
 
                         // Superimpose applicable map tiles
-                        DrawMapTile(texture, northTile, point);
-                        DrawMapTile(texture, southTile, point);
-                        DrawMapTile(texture, westTile, point);
-                        DrawMapTile(texture, eastTile, point);
-                        DrawMapTile(texture, topTile, point);
-                        DrawMapTile(texture, bottomTile, point);
+                        TextureUtility.DrawImage(texture, northTile, point);
+                        TextureUtility.DrawImage(texture, southTile, point);
+                        TextureUtility.DrawImage(texture, westTile, point);
+                        TextureUtility.DrawImage(texture, eastTile, point);
+                        TextureUtility.DrawImage(texture, topTile, point);
+                        TextureUtility.DrawImage(texture, bottomTile, point);
                     }
                 }
             }
@@ -371,90 +265,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private Texture2D GetTile(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
-                return MapTiles.GetTile(GetDoorTileType(direction));
+                return MapTiles.GetDoorTile(direction);
 
             if (neighbor == null)
-                return MapTiles.GetTile(GetWallTileType(direction));
+                return MapTiles.GetWallTile(direction);
 
             return null;
-        }
-
-        /// <summary>
-        /// Returns the door tile type corresponding to the direction.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        private static MapTileType GetDoorTileType(DoorDirection direction)
-        {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return MapTileType.NorthDoor;
-                case DoorDirection.South:
-                    return MapTileType.SouthDoor;
-                case DoorDirection.East:
-                    return MapTileType.EastDoor;
-                case DoorDirection.West:
-                    return MapTileType.WestDoor;
-                case DoorDirection.Top:
-                    return MapTileType.TopDoor;
-                case DoorDirection.Bottom:
-                    return MapTileType.BottomDoor;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
-        }
-
-        /// <summary>
-        /// Returns the wall tile type corresponding to the direction.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        private static MapTileType GetWallTileType(DoorDirection direction)
-        {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return MapTileType.NorthWall;
-                case DoorDirection.South:
-                    return MapTileType.SouthWall;
-                case DoorDirection.East:
-                    return MapTileType.EastWall;
-                case DoorDirection.West:
-                    return MapTileType.WestWall;
-                case DoorDirection.Top:
-                case DoorDirection.Bottom:
-                    return MapTileType.None;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
-        }
-
-        /// <summary>
-        /// Converts a System.Drawing.Color to a Unity Color32.
-        /// </summary>
-        /// <param name="color">The System.Drawing.Color</param>
-        private static Color32 ConvertColor(System.Drawing.Color color)
-        {
-            return new Color32(color.R, color.G, color.B, color.A);
-        }
-
-        /// <summary>
-        /// Calculates the composite of top color A onto bottom color B.
-        /// </summary>
-        /// <param name="colorA">The top color.</param>
-        /// <param name="colorB">The bottom color.</param>
-        private static Color CompositeColors(Color colorA, Color colorB)
-        {
-            var alpha1 = colorA.a;
-            var alpha2 = colorB.a * (1 - colorA.a);
-            var alpha = alpha1 + alpha2;
-            alpha1 /= alpha;
-            alpha2 /= alpha;
-            var red = colorA.r * alpha1 + colorB.r * alpha2;
-            var green = colorA.g * alpha1 + colorB.g * alpha2;
-            var blue = colorA.b * alpha1 + colorB.b * alpha2;
-            return new Color(red, green, blue, alpha);
         }
     }
 }
