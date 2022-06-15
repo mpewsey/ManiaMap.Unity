@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,8 +11,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public class LayoutMap : MonoBehaviour
     {
         [SerializeField]
-        private Transform _layerContainer;
-        public Transform LayerContainer { get => _layerContainer; set => _layerContainer = value; }
+        private Transform _layersContainer;
+        public Transform LayersContainer { get => _layersContainer; set => _layersContainer = value; }
         
         [SerializeField]
         private MapTiles _mapTiles;
@@ -57,23 +56,15 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private System.Drawing.Rectangle LayoutBounds { get; set; }
 
         /// <summary>
-        /// A dictionary of rendered layer textures.
+        /// Renders map images of all layout layers and saves them to the designated file path.
+        /// The z (layer) values are added into the file paths before the file extension.
         /// </summary>
-        private Dictionary<int, Texture2D> Textures { get; } = new Dictionary<int, Texture2D>();
-
-        public void ClearTextures()
+        /// <param name="path">The file path.</param>
+        /// <param name="layout">The room layout.</param>
+        /// <param name="state">The room layout state.</param>
+        public void SaveLayerImages(string path, Layout layout, LayoutState state = null)
         {
-            Textures.Clear();
-        }
-
-        public void CreateContainer()
-        {
-            if (LayerContainer == null)
-            {
-                var obj = new GameObject("Layers");
-                obj.transform.SetParent(transform);
-                LayerContainer = obj.transform;
-            }
+            SaveLayerImages(path, CreateLayers(layout, state));
         }
 
         /// <summary>
@@ -81,43 +72,20 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The z (layer) values are added into the file paths before the file extension.
         /// </summary>
         /// <param name="path">The file path.</param>
-        /// <param name="layout">The room layout.</param>
-        /// <param name="state">The room layout state.</param>
-        public void SaveImages(string path, Layout layout, LayoutState state = null)
+        public void SaveLayerImages(string path)
+        {
+            SaveLayerImages(path, UpdateLayers());
+        }
+
+        public static void SaveLayerImages(string path, List<LayoutMapLayer> layers)
         {
             var ext = Path.GetExtension(path);
             var name = Path.ChangeExtension(path, null);
-            var layers = CreateImages(layout, state);
 
-            foreach (var pair in layers)
+            foreach (var layer in layers)
             {
-                var bytes = TextureUtility.EncodeToBytes(pair.Value, ext);
-                File.WriteAllBytes($"{name}_Z={pair.Key}{ext}", bytes);
-            }
-        }
-
-        /// <summary>
-        /// Populates the map layers dictionary with textures. Textures for layers
-        /// not present in the layout are destroyed, while missing layer textures
-        /// are added.
-        /// </summary>
-        private void CreateTextures()
-        {
-            var size = GetTextureSize();
-            var layers = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
-            var removeLayers = Textures.Keys.Where(x => !layers.Contains(x)).ToList();
-
-            foreach (var z in removeLayers)
-            {
-                Textures.Remove(z);
-            }
-
-            foreach (var z in layers)
-            {
-                if (!Textures.TryGetValue(z, out Texture2D map))
-                    Textures.Add(z, new Texture2D(size.x, size.y));
-                else if (map.width != size.x || map.height != size.y)
-                    map.Reinitialize(size.x, size.y);
+                var bytes = TextureUtility.EncodeToBytes(layer.Texture, ext);
+                File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
             }
         }
 
@@ -126,20 +94,67 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
-        public Dictionary<int, Texture2D> CreateImages(Layout layout, LayoutState state = null)
+        public List<LayoutMapLayer> CreateLayers(Layout layout, LayoutState state = null)
         {
             Layout = layout;
             LayoutState = state;
             RoomDoors = layout.GetRoomDoors();
             LayoutBounds = layout.GetBounds();
-            CreateTextures();
+            return UpdateLayers();
+        }
 
-            foreach (var pair in Textures)
+        private List<LayoutMapLayer> CreateLayerComponents()
+        {
+            CreateLayersContainer();
+            var size = GetTextureSize();
+            var layers = LayersContainer.GetComponentsInParent<LayoutMapLayer>().ToList();
+            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+
+            // Create missing layers.
+            foreach (var z in zs)
             {
-                DrawMap(pair.Value, pair.Key);
+                if (!layers.Any(x => x.Z == z))
+                {
+                    layers.Add(LayoutMapLayer.Create(size, z, LayersContainer));
+                }
             }
 
-            return new Dictionary<int, Texture2D>(Textures);
+            // Destroy extra layers.
+            for (int i = layers.Count - 1; i >= 0; i--)
+            {
+                if (!zs.Contains(layers[i].Z))
+                {
+                    Destroy(layers[i].gameObject);
+                    layers.RemoveAt(i);
+                }
+            }
+
+            return layers;
+        }
+
+        public void CreateLayersContainer()
+        {
+            if (LayersContainer == null)
+            {
+                var obj = new GameObject("Layers");
+                obj.transform.SetParent(transform);
+                LayersContainer = obj.transform;
+            }
+        }
+
+        public List<LayoutMapLayer> UpdateLayers()
+        {
+            if (Layout == null)
+                throw new System.ArgumentException("Layout not set. Use the `CreateLayers` method first.");
+            
+            var layers = CreateLayerComponents();
+
+            foreach (var layer in layers)
+            {
+                DrawMap(layer.Texture, layer.Z);
+            }
+
+            return layers;
         }
 
         /// <summary>
