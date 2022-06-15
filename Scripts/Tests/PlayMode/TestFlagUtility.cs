@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MPewsey.ManiaMap.Unity.Drawing;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -21,6 +22,21 @@ namespace MPewsey.ManiaMap.Unity
             }
 
             var result = FlagUtility.GetFlagEnumerable(flags).ToList();
+            CollectionAssert.AreEquivalent(expected, result);
+        }
+
+        [Test]
+        public void TestGetFlagEnumerableCast()
+        {
+            var flags = MapTileTypes.None;
+            var expected = new List<MapTileTypes> { MapTileTypes.SouthWall, MapTileTypes.NorthDoor, MapTileTypes.WestDoor };
+
+            foreach (var flag in expected)
+            {
+                flags |= flag;
+            }
+
+            var result = FlagUtility.GetFlagEnumerable((int)flags).Cast<MapTileTypes>().ToList();
             CollectionAssert.AreEquivalent(expected, result);
         }
     }

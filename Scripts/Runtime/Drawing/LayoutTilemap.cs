@@ -8,8 +8,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public class LayoutTilemap : MonoBehaviour
     {
         [SerializeField]
-        private Transform _container;
-        public Transform Container { get => _container; set => _container = value; }
+        private Grid _grid;
+        public Grid Grid { get => _grid; set => _grid = value; }
         
         [SerializeField]
         private MapTiles _mapTiles;
@@ -43,6 +43,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void ClearTiles()
         {
             Tiles.Clear();
+        }
+
+        private void CreateGrid()
+        {
+            if (Grid == null)
+            {
+                var obj = new GameObject("Grid");
+                Grid = obj.AddComponent<Grid>();
+                obj.transform.SetParent(transform);
+            }
         }
 
         private Tile GetTile(MapTileTypes tileTypes, Color32 color)

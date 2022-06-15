@@ -12,6 +12,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public class LayoutMap : MonoBehaviour
     {
         [SerializeField]
+        private Transform _layerContainer;
+        public Transform LayerContainer { get => _layerContainer; set => _layerContainer = value; }
+        
+        [SerializeField]
         private MapTiles _mapTiles;
         /// <summary>
         /// The map tiles.
@@ -60,6 +64,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void ClearTextures()
         {
             Textures.Clear();
+        }
+
+        public void CreateContainer()
+        {
+            if (LayerContainer == null)
+            {
+                var obj = new GameObject("Layers");
+                obj.transform.SetParent(transform);
+                LayerContainer = obj.transform;
+            }
         }
 
         /// <summary>
