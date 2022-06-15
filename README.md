@@ -14,7 +14,7 @@ Select `Add package from git URL...` and paste the following URL:
 https://github.com/mpewsey/ManiaMap.Unity.git
 ```
 
-NOTE: To lock into a specific version, append `#{VERSION_TAG}` to the end of the URL. For example:
+RECOMMENDED: To lock into a specific version, append `#{VERSION_TAG}` to the end of the URL. For example:
 
 ```
 https://github.com/mpewsey/ManiaMap.Unity.git#v1.0.0
