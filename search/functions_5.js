@@ -1,28 +1,8 @@
 var searchData=
 [
-  ['getadjacentrooms_0',['GetAdjacentRooms',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#a0b62a3f56770e2781ac98074da50880a',1,'MPewsey::ManiaMap::Unity::ManiaManager']]],
-  ['getcell_1',['GetCell',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a17a280e9d376cd140054f44a1a5434b3',1,'MPewsey.ManiaMap.Unity.Cell.GetCell()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#aca7647630d7b73e96655a436805ab59f',1,'MPewsey.ManiaMap.Unity.Room.GetCell()']]],
-  ['getdoor_2',['GetDoor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a04adf2eb6f40c6dc80b892d39ca72318',1,'MPewsey::ManiaMap::Unity::Door']]],
-  ['getdoortiletype_3',['GetDoorTileType',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aa4e7636369fd59f1681c2b5fa037f3ba',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
-  ['getdragrect_4',['GetDragRect',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ab997fd14722ae1ce143dab00524b541f',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['getedge_5',['GetEdge',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a8736b41180dbf935961c22346517a6c1',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getedgeindex_6',['GetEdgeIndex',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a16eb61d172663e8074224f8c4b02a4cd',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getedges_7',['GetEdges',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a9c81c31a35473427f600a335b04546bf',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getimagebytes_8',['GetImageBytes',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#af1870a99d1962df9bf102b5c153a02eb',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
-  ['getinspectorwidth_9',['GetInspectorWidth',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a20b63c110486e9fa6eead4c972f83878',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['getlayoutgraph_10',['GetLayoutGraph',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_editor.html#a2509baaea7fe4a73cd2caf6f1a4257dc',1,'MPewsey.ManiaMap.Unity.Editor.LayoutGraphEditor.GetLayoutGraph()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a2cce8c7bca877d52bbf3ce9cfd703536',1,'MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow.GetLayoutGraph()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a0c6c4fb4b5a9448da4a1b4d292cafa39',1,'MPewsey.ManiaMap.Unity.LayoutGraph.GetLayoutGraph()']]],
-  ['getnextnodeid_11',['GetNextNodeId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a6d6414a9d16865bd4d622cb2383529aa',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getnode_12',['GetNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#ad073317bd50f395fb8654cce891ca718',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getnodeindex_13',['GetNodeIndex',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a4950fe123a6e446cd974e87c840efc09',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getnodes_14',['GetNodes',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a9e390ae01b535c4abf2c4c5641df781a',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getrect_15',['GetRect',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a6b3536f13852ef9c29e4f5de6121b1fc',1,'MPewsey::ManiaMap::Unity::LayoutGraph']]],
-  ['getroom_16',['GetRoom',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#ac58551527768d161c797e98f7a2e7756',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
-  ['getroomcluster_17',['GetRoomCluster',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#ac0a5abc34d2988e8b3921aff9250f86a',1,'MPewsey::ManiaMap::Unity::ManiaManager']]],
-  ['getroomtemplatesdirectory_18',['GetRoomTemplatesDirectory',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a7064e105c9dc04654906959c523214ce',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
-  ['getsettings_19',['GetSettings',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#a51690941672f96e0d9b385648b8c2246',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],
-  ['gettemplate_20',['GetTemplate',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a4584ea7f9335efc43b97d1045b00b1db',1,'MPewsey::ManiaMap::Unity::Room']]],
-  ['gettemplatefilename_21',['GetTemplateFileName',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a72b5a8890f97237d43cff17cb7f6bb41',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
-  ['gettemplatesavepath_22',['GetTemplateSavePath',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a9e61d28f36f8bf0b4c5ca055231ec6c6',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
-  ['gettile_23',['GetTile',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
-  ['getwalltiletype_24',['GetWallTileType',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad41a88fda252ec85b2d4e95ab77e50c6',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]]
+  ['findclosestcell_0',['FindClosestCell',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a975e7899dd88fdc9ce5219521c7faec7',1,'MPewsey::ManiaMap::Unity::Cell']]],
+  ['findcollectablespots_1',['FindCollectableSpots',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a87bc9bfd17c2c87c42c8964e4bc62b9e',1,'MPewsey::ManiaMap::Unity::Cell']]],
+  ['finddoorconnection_2',['FindDoorConnection',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a5c2d498eba712b393f1a36026e1bdc51',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['finddoors_3',['FindDoors',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a1f0782dfcaea84ebe933948aac13c3de',1,'MPewsey::ManiaMap::Unity::Cell']]],
+  ['findmanager_4',['FindManager',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#aba0cef3e5a9bb56ab0ac2d360bb29c60',1,'MPewsey::ManiaMap::Unity::ManiaManager']]]
 ];

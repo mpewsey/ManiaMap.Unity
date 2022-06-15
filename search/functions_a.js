@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['onopenasset_0',['OnOpenAsset',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_editor.html#a72c1598bb79826e7b38abfff0c087e43',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphEditor']]],
-  ['onroominit_1',['OnRoomInit',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#af99f555c20e451efac14883c8dbd2a67',1,'MPewsey.ManiaMap.Unity.CollectableSpot.OnRoomInit()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a03226606541af9afa325ff3ed2f22a2e',1,'MPewsey.ManiaMap.Unity.Door.OnRoomInit()']]],
-  ['origin_2',['Origin',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#af3b9b28a60d04d5960a7fe2011912cd1',1,'MPewsey::ManiaMap::Unity::Cell']]]
+  ['movenodes_0',['MoveNodes',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a543214cb5d913d0a4bb502e020742f84',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['multipletargetsselected_1',['MultipleTargetsSelected',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a492caec66ec10cd1d2abad34d9be1e98',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
+  ['multiselectedge_2',['MultiselectEdge',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a8c4d962d5864b22e0cb3880e21bf13eb',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['multiselectnode_3',['MultiselectNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#af90196c9c6161ff5762436961a314625',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]]
 ];

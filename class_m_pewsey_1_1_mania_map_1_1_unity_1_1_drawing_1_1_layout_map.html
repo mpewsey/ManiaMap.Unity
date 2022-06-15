@@ -100,7 +100,6 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.Drawing.LayoutMap Class Reference</div></div>
@@ -118,12 +117,13 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.Drawing.LayoutMap:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a058f926faa5ac99cbe2b7628557659d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a058f926faa5ac99cbe2b7628557659d1">ClearTextures</a> ()</td></tr>
+<tr class="separator:a058f926faa5ac99cbe2b7628557659d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add23120039b4b1926004b0eb5ee9c6ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#add23120039b4b1926004b0eb5ee9c6ea">CreateContainer</a> ()</td></tr>
+<tr class="separator:add23120039b4b1926004b0eb5ee9c6ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebb78f8994929472681cdeaec7120726"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, Texture2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aebb78f8994929472681cdeaec7120726">CreateImages</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8">LayoutState</a> state=null)</td></tr>
 <tr class="memdesc:aebb78f8994929472681cdeaec7120726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a dictionary of layer map textures for the layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aebb78f8994929472681cdeaec7120726">More...</a><br /></td></tr>
 <tr class="separator:aebb78f8994929472681cdeaec7120726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9f18e48e887ea173d62e5a132839bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1f9f18e48e887ea173d62e5a132839bd">ReleaseTextures</a> ()</td></tr>
-<tr class="memdesc:a1f9f18e48e887ea173d62e5a132839bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys any existing textures and clears the map layers dictionary.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1f9f18e48e887ea173d62e5a132839bd">More...</a><br /></td></tr>
-<tr class="separator:a1f9f18e48e887ea173d62e5a132839bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50049d9f87efbde39bd667330572e35e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a50049d9f87efbde39bd667330572e35e">SaveImages</a> (string path, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8">LayoutState</a> state=null)</td></tr>
 <tr class="memdesc:a50049d9f87efbde39bd667330572e35e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders map images of all layout layers and saves them to the designated file path. The z (layer) values are added into the file paths before the file extension.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a50049d9f87efbde39bd667330572e35e">More...</a><br /></td></tr>
 <tr class="separator:a50049d9f87efbde39bd667330572e35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,6 +133,8 @@ Properties</h2></td></tr>
 <tr class="memitem:a44d5ef7fe015582cc8480d5eddd3997a"><td class="memItemLeft" align="right" valign="top">Color32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a44d5ef7fe015582cc8480d5eddd3997a">BackgroundColor</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a44d5ef7fe015582cc8480d5eddd3997a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The background color.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a44d5ef7fe015582cc8480d5eddd3997a">More...</a><br /></td></tr>
 <tr class="separator:a44d5ef7fe015582cc8480d5eddd3997a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f94a2f092ae3cfd8906f8ffc767c0c"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ac6f94a2f092ae3cfd8906f8ffc767c0c">LayerContainer</a><code> [getset]</code></td></tr>
+<tr class="separator:ac6f94a2f092ae3cfd8906f8ffc767c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe8499d6ecb5777045811f2409f59134"><td class="memItemLeft" align="right" valign="top">Layout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134">Layout</a><code> [getset]</code></td></tr>
 <tr class="memdesc:abe8499d6ecb5777045811f2409f59134"><td class="mdescLeft">&#160;</td><td class="mdescRight">The room layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134">More...</a><br /></td></tr>
 <tr class="separator:abe8499d6ecb5777045811f2409f59134"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,9 +144,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a7808fd3772c7d8105b8e677242261ec8"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8">LayoutState</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a7808fd3772c7d8105b8e677242261ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of room door positions by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8">More...</a><br /></td></tr>
 <tr class="separator:a7808fd3772c7d8105b8e677242261ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71bda326427a62f2632413659c2558ef"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, Texture2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a71bda326427a62f2632413659c2558ef">MapLayers</a> = new Dictionary&lt;int, Texture2D&gt;()<code> [get]</code></td></tr>
-<tr class="memdesc:a71bda326427a62f2632413659c2558ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of rendered managed textures.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a71bda326427a62f2632413659c2558ef">More...</a><br /></td></tr>
-<tr class="separator:a71bda326427a62f2632413659c2558ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef15761d9e4c85216cde7a0d0e1752af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html">MapTiles</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aef15761d9e4c85216cde7a0d0e1752af">MapTiles</a><code> [getset]</code></td></tr>
 <tr class="memdesc:aef15761d9e4c85216cde7a0d0e1752af"><td class="mdescLeft">&#160;</td><td class="mdescRight">The map tiles.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aef15761d9e4c85216cde7a0d0e1752af">More...</a><br /></td></tr>
 <tr class="separator:aef15761d9e4c85216cde7a0d0e1752af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +153,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a684225f897885881ccf1641c02811ec4"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; DoorPosition &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a684225f897885881ccf1641c02811ec4">RoomDoors</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a684225f897885881ccf1641c02811ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a684225f897885881ccf1641c02811ec4">More...</a><br /></td></tr>
 <tr class="separator:a684225f897885881ccf1641c02811ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f50130540be9990d31a7bfaf00fcf0"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, Texture2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a32f50130540be9990d31a7bfaf00fcf0">Textures</a> = new Dictionary&lt;int, Texture2D&gt;()<code> [get]</code></td></tr>
+<tr class="memdesc:a32f50130540be9990d31a7bfaf00fcf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of rendered layer textures.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a32f50130540be9990d31a7bfaf00fcf0">More...</a><br /></td></tr>
+<tr class="separator:a32f50130540be9990d31a7bfaf00fcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -163,52 +165,25 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a26c2af2037bd80d6d259556e952d2264"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a26c2af2037bd80d6d259556e952d2264">DoorExists</a> (ManiaMap.Room room, Vector2DInt position, DoorDirection direction)</td></tr>
 <tr class="memdesc:a26c2af2037bd80d6d259556e952d2264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the door exists for the room.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a26c2af2037bd80d6d259556e952d2264">More...</a><br /></td></tr>
 <tr class="separator:a26c2af2037bd80d6d259556e952d2264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b84cfc5b9816ba7efa494bf2a8fc964"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1b84cfc5b9816ba7efa494bf2a8fc964">DrawGrid</a> (Texture2D texture)</td></tr>
-<tr class="memdesc:a1b84cfc5b9816ba7efa494bf2a8fc964"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the grid tile exists, tiles it onto the texture.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1b84cfc5b9816ba7efa494bf2a8fc964">More...</a><br /></td></tr>
-<tr class="separator:a1b84cfc5b9816ba7efa494bf2a8fc964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada04af640214e9ffd7971500bd7970bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ada04af640214e9ffd7971500bd7970bd">DrawMap</a> (Texture2D texture, int z)</td></tr>
 <tr class="memdesc:ada04af640214e9ffd7971500bd7970bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the map onto the texture for the specified layer.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ada04af640214e9ffd7971500bd7970bd">More...</a><br /></td></tr>
 <tr class="separator:ada04af640214e9ffd7971500bd7970bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae17b22b30a0e8fdccf204a8f4766b9b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ae17b22b30a0e8fdccf204a8f4766b9b4">DrawMapTile</a> (Texture2D texture, Texture2D tileTexture, Vector2Int point)</td></tr>
-<tr class="memdesc:ae17b22b30a0e8fdccf204a8f4766b9b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the map tile onto the texture at the specified point.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ae17b22b30a0e8fdccf204a8f4766b9b4">More...</a><br /></td></tr>
-<tr class="separator:ae17b22b30a0e8fdccf204a8f4766b9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f6265b59c71a6dc7a99cf5bc7ee8a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad4f6265b59c71a6dc7a99cf5bc7ee8a8">DrawMapTiles</a> (Texture2D texture, int z)</td></tr>
 <tr class="memdesc:ad4f6265b59c71a6dc7a99cf5bc7ee8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the map tiles onto the texture.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad4f6265b59c71a6dc7a99cf5bc7ee8a8">More...</a><br /></td></tr>
 <tr class="separator:ad4f6265b59c71a6dc7a99cf5bc7ee8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec1273e55d61982d90ac9dfa8c19952"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a4ec1273e55d61982d90ac9dfa8c19952">DrawTileFill</a> (Texture2D texture, Color32 color, Vector2Int point)</td></tr>
-<tr class="memdesc:a4ec1273e55d61982d90ac9dfa8c19952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the specified tile color onto the texture at the specified point.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a4ec1273e55d61982d90ac9dfa8c19952">More...</a><br /></td></tr>
-<tr class="separator:a4ec1273e55d61982d90ac9dfa8c19952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3cdcc76465dc082637332fac6437c66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ac3cdcc76465dc082637332fac6437c66">FillBackground</a> (Texture2D texture)</td></tr>
-<tr class="memdesc:ac3cdcc76465dc082637332fac6437c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the background of the image with the specified background color.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ac3cdcc76465dc082637332fac6437c66">More...</a><br /></td></tr>
-<tr class="separator:ac3cdcc76465dc082637332fac6437c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99abe6445191f1c898c4027693fc8d46"><td class="memItemLeft" align="right" valign="top">Vector2Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a99abe6445191f1c898c4027693fc8d46">GetTextureSize</a> ()</td></tr>
+<tr class="memdesc:a99abe6445191f1c898c4027693fc8d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the width and height of the texture in pixels.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a99abe6445191f1c898c4027693fc8d46">More...</a><br /></td></tr>
+<tr class="separator:a99abe6445191f1c898c4027693fc8d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3560f75ab5d732cd38ee54d226518d0"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0">GetTile</a> (ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)</td></tr>
 <tr class="memdesc:ad3560f75ab5d732cd38ee54d226518d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the map tile corresponding to the wall or door location. Returns null if the tile has neither a wall or door.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0">More...</a><br /></td></tr>
 <tr class="separator:ad3560f75ab5d732cd38ee54d226518d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0b5bec4eda0355310c9605528fde781"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ac0b5bec4eda0355310c9605528fde781">OnDestroy</a> ()</td></tr>
-<tr class="separator:ac0b5bec4eda0355310c9605528fde781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a1d9274a707c63d0a7255af525680fc02"><td class="memItemLeft" align="right" valign="top">static Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1d9274a707c63d0a7255af525680fc02">CompositeColors</a> (Color colorA, Color colorB)</td></tr>
-<tr class="memdesc:a1d9274a707c63d0a7255af525680fc02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the composite of top color A onto bottom color B.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a1d9274a707c63d0a7255af525680fc02">More...</a><br /></td></tr>
-<tr class="separator:a1d9274a707c63d0a7255af525680fc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48cd7f4e79967bede27bc7a653aa870a"><td class="memItemLeft" align="right" valign="top">static Color32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a48cd7f4e79967bede27bc7a653aa870a">ConvertColor</a> (System.Drawing.Color color)</td></tr>
-<tr class="memdesc:a48cd7f4e79967bede27bc7a653aa870a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a System.Drawing.Color to a <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html" title="Contains components for interfacting the ManiaMap library with Unity.">Unity</a> Color32.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a48cd7f4e79967bede27bc7a653aa870a">More...</a><br /></td></tr>
-<tr class="separator:a48cd7f4e79967bede27bc7a653aa870a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4e7636369fd59f1681c2b5fa037f3ba"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MapTileType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aa4e7636369fd59f1681c2b5fa037f3ba">GetDoorTileType</a> (DoorDirection direction)</td></tr>
-<tr class="memdesc:aa4e7636369fd59f1681c2b5fa037f3ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the door tile type corresponding to the direction.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aa4e7636369fd59f1681c2b5fa037f3ba">More...</a><br /></td></tr>
-<tr class="separator:aa4e7636369fd59f1681c2b5fa037f3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1870a99d1962df9bf102b5c153a02eb"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#af1870a99d1962df9bf102b5c153a02eb">GetImageBytes</a> (Texture2D texture, string ext)</td></tr>
-<tr class="memdesc:af1870a99d1962df9bf102b5c153a02eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the image format bytes for the texture corresponding to the file extension (.png or .jpg).  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#af1870a99d1962df9bf102b5c153a02eb">More...</a><br /></td></tr>
-<tr class="separator:af1870a99d1962df9bf102b5c153a02eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad41a88fda252ec85b2d4e95ab77e50c6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MapTileType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad41a88fda252ec85b2d4e95ab77e50c6">GetWallTileType</a> (DoorDirection direction)</td></tr>
-<tr class="memdesc:ad41a88fda252ec85b2d4e95ab77e50c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the wall tile type corresponding to the direction.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad41a88fda252ec85b2d4e95ab77e50c6">More...</a><br /></td></tr>
-<tr class="separator:ad41a88fda252ec85b2d4e95ab77e50c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2db168ab3644d958842b4dbc4093fdbb"><td class="memItemLeft" align="right" valign="top">Color32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a2db168ab3644d958842b4dbc4093fdbb">_backgroundColor</a> = Color.clear</td></tr>
 <tr class="separator:a2db168ab3644d958842b4dbc4093fdbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dec7c473f4b5e03e325465de6173b82"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a8dec7c473f4b5e03e325465de6173b82">_layerContainer</a></td></tr>
+<tr class="separator:a8dec7c473f4b5e03e325465de6173b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a274694260ccd32a60ab0928c6f28169b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html">MapTiles</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a274694260ccd32a60ab0928c6f28169b">_mapTiles</a></td></tr>
 <tr class="separator:a274694260ccd32a60ab0928c6f28169b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cb22d791cc183c558f6ff22f43281f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html">Padding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a2cb22d791cc183c558f6ff22f43281f2">_padding</a> = new <a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html">Padding</a>(1)</td></tr>
@@ -216,94 +191,44 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A component for creating maps of Layout layers. </p>
-<h2><a class="anchor" id="autotoc_md2"></a>
-References</h2>
-<ul>
-<li>Wikipedia contributors. (2022, May 30). Alpha compositing. In Wikipedia, The Free Encyclopedia. Retrieved June 7, 2022, from <a href="https://en.wikipedia.org/w/index.php?title=Alpha_compositing&oldid=1090611617">https://en.wikipedia.org/w/index.php?title=Alpha_compositing&amp;oldid=1090611617</a> </li>
-</ul>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00016">16</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00012">12</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1d9274a707c63d0a7255af525680fc02" name="a1d9274a707c63d0a7255af525680fc02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9274a707c63d0a7255af525680fc02">&#9670;&nbsp;</a></span>CompositeColors()</h2>
+<a id="a058f926faa5ac99cbe2b7628557659d1" name="a058f926faa5ac99cbe2b7628557659d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058f926faa5ac99cbe2b7628557659d1">&#9670;&nbsp;</a></span>ClearTextures()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Color MPewsey.ManiaMap.Unity.Drawing.LayoutMap.CompositeColors </td>
+          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.ClearTextures </td>
           <td>(</td>
-          <td class="paramtype">Color&#160;</td>
-          <td class="paramname"><em>colorA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">Color&#160;</td>
-          <td class="paramname"><em>colorB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Calculates the composite of top color A onto bottom color B. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">colorA</td><td>The top color.</td></tr>
-    <tr><td class="paramname">colorB</td><td>The bottom color.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00447">447</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00064">64</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
-<a id="a48cd7f4e79967bede27bc7a653aa870a" name="a48cd7f4e79967bede27bc7a653aa870a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48cd7f4e79967bede27bc7a653aa870a">&#9670;&nbsp;</a></span>ConvertColor()</h2>
+<a id="add23120039b4b1926004b0eb5ee9c6ea" name="add23120039b4b1926004b0eb5ee9c6ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add23120039b4b1926004b0eb5ee9c6ea">&#9670;&nbsp;</a></span>CreateContainer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Color32 MPewsey.ManiaMap.Unity.Drawing.LayoutMap.ConvertColor </td>
+          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.CreateContainer </td>
           <td>(</td>
-          <td class="paramtype">System.Drawing.Color&#160;</td>
-          <td class="paramname"><em>color</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Converts a System.Drawing.Color to a <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html" title="Contains components for interfacting the ManiaMap library with Unity.">Unity</a> Color32. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">color</td><td>The System.Drawing.Color</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00437">437</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00069">69</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -342,7 +267,7 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00154">154</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00129">129</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -371,7 +296,7 @@ References</h2>
 
 <p>Populates the map layers dictionary with textures. Textures for layers not present in the layout are destroyed, while missing layer textures are added. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00127">127</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00104">104</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -425,43 +350,7 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00189">189</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1b84cfc5b9816ba7efa494bf2a8fc964" name="a1b84cfc5b9816ba7efa494bf2a8fc964"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b84cfc5b9816ba7efa494bf2a8fc964">&#9670;&nbsp;</a></span>DrawGrid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.DrawGrid </td>
-          <td>(</td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>texture</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>If the grid tile exists, tiles it onto the texture. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>The texture.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00223">223</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00174">174</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -508,61 +397,7 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00175">175</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae17b22b30a0e8fdccf204a8f4766b9b4" name="ae17b22b30a0e8fdccf204a8f4766b9b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae17b22b30a0e8fdccf204a8f4766b9b4">&#9670;&nbsp;</a></span>DrawMapTile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.DrawMapTile </td>
-          <td>(</td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>tileTexture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Vector2Int&#160;</td>
-          <td class="paramname"><em>point</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Draws the map tile onto the texture at the specified point. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>The texture.</td></tr>
-    <tr><td class="paramname">tileTexture</td><td>The tile texture.</td></tr>
-    <tr><td class="paramname">point</td><td>The tile coordinate.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00274">274</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00160">160</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -609,12 +444,12 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00300">300</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00193">193</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
-<a id="a4ec1273e55d61982d90ac9dfa8c19952" name="a4ec1273e55d61982d90ac9dfa8c19952"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ec1273e55d61982d90ac9dfa8c19952">&#9670;&nbsp;</a></span>DrawTileFill()</h2>
+<a id="a99abe6445191f1c898c4027693fc8d46" name="a99abe6445191f1c898c4027693fc8d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99abe6445191f1c898c4027693fc8d46">&#9670;&nbsp;</a></span>GetTextureSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -623,64 +458,9 @@ References</h2>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.DrawTileFill </td>
+          <td class="memname">Vector2Int MPewsey.ManiaMap.Unity.Drawing.LayoutMap.GetTextureSize </td>
           <td>(</td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Color32&#160;</td>
-          <td class="paramname"><em>color</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Vector2Int&#160;</td>
-          <td class="paramname"><em>point</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Draws the specified tile color onto the texture at the specified point. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>The texture.</td></tr>
-    <tr><td class="paramname">color</td><td>The tile color.</td></tr>
-    <tr><td class="paramname">point</td><td>The tile coordinate.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00252">252</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac3cdcc76465dc082637332fac6437c66" name="ac3cdcc76465dc082637332fac6437c66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3cdcc76465dc082637332fac6437c66">&#9670;&nbsp;</a></span>FillBackground()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.FillBackground </td>
-          <td>(</td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -691,110 +471,9 @@ References</h2>
 </table>
 </div><div class="memdoc">
 
-<p>Fills the background of the image with the specified background color. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>The texture.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Returns the width and height of the texture in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00209">209</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="aa4e7636369fd59f1681c2b5fa037f3ba" name="aa4e7636369fd59f1681c2b5fa037f3ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4e7636369fd59f1681c2b5fa037f3ba">&#9670;&nbsp;</a></span>GetDoorTileType()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MapTileType</a> MPewsey.ManiaMap.Unity.Drawing.LayoutMap.GetDoorTileType </td>
-          <td>(</td>
-          <td class="paramtype">DoorDirection&#160;</td>
-          <td class="paramname"><em>direction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the door tile type corresponding to the direction. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">direction</td><td>The direction.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentException</td><td>Raised if the direction is not handled.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00387">387</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="af1870a99d1962df9bf102b5c153a02eb" name="af1870a99d1962df9bf102b5c153a02eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1870a99d1962df9bf102b5c153a02eb">&#9670;&nbsp;</a></span>GetImageBytes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static byte[] MPewsey.ManiaMap.Unity.Drawing.LayoutMap.GetImageBytes </td>
-          <td>(</td>
-          <td class="paramtype">Texture2D&#160;</td>
-          <td class="paramname"><em>texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>ext</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the image format bytes for the texture corresponding to the file extension (.png or .jpg). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>The texture.</td></tr>
-    <tr><td class="paramname">ext</td><td>The file extension.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentException</td><td>Raised if the file extension is not handled.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00108">108</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00148">148</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -862,97 +541,7 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00371">371</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad41a88fda252ec85b2d4e95ab77e50c6" name="ad41a88fda252ec85b2d4e95ab77e50c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad41a88fda252ec85b2d4e95ab77e50c6">&#9670;&nbsp;</a></span>GetWallTileType()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MapTileType</a> MPewsey.ManiaMap.Unity.Drawing.LayoutMap.GetWallTileType </td>
-          <td>(</td>
-          <td class="paramtype">DoorDirection&#160;</td>
-          <td class="paramname"><em>direction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the wall tile type corresponding to the direction. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">direction</td><td>The direction.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentException</td><td>Raised if the direction is not handled.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00413">413</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac0b5bec4eda0355310c9605528fde781" name="ac0b5bec4eda0355310c9605528fde781"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0b5bec4eda0355310c9605528fde781">&#9670;&nbsp;</a></span>OnDestroy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.OnDestroy </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00064">64</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1f9f18e48e887ea173d62e5a132839bd" name="a1f9f18e48e887ea173d62e5a132839bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f9f18e48e887ea173d62e5a132839bd">&#9670;&nbsp;</a></span>ReleaseTextures()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.Drawing.LayoutMap.ReleaseTextures </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Destroys any existing textures and clears the map layers dictionary. </p>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00072">72</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00265">265</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -998,7 +587,7 @@ References</h2>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00089">89</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00086">86</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -1024,6 +613,30 @@ References</h2>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00026">26</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8dec7c473f4b5e03e325465de6173b82" name="a8dec7c473f4b5e03e325465de6173b82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dec7c473f4b5e03e325465de6173b82">&#9670;&nbsp;</a></span>_layerContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform MPewsey.ManiaMap.Unity.Drawing.LayoutMap._layerContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00015">15</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -1099,6 +712,30 @@ References</h2>
 <p>The background color. </p>
 
 <p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00030">30</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac6f94a2f092ae3cfd8906f8ffc767c0c" name="ac6f94a2f092ae3cfd8906f8ffc767c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6f94a2f092ae3cfd8906f8ffc767c0c">&#9670;&nbsp;</a></span>LayerContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform MPewsey.ManiaMap.Unity.Drawing.LayoutMap.LayerContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00016">16</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>
@@ -1180,32 +817,6 @@ References</h2>
 
 </div>
 </div>
-<a id="a71bda326427a62f2632413659c2558ef" name="a71bda326427a62f2632413659c2558ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71bda326427a62f2632413659c2558ef">&#9670;&nbsp;</a></span>MapLayers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;int, Texture2D&gt; MPewsey.ManiaMap.Unity.Drawing.LayoutMap.MapLayers = new Dictionary&lt;int, Texture2D&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A dictionary of rendered managed textures. </p>
-
-<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00062">62</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
-
-</div>
-</div>
 <a id="aef15761d9e4c85216cde7a0d0e1752af" name="aef15761d9e4c85216cde7a0d0e1752af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef15761d9e4c85216cde7a0d0e1752af">&#9670;&nbsp;</a></span>MapTiles</h2>
 
@@ -1281,6 +892,32 @@ References</h2>
 <p>A dictionary of </p>
 
 <p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00052">52</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
+
+</div>
+</div>
+<a id="a32f50130540be9990d31a7bfaf00fcf0" name="a32f50130540be9990d31a7bfaf00fcf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f50130540be9990d31a7bfaf00fcf0">&#9670;&nbsp;</a></span>Textures</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;int, Texture2D&gt; MPewsey.ManiaMap.Unity.Drawing.LayoutMap.Textures = new Dictionary&lt;int, Texture2D&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A dictionary of rendered layer textures. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_map_8cs_source.html#l00062">62</a> of file <a class="el" href="_layout_map_8cs_source.html">LayoutMap.cs</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['layoutgraphexists_0',['LayoutGraphExists',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a8cb13568d250f6ad0ad71c9738b54773',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['loadtemplates_1',['LoadTemplates',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html#a722bf7fda79e8a086046b03c9bc4aa4b',1,'MPewsey.ManiaMap.Unity.TemplateGroup.LoadTemplates()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html#a015dff1c446e5703dd85ad22c0ce08e7',1,'MPewsey.ManiaMap.Unity.TemplateGroup.LoadTemplates(Dictionary&lt; TextAsset, RoomTemplate &gt; pool)']]]
+  ['init_0',['Init',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a3514a2f7c62ebbd502b5160d118580b7',1,'MPewsey.ManiaMap.Unity.Cell.Init()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#a579ef9249fa091daa39b53eafbed7e1b',1,'MPewsey.ManiaMap.Unity.ManiaManager.Init()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a3f824e5aed598bf4b84c3b8741dc17b2',1,'MPewsey.ManiaMap.Unity.Room.Init(Uid roomId, bool assignPosition=false)']]],
+  ['instantiateroom_1',['InstantiateRoom',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a0bec3af8ed5bfd2b6c1bef8695c2d8d7',1,'MPewsey::ManiaMap::Unity::Room']]]
 ];

@@ -108,55 +108,68 @@ $(document).ready(function(){initNavTree('namespace_m_pewsey_1_1_mania_map_1_1_u
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html">ColorUtility</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains methods for manipulating colors.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html">LayoutMap</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A component for creating maps of Layout layers.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html">LayoutMapLayer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html">LayoutTilemap</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html">LayoutTilemapLayer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html">MapTileHash</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html">MapTiles</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html">Padding</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure for specifying the padding around an object.  <a href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html">TextureUtility</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:add8779f7d145fdeba7b39bd216792b36"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MapTileType</a> { <br />
+<tr class="memitem:af4d83c8d0c3e6dc630d94a3e55da332b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">MapTileTypes</a> { <br />
 &#160;&#160;<b>None</b>
-, <b>Grid</b>
-, <b>NorthDoor</b>
-, <b>SouthDoor</b>
+, <b>Grid</b> = 1 &lt;&lt; 0
+, <b>NorthDoor</b> = 1 &lt;&lt; 1
+, <b>SouthDoor</b> = 1 &lt;&lt; 2
 , <br />
-&#160;&#160;<b>EastDoor</b>
-, <b>WestDoor</b>
-, <b>TopDoor</b>
-, <b>BottomDoor</b>
+&#160;&#160;<b>EastDoor</b> = 1 &lt;&lt; 3
+, <b>WestDoor</b> = 1 &lt;&lt; 4
+, <b>TopDoor</b> = 1 &lt;&lt; 5
+, <b>BottomDoor</b> = 1 &lt;&lt; 6
 , <br />
-&#160;&#160;<b>NorthWall</b>
-, <b>SouthWall</b>
-, <b>EastWall</b>
-, <b>WestWall</b>
+&#160;&#160;<b>NorthWall</b> = 1 &lt;&lt; 7
+, <b>SouthWall</b> = 1 &lt;&lt; 8
+, <b>EastWall</b> = 1 &lt;&lt; 9
+, <b>WestWall</b> = 1 &lt;&lt; 10
 <br />
  }</td></tr>
-<tr class="memdesc:add8779f7d145fdeba7b39bd216792b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type corresponding to a map tile.  <a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">More...</a><br /></td></tr>
-<tr class="separator:add8779f7d145fdeba7b39bd216792b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:af4d83c8d0c3e6dc630d94a3e55da332b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type corresponding to a map tile.  <a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">More...</a><br /></td></tr>
+<tr class="separator:af4d83c8d0c3e6dc630d94a3e55da332b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Contains components for creating maps of Layout. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="add8779f7d145fdeba7b39bd216792b36" name="add8779f7d145fdeba7b39bd216792b36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add8779f7d145fdeba7b39bd216792b36">&#9670;&nbsp;</a></span>MapTileType</h2>
+<a id="af4d83c8d0c3e6dc630d94a3e55da332b" name="af4d83c8d0c3e6dc630d94a3e55da332b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4d83c8d0c3e6dc630d94a3e55da332b">&#9670;&nbsp;</a></span>MapTileTypes</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#add8779f7d145fdeba7b39bd216792b36">MPewsey.ManiaMap.Unity.Drawing.MapTileType</a></td>
+          <td class="memname">enum <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">MPewsey.ManiaMap.Unity.Drawing.MapTileTypes</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A type corresponding to a map tile. </p>
 
-<p class="definition">Definition at line <a class="el" href="_map_tile_type_8cs_source.html#l00006">6</a> of file <a class="el" href="_map_tile_type_8cs_source.html">MapTileType.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_map_tile_types_8cs_source.html#l00009">9</a> of file <a class="el" href="_map_tile_types_8cs_source.html">MapTileTypes.cs</a>.</p>
 
 </div>
 </div>
