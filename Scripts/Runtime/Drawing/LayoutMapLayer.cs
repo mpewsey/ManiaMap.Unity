@@ -29,10 +29,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return layer;
         }
 
-        public void Resize(int width, int height)
+        public void Resize(Vector2Int size)
         {
-            if (Texture.width != width || Texture.height != height)
-                Texture.Reinitialize(width, height);
+            if (Texture.width != size.x || Texture.height != size.y)
+                Texture.Reinitialize(size.x, size.y);
         }
 
         public Sprite GetSprite()

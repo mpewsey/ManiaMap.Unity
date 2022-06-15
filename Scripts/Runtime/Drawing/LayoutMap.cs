@@ -110,22 +110,27 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             var layers = LayersContainer.GetComponentsInParent<LayoutMapLayer>().ToList();
             var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
 
+            // Destroy extra layers and resize existing.
+            for (int i = layers.Count - 1; i >= 0; i--)
+            {
+                var layer = layers[i];
+
+                if (zs.Contains(layer.Z))
+                {
+                    layer.Resize(size);
+                    continue;
+                }
+
+                Destroy(layer.gameObject);
+                layers.RemoveAt(i);
+            }
+
             // Create missing layers.
             foreach (var z in zs)
             {
                 if (!layers.Any(x => x.Z == z))
                 {
                     layers.Add(LayoutMapLayer.Create(size, z, LayersContainer));
-                }
-            }
-
-            // Destroy extra layers.
-            for (int i = layers.Count - 1; i >= 0; i--)
-            {
-                if (!zs.Contains(layers[i].Z))
-                {
-                    Destroy(layers[i].gameObject);
-                    layers.RemoveAt(i);
                 }
             }
 
