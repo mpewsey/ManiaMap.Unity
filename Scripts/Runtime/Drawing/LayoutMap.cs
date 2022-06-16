@@ -60,11 +60,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The z (layer) values are added into the file paths before the file extension.
         /// </summary>
         /// <param name="path">The file path.</param>
-        /// <param name="layout">The room layout.</param>
-        /// <param name="state">The room layout state.</param>
-        public void SaveLayerImages(string path, Layout layout, LayoutState state = null)
+        public void SaveLayerImages(string path)
         {
-            SaveLayerImages(path, CreateLayers(layout, state));
+            var layers = CreateLayers();
+            SaveLayerImages(path, layers);
         }
 
         /// <summary>
@@ -72,9 +71,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The z (layer) values are added into the file paths before the file extension.
         /// </summary>
         /// <param name="path">The file path.</param>
-        public void SaveLayerImages(string path)
+        /// <param name="layout">The room layout.</param>
+        /// <param name="state">The room layout state.</param>
+        public void SaveLayerImages(string path, Layout layout, LayoutState state = null)
         {
-            SaveLayerImages(path, UpdateLayers());
+            var layers = CreateLayers(layout, state);
+            SaveLayerImages(path, layers);
         }
 
         public static void SaveLayerImages(string path, List<LayoutMapLayer> layers)
@@ -89,8 +91,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        public List<LayoutMapLayer> CreateLayers()
+        {
+            var manager = ManiaManager.Current;
+            return CreateLayers(manager.Layout, manager.LayoutState);
+        }
+
         /// <summary>
-        /// Returns a dictionary of layer map textures for the layout.
+        /// Returns a list of map layers for the layout.
         /// </summary>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
@@ -100,14 +108,21 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             LayoutState = state;
             RoomDoors = layout.GetRoomDoors();
             LayoutBounds = layout.GetBounds();
-            return UpdateLayers();
+            var layers = CreateLayerComponents();
+
+            foreach (var layer in layers)
+            {
+                DrawMap(layer.Texture, layer.Z);
+            }
+
+            return layers;
         }
 
         private List<LayoutMapLayer> CreateLayerComponents()
         {
             CreateLayersContainer();
             var size = GetTextureSize();
-            var layers = LayersContainer.GetComponentsInParent<LayoutMapLayer>().ToList();
+            var layers = LayersContainer.GetComponentsInChildren<LayoutMapLayer>().ToList();
             var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
 
             // Destroy extra layers and resize existing.
@@ -145,21 +160,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 obj.transform.SetParent(transform);
                 LayersContainer = obj.transform;
             }
-        }
-
-        public List<LayoutMapLayer> UpdateLayers()
-        {
-            if (Layout == null)
-                throw new System.ArgumentException("Layout not set. Use the `CreateLayers` method first.");
-            
-            var layers = CreateLayerComponents();
-
-            foreach (var layer in layers)
-            {
-                DrawMap(layer.Texture, layer.Z);
-            }
-
-            return layers;
         }
 
         /// <summary>

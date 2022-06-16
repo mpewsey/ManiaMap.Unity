@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -38,14 +39,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
 
-        private Dictionary<int, Tilemap> Tilemaps { get; } = new Dictionary<int, Tilemap>();
-
         public void ClearTiles()
         {
             Tiles.Clear();
         }
 
-        private void CreateGrid()
+        public void CreateGrid()
         {
             if (Grid == null)
             {
@@ -57,6 +56,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         private Tile GetTile(MapTileTypes tileTypes, Color32 color)
         {
+            if (tileTypes == MapTileTypes.None)
+                return null;
+            
             var hash = new MapTileHash(tileTypes, color);
 
             if (!Tiles.TryGetValue(hash, out Tile tile))
@@ -72,16 +74,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             var texture = new Texture2D(MapTiles.TileSize.x, MapTiles.TileSize.y);
             TextureUtility.Fill(texture, color);
-
-            foreach (var flag in FlagUtility.GetFlagEnumerable((int)tileTypes))
-            {
-                var type = (MapTileTypes)flag;
-                var tile = MapTiles.GetTile(type);
-                TextureUtility.DrawImage(texture, tile, Vector2Int.zero);
-            }
-
+            DrawMapTiles(texture, tileTypes);
             texture.Apply();
             return texture;
+        }
+
+        private void DrawMapTiles(Texture2D texture, MapTileTypes tileTypes)
+        {
+            for (int i = (int)tileTypes; i != 0; i &= i - 1)
+            {
+                var flag = ~(i - 1) & i;
+                var tile = MapTiles.GetTile((MapTileTypes)flag);
+                TextureUtility.DrawImage(texture, tile, Vector2Int.zero);
+            }
         }
 
         private Sprite CreateSprite(Texture2D texture)
@@ -118,16 +123,63 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return false;
         }
 
-        public Dictionary<int, Tilemap> CreateMaps(Layout layout, LayoutState state = null)
+        public List<LayoutTilemapLayer> CreateLayers()
+        {
+            var manager = ManiaManager.Current;
+            return CreateLayers(manager.Layout, manager.LayoutState);
+        }
+
+        public List<LayoutTilemapLayer> CreateLayers(Layout layout, LayoutState state = null)
         {
             Layout = layout;
             LayoutState = state;
             RoomDoors = layout.GetRoomDoors();
-
-            return new Dictionary<int, Tilemap>(Tilemaps);
+            return UpdateLayers();
         }
 
-        private void DrawMapTiles(Tilemap tilemap, int z)
+        private List<LayoutTilemapLayer> UpdateLayers()
+        {
+            var layers = CreateLayerComponents();
+
+            foreach (var layer in layers)
+            {
+                DrawMap(layer.Tilemap, layer.Z);
+            }
+
+            return layers;
+        }
+
+        private List<LayoutTilemapLayer> CreateLayerComponents()
+        {
+            CreateGrid();
+            var layers = Grid.GetComponentsInChildren<LayoutTilemapLayer>().ToList();
+            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+
+            // Destroy extra layers.
+            for (int i = layers.Count - 1; i >= 0; i--)
+            {
+                var layer = layers[i];
+
+                if (!zs.Contains(layer.Z))
+                {
+                    Destroy(layer.gameObject);
+                    layers.RemoveAt(i);
+                }
+            }
+
+            // Create missing layers.
+            foreach (var z in zs)
+            {
+                if (!layers.Any(x => x.Z == z))
+                {
+                    layers.Add(LayoutTilemapLayer.Create(z, Grid.transform));
+                }
+            }
+
+            return layers;
+        }
+
+        private void DrawMap(Tilemap tilemap, int z)
         {
             tilemap.ClearAllTiles();
             
@@ -166,6 +218,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var west = cells.GetOrDefault(i, j - 1);
                         var east = cells.GetOrDefault(i, j + 1);
 
+                        // Accumulate map tile types
                         var tileTypes = MapTileTypes.None;
                         tileTypes |= GetTileType(room, cell, null, position, DoorDirection.Top);
                         tileTypes |= GetTileType(room, cell, null, position, DoorDirection.Bottom);
@@ -174,6 +227,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         tileTypes |= GetTileType(room, cell, west, position, DoorDirection.West);
                         tileTypes |= GetTileType(room, cell, east, position, DoorDirection.East);
 
+                        // Set the map tile.
                         var tile = GetTile(tileTypes, ColorUtility.ConvertColor(room.Color));
                         tilemap.SetTile(point, tile);
                     }
