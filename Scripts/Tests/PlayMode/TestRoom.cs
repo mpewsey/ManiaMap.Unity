@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [SetUp]
         public void SetUp()
         {
-            AssetLoader.LoadEmptyScene();
+            Assets.LoadEmptyScene();
         }
 
         [TearDown]
@@ -36,7 +36,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGetTemplate()
         {
-            var room = AssetLoader.InstantiateAngle3x4Room();
+            var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
             Assert.IsNotNull(template);
         }
@@ -45,7 +45,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestInit()
         {
             var seed = new RandomSeed(12345);
-            var room = AssetLoader.InstantiateAngle3x4Room();
+            var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
 
             // Create fake layout.
