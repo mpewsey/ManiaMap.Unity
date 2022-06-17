@@ -68,7 +68,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         private Texture2D CreateTexture(MapTileTypes tileTypes, Color32 color)
         {
-            var texture = new Texture2D(MapTiles.TileSize.x, MapTiles.TileSize.y);
+            var texture = new Texture2D(MapTiles.TileSize.x + 2, MapTiles.TileSize.y + 2);
             TextureUtility.Fill(texture, color);
             DrawMapTiles(texture, tileTypes);
             texture.Apply();
@@ -81,14 +81,15 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 var flag = ~(i - 1) & i;
                 var tile = MapTiles.GetTile((MapTileTypes)flag);
-                TextureUtility.DrawImage(texture, tile, Vector2Int.zero);
+                TextureUtility.DrawImage(texture, tile, Vector2Int.one);
+                TextureUtility.FillBorder(texture);
             }
         }
 
         private Sprite CreateSprite(Texture2D texture)
         {
             var pivot = new Vector2(0.5f, 0.5f);
-            var rect = new Rect(0, 0, texture.width, texture.height);
+            var rect = new Rect(1, 1, texture.width - 2, texture.height - 2);
             return Sprite.Create(texture, rect, pivot, MapTiles.PixelsPerUnit);
         }
 
