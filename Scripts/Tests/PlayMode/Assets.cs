@@ -17,6 +17,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
         // Maps
         public const string LayoutMapPath = PackagePath + "Prefabs/LayoutMap.prefab";
+        public const string LayoutTilemapPath = PackagePath + "Prefabs/LayoutTilemap.prefab";
 
         // Generation Pipelines
         public const string BigLayoutPath = PackagePath + "Prefabs/BigLayout/BigLayoutGenerator.prefab";
@@ -33,9 +34,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
             EditorSceneManager.LoadSceneInPlayMode(EmptyScenePath, new LoadSceneParameters());
         }
 
+        public static GameObject LoadPrefab(string path)
+        {
+            return AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        }
+
         public static T InstantiatePrefab<T>(string path) where T : MonoBehaviour
         {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            var prefab = LoadPrefab(path);
             var obj = Object.Instantiate(prefab);
             return obj.GetComponent<T>();
         }
