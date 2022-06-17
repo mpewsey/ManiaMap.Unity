@@ -13,9 +13,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var templates = new List<RoomTemplate>
             {
-                Samples.TemplateLibrary.Angles.Angle3x4(),
-                Samples.TemplateLibrary.Squares.Square3x3Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
+                ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
+                ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template(),
+                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
             };
 
             var path = Path.GetTempFileName();

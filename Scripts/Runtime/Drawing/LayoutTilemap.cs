@@ -55,9 +55,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         private Tile GetTile(MapTileTypes tileTypes, Color32 color)
         {
-            if (tileTypes == MapTileTypes.None)
-                return null;
-
             var hash = new MapTileHash(tileTypes, color);
 
             if (!Tiles.TryGetValue(hash, out Tile tile))

@@ -14,8 +14,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public const string EmptyScenePath = PackagePath + "Scenes/EmptyScene.unity";
 
         // Maps
-        public const string LayoutMapPath = PackagePath + "Prefabs/LayoutMap.prefab";
-        public const string LayoutTilemapPath = PackagePath + "Prefabs/LayoutTilemap.prefab";
+        public const string LayoutMapPath = PackagePath + "Prefabs/LayoutMap/LayoutMap.prefab";
+        public const string LayoutTilemapPath = PackagePath + "Prefabs/LayoutTilemap/LayoutTilemap.prefab";
 
         // Generation Pipelines
         public const string BigLayoutPath = PackagePath + "Prefabs/BigLayout/BigLayoutGenerator.prefab";
