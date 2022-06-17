@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         [SerializeField]
         private Transform _layersContainer;
         public Transform LayersContainer { get => _layersContainer; set => _layersContainer = value; }
-        
+
         [SerializeField]
         private MapTiles _mapTiles;
         /// <summary>

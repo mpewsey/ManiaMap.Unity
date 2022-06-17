@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -28,7 +26,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             var layer = obj.AddComponent<LayoutTilemapLayer>();
             layer.Z = z;
-            
+
             return layer;
         }
     }

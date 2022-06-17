@@ -1,5 +1,3 @@
-using MPewsey.ManiaMap.Unity.Drawing;
-using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;

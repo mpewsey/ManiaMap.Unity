@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
 {

@@ -182,7 +182,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private void DrawMap(Tilemap tilemap, int z)
         {
             tilemap.ClearAllTiles();
-            
+
             foreach (var room in Layout.Rooms.Values)
             {
                 // If room Z (layer) value is not equal, go to next room.
