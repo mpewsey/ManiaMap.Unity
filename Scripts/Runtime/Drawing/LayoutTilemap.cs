@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         [SerializeField]
         private Grid _grid;
         public Grid Grid { get => _grid; set => _grid = value; }
-        
+
         [SerializeField]
         private MapTiles _mapTiles;
         /// <summary>
@@ -58,7 +57,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             if (tileTypes == MapTileTypes.None)
                 return null;
-            
+
             var hash = new MapTileHash(tileTypes, color);
 
             if (!Tiles.TryGetValue(hash, out Tile tile))
