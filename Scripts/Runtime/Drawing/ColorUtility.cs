@@ -12,7 +12,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public static class ColorUtility
     {
         /// <summary>
-        /// Converts a System.Drawing.Color to a Unity Color32.
+        /// Converts a System.Drawing.Color to a %Unity Color32.
         /// </summary>
         /// <param name="color">The System.Drawing.Color</param>
         public static Color32 ConvertColor(System.Drawing.Color color)

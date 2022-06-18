@@ -7,7 +7,7 @@ using UnityEditor;
 namespace MPewsey.ManiaMap.Unity.Editor
 {
     /// <summary>
-    /// Contains methods for dealing with files in in Unity.
+    /// Contains methods for dealing with files in in %Unity.
     /// </summary>
     public static class FileUtility
     {
