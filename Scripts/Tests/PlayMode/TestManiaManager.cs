@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -11,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [SetUp]
         public void SetUp()
         {
-            AssetLoader.LoadEmptyScene();
+            Assets.LoadEmptyScene();
         }
 
         [TearDown]
@@ -52,7 +51,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestInit()
         {
-            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
+            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];

@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 0ea0d3d2f2ce11c4daa3527d0b41bc0d
+guid: 110d80932ed7b884b8b6354c00837ba4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _grid: {instanceID: 0}
-  - _mapTiles: {fileID: 11400000, guid: 2a7488c9f2fbc7f4fbc16d2cf79e293b, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

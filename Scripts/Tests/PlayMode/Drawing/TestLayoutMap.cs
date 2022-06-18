@@ -1,7 +1,6 @@
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
 using System.IO;
-using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
 {
@@ -10,98 +9,46 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [SetUp]
         public void SetUp()
         {
-            AssetLoader.LoadEmptyScene();
+            Assets.LoadEmptyScene();
         }
 
-        [Test]
-        public void TestCreateBigLayoutImages()
+        [TestCase(Assets.BigLayoutPath)]
+        [TestCase(Assets.CrossLayoutPath)]
+        [TestCase(Assets.GeekLayoutPath)]
+        [TestCase(Assets.LoopLayoutPath)]
+        [TestCase(Assets.StackedLoopLayoutPath)]
+        public void TestCreateLayers(string path)
         {
-            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
+            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            var images = layoutMap.CreateImages(layout);
-            Assert.AreEqual(1, images.Count);
+            var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
+            var images = layoutMap.CreateLayers(layout);
+            Assert.Greater(images.Count, 0);
         }
 
-        [Test]
-        public void TestSaveBigLayoutImages()
+        [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.png")]
+        [TestCase(Assets.CrossLayoutPath, "Tests/CrossLayout.png")]
+        [TestCase(Assets.GeekLayoutPath, "Tests/GeekLayout.png")]
+        [TestCase(Assets.LoopLayoutPath, "Tests/LoopLayout.png")]
+        [TestCase(Assets.StackedLoopLayoutPath, "Tests/StackedLoopLayout.png")]
+        [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.jpg")]
+        [TestCase(Assets.CrossLayoutPath, "Tests/CrossLayout.jpg")]
+        [TestCase(Assets.GeekLayoutPath, "Tests/GeekLayout.jpg")]
+        [TestCase(Assets.LoopLayoutPath, "Tests/LoopLayout.jpg")]
+        [TestCase(Assets.StackedLoopLayoutPath, "Tests/StackedLoopLayout.jpg")]
+        public void TestSaveLayoutImages(string path, string imagePath)
         {
-            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
+            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
             var results = pipeline.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
+            var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/BigLayoutMap.png", layout);
-        }
-
-        [Test]
-        public void TestSaveBigLayoutJpegImages()
-        {
-            var pipeline = AssetLoader.InstantiateBigLayoutGenerator();
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/BigLayoutMap.jpg", layout);
-        }
-
-        [Test]
-        public void TestSaveCrossLayoutImages()
-        {
-            var pipeline = AssetLoader.InstantiateCrossLayoutGenerator();
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/CrossLayoutMap.png", layout);
-        }
-
-        [Test]
-        public void TestSaveGeekLayoutImages()
-        {
-            var pipeline = AssetLoader.InstantiateGeekLayoutGenerator();
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/GeekLayoutMap.png", layout);
-        }
-
-        [Test]
-        public void TestSaveLoopLayoutImages()
-        {
-            var pipeline = AssetLoader.InstantiateLoopLayoutGenerator();
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/LoopLayoutMap.png", layout);
-        }
-
-        [Test]
-        public void TestSaveStackedLoopLayoutImages()
-        {
-            var pipeline = AssetLoader.InstantiateStackedLoopLayoutGenerator();
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-            var layoutMap = AssetLoader.InstantiateLayoutMap();
-            Directory.CreateDirectory("Tests");
-            layoutMap.SaveImages("Tests/StackedLoopLayoutMap.png", layout);
+            layoutMap.SaveLayerImages(imagePath, layout);
         }
     }
 }
