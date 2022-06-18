@@ -5,10 +5,16 @@ using UnityEngine.Tilemaps;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
 {
+    /// <summary>
+    /// A component for creating tilemaps of layout layers.
+    /// </summary>
     public class LayoutTilemap : MonoBehaviour
     {
         [SerializeField]
         private Grid _grid;
+        /// <summary>
+        /// The grid container for the layers.
+        /// </summary>
         public Grid Grid { get => _grid; set => _grid = value; }
 
         [SerializeField]
@@ -34,15 +40,21 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; }
 
         /// <summary>
-        /// A dictionary of rendered managed textures.
+        /// A dictionary of map tiles by map tile type and color.
         /// </summary>
         private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
 
+        /// <summary>
+        /// Clears the map tile dictionary.
+        /// </summary>
         public void ClearTiles()
         {
             Tiles.Clear();
         }
 
+        /// <summary>
+        /// Creates a new child grid component if it does not already exist.
+        /// </summary>
         public void CreateGrid()
         {
             if (Grid == null)
@@ -53,6 +65,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Returns the tile corresponding to the tile types and color. If the tile
+        /// does not already exist, creates and caches it.
+        /// </summary>
+        /// <param name="tileTypes">The tile types.</param>
+        /// <param name="color">The tile color.</param>
         private Tile GetTile(MapTileTypes tileTypes, Color32 color)
         {
             var hash = new MapTileHash(tileTypes, color);
@@ -66,15 +84,26 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return tile;
         }
 
+        /// <summary>
+        /// Creates a new texture for the specified tile types and color.
+        /// </summary>
+        /// <param name="tileTypes">The tile types.</param>
+        /// <param name="color">The tile color.</param>
         private Texture2D CreateTexture(MapTileTypes tileTypes, Color32 color)
         {
             var texture = new Texture2D(MapTiles.TileSize.x + 2, MapTiles.TileSize.y + 2);
+            texture.name = "Mania Map Tile Texture";
             TextureUtility.Fill(texture, color);
             DrawMapTiles(texture, tileTypes);
             texture.Apply();
             return texture;
         }
 
+        /// <summary>
+        /// Draws the map tiles for the specified tile types onto the texture.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="tileTypes">The tile types to draw.</param>
         private void DrawMapTiles(Texture2D texture, MapTileTypes tileTypes)
         {
             for (int i = (int)tileTypes; i != 0; i &= i - 1)
@@ -86,16 +115,28 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Creates a new sprite from the specified tile texture.
+        /// </summary>
+        /// <param name="texture">The tile texture.</param>
         private Sprite CreateSprite(Texture2D texture)
         {
             var pivot = new Vector2(0.5f, 0.5f);
             var rect = new Rect(1, 1, texture.width - 2, texture.height - 2);
-            return Sprite.Create(texture, rect, pivot, MapTiles.PixelsPerUnit);
+            var sprite = Sprite.Create(texture, rect, pivot, MapTiles.PixelsPerUnit);
+            sprite.name = "Mania Map Tile Sprite";
+            return sprite;
         }
 
+        /// <summary>
+        /// Creates a new tile for the specified tile types and color.
+        /// </summary>
+        /// <param name="tileTypes">The tile types.</param>
+        /// <param name="color">The tile color.</param>
         private Tile CreateTile(MapTileTypes tileTypes, Color32 color)
         {
             var tile = ScriptableObject.CreateInstance<Tile>();
+            tile.name = "Mania Map Tile";
             tile.sprite = CreateSprite(CreateTexture(tileTypes, color));
             return tile;
         }
@@ -120,22 +161,25 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return false;
         }
 
+        /// <summary>
+        /// Creates layer tilemaps for the current layout and returns a list of layers.
+        /// </summary>
         public List<LayoutTilemapLayer> CreateLayers()
         {
             var manager = ManiaManager.Current;
             return CreateLayers(manager.Layout, manager.LayoutState);
         }
 
+        /// <summary>
+        /// Creates layer tilemaps for a layout and returns a list of layers.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="state">The layout state.</param>
         public List<LayoutTilemapLayer> CreateLayers(Layout layout, LayoutState state = null)
         {
             Layout = layout;
             LayoutState = state;
             RoomDoors = layout.GetRoomDoors();
-            return UpdateLayers();
-        }
-
-        private List<LayoutTilemapLayer> UpdateLayers()
-        {
             var layers = CreateLayerComponents();
 
             foreach (var layer in layers)
@@ -146,6 +190,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return layers;
         }
 
+        /// <summary>
+        /// Creates the layers required for the layout. Extra layers are destroyed.
+        /// </summary>
         private List<LayoutTilemapLayer> CreateLayerComponents()
         {
             CreateGrid();
@@ -169,13 +216,18 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 if (!layers.Any(x => x.Z == z))
                 {
-                    layers.Add(LayoutTilemapLayer.Create(z, Grid.transform));
+                    layers.Add(LayoutTilemapLayer.Create(this, z));
                 }
             }
 
             return layers;
         }
 
+        /// <summary>
+        /// Adds the map tiles for the layer to the tilemap.
+        /// </summary>
+        /// <param name="tilemap">The tilemap.</param>
+        /// <param name="z">The layer value.</param>
         private void DrawMap(Tilemap tilemap, int z)
         {
             tilemap.ClearAllTiles();
@@ -232,6 +284,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Returns the tile type for the cell connection.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="neighbor">The neighboring cell.</param>
+        /// <param name="position">The cell position.</param>
+        /// <param name="direction">The door direction.</param>
         private MapTileTypes GetTileType(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))

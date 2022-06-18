@@ -145,7 +145,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 if (!layers.Any(x => x.Z == z))
                 {
-                    layers.Add(LayoutMapLayer.Create(size, z, LayersContainer));
+                    layers.Add(LayoutMapLayer.Create(this, size, z));
                 }
             }
 
