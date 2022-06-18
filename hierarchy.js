@@ -24,7 +24,6 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Exceptions.UnassignedCollectableGroupException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_unassigned_collectable_group_exception.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.Editor.FileUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html", null ],
-    [ "MPewsey.ManiaMap.Unity.FlagUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_flag_utility.html", null ],
     [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< int >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", [
       [ "MPewsey.ManiaMap.Unity.GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", null ]
     ] ],
@@ -34,6 +33,7 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Drawing.Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
+    [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", null ],
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", null ],
@@ -55,7 +55,9 @@ var hierarchy =
         [ "MPewsey.ManiaMap.Unity.LayoutGraphSelector", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_selector.html", null ]
       ] ],
       [ "MPewsey.ManiaMap.Unity.ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", null ]
+      [ "MPewsey.ManiaMap.Unity.Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Samples.LayoutMapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Samples.LayoutTilemapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html", null ]
     ] ],
     [ "ScriptableObject", null, [
       [ "MPewsey.ManiaMap.Unity.Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", null ],

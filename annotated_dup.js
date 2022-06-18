@@ -5,13 +5,14 @@ var annotated_dup =
         [ "Unity", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html", [
           [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", [
             [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html", [
-              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ]
+              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
+              [ "LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", null ]
             ] ],
             [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
             [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
             [ "LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", null ],
             [ "LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap" ],
-            [ "LayoutTilemapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html", null ],
+            [ "LayoutTilemapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer" ],
             [ "MapTileHash", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html", null ],
             [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles" ],
             [ "Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding" ],
@@ -40,6 +41,10 @@ var annotated_dup =
             [ "MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
             [ "UnassignedCollectableGroupException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_unassigned_collectable_group_exception.html", null ]
           ] ],
+          [ "Samples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples.html", [
+            [ "LayoutMapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html", null ],
+            [ "LayoutTilemapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html", null ]
+          ] ],
           [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
           [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],
           [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
@@ -48,7 +53,6 @@ var annotated_dup =
           [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", null ],
           [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
           [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
-          [ "FlagUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_flag_utility.html", null ],
           [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", null ],
           [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", null ],
           [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", null ],

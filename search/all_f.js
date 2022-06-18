@@ -2,7 +2,7 @@ var searchData=
 [
   ['savealltemplates_0',['SaveAllTemplates',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a3a862e76d45b62808081a6b9ae2b73fa',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
   ['saveasset_1',['SaveAsset',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ac3628b5785688c8f61b3dad988b1a50e',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['saveimages_2',['SaveImages',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a50049d9f87efbde39bd667330572e35e',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
+  ['savelayerimages_2',['SaveLayerImages',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#afb2821e7057436ffc9585b03be38db7c',1,'MPewsey.ManiaMap.Unity.Drawing.LayoutMap.SaveLayerImages(string path)'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#add92ec50cafb07e48de254d6619686b5',1,'MPewsey.ManiaMap.Unity.Drawing.LayoutMap.SaveLayerImages(string path, Layout layout, LayoutState state=null)']]],
   ['saveprefabtemplate_3',['SavePrefabTemplate',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a6bf4c27532354c4d5e42a36e556d55ce',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
   ['savetemplate_4',['SaveTemplate',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#ac52b97cfb57b5bd531e4817288ed8bd5',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
   ['scrollspeed_5',['ScrollSpeed',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#af36fc4b5fb657061bcdf8db84913aab9',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],

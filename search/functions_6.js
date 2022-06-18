@@ -23,6 +23,7 @@ var searchData=
   ['gettemplatefilename_20',['GetTemplateFileName',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a72b5a8890f97237d43cff17cb7f6bb41',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
   ['gettemplatesavepath_21',['GetTemplateSavePath',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a9e61d28f36f8bf0b4c5ca055231ec6c6',1,'MPewsey::ManiaMap::Unity::Editor::RoomEditor']]],
   ['gettexturesize_22',['GetTextureSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a99abe6445191f1c898c4027693fc8d46',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
-  ['gettile_23',['GetTile',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMap']]],
-  ['getwalltiletype_24',['GetWallTileType',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#a629f3f8fd19d07107844f789d6b88a97',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]]
+  ['gettile_23',['GetTile',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0',1,'MPewsey.ManiaMap.Unity.Drawing.LayoutMap.GetTile()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a7ee3615529c94a78bc991bf182016633',1,'MPewsey.ManiaMap.Unity.Drawing.LayoutTilemap.GetTile(MapTileTypes tileTypes, Color32 color)']]],
+  ['gettiletype_24',['GetTileType',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#aa71dfd695abca392a542160902bd6066',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutTilemap']]],
+  ['getwalltiletype_25',['GetWallTileType',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#a629f3f8fd19d07107844f789d6b88a97',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]]
 ];
