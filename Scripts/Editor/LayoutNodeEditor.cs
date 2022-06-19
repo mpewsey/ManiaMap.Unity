@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The LayoutNode editor.
+    /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LayoutNode))]
     public class LayoutNodeEditor : UnityEditor.Editor

@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The TemplateGroup editor.
+    /// </summary>
     public static class TemplateGroupEditor
     {
+        /// <summary>
+        /// Saves the sample room templates from the Mania Map library to the
+        /// ManiaMap/RoomTemplates/Samples directory of the project.
+        /// </summary>
         [MenuItem("Mania Map/Save Sample Templates", priority = 0)]
         public static void SaveTemplates()
         {

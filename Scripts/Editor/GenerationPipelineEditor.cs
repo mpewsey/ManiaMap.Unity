@@ -32,43 +32,57 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawPipelineErrorBox()
         {
-            var inputMessages = new List<string>() { "Inputs contain errors:" };
-            var stepMessages = new List<string>() { "Steps contain errors:" };
-            var arguments = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>() { "RandomSeed" };
+            DrawGenerationInputErrorBox(names);
+            DrawGenerationStepErrorBox(names);
+        }
+
+        /// <summary>
+        /// Draws the generation pipeline error box.
+        /// </summary>
+        /// <param name="names">A set of argument names.</param>
+        private void DrawGenerationInputErrorBox(HashSet<string> names)
+        {
+            var messages = new List<string>() { "Inputs contain errors:" };
             var pipeline = GetGenerationPipeline();
             var inputs = pipeline.GetGenerationInputs();
-            var steps = pipeline.GetGenerationSteps();
 
-            // Loop over inputs and add an errors to the input messages list.
             foreach (var input in inputs)
             {
                 foreach (var name in input.OutputNames())
                 {
-                    if (!arguments.Add(name))
-                        inputMessages.Add($"  * Duplicate input name: {name} <{input.GetType().Name}>.");
+                    if (!names.Add(name))
+                        messages.Add($"  * Duplicate input name: {name} <{input.GetType().Name}>.");
                 }
             }
+        }
 
-            // Loop over steps and add any errors to the step messages list.
+        /// <summary>
+        /// Draws the generation step error box.
+        /// </summary>
+        /// <param name="names">A set of argument names.</param>
+        private void DrawGenerationStepErrorBox(HashSet<string> names)
+        {
+            var messages = new List<string>() { "Steps contain errors:" };
+            var pipeline = GetGenerationPipeline();
+            var steps = pipeline.GetGenerationSteps();
+
             foreach (var step in steps)
             {
                 foreach (var name in step.InputNames())
                 {
-                    if (!arguments.Contains(name))
-                        stepMessages.Add($"  * Missing input name: {name} <{step.GetType().Name}>.");
+                    if (!names.Contains(name))
+                        messages.Add($"  * Missing input name: {name} <{step.GetType().Name}>.");
                 }
 
                 foreach (var name in step.OutputNames())
                 {
-                    arguments.Add(name);
+                    names.Add(name);
                 }
             }
 
-            // Show error boxes if any messages have been added.
-            if (inputMessages.Count > 1)
-                EditorGUILayout.HelpBox(string.Join('\n', inputMessages), MessageType.Error, true);
-            if (stepMessages.Count > 1)
-                EditorGUILayout.HelpBox(string.Join('\n', stepMessages), MessageType.Error, true);
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
 
         /// <summary>

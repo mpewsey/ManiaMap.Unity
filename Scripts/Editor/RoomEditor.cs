@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The Room editor.
+    /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(Room))]
     public class RoomEditor : UnityEditor.Editor
