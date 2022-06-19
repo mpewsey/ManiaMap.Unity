@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
   <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.GenerationStep Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The base class for creating a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html">GenerationPipeline</a> step.  
+ <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MPewsey.ManiaMap.Unity.GenerationStep:</div>
 <div class="dyncontent">
@@ -117,20 +120,109 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.GenerationStep:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9c8947f7b71637002bf63c86070617b2"><td class="memItemLeft" align="right" valign="top"><a id="a9c8947f7b71637002bf63c86070617b2" name="a9c8947f7b71637002bf63c86070617b2"></a>
-abstract IGenerationStep&#160;</td><td class="memItemRight" valign="bottom"><b>GetStep</b> ()</td></tr>
+<tr class="memitem:a9c8947f7b71637002bf63c86070617b2"><td class="memItemLeft" align="right" valign="top">abstract IGenerationStep&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a9c8947f7b71637002bf63c86070617b2">GetStep</a> ()</td></tr>
+<tr class="memdesc:a9c8947f7b71637002bf63c86070617b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the generation step used by the pipeline.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a9c8947f7b71637002bf63c86070617b2">More...</a><br /></td></tr>
 <tr class="separator:a9c8947f7b71637002bf63c86070617b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e69ed36140e46c7970681e91ae6aa57"><td class="memItemLeft" align="right" valign="top"><a id="a1e69ed36140e46c7970681e91ae6aa57" name="a1e69ed36140e46c7970681e91ae6aa57"></a>
-abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><b>InputNames</b> ()</td></tr>
+<tr class="memitem:a1e69ed36140e46c7970681e91ae6aa57"><td class="memItemLeft" align="right" valign="top">abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a1e69ed36140e46c7970681e91ae6aa57">InputNames</a> ()</td></tr>
+<tr class="memdesc:a1e69ed36140e46c7970681e91ae6aa57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of argument names required by the step. These names are used for pipeline validation.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a1e69ed36140e46c7970681e91ae6aa57">More...</a><br /></td></tr>
 <tr class="separator:a1e69ed36140e46c7970681e91ae6aa57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84b06ffdf5802f062906d82a5bd757a8"><td class="memItemLeft" align="right" valign="top"><a id="a84b06ffdf5802f062906d82a5bd757a8" name="a84b06ffdf5802f062906d82a5bd757a8"></a>
-abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><b>OutputNames</b> ()</td></tr>
+<tr class="memitem:a84b06ffdf5802f062906d82a5bd757a8"><td class="memItemLeft" align="right" valign="top">abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a84b06ffdf5802f062906d82a5bd757a8">OutputNames</a> ()</td></tr>
+<tr class="memdesc:a84b06ffdf5802f062906d82a5bd757a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of argument names added by the step. These names are used for pipeline validation.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html#a84b06ffdf5802f062906d82a5bd757a8">More...</a><br /></td></tr>
 <tr class="separator:a84b06ffdf5802f062906d82a5bd757a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_generation_step_8cs_source.html#l00005">5</a> of file <a class="el" href="_generation_step_8cs_source.html">GenerationStep.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p >The base class for creating a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html">GenerationPipeline</a> step. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_step_8cs_source.html#l00008">8</a> of file <a class="el" href="_generation_step_8cs_source.html">GenerationStep.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9c8947f7b71637002bf63c86070617b2" name="a9c8947f7b71637002bf63c86070617b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8947f7b71637002bf63c86070617b2">&#9670;&nbsp;</a></span>GetStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract IGenerationStep MPewsey.ManiaMap.Unity.GenerationStep.GetStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the generation step used by the pipeline. </p>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_generator.html#af3b93a66772f742fb4b519d0f876e945">MPewsey.ManiaMap.Unity.CollectableGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html#ad15324e28502d742908199bf49df5474">MPewsey.ManiaMap.Unity.LayoutGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_randomizer.html#a3d1995c6e0507a142c99dc35fb507a82">MPewsey.ManiaMap.Unity.LayoutGraphRandomizer</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_selector.html#a0a2c05d5641d1e74f11052d02eb56b6e">MPewsey.ManiaMap.Unity.LayoutGraphSelector</a>.</p>
+
+</div>
+</div>
+<a id="a1e69ed36140e46c7970681e91ae6aa57" name="a1e69ed36140e46c7970681e91ae6aa57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e69ed36140e46c7970681e91ae6aa57">&#9670;&nbsp;</a></span>InputNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string[] MPewsey.ManiaMap.Unity.GenerationStep.InputNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns an array of argument names required by the step. These names are used for pipeline validation. </p>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_generator.html#a0bf3ea48ee7eb6d485bb91793f39abec">MPewsey.ManiaMap.Unity.CollectableGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html#ac04f1d46588169e5f33fc584346b1cfd">MPewsey.ManiaMap.Unity.LayoutGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_randomizer.html#ac1dbee92152c9c18c3eea432e50f683b">MPewsey.ManiaMap.Unity.LayoutGraphRandomizer</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_selector.html#abd1c289bb4280053374ca7a0c99d518a">MPewsey.ManiaMap.Unity.LayoutGraphSelector</a>.</p>
+
+</div>
+</div>
+<a id="a84b06ffdf5802f062906d82a5bd757a8" name="a84b06ffdf5802f062906d82a5bd757a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84b06ffdf5802f062906d82a5bd757a8">&#9670;&nbsp;</a></span>OutputNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string[] MPewsey.ManiaMap.Unity.GenerationStep.OutputNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns an array of argument names added by the step. These names are used for pipeline validation. </p>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_generator.html#a9eef872a23e71795b539384fb8004128">MPewsey.ManiaMap.Unity.CollectableGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html#abb6c7b8458b11556b8234aa3d81845aa">MPewsey.ManiaMap.Unity.LayoutGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_randomizer.html#a477ebe14069c4517d4fa6575015fa1b4">MPewsey.ManiaMap.Unity.LayoutGraphRandomizer</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph_selector.html#aa673ff90dac2ea31dd3ec5ac39c1c493">MPewsey.ManiaMap.Unity.LayoutGraphSelector</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/github/workspace/Scripts/Runtime/<a class="el" href="_generation_step_8cs_source.html">GenerationStep.cs</a></li>
 </ul>
 </div><!-- contents -->

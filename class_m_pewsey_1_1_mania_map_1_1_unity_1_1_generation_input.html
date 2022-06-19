@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
   <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.GenerationInput Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The base class for a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html">GenerationPipeline</a> input.  
+ <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MPewsey.ManiaMap.Unity.GenerationInput:</div>
 <div class="dyncontent">
@@ -116,17 +119,84 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.GenerationInput:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adaf841b48ce2e9a009ede12535913bb8"><td class="memItemLeft" align="right" valign="top"><a id="adaf841b48ce2e9a009ede12535913bb8" name="adaf841b48ce2e9a009ede12535913bb8"></a>
-abstract void&#160;</td><td class="memItemRight" valign="bottom"><b>AddInput</b> (Dictionary&lt; string, object &gt; input)</td></tr>
+<tr class="memitem:adaf841b48ce2e9a009ede12535913bb8"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html#adaf841b48ce2e9a009ede12535913bb8">AddInput</a> (Dictionary&lt; string, object &gt; input)</td></tr>
+<tr class="memdesc:adaf841b48ce2e9a009ede12535913bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the input arguments to the specified inputs dictionary.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html#adaf841b48ce2e9a009ede12535913bb8">More...</a><br /></td></tr>
 <tr class="separator:adaf841b48ce2e9a009ede12535913bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c3d540b772965e9b1723872b58056a7"><td class="memItemLeft" align="right" valign="top"><a id="a3c3d540b772965e9b1723872b58056a7" name="a3c3d540b772965e9b1723872b58056a7"></a>
-abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><b>OutputNames</b> ()</td></tr>
+<tr class="memitem:a3c3d540b772965e9b1723872b58056a7"><td class="memItemLeft" align="right" valign="top">abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html#a3c3d540b772965e9b1723872b58056a7">OutputNames</a> ()</td></tr>
+<tr class="memdesc:a3c3d540b772965e9b1723872b58056a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of argument names that this input adds to the inputs dictionary. These names are used for pipeline validation.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html#a3c3d540b772965e9b1723872b58056a7">More...</a><br /></td></tr>
 <tr class="separator:a3c3d540b772965e9b1723872b58056a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_generation_input_8cs_source.html#l00006">6</a> of file <a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p >The base class for a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html">GenerationPipeline</a> input. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_input_8cs_source.html#l00009">9</a> of file <a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="adaf841b48ce2e9a009ede12535913bb8" name="adaf841b48ce2e9a009ede12535913bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf841b48ce2e9a009ede12535913bb8">&#9670;&nbsp;</a></span>AddInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MPewsey.ManiaMap.Unity.GenerationInput.AddInput </td>
+          <td>(</td>
+          <td class="paramtype">Dictionary&lt; string, object &gt;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds the input arguments to the specified inputs dictionary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The input dictionary.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html#ab871d22c7325959dd1512528d2bf842c">MPewsey.ManiaMap.Unity.CollectableGroupsInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html#a57142b001eb549295600b41644b54be4">MPewsey.ManiaMap.Unity.GenerationNamedInput&lt; T &gt;</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html#a0cdd6315a5082cb4a3e5ba5a8ece87e7">MPewsey.ManiaMap.Unity.LayoutGraphsInput</a>.</p>
+
+</div>
+</div>
+<a id="a3c3d540b772965e9b1723872b58056a7" name="a3c3d540b772965e9b1723872b58056a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3d540b772965e9b1723872b58056a7">&#9670;&nbsp;</a></span>OutputNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string[] MPewsey.ManiaMap.Unity.GenerationInput.OutputNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An array of argument names that this input adds to the inputs dictionary. These names are used for pipeline validation. </p>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html#a45458adb24efbe12a0720acd67cc6e14">MPewsey.ManiaMap.Unity.CollectableGroupsInput</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html#abc51d6efa47983abf5d6b958724735f6">MPewsey.ManiaMap.Unity.LayoutGraphsInput</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/github/workspace/Scripts/Runtime/<a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a></li>
 </ul>
 </div><!-- contents -->
