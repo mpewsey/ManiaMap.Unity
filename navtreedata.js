@@ -39,7 +39,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", null ]
@@ -54,9 +54,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_cell_8cs_source.html",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#aa062ac98f8ea348efbf639fc55a24b25",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ac8b2e1ddcfa54b46f506a22d37c5c945",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html"
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a94516162ffc854ed9282f3cff370063a",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ab12b014fe3bf314f68e54b4976f20b24",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#aaa81e7a0fe80cc5aa9f8de520869f063"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

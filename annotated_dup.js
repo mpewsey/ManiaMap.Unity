@@ -5,8 +5,8 @@ var annotated_dup =
         [ "Unity", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html", [
           [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", [
             [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html", [
-              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
-              [ "LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", null ]
+              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor" ],
+              [ "LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor" ]
             ] ],
             [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
             [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
@@ -32,7 +32,7 @@ var annotated_dup =
             [ "LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings" ],
             [ "LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html", null ],
             [ "RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor" ],
-            [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ]
+            [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
           ] ],
           [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", [
             [ "DuplicateDirectionException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_direction_exception.html", null ],
