@@ -84,60 +84,83 @@ namespace MPewsey.ManiaMap.Unity
 
         public void Validate()
         {
-            var arguments = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>() { "RandomSeed" };
+            ValidateInputs(names);
+            ValidateSteps(names);
+        }
+
+        private void ValidateInputs(HashSet<string> names)
+        {
             var inputs = GetGenerationInputs();
-            var steps = GetGenerationSteps();
 
             foreach (var input in inputs)
             {
                 foreach (var name in input.OutputNames())
                 {
-                    if (!arguments.Add(name))
+                    if (!names.Add(name))
                         throw new DuplicateInputException($"Duplicate input name: {name} <{input.GetType().Name}>.");
                 }
             }
+        }
+
+        private void ValidateSteps(HashSet<string> names)
+        {
+            var steps = GetGenerationSteps();
 
             foreach (var step in steps)
             {
                 foreach (var name in step.InputNames())
                 {
-                    if (!arguments.Contains(name))
+                    if (!names.Contains(name))
                         throw new MissingInputException($"Missing input name: {name} <{step.GetType().Name}>.");
                 }
 
                 foreach (var name in step.OutputNames())
                 {
-                    arguments.Add(name);
+                    names.Add(name);
                 }
             }
         }
 
         public bool IsValid()
         {
-            var arguments = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>() { "RandomSeed" };
+
+            return GenerationInputsAreValid(names)
+                && GenerationStepsAreValid(names);
+        }
+
+        private bool GenerationInputsAreValid(HashSet<string> names)
+        {
             var inputs = GetGenerationInputs();
-            var steps = GetGenerationSteps();
 
             foreach (var input in inputs)
             {
                 foreach (var name in input.OutputNames())
                 {
-                    if (!arguments.Add(name))
+                    if (!names.Add(name))
                         return false;
                 }
             }
+
+            return true;
+        }
+
+        private bool GenerationStepsAreValid(HashSet<string> names)
+        {
+            var steps = GetGenerationSteps();
 
             foreach (var step in steps)
             {
                 foreach (var name in step.InputNames())
                 {
-                    if (!arguments.Contains(name))
+                    if (!names.Contains(name))
                         return false;
                 }
 
                 foreach (var name in step.OutputNames())
                 {
-                    arguments.Add(name);
+                    names.Add(name);
                 }
             }
 
