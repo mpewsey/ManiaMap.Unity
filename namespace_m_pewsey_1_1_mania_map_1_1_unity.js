@@ -15,7 +15,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input" ],
     [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input" ],
     [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],
-    [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", null ],
+    [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline" ],
     [ "GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step" ],
     [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge" ],
     [ "LayoutGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator" ],
