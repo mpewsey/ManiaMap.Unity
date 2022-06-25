@@ -1,5 +1,6 @@
 var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
 [
+    [ "Drawing", "dir_ceca9c3b6ff751f2e7f26c6d9fa0bc54.html", "dir_ceca9c3b6ff751f2e7f26c6d9fa0bc54" ],
     [ "__Docs__.cs", "_editor_2_____docs_____8cs_source.html", null ],
     [ "CollectableSpotEditor.cs", "_collectable_spot_editor_8cs_source.html", null ],
     [ "DoorEditor.cs", "_door_editor_8cs_source.html", null ],
@@ -12,9 +13,7 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "LayoutGraphWindow.cs", "_layout_graph_window_8cs_source.html", null ],
     [ "LayoutGraphWindowEditor.cs", "_layout_graph_window_editor_8cs_source.html", null ],
     [ "LayoutGraphWindowSettings.cs", "_layout_graph_window_settings_8cs_source.html", null ],
-    [ "LayoutMapEditor.cs", "_layout_map_editor_8cs_source.html", null ],
     [ "LayoutNodeEditor.cs", "_layout_node_editor_8cs_source.html", null ],
-    [ "LayoutTilemapEditor.cs", "_layout_tilemap_editor_8cs_source.html", null ],
     [ "RoomEditor.cs", "_room_editor_8cs_source.html", null ],
     [ "TemplateGroupEditor.cs", "_template_group_editor_8cs_source.html", null ]
 ];
