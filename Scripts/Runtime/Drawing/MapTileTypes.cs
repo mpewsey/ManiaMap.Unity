@@ -8,29 +8,29 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     [Flags]
     public enum MapTileTypes
     {
-        // No tile.
+        /// No tile.
         None,
-        // The grid tile.
+        /// The grid tile.
         Grid = 1 << 0,
-        // The north door tile.
+        /// The north door tile.
         NorthDoor = 1 << 1,
-        // The south door tile.
+        /// The south door tile.
         SouthDoor = 1 << 2,
-        // The east door tile.
+        /// The east door tile.
         EastDoor = 1 << 3,
-        // The west door tile.
+        /// The west door tile.
         WestDoor = 1 << 4,
-        // The top door tile.
+        /// The top door tile.
         TopDoor = 1 << 5,
-        // The bottom door tile.
+        /// The bottom door tile.
         BottomDoor = 1 << 6,
-        // The north wall tile.
+        /// The north wall tile.
         NorthWall = 1 << 7,
-        // The south wall tile.
+        /// The south wall tile.
         SouthWall = 1 << 8,
-        // The east wall tile.
+        /// The east wall tile.
         EastWall = 1 << 9,
-        // The west wall tile.
+        /// The west wall tile.
         WestWall = 1 << 10,
     }
 }
