@@ -1,6 +1,13 @@
 # ManiaMap.Unity
 
 [![Docs](https://github.com/mpewsey/ManiaMap.Unity/workflows/Docs/badge.svg?event=push)](https://mpewsey.github.io/ManiaMap.Unity)
+![Version](https://img.shields.io/github/v/tag/mpewsey/ManiaMap.Unity?label=Version)
+
+## About
+
+This package provides components for interfacing the [ManiaMap](https://github.com/mpewsey/ManiaMap) procedural layout generator with Unity.
+
+![BigMap](https://user-images.githubusercontent.com/23442063/158001876-cb3962a8-9826-44e9-bb19-a5779e3f99d6.png)
 
 ## Installation
 
