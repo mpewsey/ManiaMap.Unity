@@ -1,6 +1,5 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap =
 [
-    [ "ClearTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#aa062ac98f8ea348efbf639fc55a24b25", null ],
     [ "CreateGrid", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a7f0ecd0f64187e5d43e616ca5c9ceca6", null ],
     [ "CreateLayerComponents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a96bcf13cbdfd02bf7d68fbc31be9d9d7", null ],
     [ "CreateLayers", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a163a216d91e2ef176347d56cc2bea06e", null ],
