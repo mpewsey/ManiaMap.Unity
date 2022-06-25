@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['drawing_0',['Drawing',['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html',1,'MPewsey.ManiaMap.Unity.Drawing'],['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_drawing.html',1,'MPewsey.ManiaMap.Unity.Editor.Drawing']]],
+  ['drawing_0',['Drawing',['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html',1,'MPewsey::ManiaMap::Unity']]],
   ['editor_1',['Editor',['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html',1,'MPewsey.ManiaMap.Unity.Drawing.Editor'],['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html',1,'MPewsey.ManiaMap.Unity.Editor']]],
   ['exceptions_2',['Exceptions',['../namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html',1,'MPewsey::ManiaMap::Unity']]],
   ['maniamanager_3',['ManiaManager',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html',1,'MPewsey::ManiaMap::Unity']]],
