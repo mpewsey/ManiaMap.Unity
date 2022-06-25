@@ -69,9 +69,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             for (int i = 0; i < area.height; i++)
             {
+                var row = i + area.y;
+
                 for (int j = 0; j < area.width; j++)
                 {
-                    var row = i + area.y;
                     var column = j + area.x;
                     pixels[Index(row, column, texture.width)] = color;
                 }
@@ -105,9 +106,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             for (int i = 0; i < area.height; i++)
             {
+                var row = i + area.y;
+
                 for (int j = 0; j < area.width; j++)
                 {
-                    var row = i + area.y;
                     var column = j + area.x;
                     var index = Index(row, column, texture.width);
                     pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
@@ -129,9 +131,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                 for (int i = 0; i < texture.height; i++)
                 {
+                    var row = i % brush.height;
+
                     for (int j = 0; j < texture.width; j++)
                     {
-                        var row = i % brush.height;
                         var column = j % brush.width;
                         var index = Index(i, j, texture.width);
                         var color = brushPixels[Index(row, column, brush.width)];
@@ -156,9 +159,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                 for (int i = 0; i < brush.height; i++)
                 {
+                    var row = i + point.y;
+
                     for (int j = 0; j < brush.width; j++)
                     {
-                        var row = i + point.y;
                         var column = j + point.x;
                         var index = Index(row, column, texture.width);
                         var color = brushPixels[Index(i, j, brush.width)];

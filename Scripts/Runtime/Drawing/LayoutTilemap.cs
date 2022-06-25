@@ -42,15 +42,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// A dictionary of map tiles by map tile type and color.
         /// </summary>
-        private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
-
-        /// <summary>
-        /// Clears the map tile dictionary.
-        /// </summary>
-        public void ClearTiles()
-        {
-            Tiles.Clear();
-        }
+        public Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
 
         /// <summary>
         /// Creates a new child grid component if it does not already exist.

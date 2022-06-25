@@ -3,6 +3,9 @@ using UnityEngine.Tilemaps;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
 {
+    /// <summary>
+    /// A layer of a LayoutTilemap.
+    /// </summary>
     [RequireComponent(typeof(Tilemap))]
     [RequireComponent(typeof(TilemapRenderer))]
     public class LayoutTilemapLayer : MonoBehaviour
@@ -27,13 +30,18 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             Tilemap = GetComponent<Tilemap>();
         }
 
-        public static LayoutTilemapLayer Create(LayoutTilemap parent, int z)
+        /// <summary>
+        /// Creates a new layer.
+        /// </summary>
+        /// <param name="map">The layout tilemap.</param>
+        /// <param name="z">The layer coordinate.</param>
+        public static LayoutTilemapLayer Create(LayoutTilemap map, int z)
         {
-            var obj = new GameObject("Tilemap Layer");
-            obj.transform.SetParent(parent.Grid.transform);
+            var obj = new GameObject($"Tilemap Layer {z}");
+            obj.transform.SetParent(map.Grid.transform);
 
             var layer = obj.AddComponent<LayoutTilemapLayer>();
-            layer.LayoutTilemap = parent;
+            layer.LayoutTilemap = map;
             layer.Z = z;
 
             return layer;

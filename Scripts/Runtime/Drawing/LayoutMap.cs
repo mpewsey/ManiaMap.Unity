@@ -86,7 +86,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             foreach (var layer in layers)
             {
-                var bytes = TextureUtility.EncodeToBytes(layer.Texture, ext);
+                var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, ext);
                 File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
             }
         }
@@ -112,7 +112,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             foreach (var layer in layers)
             {
-                DrawMap(layer.Texture, layer.Z);
+                DrawMap(layer.Sprite.texture, layer.Z);
             }
 
             return layers;
