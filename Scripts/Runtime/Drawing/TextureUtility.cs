@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
@@ -14,6 +15,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="row">The row.</param>
         /// <param name="column">The column.</param>
         /// <param name="columns">The number of columns.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int Index(int row, int column, int columns)
         {
             return row * columns + column;
