@@ -25,7 +25,8 @@
 var NAVTREE =
 [
   [ "ManiaMap.Unity", "index.html", [
-    [ "Installation", "index.html#autotoc_md1", null ],
+    [ "About", "index.html#autotoc_md1", null ],
+    [ "Installation", "index.html#autotoc_md2", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
