@@ -4,21 +4,38 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
 {
+    /// <summary>
+    /// A generation input for supplying layout graphs inputs to a pipeline.
+    /// </summary>
     public class LayoutGraphsInput : GenerationInput
     {
         [SerializeField]
         private List<LayoutGraph> _layoutGraphs = new List<LayoutGraph>();
+        /// <summary>
+        /// A list of layout graphs.
+        /// </summary>
         public List<LayoutGraph> LayoutGraphs { get => _layoutGraphs; set => _layoutGraphs = value; }
 
+        /// <inheritdoc/>
         public override void AddInput(Dictionary<string, object> input)
         {
             input.Add("LayoutGraphs", GetLayoutGraphFunctions());
             input.Add("TemplateGroups", GetTemplateGroups());
         }
 
-        public List<System.Func<ManiaMap.LayoutGraph>> GetLayoutGraphFunctions()
+        /// <inheritdoc/>
+        public override string[] OutputNames()
         {
-            var funcs = new List<System.Func<ManiaMap.LayoutGraph>>(LayoutGraphs.Count);
+            return new string[] { "LayoutGraphs", "TemplateGroups" };
+        }
+
+        /// <summary>
+        /// Returns a list of generation layout graph creation functions for the
+        /// supplied layout graphs.
+        /// </summary>
+        public List<Func<ManiaMap.LayoutGraph>> GetLayoutGraphFunctions()
+        {
+            var funcs = new List<Func<ManiaMap.LayoutGraph>>(LayoutGraphs.Count);
 
             foreach (var graph in LayoutGraphs)
             {
@@ -28,6 +45,9 @@ namespace MPewsey.ManiaMap.Unity
             return funcs;
         }
 
+        /// <summary>
+        /// Returns a new set of template groups contained in all layout graphs.
+        /// </summary>
         public HashSet<TemplateGroup> GetTemplateGroupSet()
         {
             var groups = new HashSet<TemplateGroup>();
@@ -49,6 +69,10 @@ namespace MPewsey.ManiaMap.Unity
             return groups;
         }
 
+        /// <summary>
+        /// Returns the template groups for all layout graphs.
+        /// </summary>
+        /// <exception cref="ArgumentException">Raised if a duplicate group name exists.</exception>
         public TemplateGroups GetTemplateGroups()
         {
             var groups = new TemplateGroups();
@@ -63,11 +87,6 @@ namespace MPewsey.ManiaMap.Unity
             }
 
             return groups;
-        }
-
-        public override string[] OutputNames()
-        {
-            return new string[] { "LayoutGraphs", "TemplateGroups" };
         }
     }
 }

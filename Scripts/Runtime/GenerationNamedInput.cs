@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MPewsey.ManiaMap.Unity
 {
     /// <summary>
-    /// The base component for adding a named input to a pipeline.
+    /// The base component for adding a named input to a GenerationPipeline.
     /// </summary>
     /// <typeparam name="T">The value type.</typeparam>
     public abstract class GenerationNamedInput<T> : GenerationInput
