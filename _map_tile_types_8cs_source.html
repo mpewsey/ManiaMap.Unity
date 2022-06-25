@@ -106,22 +106,34 @@ $(document).ready(function(){initNavTree('_map_tile_types_8cs_source.html',''); 
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    [Flags]</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">    9</a></span>    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">MapTileTypes</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        None,</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        Grid = 1 &lt;&lt; 0,</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        NorthDoor = 1 &lt;&lt; 1,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        SouthDoor = 1 &lt;&lt; 2,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        EastDoor = 1 &lt;&lt; 3,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        WestDoor = 1 &lt;&lt; 4,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        TopDoor = 1 &lt;&lt; 5,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        BottomDoor = 1 &lt;&lt; 6,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        NorthWall = 1 &lt;&lt; 7,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        SouthWall = 1 &lt;&lt; 8,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        EastWall = 1 &lt;&lt; 9,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        WestWall = 1 &lt;&lt; 10,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// No tile.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        None,</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="comment">// The grid tile.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        Grid = 1 &lt;&lt; 0,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// The north door tile.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        NorthDoor = 1 &lt;&lt; 1,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// The south door tile.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        SouthDoor = 1 &lt;&lt; 2,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="comment">// The east door tile.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        EastDoor = 1 &lt;&lt; 3,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="comment">// The west door tile.</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        WestDoor = 1 &lt;&lt; 4,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// The top door tile.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        TopDoor = 1 &lt;&lt; 5,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// The bottom door tile.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        BottomDoor = 1 &lt;&lt; 6,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// The north wall tile.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        NorthWall = 1 &lt;&lt; 7,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// The south wall tile.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        SouthWall = 1 &lt;&lt; 8,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// The east wall tile.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        EastWall = 1 &lt;&lt; 9,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// The west wall tile.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        WestWall = 1 &lt;&lt; 10,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html">MPewsey.ManiaMap.Unity.Drawing</a></div><div class="ttdoc">Contains components for creating maps of Layout.</div><div class="ttdef"><b>Definition:</b> <a href="_editor_2_drawing_2_____docs_____8cs_source.html#l00004">__Docs__.cs:5</a></div></div>
-<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_html_af4d83c8d0c3e6dc630d94a3e55da332b"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">MPewsey.ManiaMap.Unity.Drawing.MapTileTypes</a></div><div class="ttdeci">MapTileTypes</div><div class="ttdoc">A type corresponding to a map tile.</div><div class="ttdef"><b>Definition:</b> <a href="_map_tile_types_8cs_source.html#l00009">MapTileTypes.cs:10</a></div></div>
+<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_html_af4d83c8d0c3e6dc630d94a3e55da332b"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html#af4d83c8d0c3e6dc630d94a3e55da332b">MPewsey.ManiaMap.Unity.Drawing.MapTileTypes</a></div><div class="ttdeci">MapTileTypes</div><div class="ttdoc">A type corresponding to various map tiles.</div><div class="ttdef"><b>Definition:</b> <a href="_map_tile_types_8cs_source.html#l00009">MapTileTypes.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
