@@ -41,7 +41,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
         {
             var results = Pipeline.Generate(Seed);
             var layout = (Layout)results.Outputs["Layout"];
-            var layers =LayoutTilemap.CreateLayers(layout);
+            var layers = LayoutTilemap.CreateLayers(layout);
             layers.ForEach(x => x.transform.localPosition = new Vector3(0, 0, x.Z));
         }
     }
