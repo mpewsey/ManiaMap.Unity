@@ -92,3 +92,7 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 ### Step 4: Create Generation Pipeline
 
 1. Create a `GenerationPipeline` by selecting `GameObject > Mania Map > Generation Pipeline`.
+2. Select the child `<Inputs>` Game Object and add any layout graphs and collectable groups you wish to associate with the generator to the inputs.
+3. To run the pipeline and generate a layout, run the `Generate` method from a script.
+
+![Generation Pipeline](https://user-images.githubusercontent.com/23442063/175828818-3a0a09da-69d8-4d60-a48c-b69d4ceac374.png)
