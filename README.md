@@ -29,17 +29,17 @@ https://github.com/mpewsey/ManiaMap.Unity.git#v1.0.0
 
 ## Example
 
-The subsections outline how to generate a basic layout using the `GenerationPipeline`.
+The following subsections outline how to procedurally generate a layout.
 
 ### Step 1: Create Room Templates
 
-The generator creates rooms by pulling from user-defined rooms. To the generator is room is essentially a collection of cells in a grid, with information, such as door connections, assigned to them.
+The generator creates rooms by pulling from user-defined rooms. To the generator a room is essentially a collection of cells in a grid, with information, such as door connections, assigned to them.
 
 #### Creating a Room
 
-1. Create a new `Room` by selecting `GameObject > Mania Map > Room`.
+1. Create a new `Room` by selecting `GameObject > Mania Map > Room`. Create a prefab for this Game Object that may be utilized later.
 2. In the inspector, provide a name for the room, along with its width and height in terms of cells.
-4. Click the `Update Room` button to generate the cells.
+3. Click the `Update Room` button to generate the cells.
 
 ![Generated Cells](https://user-images.githubusercontent.com/23442063/175812812-5871bc8c-84e0-4b2f-ae04-0073c9aaed61.png)
 
@@ -47,13 +47,29 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 
 ![Empty Cells](https://user-images.githubusercontent.com/23442063/175812984-1e05c096-9a93-4855-9b34-fb566083ddcc.png)
 
-7. Next, add all possible door connections and collectable spots to the room per the following sections.
+7. Next, add all possible doors and collectable spots to the room per the following sections.
 
 #### Creating Doors
 
 1. Create a new `Door` by selecting the Room Game Object then `GameObject > Mania Map > Door`. The door should be added as a child of the room.
 2. At this point, you should probably create a prefab for the door with art supporting the particular direction, along with all applicable events. However, those specifics are beyond the scope of this example.
 3. Position the door at the desired location within the room and assign its direction and connection constraints.
-4. To auto assign the cell and direction, make sure the applicable flags are selected and click the `Auto Assign` button. Note that the `Update Room` button on the Room component will also perform this operation on all doors in the room.
+4. To auto assign the closest cell and direction to the door, make sure the applicable flags are selected and click the `Auto Assign` button. Note that the `Update Room` button on the Room component will also perform this operation on all doors in the room.
 
 ![Doors](https://user-images.githubusercontent.com/23442063/175813945-080a6eab-f333-4036-8816-90a2746401d7.png)
+
+#### Creating Collectable Spots
+
+1. Create a new `CollectableSpot` by selecting the Room Game Object then `GameObject > Mania Map > Collectable Spot`. The collectable spot should be added as a child of the room.
+2. At this point, you should probably create a prefab for the collectable spot with art (treasure chest, orb, sparkle, etc.) and all applicable events. However, those specifics are beyond the scope of this example.
+3. Position the collectable spot at the desired location within the room and assign a collectable group to it (`Assets > Mania Map > CollectableGroup`).
+4. To auto assign the closest cell to the collectable spot, make sure the applicable flag is selected and click the `Auto Assign` button. Note that the `Update Room` button on the Room component will also perform this operation on all collectable spots in the room.
+
+![Collectable Spot](https://user-images.githubusercontent.com/23442063/175827419-9639dd11-18ad-4c99-97b0-571984efab97.png)
+
+#### Creating a Room Template Group
+1. Select the Room and click the `Save Template` button. The data for the room template will be saved in the `ManiaMap > RoomTemplates` directory of the project. Alternately, use the `Mania Map > Batch Save Templates` command to save room templates for all prefabs in the project with a Room component at its root.
+2. Create a `Template Group` by selecting `Assets > Mania Map > Template Group`.
+3. In the inspector, provide a unique name to the group and add any of the generated room templates you wish to associate with the group to the list.
+
+![Template Group](https://user-images.githubusercontent.com/23442063/175827410-a61dcbc4-2275-4217-bd83-4fff0f048e5d.png)
