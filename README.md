@@ -43,11 +43,11 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 
 ![Generated Cells](https://user-images.githubusercontent.com/23442063/175812812-5871bc8c-84e0-4b2f-ae04-0073c9aaed61.png)
 
-5. In the scene view, select any empty cells and set the `Is Empty` flag in the inspector. The cell Gizmos will show crossed out for empty cells.
+4. In the scene view, select any empty cells and set the `Is Empty` flag in the inspector. The cell Gizmos will show crossed out for empty cells.
 
 ![Empty Cells](https://user-images.githubusercontent.com/23442063/175812984-1e05c096-9a93-4855-9b34-fb566083ddcc.png)
 
-7. Next, add all possible doors and collectable spots to the room per the following sections.
+5. Next, add all possible doors and collectable spots to the room per the following sections.
 
 #### Creating Doors
 
