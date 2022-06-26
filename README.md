@@ -67,9 +67,28 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 
 ![Collectable Spot](https://user-images.githubusercontent.com/23442063/175827419-9639dd11-18ad-4c99-97b0-571984efab97.png)
 
-#### Creating a Room Template Group
+#### Saving Room Templates
+
 1. Select the Room and click the `Save Template` button. The data for the room template will be saved in the `ManiaMap > RoomTemplates` directory of the project. Alternately, use the `Mania Map > Batch Save Templates` command to save room templates for all prefabs in the project with a Room component at its root.
-2. Create a `Template Group` by selecting `Assets > Mania Map > Template Group`.
-3. In the inspector, provide a unique name to the group and add any of the generated room templates you wish to associate with the group to the list.
+
+### Step 2: Create Room Template Groups
+
+1. Create a `TemplateGroup` by selecting `Assets > Mania Map > Template Group`.
+2. In the inspector, provide a unique name to the group and add any of the generated room templates you wish to associate with the group to the list.
 
 ![Template Group](https://user-images.githubusercontent.com/23442063/175827410-a61dcbc4-2275-4217-bd83-4fff0f048e5d.png)
+
+### Step 3: Create Layout Graphs
+
+1. Create a `LayoutGraph` by selecting `Assets > Mania Map > Layout Graph`.
+2. Double click on the asset to open the graph editor.
+3. Add rooms (nodes) to the graph by right-clicking in the graph area and selecting `Add Node`.
+4. In the inspector, add a template group to the selected nodes to associate the room templates that may be used at those locations.
+5. Add edges to the graph by right-clicking a node, selecting `Add Edge`, then selecting another node.
+6. To edit the edge attributes, ensure that `View > Toggle Edge Display` is enabled, then select the edges in the graph area.
+
+![Layout Graph](https://user-images.githubusercontent.com/23442063/175828288-b47a1e3d-ac81-4a2a-b436-0f22b7da3a6c.png)
+
+### Step 4: Create Generation Pipeline
+
+1. Create a `GenerationPipeline` by selecting `GameObject > Mania Map > Generation Pipeline`.
