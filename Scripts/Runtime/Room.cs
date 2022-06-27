@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -78,6 +80,38 @@ namespace MPewsey.ManiaMap.Unity
             AutoAssignId();
             Size = Size;
             CellSize = CellSize;
+        }
+
+        /// <summary>
+        /// Instantiates a room prefab and initializes it.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="prefab">The asset reference for the room prefab.</param>
+        /// <param name="parent">The parent of the instantiated room.</param>
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        public static async Task<Room> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
+        {
+            var handle = Addressables.InstantiateAsync(prefab, parent);
+            await handle.Task;
+            var room = handle.Result.GetComponent<Room>();
+            room.Init(id, assignPosition);
+            return room;
+        }
+
+        /// <summary>
+        /// Instantiates a room prefab and initializes it.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="prefab">The asset reference for the room prefab.</param>
+        /// <param name="parent">The parent of the instantiated room.</param>
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        public static Room InstantiateRoom(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
+        {
+            var handle = Addressables.InstantiateAsync(prefab, parent);
+            var obj = handle.WaitForCompletion();
+            var room = obj.GetComponent<Room>();
+            room.Init(id, assignPosition);
+            return room;
         }
 
         /// <summary>

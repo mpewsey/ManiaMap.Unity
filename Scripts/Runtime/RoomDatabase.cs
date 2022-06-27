@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity
     public abstract class RoomDatabase<T> : MonoBehaviour
     {
         [SerializeField]
-        private List<RoomDatabaseEntry<T>> _entries = new List<RoomDatabaseEntry<T>>();
+        protected List<RoomDatabaseEntry<T>> _entries = new List<RoomDatabaseEntry<T>>();
         /// <summary>
         /// A list of database entries.
         /// </summary>
@@ -19,9 +19,17 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// A dictionary of room data sources by room ID.
         /// </summary>
-        private Dictionary<int, T> RoomDataDictionary { get; } = new Dictionary<int, T>();
+        protected Dictionary<int, T> RoomDataDictionary { get; } = new Dictionary<int, T>();
 
-        private void Awake()
+        /// <summary>
+        /// Instantiates the room based on current layout.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="parent">The parent of the instantiated room.</param>
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        public abstract Room InstantiateRoom(Uid id, Transform parent, bool assignPosition);
+
+        protected void Awake()
         {
             CreateRoomDataDictionary();
         }
