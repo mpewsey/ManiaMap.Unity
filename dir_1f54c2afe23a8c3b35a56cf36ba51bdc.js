@@ -14,6 +14,7 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "LayoutGraphWindowEditor.cs", "_layout_graph_window_editor_8cs_source.html", null ],
     [ "LayoutGraphWindowSettings.cs", "_layout_graph_window_settings_8cs_source.html", null ],
     [ "LayoutNodeEditor.cs", "_layout_node_editor_8cs_source.html", null ],
+    [ "RoomAddressableDatabaseEditor.cs", "_room_addressable_database_editor_8cs_source.html", null ],
     [ "RoomEditor.cs", "_room_editor_8cs_source.html", null ],
     [ "RoomPrefabDatabaseEditor.cs", "_room_prefab_database_editor_8cs_source.html", null ],
     [ "TemplateGroupEditor.cs", "_template_group_editor_8cs_source.html", null ]

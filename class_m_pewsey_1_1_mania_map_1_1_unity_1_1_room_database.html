@@ -98,11 +98,11 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.RoomDatabase&lt; T &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.RoomDatabase&lt; T &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -123,6 +123,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a05c0198f43049ec598688dbcc4588b40"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a05c0198f43049ec598688dbcc4588b40">GetRoomData</a> (int id)</td></tr>
 <tr class="memdesc:a05c0198f43049ec598688dbcc4588b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room data source for the specified ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a05c0198f43049ec598688dbcc4588b40">More...</a><br /></td></tr>
 <tr class="separator:a05c0198f43049ec598688dbcc4588b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6df0a4dd2ecddc846b14eaf8dc647ba"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#aa6df0a4dd2ecddc846b14eaf8dc647ba">InstantiateRoom</a> (Uid id, Transform parent, bool assignPosition)</td></tr>
+<tr class="memdesc:aa6df0a4dd2ecddc846b14eaf8dc647ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates the room based on current layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#aa6df0a4dd2ecddc846b14eaf8dc647ba">More...</a><br /></td></tr>
+<tr class="separator:aa6df0a4dd2ecddc846b14eaf8dc647ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a0d24d85ee261d137608ce41535755ac7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a0d24d85ee261d137608ce41535755ac7">Awake</a> ()</td></tr>
+<tr class="separator:a0d24d85ee261d137608ce41535755ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a387fdb26bca26b7561a0d0bede319a1e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a387fdb26bca26b7561a0d0bede319a1e">_entries</a> = new List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt;&gt;()</td></tr>
+<tr class="separator:a387fdb26bca26b7561a0d0bede319a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -132,16 +145,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a74a8c6b6e3383d48718713351ac058d1"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a74a8c6b6e3383d48718713351ac058d1">RoomDataDictionary</a> = new Dictionary&lt;int, T&gt;()<code> [get]</code></td></tr>
 <tr class="memdesc:a74a8c6b6e3383d48718713351ac058d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of room data sources by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a74a8c6b6e3383d48718713351ac058d1">More...</a><br /></td></tr>
 <tr class="separator:a74a8c6b6e3383d48718713351ac058d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a0d24d85ee261d137608ce41535755ac7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a0d24d85ee261d137608ce41535755ac7">Awake</a> ()</td></tr>
-<tr class="separator:a0d24d85ee261d137608ce41535755ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a387fdb26bca26b7561a0d0bede319a1e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a387fdb26bca26b7561a0d0bede319a1e">_entries</a> = new List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt;&gt;()</td></tr>
-<tr class="separator:a387fdb26bca26b7561a0d0bede319a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A base class for creating a room data source database. </p>
@@ -172,12 +175,12 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00024">24</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00032">32</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
@@ -198,7 +201,7 @@ Private Attributes</h2></td></tr>
 
 <p>Creates the room data dictionary based on the current database entries list. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00032">32</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00040">40</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
@@ -226,7 +229,61 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00046">46</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00054">54</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa6df0a4dd2ecddc846b14eaf8dc647ba" name="aa6df0a4dd2ecddc846b14eaf8dc647ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6df0a4dd2ecddc846b14eaf8dc647ba">&#9670;&nbsp;</a></span>InstantiateRoom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a> <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html">MPewsey.ManiaMap.Unity.RoomDatabase</a>&lt; T &gt;.InstantiateRoom </td>
+          <td>(</td>
+          <td class="paramtype">Uid&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>assignPosition</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Instantiates the room based on current layout. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
+    <tr><td class="paramname">parent</td><td>The parent of the instantiated room.</td></tr>
+    <tr><td class="paramname">assignPosition</td><td>If True, the local position of the room is assigned based on the current layout.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html#a02bc794a0e74d00c018145999146775a">MPewsey.ManiaMap.Unity.RoomAddressableDatabase</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#a8b7c04aec523cb8cc6d7ff2d4411fb89">MPewsey.ManiaMap.Unity.RoomPrefabDatabase</a>.</p>
 
 </div>
 </div>
@@ -246,7 +303,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -297,7 +354,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

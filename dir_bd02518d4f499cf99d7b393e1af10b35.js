@@ -26,6 +26,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "LayoutNode.cs", "_layout_node_8cs_source.html", null ],
     [ "ManiaManager.cs", "_mania_manager_8cs_source.html", null ],
     [ "Room.cs", "_room_8cs_source.html", null ],
+    [ "RoomAddressableDatabase.cs", "_room_addressable_database_8cs_source.html", null ],
     [ "RoomDatabase.cs", "_room_database_8cs_source.html", null ],
     [ "RoomDatabaseEntry.cs", "_room_database_entry_8cs_source.html", null ],
     [ "RoomPrefabDatabase.cs", "_room_prefab_database_8cs_source.html", null ],

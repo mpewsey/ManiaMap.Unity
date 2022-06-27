@@ -31,6 +31,7 @@ var annotated_dup =
             [ "LayoutGraphWindowEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_editor.html", null ],
             [ "LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings" ],
             [ "LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html", null ],
+            [ "RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor" ],
             [ "RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor" ],
             [ "RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor" ],
             [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
@@ -68,9 +69,10 @@ var annotated_dup =
           [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node" ],
           [ "ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager" ],
           [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
+          [ "RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database" ],
           [ "RoomDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database" ],
           [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
-          [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", null ],
+          [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
           [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
         ] ]
       ] ]
