@@ -8,5 +8,6 @@ var searchData=
   ['edgesize_5',['EdgeSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#a7391030e8e8b9c5d00c4436cd78ec930',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],
   ['emptycellexception_6',['EmptyCellException',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html',1,'MPewsey::ManiaMap::Unity::Exceptions']]],
   ['encodetobytes_7',['EncodeToBytes',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#a17052de1bf80d954d0e679e36de55bb9',1,'MPewsey::ManiaMap::Unity::Drawing::TextureUtility']]],
-  ['exists_8',['Exists',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a92fba0e37a5377de43d019f7599ce7c6',1,'MPewsey.ManiaMap.Unity.CollectableSpot.Exists()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a7ed7e6cf358d4723082c2500516081d1',1,'MPewsey.ManiaMap.Unity.Door.Exists()']]]
+  ['entries_8',['Entries',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a22e223e3eb88eb0d5436010a8ac5a965',1,'MPewsey::ManiaMap::Unity::RoomDatabase']]],
+  ['exists_9',['Exists',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a92fba0e37a5377de43d019f7599ce7c6',1,'MPewsey.ManiaMap.Unity.CollectableSpot.Exists()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a7ed7e6cf358d4723082c2500516081d1',1,'MPewsey.ManiaMap.Unity.Door.Exists()']]]
 ];

@@ -11,7 +11,8 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindowEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Editor.RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", null ]
+      [ "MPewsey.ManiaMap.Unity.Editor.RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", null ]
     ] ],
     [ "EditorWindow", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html", null ]
@@ -56,9 +57,14 @@ var hierarchy =
       ] ],
       [ "MPewsey.ManiaMap.Unity.ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", null ],
       [ "MPewsey.ManiaMap.Unity.Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", null ],
+      [ "MPewsey.ManiaMap.Unity.RoomDatabase< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", null ],
       [ "MPewsey.ManiaMap.Unity.Samples.LayoutMapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html", null ],
       [ "MPewsey.ManiaMap.Unity.Samples.LayoutTilemapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html", null ]
     ] ],
+    [ "MPewsey.ManiaMap.Unity.RoomDatabase< Room >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", [
+      [ "MPewsey.ManiaMap.Unity.RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", null ]
+    ] ],
+    [ "MPewsey.ManiaMap.Unity.RoomDatabaseEntry< T >", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", null ],
     [ "ScriptableObject", null, [
       [ "MPewsey.ManiaMap.Unity.Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", null ],
