@@ -15,7 +15,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             if (!TargetIsPrefabAsset())
             {
-                DrawPopulatePrefabsButton();
+                DrawAutoAssignButton();
             }
 
             DrawDefaultInspector();
@@ -39,20 +39,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Draws the populate prefabs button.
+        /// Draws the auto assign button.
         /// </summary>
-        private void DrawPopulatePrefabsButton()
+        private void DrawAutoAssignButton()
         {
-            if (GUILayout.Button("Populate Prefabs"))
+            if (GUILayout.Button("Auto Assign"))
             {
-                PopulatePrefabs();
+                AutoAssign();
             }
         }
 
         /// <summary>
         /// Populates the database with all prefabs in the project.
         /// </summary>
-        private void PopulatePrefabs()
+        private void AutoAssign()
         {
             var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
             var db = GetRoomPrefabDatabase();
@@ -79,6 +79,18 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 var db = GetRoomPrefabDatabase();
                 db.Entries.Add(new RoomDatabaseEntry<Room>(room.Id, room));
             }
+        }
+
+        /// <summary>
+        /// Creates a new room prefab database Game Object.
+        /// </summary>
+        [MenuItem("GameObject/Mania Map/Room Prefab Database", priority = 20)]
+        [MenuItem("Mania Map/Create Room Prefab Database", priority = 100)]
+        public static void CreateDatabase()
+        {
+            var obj = new GameObject("Room Prefab Database");
+            obj.transform.SetParent(Selection.activeTransform);
+            obj.AddComponent<RoomPrefabDatabase>();
         }
     }
 }
