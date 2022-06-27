@@ -9,6 +9,9 @@
     "metroidvania"
   ],
   "description": "Procedural generation of metroidvania style maps for Unity.",
+  "dependencies": {
+    "com.unity.addressables": "1.19.19"
+  },
   "samples": [
   ],
   "type": "library"
