@@ -14,7 +14,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
         /// The random seed.
         /// </summary>
         public int Seed { get => _seed; set => _seed = value; }
-        
+
         [SerializeField]
         private GenerationPipeline _pipeline;
         /// <summary>

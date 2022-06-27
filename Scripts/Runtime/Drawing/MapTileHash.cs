@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The associated tile types.
         /// </summary>
         public MapTileTypes Types { get; }
-        
+
         /// <summary>
         /// The tile color.
         /// </summary>

@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             return row * columns + column;
         }
-        
+
         /// <summary>
         /// Fills the 1 pixel border around the texture with the colors at a 1 pixel inset.
         /// </summary>
@@ -43,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 pixels[Index(0, j, width)] = pixels[Index(1, j, width)];
             }
         }
-        
+
         /// <summary>
         /// Fills the texture with the specified color.
         /// </summary>
