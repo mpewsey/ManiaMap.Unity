@@ -104,7 +104,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             layoutId.Value = Random.Range(1, int.MaxValue);
             inputs.AddComponent<LayoutGraphsInput>();
             inputs.AddComponent<CollectableGroupsInput>();
-            
+
             var steps = new GameObject("<Steps>");
             steps.transform.SetParent(obj.transform);
             pipeline.StepsContainer = steps;
