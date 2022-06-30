@@ -6,6 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A manager for maintaining the current map data and state.
     /// </summary>
+    [RequireComponent(typeof(DontDestroyOnLoad))]
     public class ManiaManager : MonoBehaviour
     {
         private static ManiaManager _current;
@@ -66,11 +67,6 @@ namespace MPewsey.ManiaMap.Unity
         {
             var obj = new GameObject("Mania Manager");
             return obj.AddComponent<ManiaManager>();
-        }
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
