@@ -53,9 +53,27 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-
             ManiaManager.Current.Init(layout, new LayoutState(layout));
-            room.Init(roomData.Id);
+
+            room.Init(roomData.Id, true);
+        }
+
+        [Test]
+        public void TestIntantiateRoom()
+        {
+            var seed = new RandomSeed(12345);
+            var prefab = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
+            var template = prefab.GetTemplate();
+
+            // Create fake layout.
+            var layout = new Layout(1, "Test", seed);
+            var node = new ManiaMap.LayoutNode(1);
+            var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            layout.Rooms.Add(roomData.Id, roomData);
+            ManiaManager.Current.Init(layout, new LayoutState(layout));
+
+            var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, true);
+            Assert.IsNotNull(room);
         }
     }
 }

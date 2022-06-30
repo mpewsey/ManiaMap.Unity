@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -223,6 +224,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="row">The row index.</param>
         /// <param name="column">The column index.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool CellIndexExists(int row, int column)
         {
             return (uint)row < Size.x && (uint)column < Size.y;
