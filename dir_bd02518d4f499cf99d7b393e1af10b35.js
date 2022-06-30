@@ -11,6 +11,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "CollectableGroup.cs", "_collectable_group_8cs_source.html", null ],
     [ "CollectableGroupsInput.cs", "_collectable_groups_input_8cs_source.html", null ],
     [ "CollectableSpot.cs", "_collectable_spot_8cs_source.html", null ],
+    [ "CommonEvents.cs", "_common_events_8cs_source.html", null ],
     [ "DontDestroyOnLoad.cs", "_dont_destroy_on_load_8cs_source.html", null ],
     [ "Door.cs", "_door_8cs_source.html", null ],
     [ "GenerationInput.cs", "_generation_input_8cs_source.html", null ],

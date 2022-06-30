@@ -5,7 +5,6 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot =
     [ "AssignClosestCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#affb9522b6423b676fcac93b5e22b9c06", null ],
     [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a677e96dc2a3bba9d12c378aadb25741f", null ],
     [ "AutoAssignId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a4edcc4c1129f40c2071316f95c7dc7ab", null ],
-    [ "DestroyTarget", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#aaf3e823854a19b35fe7dc5d8ac4b5535", null ],
     [ "OnRoomInit", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#af99f555c20e451efac14883c8dbd2a67", null ],
     [ "AutoAssignCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a219c9e55b79abaf587d1a321199e5d38", null ],
     [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#aa9a6f9e00fafad1c2680b9a56d765af5", null ],
