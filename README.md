@@ -1,6 +1,7 @@
 # ManiaMap.Unity
 
 [![Docs](https://github.com/mpewsey/ManiaMap.Unity/workflows/Docs/badge.svg?event=push)](https://mpewsey.github.io/ManiaMap.Unity)
+![Unity ≥ 2021.2](https://img.shields.io/badge/Unity-%E2%89%A5%202021.2-blue)
 ![Version](https://img.shields.io/github/v/tag/mpewsey/ManiaMap.Unity?label=Version)
 
 ## About
