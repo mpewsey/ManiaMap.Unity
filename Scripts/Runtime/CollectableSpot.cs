@@ -6,6 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// Represents a collectable spot.
     /// </summary>
+    [RequireComponent(typeof(CommonEvents))]
     public class CollectableSpot : MonoBehaviour
     {
         /// <summary>
@@ -144,15 +145,6 @@ namespace MPewsey.ManiaMap.Unity
         public void AssignClosestCell()
         {
             Cell = Cell.FindClosestCell(transform);
-        }
-
-        /// <summary>
-        /// Destroys the target GameObject.
-        /// </summary>
-        /// <param name="obj">The GameObject.</param>
-        public void DestroyTarget(GameObject obj)
-        {
-            Destroy(obj);
         }
     }
 }

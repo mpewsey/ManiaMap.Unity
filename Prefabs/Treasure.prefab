@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4527279819038941853}
   - component: {fileID: 6486645759811280013}
+  - component: {fileID: 4682170793135331963}
   m_Layer: 0
   m_Name: Treasure
   m_TagString: Untagged
@@ -54,8 +55,8 @@ MonoBehaviour:
   _onNoSpotExists:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6486645759811280013}
-        m_TargetAssemblyTypeName: MPewsey.ManiaMap.Unity.CollectableSpot, MPewsey.ManiaMap.Unity
+      - m_Target: {fileID: 4682170793135331963}
+        m_TargetAssemblyTypeName: MPewsey.ManiaMap.Unity.CommonEvents, MPewsey.ManiaMap.Unity
         m_MethodName: DestroyTarget
         m_Mode: 2
         m_Arguments:
@@ -66,3 +67,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4682170793135331963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910383129152956582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dd9027b0fce1147a016e59869fd14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

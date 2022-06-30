@@ -6,6 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A component representing a door.
     /// </summary>
+    [RequireComponent(typeof(CommonEvents))]
     public class Door : MonoBehaviour
     {
         /// <summary>
