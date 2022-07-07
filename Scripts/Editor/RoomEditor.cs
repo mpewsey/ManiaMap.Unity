@@ -1,4 +1,5 @@
 using System.IO;
+using System.Xml;
 using UnityEditor;
 using UnityEngine;
 
@@ -121,8 +122,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             foreach (var guid in guids)
             {
-                SavePrefabTemplate(AssetDatabase.GUIDToAssetPath(guid));
-                // SaveRoomTemplate(AssetDatabase.GUIDToAssetPath(guid));
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                SaveRoomTemplate(path);
             }
 
             AssetDatabase.Refresh();
@@ -139,7 +140,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     return;
 
                 Debug.Log($"Processing room at {path}.");
-                var savePath = Path.Combine(GetRoomTemplatesDirectory(), $"{room.name}_{room.Id}.asset");
+                var savePath = GetTemplateSavePath(room);
                 var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
 
                 if (template == null)
@@ -148,30 +149,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     AssetDatabase.CreateAsset(template, savePath);
                 }
 
-                template.Id = room.Id;
+                template.Init(room);
                 EditorUtility.SetDirty(template);
                 AssetDatabase.SaveAssetIfDirty(template);
-            }
-        }
-
-        /// <summary>
-        /// Saves the room template for the prefab at the specified path if a Room
-        /// exists on the prefab.
-        /// </summary>
-        /// <param name="path">The path to the prefab.</param>
-        private static void SavePrefabTemplate(string path)
-        {
-            using (var scope = new PrefabUtility.EditPrefabContentsScope(path))
-            {
-                var prefab = scope.prefabContentsRoot;
-
-                if (!prefab.TryGetComponent(out Room room))
-                    return;
-
-                Debug.Log($"Processing room at {path}.");
-                var savePath = GetTemplateSavePath(room);
-                var template = room.GetTemplate();
-                Serialization.SavePrettyXml(savePath, template);
             }
         }
 
@@ -191,7 +171,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="room">The room.</param>
         private static string GetTemplateFileName(Room room)
         {
-            return FileUtility.ReplaceInvalidFileNameCharacters($"{room.name}_{room.Id}.xml");
+            return FileUtility.ReplaceInvalidFileNameCharacters($"{room.name}_{room.Id}.asset");
         }
 
         /// <summary>
