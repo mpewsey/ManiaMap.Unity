@@ -15,5 +15,6 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor =
     [ "RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor" ],
     [ "RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor" ],
     [ "RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor" ],
+    [ "RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ],
     [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
 ];

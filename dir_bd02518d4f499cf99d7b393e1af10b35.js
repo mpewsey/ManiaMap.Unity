@@ -32,5 +32,6 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "RoomDatabase.cs", "_room_database_8cs_source.html", null ],
     [ "RoomDatabaseEntry.cs", "_room_database_entry_8cs_source.html", null ],
     [ "RoomPrefabDatabase.cs", "_room_prefab_database_8cs_source.html", null ],
+    [ "RoomTemplate.cs", "_room_template_8cs_source.html", null ],
     [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ]
 ];

@@ -13,7 +13,8 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Editor.RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", null ]
+      [ "MPewsey.ManiaMap.Unity.Editor.RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ]
     ] ],
     [ "EditorWindow", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html", null ]
@@ -79,6 +80,7 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", null ],
+      [ "MPewsey.ManiaMap.Unity.RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", null ],
       [ "MPewsey.ManiaMap.Unity.TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ],

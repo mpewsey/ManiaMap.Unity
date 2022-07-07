@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('_template_group_editor_8cs_source.html
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        [MenuItem(<span class="stringliteral">&quot;Mania Map/Save Sample Templates&quot;</span>, priority = 0)]</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html#af532890b4a0f531c98c96df52c1c17de">   18</a></span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html#af532890b4a0f531c98c96df52c1c17de">SaveTemplates</a>()</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            var templates = <span class="keyword">new</span> List&lt;RoomTemplate&gt;()</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            var templates = <span class="keyword">new</span> List&lt;ManiaMap.RoomTemplate&gt;()</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                ManiaMap.Samples.TemplateLibrary.Squares.Square2x2Template(),</div>
@@ -139,27 +139,41 @@ $(document).ready(function(){initNavTree('_template_group_editor_8cs_source.html
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">foreach</span> (var variation <span class="keywordflow">in</span> <span class="keyword">template</span>.UniqueVariations())</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    var <span class="keywordtype">id</span> = Random.Range(1, <span class="keywordtype">int</span>.MaxValue);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    var room = <span class="keyword">new</span> RoomTemplate(<span class="keywordtype">id</span>, variation.Name, variation.Cells);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    var path = Path.Combine(root, $<span class="stringliteral">&quot;{room.Name}_{room.Id}.xml&quot;</span>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    <span class="keywordflow">foreach</span> (var cell <span class="keywordflow">in</span> room.Cells.Array)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        <span class="keywordflow">if</span> (cell != <span class="keyword">null</span>)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                            cell.AddCollectableSpot(k++, <span class="stringliteral">&quot;Default&quot;</span>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    Serialization.SavePrettyXml(path, room);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            AssetDatabase.Refresh();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    var room = <span class="keyword">new</span> ManiaMap.RoomTemplate(<span class="keywordtype">id</span>, variation.Name, variation.Cells);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    <span class="keywordflow">foreach</span> (var cell <span class="keywordflow">in</span> room.Cells.Array)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        cell?.AddCollectableSpot(k++, <span class="stringliteral">&quot;Default&quot;</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    var path = Path.Combine(root, $<span class="stringliteral">&quot;{room.Name}_{room.Id}.asset&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    var asset = AssetDatabase.LoadAssetAtPath&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html">RoomTemplate</a>&gt;(path);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    <span class="keywordflow">if</span> (asset == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                        asset = ScriptableObject.CreateInstance&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html">RoomTemplate</a>&gt;();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                        asset.<a class="code hl_function" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html#ad19a49b3d2d516c17f246d2f8c6c8c1c">Init</a>(room);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                        AssetDatabase.CreateAsset(asset, path);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                        asset.Init(room);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                        EditorUtility.SetDirty(asset);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                        AssetDatabase.SaveAssetIfDirty(asset);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            AssetDatabase.Refresh();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html">MPewsey.ManiaMap.Unity.Editor.FileUtility</a></div><div class="ttdoc">Contains methods for dealing with files in in Unity.</div><div class="ttdef"><b>Definition:</b> <a href="_file_utility_8cs_source.html#l00012">FileUtility.cs:13</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility_html_aaa4f1fcb44927a440ee2a6bb7a81b8b5"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#aaa4f1fcb44927a440ee2a6bb7a81b8b5">MPewsey.ManiaMap.Unity.Editor.FileUtility.CreateDirectory</a></div><div class="ttdeci">static void CreateDirectory(string path)</div><div class="ttdoc">Creates the directory in the assets folder if it does not already exist. The path must begin with the...</div><div class="ttdef"><b>Definition:</b> <a href="_file_utility_8cs_source.html#l00020">FileUtility.cs:20</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html">MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor</a></div><div class="ttdoc">The TemplateGroup editor.</div><div class="ttdef"><b>Definition:</b> <a href="_template_group_editor_8cs_source.html#l00011">TemplateGroupEditor.cs:12</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor_html_af532890b4a0f531c98c96df52c1c17de"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html#af532890b4a0f531c98c96df52c1c17de">MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor.SaveTemplates</a></div><div class="ttdeci">static void SaveTemplates()</div><div class="ttdoc">Saves the sample room templates from the Mania Map library to the ManiaMap/RoomTemplates/Samples dire...</div><div class="ttdef"><b>Definition:</b> <a href="_template_group_editor_8cs_source.html#l00018">TemplateGroupEditor.cs:18</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html">MPewsey.ManiaMap.Unity.RoomTemplate</a></div><div class="ttdoc">A container for storing a serialized room template.</div><div class="ttdef"><b>Definition:</b> <a href="_room_template_8cs_source.html#l00009">RoomTemplate.cs:10</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_html_ad19a49b3d2d516c17f246d2f8c6c8c1c"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html#ad19a49b3d2d516c17f246d2f8c6c8c1c">MPewsey.ManiaMap.Unity.RoomTemplate.Init</a></div><div class="ttdeci">void Init(ManiaMap.RoomTemplate template)</div><div class="ttdoc">Initializes the template based on the specified generation template.</div><div class="ttdef"><b>Definition:</b> <a href="_room_template_8cs_source.html#l00053">RoomTemplate.cs:53</a></div></div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div><div class="ttdoc">Contains editor customizations.</div><div class="ttdef"><b>Definition:</b> <a href="_editor_2_____docs_____8cs_source.html#l00004">__Docs__.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

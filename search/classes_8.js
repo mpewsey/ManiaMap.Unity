@@ -9,5 +9,7 @@ var searchData=
   ['roomdatabaseentry_6',['RoomDatabaseEntry',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html',1,'MPewsey::ManiaMap::Unity']]],
   ['roomeditor_7',['RoomEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
   ['roomprefabdatabase_8',['RoomPrefabDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['roomprefabdatabaseeditor_9',['RoomPrefabDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
+  ['roomprefabdatabaseeditor_9',['RoomPrefabDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roomtemplate_10',['RoomTemplate',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomtemplateeditor_11',['RoomTemplateEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
 ];

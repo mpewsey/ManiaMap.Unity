@@ -32,5 +32,6 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database" ],
     [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
     [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
+    [ "RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
 ];

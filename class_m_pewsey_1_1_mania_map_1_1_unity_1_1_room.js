@@ -12,7 +12,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room =
     [ "CreateCells", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#aa44e783b7ad2751cfac0f12bed77b250", null ],
     [ "CreateRow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a0be8413e4d588f69485ff5dc8702b8ec", null ],
     [ "GetCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#aca7647630d7b73e96655a436805ab59f", null ],
-    [ "GetTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a4584ea7f9335efc43b97d1045b00b1db", null ],
+    [ "GetTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a60bb70d16f32f2ca57cbabec6d4d21ed", null ],
     [ "Init", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a3f824e5aed598bf4b84c3b8741dc17b2", null ],
     [ "InstantiateRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ae9c27aad167919eb2ca0ee9985ea00d2", null ],
     [ "InstantiateRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a0bec3af8ed5bfd2b6c1bef8695c2d8d7", null ],
