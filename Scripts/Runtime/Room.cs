@@ -307,7 +307,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a new generation room template.
         /// </summary>
-        public RoomTemplate GetTemplate()
+        public ManiaMap.RoomTemplate GetTemplate()
         {
             AutoAssign();
             var cells = new Array2D<ManiaMap.Cell>(Size.x, Size.y);
@@ -320,7 +320,7 @@ namespace MPewsey.ManiaMap.Unity
                 }
             }
 
-            var template = new RoomTemplate(Id, Name, cells);
+            var template = new ManiaMap.RoomTemplate(Id, Name, cells);
             template.Validate();
             return template;
         }

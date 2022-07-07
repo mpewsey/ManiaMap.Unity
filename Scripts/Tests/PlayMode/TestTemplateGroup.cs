@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -9,32 +8,30 @@ namespace MPewsey.ManiaMap.Unity.Tests
     public class TestTemplateGroup
     {
         [Test]
-        public void TestLoadTemplates()
+        public void TestGetTemplates()
         {
-            var templates = new List<RoomTemplate>
+            var templates = new List<ManiaMap.RoomTemplate>
             {
                 ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
                 ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template(),
                 ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
             };
 
-            var path = Path.GetTempFileName();
             var templateGroup = ScriptableObject.CreateInstance<TemplateGroup>();
             templateGroup.Name = "Test";
 
             foreach (var template in templates)
             {
-                Serialization.SaveXml(path, template);
-                var text = new TextAsset(File.ReadAllText(path));
-                templateGroup.Templates.Add(text);
+                var room = ScriptableObject.CreateInstance<RoomTemplate>();
+                room.Init(template);
+                templateGroup.Templates.Add(room);
             }
 
-            File.Delete(path);
-            var copies = templateGroup.LoadTemplates().ToList();
+            var copies = templateGroup.GetTemplates().ToList();
 
             for (int i = 0; i < templates.Count; i++)
             {
-                Assert.IsTrue(RoomTemplate.ValuesAreEqual(templates[i], copies[i]));
+                Assert.IsTrue(ManiaMap.RoomTemplate.ValuesAreEqual(templates[i], copies[i]));
             }
         }
     }

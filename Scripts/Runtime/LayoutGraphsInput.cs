@@ -76,14 +76,14 @@ namespace MPewsey.ManiaMap.Unity
         public TemplateGroups GetTemplateGroups()
         {
             var groups = new TemplateGroups();
-            var pool = new Dictionary<TextAsset, RoomTemplate>();
+            var pool = new Dictionary<RoomTemplate, ManiaMap.RoomTemplate>();
             var names = new HashSet<string>();
 
             foreach (var group in GetTemplateGroupSet())
             {
                 if (!names.Add(group.Name))
                     throw new ArgumentException($"Duplicate group name: {group.Name}.");
-                groups.Add(group.Name, group.LoadTemplates(pool));
+                groups.Add(group.Name, group.GetTemplates());
             }
 
             return groups;

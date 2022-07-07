@@ -121,7 +121,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             foreach (var guid in guids)
             {
-                SavePrefabTemplate(AssetDatabase.GUIDToAssetPath(guid));
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                SaveRoomTemplate(path);
             }
 
             AssetDatabase.Refresh();
@@ -129,11 +130,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Saves the room template for the prefab at the specified path if a Room
-        /// exists on the prefab.
+        /// Saves the room template for the prefab at the specified path if it has
+        /// a room component at its root.
         /// </summary>
-        /// <param name="path">The path to the prefab.</param>
-        private static void SavePrefabTemplate(string path)
+        /// <param name="path">The prefab path.</param>
+        private static void SaveRoomTemplate(string path)
         {
             using (var scope = new PrefabUtility.EditPrefabContentsScope(path))
             {
@@ -144,8 +145,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
                 Debug.Log($"Processing room at {path}.");
                 var savePath = GetTemplateSavePath(room);
-                var template = room.GetTemplate();
-                Serialization.SavePrettyXml(savePath, template);
+                var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
+
+                if (template == null)
+                {
+                    template = CreateInstance<RoomTemplate>();
+                    template.Init(room.GetTemplate());
+                    AssetDatabase.CreateAsset(template, savePath);
+                }
+                else
+                {
+                    template.Init(room.GetTemplate());
+                    EditorUtility.SetDirty(template);
+                    AssetDatabase.SaveAssetIfDirty(template);
+                }
             }
         }
 
@@ -165,7 +178,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <param name="room">The room.</param>
         private static string GetTemplateFileName(Room room)
         {
-            return FileUtility.ReplaceInvalidFileNameCharacters($"{room.name}_{room.Id}.xml");
+            return FileUtility.ReplaceInvalidFileNameCharacters($"{room.name}_{room.Id}.asset");
         }
 
         /// <summary>

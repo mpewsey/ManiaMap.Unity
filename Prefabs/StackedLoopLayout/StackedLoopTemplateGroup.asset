@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Loop Template Group
   _templates:
-  - {fileID: 4900000, guid: 7b1e83d2442d6d64aa3f518b45f0a765, type: 3}
+  - {fileID: 11400000, guid: dbee7e6d780745446b9a4806c6cbc643, type: 2}
