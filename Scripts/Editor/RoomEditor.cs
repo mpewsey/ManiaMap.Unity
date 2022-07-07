@@ -122,10 +122,36 @@ namespace MPewsey.ManiaMap.Unity.Editor
             foreach (var guid in guids)
             {
                 SavePrefabTemplate(AssetDatabase.GUIDToAssetPath(guid));
+                // SaveRoomTemplate(AssetDatabase.GUIDToAssetPath(guid));
             }
 
             AssetDatabase.Refresh();
             Debug.Log($"<color=#00FF00><b>Saved rooms.</b></color>");
+        }
+
+        private static void SaveRoomTemplate(string path)
+        {
+            using (var scope = new PrefabUtility.EditPrefabContentsScope(path))
+            {
+                var prefab = scope.prefabContentsRoot;
+
+                if (!prefab.TryGetComponent(out Room room))
+                    return;
+
+                Debug.Log($"Processing room at {path}.");
+                var savePath = Path.Combine(GetRoomTemplatesDirectory(), $"{room.name}_{room.Id}.asset");
+                var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
+
+                if (template == null)
+                {
+                    template = CreateInstance<RoomTemplate>();
+                    AssetDatabase.CreateAsset(template, savePath);
+                }
+
+                template.Id = room.Id;
+                EditorUtility.SetDirty(template);
+                AssetDatabase.SaveAssetIfDirty(template);
+            }
         }
 
         /// <summary>

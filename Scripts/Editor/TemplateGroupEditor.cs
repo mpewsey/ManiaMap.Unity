@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         [MenuItem("Mania Map/Save Sample Templates", priority = 0)]
         public static void SaveTemplates()
         {
-            var templates = new List<RoomTemplate>()
+            var templates = new List<ManiaMap.RoomTemplate>()
             {
                 ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
                 ManiaMap.Samples.TemplateLibrary.Squares.Square2x2Template(),
@@ -45,7 +45,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 foreach (var variation in template.UniqueVariations())
                 {
                     var id = Random.Range(1, int.MaxValue);
-                    var room = new RoomTemplate(id, variation.Name, variation.Cells);
+                    var room = new ManiaMap.RoomTemplate(id, variation.Name, variation.Cells);
                     var path = Path.Combine(root, $"{room.Name}_{room.Id}.xml");
 
                     foreach (var cell in room.Cells.Array)

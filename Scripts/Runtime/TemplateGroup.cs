@@ -26,11 +26,11 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns an enumerable of loaded room templates in the group.
         /// </summary>
-        public IEnumerable<RoomTemplate> LoadTemplates()
+        public IEnumerable<ManiaMap.RoomTemplate> LoadTemplates()
         {
             foreach (var asset in Templates)
             {
-                yield return Serialization.LoadXml<RoomTemplate>(asset.bytes);
+                yield return Serialization.LoadXml<ManiaMap.RoomTemplate>(asset.bytes);
             }
         }
 
@@ -38,13 +38,13 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns an enumerable of loaded room templates in the group.
         /// </summary>
         /// <param name="pool">A dictionary of loaded templates that are queried first.</param>
-        public IEnumerable<RoomTemplate> LoadTemplates(Dictionary<TextAsset, RoomTemplate> pool)
+        public IEnumerable<ManiaMap.RoomTemplate> LoadTemplates(Dictionary<TextAsset, ManiaMap.RoomTemplate> pool)
         {
             foreach (var asset in Templates)
             {
-                if (!pool.TryGetValue(asset, out RoomTemplate template))
+                if (!pool.TryGetValue(asset, out ManiaMap.RoomTemplate template))
                 {
-                    template = Serialization.LoadXml<RoomTemplate>(asset.bytes);
+                    template = Serialization.LoadXml<ManiaMap.RoomTemplate>(asset.bytes);
                     pool.Add(asset, template);
                 }
 

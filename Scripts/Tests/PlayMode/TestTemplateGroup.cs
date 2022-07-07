@@ -11,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestLoadTemplates()
         {
-            var templates = new List<RoomTemplate>
+            var templates = new List<ManiaMap.RoomTemplate>
             {
                 ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
                 ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template(),
@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             for (int i = 0; i < templates.Count; i++)
             {
-                Assert.IsTrue(RoomTemplate.ValuesAreEqual(templates[i], copies[i]));
+                Assert.IsTrue(ManiaMap.RoomTemplate.ValuesAreEqual(templates[i], copies[i]));
             }
         }
     }
