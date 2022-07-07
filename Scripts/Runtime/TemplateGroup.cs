@@ -17,20 +17,20 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<TextAsset> _templates = new List<TextAsset>();
+        private List<RoomTemplate> _templates = new List<RoomTemplate>();
         /// <summary>
-        /// A list of serialized room templates belonging to the group.
+        /// A list of room templates belonging to the group.
         /// </summary>
-        public List<TextAsset> Templates { get => _templates; set => _templates = value; }
+        public List<RoomTemplate> Templates { get => _templates; set => _templates = value; }
 
         /// <summary>
         /// Returns an enumerable of loaded room templates in the group.
         /// </summary>
         public IEnumerable<ManiaMap.RoomTemplate> LoadTemplates()
         {
-            foreach (var asset in Templates)
+            foreach (var template in Templates)
             {
-                yield return Serialization.LoadXml<ManiaMap.RoomTemplate>(asset.bytes);
+                yield return template.GetTemplate();
             }
         }
 
@@ -38,14 +38,13 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns an enumerable of loaded room templates in the group.
         /// </summary>
         /// <param name="pool">A dictionary of loaded templates that are queried first.</param>
-        public IEnumerable<ManiaMap.RoomTemplate> LoadTemplates(Dictionary<TextAsset, ManiaMap.RoomTemplate> pool)
+        public IEnumerable<ManiaMap.RoomTemplate> LoadTemplates(Dictionary<RoomTemplate, ManiaMap.RoomTemplate> pool)
         {
             foreach (var asset in Templates)
             {
                 if (!pool.TryGetValue(asset, out ManiaMap.RoomTemplate template))
                 {
-                    template = Serialization.LoadXml<ManiaMap.RoomTemplate>(asset.bytes);
-                    pool.Add(asset, template);
+                    pool.Add(asset, asset.GetTemplate());
                 }
 
                 yield return template;

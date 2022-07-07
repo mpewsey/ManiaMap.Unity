@@ -76,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity
         public TemplateGroups GetTemplateGroups()
         {
             var groups = new TemplateGroups();
-            var pool = new Dictionary<TextAsset, ManiaMap.RoomTemplate>();
+            var pool = new Dictionary<RoomTemplate, ManiaMap.RoomTemplate>();
             var names = new HashSet<string>();
 
             foreach (var group in GetTemplateGroupSet())
