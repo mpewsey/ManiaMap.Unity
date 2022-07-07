@@ -44,7 +44,8 @@ namespace MPewsey.ManiaMap.Unity
             {
                 if (!pool.TryGetValue(asset, out ManiaMap.RoomTemplate template))
                 {
-                    pool.Add(asset, asset.GetTemplate());
+                    template = asset.GetTemplate();
+                    pool.Add(asset, template);
                 }
 
                 yield return template;
