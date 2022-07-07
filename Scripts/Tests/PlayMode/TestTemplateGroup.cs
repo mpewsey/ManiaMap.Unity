@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
     public class TestTemplateGroup
     {
         [Test]
-        public void TestLoadTemplates()
+        public void TestGetTemplates()
         {
             var templates = new List<ManiaMap.RoomTemplate>
             {
@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
                 templateGroup.Templates.Add(room);
             }
 
-            var copies = templateGroup.LoadTemplates().ToList();
+            var copies = templateGroup.GetTemplates().ToList();
 
             for (int i = 0; i < templates.Count; i++)
             {

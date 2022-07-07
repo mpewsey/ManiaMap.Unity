@@ -130,6 +130,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             Debug.Log($"<color=#00FF00><b>Saved rooms.</b></color>");
         }
 
+        /// <summary>
+        /// Saves the room template for the prefab at the specified path if it has
+        /// a room component at its root.
+        /// </summary>
+        /// <param name="path">The prefab path.</param>
         private static void SaveRoomTemplate(string path)
         {
             using (var scope = new PrefabUtility.EditPrefabContentsScope(path))
@@ -146,12 +151,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 if (template == null)
                 {
                     template = CreateInstance<RoomTemplate>();
-                    template.Init(room);
+                    template.Init(room.GetTemplate());
                     AssetDatabase.CreateAsset(template, savePath);
                 }
                 else
                 {
-                    template.Init(room);
+                    template.Init(room.GetTemplate());
                     EditorUtility.SetDirty(template);
                     AssetDatabase.SaveAssetIfDirty(template);
                 }
