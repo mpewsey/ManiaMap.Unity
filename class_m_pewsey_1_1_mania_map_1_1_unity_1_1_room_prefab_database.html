@@ -117,9 +117,12 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.RoomPrefabDatabase:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aea88eeb036f3450cb1151de77ba3815d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#aea88eeb036f3450cb1151de77ba3815d">InstantiateRoom</a> (Uid id, Transform parent=null, bool assignPosition=false)</td></tr>
-<tr class="memdesc:aea88eeb036f3450cb1151de77ba3815d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates the room based on current layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#aea88eeb036f3450cb1151de77ba3815d">More...</a><br /></td></tr>
-<tr class="separator:aea88eeb036f3450cb1151de77ba3815d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3987142d08c6b8d08769eda3691b1db2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#a3987142d08c6b8d08769eda3691b1db2">InstantiateLayer</a> (int z, Transform parent=null)</td></tr>
+<tr class="memdesc:a3987142d08c6b8d08769eda3691b1db2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates all rooms in the specified layer of the current layout. Returns a list of the rooms.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#a3987142d08c6b8d08769eda3691b1db2">More...</a><br /></td></tr>
+<tr class="separator:a3987142d08c6b8d08769eda3691b1db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72e8e4dd1d2f12443fa3516e482e88a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#ae72e8e4dd1d2f12443fa3516e482e88a">InstantiateRoom</a> (Uid id, Transform parent=null, <a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374">RoomPositionOption</a> position=<a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a7a1920d61156abc05a60135aefe8bc67">RoomPositionOption.Default</a>)</td></tr>
+<tr class="memdesc:ae72e8e4dd1d2f12443fa3516e482e88a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates the room based on current layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#ae72e8e4dd1d2f12443fa3516e482e88a">More...</a><br /></td></tr>
+<tr class="separator:ae72e8e4dd1d2f12443fa3516e482e88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html">MPewsey.ManiaMap.Unity.RoomDatabase&lt; Room &gt;</a></td></tr>
 <tr class="memitem:a142a062838f18e36d36afb0a42f7a177 inherit pub_methods_class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a142a062838f18e36d36afb0a42f7a177">CreateRoomDataDictionary</a> ()</td></tr>
 <tr class="memdesc:a142a062838f18e36d36afb0a42f7a177 inherit pub_methods_class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the room data dictionary based on the current database entries list.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a142a062838f18e36d36afb0a42f7a177">More...</a><br /></td></tr>
@@ -147,10 +150,49 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A room database with references to room prefabs. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_prefab_database_8cs_source.html#l00008">8</a> of file <a class="el" href="_room_prefab_database_8cs_source.html">RoomPrefabDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_prefab_database_8cs_source.html#l00009">9</a> of file <a class="el" href="_room_prefab_database_8cs_source.html">RoomPrefabDatabase.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aea88eeb036f3450cb1151de77ba3815d" name="aea88eeb036f3450cb1151de77ba3815d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea88eeb036f3450cb1151de77ba3815d">&#9670;&nbsp;</a></span>InstantiateRoom()</h2>
+<a id="a3987142d08c6b8d08769eda3691b1db2" name="a3987142d08c6b8d08769eda3691b1db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3987142d08c6b8d08769eda3691b1db2">&#9670;&nbsp;</a></span>InstantiateLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a> &gt; MPewsey.ManiaMap.Unity.RoomPrefabDatabase.InstantiateLayer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Instantiates all rooms in the specified layer of the current layout. Returns a list of the rooms. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>The layer.</td></tr>
+    <tr><td class="paramname">parent</td><td>The parent of the instantiated rooms.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_prefab_database_8cs_source.html#l00031">31</a> of file <a class="el" href="_room_prefab_database_8cs_source.html">RoomPrefabDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae72e8e4dd1d2f12443fa3516e482e88a" name="ae72e8e4dd1d2f12443fa3516e482e88a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae72e8e4dd1d2f12443fa3516e482e88a">&#9670;&nbsp;</a></span>InstantiateRoom()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,8 +212,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>assignPosition</em> = <code>false</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374">RoomPositionOption</a>&#160;</td>
+          <td class="paramname"><em>position</em> = <code><a class="el" href="namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a7a1920d61156abc05a60135aefe8bc67">RoomPositionOption.Default</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,12 +228,12 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">id</td><td>The room ID.</td></tr>
     <tr><td class="paramname">parent</td><td>The parent of the instantiated room.</td></tr>
-    <tr><td class="paramname">assignPosition</td><td>If True, the local position of the room is assigned based on the current layout.</td></tr>
+    <tr><td class="paramname">position</td><td>The option guiding the positioning of the room.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_prefab_database_8cs_source.html#l00016">16</a> of file <a class="el" href="_room_prefab_database_8cs_source.html">RoomPrefabDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_prefab_database_8cs_source.html#l00017">17</a> of file <a class="el" href="_room_prefab_database_8cs_source.html">RoomPrefabDatabase.cs</a>.</p>
 
 </div>
 </div>

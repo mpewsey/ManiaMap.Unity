@@ -19,6 +19,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "GenerationNamedInput.cs", "_generation_named_input_8cs_source.html", null ],
     [ "GenerationPipeline.cs", "_generation_pipeline_8cs_source.html", null ],
     [ "GenerationStep.cs", "_generation_step_8cs_source.html", null ],
+    [ "LayoutData.cs", "_layout_data_8cs_source.html", null ],
     [ "LayoutEdge.cs", "_layout_edge_8cs_source.html", null ],
     [ "LayoutGenerator.cs", "_layout_generator_8cs_source.html", null ],
     [ "LayoutGraph.cs", "_layout_graph_8cs_source.html", null ],
@@ -31,6 +32,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "RoomAddressableDatabase.cs", "_room_addressable_database_8cs_source.html", null ],
     [ "RoomDatabase.cs", "_room_database_8cs_source.html", null ],
     [ "RoomDatabaseEntry.cs", "_room_database_entry_8cs_source.html", null ],
+    [ "RoomPositionOption.cs", "_room_position_option_8cs_source.html", null ],
     [ "RoomPrefabDatabase.cs", "_room_prefab_database_8cs_source.html", null ],
     [ "RoomTemplate.cs", "_room_template_8cs_source.html", null ],
     [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ]

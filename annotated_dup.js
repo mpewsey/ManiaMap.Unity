@@ -63,6 +63,7 @@ var annotated_dup =
           [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],
           [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline" ],
           [ "GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step" ],
+          [ "LayoutData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data" ],
           [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge" ],
           [ "LayoutGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator" ],
           [ "LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph" ],

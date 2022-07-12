@@ -158,8 +158,8 @@ $(document).ready(function(){initNavTree('_layout_map_8cs_source.html',''); init
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">public</span> List&lt;LayoutMapLayer&gt; CreateLayers()</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            var manager = ManiaManager.Current;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> CreateLayers(manager.Layout, manager.LayoutState);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            var data = ManiaManager.Current.LayoutData;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> CreateLayers(data.Layout, data.LayoutState);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a243a0e15a447c28242b49faa9c52bace">  105</a></span>        <span class="keyword">public</span> List&lt;LayoutMapLayer&gt; <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a243a0e15a447c28242b49faa9c52bace">CreateLayers</a>(<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134">Layout</a> layout, <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8">LayoutState</a> state = <span class="keyword">null</span>)</div>

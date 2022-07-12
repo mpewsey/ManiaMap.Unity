@@ -19,6 +19,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],
     [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline" ],
     [ "GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step" ],
+    [ "LayoutData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data" ],
     [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge" ],
     [ "LayoutGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator" ],
     [ "LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph" ],
@@ -33,5 +34,9 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
     [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
     [ "RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template" ],
-    [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
+    [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
+    [ "RoomPositionOption", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374", [
+      [ "Default", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a7a1920d61156abc05a60135aefe8bc67", null ],
+      [ "Layout", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374aebd9bec4d70abc789d439c1f136b0538", null ]
+    ] ]
 ];
