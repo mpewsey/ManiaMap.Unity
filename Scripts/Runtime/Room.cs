@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -55,22 +54,6 @@ namespace MPewsey.ManiaMap.Unity
         /// The size of the room grid.
         /// </summary>
         public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
-
-        [SerializeField]
-        [HideInInspector]
-        private List<Door> _doors = new List<Door>();
-        /// <summary>
-        /// A list of doors that are children to the room.
-        /// </summary>
-        public List<Door> Doors { get => _doors; set => _doors = value; }
-
-        [SerializeField]
-        [HideInInspector]
-        private List<CollectableSpot> _collectableSpots = new List<CollectableSpot>();
-        /// <summary>
-        /// A list of collectable spots that are children to the room.
-        /// </summary>
-        public List<CollectableSpot> CollectableSpots { get => _collectableSpots; set => _collectableSpots = value; }
 
         /// <summary>
         /// The room ID.
@@ -152,18 +135,6 @@ namespace MPewsey.ManiaMap.Unity
 
             if (assignPosition)
                 AssignPosition();
-
-            foreach (var door in Doors)
-            {
-                if (door != null)
-                    door.OnRoomInit();
-            }
-
-            foreach (var spot in CollectableSpots)
-            {
-                if (spot != null)
-                    spot.OnRoomInit();
-            }
         }
 
         /// <summary>
@@ -184,10 +155,30 @@ namespace MPewsey.ManiaMap.Unity
         {
             AutoAssignId();
             CreateCells();
-            Doors = new List<Door>(GetComponentsInChildren<Door>());
-            CollectableSpots = new List<CollectableSpot>(GetComponentsInChildren<CollectableSpot>());
-            Doors.ForEach(x => x.AutoAssign());
-            CollectableSpots.ForEach(x => x.AutoAssign());
+            AutoAssignDoors();
+            AutoAssignCollectableSpots();
+        }
+
+        /// <summary>
+        /// Runs the auto assign operation on all door components that are children of the room.
+        /// </summary>
+        private void AutoAssignDoors()
+        {
+            foreach (var door in GetComponentsInChildren<Door>())
+            {
+                door.AutoAssign();
+            }
+        }
+
+        /// <summary>
+        /// Runs the auto assign operation on all collectable spot components that are children of the room.
+        /// </summary>
+        private void AutoAssignCollectableSpots()
+        {
+            foreach (var spot in GetComponentsInChildren<CollectableSpot>())
+            {
+                spot.AutoAssign();
+            }
         }
 
         /// <summary>

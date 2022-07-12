@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             var state = new LayoutState(layout);
-            ManiaManager.Current.Init(layout, state);
+            ManiaManager.Current.AssignLayout(layout, state);
             Assert.AreEqual(layout, ManiaManager.Current.Layout);
             Assert.AreEqual(state, ManiaManager.Current.LayoutState);
         }

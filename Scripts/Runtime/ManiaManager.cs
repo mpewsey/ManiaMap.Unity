@@ -87,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
         /// <param name="maxClusterDepth">The maximum depth for calculating room clusters.</param>
-        public void Init(Layout layout, LayoutState state, int maxClusterDepth = 1)
+        public void AssignLayout(Layout layout, LayoutState state, int maxClusterDepth = 1)
         {
             Layout = layout;
             LayoutState = state;
