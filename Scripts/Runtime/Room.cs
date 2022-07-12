@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -92,11 +93,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
         public static async Task<Room> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
         {
-            var handle = Addressables.InstantiateAsync(prefab, parent);
+            var handle = InstantiateRoomHandle(id, prefab, parent, assignPosition);
             await handle.Task;
-            var room = handle.Result.GetComponent<Room>();
-            room.Init(id, assignPosition);
-            return room;
+            return handle.Result.GetComponent<Room>();
         }
 
         /// <summary>
@@ -108,11 +107,23 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
         public static Room InstantiateRoom(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
         {
-            var handle = Addressables.InstantiateAsync(prefab, parent);
+            var handle = InstantiateRoomHandle(id, prefab, parent, assignPosition);
             var obj = handle.WaitForCompletion();
-            var room = obj.GetComponent<Room>();
-            room.Init(id, assignPosition);
-            return room;
+            return obj.GetComponent<Room>();
+        }
+
+        /// <summary>
+        /// Creates a new operation handle for instantiating the room prefab.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="prefab">The asset reference for the room prefab.</param>
+        /// <param name="parent">The parent of the instantiated room.</param>
+        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
+        private static AsyncOperationHandle<GameObject> InstantiateRoomHandle(Uid id, AssetReferenceGameObject prefab, Transform parent, bool assignPosition)
+        {
+            var handle = Addressables.InstantiateAsync(prefab, parent);
+            handle.Completed += x => x.Result.GetComponent<Room>().Init(id, assignPosition);
+            return handle;
         }
 
         /// <summary>
