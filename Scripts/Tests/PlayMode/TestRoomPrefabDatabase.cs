@@ -53,7 +53,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaManager.Current.AssignLayout(layout, new LayoutState(layout));
+            ManiaManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
 
             // Create database.
             var obj = new GameObject("Room Prefab Database");
@@ -61,7 +61,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             db.Entries.Add(new RoomDatabaseEntry<Room>(prefab.Id, prefab));
             db.CreateRoomDataDictionary();
 
-            var room = db.InstantiateRoom(roomData.Id, null, true);
+            var room = db.InstantiateRoom(roomData.Id, null, RoomPositionOption.Layout);
             Assert.IsNotNull(room);
         }
     }

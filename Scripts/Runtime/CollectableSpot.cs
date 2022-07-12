@@ -91,9 +91,9 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Init()
         {
-            var manager = ManiaManager.Current;
-            var room = manager.Layout?.Rooms[RoomId];
-            var state = manager.LayoutState?.RoomStates[RoomId];
+            var data = ManiaManager.Current.LayoutData;
+            var room = data?.GetRoom(RoomId);
+            var state = data?.GetRoomState(RoomId);
 
             if (room != null && state != null)
             {
@@ -117,11 +117,11 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (!IsAcquired && Exists)
             {
-                var manager = ManiaManager.Current;
-                var state = manager.LayoutState.RoomStates[RoomId];
-                state.AcquiredCollectables.Add(Id);
+                var data = ManiaManager.Current.LayoutData;
+                var state = data.GetRoomState(RoomId);
+                var acquired = state.AcquiredCollectables.Add(Id);
                 IsAcquired = true;
-                return true;
+                return acquired;
             }
 
             return false;

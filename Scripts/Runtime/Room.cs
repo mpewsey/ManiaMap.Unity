@@ -73,10 +73,10 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         /// <param name="prefab">The asset reference for the room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
-        public static async Task<Room> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
+        /// <param name="position">The option guiding the positioning of the room.</param>
+        public static async Task<Room> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
-            var handle = InstantiateRoomHandle(id, prefab, parent, assignPosition);
+            var handle = InstantiateRoomHandle(id, prefab, parent, position);
             await handle.Task;
             return handle.Result.GetComponent<Room>();
         }
@@ -87,10 +87,10 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         /// <param name="prefab">The asset reference for the room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
-        public static Room InstantiateRoom(Uid id, AssetReferenceGameObject prefab, Transform parent = null, bool assignPosition = false)
+        /// <param name="position">The option guiding the positioning of the room.</param>
+        public static Room InstantiateRoom(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
-            var handle = InstantiateRoomHandle(id, prefab, parent, assignPosition);
+            var handle = InstantiateRoomHandle(id, prefab, parent, position);
             var obj = handle.WaitForCompletion();
             return obj.GetComponent<Room>();
         }
@@ -101,11 +101,11 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         /// <param name="prefab">The asset reference for the room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
-        private static AsyncOperationHandle<GameObject> InstantiateRoomHandle(Uid id, AssetReferenceGameObject prefab, Transform parent, bool assignPosition)
+        /// <param name="position">The option guiding the positioning of the room.</param>
+        private static AsyncOperationHandle<GameObject> InstantiateRoomHandle(Uid id, AssetReferenceGameObject prefab, Transform parent, RoomPositionOption position = RoomPositionOption.Default)
         {
             var handle = Addressables.InstantiateAsync(prefab, parent);
-            handle.Completed += x => x.Result.GetComponent<Room>().Init(id, assignPosition);
+            handle.Completed += x => x.Result.GetComponent<Room>().Init(id, position);
             return handle;
         }
 
@@ -115,12 +115,12 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         /// <param name="prefab">The room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
-        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, bool assignPosition = false)
+        /// <param name="position">The option guiding the positioning of the room.</param>
+        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
             var obj = Instantiate(prefab, parent);
             var room = obj.GetComponent<Room>();
-            room.Init(id, assignPosition);
+            room.Init(id, position);
             return room;
         }
 
@@ -128,22 +128,30 @@ namespace MPewsey.ManiaMap.Unity
         /// Initializes the room and its registered children.
         /// </summary>
         /// <param name="roomId">The room ID.</param>
-        /// <param name="assignPosition">If True, the local position of the room is assigned based on the current layout.</param>
-        public void Init(Uid roomId, bool assignPosition = false)
+        /// <param name="position">The option guiding the position of the room.</param>
+        public void Init(Uid roomId, RoomPositionOption position)
         {
             RoomId = roomId;
 
-            if (assignPosition)
-                AssignPosition();
+            switch (position)
+            {
+                case RoomPositionOption.Default:
+                    break;
+                case RoomPositionOption.Layout:
+                    AssignLayoutPosition();
+                    break;
+                default:
+                    throw new System.ArgumentException($"Unhandled room position option: {position}.");
+            }
         }
 
         /// <summary>
         /// Assigns the local position of the room based on the position in the current layout.
         /// </summary>
-        public void AssignPosition()
+        private void AssignLayoutPosition()
         {
-            var manager = ManiaManager.Current;
-            var room = manager.Layout.Rooms[RoomId];
+            var data = ManiaManager.Current.LayoutData;
+            var room = data.Layout.Rooms[RoomId];
             var position = new Vector2(room.Position.Y, -room.Position.X) * CellSize;
             transform.localPosition = Swizzle(position);
         }

@@ -114,16 +114,20 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            var manager = ManiaManager.Current;
-            var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+            var data = ManiaManager.Current.LayoutData;
 
-            foreach (var neighbor in manager.GetAdjacentRooms(RoomId))
+            if (data != null)
             {
-                var connection = manager.Layout.GetDoorConnection(RoomId, neighbor);
+                var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-                if (connection.ContainsDoor(RoomId, position, Direction))
+                foreach (var neighbor in data.GetAdjacentRooms(RoomId))
                 {
-                    return connection;
+                    var connection = data.Layout.GetDoorConnection(RoomId, neighbor);
+
+                    if (connection.ContainsDoor(RoomId, position, Direction))
+                    {
+                        return connection;
+                    }
                 }
             }
 
