@@ -80,19 +80,27 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Uid RoomId { get => Cell.Room.RoomId; }
 
+        private void Start()
+        {
+            Init();
+        }
+
         /// <summary>
         /// Initializes the collectable spot based on the layout and layout state
         /// assigned to the current manager.
         /// </summary>
-        public void OnRoomInit()
+        private void Init()
         {
-            var manager = ManiaManager.Current;
-            var room = manager.Layout.Rooms[RoomId];
-            var state = manager.LayoutState.RoomStates[RoomId];
+            var data = ManiaManager.Current.LayoutData;
+            var room = data?.GetRoom(RoomId);
+            var state = data?.GetRoomState(RoomId);
 
-            IsAcquired = state.AcquiredCollectables.Contains(Id);
-            Exists = room.Collectables.TryGetValue(Id, out int collectableId);
-            CollectableId = Exists ? collectableId : int.MinValue;
+            if (room != null && state != null)
+            {
+                IsAcquired = state.AcquiredCollectables.Contains(Id);
+                Exists = room.Collectables.TryGetValue(Id, out int collectableId);
+                CollectableId = Exists ? collectableId : int.MinValue;
+            }
 
             if (Exists)
                 OnSpotExists.Invoke(this);
@@ -109,11 +117,11 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (!IsAcquired && Exists)
             {
-                var manager = ManiaManager.Current;
-                var state = manager.LayoutState.RoomStates[RoomId];
-                state.AcquiredCollectables.Add(Id);
+                var data = ManiaManager.Current.LayoutData;
+                var state = data.GetRoomState(RoomId);
+                var acquired = state.AcquiredCollectables.Add(Id);
                 IsAcquired = true;
-                return true;
+                return acquired;
             }
 
             return false;

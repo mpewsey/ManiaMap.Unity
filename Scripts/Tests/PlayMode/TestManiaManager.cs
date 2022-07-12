@@ -49,18 +49,5 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             Assert.IsTrue((manager1 == null) ^ (manager2 == null));
         }
-
-        [Test]
-        public void TestInit()
-        {
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Generate(12345);
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            var state = new LayoutState(layout);
-            ManiaManager.Current.Init(layout, state);
-            Assert.AreEqual(layout, ManiaManager.Current.Layout);
-            Assert.AreEqual(state, ManiaManager.Current.LayoutState);
-        }
     }
 }

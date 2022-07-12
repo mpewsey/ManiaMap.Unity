@@ -14,6 +14,12 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.LoadEmptyScene();
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            Object.DestroyImmediate(ManiaManager.Current);
+        }
+
         [TestCase(Assets.BigLayoutPath)]
         [TestCase(Assets.CrossLayoutPath)]
         [TestCase(Assets.GeekLayoutPath)]
