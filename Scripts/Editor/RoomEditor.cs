@@ -78,6 +78,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var room = GetRoom();
             room.AutoAssign();
+            EditorUtility.SetDirty(room);
             Debug.Log("<color=#00FF00><b>Room updated.</b></color>");
         }
 
@@ -90,6 +91,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             // Create the template.
             var room = GetRoom();
             var template = room.GetTemplate();
+            EditorUtility.SetDirty(room);
 
             // Save the template to the room templates directory.
             var path = GetTemplateSavePath(room);
