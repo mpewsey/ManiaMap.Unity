@@ -63,6 +63,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 AddPrefabEntry(AssetDatabase.GUIDToAssetPath(guid));
             }
 
+            EditorUtility.SetDirty(db);
             Debug.Log($"<color=#00FF00><b>Added prefabs to database.</b></color>");
         }
 

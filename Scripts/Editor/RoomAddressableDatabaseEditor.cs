@@ -65,6 +65,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 AddAddressableEntry(guid);
             }
 
+            EditorUtility.SetDirty(db);
             Debug.Log($"<color=#00FF00><b>Added prefabs to database.</b></color>");
         }
 
