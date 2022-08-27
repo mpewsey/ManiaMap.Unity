@@ -218,6 +218,7 @@ namespace MPewsey.ManiaMap.Unity
                 other.DoorCode = edge.DoorCode;
                 other.Z = edge.Z;
                 other.RoomChance = edge.RoomChance;
+                other.RequireRoom = edge.RequireRoom;
                 other.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
                 other.Color = ConvertColor(edge.Color);
             }

@@ -66,6 +66,15 @@ namespace MPewsey.ManiaMap.Unity
         public float RoomChance { get => _roomChance; set => _roomChance = value; }
 
         [SerializeField]
+        private bool _requireRoom;
+        /// <summary>
+        /// If true and the room chance is satisfied, a room is required for the edge
+        /// to form a valid layout. Otherwise, the insertion of the room may be skipped
+        /// if a valid room cannot be found.
+        /// </summary>
+        public bool RequireRoom { get=> _requireRoom; set => _requireRoom = value; }
+
+        [SerializeField]
         private Color32 _color = new Color32(0, 255, 0, 255);
         /// <summary>
         /// The color.
