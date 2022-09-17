@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MPewsey.ManiaMap.Unity
 {
     /// <summary>
-    /// A containing for storing a layout and its state.
+    /// A container for storing a layout and its state.
     /// </summary>
     public class LayoutData
     {

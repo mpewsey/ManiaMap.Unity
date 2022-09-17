@@ -11,6 +11,9 @@
 /[Mm]emoryCaptures/
 /[Uu]ser[Ss]ettings/
 
+Samples.meta
+Samples~.meta
+
 /[Dd]ocs~/output/
 .DS_Store
 
