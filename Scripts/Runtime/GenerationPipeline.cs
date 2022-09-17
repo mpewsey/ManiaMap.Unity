@@ -24,45 +24,31 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public GameObject StepsContainer { get => _stepsContainer; set => _stepsContainer = value; }
 
-        /// <summary>
-        /// Generates a set of results for the pipeline using a random seed.
-        /// </summary>
-        public ManiaMap.GenerationPipeline.Results Generate()
+        public void SetSeed(int seed)
         {
-            var seed = Random.Range(1, int.MaxValue);
-            return Generate(seed);
+            var input = InputsContainer.GetComponent<RandomSeedInput>();
+            input.Seed = seed;
         }
 
         /// <summary>
-        /// Generates a set of results for the pipeline using a set seed.
+        /// Generates a set of results for the pipeline.
         /// </summary>
-        /// <param name="seed">The random seed.</param>
-        public ManiaMap.GenerationPipeline.Results Generate(int seed)
+        public ManiaMap.GenerationPipeline.Results Generate()
         {
             Validate();
             var pipeline = GetPipeline();
-            var inputs = GetInputs(seed);
+            var inputs = GetInputs();
             return pipeline.Generate(inputs);
         }
 
         /// <summary>
-        /// Generates a set of results for the pipeline asynchronously using a random seed.
+        /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
         public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync()
         {
-            var seed = Random.Range(1, int.MaxValue);
-            return GenerateAsync(seed);
-        }
-
-        /// <summary>
-        /// Generates a set of results for the pipeline asynchronously using a set seed.
-        /// </summary>
-        /// <param name="seed">The random seed.</param>
-        public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync(int seed)
-        {
             Validate();
             var pipeline = GetPipeline();
-            var inputs = GetInputs(seed);
+            var inputs = GetInputs();
             return Task.Run(() => pipeline.Generate(inputs));
         }
 
@@ -101,14 +87,10 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a dictionary of inputs for the pipeline.
         /// </summary>
-        /// <param name="seed">The random seed.</param>
-        public Dictionary<string, object> GetInputs(int seed)
+        public Dictionary<string, object> GetInputs()
         {
             var inputs = GetGenerationInputs();
-            var result = new Dictionary<string, object>()
-            {
-                { "RandomSeed", new RandomSeed(seed) },
-            };
+            var result = new Dictionary<string, object>();
 
             foreach (var input in inputs)
             {
@@ -123,7 +105,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void Validate()
         {
-            var names = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>();
             ValidateInputs(names);
             ValidateSteps(names);
         }
@@ -176,7 +158,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsValid()
         {
-            var names = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>();
 
             return GenerationInputsAreValid(names)
                 && GenerationStepsAreValid(names);

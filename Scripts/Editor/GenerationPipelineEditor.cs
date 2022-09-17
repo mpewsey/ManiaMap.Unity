@@ -32,7 +32,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawPipelineErrorBox()
         {
-            var names = new HashSet<string>() { "RandomSeed" };
+            var names = new HashSet<string>();
             DrawGenerationInputErrorBox(names);
             DrawGenerationStepErrorBox(names);
         }
@@ -99,6 +99,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var inputs = new GameObject("<Inputs>");
             inputs.transform.SetParent(obj.transform);
             pipeline.InputsContainer = inputs;
+            inputs.AddComponent<RandomSeedInput>();
             var layoutId = inputs.AddComponent<GenerationIntInput>();
             layoutId.Name = "LayoutId";
             layoutId.Value = Random.Range(1, int.MaxValue);

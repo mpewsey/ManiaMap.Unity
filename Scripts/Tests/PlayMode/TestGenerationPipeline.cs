@@ -53,7 +53,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public IEnumerator TestSeededBigLayoutGeneratorAsync()
         {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var task = pipeline.GenerateAsync(12345);
+            pipeline.SetSeed(12345);
+            var task = pipeline.GenerateAsync();
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);
