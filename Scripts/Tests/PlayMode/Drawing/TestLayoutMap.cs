@@ -20,7 +20,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         public void TestCreateLayers(string path)
         {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate(12345);
+            pipeline.SetSeed(12345);
+            var results = pipeline.Generate();
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
@@ -42,7 +43,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         public void TestSaveLayoutImages(string path, string imagePath)
         {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate(12345);
+            pipeline.SetSeed(12345);
+            var results = pipeline.Generate();
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
