@@ -72,6 +72,7 @@ var annotated_dup =
           [ "LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input" ],
           [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node" ],
           [ "ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager" ],
+          [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input" ],
           [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
           [ "RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database" ],
           [ "RoomDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database" ],
