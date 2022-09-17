@@ -2,7 +2,7 @@
   "name": "com.mpewsey.maniamap.unity",
   "author": "Matt Pewsey",
   "displayName": "ManiaMap.Unity",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "unity": "2021.2",
   "keywords": [
     "unity",
@@ -13,6 +13,11 @@
     "com.unity.addressables": "1.19.19"
   },
   "samples": [
+    {
+      "displayName": "Samples",
+      "description": "Sample usage of the generation pipeline.",
+      "path": "Samples~"
+    }
   ],
   "type": "library"
 }
