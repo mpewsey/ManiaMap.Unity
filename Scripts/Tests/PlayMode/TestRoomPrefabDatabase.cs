@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [SetUp]
         public void SetUp()
         {
-            Assets.LoadEmptyScene();
+            Assets.DestroyAllGameObjects();
         }
 
         [TearDown]
