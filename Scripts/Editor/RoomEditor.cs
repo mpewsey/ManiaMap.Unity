@@ -88,15 +88,34 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void SaveTemplate()
         {
-            // Create the template.
             var room = GetRoom();
-            var template = room.GetTemplate();
+            SaveTemplate(room);
             EditorUtility.SetDirty(room);
+        }
 
-            // Save the template to the room templates directory.
-            var path = GetTemplateSavePath(room);
-            Serialization.SavePrettyXml(path, template);
-            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
+        /// <summary>
+        /// Saves the template for the specified room.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        private static void SaveTemplate(Room room)
+        {
+            var savePath = GetTemplateSavePath(room);
+            var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
+
+            if (template == null)
+            {
+                template = CreateInstance<RoomTemplate>();
+                template.Init(room.GetTemplate());
+                AssetDatabase.CreateAsset(template, savePath);
+            }
+            else
+            {
+                template.Init(room.GetTemplate());
+                EditorUtility.SetDirty(template);
+                AssetDatabase.SaveAssetIfDirty(template);
+            }
+
+            Debug.Log($"<color=#00FF00><b>Saved room template to {savePath}.</b></color>");
         }
 
         /// <summary>
@@ -146,21 +165,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     return;
 
                 Debug.Log($"Processing room at {path}.");
-                var savePath = GetTemplateSavePath(room);
-                var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
-
-                if (template == null)
-                {
-                    template = CreateInstance<RoomTemplate>();
-                    template.Init(room.GetTemplate());
-                    AssetDatabase.CreateAsset(template, savePath);
-                }
-                else
-                {
-                    template.Init(room.GetTemplate());
-                    EditorUtility.SetDirty(template);
-                    AssetDatabase.SaveAssetIfDirty(template);
-                }
+                SaveTemplate(room);
             }
         }
 
