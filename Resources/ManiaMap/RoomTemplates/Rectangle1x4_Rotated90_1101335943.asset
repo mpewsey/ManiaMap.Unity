@@ -33,169 +33,163 @@ MonoBehaviour:
 
     <Cell>
 
-    <Doors
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <DoorEntries>
 
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    <DoorEntry>
 
-    <d5p1:Key>East</d5p1:Key>
+    <Direction>East</Direction>
 
-    <d5p1:Value>
-
-    <Type>TwoWay</Type>
-
-    <Code>0</Code>
-
-    </d5p1:Value>
-
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
-
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
-
-    <d5p1:Key>West</d5p1:Key>
-
-    <d5p1:Value>
+    <Door>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </d5p1:Value>
+    </Door>
 
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    </DoorEntry>
 
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    <DoorEntry>
 
-    <d5p1:Key>North</d5p1:Key>
+    <Direction>West</Direction>
 
-    <d5p1:Value>
+    <Door>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </d5p1:Value>
+    </Door>
 
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    </DoorEntry>
 
-    </Doors>
+    <DoorEntry>
 
-    <CollectableSpots
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <Direction>North</Direction>
 
-    <d5p1:KeyValueOfintstring>
+    <Door>
 
-    <d5p1:Key>86</d5p1:Key>
+    <Type>TwoWay</Type>
 
-    <d5p1:Value>Default</d5p1:Value>
+    <Code>0</Code>
 
-    </d5p1:KeyValueOfintstring>
+    </Door>
 
-    </CollectableSpots>
+    </DoorEntry>
+
+    </DoorEntries>
+
+    <CollectableSpotEntries>
+
+    <CollectableEntry>
+
+    <LocationId>86</LocationId>
+
+    <Group>Default</Group>
+
+    </CollectableEntry>
+
+    </CollectableSpotEntries>
 
     </Cell>
 
     <Cell>
 
-    <Doors
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <DoorEntries
+    />
 
-    <CollectableSpots
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <CollectableSpotEntries>
 
-    <d5p1:KeyValueOfintstring>
+    <CollectableEntry>
 
-    <d5p1:Key>87</d5p1:Key>
+    <LocationId>87</LocationId>
 
-    <d5p1:Value>Default</d5p1:Value>
+    <Group>Default</Group>
 
-    </d5p1:KeyValueOfintstring>
+    </CollectableEntry>
 
-    </CollectableSpots>
-
-    </Cell>
-
-    <Cell>
-
-    <Doors
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-
-    <CollectableSpots
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-
-    <d5p1:KeyValueOfintstring>
-
-    <d5p1:Key>88</d5p1:Key>
-
-    <d5p1:Value>Default</d5p1:Value>
-
-    </d5p1:KeyValueOfintstring>
-
-    </CollectableSpots>
+    </CollectableSpotEntries>
 
     </Cell>
 
     <Cell>
 
-    <Doors
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <DoorEntries
+    />
 
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    <CollectableSpotEntries>
 
-    <d5p1:Key>East</d5p1:Key>
+    <CollectableEntry>
 
-    <d5p1:Value>
+    <LocationId>88</LocationId>
 
-    <Type>TwoWay</Type>
+    <Group>Default</Group>
 
-    <Code>0</Code>
+    </CollectableEntry>
 
-    </d5p1:Value>
+    </CollectableSpotEntries>
 
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    </Cell>
 
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    <Cell>
 
-    <d5p1:Key>South</d5p1:Key>
+    <DoorEntries>
 
-    <d5p1:Value>
+    <DoorEntry>
 
-    <Type>TwoWay</Type>
+    <Direction>East</Direction>
 
-    <Code>0</Code>
-
-    </d5p1:Value>
-
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
-
-    <d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
-
-    <d5p1:Key>West</d5p1:Key>
-
-    <d5p1:Value>
+    <Door>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </d5p1:Value>
+    </Door>
 
-    </d5p1:KeyValueOfDoorDirectionDoorIg106J1p>
+    </DoorEntry>
 
-    </Doors>
+    <DoorEntry>
 
-    <CollectableSpots
-    xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <Direction>South</Direction>
 
-    <d5p1:KeyValueOfintstring>
+    <Door>
 
-    <d5p1:Key>89</d5p1:Key>
+    <Type>TwoWay</Type>
 
-    <d5p1:Value>Default</d5p1:Value>
+    <Code>0</Code>
 
-    </d5p1:KeyValueOfintstring>
+    </Door>
 
-    </CollectableSpots>
+    </DoorEntry>
+
+    <DoorEntry>
+
+    <Direction>West</Direction>
+
+    <Door>
+
+    <Type>TwoWay</Type>
+
+    <Code>0</Code>
+
+    </Door>
+
+    </DoorEntry>
+
+    </DoorEntries>
+
+    <CollectableSpotEntries>
+
+    <CollectableEntry>
+
+    <LocationId>89</LocationId>
+
+    <Group>Default</Group>
+
+    </CollectableEntry>
+
+    </CollectableSpotEntries>
 
     </Cell>
 
