@@ -89,7 +89,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void SaveTemplate()
         {
             var room = GetRoom();
-            SaveTemplate(room);
+            SaveRoomTemplate(room);
             EditorUtility.SetDirty(room);
         }
 
@@ -97,25 +97,35 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Saves the template for the specified room.
         /// </summary>
         /// <param name="room">The room.</param>
-        private static void SaveTemplate(Room room)
+        private static void SaveRoomTemplate(Room room)
         {
-            var savePath = GetTemplateSavePath(room);
-            var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(savePath);
+            var path = GetTemplateSavePath(room);
+            SaveTemplateAsset(path, room.GetTemplate());
+        }
 
-            if (template == null)
+        /// <summary>
+        /// Saves a room template asset to the specified path.
+        /// </summary>
+        /// <param name="path">The asset path.</param>
+        /// <param name="template">The room template.</param>
+        public static void SaveTemplateAsset(string path, ManiaMap.RoomTemplate template)
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
+
+            if (asset == null)
             {
-                template = CreateInstance<RoomTemplate>();
-                template.Init(room.GetTemplate());
-                AssetDatabase.CreateAsset(template, savePath);
+                asset = CreateInstance<RoomTemplate>();
+                asset.Init(template);
+                AssetDatabase.CreateAsset(asset, path);
             }
             else
             {
-                template.Init(room.GetTemplate());
-                EditorUtility.SetDirty(template);
-                AssetDatabase.SaveAssetIfDirty(template);
+                asset.Init(template);
+                EditorUtility.SetDirty(asset);
+                AssetDatabase.SaveAssetIfDirty(asset);
             }
 
-            Debug.Log($"<color=#00FF00><b>Saved room template to {savePath}.</b></color>");
+            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
         }
 
         /// <summary>
@@ -165,7 +175,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     return;
 
                 Debug.Log($"Processing room at {path}.");
-                SaveTemplate(room);
+                SaveRoomTemplate(room);
             }
         }
 

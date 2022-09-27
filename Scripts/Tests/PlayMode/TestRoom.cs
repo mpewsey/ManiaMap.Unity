@@ -11,12 +11,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            Object.DestroyImmediate(ManiaManager.Current);
-        }
-
         [Test]
         public void TestCreateCells()
         {

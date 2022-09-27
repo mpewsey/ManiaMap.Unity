@@ -17,7 +17,38 @@ namespace MPewsey.ManiaMap.Unity.Editor
         [MenuItem("Mania Map/Save Sample Templates", priority = 0)]
         public static void SaveTemplates()
         {
-            var templates = new List<ManiaMap.RoomTemplate>()
+            Random.InitState(12345);
+            var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates", "Samples");
+            FileUtility.CreateDirectory(root);
+            int k = 0;
+
+            foreach (var template in SampleTemplates())
+            {
+                foreach (var variation in template.UniqueVariations())
+                {
+                    var id = Random.Range(1, int.MaxValue);
+                    var room = new ManiaMap.RoomTemplate(id, variation.Name, variation.Cells);
+
+                    foreach (var cell in room.Cells.Array)
+                    {
+                        cell?.AddCollectableSpot(k++, "Default");
+                    }
+
+                    var path = Path.Combine(root, $"{room.Name}_{room.Id}.asset");
+                    RoomEditor.SaveTemplateAsset(path, room);
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log($"<color=#00FF00><b>Saved sample room templates.</b></color>");
+        }
+
+        /// <summary>
+        /// Returns a new list of sample templates.
+        /// </summary>
+        private static List<ManiaMap.RoomTemplate> SampleTemplates()
+        {
+            return new List<ManiaMap.RoomTemplate>()
             {
                 ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
                 ManiaMap.Samples.TemplateLibrary.Squares.Square2x2Template(),
@@ -34,43 +65,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 ManiaMap.Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
                 ManiaMap.Samples.TemplateLibrary.Miscellaneous.PlusTemplate(),
             };
-
-            Random.InitState(12345);
-            var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates", "Samples");
-            FileUtility.CreateDirectory(root);
-            int k = 0;
-
-            foreach (var template in templates)
-            {
-                foreach (var variation in template.UniqueVariations())
-                {
-                    var id = Random.Range(1, int.MaxValue);
-                    var room = new ManiaMap.RoomTemplate(id, variation.Name, variation.Cells);
-
-                    foreach (var cell in room.Cells.Array)
-                    {
-                        cell?.AddCollectableSpot(k++, "Default");
-                    }
-
-                    var path = Path.Combine(root, $"{room.Name}_{room.Id}.asset");
-                    var asset = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
-
-                    if (asset == null)
-                    {
-                        asset = ScriptableObject.CreateInstance<RoomTemplate>();
-                        asset.Init(room);
-                        AssetDatabase.CreateAsset(asset, path);
-                    }
-                    else
-                    {
-                        asset.Init(room);
-                        EditorUtility.SetDirty(asset);
-                        AssetDatabase.SaveAssetIfDirty(asset);
-                    }
-                }
-            }
-
-            AssetDatabase.Refresh();
         }
     }
 }
