@@ -9,9 +9,10 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor =
     [ "GetTemplateSavePath", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a9e61d28f36f8bf0b4c5ca055231ec6c6", null ],
     [ "MultipleTargetsSelected", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a492caec66ec10cd1d2abad34d9be1e98", null ],
     [ "SaveAllTemplates", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a3a862e76d45b62808081a6b9ae2b73fa", null ],
+    [ "SaveRoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a9c91a4b57082645aacc28561abfcdf66", null ],
     [ "SaveRoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a5d324d7c7b2cb21a2a389c3773291bb2", null ],
     [ "SaveTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#ac52b97cfb57b5bd531e4817288ed8bd5", null ],
-    [ "SaveTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a40a849464db4db1e5d052c4ba2068504", null ],
+    [ "SaveTemplateAsset", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a030a313323c74ee9e3096959a0dca827", null ],
     [ "TargetIsPrefabAsset", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a42eb7296024c404d5c8a357103bab869", null ],
     [ "UpdateRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#af2f5660c0e8e01a4dc577a59d9cb7aa5", null ]
 ];
