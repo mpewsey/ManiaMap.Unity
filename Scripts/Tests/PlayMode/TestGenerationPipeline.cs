@@ -14,12 +14,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            Object.DestroyImmediate(ManiaManager.Current);
-        }
-
         [TestCase(Assets.BigLayoutPath)]
         [TestCase(Assets.CrossLayoutPath)]
         [TestCase(Assets.GeekLayoutPath)]
@@ -28,7 +22,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestGenerate(string path)
         {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            Random.InitState(12345);
             var results = pipeline.Generate();
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
@@ -38,7 +31,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public IEnumerator TestBigLayoutGeneratorAsync()
         {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            Random.InitState(12345);
             var task = pipeline.GenerateAsync();
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
