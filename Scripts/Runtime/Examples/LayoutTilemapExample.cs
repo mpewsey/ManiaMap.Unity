@@ -1,12 +1,12 @@
 using MPewsey.ManiaMap.Unity.Drawing;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Samples
+namespace MPewsey.ManiaMap.Unity.Examples
 {
     /// <summary>
-    /// A component for initializing the LayoutMap samples.
+    /// A component for initializing the LayoutTilemap samples.
     /// </summary>
-    public class LayoutMapSample : MonoBehaviour
+    public class LayoutTilemapExample : MonoBehaviour
     {
         [SerializeField]
         private int _seed = 12345;
@@ -23,11 +23,11 @@ namespace MPewsey.ManiaMap.Unity.Samples
         public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
 
         [SerializeField]
-        private LayoutMap _layoutMap;
+        private LayoutTilemap _layoutTilemap;
         /// <summary>
-        /// The layout map.
+        /// The layout tilemap.
         /// </summary>
-        public LayoutMap LayoutMap { get => _layoutMap; set => _layoutMap = value; }
+        public LayoutTilemap LayoutTilemap { get => _layoutTilemap; set => _layoutTilemap = value; }
 
         private void Start()
         {
@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
             Pipeline.SetSeed(Seed);
             var results = Pipeline.Generate();
             var layout = (Layout)results.Outputs["Layout"];
-            var layers = LayoutMap.CreateLayers(layout);
+            var layers = LayoutTilemap.CreateLayers(layout);
             layers.ForEach(x => x.transform.localPosition = new Vector3(0, 0, x.Z));
         }
     }
