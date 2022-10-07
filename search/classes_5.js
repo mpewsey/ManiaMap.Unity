@@ -14,12 +14,12 @@ var searchData=
   ['layoutgraphwindowsettings_11',['LayoutGraphWindowSettings',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
   ['layoutmap_12',['LayoutMap',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
   ['layoutmapeditor_13',['LayoutMapEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html',1,'MPewsey::ManiaMap::Unity::Drawing::Editor']]],
-  ['layoutmaplayer_14',['LayoutMapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
-  ['layoutmapsample_15',['LayoutMapSample',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html',1,'MPewsey::ManiaMap::Unity::Samples']]],
+  ['layoutmapexample_14',['LayoutMapExample',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
+  ['layoutmaplayer_15',['LayoutMapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
   ['layoutnode_16',['LayoutNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html',1,'MPewsey::ManiaMap::Unity']]],
   ['layoutnodeeditor_17',['LayoutNodeEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
   ['layouttilemap_18',['LayoutTilemap',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
   ['layouttilemapeditor_19',['LayoutTilemapEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html',1,'MPewsey::ManiaMap::Unity::Drawing::Editor']]],
-  ['layouttilemaplayer_20',['LayoutTilemapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
-  ['layouttilemapsample_21',['LayoutTilemapSample',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html',1,'MPewsey::ManiaMap::Unity::Samples']]]
+  ['layouttilemapexample_20',['LayoutTilemapExample',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
+  ['layouttilemaplayer_21',['LayoutTilemapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]]
 ];

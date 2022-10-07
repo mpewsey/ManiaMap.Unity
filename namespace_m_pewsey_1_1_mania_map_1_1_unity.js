@@ -2,8 +2,8 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
 [
     [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing" ],
     [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor" ],
+    [ "Examples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples" ],
     [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions" ],
-    [ "Samples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples" ],
     [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
     [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],
     [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry" ],

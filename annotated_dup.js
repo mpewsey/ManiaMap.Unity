@@ -37,16 +37,16 @@ var annotated_dup =
             [ "RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ],
             [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
           ] ],
+          [ "Examples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples.html", [
+            [ "LayoutMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example" ],
+            [ "LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example" ]
+          ] ],
           [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", [
             [ "DuplicateDirectionException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_direction_exception.html", null ],
             [ "DuplicateInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_input_exception.html", null ],
             [ "EmptyCellException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html", null ],
             [ "MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
             [ "UnassignedCollectableGroupException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_unassigned_collectable_group_exception.html", null ]
-          ] ],
-          [ "Samples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples.html", [
-            [ "LayoutMapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample" ],
-            [ "LayoutTilemapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample" ]
           ] ],
           [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
           [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],

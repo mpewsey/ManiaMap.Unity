@@ -48,6 +48,8 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Drawing.LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.LayoutTilemapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Examples.LayoutMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Examples.LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", null ],
       [ "MPewsey.ManiaMap.Unity.GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", [
         [ "MPewsey.ManiaMap.Unity.CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", null ],
@@ -63,9 +65,7 @@ var hierarchy =
       ] ],
       [ "MPewsey.ManiaMap.Unity.ManiaManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html", null ],
       [ "MPewsey.ManiaMap.Unity.Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", null ],
-      [ "MPewsey.ManiaMap.Unity.RoomDatabase< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Samples.LayoutMapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_map_sample.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Samples.LayoutTilemapSample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_samples_1_1_layout_tilemap_sample.html", null ]
+      [ "MPewsey.ManiaMap.Unity.RoomDatabase< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.RoomDatabase< AssetReferenceGameObject >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", [
       [ "MPewsey.ManiaMap.Unity.RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", null ]
