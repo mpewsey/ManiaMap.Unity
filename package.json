@@ -14,7 +14,7 @@
   },
   "samples": [
     {
-      "displayName": "Samples",
+      "displayName": "ManiaMap Samples",
       "description": "Sample usage of the generation pipeline.",
       "path": "Samples~"
     }
