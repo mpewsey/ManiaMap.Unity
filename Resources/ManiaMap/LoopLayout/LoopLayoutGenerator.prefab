@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6815929005957422188}
   - component: {fileID: 5851987400443435199}
-  - component: {fileID: 3729238996302171129}
+  - component: {fileID: 2579127289544890482}
   - component: {fileID: 4542828068955560318}
   - component: {fileID: 8748730384718432505}
   m_Layer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seed: -1
---- !u!114 &3729238996302171129
+--- !u!114 &2579127289544890482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,11 +57,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226532676914732150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d1fd0cb91749a48b403453b167eb5d, type: 3}
+  m_Script: {fileID: 11500000, guid: becc46d5dc7ce304e9610a59cd5bfaea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: LayoutId
-  _value: 1391799971
+  _id: 1391799971
 --- !u!114 &4542828068955560318
 MonoBehaviour:
   m_ObjectHideFlags: 0
