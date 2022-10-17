@@ -26,6 +26,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "LayoutGraphRandomizer.cs", "_layout_graph_randomizer_8cs_source.html", null ],
     [ "LayoutGraphSelector.cs", "_layout_graph_selector_8cs_source.html", null ],
     [ "LayoutGraphsInput.cs", "_layout_graphs_input_8cs_source.html", null ],
+    [ "LayoutIdInput.cs", "_layout_id_input_8cs_source.html", null ],
     [ "LayoutNode.cs", "_layout_node_8cs_source.html", null ],
     [ "ManiaManager.cs", "_mania_manager_8cs_source.html", null ],
     [ "RandomSeedInput.cs", "_random_seed_input_8cs_source.html", null ],

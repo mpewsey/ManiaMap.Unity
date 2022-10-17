@@ -54,6 +54,7 @@ var hierarchy =
         [ "MPewsey.ManiaMap.Unity.CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.GenerationNamedInput< T >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graphs_input.html", null ],
+        [ "MPewsey.ManiaMap.Unity.LayoutIdInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_id_input.html", null ],
         [ "MPewsey.ManiaMap.Unity.RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input.html", null ]
       ] ],
       [ "MPewsey.ManiaMap.Unity.GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", null ],
