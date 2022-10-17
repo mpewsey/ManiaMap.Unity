@@ -44,6 +44,13 @@ namespace MPewsey.ManiaMap.Unity
         public Color32 Color { get => _color; set => _color = value; }
 
         [SerializeField]
+        private string _variationGroup;
+        /// <summary>
+        /// The node variation group.
+        /// </summary>
+        public string VariationGroup { get => _variationGroup; set => _variationGroup = value; }
+
+        [SerializeField]
         [HideInInspector]
         private Vector2 _position;
         /// <summary>

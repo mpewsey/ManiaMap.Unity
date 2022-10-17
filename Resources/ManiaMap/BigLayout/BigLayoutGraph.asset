@@ -19,6 +19,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -41,6 +42,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 855, y: 89}
 --- !u!114 &-8131053292077871170
 MonoBehaviour:
@@ -61,6 +63,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -83,6 +86,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 33, y: 85}
 --- !u!114 &-8001444006963028400
 MonoBehaviour:
@@ -103,6 +107,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -125,6 +130,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -147,6 +153,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -169,6 +176,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -191,6 +199,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 681, y: 88}
 --- !u!114 &-6969814586083523727
 MonoBehaviour:
@@ -211,6 +220,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -233,6 +243,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 272, y: 368}
 --- !u!114 &-6235194971601913311
 MonoBehaviour:
@@ -253,6 +264,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -275,6 +287,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -297,6 +310,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -319,6 +333,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 272, y: 429}
 --- !u!114 &-5303102046461155908
 MonoBehaviour:
@@ -339,6 +354,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -361,6 +377,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -383,6 +400,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 631, y: 375}
 --- !u!114 &-4868963563811133729
 MonoBehaviour:
@@ -403,6 +421,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 628, y: 474}
 --- !u!114 &-4500973838695727094
 MonoBehaviour:
@@ -423,6 +442,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 849, y: 339}
 --- !u!114 &-3765901655483935158
 MonoBehaviour:
@@ -443,6 +463,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 449, y: 373}
 --- !u!114 &-3545615355761221632
 MonoBehaviour:
@@ -463,6 +484,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 38, y: 144}
 --- !u!114 &-3375094726692491427
 MonoBehaviour:
@@ -483,6 +505,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 853, y: 144}
 --- !u!114 &-2532988717934005823
 MonoBehaviour:
@@ -503,6 +526,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 472, y: 88}
 --- !u!114 &-2494483192280248333
 MonoBehaviour:
@@ -523,6 +547,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -545,6 +570,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 639, y: 609}
 --- !u!114 &-1778181635355844743
 MonoBehaviour:
@@ -565,6 +591,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 271, y: 301}
 --- !u!114 &-1435607129863434755
 MonoBehaviour:
@@ -585,6 +612,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 678, y: 34}
 --- !u!114 &-1121429240582842295
 MonoBehaviour:
@@ -605,6 +633,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 851, y: 468}
 --- !u!114 &-794749273739245410
 MonoBehaviour:
@@ -625,6 +654,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 689, y: 262}
 --- !u!114 &-452592211607975275
 MonoBehaviour:
@@ -645,6 +675,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 32, y: 669}
 --- !u!114 &-243348240697775820
 MonoBehaviour:
@@ -665,6 +696,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 626, y: 559}
 --- !u!114 &-234989695249847781
 MonoBehaviour:
@@ -685,6 +717,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -707,6 +740,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 279, y: 560}
 --- !u!114 &-103972371005097302
 MonoBehaviour:
@@ -727,6 +761,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -749,6 +784,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 452, y: 476}
 --- !u!114 &-66024598630021978
 MonoBehaviour:
@@ -769,6 +805,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -875,6 +912,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -897,6 +935,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -919,6 +958,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 470, y: 34}
 --- !u!114 &1388261289437990382
 MonoBehaviour:
@@ -939,6 +979,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 38, y: 217}
 --- !u!114 &1743717376398054014
 MonoBehaviour:
@@ -959,6 +1000,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 247, y: 33}
 --- !u!114 &1830831442199792625
 MonoBehaviour:
@@ -979,6 +1021,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -1001,6 +1044,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -1023,6 +1067,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -1045,6 +1090,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -1067,6 +1113,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -1089,6 +1136,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -1111,6 +1159,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 498, y: 207}
 --- !u!114 &3332074385885978024
 MonoBehaviour:
@@ -1131,6 +1180,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _variationGroup: 
   _position: {x: 850, y: 669}
 --- !u!114 &3739472945529440361
 MonoBehaviour:
@@ -1151,6 +1201,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -1173,6 +1224,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -1195,6 +1247,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -1217,6 +1270,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
@@ -1239,6 +1293,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -1261,6 +1316,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 456, y: 559}
 --- !u!114 &6260196780304355692
 MonoBehaviour:
@@ -1281,6 +1337,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -1303,6 +1360,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
@@ -1325,6 +1383,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 500, y: 261}
 --- !u!114 &7202661465793978356
 MonoBehaviour:
@@ -1345,6 +1404,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
@@ -1367,6 +1427,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _variationGroup: 
   _position: {x: 247, y: 88}
 --- !u!114 &7619355699908383617
 MonoBehaviour:
@@ -1387,6 +1448,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 699, y: 210}
 --- !u!114 &7800765123974876983
 MonoBehaviour:
@@ -1407,6 +1469,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -1429,6 +1492,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _variationGroup: 
   _position: {x: 271, y: 213}
 --- !u!114 &7856384905490116995
 MonoBehaviour:
@@ -1449,6 +1513,7 @@ MonoBehaviour:
   _direction: 0
   _z: 0
   _roomChance: 0.5
+  _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
@@ -1471,6 +1536,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 449, y: 609}
 --- !u!114 &8716247665799637964
 MonoBehaviour:
@@ -1491,6 +1557,7 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 25, y: 555}
 --- !u!114 &8809632131188770132
 MonoBehaviour:
@@ -1511,4 +1578,5 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _variationGroup: 
   _position: {x: 275, y: 504}

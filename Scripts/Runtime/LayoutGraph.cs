@@ -208,6 +208,9 @@ namespace MPewsey.ManiaMap.Unity
                 other.Z = node.Z;
                 other.TemplateGroup = node.TemplateGroup.Name;
                 other.Color = ConvertColor(node.Color);
+
+                if (!string.IsNullOrWhiteSpace(node.VariationGroup))
+                    graph.AddNodeVariation(node.VariationGroup, other.Id);
             }
 
             foreach (var edge in Edges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
