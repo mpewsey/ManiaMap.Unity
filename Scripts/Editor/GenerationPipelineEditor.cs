@@ -100,9 +100,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
             inputs.transform.SetParent(obj.transform);
             pipeline.InputsContainer = inputs;
             inputs.AddComponent<RandomSeedInput>();
-            var layoutId = inputs.AddComponent<GenerationIntInput>();
-            layoutId.Name = "LayoutId";
-            layoutId.Value = Random.Range(1, int.MaxValue);
+            var layoutId = inputs.AddComponent<LayoutIdInput>();
+            layoutId.Id = Random.Range(1, int.MaxValue);
             inputs.AddComponent<LayoutGraphsInput>();
             inputs.AddComponent<CollectableGroupsInput>();
 

@@ -24,10 +24,24 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public GameObject StepsContainer { get => _stepsContainer; set => _stepsContainer = value; }
 
+        /// <summary>
+        /// Sets the value of the random seed input.
+        /// </summary>
+        /// <param name="seed">The random seed.</param>
         public void SetSeed(int seed)
         {
             var input = InputsContainer.GetComponent<RandomSeedInput>();
             input.Seed = seed;
+        }
+
+        /// <summary>
+        /// Sets the value of the layout ID input.
+        /// </summary>
+        /// <param name="id">The layout ID.</param>
+        public void SetLayoutId(int id)
+        {
+            var input = InputsContainer.GetComponent<LayoutIdInput>();
+            input.Id = id;
         }
 
         /// <summary>
