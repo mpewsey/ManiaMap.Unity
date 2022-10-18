@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity
         /// Initializes the template based on the specified generation template.
         /// </summary>
         /// <param name="template">The generation template.</param>
-        public void Init(ManiaMap.RoomTemplate template)
+        public void Initialize(ManiaMap.RoomTemplate template)
         {
             Template = null;
             Id = template.Id;

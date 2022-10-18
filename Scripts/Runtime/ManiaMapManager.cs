@@ -6,31 +6,27 @@ namespace MPewsey.ManiaMap.Unity
     /// A manager for maintaining the current map data and state.
     /// </summary>
     [RequireComponent(typeof(DontDestroyOnLoad))]
-    public class ManiaManager : MonoBehaviour
+    public class ManiaMapManager : MonoBehaviour
     {
-        private static ManiaManager _current;
+        private static ManiaMapManager _current;
         /// <summary>
         /// The current manager.
         /// </summary>
-        public static ManiaManager Current
+        public static ManiaMapManager Current
         {
             get
             {
                 if (_current != null)
                     return _current;
 
-                _current = FindObjectOfType<ManiaManager>();
-
-                if (_current != null)
-                    return _current;
-
-                _current = new GameObject("Mania Manager").AddComponent<ManiaManager>();
+                _current = new GameObject("Mania Map Manager").AddComponent<ManiaMapManager>();
                 return _current;
             }
             private set => _current = value;
         }
 
         public LayoutData LayoutData { get; set; }
+        public ManiaMapSettings Settings { get; set; } = ManiaMapSettings.Create();
 
         private void Start()
         {
@@ -42,6 +38,11 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (Current == this)
                 Current = null;
+        }
+
+        public GameObject GetPlayer()
+        {
+            return GameObject.FindGameObjectWithTag(Settings.PlayerTag);
         }
     }
 }

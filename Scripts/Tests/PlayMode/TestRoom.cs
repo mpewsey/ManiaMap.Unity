@@ -36,7 +36,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         }
 
         [Test]
-        public void TestInit()
+        public void TestInitialize()
         {
             var seed = new RandomSeed(12345);
             var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
@@ -47,9 +47,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
 
-            room.Init(roomData.Id, RoomPositionOption.Layout);
+            room.Initialize(roomData.Id, RoomPositionOption.Layout);
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
 
             var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
             Assert.IsNotNull(room);

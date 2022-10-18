@@ -93,7 +93,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         public List<LayoutMapLayer> CreateLayers()
         {
-            var data = ManiaManager.Current.LayoutData;
+            var data = ManiaMapManager.Current.LayoutData;
             return CreateLayers(data.Layout, data.LayoutState);
         }
 

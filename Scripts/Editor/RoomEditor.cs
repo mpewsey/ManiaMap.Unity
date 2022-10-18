@@ -115,12 +115,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (asset == null)
             {
                 asset = CreateInstance<RoomTemplate>();
-                asset.Init(template);
+                asset.Initialize(template);
                 AssetDatabase.CreateAsset(asset, path);
             }
             else
             {
-                asset.Init(template);
+                asset.Initialize(template);
                 EditorUtility.SetDirty(asset);
                 AssetDatabase.SaveAssetIfDirty(asset);
             }

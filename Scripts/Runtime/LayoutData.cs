@@ -18,26 +18,31 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public LayoutState LayoutState { get; }
 
+        private int _maxClusterDepth;
         /// <summary>
         /// The maximum depth used for room clusters.
         /// </summary>
-        public int MaxClusterDepth { get; }
+        public int MaxClusterDepth
+        {
+            get => _maxClusterDepth;
+            private set => _maxClusterDepth = Mathf.Max(value, 1);
+        }
 
         /// <summary>
         /// A dictionary of adjacent rooms by room ID.
         /// </summary>
-        private Dictionary<Uid, List<Uid>> RoomAdjacencies { get; }
+        private Dictionary<Uid, List<Uid>> RoomAdjacencies { get; } = new Dictionary<Uid, List<Uid>>();
 
         /// <summary>
         /// A dictionary of room clusters by room ID.
         /// </summary>
-        private Dictionary<Uid, HashSet<Uid>> RoomClusters { get; }
+        private Dictionary<Uid, HashSet<Uid>> RoomClusters { get; } = new Dictionary<Uid, HashSet<Uid>>();
 
         public LayoutData(Layout layout, LayoutState state, int maxClusterDepth = 1)
         {
             Layout = layout;
             LayoutState = state;
-            MaxClusterDepth = Mathf.Max(maxClusterDepth, 1);
+            MaxClusterDepth = maxClusterDepth;
             RoomAdjacencies = layout.RoomAdjacencies();
             RoomClusters = layout.FindClusters(MaxClusterDepth);
         }
@@ -49,6 +54,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         public ManiaMap.Room GetRoom(Uid id)
         {
+            if (Layout == null)
+                return null;
+
             Layout.Rooms.TryGetValue(id, out ManiaMap.Room room);
             return room;
         }
@@ -60,6 +68,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         public RoomState GetRoomState(Uid id)
         {
+            if (LayoutState == null)
+                return null;
+
             LayoutState.RoomStates.TryGetValue(id, out RoomState state);
             return state;
         }
