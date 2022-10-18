@@ -26,7 +26,12 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         public LayoutData LayoutData { get; set; }
-        public ManiaMapSettings Settings { get; set; } = ManiaMapSettings.Create();
+        public ManiaMapSettings Settings { get; set; }
+
+        private void Awake()
+        {
+            Settings = ManiaMapSettings.Create();
+        }
 
         private void Start()
         {

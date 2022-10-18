@@ -11,6 +11,29 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
+        [TestCase(Room.Plane.XY)]
+        [TestCase(Room.Plane.XZ)]
+        public void TestGetCellIndex(Room.Plane plane)
+        {
+            var obj = new GameObject("Room");
+            var room = obj.AddComponent<Room>();
+            room.CellPlane = plane;
+            room.CellSize = new Vector2(3, 5);
+            room.Size = new Vector2Int(8, 10);
+            room.CreateCells();
+
+            for (int i = 0; i < room.Size.x; i++)
+            {
+                for (int j = 0; j < room.Size.y; j++)
+                {
+                    var cell = room.GetCell(i, j);
+                    var expected = new Vector2Int(i, j);
+                    var result = room.GetCellIndex(cell.transform.position);
+                    Assert.AreEqual(expected, result);
+                }
+            }
+        }
+
         [Test]
         public void TestCreateCells()
         {
