@@ -5,7 +5,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
     public class TestPadding
     {
         [Test]
-        public void TestInit()
+        public void TestInitialize()
         {
             var x = new Padding(100);
             Assert.AreEqual(100, x.Top);

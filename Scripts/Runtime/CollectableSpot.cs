@@ -82,16 +82,16 @@ namespace MPewsey.ManiaMap.Unity
 
         private void Start()
         {
-            Init();
+            Initialize();
         }
 
         /// <summary>
         /// Initializes the collectable spot based on the layout and layout state
         /// assigned to the current manager.
         /// </summary>
-        private void Init()
+        private void Initialize()
         {
-            var data = ManiaManager.Current.LayoutData;
+            var data = ManiaMapManager.Current.LayoutData;
             var room = data?.GetRoom(RoomId);
             var state = data?.GetRoomState(RoomId);
 
@@ -117,7 +117,7 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (!IsAcquired && Exists)
             {
-                var data = ManiaManager.Current.LayoutData;
+                var data = ManiaMapManager.Current.LayoutData;
                 var state = data.GetRoomState(RoomId);
                 var acquired = state.AcquiredCollectables.Add(Id);
                 IsAcquired = true;

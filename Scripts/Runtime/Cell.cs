@@ -68,7 +68,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="template">The parent room template.</param>
         /// <param name="index">The index position of the cell in the room template.</param>
-        public void Init(Room template, Vector2Int index)
+        public void Initialize(Room template, Vector2Int index)
         {
             name = $"<Cell ({index.x}, {index.y})>";
             Room = template;

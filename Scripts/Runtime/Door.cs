@@ -90,14 +90,14 @@ namespace MPewsey.ManiaMap.Unity
 
         private void Start()
         {
-            Init();
+            Initialize();
         }
 
         /// <summary>
         /// Initializes the door based on the layout and layout state
         /// assigned to the current manager.
         /// </summary>
-        private void Init()
+        private void Initialize()
         {
             Connection = FindDoorConnection();
             Exists = Connection != null;
@@ -114,7 +114,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            var data = ManiaManager.Current.LayoutData;
+            var data = ManiaMapManager.Current.LayoutData;
 
             if (data != null)
             {

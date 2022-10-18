@@ -11,6 +11,29 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
+        [TestCase(Room.Plane.XY)]
+        [TestCase(Room.Plane.XZ)]
+        public void TestGetCellIndex(Room.Plane plane)
+        {
+            var obj = new GameObject("Room");
+            var room = obj.AddComponent<Room>();
+            room.CellPlane = plane;
+            room.CellSize = new Vector2(3, 5);
+            room.Size = new Vector2Int(8, 10);
+            room.CreateCells();
+
+            for (int i = 0; i < room.Size.x; i++)
+            {
+                for (int j = 0; j < room.Size.y; j++)
+                {
+                    var cell = room.GetCell(i, j);
+                    var expected = new Vector2Int(i, j);
+                    var result = room.GetCellIndex(cell.transform.position);
+                    Assert.AreEqual(expected, result);
+                }
+            }
+        }
+
         [Test]
         public void TestCreateCells()
         {
@@ -36,7 +59,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         }
 
         [Test]
-        public void TestInit()
+        public void TestInitialize()
         {
             var seed = new RandomSeed(12345);
             var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
@@ -47,9 +70,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
 
-            room.Init(roomData.Id, RoomPositionOption.Layout);
+            room.Initialize(roomData.Id, RoomPositionOption.Layout);
         }
 
         [Test]
@@ -64,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
 
             var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
             Assert.IsNotNull(room);

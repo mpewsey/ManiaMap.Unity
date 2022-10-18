@@ -67,6 +67,30 @@ namespace MPewsey.ManiaMap.Unity
             CellSize = CellSize;
         }
 
+        private void Update()
+        {
+            SetCellVisibility();
+        }
+
+        /// <summary>
+        /// Sets the visibility of the cell based on the player's current position.
+        /// </summary>
+        private void SetCellVisibility()
+        {
+            var player = ManiaMapManager.Current.GetPlayer();
+
+            if (player == null)
+                return;
+
+            var data = ManiaMapManager.Current.LayoutData.GetRoomState(RoomId);
+
+            if (data == null)
+                return;
+
+            var index = GetCellIndex(player.transform.position);
+            data.SetCellVisibility(index.x, index.y, true);
+        }
+
         /// <summary>
         /// Instantiates a room prefab and initializes it.
         /// </summary>
@@ -105,7 +129,16 @@ namespace MPewsey.ManiaMap.Unity
         private static AsyncOperationHandle<GameObject> InstantiateRoomHandle(Uid id, AssetReferenceGameObject prefab, Transform parent, RoomPositionOption position = RoomPositionOption.Default)
         {
             var handle = Addressables.InstantiateAsync(prefab, parent);
-            handle.Completed += x => x.Result.GetComponent<Room>().Init(id, position);
+
+            handle.Completed += x =>
+            {
+                if (!x.IsValid() || !x.IsDone || x.Result == null)
+                    throw new System.ArgumentException("Failed to instantiate room.");
+                if (!x.Result.TryGetComponent(out Room room))
+                    throw new System.ArgumentException($"Prefab does not have room component: {x.Result}.");
+                room.Initialize(id, position);
+            };
+
             return handle;
         }
 
@@ -120,7 +153,7 @@ namespace MPewsey.ManiaMap.Unity
         {
             var obj = Instantiate(prefab, parent);
             var room = obj.GetComponent<Room>();
-            room.Init(id, position);
+            room.Initialize(id, position);
             return room;
         }
 
@@ -129,7 +162,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="roomId">The room ID.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Init(Uid roomId, RoomPositionOption position)
+        public void Initialize(Uid roomId, RoomPositionOption position)
         {
             RoomId = roomId;
 
@@ -150,7 +183,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void AssignLayoutPosition()
         {
-            var data = ManiaManager.Current.LayoutData;
+            var data = ManiaMapManager.Current.LayoutData;
             var room = data.Layout.Rooms[RoomId];
             var position = new Vector2(room.Position.Y, -room.Position.X) * CellSize;
             transform.localPosition = Swizzle(position);
@@ -214,6 +247,36 @@ namespace MPewsey.ManiaMap.Unity
                 default:
                     throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
             }
+        }
+
+        /// <summary>
+        /// Returns a swizzled local vector for a given global vector.
+        /// </summary>
+        /// <param name="vector">The global vector.</param>
+        /// <exception cref="ArgumentException">Raised if the cell plane is unhandled.</exception>
+        public Vector3 InverseSwizzle(Vector3 vector)
+        {
+            switch (CellPlane)
+            {
+                case Plane.XY:
+                    return new Vector3(vector.x, vector.y, -vector.z);
+                case Plane.XZ:
+                    return new Vector3(vector.x, vector.z, vector.y);
+                default:
+                    throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
+            }
+        }
+
+        /// <summary>
+        /// Returns the cell index containing the specified position.
+        /// </summary>
+        /// <param name="position">The global position.</param>
+        public Vector2Int GetCellIndex(Vector3 position)
+        {
+            var delta = InverseSwizzle(position - transform.position);
+            var row = Mathf.FloorToInt(-delta.y / CellSize.y);
+            var column = Mathf.FloorToInt(delta.x / CellSize.x);
+            return new Vector2Int(row, column);
         }
 
         /// <summary>
@@ -310,7 +373,7 @@ namespace MPewsey.ManiaMap.Unity
             {
                 var index = new Vector2Int(row, j);
                 var cell = container.GetChild(j).GetComponent<Cell>();
-                cell.Init(this, index);
+                cell.Initialize(this, index);
             }
         }
 
