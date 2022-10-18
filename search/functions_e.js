@@ -16,11 +16,12 @@ var searchData=
   ['selectdraggednodes_13',['SelectDraggedNodes',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a91a672c9ce096a6bae5d5b0ddb70f173',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
   ['selectedge_14',['SelectEdge',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a87451799a97563caededc9f8cc8c9c08',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
   ['selectnode_15',['SelectNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a41e57a38d7e56a13f1e3bd72f98c40b4',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['setlayoutid_16',['SetLayoutId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html#a2f8216d695546db5413a72902720c7ea',1,'MPewsey::ManiaMap::Unity::GenerationPipeline']]],
-  ['setnodepositions_17',['SetNodePositions',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae04d2b7a0a0ebacdd480ceb125546cca',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['setseed_18',['SetSeed',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html#a7dcb82c624d38a8eba7bc582cba045a1',1,'MPewsey::ManiaMap::Unity::GenerationPipeline']]],
-  ['showareacontextmenu_19',['ShowAreaContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a4dc1da96d3b1f6a7901ba69a7fc78a55',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['shownodecontextmenu_20',['ShowNodeContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae69888b5f592c037b69e0b2dad64db05',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['showwindow_21',['ShowWindow',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#af72384535affd16c3488cb1191223678',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['swizzle_22',['Swizzle',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad5ff43e1bc3b604061de1f53bbec50a6',1,'MPewsey::ManiaMap::Unity::Room']]]
+  ['setcellvisibility_16',['SetCellVisibility',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a111defe6affd39f97c4177338174556a',1,'MPewsey::ManiaMap::Unity::Room']]],
+  ['setlayoutid_17',['SetLayoutId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html#a2f8216d695546db5413a72902720c7ea',1,'MPewsey::ManiaMap::Unity::GenerationPipeline']]],
+  ['setnodepositions_18',['SetNodePositions',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae04d2b7a0a0ebacdd480ceb125546cca',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['setseed_19',['SetSeed',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html#a7dcb82c624d38a8eba7bc582cba045a1',1,'MPewsey::ManiaMap::Unity::GenerationPipeline']]],
+  ['showareacontextmenu_20',['ShowAreaContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a4dc1da96d3b1f6a7901ba69a7fc78a55',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['shownodecontextmenu_21',['ShowNodeContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae69888b5f592c037b69e0b2dad64db05',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['showwindow_22',['ShowWindow',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#af72384535affd16c3488cb1191223678',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['swizzle_23',['Swizzle',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad5ff43e1bc3b604061de1f53bbec50a6',1,'MPewsey::ManiaMap::Unity::Room']]]
 ];

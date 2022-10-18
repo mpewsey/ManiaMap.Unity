@@ -6,7 +6,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door =
     [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a9c1d91d86be2b96bb324e44214d8b328", null ],
     [ "FindDoorConnection", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a5c2d498eba712b393f1a36026e1bdc51", null ],
     [ "GetDoor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a04adf2eb6f40c6dc80b892d39ca72318", null ],
-    [ "Init", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a3f7e4e3b3c03cef361555a3d0d212be4", null ],
+    [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#ae62cc802ace09bba06fd1e574743782c", null ],
     [ "AutoAssignCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#ae5f1beec885221265ebb787451854f48", null ],
     [ "AutoAssignDirection", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a0301e842c4b3402d0ed987151b0f2b9c", null ],
     [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a52da4033b55e5106feeca7265efb1d8c", null ],

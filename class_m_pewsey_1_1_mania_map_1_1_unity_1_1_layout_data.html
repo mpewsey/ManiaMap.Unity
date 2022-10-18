@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.LayoutData Class Reference</div></div>
 </div><!--header-->
@@ -132,15 +133,20 @@ Properties</h2></td></tr>
 <tr class="memitem:a53e03fcb63de953f648cf70d72f6a768"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a53e03fcb63de953f648cf70d72f6a768">LayoutState</a><code> [get]</code></td></tr>
 <tr class="memdesc:a53e03fcb63de953f648cf70d72f6a768"><td class="mdescLeft">&#160;</td><td class="mdescRight">The layout state.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a53e03fcb63de953f648cf70d72f6a768">More...</a><br /></td></tr>
 <tr class="separator:a53e03fcb63de953f648cf70d72f6a768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d39b75545d2f11c53d330d8be117b82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a6d39b75545d2f11c53d330d8be117b82">MaxClusterDepth</a><code> [get]</code></td></tr>
+<tr class="memitem:a6d39b75545d2f11c53d330d8be117b82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a6d39b75545d2f11c53d330d8be117b82">MaxClusterDepth</a><code> [getprivate set]</code></td></tr>
 <tr class="memdesc:a6d39b75545d2f11c53d330d8be117b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum depth used for room clusters.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a6d39b75545d2f11c53d330d8be117b82">More...</a><br /></td></tr>
 <tr class="separator:a6d39b75545d2f11c53d330d8be117b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21fdd7082ed9391c7b8e72126960e95f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; Uid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a21fdd7082ed9391c7b8e72126960e95f">RoomAdjacencies</a><code> [get]</code></td></tr>
+<tr class="memitem:a21fdd7082ed9391c7b8e72126960e95f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; Uid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a21fdd7082ed9391c7b8e72126960e95f">RoomAdjacencies</a> = new Dictionary&lt;Uid, List&lt;Uid&gt;&gt;()<code> [get]</code></td></tr>
 <tr class="memdesc:a21fdd7082ed9391c7b8e72126960e95f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of adjacent rooms by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#a21fdd7082ed9391c7b8e72126960e95f">More...</a><br /></td></tr>
 <tr class="separator:a21fdd7082ed9391c7b8e72126960e95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a6fa4785ad36355d69b04b2da7d11f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, HashSet&lt; Uid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#ac2a6fa4785ad36355d69b04b2da7d11f">RoomClusters</a><code> [get]</code></td></tr>
+<tr class="memitem:ac2a6fa4785ad36355d69b04b2da7d11f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, HashSet&lt; Uid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#ac2a6fa4785ad36355d69b04b2da7d11f">RoomClusters</a> = new Dictionary&lt;Uid, HashSet&lt;Uid&gt;&gt;()<code> [get]</code></td></tr>
 <tr class="memdesc:ac2a6fa4785ad36355d69b04b2da7d11f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of room clusters by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#ac2a6fa4785ad36355d69b04b2da7d11f">More...</a><br /></td></tr>
 <tr class="separator:ac2a6fa4785ad36355d69b04b2da7d11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac59533d55ffcfacc02a62a1cd894dee1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html#ac59533d55ffcfacc02a62a1cd894dee1">_maxClusterDepth</a></td></tr>
+<tr class="separator:ac59533d55ffcfacc02a62a1cd894dee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A container for storing a layout and its state. </p>
@@ -179,7 +185,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00036">36</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00041">41</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -208,7 +214,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00071">71</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00082">82</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -236,7 +242,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00050">50</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00055">55</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -264,7 +270,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00082">82</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00093">93</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -292,7 +298,32 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00061">61</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00069">69</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac59533d55ffcfacc02a62a1cd894dee1" name="ac59533d55ffcfacc02a62a1cd894dee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59533d55ffcfacc02a62a1cd894dee1">&#9670;&nbsp;</a></span>_maxClusterDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MPewsey.ManiaMap.Unity.LayoutData._maxClusterDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00021">21</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -364,14 +395,14 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The maximum depth used for room clusters. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00024">24</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00025">25</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -385,7 +416,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;Uid, List&lt;Uid&gt; &gt; MPewsey.ManiaMap.Unity.LayoutData.RoomAdjacencies</td>
+          <td class="memname">Dictionary&lt;Uid, List&lt;Uid&gt; &gt; MPewsey.ManiaMap.Unity.LayoutData.RoomAdjacencies = new Dictionary&lt;Uid, List&lt;Uid&gt;&gt;()</td>
         </tr>
       </table>
   </td>
@@ -397,7 +428,7 @@ Properties</h2></td></tr>
 
 <p>A dictionary of adjacent rooms by room ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00029">29</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00034">34</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>
@@ -411,7 +442,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;Uid, HashSet&lt;Uid&gt; &gt; MPewsey.ManiaMap.Unity.LayoutData.RoomClusters</td>
+          <td class="memname">Dictionary&lt;Uid, HashSet&lt;Uid&gt; &gt; MPewsey.ManiaMap.Unity.LayoutData.RoomClusters = new Dictionary&lt;Uid, HashSet&lt;Uid&gt;&gt;()</td>
         </tr>
       </table>
   </td>
@@ -423,7 +454,7 @@ Properties</h2></td></tr>
 
 <p>A dictionary of room clusters by room ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00034">34</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_data_8cs_source.html#l00039">39</a> of file <a class="el" href="_layout_data_8cs_source.html">LayoutData.cs</a>.</p>
 
 </div>
 </div>

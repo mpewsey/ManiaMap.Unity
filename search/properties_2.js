@@ -12,5 +12,5 @@ var searchData=
   ['color_9',['Color',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html#a298e99b7fb76954c371cd0b272e55485',1,'MPewsey.ManiaMap.Unity.Drawing.MapTileHash.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a339cc9c5a3f8685ab966ead6599c115f',1,'MPewsey.ManiaMap.Unity.LayoutEdge.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a212ed203ffc1f927be873a75250f5c04',1,'MPewsey.ManiaMap.Unity.LayoutNode.Color()']]],
   ['connection_10',['Connection',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a96a8b04cef30caee25954fe2e179485f',1,'MPewsey::ManiaMap::Unity::Door']]],
   ['createnodeposition_11',['CreateNodePosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a2a53060985f445c81d08ff9efc40f5c3',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['current_12',['Current',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_manager.html#aaa81e7a0fe80cc5aa9f8de520869f063',1,'MPewsey::ManiaMap::Unity::ManiaManager']]]
+  ['current_12',['Current',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afd45767f0c514406a10cca09e9e3f97b',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]]
 ];
