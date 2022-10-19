@@ -2,7 +2,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph =
 [
     [ "AddEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a52fcbe591b615b52fd1340a8884016fb", null ],
     [ "AddNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a33cff92e06d08a704da1f3eb6b769aad", null ],
-    [ "ConvertColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a8ca357a7b4acf798a2d37421e3d34178", null ],
+    [ "ConvertColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a60d27addb76ab18e44ee772daff34a45", null ],
     [ "CreateNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a86b6e652223a11a782adb95af72605d2", null ],
     [ "GetEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a8736b41180dbf935961c22346517a6c1", null ],
     [ "GetEdgeIndex", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html#a16eb61d172663e8074224f8c4b02a4cd", null ],

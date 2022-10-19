@@ -10,7 +10,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map =
     [ "SaveLayerImages", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#add92ec50cafb07e48de254d6619686b5", null ],
     [ "BackgroundColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a44d5ef7fe015582cc8480d5eddd3997a", null ],
     [ "Layout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#abe8499d6ecb5777045811f2409f59134", null ],
-    [ "LayoutBounds", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a38e873e5e5ca4ddc4c83a8e83a382409", null ],
+    [ "LayoutBounds", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad940b0b9f49e7151a116ba243d7811ab", null ],
     [ "LayoutState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a7808fd3772c7d8105b8e677242261ec8", null ],
     [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#aef15761d9e4c85216cde7a0d0e1752af", null ],
     [ "Padding", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a9c0ddc893d80e1a8bcc2a2bbcf304c4d", null ],
