@@ -53,7 +53,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// The bounds of the layout.
         /// </summary>
-        private System.Drawing.Rectangle LayoutBounds { get; set; }
+        private RectangleInt LayoutBounds { get; set; }
 
         /// <summary>
         /// Renders map images of all layout layers and saves them to the designated file path.
