@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Samples
@@ -68,7 +66,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
 
             var layout = (Layout)results.Outputs["Layout"];
             var layoutState = new LayoutState(layout);
-            ManiaManager.Current.LayoutData = new LayoutData(layout, layoutState);
+            ManiaMapManager.Current.LayoutData = new LayoutData(layout, layoutState);
             RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
         }
 
@@ -78,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
         public void CenterCamera()
         {
             var camera = Camera.main;
-            var data = ManiaManager.Current.LayoutData;
+            var data = ManiaMapManager.Current.LayoutData;
             var bounds = data.Layout.GetBounds();
             var x = CellSize.x * (bounds.X + 0.5f * bounds.Width);
             var y = -CellSize.y * (bounds.Y + 0.5f * bounds.Height);

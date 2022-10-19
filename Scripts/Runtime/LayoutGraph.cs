@@ -230,12 +230,12 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Converts a Unity color to a System.Drawing color.
+        /// Converts a %Unity color to a Mania Map color.
         /// </summary>
-        /// <param name="color">The unity color.</param>
-        private static System.Drawing.Color ConvertColor(Color32 color)
+        /// <param name="color">The %Unity color.</param>
+        private static Color4 ConvertColor(Color32 color)
         {
-            return System.Drawing.Color.FromArgb(color.a, color.r, color.g, color.b);
+            return new Color4(color.r, color.g, color.b, color.a);
         }
 
         /// <summary>
