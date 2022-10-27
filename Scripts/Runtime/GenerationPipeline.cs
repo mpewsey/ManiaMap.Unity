@@ -174,50 +174,22 @@ namespace MPewsey.ManiaMap.Unity
         {
             var names = new HashSet<string>();
 
-            return GenerationInputsAreValid(names)
-                && GenerationStepsAreValid(names);
-        }
-
-        /// <summary>
-        /// Returns true if the pipeline inputs are valid.
-        /// </summary>
-        /// <param name="names">A set of current input names.</param>
-        private bool GenerationInputsAreValid(HashSet<string> names)
-        {
-            var inputs = GetGenerationInputs();
-
-            foreach (var input in inputs)
+            try
             {
-                foreach (var name in input.OutputNames())
-                {
-                    if (!names.Add(name))
-                        return false;
-                }
+                ValidateInputs(names);
+            }
+            catch (DuplicateInputException)
+            {
+                return false;
             }
 
-            return true;
-        }
-
-        /// <summary>
-        /// Returns true if the pipeline step inputs are valid.
-        /// </summary>
-        /// <param name="names">A set of current input names.</param>
-        private bool GenerationStepsAreValid(HashSet<string> names)
-        {
-            var steps = GetGenerationSteps();
-
-            foreach (var step in steps)
+            try
             {
-                foreach (var name in step.InputNames())
-                {
-                    if (!names.Contains(name))
-                        return false;
-                }
-
-                foreach (var name in step.OutputNames())
-                {
-                    names.Add(name);
-                }
+                ValidateSteps(names);
+            }
+            catch (MissingInputException)
+            {
+                return false;
             }
 
             return true;

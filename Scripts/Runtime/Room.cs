@@ -60,10 +60,8 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsInitialized { get; private set; }
 
-        /// <summary>
-        /// The room ID.
-        /// </summary>
-        public Uid RoomId { get; private set; } = new Uid(-1, -1, -1);
+        public ManiaMap.Room RoomData { get; private set; }
+        public RoomState RoomState { get; private set; }
 
         private void Start()
         {
@@ -90,16 +88,11 @@ namespace MPewsey.ManiaMap.Unity
         {
             var player = ManiaMapManager.Current.GetPlayer();
 
-            if (player == null)
-                return;
-
-            var data = ManiaMapManager.Current.LayoutData.GetRoomState(RoomId);
-
-            if (data == null)
-                return;
-
-            var index = GetCellIndex(player.transform.position);
-            data.SetCellVisibility(index.x, index.y, true);
+            if (player != null)
+            {
+                var index = GetCellIndex(player.transform.position);
+                RoomState?.SetCellVisibility(index.x, index.y, true);
+            }
         }
 
         /// <summary>
@@ -124,7 +117,8 @@ namespace MPewsey.ManiaMap.Unity
                     throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
                 }
 
-                room.Initialize(id, position);
+                var manager = ManiaMapManager.Current;
+                room.Initialize(manager.GetRoom(id), manager.GetRoomState(id), position);
             };
 
             return handle;
@@ -139,19 +133,22 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="position">The option guiding the positioning of the room.</param>
         public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
+            var manager = ManiaMapManager.Current;
             var room = Instantiate(prefab, parent).GetComponent<Room>();
-            room.Initialize(id, position);
+            room.Initialize(manager.GetRoom(id), manager.GetRoomState(id), position);
             return room;
         }
 
         /// <summary>
         /// Initializes the room and its registered children.
         /// </summary>
-        /// <param name="roomId">The room ID.</param>
+        /// <param name="room">The room data.</param>
+        /// <param name="roomState">The room state.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Initialize(Uid roomId, RoomPositionOption position)
+        public void Initialize(ManiaMap.Room room, RoomState roomState, RoomPositionOption position)
         {
-            RoomId = roomId;
+            RoomData = room;
+            RoomState = roomState;
             IsInitialized = true;
 
             switch (position)
@@ -171,9 +168,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void AssignLayoutPosition()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            var room = data.Layout.Rooms[RoomId];
-            var position = new Vector2(room.Position.Y, -room.Position.X) * CellSize;
+            var position = new Vector2(RoomData.Position.Y, -RoomData.Position.X) * CellSize;
             transform.localPosition = Swizzle(position);
         }
 

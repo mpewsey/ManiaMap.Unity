@@ -154,12 +154,24 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         }
 
         /// <summary>
+        /// Initializes the tilemap buffers.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="state">The layout state.</param>
+        private void Initialize(Layout layout, LayoutState state)
+        {
+            Layout = layout;
+            LayoutState = state;
+            RoomDoors = layout.GetRoomDoors();
+        }
+
+        /// <summary>
         /// Creates layer tilemaps for the current layout and returns a list of layers.
         /// </summary>
         public List<LayoutTilemapLayer> CreateLayers()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            return CreateLayers(data.Layout, data.LayoutState);
+            var manager = ManiaMapManager.Current;
+            return CreateLayers(manager.Layout, manager.LayoutState);
         }
 
         /// <summary>
@@ -169,9 +181,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="state">The layout state.</param>
         public List<LayoutTilemapLayer> CreateLayers(Layout layout, LayoutState state = null)
         {
-            Layout = layout;
-            LayoutState = state;
-            RoomDoors = layout.GetRoomDoors();
+            Initialize(layout, state);
             var layers = CreateLayerComponents();
 
             foreach (var layer in layers)

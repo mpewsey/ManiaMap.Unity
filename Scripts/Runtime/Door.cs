@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +9,7 @@ namespace MPewsey.ManiaMap.Unity
     /// A component representing a door.
     /// </summary>
     [RequireComponent(typeof(CommonEvents))]
-    public class Door : MonoBehaviour
+    public class Door : CellChild
     {
         /// <summary>
         /// An event that passes a Door argument.
@@ -16,27 +18,12 @@ namespace MPewsey.ManiaMap.Unity
         public class DoorEvent : UnityEvent<Door> { }
 
         [SerializeField]
-        private bool _autoAssignCell = true;
-        /// <summary>
-        /// If true, the cell will be automatically assigned to the cell when update and save operations
-        /// are performed.
-        /// </summary>
-        public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
-
-        [SerializeField]
         private bool _autoAssignDirection = true;
         /// <summary>
         /// If true, the door direction will be automatically assigned to the cell when update and save
         /// operations are performed.
         /// </summary>
         public bool AutoAssignDirection { get => _autoAssignDirection; set => _autoAssignDirection = value; }
-
-        [SerializeField]
-        private Cell _cell;
-        /// <summary>
-        /// The parent cell.
-        /// </summary>
-        public Cell Cell { get => _cell; set => _cell = value; }
 
         [SerializeField]
         private DoorDirection _direction;
@@ -76,17 +63,12 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// True if the door exists in the layout.
         /// </summary>
-        public bool Exists { get; private set; }
+        public bool Exists => Connection != null;
 
         /// <summary>
         /// The associated door connection in the layout.
         /// </summary>
         public DoorConnection Connection { get; private set; }
-
-        /// <summary>
-        /// The room ID.
-        /// </summary>
-        public Uid RoomId { get => Cell.Room.RoomId; }
 
         private void Start()
         {
@@ -100,7 +82,6 @@ namespace MPewsey.ManiaMap.Unity
         private void Initialize()
         {
             Connection = FindDoorConnection();
-            Exists = Connection != null;
 
             if (Exists)
                 OnDoorExists.Invoke(this);
@@ -114,21 +95,19 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            var data = ManiaMapManager.Current.LayoutData;
+            if (RoomData == null)
+                return null;
 
-            if (data != null)
+            var roomId = RoomData.Id;
+            var manager = ManiaMapManager.Current;
+            var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+
+            foreach (var neighbor in manager.GetAdjacentRooms(roomId))
             {
-                var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+                var connection = manager.Layout.GetDoorConnection(roomId, neighbor);
 
-                foreach (var neighbor in data.GetAdjacentRooms(RoomId))
-                {
-                    var connection = data.Layout.GetDoorConnection(RoomId, neighbor);
-
-                    if (connection.ContainsDoor(RoomId, position, Direction))
-                    {
-                        return connection;
-                    }
-                }
+                if (connection.ContainsDoor(roomId, position, Direction))
+                    return connection;
             }
 
             return null;
@@ -145,21 +124,12 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Auto assigns elements to the door.
         /// </summary>
-        public void AutoAssign()
+        public override void AutoAssign()
         {
-            if (AutoAssignCell)
-                AssignClosestCell();
+            base.AutoAssign();
 
             if (AutoAssignDirection)
                 AssignClosestDirection();
-        }
-
-        /// <summary>
-        /// Assigns the closest cell to the door.
-        /// </summary>
-        public void AssignClosestCell()
-        {
-            Cell = Cell.FindClosestCell(transform);
         }
 
         /// <summary>
@@ -172,26 +142,20 @@ namespace MPewsey.ManiaMap.Unity
                 return;
 
             var delta = transform.position - Cell.transform.position;
-            var north = Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.up));
-            var south = Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.down));
-            var east = Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.right));
-            var west = Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.left));
-            var top = Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.forward));
-            var bottom = Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.back));
-            var max = Mathf.Max(north, south, east, west, top, bottom);
 
-            if (max == north)
-                Direction = DoorDirection.North;
-            else if (max == south)
-                Direction = DoorDirection.South;
-            else if (max == east)
-                Direction = DoorDirection.East;
-            else if (max == west)
-                Direction = DoorDirection.West;
-            else if (max == top)
-                Direction = DoorDirection.Top;
-            else
-                Direction = DoorDirection.Bottom;
+            var distances = new List<float>
+            {
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.up)), // North
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.down)), // South
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.right)), // East
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.left)), // West
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.forward)), // Top
+                Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.back)), // Bottom
+            };
+
+            var max = distances.Max();
+            var index = distances.FindIndex(x => x == max);
+            Direction = index < 0 ? DoorDirection.North : (DoorDirection)index;
         }
     }
 }

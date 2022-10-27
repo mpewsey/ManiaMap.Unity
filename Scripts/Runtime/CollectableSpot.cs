@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity
     /// Represents a collectable spot.
     /// </summary>
     [RequireComponent(typeof(CommonEvents))]
-    public class CollectableSpot : MonoBehaviour
+    public class CollectableSpot : CellChild
     {
         /// <summary>
         /// An event that passes a CollectableSpot argument.
@@ -16,26 +16,11 @@ namespace MPewsey.ManiaMap.Unity
         public class CollectableSpotEvent : UnityEvent<CollectableSpot> { }
 
         [SerializeField]
-        private bool _autoAssignCell = true;
-        /// <summary>
-        /// If true, the cell will be automatically assigned to the cell when update and save operations
-        /// are performed.
-        /// </summary>
-        public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
-
-        [SerializeField]
         private int _id;
         /// <summary>
         /// The unique location ID, relative to the cell.
         /// </summary>
         public int Id { get => _id; set => _id = value; }
-
-        [SerializeField]
-        private Cell _cell;
-        /// <summary>
-        /// The cell in which the collectable is located.
-        /// </summary>
-        public Cell Cell { get => _cell; set => _cell = value; }
 
         [SerializeField]
         private CollectableGroup _group;
@@ -63,22 +48,17 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The assigned collectable ID.
         /// </summary>
-        public int CollectableId { get; private set; } = int.MinValue;
+        public int CollectableId => RoomData.Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
 
         /// <summary>
         /// True if the collectable spot exists.
         /// </summary>
-        public bool Exists { get; private set; }
+        public bool Exists => RoomData.Collectables.ContainsKey(Id);
 
         /// <summary>
         /// True if the collectable spot is already acquired.
         /// </summary>
-        public bool IsAcquired { get; private set; } = true;
-
-        /// <summary>
-        /// Returns the room ID.
-        /// </summary>
-        public Uid RoomId { get => Cell.Room.RoomId; }
+        public bool IsAcquired => RoomState.AcquiredCollectables.Contains(Id);
 
         private void Start()
         {
@@ -91,17 +71,6 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Initialize()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            var room = data?.GetRoom(RoomId);
-            var state = data?.GetRoomState(RoomId);
-
-            if (room != null && state != null)
-            {
-                IsAcquired = state.AcquiredCollectables.Contains(Id);
-                Exists = room.Collectables.TryGetValue(Id, out int collectableId);
-                CollectableId = Exists ? collectableId : int.MinValue;
-            }
-
             if (Exists)
                 OnSpotExists.Invoke(this);
             else
@@ -115,35 +84,18 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool Acquire()
         {
-            if (!IsAcquired && Exists)
-            {
-                var data = ManiaMapManager.Current.LayoutData;
-                var state = data.GetRoomState(RoomId);
-                var acquired = state.AcquiredCollectables.Add(Id);
-                IsAcquired = true;
-                return acquired;
-            }
-
+            if (Exists && !IsAcquired)
+                return RoomState.AcquiredCollectables.Add(Id);
             return false;
         }
 
         /// <summary>
         /// Auto assigns elements to the collectable spot.
         /// </summary>
-        public void AutoAssign()
+        public override void AutoAssign()
         {
+            base.AutoAssign();
             Id = Database.AutoAssignId(Id);
-
-            if (AutoAssignCell)
-                AssignClosestCell();
-        }
-
-        /// <summary>
-        /// Assigns the closest cell to the spot.
-        /// </summary>
-        public void AssignClosestCell()
-        {
-            Cell = Cell.FindClosestCell(transform);
         }
     }
 }

@@ -91,10 +91,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Instantiates the map's buffers.
+        /// </summary>
+        /// <param name="layout">The room layout.</param>
+        /// <param name="state">The room layout state.</param>
+        private void Instantiate(Layout layout, LayoutState state)
+        {
+            Layout = layout;
+            LayoutState = state;
+            RoomDoors = layout.GetRoomDoors();
+            LayoutBounds = layout.GetBounds();
+        }
+
         public List<LayoutMapLayer> CreateLayers()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            return CreateLayers(data.Layout, data.LayoutState);
+            var manager = ManiaMapManager.Current;
+            return CreateLayers(manager.Layout, manager.LayoutState);
         }
 
         /// <summary>
@@ -104,10 +117,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="state">The room layout state.</param>
         public List<LayoutMapLayer> CreateLayers(Layout layout, LayoutState state = null)
         {
-            Layout = layout;
-            LayoutState = state;
-            RoomDoors = layout.GetRoomDoors();
-            LayoutBounds = layout.GetBounds();
+            Instantiate(layout, state);
             var layers = CreateLayerComponents();
 
             foreach (var layer in layers)

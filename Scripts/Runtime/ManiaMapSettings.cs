@@ -8,8 +8,26 @@ namespace MPewsey.ManiaMap.Unity
         private string _playerTag = "Player";
         public string PlayerTag { get => _playerTag; set => _playerTag = value; }
 
-        public static ManiaMapSettings Create()
+        [SerializeField]
+        private int _maxClusterDepth = 1;
+        public int MaxClusterDepth
         {
+            get => _maxClusterDepth;
+            set => _maxClusterDepth = Mathf.Max(value, 1);
+        }
+
+        private void OnValidate()
+        {
+            MaxClusterDepth = MaxClusterDepth;
+        }
+
+        public static ManiaMapSettings LoadSettings()
+        {
+            var settings = Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
+
+            if (settings != null)
+                return settings;
+
             return CreateInstance<ManiaMapSettings>();
         }
     }

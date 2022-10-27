@@ -74,9 +74,11 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            var layoutState = new LayoutState(layout);
+            var roomState = layoutState.RoomStates[roomData.Id];
 
-            room.Initialize(roomData.Id, RoomPositionOption.Layout);
+            room.Initialize(roomData, roomState, RoomPositionOption.Layout);
+            Assert.IsTrue(room.IsInitialized);
         }
 
         [Test]
@@ -91,7 +93,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
             var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
             prefab.gameObject.SetActive(false);
