@@ -23,7 +23,12 @@ namespace MPewsey.ManiaMap.Unity
 
         public static ManiaMapSettings LoadSettings()
         {
-            var settings = Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
+            return Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
+        }
+
+        public static ManiaMapSettings GetSettings()
+        {
+            var settings = LoadSettings();
 
             if (settings != null)
                 return settings;

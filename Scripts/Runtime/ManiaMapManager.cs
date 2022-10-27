@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMap.Unity
 
         private void Awake()
         {
-            Settings = ManiaMapSettings.LoadSettings();
+            Settings = ManiaMapSettings.GetSettings();
         }
 
         private void Start()

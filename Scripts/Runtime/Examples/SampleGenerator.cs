@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Samples
+namespace MPewsey.ManiaMap.Unity.Examples
 {
     /// <summary>
     /// The layout generation controller for the sample scene.
@@ -60,13 +60,13 @@ namespace MPewsey.ManiaMap.Unity.Samples
 
             if (!results.Success)
             {
-                Debug.Log("Failed to generate layout.");
+                Debug.LogError("Failed to generate layout.");
                 return;
             }
 
             var layout = (Layout)results.Outputs["Layout"];
             var layoutState = new LayoutState(layout);
-            ManiaMapManager.Current.LayoutData = new LayoutData(layout, layoutState);
+            ManiaMapManager.Current.SetLayout(layout, layoutState);
             RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
         }
 
@@ -76,8 +76,7 @@ namespace MPewsey.ManiaMap.Unity.Samples
         public void CenterCamera()
         {
             var camera = Camera.main;
-            var data = ManiaMapManager.Current.LayoutData;
-            var bounds = data.Layout.GetBounds();
+            var bounds = ManiaMapManager.Current.Layout.GetBounds();
             var x = CellSize.x * (bounds.X + 0.5f * bounds.Width);
             var y = -CellSize.y * (bounds.Y + 0.5f * bounds.Height);
             camera.transform.position = new Vector3(x, y, camera.transform.position.z);

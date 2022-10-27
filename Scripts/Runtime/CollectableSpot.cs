@@ -6,7 +6,6 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// Represents a collectable spot.
     /// </summary>
-    [RequireComponent(typeof(CommonEvents))]
     public class CollectableSpot : CellChild
     {
         /// <summary>
@@ -30,20 +29,11 @@ namespace MPewsey.ManiaMap.Unity
         public CollectableGroup Group { get => _group; set => _group = value; }
 
         [SerializeField]
-        private CollectableSpotEvent _onSpotExists = new CollectableSpotEvent();
+        private CollectableSpotEvent _onInitialize = new CollectableSpotEvent();
         /// <summary>
-        /// The event triggered when a collectable spot exists at this location.
-        /// The collectable spot is passed to the event.
+        /// The event invoked after the collectable spot is initialized. This occurs on start.
         /// </summary>
-        public CollectableSpotEvent OnSpotExists { get => _onSpotExists; set => _onSpotExists = value; }
-
-        [SerializeField]
-        private CollectableSpotEvent _onNoSpotExists = new CollectableSpotEvent();
-        /// <summary>
-        /// The event triggered when a collectable spot does not exist at this location.
-        /// The collectable spot is passed to the event.
-        /// </summary>
-        public CollectableSpotEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
+        public CollectableSpotEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// The assigned collectable ID.
@@ -71,10 +61,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Initialize()
         {
-            if (Exists)
-                OnSpotExists.Invoke(this);
-            else
-                OnNoSpotExists.Invoke(this);
+            OnInitialize.Invoke(this);
         }
 
         /// <summary>

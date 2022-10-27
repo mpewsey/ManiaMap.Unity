@@ -60,9 +60,24 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsInitialized { get; private set; }
 
+        /// <summary>
+        /// The layout.
+        /// </summary>
         public Layout Layout { get; private set; }
+
+        /// <summary>
+        /// The layout state.
+        /// </summary>
         public LayoutState LayoutState { get; private set; }
+
+        /// <summary>
+        /// The room data.
+        /// </summary>
         public ManiaMap.Room RoomData { get; private set; }
+
+        /// <summary>
+        /// The room state.
+        /// </summary>
         public RoomState RoomState { get; private set; }
 
         private void Start()
@@ -92,6 +107,8 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="position">The option guiding the positioning of the room.</param>
         public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
+            var layout = ManiaMapManager.Current.Layout;
+            var layoutState = ManiaMapManager.Current.LayoutState;
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += x =>
@@ -100,13 +117,9 @@ namespace MPewsey.ManiaMap.Unity
                     throw new InstantiationFailedException("Failed to instantiate room.");
 
                 if (!x.Result.TryGetComponent(out Room room))
-                {
-                    Addressables.ReleaseInstance(x);
                     throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
-                }
 
-                var manager = ManiaMapManager.Current;
-                room.Initialize(id, manager.Layout, manager.LayoutState, position);
+                room.Initialize(id, layout, layoutState, position);
             };
 
             return handle;

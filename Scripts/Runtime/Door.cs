@@ -8,7 +8,6 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A component representing a door.
     /// </summary>
-    [RequireComponent(typeof(CommonEvents))]
     public class Door : CellChild
     {
         /// <summary>
@@ -47,18 +46,11 @@ namespace MPewsey.ManiaMap.Unity
         public int Code { get => _code; set => _code = value; }
 
         [SerializeField]
-        private DoorEvent _onDoorExists = new DoorEvent();
+        private DoorEvent _onInitialize = new DoorEvent();
         /// <summary>
-        /// The event invoked when a door exists at the location.
+        /// The event invoked after the door is initialized. This occurs on start.
         /// </summary>
-        public DoorEvent OnDoorExists { get => _onDoorExists; set => _onDoorExists = value; }
-
-        [SerializeField]
-        private DoorEvent _onNoDoorExists = new DoorEvent();
-        /// <summary>
-        /// The event invoked when no door exists at the location.
-        /// </summary>
-        public DoorEvent OnNoDoorExists { get => _onNoDoorExists; set => _onNoDoorExists = value; }
+        public DoorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// True if the door exists in the layout.
@@ -82,11 +74,7 @@ namespace MPewsey.ManiaMap.Unity
         private void Initialize()
         {
             Connection = FindDoorConnection();
-
-            if (Exists)
-                OnDoorExists.Invoke(this);
-            else
-                OnNoDoorExists.Invoke(this);
+            OnInitialize.Invoke(this);
         }
 
         /// <summary>
@@ -144,12 +132,12 @@ namespace MPewsey.ManiaMap.Unity
 
             var distances = new List<float>
             {
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.up)), // North
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.down)), // South
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.right)), // East
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector2.left)), // West
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.forward)), // Top
-                Vector3.Dot(delta, Cell.Room.Swizzle(Vector3.back)), // Bottom
+                Vector3.Dot(delta, Room.Swizzle(Vector2.up)), // North
+                Vector3.Dot(delta, Room.Swizzle(Vector2.down)), // South
+                Vector3.Dot(delta, Room.Swizzle(Vector2.right)), // East
+                Vector3.Dot(delta, Room.Swizzle(Vector2.left)), // West
+                Vector3.Dot(delta, Room.Swizzle(Vector3.forward)), // Top
+                Vector3.Dot(delta, Room.Swizzle(Vector3.back)), // Bottom
             };
 
             var max = distances.Max();

@@ -23,24 +23,29 @@ namespace MPewsey.ManiaMap.Unity
         public Cell Cell { get => _cell; set => _cell = value; }
 
         /// <summary>
+        /// The parent room.
+        /// </summary>
+        public Room Room => Cell.Room;
+
+        /// <summary>
         /// The layout.
         /// </summary>
-        public Layout Layout => Cell.Room.Layout;
+        public Layout Layout => Room.Layout;
 
         /// <summary>
         /// The layout state.
         /// </summary>
-        public LayoutState LayoutState => Cell.Room.LayoutState;
+        public LayoutState LayoutState => Room.LayoutState;
 
         /// <summary>
         /// Returns the room data.
         /// </summary>
-        public ManiaMap.Room RoomData => Cell.Room.RoomData;
+        public ManiaMap.Room RoomData => Room.RoomData;
 
         /// <summary>
         /// Returns the room state.
         /// </summary>
-        public RoomState RoomState => Cell.Room.RoomState;
+        public RoomState RoomState => Room.RoomState;
 
         /// <summary>
         /// If auto assign is enabled, assigns the closest cell to the object.
