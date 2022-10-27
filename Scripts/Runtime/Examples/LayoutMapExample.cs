@@ -40,6 +40,12 @@ namespace MPewsey.ManiaMap.Unity.Examples
             {
                 CreateLayers();
             }
+
+            if (Camera.main != null)
+            {
+                var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                Camera.main.transform.Translate(10 * Time.deltaTime * move.normalized);
+            }
         }
 
         /// <summary>
