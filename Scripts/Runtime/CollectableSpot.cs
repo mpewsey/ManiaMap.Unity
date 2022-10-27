@@ -6,22 +6,13 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// Represents a collectable spot.
     /// </summary>
-    [RequireComponent(typeof(CommonEvents))]
-    public class CollectableSpot : MonoBehaviour
+    public class CollectableSpot : CellChild
     {
         /// <summary>
         /// An event that passes a CollectableSpot argument.
         /// </summary>
         [System.Serializable]
         public class CollectableSpotEvent : UnityEvent<CollectableSpot> { }
-
-        [SerializeField]
-        private bool _autoAssignCell = true;
-        /// <summary>
-        /// If true, the cell will be automatically assigned to the cell when update and save operations
-        /// are performed.
-        /// </summary>
-        public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
 
         [SerializeField]
         private int _id;
@@ -31,13 +22,6 @@ namespace MPewsey.ManiaMap.Unity
         public int Id { get => _id; set => _id = value; }
 
         [SerializeField]
-        private Cell _cell;
-        /// <summary>
-        /// The cell in which the collectable is located.
-        /// </summary>
-        public Cell Cell { get => _cell; set => _cell = value; }
-
-        [SerializeField]
         private CollectableGroup _group;
         /// <summary>
         /// The collectable group.
@@ -45,40 +29,26 @@ namespace MPewsey.ManiaMap.Unity
         public CollectableGroup Group { get => _group; set => _group = value; }
 
         [SerializeField]
-        private CollectableSpotEvent _onSpotExists = new CollectableSpotEvent();
+        private CollectableSpotEvent _onInitialize = new CollectableSpotEvent();
         /// <summary>
-        /// The event triggered when a collectable spot exists at this location.
-        /// The collectable spot is passed to the event.
+        /// The event invoked after the collectable spot is initialized. This occurs on start.
         /// </summary>
-        public CollectableSpotEvent OnSpotExists { get => _onSpotExists; set => _onSpotExists = value; }
-
-        [SerializeField]
-        private CollectableSpotEvent _onNoSpotExists = new CollectableSpotEvent();
-        /// <summary>
-        /// The event triggered when a collectable spot does not exist at this location.
-        /// The collectable spot is passed to the event.
-        /// </summary>
-        public CollectableSpotEvent OnNoSpotExists { get => _onNoSpotExists; set => _onNoSpotExists = value; }
+        public CollectableSpotEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// The assigned collectable ID.
         /// </summary>
-        public int CollectableId { get; private set; } = int.MinValue;
+        public int CollectableId => RoomData.Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
 
         /// <summary>
         /// True if the collectable spot exists.
         /// </summary>
-        public bool Exists { get; private set; }
+        public bool Exists => RoomData.Collectables.ContainsKey(Id);
 
         /// <summary>
         /// True if the collectable spot is already acquired.
         /// </summary>
-        public bool IsAcquired { get; private set; } = true;
-
-        /// <summary>
-        /// Returns the room ID.
-        /// </summary>
-        public Uid RoomId { get => Cell.Room.RoomId; }
+        public bool IsAcquired => RoomState.AcquiredCollectables.Contains(Id);
 
         private void Start()
         {
@@ -91,21 +61,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Initialize()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            var room = data?.GetRoom(RoomId);
-            var state = data?.GetRoomState(RoomId);
-
-            if (room != null && state != null)
-            {
-                IsAcquired = state.AcquiredCollectables.Contains(Id);
-                Exists = room.Collectables.TryGetValue(Id, out int collectableId);
-                CollectableId = Exists ? collectableId : int.MinValue;
-            }
-
-            if (Exists)
-                OnSpotExists.Invoke(this);
-            else
-                OnNoSpotExists.Invoke(this);
+            OnInitialize.Invoke(this);
         }
 
         /// <summary>
@@ -115,44 +71,18 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool Acquire()
         {
-            if (!IsAcquired && Exists)
-            {
-                var data = ManiaMapManager.Current.LayoutData;
-                var state = data.GetRoomState(RoomId);
-                var acquired = state.AcquiredCollectables.Add(Id);
-                IsAcquired = true;
-                return acquired;
-            }
-
+            if (Exists && !IsAcquired)
+                return RoomState.AcquiredCollectables.Add(Id);
             return false;
-        }
-
-        /// <summary>
-        /// If the ID is less than or equal to zero, assigns a random positive integer to the ID.
-        /// </summary>
-        private void AutoAssignId()
-        {
-            if (Id <= 0)
-                Id = Random.Range(1, int.MaxValue);
         }
 
         /// <summary>
         /// Auto assigns elements to the collectable spot.
         /// </summary>
-        public void AutoAssign()
+        public override void AutoAssign()
         {
-            AutoAssignId();
-
-            if (AutoAssignCell)
-                AssignClosestCell();
-        }
-
-        /// <summary>
-        /// Assigns the closest cell to the spot.
-        /// </summary>
-        public void AssignClosestCell()
-        {
-            Cell = Cell.FindClosestCell(transform);
+            base.AutoAssign();
+            Id = Database.AutoAssignId(Id);
         }
     }
 }

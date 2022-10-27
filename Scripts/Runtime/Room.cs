@@ -1,5 +1,5 @@
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -56,13 +56,39 @@ namespace MPewsey.ManiaMap.Unity
         public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
 
         /// <summary>
-        /// The room ID.
+        /// True if the room has been initialized.
         /// </summary>
-        public Uid RoomId { get; private set; } = new Uid(-1, -1, -1);
+        public bool IsInitialized { get; private set; }
+
+        /// <summary>
+        /// The layout.
+        /// </summary>
+        public Layout Layout { get; private set; }
+
+        /// <summary>
+        /// The layout state.
+        /// </summary>
+        public LayoutState LayoutState { get; private set; }
+
+        /// <summary>
+        /// The room data.
+        /// </summary>
+        public ManiaMap.Room RoomData { get; private set; }
+
+        /// <summary>
+        /// The room state.
+        /// </summary>
+        public RoomState RoomState { get; private set; }
+
+        private void Start()
+        {
+            if (!IsInitialized)
+                throw new RoomNotInitializedException($"Room not initialized: {this}.");
+        }
 
         private void OnValidate()
         {
-            AutoAssignId();
+            Id = Database.AutoAssignId(Id);
             Size = Size;
             CellSize = CellSize;
         }
@@ -73,70 +99,27 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Sets the visibility of the cell based on the player's current position.
-        /// </summary>
-        private void SetCellVisibility()
-        {
-            var player = ManiaMapManager.Current.GetPlayer();
-
-            if (player == null)
-                return;
-
-            var data = ManiaMapManager.Current.LayoutData.GetRoomState(RoomId);
-
-            if (data == null)
-                return;
-
-            var index = GetCellIndex(player.transform.position);
-            data.SetCellVisibility(index.x, index.y, true);
-        }
-
-        /// <summary>
         /// Instantiates a room prefab and initializes it.
         /// </summary>
         /// <param name="id">The room ID.</param>
         /// <param name="prefab">The asset reference for the room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public static async Task<Room> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
+        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
-            var handle = InstantiateRoomHandle(id, prefab, parent, position);
-            await handle.Task;
-            return handle.Result.GetComponent<Room>();
-        }
-
-        /// <summary>
-        /// Instantiates a room prefab and initializes it.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        /// <param name="prefab">The asset reference for the room prefab.</param>
-        /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="position">The option guiding the positioning of the room.</param>
-        public static Room InstantiateRoom(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
-        {
-            var handle = InstantiateRoomHandle(id, prefab, parent, position);
-            var obj = handle.WaitForCompletion();
-            return obj.GetComponent<Room>();
-        }
-
-        /// <summary>
-        /// Creates a new operation handle for instantiating the room prefab.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        /// <param name="prefab">The asset reference for the room prefab.</param>
-        /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="position">The option guiding the positioning of the room.</param>
-        private static AsyncOperationHandle<GameObject> InstantiateRoomHandle(Uid id, AssetReferenceGameObject prefab, Transform parent, RoomPositionOption position = RoomPositionOption.Default)
-        {
-            var handle = Addressables.InstantiateAsync(prefab, parent);
+            var layout = ManiaMapManager.Current.Layout;
+            var layoutState = ManiaMapManager.Current.LayoutState;
+            var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += x =>
             {
                 if (!x.IsValid() || !x.IsDone || x.Result == null)
-                    throw new System.ArgumentException("Failed to instantiate room.");
+                    throw new InstantiationFailedException("Failed to instantiate room.");
+
                 if (!x.Result.TryGetComponent(out Room room))
-                    throw new System.ArgumentException($"Prefab does not have room component: {x.Result}.");
-                room.Initialize(id, position);
+                    throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
+
+                room.Initialize(id, layout, layoutState, position);
             };
 
             return handle;
@@ -151,20 +134,26 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="position">The option guiding the positioning of the room.</param>
         public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
-            var obj = Instantiate(prefab, parent);
-            var room = obj.GetComponent<Room>();
-            room.Initialize(id, position);
+            var manager = ManiaMapManager.Current;
+            var room = Instantiate(prefab, parent).GetComponent<Room>();
+            room.Initialize(id, manager.Layout, manager.LayoutState, position);
             return room;
         }
 
         /// <summary>
         /// Initializes the room and its registered children.
         /// </summary>
-        /// <param name="roomId">The room ID.</param>
+        /// <param name="id">The room ID.</param>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Initialize(Uid roomId, RoomPositionOption position)
+        public void Initialize(Uid id, Layout layout, LayoutState layoutState, RoomPositionOption position)
         {
-            RoomId = roomId;
+            Layout = layout;
+            LayoutState = layoutState;
+            RoomData = layout.Rooms[id];
+            RoomState = layoutState.RoomStates[id];
+            IsInitialized = true;
 
             switch (position)
             {
@@ -179,13 +168,25 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Sets the visibility of the cell based on the player's current position.
+        /// </summary>
+        private void SetCellVisibility()
+        {
+            var player = ManiaMapManager.Current.GetPlayer();
+
+            if (player != null)
+            {
+                var index = GetCellIndex(player.transform.position);
+                RoomState?.SetCellVisibility(index.x, index.y, true);
+            }
+        }
+
+        /// <summary>
         /// Assigns the local position of the room based on the position in the current layout.
         /// </summary>
         private void AssignLayoutPosition()
         {
-            var data = ManiaMapManager.Current.LayoutData;
-            var room = data.Layout.Rooms[RoomId];
-            var position = new Vector2(room.Position.Y, -room.Position.X) * CellSize;
+            var position = new Vector2(RoomData.Position.Y, -RoomData.Position.X) * CellSize;
             transform.localPosition = Swizzle(position);
         }
 
@@ -194,7 +195,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void AutoAssign()
         {
-            AutoAssignId();
+            Id = Database.AutoAssignId(Id);
             CreateCells();
             AutoAssignDoors();
             AutoAssignCollectableSpots();
@@ -220,15 +221,6 @@ namespace MPewsey.ManiaMap.Unity
             {
                 spot.AutoAssign();
             }
-        }
-
-        /// <summary>
-        /// If the ID is less than or equal to zero, assigns a random positive integer to the ID.
-        /// </summary>
-        private void AutoAssignId()
-        {
-            if (Id <= 0)
-                Id = Random.Range(1, int.MaxValue);
         }
 
         /// <summary>
@@ -310,9 +302,8 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (CellContainer == null)
             {
-                var obj = new GameObject("<Cells>");
-                obj.transform.SetParent(transform);
-                CellContainer = obj.transform;
+                CellContainer = new GameObject("<Cells>").transform;
+                CellContainer.SetParent(transform);
             }
         }
 

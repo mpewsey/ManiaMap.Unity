@@ -334,8 +334,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4233576300729940395}
-  - component: {fileID: 1368394048757031524}
   - component: {fileID: 2012344708512248430}
+  - component: {fileID: 2607293774824104876}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -359,18 +359,6 @@ Transform:
   m_Father: {fileID: 4258880076766029508}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1368394048757031524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582265426216655707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd9027b0fce1147a016e59869fd14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2012344708512248430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,26 +372,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _autoAssignCell: 1
-  _autoAssignDirection: 1
   _cell: {fileID: 0}
+  _autoAssignDirection: 1
   _direction: 0
   _type: 0
   _code: 0
-  _onDoorExists:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1368394048757031524}
-        m_TargetAssemblyTypeName: MPewsey.ManiaMap.Unity.CommonEvents, MPewsey.ManiaMap.Unity
-        m_MethodName: DestroyTarget
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4798614291871377587}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onNoDoorExists:
+  _onInitialize:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2607293774824104876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582265426216655707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d83dd2e0b659b04cb1addd0e1a7bdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

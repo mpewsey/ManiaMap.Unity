@@ -32,6 +32,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
                     Assert.AreEqual(expected, result);
                 }
             }
+
+            obj.SetActive(false);
         }
 
         [Test]
@@ -48,6 +50,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             room.CreateCells();
             Assert.AreEqual(room.Size.x, room.CellContainer.childCount);
             Assert.AreEqual(room.Size.y, room.CellContainer.GetChild(0).childCount);
+            room.gameObject.SetActive(false);
         }
 
         [Test]
@@ -55,6 +58,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
+            room.gameObject.SetActive(false);
             Assert.IsNotNull(template);
         }
 
@@ -70,9 +74,10 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            var layoutState = new LayoutState(layout);
 
-            room.Initialize(roomData.Id, RoomPositionOption.Layout);
+            room.Initialize(roomData.Id, layout, layoutState, RoomPositionOption.Layout);
+            Assert.IsTrue(room.IsInitialized);
         }
 
         [Test]
@@ -87,9 +92,10 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new ManiaMap.LayoutNode(1);
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
-            ManiaMapManager.Current.LayoutData = new LayoutData(layout, new LayoutState(layout));
+            ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
             var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
+            prefab.gameObject.SetActive(false);
             Assert.IsNotNull(room);
         }
     }
