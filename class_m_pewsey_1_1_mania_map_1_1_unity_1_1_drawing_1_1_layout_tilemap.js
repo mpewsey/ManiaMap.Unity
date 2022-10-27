@@ -12,6 +12,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap =
     [ "DrawMapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a0222c017d18a241d4c22ee0ae7752cc3", null ],
     [ "GetTile", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a7ee3615529c94a78bc991bf182016633", null ],
     [ "GetTileType", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#aa71dfd695abca392a542160902bd6066", null ],
+    [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#abe11203603cb62ebfad840c93fcebb70", null ],
     [ "Grid", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a7f37c29c55da7efc01357534f9881801", null ],
     [ "Layout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#ac54e7429bcab266d61c3ec634a221b1e", null ],
     [ "LayoutState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html#a8cad4cebeb654365e8c0e0dd5128140e", null ],

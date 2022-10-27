@@ -4,6 +4,9 @@ var dir_9e922acdfeb25ce1c48825c9c587bf72 =
     [ "DuplicateDirectionException.cs", "_duplicate_direction_exception_8cs_source.html", null ],
     [ "DuplicateInputException.cs", "_duplicate_input_exception_8cs_source.html", null ],
     [ "EmptyCellException.cs", "_empty_cell_exception_8cs_source.html", null ],
+    [ "InstantiationFailedException.cs", "_instantiation_failed_exception_8cs_source.html", null ],
     [ "MissingInputException.cs", "_missing_input_exception_8cs_source.html", null ],
+    [ "MissingRoomComponentException.cs", "_missing_room_component_exception_8cs_source.html", null ],
+    [ "RoomNotInitializedException.cs", "_room_not_initialized_exception_8cs_source.html", null ],
     [ "UnassignedCollectableGroupException.cs", "_unassigned_collectable_group_exception_8cs_source.html", null ]
 ];

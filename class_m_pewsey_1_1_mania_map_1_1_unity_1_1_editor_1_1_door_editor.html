@@ -136,6 +136,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a308967cffdd67ff86faf66c363203f0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a308967cffdd67ff86faf66c363203f0f">DrawCellErrorBox</a> ()</td></tr>
 <tr class="memdesc:a308967cffdd67ff86faf66c363203f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws an error box if a cell is not assigned to the door.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a308967cffdd67ff86faf66c363203f0f">More...</a><br /></td></tr>
 <tr class="separator:a308967cffdd67ff86faf66c363203f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031c788a10570ef3aac429537f2102a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a031c788a10570ef3aac429537f2102a4">DrawFields</a> (System.Func&lt; SerializedProperty, bool &gt; selector)</td></tr>
+<tr class="memdesc:a031c788a10570ef3aac429537f2102a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the fields for which the specified selector returns true.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a031c788a10570ef3aac429537f2102a4">More...</a><br /></td></tr>
+<tr class="separator:a031c788a10570ef3aac429537f2102a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98143e5f26361880e524715eb584f08f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html">Door</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a98143e5f26361880e524715eb584f08f">GetDoor</a> ()</td></tr>
 <tr class="memdesc:a98143e5f26361880e524715eb584f08f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the target door.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html#a98143e5f26361880e524715eb584f08f">More...</a><br /></td></tr>
 <tr class="separator:a98143e5f26361880e524715eb584f08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,7 +179,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Auto assigns elements to the door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00074">74</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00101">101</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -205,7 +208,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Creates a new door Game Object. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00087">87</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00114">114</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -234,7 +237,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Draws the auto assign button. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00054">54</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00081">81</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -263,7 +266,43 @@ Private Member Functions</h2></td></tr>
 
 <p>Draws an error box if a cell is not assigned to the door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00065">65</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00092">92</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+
+</div>
+</div>
+<a id="a031c788a10570ef3aac429537f2102a4" name="a031c788a10570ef3aac429537f2102a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a031c788a10570ef3aac429537f2102a4">&#9670;&nbsp;</a></span>DrawFields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPewsey.ManiaMap.Unity.Editor.DoorEditor.DrawFields </td>
+          <td>(</td>
+          <td class="paramtype">System.Func&lt; SerializedProperty, bool &gt;&#160;</td>
+          <td class="paramname"><em>selector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draws the fields for which the specified selector returns true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">selector</td><td>The selector function.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00035">35</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -292,7 +331,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Returns the target door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00046">46</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00073">73</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -321,7 +360,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Returns true if multiple target objects are selected. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00038">38</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00065">65</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -369,7 +408,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Returns true if the target object is an unopened prefab being inspected. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00030">30</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_editor_8cs_source.html#l00057">57</a> of file <a class="el" href="_door_editor_8cs_source.html">DoorEditor.cs</a>.</p>
 
 </div>
 </div>

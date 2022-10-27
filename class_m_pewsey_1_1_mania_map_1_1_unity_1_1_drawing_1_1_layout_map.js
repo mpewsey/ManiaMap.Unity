@@ -6,6 +6,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map =
     [ "DrawMapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad4f6265b59c71a6dc7a99cf5bc7ee8a8", null ],
     [ "GetTextureSize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a99abe6445191f1c898c4027693fc8d46", null ],
     [ "GetTile", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#ad3560f75ab5d732cd38ee54d226518d0", null ],
+    [ "Instantiate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a966d75d0e7f3ab75ab90edc6765d4ecd", null ],
     [ "SaveLayerImages", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#afb2821e7057436ffc9585b03be38db7c", null ],
     [ "SaveLayerImages", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#add92ec50cafb07e48de254d6619686b5", null ],
     [ "BackgroundColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a44d5ef7fe015582cc8480d5eddd3997a", null ],

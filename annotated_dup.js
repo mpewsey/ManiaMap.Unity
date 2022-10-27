@@ -38,24 +38,32 @@ var annotated_dup =
             [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
           ] ],
           [ "Examples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples.html", [
+            [ "CameraController", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html", null ],
             [ "LayoutMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example" ],
-            [ "LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example" ]
+            [ "LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example" ],
+            [ "SampleCollectableSpotEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html", null ],
+            [ "SampleDoorEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html", null ],
+            [ "SampleGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator" ]
           ] ],
           [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", [
             [ "DuplicateDirectionException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_direction_exception.html", null ],
             [ "DuplicateInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_input_exception.html", null ],
             [ "EmptyCellException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html", null ],
+            [ "InstantiationFailedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_instantiation_failed_exception.html", null ],
             [ "MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
+            [ "MissingRoomComponentException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_room_component_exception.html", null ],
+            [ "RoomNotInitializedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_room_not_initialized_exception.html", null ],
             [ "UnassignedCollectableGroupException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_unassigned_collectable_group_exception.html", null ]
           ] ],
           [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
+          [ "CellChild", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child" ],
           [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],
           [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry" ],
           [ "CollectableGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_generator" ],
           [ "CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group" ],
           [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input" ],
           [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
-          [ "CommonEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_common_events.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_common_events" ],
+          [ "Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database" ],
           [ "DontDestroyOnLoad", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_dont_destroy_on_load.html", null ],
           [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
           [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input" ],
@@ -63,7 +71,6 @@ var annotated_dup =
           [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],
           [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_pipeline" ],
           [ "GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_step" ],
-          [ "LayoutData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_data" ],
           [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge" ],
           [ "LayoutGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_generator" ],
           [ "LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph" ],
