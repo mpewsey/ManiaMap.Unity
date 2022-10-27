@@ -60,7 +60,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var path = "Tests/CollectableGroups.xml";
             Serialization.SaveXml(path, group);
             var copy = Serialization.LoadXml<CollectableGroups>(path);
-            
+
             foreach (var pair in group.GetGroups())
             {
                 CollectionAssert.AreEqual(pair.Value, copy.Get(pair.Key));

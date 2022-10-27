@@ -128,20 +128,11 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// If the ID is less than or equal to zero, assigns a random positive integer to the ID.
-        /// </summary>
-        private void AutoAssignId()
-        {
-            if (Id <= 0)
-                Id = Random.Range(1, int.MaxValue);
-        }
-
-        /// <summary>
         /// Auto assigns elements to the collectable spot.
         /// </summary>
         public void AutoAssign()
         {
-            AutoAssignId();
+            Id = Database.AutoAssignId(Id);
 
             if (AutoAssignCell)
                 AssignClosestCell();

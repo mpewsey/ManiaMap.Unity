@@ -17,16 +17,7 @@ namespace MPewsey.ManiaMap.Unity
 
         private void OnValidate()
         {
-            AutoAssignId();
-        }
-
-        /// <summary>
-        /// If the ID is less than or equal to zero, assigns a random positive integer to the ID.
-        /// </summary>
-        public void AutoAssignId()
-        {
-            if (Id <= 0)
-                Id = Random.Range(1, int.MaxValue);
+            Id = Database.AutoAssignId(Id);
         }
     }
 }

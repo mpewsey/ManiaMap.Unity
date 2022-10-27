@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -11,26 +11,12 @@ namespace MPewsey.ManiaMap.Unity
     public class RoomAddressableDatabase : RoomDatabase<AssetReferenceGameObject>
     {
         /// <summary>
-        /// Instantiates the room based on current layout.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="position">The option guiding the positioning of the room.</param>
-        public Room InstantiateRoom(Uid id, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
-        {
-            var data = ManiaMapManager.Current.LayoutData;
-            var roomData = data.Layout.Rooms[id];
-            var prefab = GetRoomData(roomData.Template.Id);
-            return Room.InstantiateRoom(id, prefab, parent, position);
-        }
-
-        /// <summary>
         /// Instantiates the room asynchronously based on current layout.
         /// </summary>
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public Task<Room> InstantiateRoomAsync(Uid id, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
+        public AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
         {
             var data = ManiaMapManager.Current.LayoutData;
             var roomData = data.Layout.Rooms[id];
@@ -53,7 +39,9 @@ namespace MPewsey.ManiaMap.Unity
             {
                 if (room.Position.Z == z)
                 {
-                    result.Add(InstantiateRoom(room.Id, parent, RoomPositionOption.Layout));
+                    var handle = InstantiateRoomAsync(room.Id, parent, RoomPositionOption.Layout);
+                    var instance = handle.WaitForCompletion().GetComponent<Room>();
+                    result.Add(instance);
                 }
             }
 
