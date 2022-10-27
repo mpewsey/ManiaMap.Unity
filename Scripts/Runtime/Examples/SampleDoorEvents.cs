@@ -15,7 +15,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
 
         private void OnInitialize(Door door)
         {
-            if (!door.Exists)
+            if (door.Exists)
                 Destroy(door.gameObject);
         }
     }
