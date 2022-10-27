@@ -23,6 +23,16 @@ namespace MPewsey.ManiaMap.Unity
         public Cell Cell { get => _cell; set => _cell = value; }
 
         /// <summary>
+        /// The layout.
+        /// </summary>
+        public Layout Layout => Cell.Room.Layout;
+
+        /// <summary>
+        /// The layout state.
+        /// </summary>
+        public LayoutState LayoutState => Cell.Room.LayoutState;
+
+        /// <summary>
         /// Returns the room data.
         /// </summary>
         public ManiaMap.Room RoomData => Cell.Room.RoomData;

@@ -99,12 +99,11 @@ namespace MPewsey.ManiaMap.Unity
                 return null;
 
             var roomId = RoomData.Id;
-            var manager = ManiaMapManager.Current;
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-            foreach (var neighbor in manager.GetAdjacentRooms(roomId))
+            foreach (var neighbor in ManiaMapManager.Current.GetAdjacentRooms(roomId))
             {
-                var connection = manager.Layout.GetDoorConnection(roomId, neighbor);
+                var connection = Layout.GetDoorConnection(roomId, neighbor);
 
                 if (connection.ContainsDoor(roomId, position, Direction))
                     return connection;

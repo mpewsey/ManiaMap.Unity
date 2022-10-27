@@ -75,9 +75,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomData.Id, roomData);
             var layoutState = new LayoutState(layout);
-            var roomState = layoutState.RoomStates[roomData.Id];
 
-            room.Initialize(roomData, roomState, RoomPositionOption.Layout);
+            room.Initialize(roomData.Id, layout, layoutState, RoomPositionOption.Layout);
             Assert.IsTrue(room.IsInitialized);
         }
 

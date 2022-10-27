@@ -60,6 +60,8 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsInitialized { get; private set; }
 
+        public Layout Layout { get; private set; }
+        public LayoutState LayoutState { get; private set; }
         public ManiaMap.Room RoomData { get; private set; }
         public RoomState RoomState { get; private set; }
 
@@ -79,20 +81,6 @@ namespace MPewsey.ManiaMap.Unity
         private void Update()
         {
             SetCellVisibility();
-        }
-
-        /// <summary>
-        /// Sets the visibility of the cell based on the player's current position.
-        /// </summary>
-        private void SetCellVisibility()
-        {
-            var player = ManiaMapManager.Current.GetPlayer();
-
-            if (player != null)
-            {
-                var index = GetCellIndex(player.transform.position);
-                RoomState?.SetCellVisibility(index.x, index.y, true);
-            }
         }
 
         /// <summary>
@@ -118,7 +106,7 @@ namespace MPewsey.ManiaMap.Unity
                 }
 
                 var manager = ManiaMapManager.Current;
-                room.Initialize(manager.GetRoom(id), manager.GetRoomState(id), position);
+                room.Initialize(id, manager.Layout, manager.LayoutState, position);
             };
 
             return handle;
@@ -135,20 +123,23 @@ namespace MPewsey.ManiaMap.Unity
         {
             var manager = ManiaMapManager.Current;
             var room = Instantiate(prefab, parent).GetComponent<Room>();
-            room.Initialize(manager.GetRoom(id), manager.GetRoomState(id), position);
+            room.Initialize(id, manager.Layout, manager.LayoutState, position);
             return room;
         }
 
         /// <summary>
         /// Initializes the room and its registered children.
         /// </summary>
-        /// <param name="room">The room data.</param>
-        /// <param name="roomState">The room state.</param>
+        /// <param name="id">The room ID.</param>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Initialize(ManiaMap.Room room, RoomState roomState, RoomPositionOption position)
+        public void Initialize(Uid id, Layout layout, LayoutState layoutState, RoomPositionOption position)
         {
-            RoomData = room;
-            RoomState = roomState;
+            Layout = layout;
+            LayoutState = layoutState;
+            RoomData = layout.Rooms[id];
+            RoomState = layoutState.RoomStates[id];
             IsInitialized = true;
 
             switch (position)
@@ -160,6 +151,20 @@ namespace MPewsey.ManiaMap.Unity
                     break;
                 default:
                     throw new System.ArgumentException($"Unhandled room position option: {position}.");
+            }
+        }
+
+        /// <summary>
+        /// Sets the visibility of the cell based on the player's current position.
+        /// </summary>
+        private void SetCellVisibility()
+        {
+            var player = ManiaMapManager.Current.GetPlayer();
+
+            if (player != null)
+            {
+                var index = GetCellIndex(player.transform.position);
+                RoomState?.SetCellVisibility(index.x, index.y, true);
             }
         }
 
