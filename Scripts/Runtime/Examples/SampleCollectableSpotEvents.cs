@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Examples
@@ -8,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
     public class SampleCollectableSpotEvents : MonoBehaviour
     {
         public CollectableSpot CollectableSpot { get; private set; }
-        
+
         private void Awake()
         {
             CollectableSpot = GetComponent<CollectableSpot>();

@@ -31,16 +31,40 @@ namespace MPewsey.ManiaMap.Unity.Examples
 
         private void Start()
         {
-            CreateLayers();
+            CreateLayers(Seed);
+        }
+
+        private void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                CreateLayers();
+            }
         }
 
         /// <summary>
-        /// Runs the pipeline and creates the map.
+        /// Runs the pipeline and creates a map.
         /// </summary>
         public void CreateLayers()
         {
-            Pipeline.SetSeed(Seed);
+            CreateLayers(Random.Range(1, int.MaxValue));
+        }
+
+        /// <summary>
+        /// Runs the pipeline and creates a map for the specified seed.
+        /// </summary>
+        /// <param name="seed">The random seed.</param>
+        public void CreateLayers(int seed)
+        {
+            Pipeline.SetSeed(seed);
             var results = Pipeline.Generate();
+
+            if (!results.Success)
+            {
+                Debug.LogError("Failed to generate layout.");
+                return;
+            }
+
             var layout = (Layout)results.Outputs["Layout"];
             var layers = LayoutMap.CreateLayers(layout);
             layers.ForEach(x => x.transform.localPosition = new Vector3(0, 0, x.Z));
