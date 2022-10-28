@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The RoomTemplate editor.
+    /// </summary>
     [CustomEditor(typeof(RoomTemplate))]
     public class RoomTemplateEditor : UnityEditor.Editor
     {

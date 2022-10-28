@@ -1,0 +1,16 @@
+{
+    "name": "MPewsey.ManiaMap.Unity.Examples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8ab10455655f7f641be4a800d5eac73d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
