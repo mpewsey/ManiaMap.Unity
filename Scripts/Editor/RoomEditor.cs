@@ -79,7 +79,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var room = GetRoom();
             room.AutoAssign();
             EditorUtility.SetDirty(room);
-            Debug.Log("<color=#00FF00><b>Room updated.</b></color>");
+            Log.Success("Room updated.");
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 AssetDatabase.SaveAssetIfDirty(asset);
             }
 
-            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
+            Log.Success($"Saved room template to {path}.");
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             AssetDatabase.Refresh();
-            Debug.Log($"<color=#00FF00><b>Saved rooms.</b></color>");
+            Log.Success("Saved rooms.");
         }
 
         /// <summary>
