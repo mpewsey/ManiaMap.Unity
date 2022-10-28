@@ -38,11 +38,11 @@ var annotated_dup =
             [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ]
           ] ],
           [ "Examples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples.html", [
-            [ "CameraController", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html", null ],
+            [ "CameraController", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller" ],
             [ "LayoutMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example" ],
             [ "LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example" ],
-            [ "SampleCollectableSpotEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html", null ],
-            [ "SampleDoorEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html", null ],
+            [ "SampleCollectableSpotEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events" ],
+            [ "SampleDoorEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events" ],
             [ "SampleGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator" ]
           ] ],
           [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions.html", [
@@ -80,7 +80,7 @@ var annotated_dup =
           [ "LayoutIdInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_id_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_id_input" ],
           [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node" ],
           [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
-          [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", null ],
+          [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings" ],
           [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input" ],
           [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
           [ "RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database" ],

@@ -104,28 +104,28 @@ $(document).ready(function(){initNavTree('_room_template_editor_8cs_source.html'
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    [CustomEditor(typeof(RoomTemplate))]</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">    7</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">RoomTemplateEditor</a> : UnityEditor.Editor</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInspectorGUI()</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            GUI.enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            serializedObject.Update();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            var prop = serializedObject.GetIterator();</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            var enterChildren = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">while</span> (prop.NextVisible(enterChildren))</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                EditorGUILayout.PropertyField(prop, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                enterChildren = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            }</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            GUI.enabled = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            serializedObject.ApplyModifiedProperties();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_room_template_editor_8cs_source.html#l00007">RoomTemplateEditor.cs:8</a></div></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [CustomEditor(typeof(RoomTemplate))]</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">   10</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">RoomTemplateEditor</a> : UnityEditor.Editor</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInspectorGUI()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            GUI.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            serializedObject.Update();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            var prop = serializedObject.GetIterator();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            var enterChildren = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">while</span> (prop.NextVisible(enterChildren))</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                EditorGUILayout.PropertyField(prop, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                enterChildren = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            GUI.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            serializedObject.ApplyModifiedProperties();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html">MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor</a></div><div class="ttdoc">The RoomTemplate editor.</div><div class="ttdef"><b>Definition:</b> <a href="_room_template_editor_8cs_source.html#l00010">RoomTemplateEditor.cs:11</a></div></div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div><div class="ttdoc">Contains editor customizations.</div><div class="ttdef"><b>Definition:</b> <a href="_editor_2_____docs_____8cs_source.html#l00004">__Docs__.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

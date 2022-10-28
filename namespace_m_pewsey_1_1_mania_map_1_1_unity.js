@@ -29,7 +29,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "LayoutIdInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_id_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_id_input" ],
     [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node" ],
     [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
-    [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", null ],
+    [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings" ],
     [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_random_seed_input" ],
     [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
     [ "RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database" ],

@@ -6,7 +6,8 @@ var searchData=
   ['pipeline_3',['Pipeline',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html#a8e87c92cf54cc25407762dd4ff950d20',1,'MPewsey.ManiaMap.Unity.Examples.LayoutMapExample.Pipeline()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html#a5ec180159f97afdbdef74f1d67742cc4',1,'MPewsey.ManiaMap.Unity.Examples.LayoutTilemapExample.Pipeline()']]],
   ['pixelsperunit_4',['PixelsPerUnit',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#a59ec658ae816b2996447f47b1be52ebc',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
   ['plane_5',['Plane',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af5d70b74be4ab48c0a638af19dc40cac',1,'MPewsey::ManiaMap::Unity::Room']]],
-  ['plotpadding_6',['PlotPadding',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#ad2da850965569b65eaa449d2180096b0',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],
-  ['plotscrollposition_7',['PlotScrollPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ad083eac893c3b0e21c3e3d1fae1808d9',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['position_8',['Position',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a720ed2806c262b8d34c109872c1b3578',1,'MPewsey::ManiaMap::Unity::LayoutNode']]]
+  ['playertag_6',['PlayerTag',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html#a52c29f41d7aac979022357ab1db056c3',1,'MPewsey::ManiaMap::Unity::ManiaMapSettings']]],
+  ['plotpadding_7',['PlotPadding',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#ad2da850965569b65eaa449d2180096b0',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],
+  ['plotscrollposition_8',['PlotScrollPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ad083eac893c3b0e21c3e3d1fae1808d9',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['position_9',['Position',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a720ed2806c262b8d34c109872c1b3578',1,'MPewsey::ManiaMap::Unity::LayoutNode']]]
 ];

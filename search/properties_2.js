@@ -1,16 +1,18 @@
 var searchData=
 [
-  ['cell_0',['Cell',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a2a1a0ecbc689d571e89a505530102294',1,'MPewsey::ManiaMap::Unity::CellChild']]],
-  ['cellcontainer_1',['CellContainer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a4dbc46d061b7be0685762f1dc243970f',1,'MPewsey::ManiaMap::Unity::Room']]],
-  ['cellplane_2',['CellPlane',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a9f8d8ae9e61d4aa611700f1ce73082cf',1,'MPewsey::ManiaMap::Unity::Room']]],
-  ['cellsize_3',['CellSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html#a4f7c693dc1a94e5e1bb47a145da4764d',1,'MPewsey.ManiaMap.Unity.Examples.SampleGenerator.CellSize()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad328a3c58e5ac97ef98b57f9cfca2ad7',1,'MPewsey.ManiaMap.Unity.Room.CellSize()']]],
-  ['code_4',['Code',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a02ed06947fb25b2a848fe4a254eddd73',1,'MPewsey::ManiaMap::Unity::Door']]],
-  ['collectable_5',['Collectable',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html#a2e32e4655d1d3ac01c937499014835d9',1,'MPewsey::ManiaMap::Unity::CollectableEntry']]],
-  ['collectablegroups_6',['CollectableGroups',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html#a206a6f31bab327ced54cd6ab3dcbc5df',1,'MPewsey::ManiaMap::Unity::CollectableGroupsInput']]],
-  ['collectableid_7',['CollectableId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a01678a384f44dd6b3935478edb6e7f5c',1,'MPewsey::ManiaMap::Unity::CollectableSpot']]],
-  ['collectables_8',['Collectables',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html#abdcb0543a34a2c7a90356cd49a4243af',1,'MPewsey::ManiaMap::Unity::CollectableGroup']]],
-  ['color_9',['Color',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html#a298e99b7fb76954c371cd0b272e55485',1,'MPewsey.ManiaMap.Unity.Drawing.MapTileHash.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a339cc9c5a3f8685ab966ead6599c115f',1,'MPewsey.ManiaMap.Unity.LayoutEdge.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a212ed203ffc1f927be873a75250f5c04',1,'MPewsey.ManiaMap.Unity.LayoutNode.Color()']]],
-  ['connection_10',['Connection',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a96a8b04cef30caee25954fe2e179485f',1,'MPewsey::ManiaMap::Unity::Door']]],
-  ['createnodeposition_11',['CreateNodePosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a2a53060985f445c81d08ff9efc40f5c3',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['current_12',['Current',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afd45767f0c514406a10cca09e9e3f97b',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]]
+  ['camera_0',['Camera',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html#a6f53114629209a43797eb7fdcde8fb2f',1,'MPewsey::ManiaMap::Unity::Examples::CameraController']]],
+  ['cell_1',['Cell',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a2a1a0ecbc689d571e89a505530102294',1,'MPewsey::ManiaMap::Unity::CellChild']]],
+  ['cellcontainer_2',['CellContainer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a4dbc46d061b7be0685762f1dc243970f',1,'MPewsey::ManiaMap::Unity::Room']]],
+  ['cellplane_3',['CellPlane',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a9f8d8ae9e61d4aa611700f1ce73082cf',1,'MPewsey::ManiaMap::Unity::Room']]],
+  ['cellsize_4',['CellSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html#a4f7c693dc1a94e5e1bb47a145da4764d',1,'MPewsey.ManiaMap.Unity.Examples.SampleGenerator.CellSize()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad328a3c58e5ac97ef98b57f9cfca2ad7',1,'MPewsey.ManiaMap.Unity.Room.CellSize()']]],
+  ['code_5',['Code',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a02ed06947fb25b2a848fe4a254eddd73',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['collectable_6',['Collectable',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html#a2e32e4655d1d3ac01c937499014835d9',1,'MPewsey::ManiaMap::Unity::CollectableEntry']]],
+  ['collectablegroups_7',['CollectableGroups',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_groups_input.html#a206a6f31bab327ced54cd6ab3dcbc5df',1,'MPewsey::ManiaMap::Unity::CollectableGroupsInput']]],
+  ['collectableid_8',['CollectableId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a01678a384f44dd6b3935478edb6e7f5c',1,'MPewsey::ManiaMap::Unity::CollectableSpot']]],
+  ['collectables_9',['Collectables',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html#abdcb0543a34a2c7a90356cd49a4243af',1,'MPewsey::ManiaMap::Unity::CollectableGroup']]],
+  ['collectablespot_10',['CollectableSpot',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html#a86201bbad3fe96f036793e1c681d2a61',1,'MPewsey::ManiaMap::Unity::Examples::SampleCollectableSpotEvents']]],
+  ['color_11',['Color',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html#a298e99b7fb76954c371cd0b272e55485',1,'MPewsey.ManiaMap.Unity.Drawing.MapTileHash.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a339cc9c5a3f8685ab966ead6599c115f',1,'MPewsey.ManiaMap.Unity.LayoutEdge.Color()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a212ed203ffc1f927be873a75250f5c04',1,'MPewsey.ManiaMap.Unity.LayoutNode.Color()']]],
+  ['connection_12',['Connection',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a96a8b04cef30caee25954fe2e179485f',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['createnodeposition_13',['CreateNodePosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a2a53060985f445c81d08ff9efc40f5c3',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['current_14',['Current',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afd45767f0c514406a10cca09e9e3f97b',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]]
 ];
