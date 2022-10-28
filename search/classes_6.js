@@ -21,5 +21,6 @@ var searchData=
   ['layouttilemap_18',['LayoutTilemap',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
   ['layouttilemapeditor_19',['LayoutTilemapEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html',1,'MPewsey::ManiaMap::Unity::Drawing::Editor']]],
   ['layouttilemapexample_20',['LayoutTilemapExample',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
-  ['layouttilemaplayer_21',['LayoutTilemapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]]
+  ['layouttilemaplayer_21',['LayoutTilemapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
+  ['log_22',['Log',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
 ];

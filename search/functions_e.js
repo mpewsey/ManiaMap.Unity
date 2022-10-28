@@ -23,5 +23,6 @@ var searchData=
   ['showareacontextmenu_20',['ShowAreaContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a4dc1da96d3b1f6a7901ba69a7fc78a55',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
   ['shownodecontextmenu_21',['ShowNodeContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae69888b5f592c037b69e0b2dad64db05',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
   ['showwindow_22',['ShowWindow',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#af72384535affd16c3488cb1191223678',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['swizzle_23',['Swizzle',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad5ff43e1bc3b604061de1f53bbec50a6',1,'MPewsey::ManiaMap::Unity::Room']]]
+  ['success_23',['Success',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html#a6fe7988ffaf2cf59131c325f5151a04c',1,'MPewsey::ManiaMap::Unity::Editor::Log']]],
+  ['swizzle_24',['Swizzle',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ad5ff43e1bc3b604061de1f53bbec50a6',1,'MPewsey::ManiaMap::Unity::Room']]]
 ];

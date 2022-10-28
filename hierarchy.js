@@ -41,6 +41,8 @@ var hierarchy =
     ] ],
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", null ],
+    [ "MPewsey.ManiaMap.Unity.Editor.Log", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html", null ],
+    [ "MPewsey.ManiaMap.Unity.Editor.ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html", null ],
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", null ],
       [ "MPewsey.ManiaMap.Unity.CellChild", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html", [
