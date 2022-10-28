@@ -2,14 +2,24 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
 {
+    /// <summary>
+    /// Contains global settings used by Mania Map components.
+    /// </summary>
     public class ManiaMapSettings : ScriptableObject
     {
         [SerializeField]
         private string _playerTag = "Player";
+        /// <summary>
+        /// The tag assigned to the player.
+        /// </summary>
         public string PlayerTag { get => _playerTag; set => _playerTag = value; }
 
         [SerializeField]
         private int _maxClusterDepth = 1;
+        /// <summary>
+        /// The maximum cluster depth used to calculate room clusters for a layout
+        /// when it it assigned to the manager.
+        /// </summary>
         public int MaxClusterDepth
         {
             get => _maxClusterDepth;
@@ -21,11 +31,18 @@ namespace MPewsey.ManiaMap.Unity
             MaxClusterDepth = MaxClusterDepth;
         }
 
+        /// <summary>
+        /// Loads the settings from the resources folder. If they do not exist, returns null.
+        /// </summary>
         public static ManiaMapSettings LoadSettings()
         {
             return Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
         }
 
+        /// <summary>
+        /// Attempts to load the settings from teh resources folder. If they do not exist,
+        /// returns a new settings object.
+        /// </summary>
         public static ManiaMapSettings GetSettings()
         {
             var settings = LoadSettings();
