@@ -86,7 +86,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var spot = GetCollectableSpot();
             spot.AutoAssign();
             EditorUtility.SetDirty(spot);
-            Debug.Log($"<color=#00FF00><b>Auto assigned collectable spot.</b></color>");
+            Log.Success("Auto assigned collectable spot");
         }
 
         /// <summary>

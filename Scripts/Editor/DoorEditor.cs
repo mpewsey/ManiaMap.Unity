@@ -103,7 +103,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var door = GetDoor();
             door.AutoAssign();
             EditorUtility.SetDirty(door);
-            Debug.Log($"<color=#00FF00><b>Auto assigned door.</b></color>");
+            Log.Success($"Auto assigned door.");
         }
 
         /// <summary>

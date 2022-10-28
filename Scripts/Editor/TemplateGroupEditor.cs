@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             AssetDatabase.Refresh();
-            Debug.Log($"<color=#00FF00><b>Saved sample room templates.</b></color>");
+            Log.Success("Saved sample room templates.");
         }
 
         /// <summary>
@@ -50,20 +50,20 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             return new List<ManiaMap.RoomTemplate>()
             {
-                ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
-                ManiaMap.Samples.TemplateLibrary.Squares.Square2x2Template(),
-                ManiaMap.Samples.TemplateLibrary.Squares.Square1x1Template(),
-                ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x2Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x4Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x3Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x3Template(),
-                ManiaMap.Samples.TemplateLibrary.Miscellaneous.RingTemplate(),
-                ManiaMap.Samples.TemplateLibrary.Miscellaneous.LTemplate(),
-                ManiaMap.Samples.TemplateLibrary.Miscellaneous.SquareTemplate(),
-                ManiaMap.Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
-                ManiaMap.Samples.TemplateLibrary.Miscellaneous.PlusTemplate(),
+                Samples.TemplateLibrary.Angles.Angle3x4(),
+                Samples.TemplateLibrary.Squares.Square2x2Template(),
+                Samples.TemplateLibrary.Squares.Square1x1Template(),
+                Samples.TemplateLibrary.Squares.Square3x3Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle1x2Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle1x4Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle2x3Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle1x3Template(),
+                Samples.TemplateLibrary.Miscellaneous.RingTemplate(),
+                Samples.TemplateLibrary.Miscellaneous.LTemplate(),
+                Samples.TemplateLibrary.Miscellaneous.SquareTemplate(),
+                Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
+                Samples.TemplateLibrary.Miscellaneous.PlusTemplate(),
             };
         }
     }
