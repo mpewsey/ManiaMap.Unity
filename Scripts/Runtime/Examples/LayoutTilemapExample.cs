@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
 
         private void Start()
         {
-            CreateLayers();
+            CreateLayers(Seed);
         }
 
         private void Update()

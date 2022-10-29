@@ -1,5 +1,3 @@
-using MPewsey.ManiaMap;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -54,7 +52,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             if (FeatureFlags.ContainsKey(name))
                 return;
-            
+
             if (FeatureFlags.Count >= MaxFeatureCount)
                 throw new System.ArgumentException($"Feature count exceeded. Cannot add feature: {name}.");
 

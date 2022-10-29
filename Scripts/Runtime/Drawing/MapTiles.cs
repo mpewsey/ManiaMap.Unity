@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -119,7 +118,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private Dictionary<string, Texture2D> TileDictionary { get; } = new Dictionary<string, Texture2D>();
 
-        private void Awake()
+        private void OnEnable()
         {
             CreateTileDictionary();
         }
