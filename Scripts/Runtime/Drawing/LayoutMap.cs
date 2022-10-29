@@ -278,8 +278,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         TextureUtility.DrawImage(texture, eastTile, point);
                         TextureUtility.DrawImage(texture, topTile, point);
                         TextureUtility.DrawImage(texture, bottomTile, point);
+
+                        DrawFeatureTiles(texture, cell, point);
                     }
                 }
+            }
+        }
+
+        private void DrawFeatureTiles(Texture2D texture, ManiaMap.Cell cell, Vector2Int point)
+        {
+            foreach (var tileName in cell.Features)
+            {
+                var tile = MapTiles.GetTile(tileName);
+                TextureUtility.DrawImage(texture, tile, point);
             }
         }
 

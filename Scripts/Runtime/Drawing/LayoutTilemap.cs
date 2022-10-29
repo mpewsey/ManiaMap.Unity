@@ -190,13 +190,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var east = cells.GetOrDefault(i, j + 1);
 
                         // Accumulate map tile types
-                        long flags = 0;
-                        flags |= GetTileType(room, cell, null, position, DoorDirection.Top);
-                        flags |= GetTileType(room, cell, null, position, DoorDirection.Bottom);
-                        flags |= GetTileType(room, cell, north, position, DoorDirection.North);
-                        flags |= GetTileType(room, cell, south, position, DoorDirection.South);
-                        flags |= GetTileType(room, cell, west, position, DoorDirection.West);
-                        flags |= GetTileType(room, cell, east, position, DoorDirection.East);
+                        var flags = GetFeatureFlags(cell);
+                        flags |= GetTileFlag(room, cell, null, position, DoorDirection.Top);
+                        flags |= GetTileFlag(room, cell, null, position, DoorDirection.Bottom);
+                        flags |= GetTileFlag(room, cell, north, position, DoorDirection.North);
+                        flags |= GetTileFlag(room, cell, south, position, DoorDirection.South);
+                        flags |= GetTileFlag(room, cell, west, position, DoorDirection.West);
+                        flags |= GetTileFlag(room, cell, east, position, DoorDirection.East);
 
                         // Set the map tile.
                         var tile = MapTilePool.GetTile(flags, ColorUtility.ConvertColor(room.Color));
@@ -206,15 +206,27 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        private long GetFeatureFlags(ManiaMap.Cell cell)
+        {
+            long flags = 0;
+
+            foreach (var tileName in cell.Features)
+            {
+                flags |= MapTilePool.GetFeatureFlag(tileName);
+            }
+
+            return flags;
+        }
+
         /// <summary>
-        /// Returns the tile type for the cell connection.
+        /// Returns the tile flag for the cell connection.
         /// </summary>
         /// <param name="room">The room.</param>
         /// <param name="cell">The cell.</param>
         /// <param name="neighbor">The neighboring cell.</param>
         /// <param name="position">The cell position.</param>
         /// <param name="direction">The door direction.</param>
-        private long GetTileType(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
+        private long GetTileFlag(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTilePool.GetFeatureFlag(MapTileType.GetDoorTileType(direction));
