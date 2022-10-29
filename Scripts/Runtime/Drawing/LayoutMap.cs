@@ -190,7 +190,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private void DrawMap(Texture2D texture, int z)
         {
             TextureUtility.Fill(texture, BackgroundColor);
-            TextureUtility.TileImage(texture, MapTiles.GetTile(MapTileTypes.Grid));
+            TextureUtility.TileImage(texture, MapTiles.GetTile(MapTileType.Grid));
             DrawMapTiles(texture, z);
             texture.Apply();
         }
@@ -295,10 +295,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private Texture2D GetTile(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
-                return MapTiles.GetDoorTile(direction);
+                return MapTiles.GetTile(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
-                return MapTiles.GetWallTile(direction);
+                return MapTiles.GetTile(MapTileType.GetWallTileType(direction));
 
             return null;
         }

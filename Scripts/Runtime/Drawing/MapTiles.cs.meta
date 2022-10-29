@@ -15,6 +15,7 @@ MonoImporter:
   - _topDoor: {fileID: 2800000, guid: 76d7ad7689a56d6468164d9420e0a493, type: 3}
   - _bottomDoor: {fileID: 2800000, guid: 217922ec29d9da549b36d2f7996221a3, type: 3}
   - _grid: {fileID: 2800000, guid: bb1436dff425c4244ba87695dece5e2c, type: 3}
+  - _savePoint: {fileID: 2800000, guid: cbc46847c9ff72b4a924fce533f39dea, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

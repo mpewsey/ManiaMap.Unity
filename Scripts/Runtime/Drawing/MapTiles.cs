@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
@@ -97,7 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Texture2D BottomDoor { get => _bottomDoor; set => _bottomDoor = value; }
 
-        [Header("Grid")]
+        [Header("Optional")]
 
         [SerializeField]
         private Texture2D _grid;
@@ -106,144 +107,48 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Texture2D Grid { get => _grid; set => _grid = value; }
 
+        [SerializeField]
+        private Texture2D _savePoint;
         /// <summary>
-        /// Returns the tile for the tile type.
+        /// The tile used for save point features (optional).
         /// </summary>
-        /// <param name="tileType">The tile type.</param>
-        /// <exception cref="ArgumentException">Raised if the tile type is not handled.</exception>
-        public Texture2D GetTile(MapTileTypes tileType)
-        {
-            switch (tileType)
-            {
-                case MapTileTypes.None:
-                    return null;
-                case MapTileTypes.Grid:
-                    return Grid;
-                case MapTileTypes.NorthDoor:
-                    return NorthDoor;
-                case MapTileTypes.SouthDoor:
-                    return SouthDoor;
-                case MapTileTypes.EastDoor:
-                    return EastDoor;
-                case MapTileTypes.WestDoor:
-                    return WestDoor;
-                case MapTileTypes.TopDoor:
-                    return TopDoor;
-                case MapTileTypes.BottomDoor:
-                    return BottomDoor;
-                case MapTileTypes.NorthWall:
-                    return NorthWall;
-                case MapTileTypes.SouthWall:
-                    return SouthWall;
-                case MapTileTypes.EastWall:
-                    return EastWall;
-                case MapTileTypes.WestWall:
-                    return WestWall;
-                default:
-                    throw new ArgumentException($"Unhandled tile type: {tileType}.");
-            }
-        }
+        public Texture2D SavePoint { get => _grid; set => _grid = value; }
 
         /// <summary>
-        /// Returns the door tile for the specified direction.
+        /// A dictionary of referenced tiles.
         /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        public Texture2D GetDoorTile(DoorDirection direction)
+        private Dictionary<string, Texture2D> TileDictionary { get; } = new Dictionary<string, Texture2D>();
+
+        private void Awake()
         {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return NorthDoor;
-                case DoorDirection.South:
-                    return SouthDoor;
-                case DoorDirection.East:
-                    return EastDoor;
-                case DoorDirection.West:
-                    return WestDoor;
-                case DoorDirection.Top:
-                    return TopDoor;
-                case DoorDirection.Bottom:
-                    return BottomDoor;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
+            CreateTileDictionary();
         }
 
-        /// <summary>
-        /// Returns the wall tile for the specified direction.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        public Texture2D GetWallTile(DoorDirection direction)
+        public void CreateTileDictionary()
         {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return NorthWall;
-                case DoorDirection.South:
-                    return SouthWall;
-                case DoorDirection.East:
-                    return EastWall;
-                case DoorDirection.West:
-                    return WestWall;
-                case DoorDirection.Top:
-                case DoorDirection.Bottom:
-                    return null;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
+            TileDictionary.Clear();
+            TileDictionary.EnsureCapacity(12);
+            TileDictionary.Add(MapTileType.NorthDoor, NorthDoor);
+            TileDictionary.Add(MapTileType.SouthDoor, SouthDoor);
+            TileDictionary.Add(MapTileType.EastDoor, EastDoor);
+            TileDictionary.Add(MapTileType.WestDoor, WestDoor);
+            TileDictionary.Add(MapTileType.TopDoor, TopDoor);
+            TileDictionary.Add(MapTileType.BottomDoor, BottomDoor);
+            TileDictionary.Add(MapTileType.NorthWall, NorthWall);
+            TileDictionary.Add(MapTileType.SouthWall, SouthWall);
+            TileDictionary.Add(MapTileType.EastWall, EastWall);
+            TileDictionary.Add(MapTileType.WestWall, WestWall);
+            TileDictionary.Add(MapTileType.Grid, Grid);
+            TileDictionary.Add(MapTileType.SavePoint, SavePoint);
         }
 
-        /// <summary>
-        /// Returns the door tile type corresponding to the direction.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        public static MapTileTypes GetDoorTileType(DoorDirection direction)
+        public Texture2D GetTile(string name)
         {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return MapTileTypes.NorthDoor;
-                case DoorDirection.South:
-                    return MapTileTypes.SouthDoor;
-                case DoorDirection.East:
-                    return MapTileTypes.EastDoor;
-                case DoorDirection.West:
-                    return MapTileTypes.WestDoor;
-                case DoorDirection.Top:
-                    return MapTileTypes.TopDoor;
-                case DoorDirection.Bottom:
-                    return MapTileTypes.BottomDoor;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
-        }
-
-        /// <summary>
-        /// Returns the wall tile type corresponding to the direction.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <exception cref="ArgumentException">Raised if the direction is not handled.</exception>
-        public static MapTileTypes GetWallTileType(DoorDirection direction)
-        {
-            switch (direction)
-            {
-                case DoorDirection.North:
-                    return MapTileTypes.NorthWall;
-                case DoorDirection.South:
-                    return MapTileTypes.SouthWall;
-                case DoorDirection.East:
-                    return MapTileTypes.EastWall;
-                case DoorDirection.West:
-                    return MapTileTypes.WestWall;
-                case DoorDirection.Top:
-                case DoorDirection.Bottom:
-                    return MapTileTypes.None;
-                default:
-                    throw new ArgumentException($"Unhandled direction: {direction}.");
-            }
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+            if (TileDictionary.TryGetValue(name, out Texture2D tile))
+                return tile;
+            return null;
         }
     }
 }

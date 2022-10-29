@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemap>(Assets.LayoutTilemapPath);
-            var layers = layoutTilemap.CreateLayers(layout);
+            var layers = layoutTilemap.CreateLayers(layout, null);
             Assert.Greater(layers.Count, 0);
         }
     }

@@ -10,9 +10,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     public struct MapTileHash : IEquatable<MapTileHash>
     {
         /// <summary>
-        /// The associated tile types.
+        /// The feature flags.
         /// </summary>
-        public MapTileTypes Types { get; }
+        public long Flags { get; }
 
         /// <summary>
         /// The tile color.
@@ -22,11 +22,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// Initializes a new object.
         /// </summary>
-        /// <param name="types">The associated map tile types.</param>
+        /// <param name="flags">The feature flags.</param>
         /// <param name="color">The tile color.</param>
-        public MapTileHash(MapTileTypes types, Color32 color)
+        public MapTileHash(long flags, Color32 color)
         {
-            Types = types;
+            Flags = flags;
             Color = color;
         }
 
@@ -37,13 +37,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         public bool Equals(MapTileHash other)
         {
-            return Types == other.Types &&
+            return Flags == other.Flags &&
                    EqualityComparer<Color32>.Default.Equals(Color, other.Color);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Types, Color);
+            return HashCode.Combine(Flags, Color);
         }
 
         public static bool operator ==(MapTileHash left, MapTileHash right)

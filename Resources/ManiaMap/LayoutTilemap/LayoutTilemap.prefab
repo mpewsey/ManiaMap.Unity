@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8213285484563935103}
+  - component: {fileID: 3131876561497519510}
   - component: {fileID: 5055850530984687617}
   m_Layer: 0
   m_Name: LayoutTilemap
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3131876561497519510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164641403171980772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f7668ce6c5f16489c25c04f7a39079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapTiles: {fileID: 11400000, guid: 2a7488c9f2fbc7f4fbc16d2cf79e293b, type: 2}
 --- !u!114 &5055850530984687617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,7 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 2476830976234359429}
-  _mapTiles: {fileID: 11400000, guid: 2a7488c9f2fbc7f4fbc16d2cf79e293b, type: 2}
 --- !u!1 &8215672663883190826
 GameObject:
   m_ObjectHideFlags: 0
