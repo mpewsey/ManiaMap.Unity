@@ -33,6 +33,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; }
 
+        /// <summary>
+        /// The attached map tile pool component.
+        /// </summary>
         public MapTilePool MapTilePool { get; private set; }
 
         private void Awake()
@@ -86,12 +89,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         }
 
         /// <summary>
-        /// Creates layer tilemaps for the current layout and returns a list of layers.
+        /// Creates layer tilemaps for the current layout.
         /// </summary>
-        public List<LayoutTilemapLayer> CreateLayers()
+        public void CreateLayers()
         {
             var manager = ManiaMapManager.Current;
-            return CreateLayers(manager.Layout, manager.LayoutState);
+            CreateLayers(manager.Layout, manager.LayoutState);
         }
 
         /// <summary>
@@ -99,50 +102,44 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
-        public List<LayoutTilemapLayer> CreateLayers(Layout layout, LayoutState state)
+        public void CreateLayers(Layout layout, LayoutState state)
         {
             Initialize(layout, state);
-            var layers = CreateLayerComponents();
+            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            EnsureCapacity(zs.Count);
 
-            foreach (var layer in layers)
+            // Draw the layers.
+            int i = 0;
+            var layers = GetComponentsInChildren<LayoutTilemapLayer>();
+
+            foreach (var z in zs.OrderBy(x => x))
             {
+                var layer = layers[i++];
+                layer.Initialize(z);
                 DrawMap(layer.Tilemap, layer.Z);
             }
-
-            return layers;
         }
 
         /// <summary>
-        /// Creates the layers required for the layout. Extra layers are destroyed.
+        /// Destroys or creates layers until the specified size is met.
         /// </summary>
-        private List<LayoutTilemapLayer> CreateLayerComponents()
+        /// <param name="capacity">The capacity.</param>
+        private void EnsureCapacity(int capacity)
         {
             CreateGrid();
-            var layers = Grid.GetComponentsInChildren<LayoutTilemapLayer>().ToList();
-            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            var container = Grid.transform;
 
             // Destroy extra layers.
-            for (int i = layers.Count - 1; i >= 0; i--)
+            while (container.childCount > capacity)
             {
-                var layer = layers[i];
-
-                if (!zs.Contains(layer.Z))
-                {
-                    Destroy(layer.gameObject);
-                    layers.RemoveAt(i);
-                }
+                Destroy(container.GetChild(container.childCount - 1).gameObject);
             }
 
             // Create missing layers.
-            foreach (var z in zs)
+            while (container.childCount < capacity)
             {
-                if (!layers.Any(x => x.Z == z))
-                {
-                    layers.Add(LayoutTilemapLayer.Create(this, z));
-                }
+                LayoutTilemapLayer.Create(this);
             }
-
-            return layers;
         }
 
         /// <summary>
@@ -206,6 +203,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Returns the feature flags for the cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
         private long GetFeatureFlags(ManiaMap.Cell cell)
         {
             long flags = 0;

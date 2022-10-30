@@ -4,16 +4,36 @@ using UnityEngine.Tilemaps;
 
 namespace MPewsey.ManiaMap.Unity.Drawing
 {
+    /// <summary>
+    /// A pool for creating and caching map tiles.
+    /// </summary>
     public class MapTilePool : MonoBehaviour
     {
+        /// <summary>
+        /// The maximum number of features.
+        /// </summary>
         private const int MaxFeatureCount = 64;
 
         [SerializeField]
         private MapTiles _mapTiles;
+        /// <summary>
+        /// The map tiles.
+        /// </summary>
         public MapTiles MapTiles { get => _mapTiles; set => _mapTiles = value; }
 
+        /// <summary>
+        /// A dictionary of feature flags by feature name.
+        /// </summary>
         private Dictionary<string, long> FeatureFlags { get; } = new Dictionary<string, long>();
+
+        /// <summary>
+        /// A dictionary of feature names by feature flag.
+        /// </summary>
         private Dictionary<long, string> FeatureNames { get; } = new Dictionary<long, string>();
+
+        /// <summary>
+        /// A dictionary of cached map tiles by hash.
+        /// </summary>
         private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
 
         private void Awake()
@@ -21,6 +41,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             AddDefaultFeatures();
         }
 
+        /// <summary>
+        /// Adds the default features to the pool.
+        /// </summary>
         private void AddDefaultFeatures()
         {
             AddFeature(MapTileType.Grid);
@@ -37,6 +60,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             AddFeature(MapTileType.SavePoint);
         }
 
+        /// <summary>
+        /// Clears the pool and resets the default features.
+        /// </summary>
         public void Clear()
         {
             Tiles.Clear();
@@ -45,6 +71,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             AddDefaultFeatures();
         }
 
+        /// <summary>
+        /// Clears the cached tiles from the pool.
+        /// </summary>
+        public void ClearTiles()
+        {
+            Tiles.Clear();
+        }
+
+        /// <summary>
+        /// Adds the feature to the pool if it doesn't already exist.
+        /// </summary>
+        /// <param name="name">The feature name.</param>
+        /// <exception cref="System.ArgumentException">Raised if the feature name is invalid or the feature count is exceeded.</exception>
         public void AddFeature(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -61,6 +100,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             FeatureNames.Add(flag, name);
         }
 
+        /// <summary>
+        /// Returns the feature flag corresponding to the name. Returns an empty flag
+        /// if the name does not exist or is null or whitespace.
+        /// </summary>
+        /// <param name="name">The feature name.</param>
         public long GetFeatureFlag(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -70,6 +114,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return 0;
         }
 
+        /// <summary>
+        /// Returns the feature name corresponding to the feature flag.
+        /// </summary>
+        /// <param name="flag">The feature flag.</param>
         public string GetFeatureName(long flag)
         {
             if (FeatureNames.TryGetValue(flag, out string name))
@@ -77,6 +125,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return null;
         }
 
+        /// <summary>
+        /// Returns the map tile from the pool with the combined features and color.
+        /// If the map tile does not already exist in the pool, creates it.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The tile background color.</param>
         public Tile GetTile(long flags, Color32 color)
         {
             var hash = new MapTileHash(flags, color);
@@ -90,6 +144,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return tile;
         }
 
+        /// <summary>
+        /// Returns a new map tile with the specified features.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The tile background color.</param>
         private Tile CreateTile(long flags, Color32 color)
         {
             var tile = ScriptableObject.CreateInstance<Tile>();
@@ -98,6 +157,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return tile;
         }
 
+        /// <summary>
+        /// Returns a new sprite for the specified texture.
+        /// </summary>
+        /// <param name="texture">The sprite texture.</param>
         private Sprite CreateSprite(Texture2D texture)
         {
             var pivot = new Vector2(0.5f, 0.5f);
@@ -107,6 +170,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return sprite;
         }
 
+        /// <summary>
+        /// Returns a new texture with the specified features.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The tile background color.</param>
         private Texture2D CreateTexture(long flags, Color32 color)
         {
             var texture = new Texture2D(MapTiles.TileSize.x + 2, MapTiles.TileSize.y + 2);
@@ -118,6 +186,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return texture;
         }
 
+        /// <summary>
+        /// Adds the map tiles for the specified tile flags to the texture.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="flags">The feature flags.</param>
         private void DrawMapTiles(Texture2D texture, long flags)
         {
             for (long i = flags; i != 0; i &= i - 1)

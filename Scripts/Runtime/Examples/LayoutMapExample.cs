@@ -66,8 +66,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
             }
 
             var layout = (Layout)results.Outputs["Layout"];
-            var layers = LayoutMap.CreateLayers(layout);
-            layers.ForEach(x => x.transform.localPosition = new Vector3(0, 0, x.Z));
+            LayoutMap.CreateLayers(layout, null);
         }
     }
 }

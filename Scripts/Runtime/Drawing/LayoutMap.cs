@@ -62,8 +62,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="path">The file path.</param>
         public void SaveLayerImages(string path)
         {
-            var layers = CreateLayers();
-            SaveLayerImages(path, layers);
+            CreateLayers();
+            SaveCurrentLayerImages(path);
         }
 
         /// <summary>
@@ -73,18 +73,22 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="path">The file path.</param>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
-        public void SaveLayerImages(string path, Layout layout, LayoutState state = null)
+        public void SaveLayerImages(string path, Layout layout, LayoutState state)
         {
-            var layers = CreateLayers(layout, state);
-            SaveLayerImages(path, layers);
+            CreateLayers(layout, state);
+            SaveCurrentLayerImages(path);
         }
 
-        public static void SaveLayerImages(string path, List<LayoutMapLayer> layers)
+        /// <summary>
+        /// Saves the currently rendered layer images.
+        /// </summary>
+        /// <param name="path">The file path.</param>
+        public void SaveCurrentLayerImages(string path)
         {
             var ext = Path.GetExtension(path);
             var name = Path.ChangeExtension(path, null);
 
-            foreach (var layer in layers)
+            foreach (var layer in GetComponentsInChildren<LayoutMapLayer>())
             {
                 var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, ext);
                 File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
@@ -96,7 +100,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
-        private void Instantiate(Layout layout, LayoutState state)
+        private void Initialize(Layout layout, LayoutState state)
         {
             Layout = layout;
             LayoutState = state;
@@ -104,64 +108,63 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             LayoutBounds = layout.GetBounds();
         }
 
-        public List<LayoutMapLayer> CreateLayers()
+        /// <summary>
+        /// Creates and draws the maps for the current layout.
+        /// </summary>
+        public void CreateLayers()
         {
             var manager = ManiaMapManager.Current;
-            return CreateLayers(manager.Layout, manager.LayoutState);
+            CreateLayers(manager.Layout, manager.LayoutState);
         }
 
         /// <summary>
-        /// Returns a list of map layers for the layout.
+        /// Creates and draws the maps for the layout.
         /// </summary>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
-        public List<LayoutMapLayer> CreateLayers(Layout layout, LayoutState state = null)
+        public void CreateLayers(Layout layout, LayoutState state)
         {
-            Instantiate(layout, state);
-            var layers = CreateLayerComponents();
+            Initialize(layout, state);
+            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            EnsureCapacity(zs.Count);
 
-            foreach (var layer in layers)
+            // Draw the layers.
+            int i = 0;
+            var size = GetTextureSize();
+            var layers = GetComponentsInChildren<LayoutMapLayer>();
+
+            foreach (var z in zs.OrderBy(x => x))
             {
+                var layer = layers[i++];
+                layer.Initialize(size, z);
                 DrawMap(layer.Sprite.texture, layer.Z);
             }
-
-            return layers;
         }
 
-        private List<LayoutMapLayer> CreateLayerComponents()
+        /// <summary>
+        /// Destroys or creates layers until the specified size is met.
+        /// </summary>
+        /// <param name="capacity">The capacity.</param>
+        private void EnsureCapacity(int capacity)
         {
             CreateLayersContainer();
-            var size = GetTextureSize();
-            var layers = LayersContainer.GetComponentsInChildren<LayoutMapLayer>().ToList();
-            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
 
-            // Destroy extra layers and resize existing.
-            for (int i = layers.Count - 1; i >= 0; i--)
+            // Destroy extra layers.
+            while (LayersContainer.childCount > capacity)
             {
-                var layer = layers[i];
-
-                if (zs.Contains(layer.Z))
-                {
-                    layer.Resize(size);
-                    continue;
-                }
-
-                Destroy(layer.gameObject);
-                layers.RemoveAt(i);
+                Destroy(LayersContainer.GetChild(LayersContainer.childCount - 1).gameObject);
             }
 
             // Create missing layers.
-            foreach (var z in zs)
+            while (LayersContainer.childCount < capacity)
             {
-                if (!layers.Any(x => x.Z == z))
-                {
-                    layers.Add(LayoutMapLayer.Create(this, size, z));
-                }
+                LayoutMapLayer.Create(this);
             }
-
-            return layers;
         }
 
+        /// <summary>
+        /// If the layers container does not already exist, creates it and assigned it to the object.
+        /// </summary>
         public void CreateLayersContainer()
         {
             if (LayersContainer == null)
@@ -285,6 +288,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             }
         }
 
+        /// <summary>
+        /// Draws the feature tiles for the cell onto the texture.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="point">The tile position within the texture.</param>
         private void DrawFeatureTiles(Texture2D texture, ManiaMap.Cell cell, Vector2Int point)
         {
             foreach (var tileName in cell.Features)

@@ -26,8 +26,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
-            var images = layoutMap.CreateLayers(layout);
-            Assert.Greater(images.Count, 0);
+            layoutMap.CreateLayers(layout, null);
+            Assert.Greater(layoutMap.LayersContainer.childCount, 0);
         }
 
         [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.png")]
@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");
-            layoutMap.SaveLayerImages(imagePath, layout);
+            layoutMap.SaveLayerImages(imagePath, layout, null);
         }
     }
 }

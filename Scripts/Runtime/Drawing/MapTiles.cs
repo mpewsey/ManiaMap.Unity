@@ -23,6 +23,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Vector2Int TileSize { get => _tileSize; set => _tileSize = value; }
 
+        [SerializeField]
+        private Texture2D _grid;
+        /// <summary>
+        /// The tile used for the LayoutMap grid (optional).
+        /// </summary>
+        public Texture2D Grid { get => _grid; set => _grid = value; }
+
         [Header("Walls")]
 
         [SerializeField]
@@ -97,14 +104,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Texture2D BottomDoor { get => _bottomDoor; set => _bottomDoor = value; }
 
-        [Header("Optional")]
-
-        [SerializeField]
-        private Texture2D _grid;
-        /// <summary>
-        /// The tile used for the LayoutMap grid (optional).
-        /// </summary>
-        public Texture2D Grid { get => _grid; set => _grid = value; }
+        [Header("Features")]
 
         [SerializeField]
         private Texture2D _savePoint;
@@ -112,6 +112,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The tile used for save point features (optional).
         /// </summary>
         public Texture2D SavePoint { get => _grid; set => _grid = value; }
+
+        [SerializeField]
+        private List<FeatureMapTile> _featureTiles = new List<FeatureMapTile>();
+        /// <summary>
+        /// A list of cell feature tiles.
+        /// </summary>
+        public List<FeatureMapTile> FeatureTiles { get => _featureTiles; set => _featureTiles = value; }
 
         /// <summary>
         /// A dictionary of referenced tiles.
@@ -126,7 +133,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void CreateTileDictionary()
         {
             TileDictionary.Clear();
-            TileDictionary.EnsureCapacity(12);
+            TileDictionary.EnsureCapacity(12 + FeatureTiles.Count);
             TileDictionary.Add(MapTileType.NorthDoor, NorthDoor);
             TileDictionary.Add(MapTileType.SouthDoor, SouthDoor);
             TileDictionary.Add(MapTileType.EastDoor, EastDoor);
@@ -139,6 +146,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             TileDictionary.Add(MapTileType.WestWall, WestWall);
             TileDictionary.Add(MapTileType.Grid, Grid);
             TileDictionary.Add(MapTileType.SavePoint, SavePoint);
+
+            foreach (var feature in FeatureTiles)
+            {
+                TileDictionary.Add(feature.Feature, feature.Tile);
+            }
         }
 
         public Texture2D GetTile(string name)
