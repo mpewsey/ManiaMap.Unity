@@ -14,6 +14,7 @@ var annotated_dup =
             [ "LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap" ],
             [ "LayoutTilemapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer" ],
             [ "MapTileHash", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash" ],
+            [ "MapTilePool", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool" ],
             [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles" ],
             [ "Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding" ],
             [ "TextureUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility" ]
@@ -68,6 +69,7 @@ var annotated_dup =
           [ "Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database" ],
           [ "DontDestroyOnLoad", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_dont_destroy_on_load.html", null ],
           [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
+          [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile" ],
           [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input" ],
           [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input" ],
           [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],

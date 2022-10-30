@@ -15,6 +15,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database" ],
     [ "DontDestroyOnLoad", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_dont_destroy_on_load.html", null ],
     [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
+    [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile" ],
     [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input" ],
     [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input" ],
     [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],

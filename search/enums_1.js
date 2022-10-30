@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plane_0',['Plane',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af5d70b74be4ab48c0a638af19dc40cac',1,'MPewsey::ManiaMap::Unity::Room']]]
+  ['roompositionoption_0',['RoomPositionOption',['../namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374',1,'MPewsey::ManiaMap::Unity']]]
 ];
