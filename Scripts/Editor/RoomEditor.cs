@@ -11,18 +11,61 @@ namespace MPewsey.ManiaMap.Unity.Editor
     [CustomEditor(typeof(Room))]
     public class RoomEditor : UnityEditor.Editor
     {
+        /// <summary>
+        /// Creates a Game Object with the Room component.
+        /// </summary>
+        [MenuItem("GameObject/Mania Map/Room", priority = 20)]
+        [MenuItem("Mania Map/Create Room", priority = 100)]
+        public static void CreateRoomTemplate()
+        {
+            var obj = new GameObject("Room");
+            var template = obj.AddComponent<Room>();
+            template.CreateCells();
+            obj.transform.SetParent(Selection.activeTransform);
+        }
+
+        /// <summary>
+        /// Searches the project for all prefabs with Room components and saves
+        /// room templates for the rooms to the project.
+        /// </summary>
+        [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
+        public static void SaveAllTemplates()
+        {
+            var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
+
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                SaveRoomTemplate(path);
+            }
+
+            AssetDatabase.Refresh();
+            Log.Success("Saved rooms.");
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-
-            if (!MultipleTargetsSelected() && !TargetIsPrefabAsset())
-            {
-                DrawSaveButton();
-                DrawUpdateRoomButton();
-            }
-
+            DrawSaveButton();
+            DrawUpdateRoomButton();
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// Returns the target room.
+        /// </summary>
+        private Room GetRoom()
+        {
+            return (Room)serializedObject.targetObject;
+        }
+
+        /// <summary>
+        /// True if multiple targets are not selected, and it is open.
+        /// </summary>
+        private bool ButtonsEnabled()
+        {
+            return !MultipleTargetsSelected() && !TargetIsPrefabAsset();
         }
 
         /// <summary>
@@ -42,22 +85,15 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Returns the target room.
-        /// </summary>
-        private Room GetRoom()
-        {
-            return (Room)serializedObject.targetObject;
-        }
-
-        /// <summary>
         /// Draws the save button.
         /// </summary>
         private void DrawSaveButton()
         {
+            if (!ButtonsEnabled())
+                return;
+
             if (GUILayout.Button("Save"))
-            {
                 SaveTemplate();
-            }
         }
 
         /// <summary>
@@ -65,10 +101,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void DrawUpdateRoomButton()
         {
+            if (!ButtonsEnabled())
+                return;
+
             if (GUILayout.Button("Update Room"))
-            {
                 UpdateRoom();
-            }
         }
 
         /// <summary>
@@ -126,38 +163,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
 
             Log.Success($"Saved room template to {path}.");
-        }
-
-        /// <summary>
-        /// Creates a Game Object with the Room component.
-        /// </summary>
-        [MenuItem("GameObject/Mania Map/Room", priority = 20)]
-        [MenuItem("Mania Map/Create Room", priority = 100)]
-        public static void CreateRoomTemplate()
-        {
-            var obj = new GameObject("Room");
-            var template = obj.AddComponent<Room>();
-            template.CreateCells();
-            obj.transform.SetParent(Selection.activeTransform);
-        }
-
-        /// <summary>
-        /// Searches the project for all prefabs with Room components and saves
-        /// room templates for the rooms to the project.
-        /// </summary>
-        [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
-        public static void SaveAllTemplates()
-        {
-            var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
-
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                SaveRoomTemplate(path);
-            }
-
-            AssetDatabase.Refresh();
-            Log.Success("Saved rooms.");
         }
 
         /// <summary>

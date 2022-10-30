@@ -11,25 +11,24 @@ namespace MPewsey.ManiaMap.Unity.Editor
     [CustomEditor(typeof(RoomAddressableDatabase))]
     public class RoomAddressableDatabaseEditor : UnityEditor.Editor
     {
+        /// <summary>
+        /// Creates a new database Game Object.
+        /// </summary>
+        [MenuItem("GameObject/Mania Map/Room Addressable Database", priority = 20)]
+        [MenuItem("Mania Map/Create Room Addressable Database", priority = 100)]
+        public static void CreateDatabase()
+        {
+            var obj = new GameObject("Room Addressable Database");
+            obj.transform.SetParent(Selection.activeTransform);
+            obj.AddComponent<RoomAddressableDatabase>();
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-
-            if (!TargetIsPrefabAsset())
-            {
-                DrawAutoAssignButton();
-            }
-
+            DrawAutoAssignButton();
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Returns true if the target object is an unopened prefab being inspected.
-        /// </summary>
-        private bool TargetIsPrefabAsset()
-        {
-            return GetRoomAddressableDatabase().gameObject.scene.name == null;
         }
 
         /// <summary>
@@ -41,14 +40,31 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
+        /// Returns true if the target object is an unopened prefab being inspected.
+        /// </summary>
+        private bool TargetIsPrefabAsset()
+        {
+            return GetRoomAddressableDatabase().gameObject.scene.name == null;
+        }
+
+        /// <summary>
         /// Draws the auto assign button.
         /// </summary>
         private void DrawAutoAssignButton()
         {
+            if (!AutoAssignButtonEnabled())
+                return;
+
             if (GUILayout.Button("Auto Assign"))
-            {
                 AutoAssign();
-            }
+        }
+
+        /// <summary>
+        /// True if the target is not a prefab asset.
+        /// </summary>
+        private bool AutoAssignButtonEnabled()
+        {
+            return !TargetIsPrefabAsset();
         }
 
         /// <summary>
@@ -89,18 +105,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var db = GetRoomAddressableDatabase();
             var reference = new AssetReferenceGameObject(guid);
             db.Entries.Add(new RoomDatabaseEntry<AssetReferenceGameObject>(room.Id, reference));
-        }
-
-        /// <summary>
-        /// Creates a new database Game Object.
-        /// </summary>
-        [MenuItem("GameObject/Mania Map/Room Addressable Database", priority = 20)]
-        [MenuItem("Mania Map/Create Room Addressable Database", priority = 100)]
-        public static void CreateDatabase()
-        {
-            var obj = new GameObject("Room Addressable Database");
-            obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<RoomAddressableDatabase>();
         }
     }
 }

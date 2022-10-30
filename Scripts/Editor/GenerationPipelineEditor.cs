@@ -10,6 +10,35 @@ namespace MPewsey.ManiaMap.Unity.Editor
     [CustomEditor(typeof(GenerationPipeline))]
     public class GenerationPipelineEditor : UnityEditor.Editor
     {
+        /// <summary>
+        /// Creates a new generation pipeline Game Object.
+        /// </summary>
+        [MenuItem("GameObject/Mania Map/Generation Pipeline", priority = 20)]
+        [MenuItem("Mania Map/Create Generation Pipeline", priority = 100)]
+        public static void CreatePipeline()
+        {
+            var obj = new GameObject("Generation Pipeline");
+            obj.transform.SetParent(Selection.activeTransform);
+            var pipeline = obj.AddComponent<GenerationPipeline>();
+
+            var inputs = new GameObject("<Inputs>");
+            inputs.transform.SetParent(obj.transform);
+            pipeline.InputsContainer = inputs;
+            inputs.AddComponent<RandomSeedInput>();
+            var layoutId = inputs.AddComponent<LayoutIdInput>();
+            layoutId.Id = Random.Range(1, int.MaxValue);
+            inputs.AddComponent<LayoutGraphsInput>();
+            inputs.AddComponent<CollectableGroupsInput>();
+
+            var steps = new GameObject("<Steps>");
+            steps.transform.SetParent(obj.transform);
+            pipeline.StepsContainer = steps;
+            steps.AddComponent<LayoutGraphSelector>();
+            steps.AddComponent<LayoutGraphRandomizer>();
+            steps.AddComponent<LayoutGenerator>();
+            steps.AddComponent<CollectableGenerator>();
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -55,6 +84,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
                         messages.Add($"  * Duplicate input name: {name} <{input.GetType().Name}>.");
                 }
             }
+
+            if (messages.Count <= 1)
+                return;
+
+            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
 
         /// <summary>
@@ -81,37 +115,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 }
             }
 
-            if (messages.Count > 1)
-                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
-        }
+            if (messages.Count <= 1)
+                return;
 
-        /// <summary>
-        /// Creates a new generation pipeline Game Object.
-        /// </summary>
-        [MenuItem("GameObject/Mania Map/Generation Pipeline", priority = 20)]
-        [MenuItem("Mania Map/Create Generation Pipeline", priority = 100)]
-        public static void CreatePipeline()
-        {
-            var obj = new GameObject("Generation Pipeline");
-            obj.transform.SetParent(Selection.activeTransform);
-            var pipeline = obj.AddComponent<GenerationPipeline>();
-
-            var inputs = new GameObject("<Inputs>");
-            inputs.transform.SetParent(obj.transform);
-            pipeline.InputsContainer = inputs;
-            inputs.AddComponent<RandomSeedInput>();
-            var layoutId = inputs.AddComponent<LayoutIdInput>();
-            layoutId.Id = Random.Range(1, int.MaxValue);
-            inputs.AddComponent<LayoutGraphsInput>();
-            inputs.AddComponent<CollectableGroupsInput>();
-
-            var steps = new GameObject("<Steps>");
-            steps.transform.SetParent(obj.transform);
-            pipeline.StepsContainer = steps;
-            steps.AddComponent<LayoutGraphSelector>();
-            steps.AddComponent<LayoutGraphRandomizer>();
-            steps.AddComponent<LayoutGenerator>();
-            steps.AddComponent<CollectableGenerator>();
+            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
     }
 }
