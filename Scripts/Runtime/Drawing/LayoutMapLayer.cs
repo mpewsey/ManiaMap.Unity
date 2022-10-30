@@ -34,20 +34,28 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         }
 
         /// <summary>
+        /// Initializes the layer.
+        /// </summary>
+        /// <param name="size">The image size.</param>
+        /// <param name="z">The layer value.</param>
+        public void Initialize(Vector2Int size, int z)
+        {
+            name = $"Layout Map Layer {z}";
+            Z = z;
+            ResizeTexture(size);
+        }
+
+        /// <summary>
         /// Creates a new layout map layer and returns the result.
         /// </summary>
         /// <param name="map">The parent layout map.</param>
-        /// <param name="size">The size of the texture.</param>
-        /// <param name="z">The layer.</param>
-        public static LayoutMapLayer Create(LayoutMap map, Vector2Int size, int z)
+        public static LayoutMapLayer Create(LayoutMap map)
         {
-            var obj = new GameObject($"Layout Map Layer {z}");
+            var obj = new GameObject("Layout Map Layer");
             obj.transform.SetParent(map.LayersContainer);
 
             var layer = obj.AddComponent<LayoutMapLayer>();
             layer.LayoutMap = map;
-            layer.Z = z;
-            layer.Resize(size);
 
             return layer;
         }
@@ -58,12 +66,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// it and the sprite.
         /// </summary>
         /// <param name="size">The texture size.</param>
-        public void Resize(Vector2Int size)
+        private void ResizeTexture(Vector2Int size)
         {
             if (Sprite == null)
             {
                 var texture = new Texture2D(size.x, size.y);
-                texture.name = $"Mania Map Layer {Z} Texture";
+                texture.name = "Mania Map Layer Texture";
                 Sprite = CreateSprite(texture);
                 SpriteRenderer.sprite = Sprite;
             }
@@ -85,7 +93,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             var rect = new Rect(0, 0, texture.width, texture.height);
             var pixelsPerUnit = LayoutMap.MapTiles.PixelsPerUnit;
             var sprite = Sprite.Create(texture, rect, pivot, pixelsPerUnit);
-            sprite.name = $"Mania Map Layer {Z} Sprite";
+            sprite.name = "Mania Map Layer Sprite";
             return sprite;
         }
     }

@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             db.CreateRoomDataDictionary();
 
             var room = db.InstantiateRoom(roomData.Id, null, RoomPositionOption.Layout);
-            prefab.gameObject.SetActive(false);
+            Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }
     }

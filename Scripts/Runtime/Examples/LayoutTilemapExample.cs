@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
 
         private void Start()
         {
-            CreateLayers();
+            CreateLayers(Seed);
         }
 
         private void Update()
@@ -66,8 +66,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
             }
 
             var layout = (Layout)results.Outputs["Layout"];
-            var layers = LayoutTilemap.CreateLayers(layout);
-            layers.ForEach(x => x.transform.localPosition = new Vector3(0, 0, x.Z));
+            LayoutTilemap.CreateLayers(layout, null);
         }
     }
 }

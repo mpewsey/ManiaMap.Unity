@@ -23,7 +23,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
         public static void DestroyAllGameObjects()
         {
-            foreach (var obj in Object.FindObjectsOfType<GameObject>(true))
+            foreach (var obj in Object.FindObjectsOfType<GameObject>())
             {
                 Object.DestroyImmediate(obj);
             }

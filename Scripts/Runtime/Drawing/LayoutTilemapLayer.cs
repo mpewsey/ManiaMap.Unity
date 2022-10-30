@@ -31,18 +31,26 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         }
 
         /// <summary>
+        /// Initializes the layer.
+        /// </summary>
+        /// <param name="z">The layer value.</param>
+        public void Initialize(int z)
+        {
+            name = $"Tilemap Layer {z}";
+            Z = z;
+        }
+
+        /// <summary>
         /// Creates a new layer.
         /// </summary>
         /// <param name="map">The layout tilemap.</param>
-        /// <param name="z">The layer coordinate.</param>
-        public static LayoutTilemapLayer Create(LayoutTilemap map, int z)
+        public static LayoutTilemapLayer Create(LayoutTilemap map)
         {
-            var obj = new GameObject($"Tilemap Layer {z}");
+            var obj = new GameObject("Tilemap Layer");
             obj.transform.SetParent(map.Grid.transform);
 
             var layer = obj.AddComponent<LayoutTilemapLayer>();
             layer.LayoutTilemap = map;
-            layer.Z = z;
 
             return layer;
         }

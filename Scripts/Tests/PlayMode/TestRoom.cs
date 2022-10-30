@@ -33,7 +33,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
                 }
             }
 
-            obj.SetActive(false);
+            Object.DestroyImmediate(obj);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             room.CreateCells();
             Assert.AreEqual(room.Size.x, room.CellContainer.childCount);
             Assert.AreEqual(room.Size.y, room.CellContainer.GetChild(0).childCount);
-            room.gameObject.SetActive(false);
+            Object.DestroyImmediate(room.gameObject);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
-            room.gameObject.SetActive(false);
+            Object.DestroyImmediate(room.gameObject);
             Assert.IsNotNull(template);
         }
 
@@ -95,7 +95,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
             var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
-            prefab.gameObject.SetActive(false);
+            Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }
     }
