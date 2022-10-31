@@ -111,44 +111,66 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Returns a list of features assigned to the cell.
+        /// </summary>
+        public List<Feature> FindFeatures()
+        {
+            return Room.GetComponentsInChildren<Feature>().Where(x => x.Cell == this).ToList();
+        }
+
+        /// <summary>
         /// Returns a new generation cell.
         /// </summary>
-        /// <exception cref="EmptyCellException">Raised if the cell is empty and a door or collectable spot is assigned to it.</exception>
         /// <exception cref="DuplicateDirectionException">Raised if multiple doors with the same direction are assigned to the cell.</exception>
         /// <exception cref="UnassignedCollectableGroupException">Raised if a collectable group is not assigned to a collectable spot.</exception>
         public ManiaMap.Cell GetCell()
         {
-            var doors = FindDoors();
-            var spots = FindCollectableSpots();
-
             if (IsEmpty)
-            {
-                if (doors.Count > 0)
-                    throw new EmptyCellException($"Doors assigned to empty cell: {Index}.");
-                if (spots.Count > 0)
-                    throw new EmptyCellException($"Collectable spots assigned to empty cell: {Index}.");
-                return ManiaMap.Cell.Empty;
-            }
+                return GetEmptyCell();
 
             var cell = ManiaMap.Cell.New;
 
             // Add doors.
-            foreach (var door in doors)
+            foreach (var door in FindDoors())
             {
                 if (cell.GetDoor(door.Direction) != null)
-                    throw new DuplicateDirectionException($"Door direction already exists: Index = {Index}, Direction = {door.Direction}.");
+                    throw new DuplicateDirectionException($"Door direction already exists: {door}.");
                 cell.SetDoor(door.Direction, door.GetDoor());
             }
 
             // Add collectable spots.
-            foreach (var spot in spots)
+            foreach (var spot in FindCollectableSpots())
             {
                 if (spot.Group == null)
-                    throw new UnassignedCollectableGroupException($"Collectable group not assigned to collectable spot: {spot.name}.");
+                    throw new UnassignedCollectableGroupException($"Collectable group not assigned to collectable spot: {spot}.");
                 cell.AddCollectableSpot(spot.Id, spot.Group.Name);
             }
 
+            // Add features.
+            foreach (var feature in FindFeatures())
+            {
+                cell.AddFeature(feature.Name);
+            }
+
             return cell;
+        }
+
+        /// <summary>
+        /// Performs validation and returns an empty cell.
+        /// </summary>
+        /// <exception cref="EmptyCellException">Raised if any children are assigned to the cell.</exception>
+        private ManiaMap.Cell GetEmptyCell()
+        {
+            if (FindDoors().Count > 0)
+                throw new EmptyCellException($"Doors assigned to empty cell: {this}.");
+
+            if (FindCollectableSpots().Count > 0)
+                throw new EmptyCellException($"Collectable spots assigned to empty cell: {this}.");
+
+            if (FindFeatures().Count > 0)
+                throw new EmptyCellException($"Features assigned to empty cell: {this}.");
+
+            return ManiaMap.Cell.Empty;
         }
 
         /// <summary>
@@ -163,7 +185,7 @@ namespace MPewsey.ManiaMap.Unity
             var room = transform.GetComponentInParent<Room>();
 
             if (room == null)
-                throw new ArgumentException($"Parent room not found for transform: {transform.name}.");
+                throw new ArgumentException($"Parent room not found for transform: {transform}.");
 
             for (int i = 0; i < room.Size.x; i++)
             {
