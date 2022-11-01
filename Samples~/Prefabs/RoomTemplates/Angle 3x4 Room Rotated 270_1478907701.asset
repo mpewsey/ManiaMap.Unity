@@ -34,119 +34,174 @@ MonoBehaviour:
 
     <Cell>
 
-    <DoorEntries>
+    <Doors>
 
-    <DoorEntry>
+    <Dictionary>
 
-    <Direction>North</Direction>
+    <KeyValue>
 
-    <Door>
+    <Key>North</Key>
 
-    <Type>TwoWay</Type>
-
-    <Code>0</Code>
-
-    </Door>
-
-    </DoorEntry>
-
-    <DoorEntry>
-
-    <Direction>West</Direction>
-
-    <Door>
+    <Value>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </Door>
+    </Value>
 
-    </DoorEntry>
+    </KeyValue>
 
-    </DoorEntries>
+    <KeyValue>
 
-    <CollectableSpotEntries
+    <Key>West</Key>
+
+    <Value>
+
+    <Type>TwoWay</Type>
+
+    <Code>0</Code>
+
+    </Value>
+
+    </KeyValue>
+
+    </Dictionary>
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
 
     <Cell>
 
-    <DoorEntries />
+    <Doors>
 
-    <CollectableSpotEntries
+    <Dictionary />
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
 
     <Cell>
 
-    <DoorEntries />
+    <Doors>
 
-    <CollectableSpotEntries
+    <Dictionary />
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
 
     <Cell>
 
-    <DoorEntries>
+    <Doors>
 
-    <DoorEntry>
+    <Dictionary>
 
-    <Direction>East</Direction>
+    <KeyValue>
 
-    <Door>
+    <Key>East</Key>
 
-    <Type>TwoWay</Type>
-
-    <Code>0</Code>
-
-    </Door>
-
-    </DoorEntry>
-
-    <DoorEntry>
-
-    <Direction>North</Direction>
-
-    <Door>
+    <Value>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </Door>
+    </Value>
 
-    </DoorEntry>
+    </KeyValue>
 
-    <DoorEntry>
+    <KeyValue>
 
-    <Direction>South</Direction>
+    <Key>North</Key>
 
-    <Door>
+    <Value>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </Door>
+    </Value>
 
-    </DoorEntry>
+    </KeyValue>
 
-    </DoorEntries>
+    <KeyValue>
 
-    <CollectableSpotEntries
+    <Key>South</Key>
+
+    <Value>
+
+    <Type>TwoWay</Type>
+
+    <Code>0</Code>
+
+    </Value>
+
+    </KeyValue>
+
+    </Dictionary>
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
 
     <Cell>
 
-    <DoorEntries />
+    <Doors>
 
-    <CollectableSpotEntries
+    <Dictionary />
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
@@ -160,53 +215,64 @@ MonoBehaviour:
 
     <Cell>
 
-    <DoorEntries>
+    <Doors>
 
-    <DoorEntry>
+    <Dictionary>
 
-    <Direction>East</Direction>
+    <KeyValue>
 
-    <Door>
+    <Key>East</Key>
 
-    <Type>TwoWay</Type>
-
-    <Code>0</Code>
-
-    </Door>
-
-    </DoorEntry>
-
-    <DoorEntry>
-
-    <Direction>West</Direction>
-
-    <Door>
+    <Value>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </Door>
+    </Value>
 
-    </DoorEntry>
+    </KeyValue>
 
-    <DoorEntry>
+    <KeyValue>
 
-    <Direction>South</Direction>
+    <Key>West</Key>
 
-    <Door>
+    <Value>
 
     <Type>TwoWay</Type>
 
     <Code>0</Code>
 
-    </Door>
+    </Value>
 
-    </DoorEntry>
+    </KeyValue>
 
-    </DoorEntries>
+    <KeyValue>
 
-    <CollectableSpotEntries
+    <Key>South</Key>
+
+    <Value>
+
+    <Type>TwoWay</Type>
+
+    <Code>0</Code>
+
+    </Value>
+
+    </KeyValue>
+
+    </Dictionary>
+
+    </Doors>
+
+    <CollectableSpots>
+
+    <Dictionary
+    />
+
+    </CollectableSpots>
+
+    <Features xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
     />
 
     </Cell>
