@@ -25,7 +25,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             foreach (var obj in Object.FindObjectsOfType<GameObject>())
             {
-                Object.DestroyImmediate(obj);
+                if (obj != null && obj.transform.parent == null)
+                    Object.DestroyImmediate(obj);
             }
         }
 
