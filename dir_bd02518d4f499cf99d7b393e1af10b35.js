@@ -15,6 +15,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "Database.cs", "_database_8cs_source.html", null ],
     [ "DontDestroyOnLoad.cs", "_dont_destroy_on_load_8cs_source.html", null ],
     [ "Door.cs", "_door_8cs_source.html", null ],
+    [ "Feature.cs", "_feature_8cs_source.html", null ],
     [ "GenerationInput.cs", "_generation_input_8cs_source.html", null ],
     [ "GenerationIntInput.cs", "_generation_int_input_8cs_source.html", null ],
     [ "GenerationNamedInput.cs", "_generation_named_input_8cs_source.html", null ],

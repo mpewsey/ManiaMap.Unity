@@ -5,5 +5,6 @@ var searchData=
   ['findclosestcell_2',['FindClosestCell',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a975e7899dd88fdc9ce5219521c7faec7',1,'MPewsey::ManiaMap::Unity::Cell']]],
   ['findcollectablespots_3',['FindCollectableSpots',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a87bc9bfd17c2c87c42c8964e4bc62b9e',1,'MPewsey::ManiaMap::Unity::Cell']]],
   ['finddoorconnection_4',['FindDoorConnection',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a5c2d498eba712b393f1a36026e1bdc51',1,'MPewsey::ManiaMap::Unity::Door']]],
-  ['finddoors_5',['FindDoors',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a1f0782dfcaea84ebe933948aac13c3de',1,'MPewsey::ManiaMap::Unity::Cell']]]
+  ['finddoors_5',['FindDoors',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a1f0782dfcaea84ebe933948aac13c3de',1,'MPewsey::ManiaMap::Unity::Cell']]],
+  ['findfeatures_6',['FindFeatures',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a1f5724bc5fbe5f4846024e5753511767',1,'MPewsey::ManiaMap::Unity::Cell']]]
 ];

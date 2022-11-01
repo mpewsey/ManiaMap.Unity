@@ -2,8 +2,10 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
 [
     [ "Drawing", "dir_ceca9c3b6ff751f2e7f26c6d9fa0bc54.html", "dir_ceca9c3b6ff751f2e7f26c6d9fa0bc54" ],
     [ "__Docs__.cs", "_editor_2_____docs_____8cs_source.html", null ],
+    [ "CellChildEditor.cs", "_cell_child_editor_8cs_source.html", null ],
     [ "CollectableSpotEditor.cs", "_collectable_spot_editor_8cs_source.html", null ],
     [ "DoorEditor.cs", "_door_editor_8cs_source.html", null ],
+    [ "FeatureEditor.cs", "_feature_editor_8cs_source.html", null ],
     [ "FileUtility.cs", "_file_utility_8cs_source.html", null ],
     [ "GenerationInputEditor.cs", "_generation_input_editor_8cs_source.html", null ],
     [ "GenerationPipelineEditor.cs", "_generation_pipeline_editor_8cs_source.html", null ],

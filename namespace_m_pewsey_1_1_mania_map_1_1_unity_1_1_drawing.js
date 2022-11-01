@@ -2,6 +2,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing =
 [
     [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor" ],
     [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
+    [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile" ],
     [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
     [ "LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer" ],
     [ "LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap" ],

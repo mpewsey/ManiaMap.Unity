@@ -9,6 +9,7 @@ var annotated_dup =
               [ "LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor" ]
             ] ],
             [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
+            [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile" ],
             [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
             [ "LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer" ],
             [ "LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap" ],
@@ -20,8 +21,10 @@ var annotated_dup =
             [ "TextureUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility" ]
           ] ],
           [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html", [
+            [ "CellChildEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor" ],
             [ "CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor" ],
             [ "DoorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor" ],
+            [ "FeatureEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html", null ],
             [ "FileUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility" ],
             [ "GenerationInputEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_input_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_input_editor" ],
             [ "GenerationPipelineEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_pipeline_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_pipeline_editor" ],
@@ -69,7 +72,7 @@ var annotated_dup =
           [ "Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database" ],
           [ "DontDestroyOnLoad", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_dont_destroy_on_load.html", null ],
           [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
-          [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_map_tile" ],
+          [ "Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature" ],
           [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_input" ],
           [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_int_input" ],
           [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generation_named_input" ],

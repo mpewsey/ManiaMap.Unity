@@ -1,5 +1,6 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor =
 [
+    [ "ButtonsEnabled", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a98b7f27b8a050fe793c4a763723f0b5f", null ],
     [ "CreateRoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a4ccfd1891391fd0486b6931aa61ab3e3", null ],
     [ "DrawSaveButton", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#a2ccdbccfa001af2c928a4d1a35c5743d", null ],
     [ "DrawUpdateRoomButton", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html#af44f1a110590ac0da3aeb19f8597891e", null ],
