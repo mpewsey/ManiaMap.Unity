@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMap.Unity.Drawing
 {
     /// <summary>
     /// A feature name and the associated map tile.

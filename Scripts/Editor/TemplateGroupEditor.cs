@@ -18,7 +18,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public static void SaveTemplates()
         {
             Random.InitState(12345);
-            var root = Path.Combine("Assets", "ManiaMap", "RoomTemplates", "Samples");
+            var root = "Assets/ManiaMap/RoomTemplates/Samples";
             FileUtility.CreateDirectory(root);
             int k = 0;
 
@@ -64,6 +64,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 Samples.TemplateLibrary.Miscellaneous.SquareTemplate(),
                 Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
                 Samples.TemplateLibrary.Miscellaneous.PlusTemplate(),
+                Samples.TemplateLibrary.Squares.Square1x1SavePointTemplate(),
             };
         }
     }

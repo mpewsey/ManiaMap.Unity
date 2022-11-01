@@ -23,6 +23,14 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
+        /// Returns the target generation step.
+        /// </summary>
+        private GenerationStep GetGenerationStep()
+        {
+            return (GenerationStep)serializedObject.targetObject;
+        }
+
+        /// <summary>
         /// Draws the input names label.
         /// </summary>
         private void DrawInputNamesLabel()
@@ -42,14 +50,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var names = step.OutputNames();
             var label = names.Length > 0 ? string.Join(", ", names) : LongDash;
             EditorGUILayout.LabelField("Output Names", label);
-        }
-
-        /// <summary>
-        /// Returns the target generation step.
-        /// </summary>
-        private GenerationStep GetGenerationStep()
-        {
-            return (GenerationStep)serializedObject.targetObject;
         }
     }
 }

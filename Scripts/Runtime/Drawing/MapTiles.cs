@@ -111,7 +111,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// The tile used for save point features (optional).
         /// </summary>
-        public Texture2D SavePoint { get => _grid; set => _grid = value; }
+        public Texture2D SavePoint { get => _savePoint; set => _savePoint = value; }
 
         [SerializeField]
         private List<FeatureMapTile> _featureTiles = new List<FeatureMapTile>();

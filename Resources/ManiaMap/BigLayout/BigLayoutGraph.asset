@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 14
   _name: <Node 14>
-  _templateGroup: {fileID: 11400000, guid: 4053aa7909e090a4c945fcfaa9feae6c, type: 2}
+  _templateGroup: {fileID: 11400000, guid: ca817b034d16f8e4588b044a958bae6c, type: 2}
   _z: 0
   _color:
     serializedVersion: 2
