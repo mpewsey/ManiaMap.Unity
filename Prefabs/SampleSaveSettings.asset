@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908bbe3c714c6e1438508fc69cf42778, type: 3}
   m_Name: SampleSaveSettings
   m_EditorClassIdentifier: 
-  _savePath: Packages/ManiaMap.Unity/Prefabs/SampleRoomTemplates
+  _savePath: Packages/com.mpewsey.maniamap.unity/Prefabs/SampleRoomTemplates

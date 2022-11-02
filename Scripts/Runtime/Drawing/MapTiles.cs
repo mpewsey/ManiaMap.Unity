@@ -23,13 +23,6 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Vector2Int TileSize { get => _tileSize; set => _tileSize = value; }
 
-        [SerializeField]
-        private Texture2D _grid;
-        /// <summary>
-        /// The tile used for the LayoutMap grid (optional).
-        /// </summary>
-        public Texture2D Grid { get => _grid; set => _grid = value; }
-
         [Header("Walls")]
 
         [SerializeField]
@@ -103,6 +96,15 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The superimposed tile when a bottom door exists.
         /// </summary>
         public Texture2D BottomDoor { get => _bottomDoor; set => _bottomDoor = value; }
+
+        [Header("Grid")]
+
+        [SerializeField]
+        private Texture2D _grid;
+        /// <summary>
+        /// The tile used for the LayoutMap grid (optional).
+        /// </summary>
+        public Texture2D Grid { get => _grid; set => _grid = value; }
 
         [Header("Features")]
 

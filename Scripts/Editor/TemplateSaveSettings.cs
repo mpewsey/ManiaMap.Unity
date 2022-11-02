@@ -38,63 +38,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
         public void BatchSaveTemplates()
         {
-            if (SavePath.StartsWith("Packages/ManiaMap.Unity"))
-                SavePackageTemplates();
-            else
-                SaveTemplates();
-        }
-
-        private void SavePackageTemplates()
-        {
-            if (!Directory.Exists(SavePath))
-                Debug.LogError($"Path does not exist: {SavePath}");
-
-            DeleteTempFolder();
-            CreateTempFolder();
-
-            foreach (var path in PrefabPaths())
-            {
-                CreatePackageRoomTemplate(path);
-            }
-
-            DeleteTempFolder();
-            AssetDatabase.Refresh();
-            Log.Success("Saved room templates.");
-        }
-
-        private void CreatePackageRoomTemplate(string assetPath)
-        {
-            using (var scope = new PrefabUtility.EditPrefabContentsScope(assetPath))
-            {
-                var prefab = scope.prefabContentsRoot;
-
-                if (!prefab.TryGetComponent(out Room room))
-                    return;
-
-                Debug.Log($"Processing room at {assetPath}.");
-                CreatePackageRoomTemplate(room);
-            }
-        }
-
-        private void CreatePackageRoomTemplate(Room room)
-        {
-            var path = TempTemplateSavePath(room);
-            var template = room.GetTemplate();
-            EditorUtility.SetDirty(room);
-
-            var asset = CreateInstance<RoomTemplate>();
-            asset.Initialize(template);
-            AssetDatabase.CreateAsset(asset, path);
-
-            // Move file from temp path to save path.
-            var packagePath = TemplateSavePath(room);
-            MoveFile(path, TemplateSavePath(room));
-
-            Log.Success($"Saved room template to {packagePath}.");
-        }
-
-        private void SaveTemplates()
-        {
             CreateSaveDirectory();
 
             foreach (var path in PrefabPaths())
@@ -142,24 +85,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             Log.Success($"Saved room template to {path}.");
         }
 
-        private static void DeleteTempFolder()
-        {
-            AssetDatabase.DeleteAsset("Assets/__ManiaMapTemp__");
-        }
-
-        private static void CreateTempFolder()
-        {
-            AssetDatabase.CreateFolder("Assets", "__ManiaMapTemp__");
-        }
-
-        private static void MoveFile(string fromPath, string toPath)
-        {
-            if (File.Exists(toPath))
-                File.Delete(toPath);
-
-            File.Move(fromPath, toPath);
-        }
-
         private void CreateSaveDirectory()
         {
             FileUtility.CreateDirectory(SavePath);
@@ -169,12 +94,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
             return Path.Combine(SavePath, path);
-        }
-
-        private string TempTemplateSavePath(Room room)
-        {
-            var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
-            return Path.Combine("Assets/__ManiaMapTemp__", path);
         }
 
         private string[] PrefabGuids()

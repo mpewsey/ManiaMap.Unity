@@ -18,14 +18,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             GetSettings().CreateSampleTemplates();
         }
 
-        public void CreateSampleTemplates()
-        {
-            if (SavePath.StartsWith("Packages/ManiaMap.Unity"))
-                CreatePackageTemplates();
-            else
-                CreateTemplates();
-        }
-
         private static SampleSaveSettings GetSettings()
         {
             var settings = Resources.Load<SampleSaveSettings>("ManiaMap/SampleSaveSettings");
@@ -41,31 +33,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             return settings;
         }
 
-        private void CreatePackageTemplates()
-        {
-            if (!Directory.Exists(SavePath))
-                Debug.LogError($"Path does not exist: {SavePath}");
-
-            DeleteTempFolder();
-            CreateTempFolder();
-
-            foreach (var template in SampleVariations())
-            {
-                // Create asset in temp directory.
-                var path = TempTemplateSavePath(template);
-                var asset = CreateInstance<RoomTemplate>();
-                asset.Initialize(template);
-                AssetDatabase.CreateAsset(asset, path);
-
-                // Move asset from temp directory to package path.
-                MoveFile(path, TemplateSavePath(template));
-            }
-
-            DeleteTempFolder();
-            AssetDatabase.Refresh();
-        }
-
-        private void CreateTemplates()
+        public void CreateSampleTemplates()
         {
             CreateSamplesDirectory();
 
@@ -100,30 +68,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{template.Name} [{template.Id:x}].asset");
             return Path.Combine(SavePath, path);
-        }
-
-        private string TempTemplateSavePath(ManiaMap.RoomTemplate template)
-        {
-            var path = FileUtility.ReplaceInvalidFileNameCharacters($"{template.Name} [{template.Id:x}].asset");
-            return Path.Combine("Assets/__ManiaMapTemp__", path);
-        }
-
-        private static void DeleteTempFolder()
-        {
-            AssetDatabase.DeleteAsset("Assets/__ManiaMapTemp__");
-        }
-
-        private static void CreateTempFolder()
-        {
-            AssetDatabase.CreateFolder("Assets", "__ManiaMapTemp__");
-        }
-
-        private static void MoveFile(string fromPath, string toPath)
-        {
-            if (File.Exists(toPath))
-                File.Delete(toPath);
-
-            File.Move(fromPath, toPath);
         }
 
         private void CreateSamplesDirectory()

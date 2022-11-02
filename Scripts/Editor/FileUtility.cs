@@ -19,6 +19,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <exception cref="ArgumentException">Raised if the specified path is empty or does not begin with the Assets directory.</exception>
         public static void CreateDirectory(string path)
         {
+            if (AssetDatabase.IsValidFolder(path))
+                return;
+
             var separators = new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
             var directories = path.Split(separators);
 
