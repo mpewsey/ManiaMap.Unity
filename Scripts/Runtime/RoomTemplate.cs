@@ -1,4 +1,4 @@
-using System.Xml;
+using MPewsey.ManiaMap.Serialization;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity
             get
             {
                 if (_template == null)
-                    _template = Serialization.LoadXmlString<ManiaMap.RoomTemplate>(SerializedText);
+                    _template = JsonSerialization.LoadJsonString<ManiaMap.RoomTemplate>(SerializedText);
                 return _template;
             }
             private set => _template = value;
@@ -55,20 +55,15 @@ namespace MPewsey.ManiaMap.Unity
             Template = null;
             Id = template.Id;
             Name = template.Name;
-            SerializedText = Serialization.GetXmlString(template, XmlWriterSettings());
+            SerializedText = JsonSerialization.GetJsonString(template, JsonWriterSettings());
         }
 
         /// <summary>
-        /// Returns a new instance of XML writer settings for serializing the serialized text.
+        /// The JSON writer formatting settings.
         /// </summary>
-        private static XmlWriterSettings XmlWriterSettings()
+        private static JsonWriterSettings JsonWriterSettings()
         {
-            return new XmlWriterSettings
-            {
-                Indent = true,
-                IndentChars = "",
-                NewLineChars = "\n",
-            };
+            return new JsonWriterSettings();
         }
     }
 }
