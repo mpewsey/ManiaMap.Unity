@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Collections;
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Runtime.CompilerServices;
 using UnityEngine;

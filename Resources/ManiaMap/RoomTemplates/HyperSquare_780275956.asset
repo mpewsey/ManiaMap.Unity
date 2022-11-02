@@ -17,7 +17,7 @@ MonoBehaviour:
   _serializedText: '<?xml version="1.0" encoding="utf-8"?>
 
     <RoomTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
-    z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/MPewsey.ManiaMap">
+    z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://github.com/mpewsey/ManiaMap">
 
     <Id>780275956</Id>
 
