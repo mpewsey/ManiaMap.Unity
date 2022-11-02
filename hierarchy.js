@@ -18,7 +18,9 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Editor.RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ]
+      [ "MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.SampleSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.TemplateSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor.html", null ]
     ] ],
     [ "EditorWindow", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html", null ]
@@ -46,7 +48,6 @@ var hierarchy =
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", null ],
     [ "MPewsey.ManiaMap.Unity.Editor.Log", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html", null ],
-    [ "MPewsey.ManiaMap.Unity.Editor.ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html", null ],
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", null ],
       [ "MPewsey.ManiaMap.Unity.CellChild", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html", [
@@ -96,6 +97,8 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.SampleSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.TemplateSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_graph.html", null ],
       [ "MPewsey.ManiaMap.Unity.LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html", null ],
@@ -103,7 +106,6 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", null ],
       [ "MPewsey.ManiaMap.Unity.TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", null ]
     ] ],
-    [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ],
     [ "MPewsey.ManiaMap.Unity.Drawing.TextureUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html", null ],
     [ "UnityEvent", null, [
       [ "MPewsey.ManiaMap.Unity.CollectableSpot.CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_1_1_collectable_spot_event.html", null ],

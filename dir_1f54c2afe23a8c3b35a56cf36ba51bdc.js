@@ -17,10 +17,12 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "LayoutGraphWindowSettings.cs", "_layout_graph_window_settings_8cs_source.html", null ],
     [ "LayoutNodeEditor.cs", "_layout_node_editor_8cs_source.html", null ],
     [ "Log.cs", "_log_8cs_source.html", null ],
-    [ "ManiaMapSettingsEditor.cs", "_mania_map_settings_editor_8cs_source.html", null ],
     [ "RoomAddressableDatabaseEditor.cs", "_room_addressable_database_editor_8cs_source.html", null ],
     [ "RoomEditor.cs", "_room_editor_8cs_source.html", null ],
     [ "RoomPrefabDatabaseEditor.cs", "_room_prefab_database_editor_8cs_source.html", null ],
     [ "RoomTemplateEditor.cs", "_room_template_editor_8cs_source.html", null ],
-    [ "TemplateGroupEditor.cs", "_template_group_editor_8cs_source.html", null ]
+    [ "SampleSaveSettings.cs", "_sample_save_settings_8cs_source.html", null ],
+    [ "SampleSaveSettingsEditor.cs", "_sample_save_settings_editor_8cs_source.html", null ],
+    [ "TemplateSaveSettings.cs", "_template_save_settings_8cs_source.html", null ],
+    [ "TemplateSaveSettingsEditor.cs", "_template_save_settings_editor_8cs_source.html", null ]
 ];
