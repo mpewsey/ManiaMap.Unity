@@ -8,8 +8,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public const string PackagePath = "ManiaMap/";
 
         // Maps
-        public const string LayoutMapPath = PackagePath + "LayoutMap/LayoutMap";
-        public const string LayoutTilemapPath = PackagePath + "LayoutTilemap/LayoutTilemap";
+        public const string LayoutMapPath = PackagePath + "LayoutMaps/LayoutMap";
+        public const string LayoutTilemapPath = PackagePath + "LayoutMaps/LayoutTilemap";
 
         // Generation Pipelines
         public const string BigLayoutPath = PackagePath + "BigLayout/BigLayoutGenerator";
