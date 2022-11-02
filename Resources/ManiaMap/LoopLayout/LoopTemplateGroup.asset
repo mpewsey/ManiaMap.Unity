@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Loop Template Group
   _templates:
-  - {fileID: 11400000, guid: c837bde47d4535b42bdaf756a0d1b998, type: 2}
-  - {fileID: 11400000, guid: b21e46369cca0f745acf21ce736523dd, type: 2}
-  - {fileID: 11400000, guid: f04733b03e67683478c89b38c380f261, type: 2}
-  - {fileID: 11400000, guid: 91ae64154adb34d4ca2e13fd0fa9e3e9, type: 2}
-  - {fileID: 11400000, guid: 7b58ba04ba9f8e747a5199e656f6b220, type: 2}
-  - {fileID: 11400000, guid: 5d83c5b4c8a618849870ccc6de730cdb, type: 2}
-  - {fileID: 11400000, guid: f5013de7a11226242ad04ccbce3fe6f4, type: 2}
-  - {fileID: 11400000, guid: 62f9d8ecc58c4774dbd94fe7acc6a1c3, type: 2}
+  - {fileID: 11400000, guid: c379d6811f53f8c4490f5f55d5c8ab76, type: 2}
+  - {fileID: 11400000, guid: 9e210355629e9ed428c2a3bbf1f901da, type: 2}
+  - {fileID: 11400000, guid: 94c652111bb2a5b4ba2131a89b8f2a27, type: 2}
+  - {fileID: 11400000, guid: a0a08f4e6def5e54e966635c93cc6def, type: 2}
+  - {fileID: 11400000, guid: 9e12ff5bd47f3d048ab089dc0668a133, type: 2}
+  - {fileID: 11400000, guid: 182ce86ce850e5249a741e278ceaa2ee, type: 2}
+  - {fileID: 11400000, guid: 74665a5bc48ebfa46b7b72ad38bc42ab, type: 2}
+  - {fileID: 11400000, guid: 1da8219e53709d24ea381289a3d6cdd7, type: 2}

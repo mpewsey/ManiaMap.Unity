@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sample Template Group
   _templates:
-  - {fileID: 11400000, guid: 13a13eff3b7b69749a00c1a6563bde8a, type: 2}
-  - {fileID: 11400000, guid: 1f0b1b2be30abbd49941cfe58c8f849f, type: 2}
-  - {fileID: 11400000, guid: 610646c626bfcca46ac160ec87638c3a, type: 2}
-  - {fileID: 11400000, guid: bd650f2a6f68a5845b5bcb23d62e0120, type: 2}
+  - {fileID: 11400000, guid: 117d84685828ce946905f27818ff5fc1, type: 2}
+  - {fileID: 11400000, guid: 521ff58b4592ec5499a2667ead133672, type: 2}
+  - {fileID: 11400000, guid: c819377039dd06945b36591c9a27fa63, type: 2}
+  - {fileID: 11400000, guid: a5bae3744e8a05648849bd7427465be6, type: 2}

@@ -1,4 +1,3 @@
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,29 +23,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             obj.transform.SetParent(Selection.activeTransform);
         }
 
-        /// <summary>
-        /// Searches the project for all prefabs with Room components and saves
-        /// room templates for the rooms to the project.
-        /// </summary>
-        [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
-        public static void SaveAllTemplates()
-        {
-            var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
-
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                SaveRoomTemplate(path);
-            }
-
-            AssetDatabase.Refresh();
-            Log.Success("Saved rooms.");
-        }
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawSaveButton();
             DrawUpdateRoomButton();
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
@@ -85,18 +64,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// Draws the save button.
-        /// </summary>
-        private void DrawSaveButton()
-        {
-            if (!ButtonsEnabled())
-                return;
-
-            if (GUILayout.Button("Save"))
-                SaveTemplate();
-        }
-
-        /// <summary>
         /// Draws the update room button.
         /// </summary>
         private void DrawUpdateRoomButton()
@@ -117,99 +84,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
             room.AutoAssign();
             EditorUtility.SetDirty(room);
             Log.Success("Room updated.");
-        }
-
-        /// <summary>
-        /// Saves the generation room template to an XML file in the Assets/ManiaMap/RoomTemplates
-        /// directory. If the folders in the file path do not already exist, they are created.
-        /// </summary>
-        private void SaveTemplate()
-        {
-            var room = GetRoom();
-            SaveRoomTemplate(room);
-            EditorUtility.SetDirty(room);
-        }
-
-        /// <summary>
-        /// Saves the template for the specified room.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        private static void SaveRoomTemplate(Room room)
-        {
-            var path = GetTemplateSavePath(room);
-            SaveTemplateAsset(path, room.GetTemplate());
-        }
-
-        /// <summary>
-        /// Saves a room template asset to the specified path.
-        /// </summary>
-        /// <param name="path">The asset path.</param>
-        /// <param name="template">The room template.</param>
-        public static void SaveTemplateAsset(string path, ManiaMap.RoomTemplate template)
-        {
-            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
-
-            if (asset == null)
-            {
-                asset = CreateInstance<RoomTemplate>();
-                asset.Initialize(template);
-                AssetDatabase.CreateAsset(asset, path);
-            }
-            else
-            {
-                asset.Initialize(template);
-                EditorUtility.SetDirty(asset);
-                AssetDatabase.SaveAssetIfDirty(asset);
-            }
-
-            Log.Success($"Saved room template to {path}.");
-        }
-
-        /// <summary>
-        /// Saves the room template for the prefab at the specified path if it has
-        /// a room component at its root.
-        /// </summary>
-        /// <param name="path">The prefab path.</param>
-        private static void SaveRoomTemplate(string path)
-        {
-            using (var scope = new PrefabUtility.EditPrefabContentsScope(path))
-            {
-                var prefab = scope.prefabContentsRoot;
-
-                if (!prefab.TryGetComponent(out Room room))
-                    return;
-
-                Debug.Log($"Processing room at {path}.");
-                SaveRoomTemplate(room);
-            }
-        }
-
-        /// <summary>
-        /// Returns the path to the room template directory.
-        /// </summary>
-        private static string GetRoomTemplatesDirectory()
-        {
-            var path = Path.Combine("Assets", "ManiaMap", "RoomTemplates");
-            FileUtility.CreateDirectory(path);
-            return path;
-        }
-
-        /// <summary>
-        /// Returns the template file name for the room.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        private static string GetTemplateFileName(Room room)
-        {
-            return FileUtility.ReplaceInvalidFileNameCharacters($"{room.name}_{room.Id}.asset");
-        }
-
-        /// <summary>
-        /// Returns the template save path for the room.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        private static string GetTemplateSavePath(Room room)
-        {
-            return Path.Combine(GetRoomTemplatesDirectory(), GetTemplateFileName(room));
         }
     }
 }

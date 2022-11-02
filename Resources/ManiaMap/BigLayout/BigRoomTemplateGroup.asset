@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Big Room Template Group
   _templates:
-  - {fileID: 11400000, guid: 6a9224e9ad27b6b428d66397b61b0f44, type: 2}
-  - {fileID: 11400000, guid: cc68f01dddcf75046af1871a616637ab, type: 2}
-  - {fileID: 11400000, guid: f3cda4c1929591c428c02a10e212662b, type: 2}
-  - {fileID: 11400000, guid: e554f6f77e9f3e14199a62c18322105e, type: 2}
-  - {fileID: 11400000, guid: 5961af4e4946959479d4044a91b3672f, type: 2}
-  - {fileID: 11400000, guid: e2b557fab89e2954b9beb86f81c83128, type: 2}
+  - {fileID: 11400000, guid: 580b660d294716b4ebcdaaf4bffc53c7, type: 2}
+  - {fileID: 11400000, guid: 1835993f2527f184a88b2ece1e40f45e, type: 2}
+  - {fileID: 11400000, guid: 5156879ca5aa1904e81cb650c63428b4, type: 2}
+  - {fileID: 11400000, guid: 855103b6434a6a7478090b2ada5e0c76, type: 2}
+  - {fileID: 11400000, guid: 0b1f0a2e4901af44dbdf41a193e07b52, type: 2}
+  - {fileID: 11400000, guid: 5196619ef0025ac418d472f4e65e3195, type: 2}

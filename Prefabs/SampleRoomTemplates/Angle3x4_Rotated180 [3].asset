@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bcbab901c8344cb342c09e213e556, type: 3}
+  m_Name: Angle3x4_Rotated180 [3]
+  m_EditorClassIdentifier: 
+  _id: 3
+  _name: Angle3x4_Rotated180
+  _serializedText: '{"Id":3,"Name":"Angle3x4_Rotated180","Cells":{"Rows":3,"Columns":4,"Array":[null,null,null,{"Doors":{"Dictionary":[{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]},null,null,null,{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":8,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]},{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":9,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":10,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]}]}}'

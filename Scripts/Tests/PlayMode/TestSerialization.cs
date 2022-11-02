@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Serialization;
 using NUnit.Framework;
 using System.IO;
 
@@ -19,9 +20,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var results = pipeline.Generate();
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var path = "Tests/Layout.xml";
-            Serialization.SaveXml(path, layout);
-            var copy = Serialization.LoadXml<Layout>(path);
+            var path = "Tests/Layout.json";
+            JsonSerialization.SaveJson(path, layout);
+            var copy = JsonSerialization.LoadJson<Layout>(path);
             Assert.AreEqual(layout.Id, copy.Id);
         }
 
@@ -33,9 +34,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var state = new LayoutState(layout);
-            var path = "Tests/LayoutState.xml";
-            Serialization.SaveXml(path, state);
-            var copy = Serialization.LoadXml<LayoutState>(path);
+            var path = "Tests/LayoutState.json";
+            JsonSerialization.SaveJson(path, state);
+            var copy = JsonSerialization.LoadJson<LayoutState>(path);
             Assert.AreEqual(state.Id, copy.Id);
         }
 
@@ -45,9 +46,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var graph = Samples.GraphLibrary.BigGraph();
             graph.AddNodeVariation("Group1", new int[] { 1, 2, 3 });
             graph.AddNodeVariation("Group2", new int[] { 4, 5, 6 });
-            var path = "Tests/LayoutGraph.xml";
-            Serialization.SaveXml(path, graph);
-            var copy = Serialization.LoadXml<ManiaMap.LayoutGraph>(path);
+            var path = "Tests/LayoutGraph.json";
+            JsonSerialization.SaveJson(path, graph);
+            var copy = JsonSerialization.LoadJson<ManiaMap.LayoutGraph>(path);
             Assert.AreEqual(graph.Id, copy.Id);
         }
 
@@ -57,9 +58,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var group = new CollectableGroups();
             group.Add("Group1", new int[] { 1, 2, 3 });
             group.Add("Group2", new int[] { 4, 5, 6 });
-            var path = "Tests/CollectableGroups.xml";
-            Serialization.SaveXml(path, group);
-            var copy = Serialization.LoadXml<CollectableGroups>(path);
+            var path = "Tests/CollectableGroups.json";
+            JsonSerialization.SaveJson(path, group);
+            var copy = JsonSerialization.LoadJson<CollectableGroups>(path);
 
             foreach (var pair in group.GetGroups())
             {
