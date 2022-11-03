@@ -83,10 +83,10 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            if (RoomData == null)
+            if (RoomLayout == null)
                 return null;
 
-            var roomId = RoomData.Id;
+            var roomId = RoomLayout.Id;
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
             foreach (var neighbor in ManiaMapManager.Current.GetAdjacentRooms(roomId))

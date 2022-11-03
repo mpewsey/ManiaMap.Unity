@@ -64,5 +64,30 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             return builder.ToString();
         }
+
+        /// <summary>
+        /// Returns an array of prefab asset GUID's at the specified search paths.
+        /// </summary>
+        /// <param name="searchPaths">An array of search paths.</param>
+        public static string[] FindPrefabGuids(string[] searchPaths)
+        {
+            return AssetDatabase.FindAssets("t:prefab", searchPaths);
+        }
+
+        /// <summary>
+        /// Return an array of prefab paths at the specified search paths.
+        /// </summary>
+        /// <param name="searchPaths">An array of search paths.</param>
+        public static string[] FindPrefabPaths(string[] searchPaths)
+        {
+            var paths = FindPrefabGuids(searchPaths);
+
+            for (int i = 0; i < paths.Length; i++)
+            {
+                paths[i] = AssetDatabase.GUIDToAssetPath(paths[i]);
+            }
+
+            return paths;
+        }
     }
 }

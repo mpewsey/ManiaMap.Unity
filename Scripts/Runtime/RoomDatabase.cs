@@ -10,6 +10,13 @@ namespace MPewsey.ManiaMap.Unity
     public abstract class RoomDatabase<T> : MonoBehaviour
     {
         [SerializeField]
+        private string[] _searchPaths = new string[] { "Assets" };
+        /// <summary>
+        /// An array of paths to search for rooms.
+        /// </summary>
+        public string[] SearchPaths { get => _searchPaths; set => _searchPaths = value; }
+
+        [SerializeField]
         protected List<RoomDatabaseEntry<T>> _entries = new List<RoomDatabaseEntry<T>>();
         /// <summary>
         /// A list of database entries.
@@ -19,24 +26,24 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// A dictionary of room data sources by room ID.
         /// </summary>
-        protected Dictionary<int, T> RoomDataDictionary { get; } = new Dictionary<int, T>();
+        protected Dictionary<int, T> RoomPrefabDictionary { get; } = new Dictionary<int, T>();
 
-        protected virtual void Awake()
+        private void Awake()
         {
-            CreateRoomDataDictionary();
+            CreateRoomPrefabDictionary();
         }
 
         /// <summary>
         /// Creates the room data dictionary based on the current database entries list.
         /// </summary>
-        public void CreateRoomDataDictionary()
+        public void CreateRoomPrefabDictionary()
         {
-            RoomDataDictionary.Clear();
-            RoomDataDictionary.EnsureCapacity(Entries.Count);
+            RoomPrefabDictionary.Clear();
+            RoomPrefabDictionary.EnsureCapacity(Entries.Count);
 
             foreach (var entry in Entries)
             {
-                RoomDataDictionary.Add(entry.Id, entry.RoomData);
+                RoomPrefabDictionary.Add(entry.Id, entry.RoomPrefab);
             }
         }
 
@@ -44,9 +51,9 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the room data source for the specified ID.
         /// </summary>
         /// <param name="id">The room ID.</param>
-        public T GetRoomData(int id)
+        public T GetRoomPrefab(int id)
         {
-            return RoomDataDictionary[id];
+            return RoomPrefabDictionary[id];
         }
     }
 }

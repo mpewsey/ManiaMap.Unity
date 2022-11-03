@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
-    [CreateAssetMenu(menuName = "Mania Map/Template Save Settings", fileName = "TemplateSaveSettings")]
+    [CreateAssetMenu(menuName = "Mania Map/Settings/Template Save Settings", fileName = "TemplateSaveSettings")]
     public class TemplateSaveSettings : ScriptableObject
     {
         [SerializeField]
@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             CreateSaveDirectory();
 
-            foreach (var path in PrefabPaths())
+            foreach (var path in FileUtility.FindPrefabPaths(SearchPaths))
             {
                 CreateRoomTemplate(path);
             }
@@ -79,7 +79,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 asset.Initialize(template);
                 EditorUtility.SetDirty(asset);
-                AssetDatabase.SaveAssetIfDirty(asset);
+                // AssetDatabase.SaveAssetIfDirty(asset);
             }
 
             Log.Success($"Saved room template to {path}.");
@@ -94,23 +94,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
             return Path.Combine(SavePath, path);
-        }
-
-        private string[] PrefabGuids()
-        {
-            return AssetDatabase.FindAssets("t:prefab", SearchPaths);
-        }
-
-        private string[] PrefabPaths()
-        {
-            var paths = PrefabGuids();
-
-            for (int i = 0; i < paths.Length; i++)
-            {
-                paths[i] = AssetDatabase.GUIDToAssetPath(paths[i]);
-            }
-
-            return paths;
         }
     }
 }

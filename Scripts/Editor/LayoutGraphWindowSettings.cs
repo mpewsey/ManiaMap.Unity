@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
@@ -8,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// 
     /// An instance of this asset may be placed anywhere in your project to override the default settings.
     /// </summary>
-    [CreateAssetMenu(menuName = "Mania Map/Layout Graph Window Settings")]
+    [CreateAssetMenu(menuName = "Mania Map/Settings/Layout Graph Window Settings")]
     public class LayoutGraphWindowSettings : ScriptableObject
     {
         /// <summary>
@@ -131,17 +130,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         public static LayoutGraphWindowSettings GetSettings()
         {
-            var guids = AssetDatabase.FindAssets("t:LayoutGraphWindowSettings");
+            var settings = Resources.Load<LayoutGraphWindowSettings>("ManiaMap/LayoutGraphWindowSettings");
 
-            if (guids.Length == 0)
-                return CreateInstance<LayoutGraphWindowSettings>();
+            if (settings != null)
+                return settings;
 
-            var path = AssetDatabase.GUIDToAssetPath(guids[0]);
-
-            if (guids.Length > 1)
-                Debug.LogWarning($"Multiple Layout Graph Window Settings exist in the project. Using {path}.");
-
-            return AssetDatabase.LoadAssetAtPath<LayoutGraphWindowSettings>(path);
+            return CreateInstance<LayoutGraphWindowSettings>();
         }
 
         private void OnValidate()
