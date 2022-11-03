@@ -111,6 +111,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aaa4f1fcb44927a440ee2a6bb7a81b8b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#aaa4f1fcb44927a440ee2a6bb7a81b8b5">CreateDirectory</a> (string path)</td></tr>
 <tr class="memdesc:aaa4f1fcb44927a440ee2a6bb7a81b8b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the directory in the assets folder if it does not already exist. The path must begin with the Assets directory.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#aaa4f1fcb44927a440ee2a6bb7a81b8b5">More...</a><br /></td></tr>
 <tr class="separator:aaa4f1fcb44927a440ee2a6bb7a81b8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cf7eba501dd6b7c7a2ecfb385952d0b"><td class="memItemLeft" align="right" valign="top">static string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a7cf7eba501dd6b7c7a2ecfb385952d0b">FindPrefabGuids</a> (string[] searchPaths)</td></tr>
+<tr class="memdesc:a7cf7eba501dd6b7c7a2ecfb385952d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of prefab asset GUID's at the specified search paths.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a7cf7eba501dd6b7c7a2ecfb385952d0b">More...</a><br /></td></tr>
+<tr class="separator:a7cf7eba501dd6b7c7a2ecfb385952d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a447e20abd92a3023d970d9ae6a88f3c2"><td class="memItemLeft" align="right" valign="top">static string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a447e20abd92a3023d970d9ae6a88f3c2">FindPrefabPaths</a> (string[] searchPaths)</td></tr>
+<tr class="memdesc:a447e20abd92a3023d970d9ae6a88f3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an array of prefab paths at the specified search paths.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a447e20abd92a3023d970d9ae6a88f3c2">More...</a><br /></td></tr>
+<tr class="separator:a447e20abd92a3023d970d9ae6a88f3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dc90dd8e1553b5c1058c10e253d7489"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a0dc90dd8e1553b5c1058c10e253d7489">ReplaceInvalidFileNameCharacters</a> (string str, char replacement='_')</td></tr>
 <tr class="memdesc:a0dc90dd8e1553b5c1058c10e253d7489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces all invalid filename characters in the string with the specified character.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a0dc90dd8e1553b5c1058c10e253d7489">More...</a><br /></td></tr>
 <tr class="separator:a0dc90dd8e1553b5c1058c10e253d7489"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,6 +165,78 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_file_utility_8cs_source.html#l00020">20</a> of file <a class="el" href="_file_utility_8cs_source.html">FileUtility.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7cf7eba501dd6b7c7a2ecfb385952d0b" name="a7cf7eba501dd6b7c7a2ecfb385952d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cf7eba501dd6b7c7a2ecfb385952d0b">&#9670;&nbsp;</a></span>FindPrefabGuids()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string[] MPewsey.ManiaMap.Unity.Editor.FileUtility.FindPrefabGuids </td>
+          <td>(</td>
+          <td class="paramtype">string[]&#160;</td>
+          <td class="paramname"><em>searchPaths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns an array of prefab asset GUID's at the specified search paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchPaths</td><td>An array of search paths.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_file_utility_8cs_source.html#l00072">72</a> of file <a class="el" href="_file_utility_8cs_source.html">FileUtility.cs</a>.</p>
+
+</div>
+</div>
+<a id="a447e20abd92a3023d970d9ae6a88f3c2" name="a447e20abd92a3023d970d9ae6a88f3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a447e20abd92a3023d970d9ae6a88f3c2">&#9670;&nbsp;</a></span>FindPrefabPaths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string[] MPewsey.ManiaMap.Unity.Editor.FileUtility.FindPrefabPaths </td>
+          <td>(</td>
+          <td class="paramtype">string[]&#160;</td>
+          <td class="paramname"><em>searchPaths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return an array of prefab paths at the specified search paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchPaths</td><td>An array of search paths.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_file_utility_8cs_source.html#l00081">81</a> of file <a class="el" href="_file_utility_8cs_source.html">FileUtility.cs</a>.</p>
 
 </div>
 </div>

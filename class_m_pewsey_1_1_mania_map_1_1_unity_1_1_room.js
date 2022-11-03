@@ -29,7 +29,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room =
     [ "Layout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#ab2b8b26b5ccd6e9417ab8b066f40414b", null ],
     [ "LayoutState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af314298f3f3a373c11ef5526ef9b049b", null ],
     [ "Name", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a5d19d696a6784da9778965d7ff15615f", null ],
-    [ "RoomData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#af10e0953bcfc9ae5cb998c281955fe64", null ],
+    [ "RoomLayout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a6c8e5c57333a2b81b10229ad8f5b5427", null ],
     [ "RoomState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a8658ab83a260089aafbd99a1c476023d", null ],
     [ "Size", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html#a6e82d18ef48e78e5e813b753b32bf442", null ]
 ];
