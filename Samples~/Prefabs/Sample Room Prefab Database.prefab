@@ -44,12 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79894f92e6948c64698e507ac010766f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _searchPaths:
+  - Packages/com.mpewsey.maniamap.unity/Samples/Prefabs/Rooms
   _entries:
   - _id: 1874167321
-    _roomData: {fileID: 3573033575830362498, guid: 5f94a78544570374a990d165e8d8c22e, type: 3}
+    _roomPrefab: {fileID: 3573033575830362498, guid: 5f94a78544570374a990d165e8d8c22e, type: 3}
   - _id: 126715741
-    _roomData: {fileID: 336909771860048992, guid: d66ec26625966c6468d1e6d29de3eeda, type: 3}
+    _roomPrefab: {fileID: 336909771860048992, guid: d66ec26625966c6468d1e6d29de3eeda, type: 3}
   - _id: 1478907701
-    _roomData: {fileID: 5481373789391539447, guid: f87e425768016b347a7c0682df063e20, type: 3}
+    _roomPrefab: {fileID: 5481373789391539447, guid: f87e425768016b347a7c0682df063e20, type: 3}
   - _id: 850923143
-    _roomData: {fileID: 1243538500982775062, guid: 814c0991095da4c4691b7076a5ae6a9e, type: 3}
+    _roomPrefab: {fileID: 1243538500982775062, guid: 814c0991095da4c4691b7076a5ae6a9e, type: 3}

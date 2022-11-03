@@ -38,29 +38,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
         }
 
         /// <summary>
-        /// True if the target is not a prefab asset.
-        /// </summary>
-        private bool AutoAssignButtonEnabled()
-        {
-            return !TargetIsPrefabAsset();
-        }
-
-        /// <summary>
-        /// Returns true if the target object is an unopened prefab being inspected.
-        /// </summary>
-        private bool TargetIsPrefabAsset()
-        {
-            return GetRoomPrefabDatabase().gameObject.scene.name == null;
-        }
-
-        /// <summary>
         /// Draws the auto assign button.
         /// </summary>
         private void DrawAutoAssignButton()
         {
-            if (!AutoAssignButtonEnabled())
-                return;
-
             if (GUILayout.Button("Auto Assign"))
                 AutoAssign();
         }
@@ -70,13 +51,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         private void AutoAssign()
         {
-            var guids = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets" });
             var db = GetRoomPrefabDatabase();
             db.Entries.Clear();
 
-            foreach (var guid in guids)
+            foreach (var path in FileUtility.FindPrefabPaths(db.SearchPaths))
             {
-                AddPrefabEntry(AssetDatabase.GUIDToAssetPath(guid));
+                AddPrefabEntry(path);
             }
 
             EditorUtility.SetDirty(db);

@@ -38,12 +38,12 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The assigned collectable ID.
         /// </summary>
-        public int CollectableId => RoomData.Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
+        public int CollectableId => RoomLayout.Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
 
         /// <summary>
         /// True if the collectable spot exists.
         /// </summary>
-        public bool Exists => RoomData.Collectables.ContainsKey(Id);
+        public bool Exists => RoomLayout.Collectables.ContainsKey(Id);
 
         /// <summary>
         /// True if the collectable spot is already acquired.

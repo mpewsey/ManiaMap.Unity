@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns the room data.
         /// </summary>
-        public ManiaMap.Room RoomData => Room.RoomData;
+        public ManiaMap.Room RoomLayout => Room.RoomLayout;
 
         /// <summary>
         /// Returns the room state.

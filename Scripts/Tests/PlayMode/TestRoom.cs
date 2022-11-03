@@ -72,11 +72,11 @@ namespace MPewsey.ManiaMap.Unity.Tests
             // Create fake layout.
             var layout = new Layout(1, "Test", seed);
             var node = new ManiaMap.LayoutNode(1);
-            var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
-            layout.Rooms.Add(roomData.Id, roomData);
+            var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            layout.Rooms.Add(roomLayout.Id, roomLayout);
             var layoutState = new LayoutState(layout);
 
-            room.Initialize(roomData.Id, layout, layoutState, RoomPositionOption.Layout);
+            room.Initialize(roomLayout.Id, layout, layoutState, RoomPositionOption.Layout);
             Assert.IsTrue(room.IsInitialized);
         }
 
@@ -90,11 +90,11 @@ namespace MPewsey.ManiaMap.Unity.Tests
             // Create fake layout.
             var layout = new Layout(1, "Test", seed);
             var node = new ManiaMap.LayoutNode(1);
-            var roomData = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
-            layout.Rooms.Add(roomData.Id, roomData);
+            var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
-            var room = Room.InstantiateRoom(roomData.Id, prefab.gameObject, null, RoomPositionOption.Layout);
+            var room = Room.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.Layout);
             Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }

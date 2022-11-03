@@ -17,21 +17,21 @@ namespace MPewsey.ManiaMap.Unity
         public int Id { get => _id; set => _id = value; }
 
         [SerializeField]
-        private T _roomData;
+        private T _roomPrefab;
         /// <summary>
         /// The room data source.
         /// </summary>
-        public T RoomData { get => _roomData; set => _roomData = value; }
+        public T RoomPrefab { get => _roomPrefab; set => _roomPrefab = value; }
 
         /// <summary>
         /// Initializes a new entry.
         /// </summary>
         /// <param name="id">The room ID.</param>
-        /// <param name="roomData">The room data source.</param>
-        public RoomDatabaseEntry(int id, T roomData)
+        /// <param name="roomPrefab">The room data source.</param>
+        public RoomDatabaseEntry(int id, T roomPrefab)
         {
             _id = id;
-            _roomData = roomData;
+            _roomPrefab = roomPrefab;
         }
     }
 }

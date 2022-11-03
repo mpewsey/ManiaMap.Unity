@@ -74,7 +74,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The room data.
         /// </summary>
-        public ManiaMap.Room RoomData { get; private set; }
+        public ManiaMap.Room RoomLayout { get; private set; }
 
         /// <summary>
         /// The room state.
@@ -152,7 +152,7 @@ namespace MPewsey.ManiaMap.Unity
         {
             Layout = layout;
             LayoutState = layoutState;
-            RoomData = layout.Rooms[id];
+            RoomLayout = layout.Rooms[id];
             RoomState = layoutState.RoomStates[id];
             IsInitialized = true;
 
@@ -187,7 +187,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void AssignLayoutPosition()
         {
-            var position = new Vector2(RoomData.Position.Y, -RoomData.Position.X) * CellSize;
+            var position = new Vector2(RoomLayout.Position.Y, -RoomLayout.Position.X) * CellSize;
             transform.localPosition = Swizzle(position);
         }
 

@@ -60,7 +60,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 asset.Initialize(template);
                 EditorUtility.SetDirty(asset);
-                AssetDatabase.SaveAssetIfDirty(asset);
+                // AssetDatabase.SaveAssetIfDirty(asset);
             }
         }
 
