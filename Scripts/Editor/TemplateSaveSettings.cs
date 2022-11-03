@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
-    [CreateAssetMenu(menuName = "Mania Map/Template Save Settings", fileName = "TemplateSaveSettings")]
+    [CreateAssetMenu(menuName = "Mania Map/Settings/Template Save Settings", fileName = "TemplateSaveSettings")]
     public class TemplateSaveSettings : ScriptableObject
     {
         [SerializeField]

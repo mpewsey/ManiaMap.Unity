@@ -32,33 +32,17 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Loads the settings from the resources folder. If they do not exist, returns null.
-        /// </summary>
-        public static ManiaMapSettings Load()
-        {
-            return Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
-        }
-
-        /// <summary>
-        /// Creates a new settings instance.
-        /// </summary>
-        public static ManiaMapSettings Create()
-        {
-            return CreateInstance<ManiaMapSettings>();
-        }
-
-        /// <summary>
         /// Attempts to load the settings from teh resources folder. If they do not exist,
         /// returns a new settings object.
         /// </summary>
         public static ManiaMapSettings GetSettings()
         {
-            var settings = Load();
+            var settings = Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
 
             if (settings != null)
                 return settings;
 
-            return Create();
+            return CreateInstance<ManiaMapSettings>();
         }
     }
 }

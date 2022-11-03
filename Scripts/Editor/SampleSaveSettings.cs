@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
-    [CreateAssetMenu(menuName = "Mania Map/Sample Save Settings", fileName = "SampleSaveSettings")]
+    [CreateAssetMenu(menuName = "Mania Map/Settings/Sample Save Settings", fileName = "SampleSaveSettings")]
     public class SampleSaveSettings : ScriptableObject
     {
         [SerializeField]
         private string _savePath = "Assets/ManiaMap/RoomTemplates/Samples";
         public string SavePath { get => _savePath; set => _savePath = value; }
 
-        [MenuItem("Mania Map/Save Sample Templates", priority = 1)]
+        // [MenuItem("Mania Map/Save Sample Templates", priority = 1)]
         public static void SaveSampleTemplates()
         {
             GetSettings().CreateSampleTemplates();
