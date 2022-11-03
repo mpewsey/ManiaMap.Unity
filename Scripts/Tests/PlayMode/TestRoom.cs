@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Tests
@@ -75,8 +76,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             var layoutState = new LayoutState(layout);
+            var doorConnections = new List<DoorConnection>();
 
-            room.Initialize(roomLayout.Id, layout, layoutState, RoomPositionOption.Layout);
+            room.Initialize(roomLayout.Id, layout, layoutState, doorConnections, RoomPositionOption.LayoutPosition);
             Assert.IsTrue(room.IsInitialized);
         }
 
@@ -94,7 +96,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
-            var room = Room.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.Layout);
+            var room = Room.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
             Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }

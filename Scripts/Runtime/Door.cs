@@ -89,10 +89,8 @@ namespace MPewsey.ManiaMap.Unity
             var roomId = RoomLayout.Id;
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-            foreach (var neighbor in ManiaMapManager.Current.GetAdjacentRooms(roomId))
+            foreach (var connection in DoorConnections)
             {
-                var connection = Layout.GetDoorConnection(roomId, neighbor);
-
                 if (connection.ContainsDoor(roomId, position, Direction))
                     return connection;
             }
@@ -142,7 +140,7 @@ namespace MPewsey.ManiaMap.Unity
 
             var max = distances.Max();
             var index = distances.FindIndex(x => x == max);
-            Direction = index < 0 ? DoorDirection.North : (DoorDirection)index;
+            Direction = (DoorDirection)index;
         }
     }
 }

@@ -76,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
         public void CenterCamera()
         {
             var camera = Camera.main;
-            var bounds = ManiaMapManager.Current.Layout.GetBounds();
+            var bounds = ManiaMapManager.CurrentValidated.Layout.GetBounds();
             var x = CellSize.x * (bounds.X + 0.5f * bounds.Width);
             var y = -CellSize.y * (bounds.Y + 0.5f * bounds.Height);
             camera.transform.position = new Vector3(x, y, camera.transform.position.z);
