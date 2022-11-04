@@ -5,34 +5,22 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// Contains settings related to saving the samples room templates from the Mania Map library to the project.
+    /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Settings/Sample Save Settings", fileName = "SampleSaveSettings")]
     public class SampleSaveSettings : ScriptableObject
     {
         [SerializeField]
         private string _savePath = "Assets/ManiaMap/RoomTemplates/Samples";
+        /// <summary>
+        /// The path where the sample templates will be saved.
+        /// </summary>
         public string SavePath { get => _savePath; set => _savePath = value; }
 
-        // [MenuItem("Mania Map/Save Sample Templates", priority = 1)]
-        public static void SaveSampleTemplates()
-        {
-            GetSettings().CreateSampleTemplates();
-        }
-
-        private static SampleSaveSettings GetSettings()
-        {
-            var settings = Resources.Load<SampleSaveSettings>("ManiaMap/SampleSaveSettings");
-
-            if (settings != null)
-                return settings;
-
-            settings = CreateInstance<SampleSaveSettings>();
-            FileUtility.CreateDirectory("Assets/Resources/ManiaMap");
-            var path = "Assets/Resources/ManiaMap/SampleSaveSettings.asset";
-            AssetDatabase.CreateAsset(settings, path);
-            Debug.Log($"Sample save settings created at: {path}");
-            return settings;
-        }
-
+        /// <summary>
+        /// Creates or overwrites the existing sample templates within the project.
+        /// </summary>
         public void CreateSampleTemplates()
         {
             CreateSamplesDirectory();
@@ -45,6 +33,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
             Log.Success("Saved sample room templates.");
         }
 
+        /// <summary>
+        /// Creates or overwrites the existing room template asset with the data for the specified
+        /// generation template.
+        /// </summary>
+        /// <param name="template">The generation room template.</param>
         private void CreateRoomTemplate(ManiaMap.RoomTemplate template)
         {
             var path = TemplateSavePath(template);
@@ -64,12 +57,19 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Returns the save path for the specified room template.
+        /// </summary>
+        /// <param name="template">The generation room template.</param>
         private string TemplateSavePath(ManiaMap.RoomTemplate template)
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{template.Name} [{template.Id:x}].asset");
             return Path.Combine(SavePath, path);
         }
 
+        /// <summary>
+        /// Creates the sample directory within the project.
+        /// </summary>
         private void CreateSamplesDirectory()
         {
             FileUtility.CreateDirectory(SavePath);
