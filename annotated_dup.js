@@ -36,15 +36,15 @@ var annotated_dup =
             [ "LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings" ],
             [ "LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_node_editor.html", null ],
             [ "Log", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log" ],
-            [ "ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html", null ],
+            [ "ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor" ],
             [ "RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor" ],
             [ "RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor" ],
             [ "RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor" ],
             [ "RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ],
             [ "SampleSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings" ],
             [ "SampleSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor" ],
-            [ "TemplateSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings.html", null ],
-            [ "TemplateSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor.html", null ]
+            [ "TemplateSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings" ],
+            [ "TemplateSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor" ]
           ] ],
           [ "Examples", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples.html", [
             [ "CameraController", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller" ],

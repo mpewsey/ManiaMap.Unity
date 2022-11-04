@@ -4,6 +4,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child =
     [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae45121b3c0ffe28e4c8ea13de15568df", null ],
     [ "AutoAssignCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a34c4ef076d073bf7594be4a0b9007f81", null ],
     [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a2a1a0ecbc689d571e89a505530102294", null ],
+    [ "DoorConnections", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#abd90bb21b11a49161f78f15f65c1a15e", null ],
     [ "Layout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad14720c72e3d95d908046f1ce1d2f866", null ],
     [ "LayoutState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a00bfc1a3f18a985e70e8f4515ba43689", null ],
     [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad70c55c03af6de086928dedd77ead7e1", null ],

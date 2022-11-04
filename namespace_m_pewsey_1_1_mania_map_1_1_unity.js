@@ -40,7 +40,8 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
     [ "RoomPositionOption", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374", [
-      [ "Default", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a7a1920d61156abc05a60135aefe8bc67", null ],
-      [ "Layout", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374aebd9bec4d70abc789d439c1f136b0538", null ]
+      [ "UseManagerSettings", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a93ba4e8528de8bd8e68e13e3abdcdc80", null ],
+      [ "Origin", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a3edf8ca26a1ec14dd6e91dd277ae1de6", null ],
+      [ "LayoutPosition", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374aa5507bf7e73ad7695e2b8cd157025666", null ]
     ] ]
 ];
