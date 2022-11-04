@@ -93,7 +93,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public void CreateLayers()
         {
-            var manager = ManiaMapManager.Current;
+            var manager = ManiaMapManager.CurrentValidated;
             CreateLayers(manager.Layout, manager.LayoutState);
         }
 

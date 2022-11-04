@@ -1,5 +1,6 @@
 using MPewsey.ManiaMap.Collections;
 using MPewsey.ManiaMap.Unity.Exceptions;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -81,6 +82,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public RoomState RoomState { get; private set; }
 
+        /// <summary>
+        /// The room's door connections.
+        /// </summary>
+        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; }
+
         private void Start()
         {
             if (!IsInitialized)
@@ -106,10 +112,15 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="prefab">The asset reference for the room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, AssetReferenceGameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
+        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id,
+            AssetReferenceGameObject prefab, Transform parent = null,
+            RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
-            var layout = ManiaMapManager.Current.Layout;
-            var layoutState = ManiaMapManager.Current.LayoutState;
+            var manager = ManiaMapManager.CurrentValidated;
+            position = manager.Settings.GetRoomPositionOption(position);
+            var layout = manager.Layout;
+            var layoutState = manager.LayoutState;
+            var doorConnections = manager.GetDoorConnections(id);
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += x =>
@@ -120,7 +131,7 @@ namespace MPewsey.ManiaMap.Unity
                 if (!x.Result.TryGetComponent(out Room room))
                     throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
 
-                room.Initialize(id, layout, layoutState, position);
+                room.Initialize(id, layout, layoutState, doorConnections, position);
             };
 
             return handle;
@@ -133,11 +144,17 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="prefab">The room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null, RoomPositionOption position = RoomPositionOption.Default)
+        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
+            RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
-            var manager = ManiaMapManager.Current;
+            var manager = ManiaMapManager.CurrentValidated;
+            position = manager.Settings.GetRoomPositionOption(position);
+            var layout = manager.Layout;
+            var layoutState = manager.LayoutState;
+            var doorConnections = manager.GetDoorConnections(id);
+
             var room = Instantiate(prefab, parent).GetComponent<Room>();
-            room.Initialize(id, manager.Layout, manager.LayoutState, position);
+            room.Initialize(id, layout, layoutState, doorConnections, position);
             return room;
         }
 
@@ -147,25 +164,20 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         /// <param name="layout">The layout.</param>
         /// <param name="layoutState">The layout state.</param>
+        /// <param name="doorConnections">A list of door connections for the room.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Initialize(Uid id, Layout layout, LayoutState layoutState, RoomPositionOption position)
+        public void Initialize(Uid id, Layout layout, LayoutState layoutState,
+            IReadOnlyList<DoorConnection> doorConnections, RoomPositionOption position)
         {
             Layout = layout;
             LayoutState = layoutState;
+            DoorConnections = doorConnections;
             RoomLayout = layout.Rooms[id];
             RoomState = layoutState.RoomStates[id];
             IsInitialized = true;
 
-            switch (position)
-            {
-                case RoomPositionOption.Default:
-                    break;
-                case RoomPositionOption.Layout:
-                    AssignLayoutPosition();
-                    break;
-                default:
-                    throw new System.ArgumentException($"Unhandled room position option: {position}.");
-            }
+            if (position == RoomPositionOption.LayoutPosition)
+                AssignLayoutPosition();
         }
 
         /// <summary>

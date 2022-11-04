@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The TemplateSaveSettings editor.
+    /// </summary>
     [CustomEditor(typeof(TemplateSaveSettings))]
     public class TemplateSaveSettingsEditor : UnityEditor.Editor
     {
@@ -14,11 +17,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
             serializedObject.ApplyModifiedProperties();
         }
 
+        /// <summary>
+        /// Returns the target settings.
+        /// </summary>
         private TemplateSaveSettings GetSettings()
         {
             return (TemplateSaveSettings)serializedObject.targetObject;
         }
 
+        /// <summary>
+        /// Draws the save templates button.
+        /// </summary>
         private void DrawSaveTemplatesButton()
         {
             if (GUILayout.Button("Batch Save Templates"))

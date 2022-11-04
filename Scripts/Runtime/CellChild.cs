@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -46,6 +47,11 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the room state.
         /// </summary>
         public RoomState RoomState => Room.RoomState;
+
+        /// <summary>
+        /// A list of room door connections.
+        /// </summary>
+        public IReadOnlyList<DoorConnection> DoorConnections => Room.DoorConnections;
 
         /// <summary>
         /// If auto assign is enabled, assigns the closest cell to the object.

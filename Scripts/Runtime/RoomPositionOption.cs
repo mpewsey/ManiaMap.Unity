@@ -5,9 +5,11 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public enum RoomPositionOption
     {
-        /// Rooms are instantiated at their default position.
-        Default,
-        /// Rooms are instantiated and shifted to their position in the layout.
-        Layout,
+        /// Room position is based on the Mania Map Manager settings.
+        UseManagerSettings,
+        /// Rooms are instantiated at the origin of their parent.
+        Origin,
+        /// Rooms have their local positions set to their positions in the layout.
+        LayoutPosition,
     }
 }

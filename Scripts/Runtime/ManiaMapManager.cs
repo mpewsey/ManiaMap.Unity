@@ -26,14 +26,27 @@ namespace MPewsey.ManiaMap.Unity
             private set => _current = value;
         }
 
+        /// <summary>
+        /// Validates the current manager and returns it.
+        /// </summary>
+        public static ManiaMapManager CurrentValidated
+        {
+            get
+            {
+                var current = Current;
+                current.Validate();
+                return current;
+            }
+        }
+
         public ManiaMapSettings Settings { get; set; }
         public Layout Layout { get; private set; }
         public LayoutState LayoutState { get; private set; }
 
         /// <summary>
-        /// A dictionary of adjacent rooms by room ID.
+        /// A dictionary of door connections by room ID.
         /// </summary>
-        private Dictionary<Uid, List<Uid>> RoomAdjacencies { get; set; } = new Dictionary<Uid, List<Uid>>();
+        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
 
         /// <summary>
         /// A dictionary of room clusters by room ID.
@@ -59,10 +72,36 @@ namespace MPewsey.ManiaMap.Unity
 
         public void SetLayout(Layout layout, LayoutState layoutState)
         {
+            if (layout == null)
+                throw new System.ArgumentException("Layout cannot be null.");
+            if (layoutState == null)
+                throw new System.ArgumentException("Layout state cannot be null.");
+            if (layout.Id != layoutState.Id)
+                throw new System.ArgumentException("Layout and layout state ID's do not match.");
+
             Layout = layout;
             LayoutState = layoutState;
-            RoomAdjacencies = layout.RoomAdjacencies();
+            RoomConnections = layout.GetRoomConnections();
             RoomClusters = layout.FindClusters(Settings.MaxClusterDepth);
+        }
+
+        public void ClearLayout()
+        {
+            Layout = null;
+            LayoutState = null;
+            RoomConnections = new Dictionary<Uid, List<DoorConnection>>();
+            RoomClusters = new Dictionary<Uid, HashSet<Uid>>();
+        }
+
+        public void Validate()
+        {
+            if (Layout == null || LayoutState == null)
+                throw new System.ArgumentException("Layout not set to Mania Map Manager.");
+        }
+
+        public bool IsValid()
+        {
+            return Layout != null && LayoutState != null;
         }
 
         public GameObject GetPlayer()
@@ -99,14 +138,14 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Returns a list of adjacent room ID's.
+        /// Returns a list of door connections by room ID.
         /// </summary>
-        /// <param name="id">The room ID for which adjacent rooms will be returned.</param>
-        public IReadOnlyList<Uid> GetAdjacentRooms(Uid id)
+        /// <param name="id">The room ID.</param>
+        public IReadOnlyList<DoorConnection> GetDoorConnections(Uid id)
         {
-            if (RoomAdjacencies.TryGetValue(id, out List<Uid> rooms))
-                return rooms;
-            return System.Array.Empty<Uid>();
+            if (RoomConnections.TryGetValue(id, out var connections))
+                return connections;
+            return System.Array.Empty<DoorConnection>();
         }
 
         /// <summary>

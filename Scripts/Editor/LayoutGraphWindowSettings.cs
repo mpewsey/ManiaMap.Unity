@@ -5,7 +5,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// <summary>
     /// Contains settings related to the LayoutGraphWindow.
     /// 
-    /// An instance of this asset may be placed anywhere in your project to override the default settings.
+    /// This asset may be placed at ManiaMap/LayoutGraphWindowSettings within a Resources folder to override the default settings.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Settings/Layout Graph Window Settings")]
     public class LayoutGraphWindowSettings : ScriptableObject
