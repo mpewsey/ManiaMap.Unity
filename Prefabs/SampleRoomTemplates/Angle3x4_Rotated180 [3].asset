@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _name: Angle3x4_Rotated180
+  _prefabGuid: 
   _serializedText: '{"Id":3,"Name":"Angle3x4_Rotated180","Cells":{"Rows":3,"Columns":4,"Array":[null,null,null,{"Doors":{"Dictionary":[{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]},null,null,null,{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":8,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]},{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":9,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[]},"CollectableSpots":{"Dictionary":[{"Key":10,"Value":"Default"}]},"Features":[]},{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]}]}}'

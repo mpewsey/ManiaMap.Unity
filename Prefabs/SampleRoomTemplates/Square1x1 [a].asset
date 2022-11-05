@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 10
   _name: Square1x1
+  _prefabGuid: 
   _serializedText: '{"Id":10,"Name":"Square1x1","Cells":{"Rows":1,"Columns":1,"Array":[{"Doors":{"Dictionary":[{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[{"Key":31,"Value":"Default"}]},"Features":[]}]}}'

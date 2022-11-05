@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 15
   _name: Rectangle1x2_Rotated90
+  _prefabGuid: 
   _serializedText: '{"Id":15,"Name":"Rectangle1x2_Rotated90","Cells":{"Rows":2,"Columns":1,"Array":[{"Doors":{"Dictionary":[{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[]},"Features":[]},{"Doors":{"Dictionary":[{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"CollectableSpots":{"Dictionary":[{"Key":46,"Value":"Default"}]},"Features":[]}]}}'
