@@ -11,18 +11,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
     [CustomEditor(typeof(RoomAddressableDatabase))]
     public class RoomAddressableDatabaseEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// Creates a new database Game Object.
-        /// </summary>
-        [MenuItem("GameObject/Mania Map/Room Addressable Database", priority = 20)]
-        [MenuItem("Mania Map/Create Room Addressable Database", priority = 100)]
-        public static void CreateDatabase()
-        {
-            var obj = new GameObject("Room Addressable Database");
-            obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<RoomAddressableDatabase>();
-        }
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -83,8 +71,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 return;
 
             var db = GetRoomAddressableDatabase();
-            var reference = new AssetReferenceGameObject(guid);
-            db.Entries.Add(new RoomDatabaseEntry<AssetReferenceGameObject>(room.Id, reference));
+            db.AddEntry(room.Id, new AssetReferenceGameObject(guid));
         }
     }
 }

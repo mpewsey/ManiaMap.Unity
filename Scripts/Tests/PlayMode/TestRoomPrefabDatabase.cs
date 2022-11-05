@@ -14,8 +14,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestCreateRoomDataDictionary()
         {
-            var obj = new GameObject("Room Prefab Database");
-            var db = obj.AddComponent<RoomPrefabDatabase>();
+            var db = ScriptableObject.CreateInstance<RoomPrefabDatabase>();
 
             var room1 = new GameObject("Room1").AddComponent<Room>();
             room1.Id = 1;
@@ -23,15 +22,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var room2 = new GameObject("Room2").AddComponent<Room>();
             room2.Id = 2;
 
-            db.Entries.Add(new RoomDatabaseEntry<Room>(room1.Id, room1));
-            db.Entries.Add(new RoomDatabaseEntry<Room>(room2.Id, room2));
-
+            db.AddEntry(room1.Id, room1);
+            db.AddEntry(room2.Id, room2);
             db.CreateRoomPrefabDictionary();
-            Assert.Greater(db.Entries.Count, 0);
+            Assert.AreEqual(2, db.Entries.Count);
 
             foreach (var entry in db.Entries)
             {
-                Assert.AreEqual(entry.RoomPrefab, db.GetRoomPrefab(entry.Id));
+                Assert.AreEqual(entry.Prefab, db.GetRoomPrefab(entry.Id));
             }
         }
 
@@ -50,9 +48,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
             // Create database.
-            var obj = new GameObject("Room Prefab Database");
-            var db = obj.AddComponent<RoomPrefabDatabase>();
-            db.Entries.Add(new RoomDatabaseEntry<Room>(prefab.Id, prefab));
+            var db = ScriptableObject.CreateInstance<RoomPrefabDatabase>();
+            db.AddEntry(prefab.Id, prefab);
             db.CreateRoomPrefabDictionary();
 
             var room = db.InstantiateRoom(roomLayout.Id, null, RoomPositionOption.LayoutPosition);
