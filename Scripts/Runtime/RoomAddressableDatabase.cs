@@ -8,6 +8,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A room database with references to room addressables.
     /// </summary>
+    [CreateAssetMenu(menuName = "Mania Map/Room Databases/Room Addressable Database")]
     public class RoomAddressableDatabase : RoomDatabase<AssetReferenceGameObject>
     {
         /// <summary>

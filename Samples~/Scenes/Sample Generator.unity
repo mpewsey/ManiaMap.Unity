@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -164,7 +164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &750568106
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cellSize: {x: 10, y: 10}
   _generator: {fileID: 281765110}
-  _roomDatabase: {fileID: 1721671946}
+  _roomDatabase: {fileID: 11400000, guid: 7128553e7a25bbc4e9c9dbee9f001ec9, type: 2}
 --- !u!1 &823964171
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,74 +275,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1490456306
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413834304953678721, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7733854856004318403, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-      propertyPath: m_Name
-      value: Sample Room Prefab Database
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
---- !u!114 &1721671946 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1254350333780050233, guid: 5a0c3ecf0a5f79244ac86713585927fc, type: 3}
-  m_PrefabInstance: {fileID: 1490456306}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79894f92e6948c64698e507ac010766f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1874249585
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +364,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 838400105552863161, guid: e4e69ee421430934c9938196aa7cf2f9, type: 3}
@@ -483,4 +416,5 @@ PrefabInstance:
       value: Sample Layout Generator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e69ee421430934c9938196aa7cf2f9, type: 3}

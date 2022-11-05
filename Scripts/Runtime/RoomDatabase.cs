@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity
     /// A base class for creating a room data source database.
     /// </summary>
     /// <typeparam name="T">The room data source type.</typeparam>
-    public abstract class RoomDatabase<T> : MonoBehaviour
+    public abstract class RoomDatabase<T> : ScriptableObject
     {
         [SerializeField]
         private string[] _searchPaths = new string[] { "Assets" };
@@ -17,18 +17,18 @@ namespace MPewsey.ManiaMap.Unity
         public string[] SearchPaths { get => _searchPaths; set => _searchPaths = value; }
 
         [SerializeField]
-        protected List<RoomDatabaseEntry<T>> _entries = new List<RoomDatabaseEntry<T>>();
+        protected List<Entry<T>> _entries = new List<Entry<T>>();
         /// <summary>
         /// A list of database entries.
         /// </summary>
-        public List<RoomDatabaseEntry<T>> Entries { get => _entries; set => _entries = value; }
+        public List<Entry<T>> Entries { get => _entries; set => _entries = value; }
 
         /// <summary>
         /// A dictionary of room data sources by room ID.
         /// </summary>
         protected Dictionary<int, T> RoomPrefabDictionary { get; } = new Dictionary<int, T>();
 
-        private void Awake()
+        private void OnEnable()
         {
             CreateRoomPrefabDictionary();
         }
@@ -43,8 +43,19 @@ namespace MPewsey.ManiaMap.Unity
 
             foreach (var entry in Entries)
             {
-                RoomPrefabDictionary.Add(entry.Id, entry.RoomPrefab);
+                RoomPrefabDictionary.Add(entry.Id, entry.Prefab);
             }
+        }
+
+        /// <summary>
+        /// Adds an entry to the database.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="prefab">The room prefab.</param>
+        public void AddEntry(int id, T prefab)
+        {
+            RoomPrefabDictionary.Add(id, prefab);
+            Entries.Add(new Entry<T>(id, prefab));
         }
 
         /// <summary>
@@ -54,6 +65,39 @@ namespace MPewsey.ManiaMap.Unity
         public T GetRoomPrefab(int id)
         {
             return RoomPrefabDictionary[id];
+        }
+
+        /// <summary>
+        /// A room database entry containing a room ID and room data source.
+        /// </summary>
+        /// <typeparam name="T">The room data source type.</typeparam>
+        [System.Serializable]
+        public struct Entry<U>
+        {
+            [SerializeField]
+            private int _id;
+            /// <summary>
+            /// The room ID.
+            /// </summary>
+            public int Id { get => _id; set => _id = value; }
+
+            [SerializeField]
+            private U _prefab;
+            /// <summary>
+            /// The room prefab.
+            /// </summary>
+            public U Prefab { get => _prefab; set => _prefab = value; }
+
+            /// <summary>
+            /// Initializes a new entry.
+            /// </summary>
+            /// <param name="id">The room ID.</param>
+            /// <param name="prefab">The room prefab.</param>
+            public Entry(int id, U prefab)
+            {
+                _id = id;
+                _prefab = prefab;
+            }
         }
     }
 }

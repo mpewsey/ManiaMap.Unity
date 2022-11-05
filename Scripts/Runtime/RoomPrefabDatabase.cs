@@ -6,6 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A room database with references to room prefabs.
     /// </summary>
+    [CreateAssetMenu(menuName = "Mania Map/Room Databases/Room Prefab Database")]
     public class RoomPrefabDatabase : RoomDatabase<Room>
     {
         /// <summary>

@@ -9,18 +9,6 @@ namespace MPewsey.ManiaMap.Unity.Editor
     [CustomEditor(typeof(RoomPrefabDatabase))]
     public class RoomPrefabDatabaseEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// Creates a new room prefab database Game Object.
-        /// </summary>
-        [MenuItem("GameObject/Mania Map/Room Prefab Database", priority = 20)]
-        [MenuItem("Mania Map/Create Room Prefab Database", priority = 100)]
-        public static void CreateDatabase()
-        {
-            var obj = new GameObject("Room Prefab Database");
-            obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<RoomPrefabDatabase>();
-        }
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -74,7 +62,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (prefab.TryGetComponent(out Room room))
             {
                 var db = GetRoomPrefabDatabase();
-                db.Entries.Add(new RoomDatabaseEntry<Room>(room.Id, room));
+                db.AddEntry(room.Id, room);
             }
         }
     }

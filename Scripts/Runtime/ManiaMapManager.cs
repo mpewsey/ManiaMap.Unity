@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A manager for maintaining the current map data and state.
     /// </summary>
-    [RequireComponent(typeof(DontDestroyOnLoad))]
     public class ManiaMapManager : MonoBehaviour
     {
         private static ManiaMapManager _current;
@@ -39,8 +39,19 @@ namespace MPewsey.ManiaMap.Unity
             }
         }
 
+        /// <summary>
+        /// The manager settings.
+        /// </summary>
         public ManiaMapSettings Settings { get; set; }
+
+        /// <summary>
+        /// The current layout.
+        /// </summary>
         public Layout Layout { get; private set; }
+
+        /// <summary>
+        /// The current layout state.
+        /// </summary>
         public LayoutState LayoutState { get; private set; }
 
         /// <summary>
@@ -55,6 +66,7 @@ namespace MPewsey.ManiaMap.Unity
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             Settings = ManiaMapSettings.GetSettings();
         }
 
@@ -70,12 +82,20 @@ namespace MPewsey.ManiaMap.Unity
                 Current = null;
         }
 
+        /// <summary>
+        /// Sets the current layout and layout state to the manager.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state.</param>
+        /// <exception cref="LayoutIsNullException">Raised if the layout is null.</exception>
+        /// <exception cref="LayoutStateIsNullException">Raised if the layout state is null.</exception>
+        /// <exception cref="System.ArgumentException">Raised if the layout and layout state's ID's do not match.</exception>
         public void SetLayout(Layout layout, LayoutState layoutState)
         {
             if (layout == null)
-                throw new System.ArgumentException("Layout cannot be null.");
+                throw new LayoutIsNullException("Layout cannot be null.");
             if (layoutState == null)
-                throw new System.ArgumentException("Layout state cannot be null.");
+                throw new LayoutStateIsNullException("Layout state cannot be null.");
             if (layout.Id != layoutState.Id)
                 throw new System.ArgumentException("Layout and layout state ID's do not match.");
 
@@ -85,6 +105,9 @@ namespace MPewsey.ManiaMap.Unity
             RoomClusters = layout.FindClusters(Settings.MaxClusterDepth);
         }
 
+        /// <summary>
+        /// Clears the current layout from the manager.
+        /// </summary>
         public void ClearLayout()
         {
             Layout = null;
@@ -93,17 +116,30 @@ namespace MPewsey.ManiaMap.Unity
             RoomClusters = new Dictionary<Uid, HashSet<Uid>>();
         }
 
+        /// <summary>
+        /// Validates whether a layout and layout state are assigned. Throws an exception if they are not.
+        /// </summary>
+        /// <exception cref="LayoutIsNullException">Raised if the layout is null.</exception>
+        /// <exception cref="LayoutStateIsNullException">Raised if the layout state is null.</exception>
         public void Validate()
         {
-            if (Layout == null || LayoutState == null)
-                throw new System.ArgumentException("Layout not set to Mania Map Manager.");
+            if (Layout == null)
+                throw new LayoutIsNullException("Layout not set to Mania Map Manager.");
+            if (LayoutState == null)
+                throw new LayoutStateIsNullException("Layout state not set to Mania Map Manager.");
         }
 
+        /// <summary>
+        /// Returns true if a layout and layout state are assigned.
+        /// </summary>
         public bool IsValid()
         {
             return Layout != null && LayoutState != null;
         }
 
+        /// <summary>
+        /// Returns the player GameObject based on the player tag assigned to the settings.
+        /// </summary>
         public GameObject GetPlayer()
         {
             return GameObject.FindGameObjectWithTag(Settings.PlayerTag);
