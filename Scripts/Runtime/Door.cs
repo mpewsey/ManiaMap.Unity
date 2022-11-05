@@ -62,6 +62,36 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public DoorConnection Connection { get; private set; }
 
+        /// <summary>
+        /// The room ID of the room this door connects to.
+        /// </summary>
+        public Uid ToRoomId
+        {
+            get
+            {
+                if (!Exists)
+                    return new Uid(-1, -1, -1);
+                if (Connection.FromRoom == RoomId)
+                    return Connection.ToRoom;
+                return Connection.FromRoom;
+            }
+        }
+
+        /// <summary>
+        /// The door position in the room that this door connects to.
+        /// </summary>
+        public DoorPosition ToDoorPosition
+        {
+            get
+            {
+                if (!Exists)
+                    return null;
+                if (Connection.FromRoom == RoomId)
+                    return Connection.ToDoor;
+                return Connection.FromDoor;
+            }
+        }
+
         private void Start()
         {
             Initialize();
@@ -83,15 +113,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            if (RoomLayout == null)
-                return null;
-
-            var roomId = RoomLayout.Id;
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
             foreach (var connection in DoorConnections)
             {
-                if (connection.ContainsDoor(roomId, position, Direction))
+                if (connection.ContainsDoor(RoomId, position, Direction))
                     return connection;
             }
 

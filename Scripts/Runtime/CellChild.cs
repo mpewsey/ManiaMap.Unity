@@ -24,6 +24,11 @@ namespace MPewsey.ManiaMap.Unity
         public Cell Cell { get => _cell; set => _cell = value; }
 
         /// <summary>
+        /// The room ID.
+        /// </summary>
+        public Uid RoomId => RoomLayout == null ? new Uid(-1, -1, -1) : RoomLayout.Id;
+
+        /// <summary>
         /// The parent room.
         /// </summary>
         public Room Room => Cell.Room;
