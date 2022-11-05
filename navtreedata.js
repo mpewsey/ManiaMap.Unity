@@ -54,7 +54,7 @@ var NAVTREE =
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
-        [ "Properties", "functions_prop.html", null ]
+        [ "Properties", "functions_prop.html", "functions_prop" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -66,11 +66,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_camera_controller_8cs_source.html",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html#a3c40221324c7e1f9dd6cb1ce6a4b91eb",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_step_editor.html",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html#a4289d4cd4c2099cd901aef7cacc73c9c",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a6f45f6437d217d6e607334906754d0ad",
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html"
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_generation_pipeline_editor.html#aad2c74038657d968799b43a717f16ea7",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html#a4f615c8400e61e5d5b03cfeb94772f37",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a3ada6e3825e38633ccbdbb8b0f4a8cf5",
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

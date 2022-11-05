@@ -12,5 +12,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door =
     [ "Direction", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a59ce97e2b3d07f25856c84b17d8782a0", null ],
     [ "Exists", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a7ed7e6cf358d4723082c2500516081d1", null ],
     [ "OnInitialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a6bcf1cabb277d4be35786b9d9dc8b305", null ],
+    [ "ToDoorPosition", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#ab95c3c43699eb355e73e7a468610a818", null ],
+    [ "ToRoomId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a2b09a63b22e70f7c883eede76d7f5e4b", null ],
     [ "Type", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a835fa23d15e587702c28a0b4a4b06574", null ]
 ];

@@ -14,11 +14,13 @@ var searchData=
   ['tilemap_11',['Tilemap',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html#a1eb1b69f269ac6b3d76c57ebebfd7596',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutTilemapLayer']]],
   ['tiles_12',['Tiles',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a03413f236f6c2ed01f36a6f7c4086a22',1,'MPewsey::ManiaMap::Unity::Drawing::MapTilePool']]],
   ['tilesize_13',['TileSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#a19165bbbf1719e57dff5bb8c6eb8f7f2',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
-  ['toggleshowedges_14',['ToggleShowEdges',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a11276a0ea96d8dcbb1131b886951d35d',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['toggleshowinspector_15',['ToggleShowInspector',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a4c850ac35811da552beece720818caff',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['tonode_16',['ToNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a6f45f6437d217d6e607334906754d0ad',1,'MPewsey::ManiaMap::Unity::LayoutEdge']]],
-  ['tool_17',['Tool',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae9ab1aabb12030b686da575dad9ae0ff',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
-  ['top_18',['Top',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#a6ed4c182f38880b257c77f8e3068ca29',1,'MPewsey::ManiaMap::Unity::Drawing::Padding']]],
-  ['topdoor_19',['TopDoor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#ae1762b580de517e42c1f9c6236f19eb4',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
-  ['type_20',['Type',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a835fa23d15e587702c28a0b4a4b06574',1,'MPewsey::ManiaMap::Unity::Door']]]
+  ['todoorposition_14',['ToDoorPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#ab95c3c43699eb355e73e7a468610a818',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['toggleshowedges_15',['ToggleShowEdges',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a11276a0ea96d8dcbb1131b886951d35d',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['toggleshowinspector_16',['ToggleShowInspector',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#a4c850ac35811da552beece720818caff',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['tonode_17',['ToNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a6f45f6437d217d6e607334906754d0ad',1,'MPewsey::ManiaMap::Unity::LayoutEdge']]],
+  ['tool_18',['Tool',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ae9ab1aabb12030b686da575dad9ae0ff',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
+  ['top_19',['Top',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#a6ed4c182f38880b257c77f8e3068ca29',1,'MPewsey::ManiaMap::Unity::Drawing::Padding']]],
+  ['topdoor_20',['TopDoor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#ae1762b580de517e42c1f9c6236f19eb4',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
+  ['toroomid_21',['ToRoomId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a2b09a63b22e70f7c883eede76d7f5e4b',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['type_22',['Type',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a835fa23d15e587702c28a0b4a4b06574',1,'MPewsey::ManiaMap::Unity::Door']]]
 ];

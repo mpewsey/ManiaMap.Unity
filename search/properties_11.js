@@ -8,8 +8,10 @@ var searchData=
   ['tilemap_5',['Tilemap',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html#a1eb1b69f269ac6b3d76c57ebebfd7596',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutTilemapLayer']]],
   ['tiles_6',['Tiles',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a03413f236f6c2ed01f36a6f7c4086a22',1,'MPewsey::ManiaMap::Unity::Drawing::MapTilePool']]],
   ['tilesize_7',['TileSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#a19165bbbf1719e57dff5bb8c6eb8f7f2',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
-  ['tonode_8',['ToNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a6f45f6437d217d6e607334906754d0ad',1,'MPewsey::ManiaMap::Unity::LayoutEdge']]],
-  ['top_9',['Top',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#a6ed4c182f38880b257c77f8e3068ca29',1,'MPewsey::ManiaMap::Unity::Drawing::Padding']]],
-  ['topdoor_10',['TopDoor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#ae1762b580de517e42c1f9c6236f19eb4',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
-  ['type_11',['Type',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a835fa23d15e587702c28a0b4a4b06574',1,'MPewsey::ManiaMap::Unity::Door']]]
+  ['todoorposition_8',['ToDoorPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#ab95c3c43699eb355e73e7a468610a818',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['tonode_9',['ToNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_edge.html#a6f45f6437d217d6e607334906754d0ad',1,'MPewsey::ManiaMap::Unity::LayoutEdge']]],
+  ['top_10',['Top',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#a6ed4c182f38880b257c77f8e3068ca29',1,'MPewsey::ManiaMap::Unity::Drawing::Padding']]],
+  ['topdoor_11',['TopDoor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html#ae1762b580de517e42c1f9c6236f19eb4',1,'MPewsey::ManiaMap::Unity::Drawing::MapTiles']]],
+  ['toroomid_12',['ToRoomId',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a2b09a63b22e70f7c883eede76d7f5e4b',1,'MPewsey::ManiaMap::Unity::Door']]],
+  ['type_13',['Type',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a835fa23d15e587702c28a0b4a4b06574',1,'MPewsey::ManiaMap::Unity::Door']]]
 ];
