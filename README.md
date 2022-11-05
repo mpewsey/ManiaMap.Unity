@@ -70,7 +70,7 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 
 #### Saving Room Templates
 
-1. Select the Room and click the `Save Template` button. The data for the room template will be saved in the `ManiaMap > RoomTemplates` directory of the project. Alternately, use the `Mania Map > Batch Save Templates` command to save room templates for all prefabs in the project with a Room component at its root.
+1. Ensure that any rooms are saved as prefabs within the project. Next, select `Mania Map > Batch Save Templates` from the menu to save room templates for all room prefabs discovered within the project. Note that the settings for this action may be configured in the settings at `Resources/ManiaMap/TemplateSaveSettings` once the action has been run once.
 
 ### Step 2: Create Room Template Groups
 
