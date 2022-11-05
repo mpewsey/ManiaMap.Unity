@@ -23,6 +23,10 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; private set => _name = value; }
 
         [SerializeField]
+        private string _prefabGuid;
+        public string PrefabGuid { get => _prefabGuid; set => _prefabGuid = value; }
+
+        [SerializeField]
         [TextArea(3, int.MaxValue)]
         private string _serializedText = string.Empty;
         /// <summary>
@@ -50,11 +54,13 @@ namespace MPewsey.ManiaMap.Unity
         /// Initializes the template based on the specified generation template.
         /// </summary>
         /// <param name="template">The generation template.</param>
-        public void Initialize(ManiaMap.RoomTemplate template)
+        /// <param name="prefabGuid">The prefab GUID.</param>
+        public void Initialize(ManiaMap.RoomTemplate template, string prefabGuid = null)
         {
             Template = null;
             Id = template.Id;
             Name = template.Name;
+            PrefabGuid = prefabGuid;
             SerializedText = JsonSerialization.GetJsonString(template, JsonWriterSettings());
         }
 

@@ -62,9 +62,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             CreateSaveDirectory();
 
-            foreach (var path in FileUtility.FindPrefabPaths(SearchPaths))
+            foreach (var guid in FileUtility.FindPrefabGuids(SearchPaths))
             {
-                CreateRoomTemplate(path);
+                CreateRoomTemplate(guid);
             }
 
             Log.Success("Saved room templates.");
@@ -74,9 +74,11 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Creates or overwrites the room template for the prefab at the specified
         /// project path, provided it has a Room component.
         /// </summary>
-        /// <param name="assetPath">The path to the prefab.</param>
-        private void CreateRoomTemplate(string assetPath)
+        /// <param name="guid">The asset GUID.</param>
+        private void CreateRoomTemplate(string guid)
         {
+            var assetPath = AssetDatabase.GUIDToAssetPath(guid);
+
             using (var scope = new PrefabUtility.EditPrefabContentsScope(assetPath))
             {
                 var prefab = scope.prefabContentsRoot;
@@ -85,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
                     return;
 
                 Debug.Log($"Processing room at {assetPath}.");
-                CreateRoomTemplate(room);
+                CreateRoomTemplate(room, guid);
             }
         }
 
@@ -93,7 +95,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Creates or overwrites the room template for the specified room.
         /// </summary>
         /// <param name="room">The room.</param>
-        private void CreateRoomTemplate(Room room)
+        /// <param name="prefabGuid">The prefab GUID.</param>
+        private void CreateRoomTemplate(Room room, string prefabGuid)
         {
             var path = TemplateSavePath(room);
             var asset = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
@@ -103,12 +106,12 @@ namespace MPewsey.ManiaMap.Unity.Editor
             if (asset == null)
             {
                 asset = CreateInstance<RoomTemplate>();
-                asset.Initialize(template);
+                asset.Initialize(template, prefabGuid);
                 AssetDatabase.CreateAsset(asset, path);
             }
             else
             {
-                asset.Initialize(template);
+                asset.Initialize(template, prefabGuid);
                 EditorUtility.SetDirty(asset);
                 // AssetDatabase.SaveAssetIfDirty(asset);
             }
