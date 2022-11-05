@@ -24,6 +24,9 @@ namespace MPewsey.ManiaMap.Unity
 
         [SerializeField]
         private string _prefabGuid;
+        /// <summary>
+        /// The prefab GUID.
+        /// </summary>
         public string PrefabGuid { get => _prefabGuid; set => _prefabGuid = value; }
 
         [SerializeField]
