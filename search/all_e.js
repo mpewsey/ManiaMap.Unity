@@ -10,5 +10,6 @@ var searchData=
   ['plotpadding_7',['PlotPadding',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window_settings.html#ad2da850965569b65eaa449d2180096b0',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindowSettings']]],
   ['plotscrollposition_8',['PlotScrollPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html#ad083eac893c3b0e21c3e3d1fae1808d9',1,'MPewsey::ManiaMap::Unity::Editor::LayoutGraphWindow']]],
   ['position_9',['Position',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_layout_node.html#a720ed2806c262b8d34c109872c1b3578',1,'MPewsey::ManiaMap::Unity::LayoutNode']]],
-  ['prefabguidisvalid_10',['PrefabGuidIsValid',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html#a6e5c4dd582485ddc1b86a8b2cdf46fb1',1,'MPewsey::ManiaMap::Unity::Editor::RoomTemplateEditor']]]
+  ['prefab_10',['Prefab',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_1_1_entry.html#abc135acf7eb3268c1e659cea00e98c9c',1,'MPewsey::ManiaMap::Unity::RoomDatabase::Entry']]],
+  ['prefabguidisvalid_11',['PrefabGuidIsValid',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html#a6e5c4dd582485ddc1b86a8b2cdf46fb1',1,'MPewsey::ManiaMap::Unity::Editor::RoomTemplateEditor']]]
 ];
