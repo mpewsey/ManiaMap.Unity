@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A base class for creating a room data source database.
     /// </summary>
-    /// <typeparam name="T">The room data source type.</typeparam>
+    /// <typeparam name="T">The room prefab type.</typeparam>
     public abstract class RoomDatabase<T> : ScriptableObject
     {
         [SerializeField]
@@ -70,7 +70,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// A room database entry containing a room ID and room data source.
         /// </summary>
-        /// <typeparam name="T">The room data source type.</typeparam>
+        /// <typeparam name="U">The room prefab type.</typeparam>
         [System.Serializable]
         public struct Entry<U>
         {
