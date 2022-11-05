@@ -62,9 +62,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             JsonSerialization.SaveJson(path, group);
             var copy = JsonSerialization.LoadJson<CollectableGroups>(path);
 
-            foreach (var pair in group.GetGroups())
+            foreach (var pair in group.GroupsDictionary)
             {
-                CollectionAssert.AreEqual(pair.Value, copy.Get(pair.Key));
+                CollectionAssert.AreEqual(pair.Value, copy.GroupsDictionary[pair.Key]);
             }
         }
     }
