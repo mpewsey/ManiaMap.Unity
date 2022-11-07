@@ -18,13 +18,6 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<RoomTemplate> _templates = new List<RoomTemplate>();
-        /// <summary>
-        /// A list of room templates belonging to the group.
-        /// </summary>
-        private List<RoomTemplate> Templates { get => _templates; set => _templates = value; }
-
-        [SerializeField]
         private List<Entry> _entries = new List<Entry>();
         /// <summary>
         /// A list of template entries.
@@ -45,29 +38,18 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Creates entries from the templates list and clears the list.
-        /// Returns true if an entry was created.
+        /// Add an entry for the template to the group if it does not already exist.
         /// </summary>
-        public bool CreateEntriesFromTemplates()
+        /// <param name="template">The room template.</param>
+        public void AddTemplate(RoomTemplate template)
         {
-            var result = false;
+            if (template == null)
+                return;
 
-            foreach (var template in Templates)
-            {
-                if (template == null)
-                    continue;
+            var index = Entries.FindIndex(x => x.Template == template);
 
-                var index = Entries.FindIndex(x => x.Template == template);
-
-                if (index < 0)
-                {
-                    result = true;
-                    Entries.Add(new Entry(template));
-                }
-            }
-
-            Templates.Clear();
-            return result;
+            if (index < 0)
+                Entries.Add(new Entry(template));
         }
 
         /// <summary>
