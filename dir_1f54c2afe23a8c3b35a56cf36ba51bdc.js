@@ -24,6 +24,7 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "RoomTemplateEditor.cs", "_room_template_editor_8cs_source.html", null ],
     [ "SampleSaveSettings.cs", "_sample_save_settings_8cs_source.html", null ],
     [ "SampleSaveSettingsEditor.cs", "_sample_save_settings_editor_8cs_source.html", null ],
+    [ "TemplateGroupEditor.cs", "_template_group_editor_8cs_source.html", null ],
     [ "TemplateSaveSettings.cs", "_template_save_settings_8cs_source.html", null ],
     [ "TemplateSaveSettingsEditor.cs", "_template_save_settings_editor_8cs_source.html", null ]
 ];

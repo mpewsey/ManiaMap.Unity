@@ -21,12 +21,14 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.Editor.RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.SampleSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", null ],
       [ "MPewsey.ManiaMap.Unity.Editor.TemplateSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor.html", null ]
     ] ],
     [ "EditorWindow", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_layout_graph_window.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.RoomDatabase< T >.Entry< U >", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_1_1_entry.html", null ],
+    [ "MPewsey.ManiaMap.Unity.TemplateGroup.Entry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_1_1_entry.html", null ],
     [ "Exception", null, [
       [ "MPewsey.ManiaMap.Unity.Exceptions.DuplicateDirectionException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_direction_exception.html", null ],
       [ "MPewsey.ManiaMap.Unity.Exceptions.DuplicateInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_duplicate_input_exception.html", null ],
