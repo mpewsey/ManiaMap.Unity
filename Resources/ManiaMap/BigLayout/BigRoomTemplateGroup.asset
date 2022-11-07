@@ -13,10 +13,23 @@ MonoBehaviour:
   m_Name: BigRoomTemplateGroup
   m_EditorClassIdentifier: 
   _name: Big Room Template Group
-  _templates:
-  - {fileID: 11400000, guid: 580b660d294716b4ebcdaaf4bffc53c7, type: 2}
-  - {fileID: 11400000, guid: 1835993f2527f184a88b2ece1e40f45e, type: 2}
-  - {fileID: 11400000, guid: 5156879ca5aa1904e81cb650c63428b4, type: 2}
-  - {fileID: 11400000, guid: 855103b6434a6a7478090b2ada5e0c76, type: 2}
-  - {fileID: 11400000, guid: 0b1f0a2e4901af44dbdf41a193e07b52, type: 2}
-  - {fileID: 11400000, guid: 5196619ef0025ac418d472f4e65e3195, type: 2}
+  _templates: []
+  _entries:
+  - _template: {fileID: 11400000, guid: 580b660d294716b4ebcdaaf4bffc53c7, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 1835993f2527f184a88b2ece1e40f45e, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 5156879ca5aa1904e81cb650c63428b4, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 855103b6434a6a7478090b2ada5e0c76, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 0b1f0a2e4901af44dbdf41a193e07b52, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 5196619ef0025ac418d472f4e65e3195, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
