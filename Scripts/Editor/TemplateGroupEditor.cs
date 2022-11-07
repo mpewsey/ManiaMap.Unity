@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
+    /// <summary>
+    /// The TemplateGroup editor.
+    /// </summary>
     [CustomEditor(typeof(TemplateGroup))]
     public class TemplateGroupEditor : UnityEditor.Editor
     {
@@ -14,11 +17,17 @@ namespace MPewsey.ManiaMap.Unity.Editor
             serializedObject.ApplyModifiedProperties();
         }
 
+        /// <summary>
+        /// Returns the target template group.
+        /// </summary>
         private TemplateGroup GetTemplateGroup()
         {
             return (TemplateGroup)serializedObject.targetObject;
         }
 
+        /// <summary>
+        /// Draws the drag and drop area and evaluates user input within the area.
+        /// </summary>
         private void DrawDragAndDropArea()
         {
             var rect = GUILayoutUtility.GetRect(0, 50, GUILayout.ExpandWidth(true));
@@ -41,6 +50,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
             }
         }
 
+        /// <summary>
+        /// Adds any dragged and dropped templates to the group.
+        /// </summary>
         private void AddDragAndDropTemplates()
         {
             var group = GetTemplateGroup();
