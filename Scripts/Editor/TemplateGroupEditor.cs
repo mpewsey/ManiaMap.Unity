@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         private void AddDragAndDropTemplates()
         {
             var group = GetTemplateGroup();
-            
+
             foreach (var obj in DragAndDrop.objectReferences)
             {
                 group.AddTemplate(obj as RoomTemplate);
