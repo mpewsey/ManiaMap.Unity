@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: Sample Template Group
   m_EditorClassIdentifier: 
   _name: Sample Template Group
-  _templates:
-  - {fileID: 11400000, guid: 117d84685828ce946905f27818ff5fc1, type: 2}
-  - {fileID: 11400000, guid: 521ff58b4592ec5499a2667ead133672, type: 2}
-  - {fileID: 11400000, guid: c819377039dd06945b36591c9a27fa63, type: 2}
-  - {fileID: 11400000, guid: a5bae3744e8a05648849bd7427465be6, type: 2}
+  _templates: []
+  _entries:
+  - _template: {fileID: 11400000, guid: 117d84685828ce946905f27818ff5fc1, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: 521ff58b4592ec5499a2667ead133672, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: c819377039dd06945b36591c9a27fa63, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
+  - _template: {fileID: 11400000, guid: a5bae3744e8a05648849bd7427465be6, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647

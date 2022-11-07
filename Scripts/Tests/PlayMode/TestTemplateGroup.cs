@@ -8,13 +8,13 @@ namespace MPewsey.ManiaMap.Unity.Tests
     public class TestTemplateGroup
     {
         [Test]
-        public void TestGetTemplates()
+        public void TestGetTemplateGroupEntries()
         {
             var templates = new List<ManiaMap.RoomTemplate>
             {
-                ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4(),
-                ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template(),
-                ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
+                Samples.TemplateLibrary.Angles.Angle3x4(),
+                Samples.TemplateLibrary.Squares.Square3x3Template(),
+                Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
             };
 
             var templateGroup = ScriptableObject.CreateInstance<TemplateGroup>();
@@ -24,14 +24,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
             {
                 var room = ScriptableObject.CreateInstance<RoomTemplate>();
                 room.Initialize(template);
-                templateGroup.Templates.Add(room);
+                templateGroup.Entries.Add(new TemplateGroup.Entry(room));
             }
 
-            var copies = templateGroup.GetTemplates().ToList();
+            var copies = templateGroup.GetEntries().ToList();
 
             for (int i = 0; i < templates.Count; i++)
             {
-                Assert.IsTrue(ManiaMap.RoomTemplate.ValuesAreEqual(templates[i], copies[i]));
+                Assert.IsTrue(ManiaMap.RoomTemplate.ValuesAreEqual(templates[i], copies[i].Template));
             }
         }
     }

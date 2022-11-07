@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: StackedLoopTemplateGroup
   m_EditorClassIdentifier: 
   _name: Loop Template Group
-  _templates:
-  - {fileID: 11400000, guid: 034d2e12d64a75740a23331b073c3e64, type: 2}
+  _templates: []
+  _entries:
+  - _template: {fileID: 11400000, guid: 034d2e12d64a75740a23331b073c3e64, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647

@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: BigSavePointTemplateGroup
   m_EditorClassIdentifier: 
   _name: Big Save Point Template Group
-  _templates:
-  - {fileID: 11400000, guid: b8b8558284d8f95418c4224770027167, type: 2}
+  _templates: []
+  _entries:
+  - _template: {fileID: 11400000, guid: b8b8558284d8f95418c4224770027167, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647
