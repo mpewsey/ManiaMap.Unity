@@ -89,6 +89,9 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", null ],
       [ "MPewsey.ManiaMap.Unity.Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", null ]
     ] ],
+    [ "PropertyDrawer", null, [
+      [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEntryDrawer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_entry_drawer.html", null ]
+    ] ],
     [ "MPewsey.ManiaMap.Unity.RoomDatabase< AssetReferenceGameObject >", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", [
       [ "MPewsey.ManiaMap.Unity.RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", null ]
     ] ],
