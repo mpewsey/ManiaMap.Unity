@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BigPathTemplateGroup
   m_EditorClassIdentifier: 
   _name: Big Path Template Group
-  _templates: []
   _entries:
   - _template: {fileID: 11400000, guid: 72dcbd92470376b45bfd425b84d33f6b, type: 2}
     _minQuantity: 0
