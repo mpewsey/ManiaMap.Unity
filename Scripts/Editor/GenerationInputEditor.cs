@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Editor
 {
@@ -34,7 +35,10 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var input = GetGenerationInput();
             var names = input.OutputNames();
             var label = names.Length > 0 ? string.Join(", ", names) : LongDash;
+
+            GUI.enabled = false;
             EditorGUILayout.LabelField("Output Names", label);
+            GUI.enabled = true;
         }
     }
 }
