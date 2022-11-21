@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMap.Unity
         public List<LayoutGraph> LayoutGraphs { get => _layoutGraphs; set => _layoutGraphs = value; }
 
         /// <inheritdoc/>
-        public override void AddInput(Dictionary<string, object> input)
+        public override void AddInputs(Dictionary<string, object> input)
         {
             input.Add("LayoutGraphs", GetLayoutGraphFunctions());
             input.Add("TemplateGroups", GetTemplateGroups());
@@ -33,9 +33,9 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns a list of generation layout graph creation functions for the
         /// supplied layout graphs.
         /// </summary>
-        public List<Func<ManiaMap.LayoutGraph>> GetLayoutGraphFunctions()
+        public List<Func<Graphs.LayoutGraph>> GetLayoutGraphFunctions()
         {
-            var funcs = new List<Func<ManiaMap.LayoutGraph>>(LayoutGraphs.Count);
+            var funcs = new List<Func<Graphs.LayoutGraph>>(LayoutGraphs.Count);
 
             foreach (var graph in LayoutGraphs)
             {

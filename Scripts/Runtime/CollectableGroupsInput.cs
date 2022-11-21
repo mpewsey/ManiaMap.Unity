@@ -16,7 +16,7 @@ namespace MPewsey.ManiaMap.Unity
         public List<CollectableGroup> CollectableGroups { get => _collectableGroups; set => _collectableGroups = value; }
 
         /// <inheritdoc/>
-        public override void AddInput(Dictionary<string, object> input)
+        public override void AddInputs(Dictionary<string, object> input)
         {
             input.Add("CollectableGroups", GetCollectableGroups());
         }

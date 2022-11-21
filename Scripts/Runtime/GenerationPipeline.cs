@@ -47,7 +47,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Generates a set of results for the pipeline.
         /// </summary>
-        public ManiaMap.GenerationPipeline.Results Generate()
+        public Generators.GenerationPipeline.Results Generate()
         {
             Validate();
             var pipeline = GetPipeline();
@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
-        public Task<ManiaMap.GenerationPipeline.Results> GenerateAsync()
+        public Task<Generators.GenerationPipeline.Results> GenerateAsync()
         {
             Validate();
             var pipeline = GetPipeline();
@@ -85,12 +85,11 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns the Mania Map generation pipeline.
         /// </summary>
-        public ManiaMap.GenerationPipeline GetPipeline()
+        public Generators.GenerationPipeline GetPipeline()
         {
-            var pipeline = new ManiaMap.GenerationPipeline();
-            var steps = GetGenerationSteps();
+            var pipeline = new Generators.GenerationPipeline();
 
-            foreach (var step in steps)
+            foreach (var step in GetGenerationSteps())
             {
                 pipeline.Steps.Add(step.GetStep());
             }
@@ -103,12 +102,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Dictionary<string, object> GetInputs()
         {
-            var inputs = GetGenerationInputs();
             var result = new Dictionary<string, object>();
 
-            foreach (var input in inputs)
+            foreach (var input in GetGenerationInputs())
             {
-                input.AddInput(result);
+                input.AddInputs(result);
             }
 
             return result;

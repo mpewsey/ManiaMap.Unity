@@ -18,6 +18,6 @@ namespace MPewsey.ManiaMap.Unity
         /// Adds the input arguments to the specified inputs dictionary.
         /// </summary>
         /// <param name="input">The input dictionary.</param>
-        public abstract void AddInput(Dictionary<string, object> input);
+        public abstract void AddInputs(Dictionary<string, object> input);
     }
 }

@@ -24,7 +24,7 @@ namespace MPewsey.ManiaMap.Unity
         public T Value { get => _value; set => _value = value; }
 
         /// <inheritdoc/>
-        public override void AddInput(Dictionary<string, object> input)
+        public override void AddInputs(Dictionary<string, object> input)
         {
             input.Add(Name, Value);
         }

@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Generators;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -31,7 +32,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <inheritdoc/>
         public override IGenerationStep GetStep()
         {
-            return new ManiaMap.CollectableGenerator(DoorPower, NeighborPower, InitialNeighborWeight);
+            return new Generators.CollectableGenerator(DoorPower, NeighborPower, InitialNeighborWeight);
         }
 
         /// <inheritdoc/>

@@ -26,7 +26,7 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <inheritdoc/>
-        public override void AddInput(Dictionary<string, object> input)
+        public override void AddInputs(Dictionary<string, object> input)
         {
             input.Add("RandomSeed", GetRandomSeed());
         }

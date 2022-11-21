@@ -16,7 +16,7 @@ namespace MPewsey.ManiaMap.Unity
         public int Id { get => _id; set => _id = value; }
 
         /// <inheritdoc/>
-        public override void AddInput(Dictionary<string, object> input)
+        public override void AddInputs(Dictionary<string, object> input)
         {
             input.Add("LayoutId", Id);
         }

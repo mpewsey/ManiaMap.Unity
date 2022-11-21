@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Generators;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -38,7 +39,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <inheritdoc/>
         public override IGenerationStep GetStep()
         {
-            return new ManiaMap.LayoutGenerator(MaxRebases, RebaseDecayRate, MaxBranchLength);
+            return new Generators.LayoutGenerator(MaxRebases, RebaseDecayRate, MaxBranchLength);
         }
 
         /// <inheritdoc/>

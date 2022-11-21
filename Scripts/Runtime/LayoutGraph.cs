@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Graphs;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -197,9 +198,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Creates a new Mania Map layout graph.
         /// </summary>
-        public ManiaMap.LayoutGraph GetLayoutGraph()
+        public Graphs.LayoutGraph GetLayoutGraph()
         {
-            var graph = new ManiaMap.LayoutGraph(Id, Name);
+            var graph = new Graphs.LayoutGraph(Id, Name);
 
             foreach (var node in Nodes.OrderBy(x => x.Id))
             {

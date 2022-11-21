@@ -1,3 +1,5 @@
+using MPewsey.ManiaMap.Generators;
+
 namespace MPewsey.ManiaMap.Unity
 {
     /// <summary>
@@ -8,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <inheritdoc/>
         public override IGenerationStep GetStep()
         {
-            return new ManiaMap.LayoutGraphRandomizer();
+            return new Generators.LayoutGraphRandomizer();
         }
 
         /// <inheritdoc/>
