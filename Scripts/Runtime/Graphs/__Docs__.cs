@@ -1,7 +1,7 @@
 /// <summary>
 /// Contains graph components.
 /// </summary>
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMap.Unity.Graphs
 {
 
 }
