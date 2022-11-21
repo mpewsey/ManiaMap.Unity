@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             // Create fake layout.
             var layout = new Layout(1, "Test", seed);
-            var node = new Graphs.LayoutNode(1);
+            var node = new ManiaMap.Graphs.LayoutNode(1);
             var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));

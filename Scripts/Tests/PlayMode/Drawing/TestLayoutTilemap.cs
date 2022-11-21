@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Generators;
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
 
