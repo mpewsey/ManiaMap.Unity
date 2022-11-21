@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Unity.Generators;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Examples
