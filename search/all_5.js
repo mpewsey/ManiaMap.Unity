@@ -16,6 +16,6 @@ var searchData=
   ['findfeatures_13',['FindFeatures',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html#a1f5724bc5fbe5f4846024e5753511767',1,'MPewsey::ManiaMap::Unity::Cell']]],
   ['findprefabguids_14',['FindPrefabGuids',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a7cf7eba501dd6b7c7a2ecfb385952d0b',1,'MPewsey::ManiaMap::Unity::Editor::FileUtility']]],
   ['findprefabpaths_15',['FindPrefabPaths',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html#a447e20abd92a3023d970d9ae6a88f3c2',1,'MPewsey::ManiaMap::Unity::Editor::FileUtility']]],
-  ['flags_16',['Flags',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html#a566014006f9ddfdd42b39953fed1dd3a',1,'MPewsey::ManiaMap::Unity::Drawing::MapTileHash']]],
+  ['flags_16',['Flags',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key.html#a98e37c6d447c4d02e56e756c4e807742',1,'MPewsey::ManiaMap::Unity::Drawing::MapTileKey']]],
   ['fromnode_17',['FromNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge.html#a8ba190ce4a6672e6f7e90c933db795e4',1,'MPewsey::ManiaMap::Unity::Graphs::LayoutEdge']]]
 ];

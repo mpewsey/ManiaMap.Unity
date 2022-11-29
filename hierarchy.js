@@ -1,7 +1,6 @@
 var hierarchy =
 [
     [ "MPewsey.ManiaMap.Unity.Drawing.ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", null ],
-    [ "MPewsey.ManiaMap.Unity.Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", null ],
     [ "UnityEditor.Editor", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.CellChildEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html", [
         [ "MPewsey.ManiaMap.Unity.Editor.CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", null ],
@@ -48,7 +47,7 @@ var hierarchy =
     ] ],
     [ "IEquatable", null, [
       [ "MPewsey.ManiaMap.Unity.CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", null ],
-      [ "MPewsey.ManiaMap.Unity.Drawing.MapTileHash", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_hash.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Drawing.MapTileKey", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key.html", null ],
       [ "MPewsey.ManiaMap.Unity.Drawing.Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.Drawing.Editor.LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", null ],

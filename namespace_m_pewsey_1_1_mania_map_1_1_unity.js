@@ -12,7 +12,6 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry" ],
     [ "CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group" ],
     [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
-    [ "Database", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_database" ],
     [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
     [ "Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature" ],
     [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
