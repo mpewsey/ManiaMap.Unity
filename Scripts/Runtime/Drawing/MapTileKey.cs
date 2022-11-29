@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// <summary>
     /// A structure containing map tile type flags and an associated color.
     /// </summary>
-    public struct MapTileHash : IEquatable<MapTileHash>
+    public struct MapTileKey : IEquatable<MapTileKey>
     {
         /// <summary>
         /// The feature flags.
@@ -24,7 +24,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         /// <param name="flags">The feature flags.</param>
         /// <param name="color">The tile color.</param>
-        public MapTileHash(long flags, Color32 color)
+        public MapTileKey(long flags, Color32 color)
         {
             Flags = flags;
             Color = color;
@@ -32,10 +32,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
         public override bool Equals(object obj)
         {
-            return obj is MapTileHash hash && Equals(hash);
+            return obj is MapTileKey hash && Equals(hash);
         }
 
-        public bool Equals(MapTileHash other)
+        public bool Equals(MapTileKey other)
         {
             return Flags == other.Flags &&
                    EqualityComparer<Color32>.Default.Equals(Color, other.Color);
@@ -46,12 +46,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return HashCode.Combine(Flags, Color);
         }
 
-        public static bool operator ==(MapTileHash left, MapTileHash right)
+        public static bool operator ==(MapTileKey left, MapTileKey right)
         {
             return left.Equals(right);
         }
 
-        public static bool operator !=(MapTileHash left, MapTileHash right)
+        public static bool operator !=(MapTileKey left, MapTileKey right)
         {
             return !(left == right);
         }

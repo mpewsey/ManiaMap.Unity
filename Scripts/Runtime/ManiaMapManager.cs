@@ -27,19 +27,6 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Validates the current manager and returns it.
-        /// </summary>
-        public static ManiaMapManager CurrentValidated
-        {
-            get
-            {
-                var current = Current;
-                current.Validate();
-                return current;
-            }
-        }
-
-        /// <summary>
         /// The manager settings.
         /// </summary>
         public ManiaMapSettings Settings { get; set; }
@@ -114,19 +101,6 @@ namespace MPewsey.ManiaMap.Unity
             LayoutState = null;
             RoomConnections = new Dictionary<Uid, List<DoorConnection>>();
             RoomClusters = new Dictionary<Uid, HashSet<Uid>>();
-        }
-
-        /// <summary>
-        /// Validates whether a layout and layout state are assigned. Throws an exception if they are not.
-        /// </summary>
-        /// <exception cref="LayoutIsNullException">Raised if the layout is null.</exception>
-        /// <exception cref="LayoutStateIsNullException">Raised if the layout state is null.</exception>
-        public void Validate()
-        {
-            if (Layout == null)
-                throw new LayoutIsNullException("Layout not set to Mania Map Manager.");
-            if (LayoutState == null)
-                throw new LayoutStateIsNullException("Layout state not set to Mania Map Manager.");
         }
 
         /// <summary>

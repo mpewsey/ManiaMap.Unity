@@ -15,9 +15,9 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public int Id { get => _id; set => _id = value; }
 
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
-            Id = Database.AutoAssignId(Id);
+            Id = AutoId.AutoAssignId(Id);
         }
     }
 }

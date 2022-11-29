@@ -82,7 +82,7 @@ namespace MPewsey.ManiaMap.Unity
         public override void AutoAssign()
         {
             base.AutoAssign();
-            Id = Database.AutoAssignId(Id);
+            Id = AutoId.AutoAssignId(Id);
         }
     }
 }

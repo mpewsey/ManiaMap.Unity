@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// A dictionary of cached map tiles by hash.
         /// </summary>
-        private Dictionary<MapTileHash, Tile> Tiles { get; } = new Dictionary<MapTileHash, Tile>();
+        private Dictionary<MapTileKey, Tile> Tiles { get; } = new Dictionary<MapTileKey, Tile>();
 
         private void Awake()
         {
@@ -133,12 +133,12 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="color">The tile background color.</param>
         public Tile GetTile(long flags, Color32 color)
         {
-            var hash = new MapTileHash(flags, color);
+            var key = new MapTileKey(flags, color);
 
-            if (!Tiles.TryGetValue(hash, out Tile tile))
+            if (!Tiles.TryGetValue(key, out Tile tile))
             {
                 tile = CreateTile(flags, color);
-                Tiles.Add(hash, tile);
+                Tiles.Add(key, tile);
             }
 
             return tile;

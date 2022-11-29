@@ -95,7 +95,7 @@ namespace MPewsey.ManiaMap.Unity
 
         private void OnValidate()
         {
-            Id = Database.AutoAssignId(Id);
+            Id = AutoId.AutoAssignId(Id);
             Size = Size;
             CellSize = CellSize;
         }
@@ -116,7 +116,7 @@ namespace MPewsey.ManiaMap.Unity
             AssetReferenceGameObject prefab, Transform parent = null,
             RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
-            var manager = ManiaMapManager.CurrentValidated;
+            var manager = ManiaMapManager.Current;
             position = manager.Settings.GetRoomPositionOption(position);
             var layout = manager.Layout;
             var layoutState = manager.LayoutState;
@@ -147,7 +147,7 @@ namespace MPewsey.ManiaMap.Unity
         public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
             RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
-            var manager = ManiaMapManager.CurrentValidated;
+            var manager = ManiaMapManager.Current;
             position = manager.Settings.GetRoomPositionOption(position);
             var layout = manager.Layout;
             var layoutState = manager.LayoutState;
@@ -208,7 +208,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void AutoAssign()
         {
-            Id = Database.AutoAssignId(Id);
+            Id = AutoId.AutoAssignId(Id);
             CreateCells();
             AutoAssignDoors();
             AutoAssignCollectableSpots();

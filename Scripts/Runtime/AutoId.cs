@@ -5,7 +5,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// Contains methods related to ID generation.
     /// </summary>
-    public static class Database
+    internal static class AutoId
     {
         /// <summary>
         /// If the ID is less than or equal to zero, returns a random positive integer. Otherwise, returns the ID.
