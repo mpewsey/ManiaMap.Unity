@@ -1,4 +1,4 @@
-using MPewsey.ManiaMap.Generators;
+using MPewsey.Common.Pipelines;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Generators
@@ -23,6 +23,6 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Returns the generation step used by the pipeline.
         /// </summary>
-        public abstract IGenerationStep GetStep();
+        public abstract IPipelineStep GetStep();
     }
 }

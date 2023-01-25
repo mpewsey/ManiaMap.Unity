@@ -1,4 +1,4 @@
-using MPewsey.ManiaMap.Generators;
+using MPewsey.Common.Pipelines;
 
 namespace MPewsey.ManiaMap.Unity.Generators
 {
@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
     public class LayoutGraphSelector : GenerationStep
     {
         /// <inheritdoc/>
-        public override IGenerationStep GetStep()
+        public override IPipelineStep GetStep()
         {
             return new ManiaMap.Generators.LayoutGraphSelector();
         }
