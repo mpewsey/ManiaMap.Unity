@@ -188,7 +188,7 @@ Step 4: Create Generation Pipeline</h2>
 <div class="line">var results = Pipeline.Generate();</div>
 <div class="line"> </div>
 <div class="line">// Retrieve the generated layout data from the ouput results</div>
-<div class="line">var layout = (Layout)results.Outputs[&quot;Layout&quot;];</div>
+<div class="line">var layout = results.GetOutput&lt;Layout&gt;(&quot;Layout&quot;);</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
