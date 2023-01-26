@@ -120,9 +120,9 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.Generators.GenerationStep:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5ae9bddf0493fdd9514cc54b643b3f8d"><td class="memItemLeft" align="right" valign="top">abstract IGenerationStep&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#a5ae9bddf0493fdd9514cc54b643b3f8d">GetStep</a> ()</td></tr>
-<tr class="memdesc:a5ae9bddf0493fdd9514cc54b643b3f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the generation step used by the pipeline.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#a5ae9bddf0493fdd9514cc54b643b3f8d">More...</a><br /></td></tr>
-<tr class="separator:a5ae9bddf0493fdd9514cc54b643b3f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab57d7746d1b0cc5360935908b60ba073"><td class="memItemLeft" align="right" valign="top">abstract IPipelineStep&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#ab57d7746d1b0cc5360935908b60ba073">GetStep</a> ()</td></tr>
+<tr class="memdesc:ab57d7746d1b0cc5360935908b60ba073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the generation step used by the pipeline.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#ab57d7746d1b0cc5360935908b60ba073">More...</a><br /></td></tr>
+<tr class="separator:ab57d7746d1b0cc5360935908b60ba073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a023a9950cba71000886ccb3fb527b4fc"><td class="memItemLeft" align="right" valign="top">abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#a023a9950cba71000886ccb3fb527b4fc">InputNames</a> ()</td></tr>
 <tr class="memdesc:a023a9950cba71000886ccb3fb527b4fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of argument names required by the step. These names are used for pipeline validation.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html#a023a9950cba71000886ccb3fb527b4fc">More...</a><br /></td></tr>
 <tr class="separator:a023a9950cba71000886ccb3fb527b4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +135,8 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="_generation_step_8cs_source.html#l00009">9</a> of file <a class="el" href="_generation_step_8cs_source.html">GenerationStep.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5ae9bddf0493fdd9514cc54b643b3f8d" name="a5ae9bddf0493fdd9514cc54b643b3f8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ae9bddf0493fdd9514cc54b643b3f8d">&#9670;&nbsp;</a></span>GetStep()</h2>
+<a id="ab57d7746d1b0cc5360935908b60ba073" name="ab57d7746d1b0cc5360935908b60ba073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57d7746d1b0cc5360935908b60ba073">&#9670;&nbsp;</a></span>GetStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +145,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract IGenerationStep MPewsey.ManiaMap.Unity.Generators.GenerationStep.GetStep </td>
+          <td class="memname">abstract IPipelineStep MPewsey.ManiaMap.Unity.Generators.GenerationStep.GetStep </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -160,7 +160,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the generation step used by the pipeline. </p>
 
-<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator.html#a063acbd92d0e92ec27723142fd8f9209">MPewsey.ManiaMap.Unity.Generators.CollectableGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator.html#a57ccea48984fbed265098faf5f80a7bc">MPewsey.ManiaMap.Unity.Generators.LayoutGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer.html#a7ff0a595a407b82d04859ed9f45de593">MPewsey.ManiaMap.Unity.Generators.LayoutGraphRandomizer</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector.html#a119756282387d9854951184070392508">MPewsey.ManiaMap.Unity.Generators.LayoutGraphSelector</a>.</p>
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator.html#a24e6064d293c5561f2eb80f7f8f78899">MPewsey.ManiaMap.Unity.Generators.CollectableGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator.html#ab127a23e8c7e77c82f6281169e2723df">MPewsey.ManiaMap.Unity.Generators.LayoutGenerator</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer.html#adc62674bd31a8db45b460012de4930dc">MPewsey.ManiaMap.Unity.Generators.LayoutGraphRandomizer</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector.html#ab75039c8663d22045aba35fdf143d6d0">MPewsey.ManiaMap.Unity.Generators.LayoutGraphSelector</a>.</p>
 
 </div>
 </div>
