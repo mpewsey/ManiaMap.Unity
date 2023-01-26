@@ -1,0 +1,1131 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MPewsey.Common</name>
+    </assembly>
+    <members>
+        <member name="T:MPewsey.Common.Collections.Array2D`1">
+            <summary>
+            A 2D array that can be serialized.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2D`1.Rows">
+            <summary>
+            The number of rows in the array.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2D`1.Columns">
+            <summary>
+            The number of columns in the array.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2D`1.Array">
+            <summary>
+            The underlying flat array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.#ctor">
+            <summary>
+            Initializes an empty array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes an array by size.
+            </summary>
+            <param name="rows">The number of rows in the array.</param>
+            <param name="columns">The number of columns in the array.</param>
+            <exception cref="T:System.ArgumentException">Raised if either the input rows or columns are negative.</exception>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.#ctor(MPewsey.Common.Collections.Array2D{`0})">
+            <summary>
+            Initializes a copy of an array.
+            </summary>
+            <param name="other">The original array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.#ctor(`0[0:,0:])">
+            <summary>
+            Initializes an array from a built-in 2D array.
+            </summary>
+            <param name="array">The built-in 2D array.</param>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2D`1.Item(System.Int32,System.Int32)">
+            <summary>
+            Accesses the array by 2D index.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Raised if the index is out of range.</exception>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2D`1.Item(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Accesses the array by 2D index.
+            </summary>
+            <param name="index">The index vector, where X is the row and Y is the column.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.op_Implicit(`0[0:,0:])~MPewsey.Common.Collections.Array2D{`0}">
+            <summary>
+            Implicitly casts a built-in 2D array to an Array2D.
+            </summary>
+            <param name="array">The built-in 2D array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Copy">
+            <summary>
+            Returns a shallow copy of the array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ToArrayString">
+            <summary>
+            Returns a string of all array elements.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Clear">
+            <summary>
+            Sets the contents of the array to the default value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Fill(`0)">
+            <summary>
+            Sets all elements of the array to the value.
+            </summary>
+            <param name="value">The fill value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0})">
+            <summary>
+            Returns true if the values in the arrays of equal based on the default comparer.
+            </summary>
+            <param name="x">The first array.</param>
+            <param name="y">The second array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0},System.Func{`0,`0,System.Boolean})">
+            <summary>
+            Returns true if the values in the arrays are equal.
+            </summary>
+            <param name="x">The first array.</param>
+            <param name="y">The second array.</param>
+            <param name="comparer">The equality comparer.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0})">
+            <summary>
+            Returns true if the values in the arrays are equal based on the default comparer.
+            </summary>
+            <param name="other">The other array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},System.Func{`0,`0,System.Boolean})">
+            <summary>
+            Returns true if the values in the arrays are equal.
+            </summary>
+            <param name="other">The other array.</param>
+            <param name="comparer">The element equality comparer.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexExists(System.Int32,System.Int32)">
+            <summary>
+            Returns true if the index exists.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Index(System.Int32,System.Int32)">
+            <summary>
+            Returns the flat array index corresponding to the specified 2D index.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.InverseIndex(System.Int32)">
+            <summary>
+            Returns the 2D index corresponding to the specified flat index.
+            </summary>
+            <param name="index">The flat index.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Raised if the index is outside the bounds of the array.</exception>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndex(System.Func{`0,System.Boolean})">
+            <summary>
+            Returns the first 2D index where the specified predicate is true.
+            Returns a -1 vector if no index is found.
+            </summary>
+            <param name="predicate"></param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.FlattenArray(`0[0:,0:])">
+            <summary>
+            Returns a new flattened array from a built-in 2D array.
+            </summary>
+            <param name="array">The built-in 2D array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.GetOrDefault(System.Int32,System.Int32,`0)">
+            <summary>
+            Returns the value at the specified index if it exists. If not,
+            returns the fallback value.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+            <param name="fallback">The fallback value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.GetOrDefault(MPewsey.Common.Mathematics.Vector2DInt,`0)">
+            <summary>
+            Returns the value at the specified index if it exists. If not,
+            returns the fallback value.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="fallback">The fallback value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated90">
+            <summary>
+            Returns a new array rotated clockwise 90 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated180">
+            <summary>
+            Returns a new array rotated 180 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated270">
+            <summary>
+            Returns a new array rotated clockwise 270 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.MirroredHorizontally">
+            <summary>
+            Returns a new array mirrored horizontally, i.e. about the vertical axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.MirroredVertically">
+            <summary>
+            Returns a new array mirrored vertically, i.e. about the horizontal axis.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Collections.Array2DDistanceSearch`1">
+            <summary>
+            A class for calculating distances between cells.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2DDistanceSearch`1.Array">
+            <summary>
+            The base array.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2DDistanceSearch`1.Distances">
+            <summary>
+            The array of distances.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Array2DDistanceSearch`1.Predicate">
+            <summary>
+            The empty cell predicate. The function should return true when an empty cell is encountered.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.#ctor(System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new search.
+            </summary>
+            <param name="predicate">The empty cell predicate. If null, an empty cell will be assumed to be the default value for the type.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.DefaultPredicate(`0)">
+            <summary>
+            The default empty cell predicate. Returns true when the value is equal to the default value for the type.
+            </summary>
+            <param name="value">The cell value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.Initialize(MPewsey.Common.Collections.Array2D{`0})">
+            <summary>
+            Initializes the search's buffers.
+            </summary>
+            <param name="array">The base array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.FindDistances(MPewsey.Common.Collections.Array2D{`0},System.Int32,System.Int32)">
+            <summary>
+            Returns an array of distances from the specified index to each cell.
+            Values of -1 indicate that the index does not exist.
+            </summary>
+            <param name="array">The base array.</param>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.SearchDistances(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Performs a recursive crawl of the template cells to determine the distance to an index.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+            <param name="distance">The distance to the current index.</param>
+        </member>
+        <member name="T:MPewsey.Common.Collections.BaseDataContractDictionary`2">
+            <summary>
+            The base class for dictionaries with custom data contract serialization.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Dictionary">
+            <summary>
+            The underlying dictionary.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Collections.BitArray2D">
+            <summary>
+            An 2D array of bits.
+            </summary>
+        </member>
+        <member name="F:MPewsey.Common.Collections.BitArray2D.ChunkSize">
+            <summary>
+            The number of bits in each chunk.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BitArray2D.Rows">
+            <summary>
+            The number of rows in the array.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BitArray2D.Columns">
+            <summary>
+            The number of columns in the array.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BitArray2D.Array">
+            <summary>
+            A flat array of data chunks.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BitArray2D.Item(System.Int32,System.Int32)">
+            <summary>
+            Accesses the bit at the specified index.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Raised if the index is out of bounds.</exception>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BitArray2D.Item(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Accesses the bit at the specified index.
+            </summary>
+            <param name="index">The index vector, where X is the row and Y is the column.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.#ctor">
+            <summary>
+            Initializes an empty array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes an array by size.
+            </summary>
+            <param name="rows">The number of rows in the array.</param>
+            <param name="columns">The number of columns in the array.</param>
+            <exception cref="T:System.ArgumentException">Raised if either the input rows or columns are negative.</exception>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.Copy">
+            <summary>
+            Returns a copy of the array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.ChunkCount(System.Int32,System.Int32)">
+            <summary>
+            Returns the required chunk count for the rows and columns.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.ToArrayString">
+            <summary>
+            Returns a string of all array elements.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.Clear">
+            <summary>
+            Clears all active bits in the array.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.IndexExists(System.Int32,System.Int32)">
+            <summary>
+            Returns true if the index exists.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.Index(System.Int32,System.Int32)">
+            <summary>
+            Returns a vector with the chunk index and position within the chunk
+            for the specified row-column index.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.GetOrDefault(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns the value at the specified index if it exists. If not,
+            returns the fallback value.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+            <param name="fallback">The fallback value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.GetOrDefault(MPewsey.Common.Mathematics.Vector2DInt,System.Boolean)">
+            <summary>
+            Returns the value at the specified index if it exists. If not,
+            returns the fallback value.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="fallback">The fallback value.</param>
+        </member>
+        <member name="T:MPewsey.Common.Collections.DataContractDictionary`2">
+            <summary>
+            A dictionary that is data contract serializable.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.DataContractDictionary`2.KeyValueArray">
+            <summary>
+            An array of key value pairs.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor">
+            <summary>
+            Initializes a new empty dictionary.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new dictionary with the specified capacity.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor(MPewsey.Common.Collections.DataContractDictionary{`0,`1})">
+            <summary>
+            Initializes a copy of the specified dictionary.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.DataContractDictionary{`0,`1}">
+            <summary>
+            Creates a new data contract dictionary instance with the specified dictionary assigned.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.GetKeyValueArray">
+            <summary>
+            Returns a new array of key value pairs for the dictionary.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.SetDictionary(MPewsey.Common.Collections.KeyValue{`0,`1}[])">
+            <summary>
+            Sets the dictionary from an array of key value pairs.
+            </summary>
+            <param name="array">An array of key value pairs.</param>
+        </member>
+        <member name="T:MPewsey.Common.Collections.DataContractHashSet`1">
+            <summary>
+            A hash set that is data contract serializable.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.HashSet">
+            <summary>
+            The underlying hash set.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.Array">
+            <summary>
+            An array of hash set entries.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.#ctor">
+            <summary>
+            Initializes a new hash set.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new hash set from a collection.
+            </summary>
+            <param name="collection">A collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.op_Implicit(System.Collections.Generic.HashSet{`0})~MPewsey.Common.Collections.DataContractHashSet{`0}">
+            <summary>
+            Creates a new data contract hash set with the specified hash set assigned.
+            </summary>
+            <param name="set">The hash set.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.GetArray">
+            <summary>
+            Returns a new array of hash set entries.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Collections.DataContractValueDictionary`2">
+            <summary>
+            A dictionary whose values are data contract serializable.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.DataContractValueDictionary`2.ValuesArray">
+            <summary>
+            An array of dictionary values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor">
+            <summary>
+            Initializes a new empty dictionary.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new dictionary with the specified capacity.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor(MPewsey.Common.Collections.DataContractValueDictionary{`0,`1})">
+            <summary>
+            Initializes a copy of the specified dictionary.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.DataContractValueDictionary{`0,`1}">
+            <summary>
+            Creates a new data contract dictionary instance with the specified dictionary assigned.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.GetValuesArray">
+            <summary>
+            Returns a new array of dictionary values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.SetDictionary(`1[])">
+            <summary>
+            Sets the dictionary from an array of dictionary values.
+            </summary>
+            <param name="array">An array of dictionary values.</param>
+        </member>
+        <member name="T:MPewsey.Common.Collections.IDataContractValueDictionaryValue`1">
+            <summary>
+            An interface for values of the DataContractValueDictionary.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.IDataContractValueDictionaryValue`1.Key">
+            <summary>
+            The unique key.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Collections.KeyValue`2">
+            <summary>
+            A serializable key value pair.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.KeyValue`2.Key">
+            <summary>
+            The key.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.KeyValue`2.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.KeyValue`2.#ctor(`0,`1)">
+            <summary>
+            Initializes a new key value pair.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:MPewsey.Common.Constants">
+            <summary>
+            Contains library constants.
+            </summary>
+        </member>
+        <member name="F:MPewsey.Common.Constants.DataContractNamespace">
+            <summary>
+            The data contract namespace.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Logging.Logger">
+            <summary>
+            A singleton class for handling generation logging events.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Logging.Logger.Current">
+            <summary>
+            The logger singleton.
+            </summary>
+        </member>
+        <member name="E:MPewsey.Common.Logging.Logger.LogEvent">
+            <summary>
+            The logging event.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Logging.Logger.Log(System.String)">
+            <summary>
+            Sends the message via the logging event.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:MPewsey.Common.Logging.Logger.AddListener(System.Action{System.String})">
+            <summary>
+            Adds the listener to the logging event.
+            </summary>
+            <param name="action">The delegate to register.</param>
+        </member>
+        <member name="M:MPewsey.Common.Logging.Logger.RemoveListener(System.Action{System.String})">
+            <summary>
+            Removes the listener from the logging event.
+            </summary>
+            <param name="action">The delegate to remove.</param>
+        </member>
+        <member name="M:MPewsey.Common.Logging.Logger.RemoveAllListeners">
+            <summary>
+            Removes all listeners from the logger.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Mathematics.Maths">
+            <summary>
+            Contains extra math operations.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Returns the cumulative sums of the list.
+            </summary>
+            <param name="values">An list of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Returns the cumulative sums of the list.
+            </summary>
+            <param name="values">An list of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.Softmax(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Returns the softmax of the collection of values.
+            </summary>
+            <param name="values">A list of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.Softmax(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Returns the softmax of the collection of values.
+            </summary>
+            <param name="values">A list of values.</param>
+        </member>
+        <member name="T:MPewsey.Common.Mathematics.Vector2DInt">
+            <summary>
+            A 2D vector with integer values.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector2DInt.Zero">
+            <summary>
+            Returns a zero vector.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector2DInt.One">
+            <summary>
+            Returns a vector of ones.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector2DInt.X">
+            <summary>
+            The X value.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector2DInt.Y">
+            <summary>
+            The Y value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new vector.
+            </summary>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Max(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the maximum values of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Min(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the minimum values of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Sign(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the sign of the vector.
+            </summary>
+            <param name="vector">The vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Dot(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the dot product of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="T:MPewsey.Common.Mathematics.Vector3DInt">
+            <summary>
+            A 3D vector with integer values.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector3DInt.Zero">
+            <summary>
+            Returns a zero vector.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector3DInt.One">
+            <summary>
+            Returns a vector of ones.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector3DInt.X">
+            <summary>
+            The x value.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector3DInt.Y">
+            <summary>
+            The y value.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Mathematics.Vector3DInt.Z">
+            <summary>
+            The z value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new vector.
+            </summary>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <param name="z">The z value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Max(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns the maximum values of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Min(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns the minimum values of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Sign(MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns the sign of the vector.
+            </summary>
+            <param name="vector">The vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Dot(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns the dot product of the two vectors.
+            </summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+        </member>
+        <member name="T:MPewsey.Common.Pipelines.IPipelineStep">
+            <summary>
+            An interface for creating a step of a Pipeline.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.IPipelineStep.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+            <summary>
+            Performs the operations for this step.
+            Artifacts should be written to the results outputs.
+            </summary>
+            <param name="results">The pipeline results.</param>
+        </member>
+        <member name="T:MPewsey.Common.Pipelines.Pipeline">
+            <summary>
+            A class for chaining multiple IPipelineStep together.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Pipelines.Pipeline.Steps">
+            <summary>
+            A list of pipeline steps.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.#ctor(MPewsey.Common.Pipelines.IPipelineStep[])">
+            <summary>
+            Initializes a new pipeline.
+            </summary>
+            <param name="steps">The pipeline steps.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.Generate(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Invokes all generators of the pipeline and returns the results.
+            </summary>
+            <param name="inputs">A dictionary of generator inputs.</param>
+        </member>
+        <member name="T:MPewsey.Common.Pipelines.PipelineResults">
+            <summary>
+            A container for holding pipeline results.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Pipelines.PipelineResults.Inputs">
+            <summary>
+            A dictionary of pipeline inputs.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Pipelines.PipelineResults.Outputs">
+            <summary>
+            A dictionary of pipeline output results.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Pipelines.PipelineResults.Success">
+            <summary>
+            True if the pipeline steps are successful.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new result.
+            </summary>
+            <param name="inputs">The input dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.GetArgument``1(System.String)">
+            <summary>
+            Searches the output and input dictionaries for the key and returns it.
+            </summary>
+            <typeparam name="T">The object type.</typeparam>
+            <param name="key">The dictionary key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.GetInput``1(System.String)">
+            <summary>
+            Returns the input for the specified key.
+            </summary>
+            <param name="key">The input key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.GetOutput``1(System.String)">
+            <summary>
+            Returns the output for the specified key.
+            </summary>
+            <param name="key">The output key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.SetOutput``1(System.String,``0)">
+            <summary>
+            Sets the value to the outputs dictionary.
+            </summary>
+            <param name="key">The output key.</param>
+            <param name="value">The output value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.AddOutput``1(System.String,``0)">
+            <summary>
+            Adds the value to the outputs dictionary. Raises an exception if the key already exists.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The output key.</param>
+            <param name="value">The output value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.PipelineResults.Complete">
+            <summary>
+            Marks the pipeline as successful.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Random.RandomSeed">
+            <summary>
+            A class for performing pseudo-random number generation.
+            
+            References
+            ----------
+            * [1] Rossetta Code. Subtractive generator. Retrieved April 12, 2022, from https://rosettacode.org/wiki/Subtractive_generator.
+            * [2] Microsoft Corporation. Reference Source .NET Framework 4.8. Retrieved April 12, 2022, from https://referencesource.microsoft.com/#mscorlib/system/random.cs,bb77e610694e64ca.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Random.RandomSeed.Seed">
+            <summary>
+            The random seed.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Random.RandomSeed.Position1">
+            <summary>
+            The first position of the randomizer.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Random.RandomSeed.Position2">
+            <summary>
+            The second position of the randomizer.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Random.RandomSeed.Seeds">
+            <summary>
+            An array of previous seeds.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.#ctor">
+            <summary>
+            Initializes a new random seed based on the current system ticks.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.#ctor(System.Int32)">
+            <summary>
+            Initializes a new random seed.
+            </summary>
+            <param name="seed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.#ctor(MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Initializes a copy of a random seed.
+            </summary>
+            <param name="other">The random seed to be copied.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Copy">
+            <summary>
+            Returns a copy of the object.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Mod(System.Int32)">
+            <summary>
+            Returns the positive modulo of a value with respect to int.MaxValue.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.WrapIndex(System.Int32)">
+            <summary>
+            Wraps an index if it exceeds the top array bounds.
+            </summary>
+            <param name="value">The index.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.SetSeed(System.Int32)">
+            <summary>
+            Sets the random seed and initializes the randomizer.
+            </summary>
+            <param name="seed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Next">
+            <summary>
+            Returns a random integer on the interval [0, int.MaxValue).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Next(System.Int32)">
+            <summary>
+            Returns a random value on the interval [0, maxValue).
+            </summary>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random value on the interval [minValue, maxValue).
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextDouble">
+            <summary>
+            Returns a random double on the interval [0, 1).
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextDouble(System.Double)">
+            <summary>
+            Returns a random double on the interval [0, maxValue).
+            </summary>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextDouble(System.Double,System.Double)">
+            <summary>
+            Returns a random double on the interval [minValue, maxValue).
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextLargeDouble">
+            <summary>
+            Returns a random high resolution double on the interval [0, 1).
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Shuffle``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Shuffles the specified list in place.
+            </summary>
+            <param name="list">The list to shuffle.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.Shuffled``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a new shuffled copy of the collection.
+            </summary>
+            <param name="list">The collection</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Draws a random weighted index from a list.
+            </summary>
+            <param name="weights">A list of weights.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Draws a random weighted index from a list.
+            </summary>
+            <param name="weights">A list of weights.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.ChanceSatisfied(System.Double)">
+            <summary>
+            Draws a random number and returns true if it satisfies the specified probability.
+            </summary>
+            <param name="chance">The probability, on the interval [0, 1].</param>
+        </member>
+        <member name="T:MPewsey.Common.Serialization.Cryptography">
+            <summary>
+            Contains methods related to encryption and decryption.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.Cryptography.DecryptTextFile(System.String,System.Byte[])">
+            <summary>
+            Returns the decrypted text for the file at the specified path.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="key">The secret key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.Cryptography.EncryptToStream``1(System.IO.Stream,System.Runtime.Serialization.XmlObjectSerializer,``0,System.Byte[])">
+            <summary>
+            Encrypts the object to the stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="serializer">The serializer.</param>
+            <param name="graph">The object graph.</param>
+            <param name="key">The secret key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.Cryptography.DecryptFromStream``1(System.IO.Stream,System.Runtime.Serialization.XmlObjectSerializer,System.Byte[])">
+            <summary>
+            Decrypts the object from the stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="serializer">The serializer.</param>
+            <param name="key">The secret key.</param>
+        </member>
+        <member name="T:MPewsey.Common.Serialization.JsonSerialization">
+            <summary>
+            Contains methods for serializing objects to and from JSON.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.GetJsonString``1(``0,MPewsey.Common.Serialization.JsonWriterSettings)">
+            <summary>
+            Returns the JSON string for the object graph.
+            </summary>
+            <param name="graph">The object graph.</param>
+            <param name="settings">The writer settings. Pretty print used if none specified.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.SaveJson``1(System.String,``0)">
+            <summary>
+            Serializes the object as JSON to the specified file path.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="graph">The object graph.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.LoadJson``1(System.String)">
+            <summary>
+            Loads a JSON object from the specified path.
+            </summary>
+            <param name="path">The file path.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.LoadJson``1(System.Byte[])">
+            <summary>
+            Loads a JSON object from a byte array.
+            </summary>
+            <param name="bytes">A byte array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.LoadJsonString``1(System.String)">
+            <summary>
+            Loads a JSON object from a JSON string.
+            </summary>
+            <param name="json">The JSON string.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.SaveEncryptedJson``1(System.String,``0,System.Byte[])">
+            <summary>
+            Serializes the object as encrypted JSON to the specified path.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="graph">The object graph.</param>
+            <param name="key">The secret key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonSerialization.LoadEncryptedJson``1(System.String,System.Byte[])">
+            <summary>
+            Loads the object from an encrypted JSON file.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="key">The secret key.</param>
+        </member>
+        <member name="T:MPewsey.Common.Serialization.JsonWriterSettings">
+            <summary>
+            Contains settings for JSON writer formatting.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Serialization.JsonWriterSettings.Encoding">
+            <summary>
+            The text encoding.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Serialization.JsonWriterSettings.Indent">
+            <summary>
+            If true, indenting wil be applied.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Serialization.JsonWriterSettings.IndentCharacters">
+            <summary>
+            The characters used for indents.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.JsonWriterSettings.PrettyPrintSettings">
+            <summary>
+            Returns new settings for pretty printing.
+            </summary>
+        </member>
+        <member name="T:MPewsey.Common.Serialization.XmlSerialization">
+            <summary>
+            Contains methods for serializing objects to and from XML.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.PrettyXmlWriterSettings">
+            <summary>
+            Returns a new instance of XML writer settings for pretty printing.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.GetXmlString``1(``0,System.Xml.XmlWriterSettings)">
+            <summary>
+            Returns the pretty XML string for the object.
+            </summary>
+            <param name="graph">The object for serialization.</param>
+            <param name="settings">The XML writer settings. Pretty print used if none specified.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.SaveXml``1(System.String,``0)">
+            <summary>
+            Saves the object to the file path using the DataContractSerializer.
+            </summary>
+            <param name="path">The save file path.</param>
+            <param name="graph">The object for serialization.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.LoadXml``1(System.String)">
+            <summary>
+            Loads an object from a file path using the DataContractSerializer.
+            </summary>
+            <param name="path">The file path.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.LoadXml``1(System.Byte[])">
+            <summary>
+            Loads an object from a byte array using the DataContractSerializer.
+            </summary>
+            <param name="bytes">The byte array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.LoadXmlString``1(System.String)">
+            <summary>
+            Loads an object from an XML string using the DataContractSerializer.
+            </summary>
+            <param name="xml">The XML string.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.SaveEncryptedXml``1(System.String,``0,System.Byte[])">
+            <summary>
+            Serializes and encrypts and object to the specified file.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="graph">The object.</param>
+            <param name="key">The private key.</param>
+        </member>
+        <member name="M:MPewsey.Common.Serialization.XmlSerialization.LoadEncryptedXml``1(System.String,System.Byte[])">
+            <summary>
+            Decrypts and deserializes an object from the specified file.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="key">The private key.</param>
+        </member>
+    </members>
+</doc>

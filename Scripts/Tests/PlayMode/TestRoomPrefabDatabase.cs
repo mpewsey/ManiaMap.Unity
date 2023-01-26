@@ -1,3 +1,5 @@
+using MPewsey.Common.Mathematics;
+using MPewsey.Common.Random;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -41,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var template = prefab.GetTemplate();
 
             // Create fake layout.
-            var layout = new Layout(1, "Test", seed);
+            var layout = new Layout(1, "Test", seed.Seed);
             var node = new ManiaMap.Graphs.LayoutNode(1);
             var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);

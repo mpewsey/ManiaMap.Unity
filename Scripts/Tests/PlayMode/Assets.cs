@@ -8,15 +8,15 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public const string PackagePath = "ManiaMap/";
 
         // Maps
-        public const string LayoutMapPath = PackagePath + "LayoutMaps/LayoutMap";
-        public const string LayoutTilemapPath = PackagePath + "LayoutMaps/LayoutTilemap";
+        public const string LayoutMapPath = PackagePath + "LayoutMap";
+        public const string LayoutTilemapPath = PackagePath + "LayoutTilemap";
 
         // Generation Pipelines
-        public const string BigLayoutPath = PackagePath + "BigLayout/BigLayoutGenerator";
-        public const string CrossLayoutPath = PackagePath + "CrossLayout/CrossLayoutGenerator";
-        public const string GeekLayoutPath = PackagePath + "GeekLayout/GeekLayoutGenerator";
-        public const string LoopLayoutPath = PackagePath + "LoopLayout/LoopLayoutGenerator";
-        public const string StackedLoopLayoutPath = PackagePath + "StackedLoopLayout/StackedLoopLayoutGenerator";
+        public const string BigLayoutPath = PackagePath + "BigLayoutGenerator";
+        public const string CrossLayoutPath = PackagePath + "CrossLayoutGenerator";
+        public const string GeekLayoutPath = PackagePath + "GeekLayoutGenerator";
+        public const string LoopLayoutPath = PackagePath + "LoopLayoutGenerator";
+        public const string StackedLoopLayoutPath = PackagePath + "StackedLoopLayoutGenerator";
 
         // Rooms
         public const string Angle3x4RoomPath = PackagePath + "Rooms/Angle3x4Room";

@@ -1,3 +1,4 @@
+using MPewsey.Common.Pipelines;
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Generates a set of results for the pipeline.
         /// </summary>
-        public ManiaMap.Generators.GenerationPipeline.Results Generate()
+        public PipelineResults Generate()
         {
             Validate();
             var pipeline = GetPipeline();
@@ -58,7 +59,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
-        public Task<ManiaMap.Generators.GenerationPipeline.Results> GenerateAsync()
+        public Task<PipelineResults> GenerateAsync()
         {
             Validate();
             var pipeline = GetPipeline();
@@ -85,9 +86,9 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Returns the Mania Map generation pipeline.
         /// </summary>
-        public ManiaMap.Generators.GenerationPipeline GetPipeline()
+        public Pipeline GetPipeline()
         {
-            var pipeline = new ManiaMap.Generators.GenerationPipeline();
+            var pipeline = new Pipeline();
 
             foreach (var step in GetGenerationSteps())
             {

@@ -1,4 +1,4 @@
-using MPewsey.ManiaMap.Serialization;
+using MPewsey.Common.Serialization;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity

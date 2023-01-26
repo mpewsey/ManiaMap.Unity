@@ -1,0 +1,3126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MPewsey.ManiaMap</name>
+    </assembly>
+    <members>
+        <member name="T:MPewsey.ManiaMap.Box">
+            <summary>
+            A class representing a box in 3D space. The box is defined by integer coordinate ranges.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Box.Min">
+            <summary>
+            The minimum index range of the box.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Box.Max">
+            <summary>
+            The maximum index range of the box.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Box.#ctor(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Initializes a new box from two vectors.
+            </summary>
+            <param name="min">The minimum range of the box.</param>
+            <param name="max">The maximum range of the box.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Box.Intersects(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the room template intersects the Box.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="position">The template position.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Box.Intersects(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the specified range intersects the box.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Cell">
+            <summary>
+            A RoomTemplate cell element with references to door connections for that cell.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.Empty">
+            <summary>
+            Returns a new empty cell (null).
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.New">
+            <summary>
+            Returns a new cell with no doors set.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.Doors">
+            <summary>
+            A dictionary of doors.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.CollectableSpots">
+            <summary>
+            A dictionary of collectable group names by location ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.Features">
+            <summary>
+            A list of feature names.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.WestDoor">
+            <summary>
+            The west door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.NorthDoor">
+            <summary>
+            The north door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.EastDoor">
+            <summary>
+            The east door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.SouthDoor">
+            <summary>
+            The south door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.TopDoor">
+            <summary>
+            The top door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Cell.BottomDoor">
+            <summary>
+            The bottom door. Set to null if no door exists.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.#ctor">
+            <summary>
+            Initializes a new cell.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.#ctor(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Initializes a copy of a cell.
+            </summary>
+            <param name="other">The cell to copy.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.Copy">
+            <summary>
+            Returns a new copy of the cell.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.GetDoor(MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns the door corresponding to the direction. If the door does not exist, returns null.
+            </summary>
+            <param name="direction">The door direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.SetDoor(MPewsey.ManiaMap.DoorDirection,MPewsey.ManiaMap.Door)">
+            <summary>
+            Sets the door direction. If the door is null, removes the entry from the dictionary.
+            </summary>
+            <param name="direction">The door direction.</param>
+            <param name="door">The door.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.CollectableGroupNamesAreValid">
+            <summary>
+            Returns true if all collectable group names are not null or white space.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.SetDoors(System.String,MPewsey.ManiaMap.Door)">
+            <summary>
+            Sets the doors of the cell based on specified direction characters.
+            Returns the cell.
+            </summary>
+            <param name="directions">
+            A string with the directional characters to assign. The characters may be any case.
+            
+            * 'N' = North
+            * 'S' = South
+            * 'E' = East
+            * 'W' = West
+            * 'T' = Top
+            * 'B' = Bottom
+            </param>
+            <param name="door">The door to be copied and assigned to each location.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">Raised if a character in the directions string is invalid.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.AddCollectableSpot(System.Int32,System.String)">
+            <summary>
+            Adds the collectable spot and returns the cell.
+            </summary>
+            <param name="id">The location ID, unique to the cell.</param>
+            <param name="group">The collectable group name.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if the group name is null or white space.</exception>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">Raised if the location ID already exists.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.AddFeature(System.String)">
+            <summary>
+            Adds the name to the feature list if it doesn't already exist. Returns the cell.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.TopDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the top door aligns with the bottom door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.BottomDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the bottom door aligns with the top door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.NorthDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the north door aligns with the south door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.SouthDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the south door aligns with the north door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.WestDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the west door aligns with the east door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.EastDoorAligns(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the east door aligns with the west door of the specified cell.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.Rotated90">
+            <summary>
+            Returns a new cell rotated clockwise 90 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.Rotated180">
+            <summary>
+            Returns a new cell rotated 180 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.Rotated270">
+            <summary>
+            Returns a new cell rotated clockwise 270 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.MirroredVertically">
+            <summary>
+            Returns a new cell mirrored vertically, i.e. about the horizontal axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.MirroredHorizontally">
+            <summary>
+            Returns a new cell mirrored horizontally, i.e. about the vertical axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.ValuesAreEqual(MPewsey.ManiaMap.Cell,MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the values of the two cells are equal.
+            </summary>
+            <param name="x">The first cell.</param>
+            <param name="y">The second cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.ValuesAreEqual(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the values of the two cells are equal.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.AnyDoorExists">
+            <summary>
+            Returns true if any door is not null and is assigned a type.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Collectable">
+            <summary>
+            A structure containing a collectable group and ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Collectable.Id">
+            <summary>
+            The ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Collectable.Group">
+            <summary>
+            The group name.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new collectable.
+            </summary>
+            <param name="id">The ID.</param>
+            <param name="group">The group name.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.CollectableGroups">
+            <summary>
+            A class for creating groups of collectables.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableGroups.Groups">
+            <summary>
+            A dictionary of collectables by group name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableGroups.GroupsDictionary">
+            <summary>
+            A readonly dictionary of collectables by group name.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.Add(System.String,System.Int32)">
+            <summary>
+            Adds a collectable to a group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="collectable">The collectable ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.Add(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Adds a range of collectables to a group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="collectables">The collectable ID's.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.ValidateGroupName(System.String)">
+            <summary>
+            Validates the specified group name and throws an exception if it is invalid.
+            </summary>
+            <param name="group">The group name.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if the group name is invalid.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.GetCollectables">
+            <summary>
+            Returns a new list of collectables.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.CollectableSpot">
+            <summary>
+            A class containing data for a collectable location.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.Room">
+            <summary>
+            The room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.Position">
+            <summary>
+            The local position in the room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.Id">
+            <summary>
+            The location ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.Group">
+            <summary>
+            The collectable group name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.DoorWeight">
+            <summary>
+            The door draw weight.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.NeighborWeight">
+            <summary>
+            The neighboring collectable draw weight.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.#ctor(MPewsey.ManiaMap.Uid,MPewsey.Common.Mathematics.Vector2DInt,System.Int32,System.String)">
+            <summary>
+            Initializes a new spot.
+            </summary>
+            <param name="room">The room ID.</param>
+            <param name="position">The local position in the room.</param>
+            <param name="id">The location ID.</param>
+            <param name="group">The collectable group.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.GetWeight(System.Double,System.Double)">
+            <summary>
+            Returns the draw weight for the spot.
+            </summary>
+            <param name="doorPower">The exponent used for the door weight.</param>
+            <param name="neighborPower">The exponent used for the neighbor weight.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Color4">
+            <summary>
+            A 4 byte (32 bit) color.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Color4.R">
+            <summary>
+            The red channel.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Color4.G">
+            <summary>
+            The green channel.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Color4.B">
+            <summary>
+            The blue channel.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Color4.A">
+            <summary>
+            The alpha channel.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a new color.
+            </summary>
+            <param name="r">The red channel.</param>
+            <param name="g">The green channel.</param>
+            <param name="b">The blue channel.</param>
+            <param name="a">The alpha channel.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Configuration">
+            <summary>
+            A configuration where two RoomTemplate can be joined.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Configuration.Position">
+            <summary>
+            The to template position relative to the from template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Configuration.FromDoor">
+            <summary>
+            The connected from door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Configuration.ToDoor">
+            <summary>
+            The connected to door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Configuration.EdgeDirection">
+            <summary>
+            The edge direction corresponding to the doors.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.#ctor(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorPosition,MPewsey.ManiaMap.DoorPosition)">
+            <summary>
+            Initializes a configuration from offset and door positions.
+            </summary>
+            <param name="position">The to template position relative to the from template.</param>
+            <param name="from">The from door position.</param>
+            <param name="to">The to door position.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32)">
+            <summary>
+            Returns true if the parameters match the configuration.
+            </summary>
+            <param name="z">The z offset between the templates.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Returns true if the parameters match the configuration.
+            </summary>
+            <param name="z">The z offset between the templates.</param>
+            <param name="code">The door code.</param>
+            <param name="direction">The edge direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector2DInt,System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Returns true if the parameters match the configuration.
+            </summary>
+            <param name="position">The offset between the templates.</param>
+            <param name="z">The z offset.</param>
+            <param name="code">the door code.</param>
+            <param name="direction">The edge direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector3DInt,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Returns true if the parameters match the configuration.
+            </summary>
+            <param name="position">The offset between the templates.</param>
+            <param name="code">The door code.</param>
+            <param name="direction">The edge direction.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.ConfigurationSpace">
+            <summary>
+            A class referencing two RoomTemplate and a list of all valid Configuration between them.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.ConfigurationSpace.FromTemplate">
+            <summary>
+            The from room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.ConfigurationSpace.ToTemplate">
+            <summary>
+            The to room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.ConfigurationSpace.Configurations">
+            <summary>
+            A list of all valid configurations between the room templates.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.ConfigurationSpace.#ctor(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Initializes a configuration space from two room templates.
+            </summary>
+            <param name="from">The from template.</param>
+            <param name="to">The to template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.ConfigurationSpace.FindConfigurations">
+            <summary>
+            Finds all room configurations that are valid between the room templates.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Constants">
+            <summary>
+            Contains library constants.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.Constants.DataContractNamespace">
+            <summary>
+            The data contract namespace.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Door">
+            <summary>
+            Represents a possible door in a RoomTemplate.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.TwoWay">
+            <summary>
+            Returns a new two-way door.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.TwoWayExit">
+            <summary>
+            Returns a new two-way exit door.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.TwoWayEntrance">
+            <summary>
+            Returns a new two-way entrance door.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.OneWayExit">
+            <summary>
+            Returns a new one-way exit door.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.OneWayEntrance">
+            <summary>
+            Returns a new one-way entrance door.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.Type">
+            <summary>
+            The door type.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Door.Code">
+            <summary>
+            The door code required for matching two doors.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.DoorType,System.Int32)">
+            <summary>
+            Initializes a new door.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.Door)">
+            <summary>
+            Initializes a copy of a door.
+            </summary>
+            <param name="other">The door to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.Copy">
+            <summary>
+            Returns a copy of the door.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.SetCode(System.Int32)">
+            <summary>
+            Sets the door code and returns the door.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.ValuesAreEqual(MPewsey.ManiaMap.Door,MPewsey.ManiaMap.Door)">
+            <summary>
+            Returns true if the two doors have matching values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.ValuesAreEqual(MPewsey.ManiaMap.Door)">
+            <summary>
+            Returns true if the values of the two doors match.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.Aligns(MPewsey.ManiaMap.Door)">
+            <summary>
+            Returns true if the door code and type aligns with the other door.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.DoorTypesAlign(MPewsey.ManiaMap.DoorType,MPewsey.ManiaMap.DoorType)">
+            <summary>
+            Returns true if the door types are compatible.
+            </summary>
+            <param name="from">The from door type.</param>
+            <param name="to">The to door type.</param>
+            <exception cref="T:System.ArgumentException">Raised if an unhandled door type is submitted.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.GetEdgeDirection(MPewsey.ManiaMap.DoorType,MPewsey.ManiaMap.DoorType)">
+            <summary>
+            Returns the edge direction corresponding to the door type combination.
+            </summary>
+            <param name="from">The from door type.</param>
+            <param name="to">Tne to door type.</param>
+            <exception cref="T:System.ArgumentException">Raised is the door types are not compatible.</exception>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorConnection">
+            <summary>
+            Represents a door connection between two Room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.FromRoom">
+            <summary>
+            The from room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.ToRoom">
+            <summary>
+            The to room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.FromDoor">
+            <summary>
+            The from door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.ToDoor">
+            <summary>
+            The to door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.Shaft">
+            <summary>
+            The shaft (if any) connecting the two rooms.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.Key">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorConnection.EdgeDirection">
+            <summary>
+            The edge direction.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.#ctor(MPewsey.ManiaMap.Room,MPewsey.ManiaMap.Room,MPewsey.ManiaMap.DoorPosition,MPewsey.ManiaMap.DoorPosition,MPewsey.ManiaMap.Box)">
+            <summary>
+            Initializes a door connection from two rooms, two door positions, and an optional shaft.
+            </summary>
+            <param name="fromRoom">The from room.</param>
+            <param name="toRoom">The to room.</param>
+            <param name="fromDoor">The from door position.</param>
+            <param name="toDoor">The to door position.</param>
+            <param name="shaft">The shaft connecting the two rooms.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.ContainsDoor(MPewsey.ManiaMap.Uid,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns true if the connection includes the room door.
+            </summary>
+            <param name="roomId">The room ID.</param>
+            <param name="position">The door position.</param>
+            <param name="direction">The door direction.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorDirection">
+            <summary>
+            The door direction.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.North">
+            %Door points north.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.South">
+            %Door points south.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.East">
+            %Door points east.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.West">
+            %Door points west.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.Top">
+            %Door points up.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDirection.Bottom">
+            %Door points down.
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorPair">
+            <summary>
+            A structure consisting of a pair of DoorPosition.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorPair.FromDoor">
+            <summary>
+            The from door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorPair.ToDoor">
+            <summary>
+            The to door position.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.#ctor(MPewsey.ManiaMap.DoorPosition,MPewsey.ManiaMap.DoorPosition)">
+            <summary>
+            Initializes from a pair of door positions.
+            </summary>
+            <param name="from">The from door position.</param>
+            <param name="to">The to door position.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorPosition">
+            <summary>
+            A class referencing a Door and its local position within a Room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorPosition.Position">
+            <summary>
+            The local door position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorPosition.Direction">
+            <summary>
+            The door direction.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.DoorPosition.Door">
+            <summary>
+            The referenced door.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPosition.#ctor(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorDirection,MPewsey.ManiaMap.Door)">
+            <summary>
+            Initializes an object.
+            </summary>
+            <param name="position">The local position.</param>
+            <param name="direction">The door direction.</param>
+            <param name="door">The referenced door.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPosition.Matches(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns true if the door matches the specified properties.
+            </summary>
+            <param name="position">The local door position.</param>
+            <param name="direction">The door direction.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorType">
+            <summary>
+            The door type.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorType.TwoWay">
+            A two-way door.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorType.TwoWayExit">
+            A one-way exit door that, once conditions are met, becomes a two-way door.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorType.TwoWayEntrance">
+            A one-way entrance door that, once conditions are met, becomes a two-way door.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorType.OneWayExit">
+            A one-way exit.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorType.OneWayEntrance">
+            A one-way entrance.
+        </member>
+        <member name="T:MPewsey.ManiaMap.EdgeDirection">
+            <summary>
+            The layout edge direction.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.EdgeDirection.Both">
+            An edge pointing in both directions.
+        </member>
+        <member name="F:MPewsey.ManiaMap.EdgeDirection.ForwardFlexible">
+            An edge pointing forward and where reverse traversal is possible after conditions are met.
+        </member>
+        <member name="F:MPewsey.ManiaMap.EdgeDirection.ForwardFixed">
+            An edge pointing permanently forward.
+        </member>
+        <member name="F:MPewsey.ManiaMap.EdgeDirection.ReverseFlexible">
+            An edge poining backward and where forward traversal is possible after conditions are met.
+        </member>
+        <member name="F:MPewsey.ManiaMap.EdgeDirection.ReverseFixed">
+            An edge pointing permanently backward.
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.CellsNotFullyConnectedException">
+            <summary>
+            Exception thrown when cells are not fully connected.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.CollectableSpotNotFoundException">
+            <summary>
+            Exception for collectable spot not found errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">
+            <summary>
+            Exception for duplicate ID errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.EmptyGraphException">
+            <summary>
+            Exception for empty graph errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.GraphNotFullyConnectedException">
+            <summary>
+            Exception thrown when a graph is not fully connected.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.InvalidChainOrderException">
+            <summary>
+            Exception for invalid chain order errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.InvalidIdException">
+            <summary>
+            Exception for invalid ID errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">
+            <summary>
+            Exception for invalid name errors.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.NoDoorsExistException">
+            <summary>
+            Exception raised when a no doors exist.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.NoTemplateGroupAssignedException">
+            <summary>
+            Exception raised when no template group is assigned to a room source.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">
+            <summary>
+            Exception for unhandled switch case exceptions.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.CollectableGenerator">
+            <summary>
+            A class for distributing collectables throughout a Layout.
+            
+            References
+            ----------
+            * [1] Pewsey, Matt (2022, April 19). An Approach to Randomly Distributing Game Collectables. Retrieved April 19, 2022, from https://mpewsey.github.io/2022/04/19/collectable-distribution-algorithm.html.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.InitialNeighborWeight">
+            <summary>
+            The initial neighbor weight.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.DoorPower">
+            <summary>
+            The exponent used for the door weight.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.NeighborPower">
+            <summary>
+            The exponent used for the neighbor weight.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.Layout">
+            <summary>
+            The layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.CollectableGroups">
+            <summary>
+            The collectable groups.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.RandomSeed">
+            <summary>
+            The random seed.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.CollectableSpots">
+            <summary>
+            A list of collectable spots.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.Distances">
+            <summary>
+            A dictionary of distances by local position and room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.Clusters">
+            <summary>
+            A dictionary of clusters by room ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.#ctor(System.Single,System.Single,System.Int32)">
+            /// <summary>
+            Initializes the generator.
+            </summary>
+            <param name="doorPower">The exponent used for the door weight.</param>
+            <param name="neighborPower">The exponent used for the neighbor weight.</param>
+            <param name="initialNeighborWeight">The initial neighbor weight.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+            <summary>
+            Adds collectables to the layout.
+            
+            The following arguments are required:
+            * %Layout - The room layout.
+            * %CollectableGroups - The collectable groups.
+            * %RandomSeed - The random seed.
+            </summary>
+            <param name="result">The pipeline results.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Initialize(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Initializes the generator's buffers.
+            </summary>
+            <param name="layout">The layout.</param>
+            <param name="collectableGroups">The collectable groups.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Generate(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Adds collectables to the layout.
+            </summary>
+            <param name="layout">The layout.</param>
+            <param name="collectableGroups">The collectable groups.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.GetCollectables">
+            <summary>
+            Returns a new list of shuffled collectables.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AddCollectable(System.String,System.Int32)">
+            <summary>
+            Adds the collectable to the layout.
+            </summary>
+            <param name="group">The collectable group.</param>
+            <param name="id">The collectable ID.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.CollectableSpotNotFoundException">Raised if a collectable spot can not be found for the group.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.UpdateNeighborWeights(MPewsey.ManiaMap.CollectableSpot)">
+            <summary>
+            Updates the neighbor weights of the collectable spots in the same
+            or neighboring rooms.
+            </summary>
+            <param name="spot">The collectable spot.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.GetWeights(System.String)">
+            <summary>
+            Returns a new array of draw weights for the collectable spots.
+            </summary>
+            <param name="group">The group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AddCollectableSpots">
+            <summary>
+            Creates a new list of collectable spots.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AddRoomCollectableSpots(MPewsey.ManiaMap.Room)">
+            <summary>
+            Adds new collectable spots for the room.
+            </summary>
+            <param name="room">The room.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AssignDoorWeights">
+            <summary>
+            Assigns the door weights to the collectable spots.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AssignInitialNeighborWeights">
+            <summary>
+            Assigns the initial neighbor weight to the collectable spots.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.GetDistance(MPewsey.ManiaMap.Room,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the distance between the two points in the room.
+            This method attempts to use cached distance matrix results if it can.
+            </summary>
+            <param name="room">The room.</param>
+            <param name="index1">The first point.</param>
+            <param name="index2">the second point.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.LayoutGenerator">
+            <summary>
+            A class for generator room Layout based on various RoomTemplate and a LayoutGraph.
+            
+            The algorithm is based on [1] but does not include a simulated annealing evolver.
+            
+            References
+            ----------
+            * [1] Nepožitek, Ondřej. (2019, January 13). Dungeon Generator (Part 2) – Implementation. Retrieved February 8, 2022, from https://ondra.nepozitek.cz/blog/238/dungeon-generator-part-2-implementation/
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.MaxRebases">
+            <summary>
+            The maximum number of times that a sub layout can be used as a base before it is discarded.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.RebaseDecayRate">
+            <summary>
+            The rebase decay rate. This should be a value greater than or equal to zero.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.MaxBranchLength">
+            <summary>
+            The maximum branch chain length. Branch chains exceeding this length will be split.
+            Negative and zero values will be ignored.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.Graph">
+            <summary>
+            The layout graph.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.TemplateGroups">
+            <summary>
+            The template groups.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.ConfigurationSpaces">
+            <summary>
+            A dictionary of configuration spaces by template pair.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.RandomSeed">
+            <summary>
+            The random number generator.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.Layout">
+            <summary>
+            The current layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.AllowableRebases">
+            <summary>
+            The allowable number of layout rebases for the current chain.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.LayoutGenerator.ChainIndex">
+            <summary>
+            The current chain index.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.#ctor(System.Int32,System.Single,System.Int32)">
+            <summary>
+            Initializes the generator.
+            </summary>
+            <param name="maxRebases">The maximum number of times that a sub layout can be used as a base before it is discarded.</param>
+            <param name="rebaseDecayRate">The rebase decay rate. This should be a value greater than or equal to zero.</param>
+            <param name="maxBranchLength">The maximum branch chain length. Branch chains exceeding this length will be split. Negative and zero values will be ignored.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.SetAllowableRebases(System.Int32)">
+            <summary>
+            Sets the allowable number of rebases for the specified chain index.
+            </summary>
+            <param name="chain">The chain index.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+            <summary>
+            Generates a new layout and adds it to the results output dictionary.
+            
+            The following arguments are required:
+            * %LayoutId - The layout ID.
+            * %LayoutGraph - The layout graph.
+            * %TemplateGroups - The template groups.
+            * %RandomSeed - The random seed.
+            
+            The following entries are added to the results output dictionary:
+            * %Layout - The generated layout.
+            </summary>
+            <param name="results">The pipeline results.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Initialize(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Initializes the generator.
+            </summary>
+            <param name="graph">The layout graph.</param>
+            <param name="templateGroups">The template groups.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Generate(System.Int32,MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Generates and returns a new layout.
+            </summary>
+            <param name="layoutId">The layout ID.</param>
+            <param name="graph">The layout graph.</param>
+            <param name="templateGroups">The template groups.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.GetConfigurations(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns a new shuffled list of configurations for the room templates.
+            </summary>
+            <param name="x">The from room template.</param>
+            <param name="y">The to room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.GetTemplateGroupEntries(System.String)">
+            <summary>
+            Returns a new shuffled list of template group entries for the group.
+            </summary>
+            <param name="group">The template group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddChain(System.Collections.Generic.List{MPewsey.ManiaMap.Graphs.LayoutEdge})">
+            <summary>
+            Attempts to add the chain to the layout. Returns true if successful.
+            </summary>
+            <param name="chain">A list of edges in the chain.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.CanInsertRoom(MPewsey.ManiaMap.Graphs.LayoutEdge,MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Returns true if the middle node for the edges can be inserted between existing rooms.
+            </summary>
+            <param name="backEdge">The back edge.</param>
+            <param name="aheadEdge">The ahead edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRooms(MPewsey.ManiaMap.Graphs.LayoutEdge,MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Attemps to insert the rooms for the edges into the layout. Returns true if successful.
+            </summary>
+            <param name="backEdge">The back edge.</param>
+            <param name="aheadEdge">The ahead edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRooms(MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Attempts to add the rooms for the edge to the layout. Returns true if successful.
+            </summary>
+            <param name="edge">The edge.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidChainOrderException">Raised if the to node already exist, indicating the chains are not properly ordered.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddFirstRoom(MPewsey.ManiaMap.IRoomSource)">
+            <summary>
+            Attempts to add the nodes from node to the layout. Returns true if successful.
+            </summary>
+            <param name="source">The room source.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Attempts to add a new room for the to node of the edge. Returns true if successful.
+            </summary>
+            <param name="source">The to room source.</param>
+            <param name="fromRoomId">The from room ID.</param>
+            <param name="code">The door code.</param>
+            <param name="direction">The edge direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Attemps to insert a new room between two rooms. Returns true if successful.
+            </summary>
+            <param name="source">The middle room source.</param>
+            <param name="backRoomId">The back room ID.</param>
+            <param name="backCode">The back door code.</param>
+            <param name="backDirection">The back edge direction.</param>
+            <param name="aheadRoomId">The ahead room ID.</param>
+            <param name="aheadCode">The ahead door code.</param>
+            <param name="aheadDirection">The ahead edge direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddDoorConnection(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Configuration)">
+            <summary>
+            Attemps to add the door connection for the edge and configuration.
+            Returns true if successful.
+            </summary>
+            <param name="fromRoomId">The from room ID.</param>
+            <param name="toRoomId">The to room ID.</param>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer">
+            <summary>
+            A class for generating randomized variations in a LayoutGraph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+            <summary>
+            Creates a randomized copy of a layout graph and adds it to the results output dictionary.
+            
+            The following arguments are required:
+            * %LayoutGraph - The layout graph.
+            * %RandomSeed - The random seed.
+            
+            The following entries are added to the results output dictionary:
+            * %LayoutGraph - The randomized layout graph.
+            </summary>
+            <param name="results">The pipeline results.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.RandomizeGraph(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Returns a randomized copy of the layout graph based on the available variations.
+            </summary>
+            <param name="graph">The layout graph.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.LayoutGraphSelector">
+            <summary>
+            A class for drawing a random LayoutGraph from multiple.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+            <summary>
+            Draws a random layout graph and adds a copy to the results output dictionary.
+            
+            The following arguments are required:
+            * %LayoutGraphs - A list of layout graphs or functions that return layout graphs.
+            * %RandomSeed - The random seed.
+            
+            The following entries are added to the results output dictionary:
+            * %LayoutGraph - The drawn layout graph.
+            </summary>
+            <param name="results">The pipeline results.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{MPewsey.ManiaMap.Graphs.LayoutGraph},MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Returns a copy of a random layout graph from the list.
+            </summary>
+            <param name="graphs">A list of layout graphs.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{System.Func{MPewsey.ManiaMap.Graphs.LayoutGraph}},MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Returns a copy of a random layout graph from the list.
+            </summary>
+            <param name="functions">A list of functions returning a layout graph.</param>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Object,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Returns a copy of a random layout graph from the list.
+            </summary>
+            <param name="graphs">A list of layout graphs or functions returning layout graphs.</param>
+            <param name="randomSeed">The random seed.</param>
+            <exception cref="T:System.ArgumentException">Raised if the type of `graphs` is not handled.</exception>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.PipelineBuilder">
+            <summary>
+            Contains methods for constructing pipelines.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.PipelineBuilder.CreateDefaultPipeline">
+            <summary>
+            Returns a new pipeline with common default generators in the following order:
+            
+            1. LayoutGraphRandomizer
+            2. LayoutGenerator
+            3. CollectableGenerator
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.EdgeIndexes">
+            <summary>
+            A pair of edge node indexes.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.EdgeIndexes.FromIndex">
+            <summary>
+            The from node index.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.EdgeIndexes.ToIndex">
+            <summary>
+            The two node index.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes from two node index values.
+            </summary>
+            <param name="from">The from node index.</param>
+            <param name="to">The to node index.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1">
+            <summary>
+            A class for decomposing the branches of a graph into chains.
+            </summary>
+            <typeparam name="T">The type of the node ID.</typeparam>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.Neighbors">
+            <summary>
+            A dictionary of node neighbors by node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.Parents">
+            <summary>
+            A dictionary of node parents by node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.Marked">
+            <summary>
+            A set of marked nodes.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.Branches">
+            <summary>
+            A list of branches.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.Initialize(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}})">
+            <summary>
+            Initializes the decomposer's buffers.
+            </summary>
+            <param name="neighbors">A dictionary of graph neighbors.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.FindBranches(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}})">
+            <summary>
+            Returns a list of branches originating from the graph's cycles.
+            </summary>
+            <param name="neighbors">A dictionary of graph neighbors.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.MarkTrunk">
+            <summary>
+            Marks the trunk of the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.MaxNeighborNode">
+            <summary>
+            Returns the node ID with the maximum number of neighbors.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.EmptyGraphException">Raised if the graph does not contain any nodes.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.BranchSearch(`0,`0)">
+            <summary>
+            Performs depth first search for graph branches.
+            </summary>
+            <param name="node">The node ID.</param>
+            <param name="parent">The node's parent ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1.AddParentsToBranch(`0,System.Collections.Generic.List{`0})">
+            <summary>
+            Accumulates the parents of the node into the branch.
+            </summary>
+            <param name="node">The node ID.</param>
+            <param name="branch">The branch to which nodes will be added.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.GraphChainDecomposer">
+            <summary>
+            A class for finding chains of a LayoutGraph.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.MaxBranchLength">
+            <summary>
+            The maximum branch chain length. Branch chains exceeding this length will be split.
+            Negative and zero values will be ignored.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.Graph">
+            <summary>
+            The layout graph.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.Chains">
+            <summary>
+            A list of chains.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.Marked">
+            <summary>
+            A set of all marked nodes.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.Initialize(MPewsey.ManiaMap.Graphs.LayoutGraph,System.Int32)">
+            <summary>
+            Initializes the decomposer's buffers.
+            </summary>
+            <param name="graph">The layout graph.</param>
+            <param name="maxBranchLength">The maximum branch chain length.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.FindChains(MPewsey.ManiaMap.Graphs.LayoutGraph,System.Int32)">
+            <summary>
+            Returns a new list of chains for the graph.
+            </summary>
+            <param name="graph">The layout graph.</param>
+            <param name="maxBranchLength">The maximum branch chain length. Branch chains exceeding this length will be split. Negative and zero values will be ignored.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.AddCycleChains">
+            <summary>
+            Returns a list of chains for all cycles in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.OrderEdgeNodes">
+            <summary>
+            Reverses the edges in the chains as necessary to make the nodes
+            in the chain sequential.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.AddBranchChains">
+            <summary>
+            Adds chains for all branches of the graph to the input list.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.RemoveDuplicateEdges">
+            <summary>
+            Removes any duplicate edges from the list of chains. The first
+            occurence of an edge is retained.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.SplitBrokenChains">
+            <summary>
+            Splits any non sequential chains into separate chains and returns a new list.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.SplitLongChains">
+            <summary>
+            Splits non cycle chains which exceed the specified max length. If the max
+            length is negative or zero, no action will be taken.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.FormSequentialChains">
+            <summary>
+            Returns a new list of sequential chains.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.FindNextChain">
+            <summary>
+            Returns the next chain in the sequence.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.MarkNodes(System.Collections.Generic.List{MPewsey.ManiaMap.Graphs.LayoutEdge})">
+            <summary>
+            Adds the nodes in the chain to the marked set.
+            </summary>
+            <param name="chain">A list of chain edges.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.GetChainEdges(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Returns a new list of edges based on a list of nodes.
+            </summary>
+            <param name="nodes">A list of node ID's.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphChainDecomposer.ChainIsCycle(System.Collections.Generic.List{MPewsey.ManiaMap.Graphs.LayoutEdge})">
+            <summary>
+            Returns true if the chain is a cycle.
+            </summary>
+            <param name="chain">A list of chain edges.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1">
+            <summary>
+            A class for searching for neighbors in a graph up to a specified depth.
+            </summary>
+            <typeparam name="T">The type of the node ID.</typeparam>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.MaxDepth">
+            <summary>
+            The maximum depth for which neighbors will be returned.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.Marked">
+            <summary>
+            A set of all room ID's that have been visited.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.Neighbors">
+            <summary>
+            A dictionary of room neighbors by ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.Initialize(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}},System.Int32)">
+            <summary>
+            Initializes the search buffers.
+            </summary>
+            <param name="neighbors">A dictionary of room neighbors.</param>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.FindCluster(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}},`0,System.Int32)">
+            <summary>
+            Returns a set of neighbors of the room up to the max depth.
+            </summary>
+            <param name="neighbors">A dictionary of room neighbors.</param>
+            <param name="room">The room ID.</param>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.FindClusters(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}},System.Int32)">
+            <summary>
+            Returns a dictionary of all clusters up to the max depth.
+            </summary>
+            <param name="neighbors">A dictionary of room neighbors.</param>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphClusterSearch`1.SearchNeighbors(`0,System.Int32)">
+            <summary>
+            Recursively searches for neighbors of the room.
+            </summary>
+            <param name="room">The room ID.</param>
+            <param name="depth">The current depth.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1">
+            <summary>
+            A class for finding cycles in a graph. The algorithm is based on [1].
+            
+            References
+            ----------
+            
+            * [1] GeeksforGeeks. (2021, July 2). Print all the cycles in an undirected graph. Retrieved February 8, 2022, from https://www.geeksforgeeks.org/print-all-the-cycles-in-an-undirected-graph/
+            </summary>
+            <typeparam name="T">The type of the node ID.</typeparam>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.Neighbors">
+            <summary>
+            A dictionary of node neighbors by node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.Cycles">
+            <summary>
+            A list of cycles in the graph.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.Parents">
+            <summary>
+            A dictionary of node parents by node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.Colors">
+            <summary>
+            A dictionary of node colors by node ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.Initialize(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}})">
+            <summary>
+            Initializes the decomposer's buffers.
+            </summary>
+            <param name="neighbors">A dictionary of graph neighbors.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.FindCycles(System.Collections.Generic.Dictionary{`0,System.Collections.Generic.List{`0}})">
+            <summary>
+            Returns lists of all combinations of unique node cycles in the graph
+            using depth first search.
+            </summary>
+            <param name="neighbors">A dictionary of graph neighbors.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.CycleSearch(`0,`0)">
+            <summary>
+            Performs depth first search to find cycles in the graph.
+            </summary>
+            <param name="node">The node ID.</param>
+            <param name="parent">The node's parent ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.GraphCycleDecomposer`1.GetUniqueCycles">
+            <summary>
+            Returns a new list with all unique cycles in the graph.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.LayoutEdge">
+            <summary>
+            Represents an edge connecting two nodes of a LayoutGraph.
+            
+            Several chainable property setting methods are included to allow the creation
+            of an edge and setting of properties in a single line. For example, the following
+            creates a edge in a graph, then sets the name and adds a template group:
+            
+            ```
+            graph.AddEdge(1, 2).SetName("Edge1").SetTemplateGroup("Default");
+            ```
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.FromNode">
+            <summary>
+            The from node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.ToNode">
+            <summary>
+            The to node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Direction">
+            <summary>
+            The edge direction.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.DoorCode">
+            <summary>
+            The matching door code.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Z">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.RoomChance">
+            <summary>
+            The chance that a room will be created from the edge. The value should be between 0 and 1.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.RequireRoom">
+            <summary>
+            If true, in order to form a valid layout, a room must be added for this edge
+            if the room chance is satisfied. Otherwise, the room may be skipped if adding
+            an edge for the room fails.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Color">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.TemplateGroup">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.RoomId">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes an edge with the from node and to node ID's.
+            </summary>
+            <param name="fromNode">The from node ID.</param>
+            <param name="toNode">The to node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.#ctor(MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Initializes a copy of the edge.
+            </summary>
+            <param name="other">The edge to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.Copy">
+            <summary>
+            Returns a copy of the edge.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetProperties(MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Sets the properties of this edge to that of the specified other edge,
+            with the exception of the node ID's.
+            </summary>
+            <param name="other">The other edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.Validate">
+            <summary>
+            Validates the edge and raises any applicable exceptions.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.NoTemplateGroupAssignedException">Raised if the room chance is non-zero and a valid template group is not assigned.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.IsValid">
+            <summary>
+            Returns true if the edge is valid.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToSymbolString" -->
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetName(System.String)">
+            <summary>
+            Sets the name of the edge and returns the edge.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetRoomChance(System.Single)">
+            <summary>
+            Sets the room chance for the edge and returns the edge.
+            </summary>
+            <param name="chance">The chance of creating a room from the edge, between 0 and 1.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetRequireRoom(System.Boolean)">
+            <summary>
+            Sets whether a room is required for the edge and returns the edge.
+            </summary>
+            <param name="value">Whether a room is required for the edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetZ(System.Int32)">
+            <summary>
+            Sets the Z value of the edge and returns the edge.
+            </summary>
+            <param name="z">The z value.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetColor(MPewsey.ManiaMap.Color4)">
+            <summary>
+            Sets the color of the edge and returns the edge.
+            </summary>
+            <param name="color">The color.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDirection(MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Sets the direction of the edge and returns the edge.
+            </summary>
+            <param name="direction">The edge direction.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDoorCode(System.Int32)">
+            <summary>
+            Sets the door code of the edge and returns the edge.
+            </summary>
+            <param name="doorCode">The matching door code.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.Reverse">
+            <summary>
+            Reverses the nodes and direction of the edge.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SharesNode(MPewsey.ManiaMap.Graphs.LayoutEdge)">
+            <summary>
+            Returns true if the edges shares a node with the specified edge.
+            </summary>
+            <param name="other">The other edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetTemplateGroup(System.String)">
+            <summary>
+            Sets the template group and returns the edge.
+            </summary>
+            <param name="value">The template group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.ReverseEdgeDirection(MPewsey.ManiaMap.EdgeDirection)">
+            <summary>
+            Returns the reverse of the specified direction.
+            </summary>
+            <param name="direction">The edge direction.</param>
+            <exception cref="T:System.ArgumentException">Raises for an unhandled direction.</exception>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.LayoutGraph">
+            <summary>
+            Represents a graph consisting of LayoutNode and LayoutEdge.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.Id">
+            <summary>
+            The graph ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.Name">
+            <summary>
+            The graph name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.Nodes">
+            <summary>
+            A dictionary of nodes by ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.Edges">
+            <summary>
+            A dictionary of nodes by from and to node ID's.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.Neighbors">
+            <summary>
+            A dictionary of neighboring nodes by node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.NodeVariations">
+            <summary>
+            A dictionary of node variation groups.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.NodeDictionary">
+            <summary>
+            A readonly dictionary of nodes.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.EdgeDictionary">
+            <summary>
+            A readonly dictionary of edges.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.NodeCount">
+            <summary>
+            The number of nodes in the graph.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutGraph.EdgeCount">
+            <summary>
+            The number of edges in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a graph.
+            </summary>
+            <param name="id">The unique ID.</param>
+            <param name="name">The graph name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.#ctor(MPewsey.ManiaMap.Graphs.LayoutGraph)">
+            <summary>
+            Initializes a copy of the graph.
+            </summary>
+            <param name="other">The graph to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.Copy">
+            <summary>
+            Returns a copy of the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.Validate">
+            <summary>
+            Validates the graph and raises any applicable exceptions.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.GraphNotFullyConnectedException">Raised if the graph is not fully connected.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.IsValid">
+            <summary>
+            Returns true if the graph is valid.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNodeVariations(System.String)">
+            <summary>
+            Returns a readonly list of the node variations for the group.
+            </summary>
+            <param name="group">The group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNodeVariations">
+            <summary>
+            Returns an enumerable of variation groups and their associated nodes.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetVariation(MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Returns a new variation of the graph.
+            </summary>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.ApplyVariations(MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Applies random variations to the graph.
+            </summary>
+            <param name="randomSeed">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FetchNodeVariations(System.String)">
+            <summary>
+            Returns the node variations list for the group. If the group does not already exist,
+            creates it and returns a new list.
+            </summary>
+            <param name="group">The group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNodeVariation(System.String,System.Int32)">
+            <summary>
+            Adds a node variation to the graph. If the node does not already exist, creates it.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNodeVariation(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Adds node variations to the graph. If the nodes do not already exist, creates them.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="ids">The node ID's.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariations(System.Int32)">
+            <summary>
+            Removes all variations for the node.
+            </summary>
+            <param name="id">he node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariation(System.String,System.Int32)">
+            <summary>
+            Removes the node variation from the graph.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariation(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Removes the node variations from the graph.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="ids">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetEdges(System.Int32)">
+            <summary>
+            Returns a enumerable of edges with the node ID.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.SwapEdges(System.Int32,System.Int32)">
+            <summary>
+            Swaps the edges for two nodes in the graph.
+            </summary>
+            <param name="id1">The first node ID.</param>
+            <param name="id2">The second node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNode(System.Int32)">
+            <summary>
+            Adds a node to the graph and returns it. If the node already exists, returns
+            the existing node.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddEdge(System.Int32,System.Int32)">
+            <summary>
+            Adds an edge to the graph and returns it. If the edge already exists,
+            returns the existing edge. If the nodes referenced by the edge do not
+            already exist, new nodes are added to the graph.
+            </summary>
+            <param name="fromNode">The from node ID.</param>
+            <param name="toNode">The to node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNode(System.Int32)">
+            <summary>
+            Removes a node from the graph.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveEdge(System.Int32,System.Int32)">
+            <summary>
+            Removes an edge from the graph. The order of the specified node ID's
+            does not matter.
+            </summary>
+            <param name="node1">The first node ID.</param>
+            <param name="node2">The second node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNode(System.Int32)">
+            <summary>
+            Returns the node in the graph.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.TryGetEdge(System.Int32,System.Int32,MPewsey.ManiaMap.Graphs.LayoutEdge@)">
+            <summary>
+            Tries to get the edge in the graph. Returns true if successful.
+            The order of the specified node ID's does not matter.
+            </summary>
+            <param name="node1">The first node ID.</param>
+            <param name="node2">The second node ID.</param>
+            <param name="edge">The returned edge.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetEdge(System.Int32,System.Int32)">
+            <summary>
+            Returns the edge with the specified nodes. The order of the input nodes
+            does not matter.
+            </summary>
+            <param name="node1">The first node ID.</param>
+            <param name="node2">The second node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNodes">
+            <summary>
+            Returns an enumerable of all nodes in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetEdges">
+            <summary>
+            Returns an enumerable of all edges in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNeighbors(System.Int32)">
+            <summary>
+            Returns an enumerable of all neighbors for the specified node.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FindCycles">
+            <summary>
+            Returns a list of cycles in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FindBranches">
+            <summary>
+            Returns a list of branches in the graph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FindChains(System.Int32)">
+            <summary>
+            Returns a list of chains in the graph.
+            </summary>
+            <param name="maxBranchLength">The maximum branch chain length. Branch chains exceeding this length will be split. Negative and zero values will be ignored.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FindCluster(System.Int32,System.Int32)">
+            <summary>
+            Returns a set of neighbor node ID's of the specified node up to the max depth.
+            </summary>
+            <param name="node">The node ID.</param>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FindClusters(System.Int32)">
+            <summary>
+            Returns a dictionary of all node ID clusters up to the max depth.
+            </summary>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.IsFullyConnected">
+            <summary>
+            Returns true if the graph is fully connected.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Graphs.LayoutNode">
+            <summary>
+            A node in a LayoutGraph.
+            
+            Several chainable property setting methods are included to allow the creation
+            of a node and setting of properties in a single line. For example, the following
+            creates a node in a graph, then sets the name and adds a template group:
+            
+            ```
+            graph.AddNode(1).SetName("Node1").SetTemplateGroup("Default");
+            ```
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Id">
+            <summary>
+            The unique node ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Z">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.TemplateGroup">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Color">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.RoomId">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.#ctor(System.Int32)">
+            <summary>
+            Initializes an empty node from ID.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.#ctor(MPewsey.ManiaMap.Graphs.LayoutNode)">
+            <summary>
+            Initializes a copy of the node.
+            </summary>
+            <param name="other">The node to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.Copy">
+            <summary>
+            Returns a copy of the node.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.Validate">
+            <summary>
+            Validates the node and raises any applicable exceptions.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.NoTemplateGroupAssignedException">Raised if a valid template group is not assigned to the node.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.IsValid">
+            <summary>
+            Returns true if the node is valid.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.SetZ(System.Int32)">
+            <summary>
+            Sets the Z value of the node and returns the node.
+            </summary>
+            <param name="value">The z value.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.SetName(System.String)">
+            <summary>
+            Sets the name of the node and returns the node.
+            </summary>
+            <param name="value">The name</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.SetColor(MPewsey.ManiaMap.Color4)">
+            <summary>
+            Sets the color of the node and returns the node.
+            </summary>
+            <param name="value">The color.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.SetTemplateGroup(System.String)">
+            <summary>
+            Sets the template group and returns the node.
+            </summary>
+            <param name="value">The template group name.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.IRoomSource">
+            <summary>
+            An interface for objects that may be made into Room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.RoomId">
+            <summary>
+            The unique room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.Name">
+            <summary>
+            The name of the room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.Color">
+            <summary>
+            The color of the room background tiles.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.Z">
+            <summary>
+            The z (layer) coordinate.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.TemplateGroup">
+            <summary>
+            The template group name.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Layout">
+            <summary>
+            Represents a room layout consisting of Room and DoorConnection.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Id">
+            <summary>
+            The unique ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Name">
+            <summary>
+            The name of the layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Seed">
+            <summary>
+            The random seed used to generate the layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Rooms">
+            <summary>
+            A dictionary of rooms in the layout by ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.DoorConnections">
+            <summary>
+            A dictionary of door connections by room ID pairs.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Templates">
+            <summary>
+            A dictionary of room templates in the layout by ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.Rebases">
+            <summary>
+            The current number of times the layout has been used as a base for another layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Layout.TemplateCounts">
+            <summary>
+            A dictionary of counts by template group entry.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.#ctor(System.Int32,System.String,System.Int32)">
+            <summary>
+            Initializes an empty layout.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.#ctor(MPewsey.ManiaMap.Layout)">
+            <summary>
+            Initializes a new layout from a base.
+            </summary>
+            <param name="baseLayout">The base layout.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.IsComplete(MPewsey.ManiaMap.TemplateGroups)">
+            <summary>
+            Returns true if all template constraints are satisfied.
+            </summary>
+            <param name="groups">The template groups.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+            <summary>
+            Returns the count for the specified template group entry.
+            </summary>
+            <param name="entry">The template group entry.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.IncreaseTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+            <summary>
+            Increases the count by 1 for the template group entry.
+            </summary>
+            <param name="entry">The template group entry.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.PopulateTemplates">
+            <summary>
+            Populates the templates dictionary based on the current rooms.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.AssignRoomTemplates">
+            <summary>
+            Sets the templates of the rooms based on their stored template ID's.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetDoorConnection(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid)">
+            <summary>
+            Returns the door connection between the rooms.
+            </summary>
+            <param name="room1">The first room ID.</param>
+            <param name="room2">The second room ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.RemoveDoorConnection(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid)">
+            <summary>
+            Removes the door connection from the layout.
+            </summary>
+            <param name="room1">The first room ID.</param>
+            <param name="room2">The second room ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.Intersects(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the range intersects the layout.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.RoomsIntersect(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the range intersects the rooms of the layout.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.ShaftsIntersect(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the range intersects the shafts of the layout.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.Intersects(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector2DInt,System.Int32)">
+            <summary>
+            Returns true if the template intersects the layout.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="position">The position of the room.</param>
+            <param name="z">The z position of the room.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.Intersects(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the template intersects the layout.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="position">The position of the template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.RoomsIntersect(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the template intersects the rooms in the layout.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="position">The position of the template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.ShaftsIntersect(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the template intersects the shafts in the layout.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="position">The position of the template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetRoomDoors">
+            <summary>
+            Returns a new dictionary of room doors by room ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetRoomConnections">
+            <summary>
+            Returns a dictionary of door connections by room ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.RoomAdjacencies">
+            <summary>
+            Returns a new dictionary of neighbor rooms in the layout.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.FindCluster(MPewsey.ManiaMap.Uid,System.Int32)">
+            <summary>
+            Returns the neighbors of the room up to the specified max depth.
+            The room itself is included in the result.
+            </summary>
+            <param name="room">The room ID.</param>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.FindClusters(System.Int32)">
+            <summary>
+            Returns a dictionary of neighbors of all rooms up to the specified max depths.
+            The rooms themselves are included in the results.
+            </summary>
+            <param name="maxDepth">The maximum depth for which neighbors will be returned.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetBounds">
+            <summary>
+            Returns the rectangular bounds of the layout.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.LayoutState">
+            <summary>
+            Contains the states of a Layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.LayoutState.Id">
+            <summary>
+            The ID of the corresponding layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.LayoutState.RoomStates">
+            <summary>
+            A dictionary of room states by ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.LayoutState.#ctor(MPewsey.ManiaMap.Layout)">
+            <summary>
+            Initializes an object from a layout.
+            </summary>
+            <param name="layout">The layout.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.MapTileType">
+            <summary>
+            Type names corresponding to map tiles.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.None">
+            <summary>
+            Returns null, the value of no tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.Grid">
+            <summary>
+            The name of the grid tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.NorthDoor">
+            <summary>
+            The name of the north door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.SouthDoor">
+            <summary>
+            The name of the south door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.EastDoor">
+            <summary>
+            The name of the east door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.WestDoor">
+            <summary>
+            The name of the west door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.TopDoor">
+            <summary>
+            The name of the top door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.BottomDoor">
+            <summary>
+            The name of the bottom door tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.NorthWall">
+            <summary>
+            The name of the north wall tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.SouthWall">
+            <summary>
+            The name of the south wall tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.EastWall">
+            <summary>
+            The name of the east wall tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.WestWall">
+            <summary>
+            The name of the west wall tile.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.MapTileType.SavePoint">
+            <summary>
+            The name of the save point tile.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.MapTileType.GetDoorTileType(MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns the door tile type corresponding to the direction.
+            </summary>
+            <param name="direction">The direction.</param>
+            <exception cref="T:System.ArgumentException">Raised if the direction is not handled.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.MapTileType.GetWallTileType(MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns the wall tile type corresponding to the direction.
+            </summary>
+            <param name="direction">The direction.</param>
+            <exception cref="T:System.ArgumentException">Raised if the direction is not handled.</exception>
+        </member>
+        <member name="T:MPewsey.ManiaMap.RectangleInt">
+            <summary>
+            A rectangle consisting of position and size integers.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RectangleInt.X">
+            <summary>
+            The x position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RectangleInt.Y">
+            <summary>
+            The y position.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RectangleInt.Width">
+            <summary>
+            The width.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RectangleInt.Height">
+            <summary>
+            The height.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new rectangle.
+            </summary>
+            <param name="x">The x position.</param>
+            <param name="y">The y position.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Room">
+            <summary>
+            Represents a room in a Layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Id">
+            <summary>
+            The room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Name">
+            <summary>
+            The room name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Position">
+            <summary>
+            The position of the room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Seed">
+            <summary>
+            The random seed of the room that may be used for room specific generation.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.TemplateId">
+            <summary>
+            The template ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Template">
+            <summary>
+            The room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Color">
+            <summary>
+            The room color.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Collectables">
+            <summary>
+            A dictionary of collectable object ID's by location ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.#ctor(MPewsey.ManiaMap.IRoomSource,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Random.RandomSeed)">
+            <summary>
+            Initializes a room from a room source.
+            </summary>
+            <param name="source">The room source.</param>
+            <param name="position">The position in the layout.</param>
+            <param name="template">The room template.</param>
+            <param name="random">The random seed.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.Intersects(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <summary>
+            Returns true if the range intersects the room.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.SetTemplate(System.Collections.Generic.Dictionary{System.Int32,MPewsey.ManiaMap.RoomTemplate})">
+            <summary>
+            Sets the room template based on the current template ID.
+            </summary>
+            <param name="templates">A dictionary of room templates.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.RoomPair">
+            <summary>
+            A structure containing two Room ID's.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomPair.FromRoom">
+            <summary>
+            The from room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomPair.ToRoom">
+            <summary>
+            The to room ID.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.#ctor(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid)">
+            <summary>
+            Initializes a new room pair.
+            </summary>
+            <param name="from">The from room ID.</param>
+            <param name="to">The to room ID.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.RoomState">
+            <summary>
+            Stores the state of a Room in a Layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.Id">
+            <summary>
+            The ID of the corresponding room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.VisibleCells">
+            <summary>
+            An array of room cell visibilities.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.AcquiredCollectables">
+            <summary>
+            A set of acquired collectable location ID's.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.Flags">
+            <summary>
+            A set of flags that are set for a room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.#ctor(MPewsey.ManiaMap.Room)">
+            <summary>
+            Initializes from a room.
+            </summary>
+            <param name="room">The room.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.CellIsVisible(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns true if the specified index is within bounds and the cell is visible.
+            </summary>
+            <param name="index">The cell index.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.CellIsVisible(System.Int32,System.Int32)">
+            <summary>
+            Returns true if the specified index is within bounds and the cell is visible.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.SetCellVisibility(MPewsey.Common.Mathematics.Vector2DInt,System.Boolean)">
+            <summary>
+            Sets the visibility of a cell. Returns true if the index is within bounds.
+            </summary>
+            <param name="index">The cell index.</param>
+            <param name="value">The visibility.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.SetCellVisibility(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the visibility of a cell. Returns true if the index is within bounds.
+            </summary>
+            <param name="row">The row index.</param>
+            <param name="column">The column index.</param>
+            <param name="value">The visibility.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.RoomTemplate">
+            <summary>
+            Contains information for the geometry and properties of a Room in a Layout.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.Id">
+            <summary>
+            The unique ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.Name">
+            <summary>
+            The template name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.Cells">
+            <summary>
+            An array of cells in the template. The shape and contents of this array define the geometry
+            and properties of the room.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.Key">
+            <summary>
+            The unique key.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell})">
+            <summary>
+            Initializes a room template.
+            </summary>
+            <param name="id">The unique ID.</param>
+            <param name="name">The template name.</param>
+            <param name="cells">An array of cells in the template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns a copy of the room template.
+            </summary>
+            <param name="other">The room template to copy.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ValuesAreEqual(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if the values of the room templates are equal.
+            </summary>
+            <param name="x">The first template.</param>
+            <param name="y">The second template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ValuesAreEqual(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if the values of the room template are equal to the specified template.
+            </summary>
+            <param name="other">The other room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Validate">
+            <summary>
+            Validates the template and raises any associated exceptions.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.CellsNotFullyConnectedException">Raised if the cells are not fully connected.</exception>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.NoDoorsExistException">Raised if no typed door is assigned to the template.</exception>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if a collectable group name is null or whitespace.</exception>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">Raised if a duplicate collectable spot ID exists.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.IsValid">
+            <summary>
+            Returns true if the room template is valid.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableGroupNamesAreValid">
+            <summary>
+            Returns true if all collectable group names assigned to the template are valid.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotIdsAreUnique">
+            <summary>
+            Returns true if the collectable spots assigned to the template
+            all have unique ID's.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.AnyDoorExists">
+            <summary>
+            Returns true if a door is not null and is assigned a type
+            anywhere in the template.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.IsFullyConnected">
+            <summary>
+            Returns true if the cells in the template are fully connected.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.FindCellDistances(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns an array of distances from the specified index to each cell of the template.
+            Values of -1 indicate that the index does not exist.
+            </summary>
+            <param name="index">The index for which distances will be calculated.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.AllVariations">
+            <summary>
+            Returns an array of this template plus all mirrored and rotated variations.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.UniqueVariations">
+            <summary>
+            Returns a new list of this template plus all unique variations.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellValuesAreEqual(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if all cells in this template match the cells of another template.
+            </summary>
+            <param name="other">The other room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Copy">
+            <summary>
+            Returns a copy of the room template.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated90">
+            <summary>
+            Returns a new room template rotated 90 degrees clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated180">
+            <summary>
+            Returns a new room template rotated 180 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated270">
+            <summary>
+            Returns a new room template rotated 270 degrees clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredVertically">
+            <summary>
+            Returns a new room template mirrored vertically, i.e. about the horizontal axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredHorizontally">
+            <summary>
+            Returns a new room template mirrored horizontally, i.e. about the vertical axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Intersects(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns true if the template intersects the specified range.
+            </summary>
+            <param name="min">The minimum values of the range.</param>
+            <param name="max">The maximum values of the range.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Intersects(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns true if the room templates another template at the specified offset.
+            </summary>
+            <param name="other">The other room template.</param>
+            <param name="offset">The offset of the other template from this one.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ShaftAlignedDoors(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns a list of doors aligning with a template at the specified offset
+            when the templates are not in the same plane.
+            </summary>
+            <param name="other">The other room template.</param>
+            <param name="offset">The offset of the other template from this one.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.PlaneAlignedDoors(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns a list of doors aligning with a template at the specified offset
+            when the templates are in the same plane.
+            </summary>
+            <param name="other">The other room template.</param>
+            <param name="offset">The offset of the other template from this one.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.AlignedDoors(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns a list of doors aligning with a template at the specified offset.
+            </summary>
+            <param name="other">The other room template.</param>
+            <param name="offset">The offset of the other template from this one.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.BigLayoutSample">
+            <summary>
+            Contains methods for the big layout sample.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.BigLayoutTemplateGroups">
+            <summary>
+            Returns the template groups for the big layout sample.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.Generate(System.Int32)">
+            <summary>
+            Generates the big layout using default parameters and returns the results.
+            </summary>
+            <param name="seed">The random seed.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.GraphLibrary">
+            <summary>
+            Contains a collection of LayoutGraph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.CrossGraph">
+            <summary>
+            Returns a graph in the shape of a cross.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.LoopGraph">
+            <summary>
+            Returns a graph with two loops that share segments.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.GeekGraph">
+            <summary>
+            Returns the graph shown at https://www.geeksforgeeks.org/print-all-the-cycles-in-an-undirected-graph/.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.StackedLoopGraph">
+            <summary>
+            Returns a LoopGraph with some nodes set to different Z (layer) values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.BigGraph">
+            <summary>
+            Returns the graph for the big layout.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.GraphLibrary.DirectedRingGraph">
+            <summary>
+            Returns a simple ring graph with required directed edges.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.ManiaMapSample">
+            <summary>
+            Contains methods for the Mania Map sample.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterM1Template">
+            <summary>
+            Returns a template for the first letter M in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterM2Template">
+            <summary>
+            Returns a template for the second letter M in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterATemplate">
+            <summary>
+            Returns a template for the letter A in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterNTemplate">
+            <summary>
+            Returns a template for the leter N in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterITemplate">
+            <summary>
+            Returns a template for the letter I in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterPTemplate">
+            <summary>
+            Returns a template for the letter P in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.LetterTemplateGroups">
+            <summary>
+            Returns the template groups for the letters in Mania Map.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.ManiaMapLayoutGraph">
+            <summary>
+            Returns a layout graph for the Mania Map layout.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.ManiaMapLayout">
+            <summary>
+            Generates the Mania Map layout and returns it.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.TemplateLibrary">
+            <summary>
+            Contains collections of RoomTemplate.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous">
+            <summary>
+            Contains a collection of miscellaneous RoomTemplate.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.SquareTemplate">
+            <summary>
+            Returns a square template with doors at each wall's midpoint.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.RingTemplate">
+            <summary>
+            Returns a ring template with a hole in the center and doors at each wall's midpoint.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.PlusTemplate">
+            <summary>
+            Returns a template in the shape of a "+" with doors at each point.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate">
+            <summary>
+            Returns a square template with doors in all directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.LTemplate">
+            <summary>
+            Returns an "L" template with doors at the ends and intersection of the "L".
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares">
+            <summary>
+            Contains a collection of square RoomTemplate.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares.Square1x1Template">
+            <summary>
+            Returns a 1x1 square template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares.Square2x2Template">
+            <summary>
+            Returns a 2x2 square template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares.Square3x3Template">
+            <summary>
+            Returns a 3x3 square template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares.Square1x1NorthExitTemplate">
+            <summary>
+            Returns a 1x1 square template with two way doors in all planar directions, except
+            the north, which has a one way exit.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Squares.Square1x1SavePointTemplate">
+            <summary>
+            Returns a 1x1 square template with doors in all planar directions
+            and a save point.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles">
+            <summary>
+            Contains a collection of rectangular RoomTemplate.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x2Template">
+            <summary>
+            Returns a 1x2 rectangular template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x3Template">
+            <summary>
+            Returns a 1x3 rectangular template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle1x4Template">
+            <summary>
+            Returns a 1x4 rectangular template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x3Template">
+            <summary>
+            Returns a 2x3 rectangular template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Rectangles.Rectangle2x4Template">
+            <summary>
+            Returns a 2x4 rectangular template with doors in all planar directions.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Samples.TemplateLibrary.Angles">
+            <summary>
+            Contains a collection of angle RoomTemplate.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Angles.Angle3x4">
+            <summary>
+            Returns a 3x4 angle template with doors at the tips and corner in all planar
+            directions.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.TemplateGroups">
+            <summary>
+            A class for creating groups of RoomTemplate.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplateGroups.Groups">
+            <summary>
+            A dictionary of templates by group name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplateGroups.GroupsDictionary">
+            <summary>
+            A readonly dictionary of templates by group name.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.ConsolidateTemplates">
+            <summary>
+            Consolidates duplicate templates into a single reference.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.GetGroup(System.String)">
+            <summary>
+            Returns the group entries for the specified group name.
+            </summary>
+            <param name="group">The group name.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Adds a room template to the group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="template">The room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.TemplateGroups.Entry)">
+            <summary>
+            Adds a template group entry to the group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="entry">The group entry.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.RoomTemplate})">
+            <summary>
+            Adds a range of room templates to the group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="templates">An enumerable of templates.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.TemplateGroups.Entry})">
+            <summary>
+            Adds a range of template group entries to the group.
+            </summary>
+            <param name="group">The group name.</param>
+            <param name="entries">An enumerable of entries.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.ValidateGroupName(System.String)">
+            <summary>
+            Validates the specified group name and throws an exception if it is invalid.
+            </summary>
+            <param name="group">The group name.</param>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if the group name is invalid.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Validate">
+            <summary>
+            Validates the template groups and raises any associated exceptions.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.GetConfigurationSpaces">
+            <summary>
+            Returns a new dictionary of configuration spaces for all templates.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllEntries">
+            <summary>
+            Returns an enumerable of all template group entries.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllTemplates">
+            <summary>
+            Returns an enumerable of all templates in all groups.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.TemplateGroups.Entry">
+            <summary>
+            A template group entry, consisting of a RoomTemplate and usage constaints.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.Template">
+            <summary>
+            The room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MinQuantity">
+            <summary>
+            The minimum number of uses for the entry.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MaxQuantity">
+            <summary>
+            The maximum number of uses for the entry.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Intializes a new entry with no quantity contraints.
+            </summary>
+            <param name="template">The room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new entry with quantity constraints.
+            </summary>
+            <param name="template">The room template.</param>
+            <param name="minQuantity">The minimum number of uses for the entry.</param>
+            <param name="maxQuantity">The maximum number of uses for the entry.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.QuantitySatisfied(System.Int32)">
+            <summary>
+            Returns true if the constraint quantity is satisfied.
+            </summary>
+            <param name="count">The entry count.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.ConsolidateTemplate(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            If the specified room template has the same values as the current template,
+            sets it as the current template.
+            </summary>
+            <param name="other">The specified room template.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.TemplatePair">
+            <summary>
+            A structure containing a from and to RoomTemplate.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplatePair.FromTemplate">
+            <summary>
+            The from room template.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.TemplatePair.ToTemplate">
+            <summary>
+            The to room template.
+            </summary>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Uid">
+            <summary>
+            A structure for representing a unique ID consisting of 3 integers.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Uid.A">
+            <summary>
+            The first ID value.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Uid.B">
+            <summary>
+            The second ID value.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Uid.C">
+            <summary>
+            The third ID value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.#ctor(System.Int32)">
+            <summary>
+            Initializes a unique ID from a single value.
+            </summary>
+            <param name="a">The first ID value.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a unique ID from two values.
+            </summary>
+            <param name="a">The first ID value.</param>
+            <param name="b">The second ID value.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a unique ID from three values.
+            </summary>
+            <param name="a">The first ID value.</param>
+            <param name="b">The second ID value.</param>
+            <param name="c">The third ID value.</param>
+        </member>
+    </members>
+</doc>

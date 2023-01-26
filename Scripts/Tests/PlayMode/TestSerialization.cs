@@ -1,4 +1,4 @@
-using MPewsey.ManiaMap.Serialization;
+using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap.Unity.Generators;
 using NUnit.Framework;
 using System.IO;
