@@ -88,14 +88,15 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// </summary>
         public Pipeline GetPipeline()
         {
-            var pipeline = new Pipeline();
+            var steps = GetGenerationSteps();
+            var pipelineSteps = new IPipelineStep[steps.Length];
 
-            foreach (var step in GetGenerationSteps())
+            for (int i = 0; i < steps.Length; i++)
             {
-                pipeline.Steps.Add(step.GetStep());
+                pipelineSteps[i] = steps[i].GetStep();
             }
 
-            return pipeline;
+            return new Pipeline(pipelineSteps);
         }
 
         /// <summary>
