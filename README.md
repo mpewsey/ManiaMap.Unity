@@ -103,5 +103,5 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 var results = Pipeline.Generate();
 
 // Retrieve the generated layout data from the ouput results
-var layout = (Layout)results.Outputs["Layout"];
+var layout = results.GetOutput<Layout>("Layout");
 ```
