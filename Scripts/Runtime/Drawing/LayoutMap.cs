@@ -30,6 +30,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public Color32 BackgroundColor { get => _backgroundColor; set => _backgroundColor = value; }
 
         [SerializeField]
+        private Color32 _roomColor = new Color32(75, 75, 75, 255);
+        /// <summary>
+        /// The room color if visible.
+        /// </summary>
+        public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
+
+        [SerializeField]
         private Padding _padding = new Padding(1);
         /// <summary>
         /// The tile padding to include around the plot.
@@ -249,7 +256,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                             continue;
 
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.CellIsVisible(position))
+                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
                             continue;
 
                         // Calculate draw position
@@ -273,7 +280,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                         // Add cell background fill
                         var rect = new RectInt(point, MapTiles.TileSize);
-                        TextureUtility.CompositeFill(texture, ColorUtility.ConvertColor(room.Color), rect);
+                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        TextureUtility.CompositeFill(texture, color, rect);
 
                         // Superimpose applicable map tiles
                         TextureUtility.DrawImage(texture, northTile, point);

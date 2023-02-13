@@ -2497,6 +2497,11 @@
             The ID of the corresponding room.
             </summary>
         </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.IsVisible">
+            <summary>
+            If true, all cells of the room will be visible without the individual cells being marked visible.
+            </summary>
+        </member>
         <member name="P:MPewsey.ManiaMap.RoomState.VisibleCells">
             <summary>
             An array of room cell visibilities.

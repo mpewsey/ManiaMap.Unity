@@ -19,6 +19,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Grid Grid { get => _grid; set => _grid = value; }
 
+        [SerializeField]
+        private Color32 _roomColor = new Color32(75, 75, 75, 255);
+        /// <summary>
+        /// The room color if visible.
+        /// </summary>
+        public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
+
         /// <summary>
         /// The room layout.
         /// </summary>
@@ -173,7 +180,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                             continue;
 
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.CellIsVisible(position))
+                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
                             continue;
 
                         // Calculate draw position
@@ -197,7 +204,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         flags |= GetTileFlag(room, cell, east, position, DoorDirection.East);
 
                         // Set the map tile.
-                        var tile = MapTilePool.GetTile(flags, ColorUtility.ConvertColor(room.Color));
+                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        var tile = MapTilePool.GetTile(flags, color);
                         tilemap.SetTile(point, tile);
                     }
                 }
