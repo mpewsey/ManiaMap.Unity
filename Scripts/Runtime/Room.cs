@@ -305,7 +305,7 @@ namespace MPewsey.ManiaMap.Unity
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool CellIndexExists(int row, int column)
         {
-            return (uint)row < Size.x && (uint)column < Size.y;
+            return row < Size.x && column < Size.y && row >= 0 && column >= 0;
         }
 
         /// <summary>
