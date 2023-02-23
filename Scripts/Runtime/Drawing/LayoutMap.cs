@@ -61,6 +61,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public Padding Padding { get => _padding; set => _padding = value; }
 
         /// <summary>
+        /// A list of layout map layers.
+        /// </summary>
+        private List<LayoutMapLayer> Layers { get; set; } = new List<LayoutMapLayer>();
+
+        /// <summary>
         /// The room layout.
         /// </summary>
         private Layout Layout { get; set; }
@@ -79,6 +84,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The bounds of the layout.
         /// </summary>
         private RectangleInt LayoutBounds { get; set; }
+
+        /// <summary>
+        /// Returns a readonly list of layers.
+        /// </summary>
+        public IReadOnlyList<LayoutMapLayer> GetLayers()
+        {
+            return Layers;
+        }
 
         /// <summary>
         /// Renders map images of all layout layers and saves them to the designated file path.
@@ -113,7 +126,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             var ext = Path.GetExtension(path);
             var name = Path.ChangeExtension(path, null);
 
-            foreach (var layer in GetComponentsInChildren<LayoutMapLayer>())
+            foreach (var layer in Layers)
             {
                 var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, ext);
                 File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
@@ -150,18 +163,17 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void CreateLayers(Layout layout, LayoutState state)
         {
             Initialize(layout, state);
-            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            var zs = Layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToList();
+            zs.Sort();
             EnsureCapacity(zs.Count);
 
             // Draw the layers.
-            int i = 0;
             var size = GetTextureSize();
-            var layers = GetComponentsInChildren<LayoutMapLayer>();
 
-            foreach (var z in zs.OrderBy(x => x))
+            for (int i = 0; i < Layers.Count; i++)
             {
-                var layer = layers[i++];
-                layer.Initialize(size, z);
+                var layer = Layers[i];
+                layer.Initialize(size, zs[i]);
                 DrawMap(layer.Sprite.texture, layer.Z);
             }
         }
@@ -175,15 +187,17 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             CreateLayersContainer();
 
             // Destroy extra layers.
-            while (LayersContainer.childCount > capacity)
+            while (Layers.Count > capacity)
             {
-                Destroy(LayersContainer.GetChild(LayersContainer.childCount - 1).gameObject);
+                var index = Layers.Count - 1;
+                Destroy(Layers[index].gameObject);
+                Layers.RemoveAt(index);
             }
 
             // Create missing layers.
-            while (LayersContainer.childCount < capacity)
+            while (Layers.Count < capacity)
             {
-                LayoutMapLayer.Create(this);
+                Layers.Add(LayoutMapLayer.Create(this));
             }
         }
 
