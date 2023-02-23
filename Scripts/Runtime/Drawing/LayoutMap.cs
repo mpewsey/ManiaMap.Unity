@@ -13,6 +13,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     {
         [SerializeField]
         private Transform _layersContainer;
+        /// <summary>
+        /// The layers container.
+        /// </summary>
         public Transform LayersContainer { get => _layersContainer; set => _layersContainer = value; }
 
         [SerializeField]
@@ -21,6 +24,20 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The map tiles.
         /// </summary>
         public MapTiles MapTiles { get => _mapTiles; set => _mapTiles = value; }
+
+        [SerializeField]
+        private FilterMode _filterMode = FilterMode.Point;
+        /// <summary>
+        /// The map texture filter mode.
+        /// </summary>
+        public FilterMode FilterMode { get => _filterMode; set => _filterMode = value; }
+
+        [SerializeField]
+        private bool _showDoors = true;
+        /// <summary>
+        /// If true, shows the doors on the map. Otherwise, only walls are shown.
+        /// </summary>
+        public bool ShowDoors { get => _showDoors; set => _showDoors = value; }
 
         [SerializeField]
         private Color32 _backgroundColor = Color.clear;
@@ -323,7 +340,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="direction">The door direction.</param>
         private Texture2D GetTile(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTiles.GetTile(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
