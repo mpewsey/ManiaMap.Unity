@@ -144,7 +144,13 @@
             Returns the first 2D index where the specified predicate is true.
             Returns a -1 vector if no index is found.
             </summary>
-            <param name="predicate"></param>
+            <param name="predicate">The predicate, taking each element.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndexes(System.Func{`0,System.Boolean})">
+            <summary>
+            Returns a list of indexes where the specified predicate is true.
+            </summary>
+            <param name="predicate">The predicate, taking each element.</param>
         </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.FlattenArray(`0[0:,0:])">
             <summary>

@@ -21,6 +21,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public MapTiles MapTiles { get => _mapTiles; set => _mapTiles = value; }
 
+        [SerializeField]
+        private FilterMode _filterMode = FilterMode.Point;
+        /// <summary>
+        /// The map tile texture filter mode.
+        /// </summary>
+        public FilterMode FilterMode { get => _filterMode; set => _filterMode = value; }
+
         /// <summary>
         /// A dictionary of feature flags by feature name.
         /// </summary>
@@ -179,6 +186,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             var texture = new Texture2D(MapTiles.TileSize.x + 2, MapTiles.TileSize.y + 2);
             texture.name = "Mania Map Tile Texture";
+            texture.filterMode = FilterMode;
             TextureUtility.Fill(texture, color);
             DrawMapTiles(texture, flags);
             TextureUtility.FillBorder(texture);

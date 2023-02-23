@@ -166,7 +166,6 @@
             Adds the name to the feature list if it doesn't already exist. Returns the cell.
             </summary>
             <param name="name"></param>
-            <returns></returns>
         </member>
         <member name="M:MPewsey.ManiaMap.Cell.TopDoorAligns(MPewsey.ManiaMap.Cell)">
             <summary>
@@ -728,7 +727,6 @@
             </summary>
             <param name="position">The local door position.</param>
             <param name="direction">The door direction.</param>
-            <returns></returns>
         </member>
         <member name="T:MPewsey.ManiaMap.DoorType">
             <summary>
@@ -2497,6 +2495,11 @@
             The ID of the corresponding room.
             </summary>
         </member>
+        <member name="P:MPewsey.ManiaMap.RoomState.IsVisible">
+            <summary>
+            If true, all cells of the room will be visible without the individual cells being marked visible.
+            </summary>
+        </member>
         <member name="P:MPewsey.ManiaMap.RoomState.VisibleCells">
             <summary>
             An array of room cell visibilities.
@@ -2853,7 +2856,6 @@
             <summary>
             Returns a template in the shape of a "+" with doors at each point.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:MPewsey.ManiaMap.Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate">
             <summary>

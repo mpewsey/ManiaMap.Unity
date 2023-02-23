@@ -47,9 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersContainer: {fileID: 25270408012177927}
   _mapTiles: {fileID: 11400000, guid: 2a7488c9f2fbc7f4fbc16d2cf79e293b, type: 2}
+  _showDoors: 1
   _backgroundColor:
     serializedVersion: 2
     rgba: 4278190080
+  _roomColor:
+    serializedVersion: 2
+    rgba: 4283124555
   _padding:
     _top: 1
     _bottom: 1

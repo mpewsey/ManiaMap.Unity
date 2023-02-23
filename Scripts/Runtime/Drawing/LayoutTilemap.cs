@@ -19,6 +19,25 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public Grid Grid { get => _grid; set => _grid = value; }
 
+        [SerializeField]
+        private bool _showDoors = true;
+        /// <summary>
+        /// If true, shows the doors on the map. Otherwise, only walls are shown.
+        /// </summary>
+        public bool ShowDoors { get => _showDoors; set => _showDoors = value; }
+
+        [SerializeField]
+        private Color32 _roomColor = new Color32(75, 75, 75, 255);
+        /// <summary>
+        /// The room color if visible.
+        /// </summary>
+        public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
+
+        /// <summary>
+        /// A list of tilemap layers.
+        /// </summary>
+        private List<LayoutTilemapLayer> Layers { get; set; } = new List<LayoutTilemapLayer>();
+
         /// <summary>
         /// The room layout.
         /// </summary>
@@ -42,6 +61,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private void Awake()
         {
             MapTilePool = GetComponent<MapTilePool>();
+        }
+
+        /// <summary>
+        /// Returns a readonly list of layers.
+        /// </summary>
+        public IReadOnlyList<LayoutTilemapLayer> GetLayers()
+        {
+            return Layers;
         }
 
         /// <summary>
@@ -106,17 +133,15 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void CreateLayers(Layout layout, LayoutState state)
         {
             Initialize(layout, state);
-            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            var zs = Layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToList();
+            zs.Sort();
             EnsureCapacity(zs.Count);
 
             // Draw the layers.
-            int i = 0;
-            var layers = GetComponentsInChildren<LayoutTilemapLayer>();
-
-            foreach (var z in zs.OrderBy(x => x))
+            for (int i = 0; i < Layers.Count; i++)
             {
-                var layer = layers[i++];
-                layer.Initialize(z);
+                var layer = Layers[i];
+                layer.Initialize(zs[i]);
                 DrawMap(layer.Tilemap, layer.Z);
             }
         }
@@ -128,18 +153,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private void EnsureCapacity(int capacity)
         {
             CreateGrid();
-            var container = Grid.transform;
 
             // Destroy extra layers.
-            while (container.childCount > capacity)
+            while (Layers.Count > capacity)
             {
-                Destroy(container.GetChild(container.childCount - 1).gameObject);
+                var index = Layers.Count - 1;
+                Destroy(Layers[index].gameObject);
+                Layers.RemoveAt(index);
             }
 
             // Create missing layers.
-            while (container.childCount < capacity)
+            while (Layers.Count < capacity)
             {
-                LayoutTilemapLayer.Create(this);
+                Layers.Add(LayoutTilemapLayer.Create(this));
             }
         }
 
@@ -173,7 +199,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                             continue;
 
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.CellIsVisible(position))
+                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
                             continue;
 
                         // Calculate draw position
@@ -197,7 +223,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         flags |= GetTileFlag(room, cell, east, position, DoorDirection.East);
 
                         // Set the map tile.
-                        var tile = MapTilePool.GetTile(flags, ColorUtility.ConvertColor(room.Color));
+                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        var tile = MapTilePool.GetTile(flags, color);
                         tilemap.SetTile(point, tile);
                     }
                 }
@@ -230,7 +257,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="direction">The door direction.</param>
         private long GetTileFlag(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTilePool.GetFeatureFlag(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)

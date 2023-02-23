@@ -13,6 +13,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     {
         [SerializeField]
         private Transform _layersContainer;
+        /// <summary>
+        /// The layers container.
+        /// </summary>
         public Transform LayersContainer { get => _layersContainer; set => _layersContainer = value; }
 
         [SerializeField]
@@ -23,6 +26,20 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public MapTiles MapTiles { get => _mapTiles; set => _mapTiles = value; }
 
         [SerializeField]
+        private FilterMode _filterMode = FilterMode.Point;
+        /// <summary>
+        /// The map texture filter mode.
+        /// </summary>
+        public FilterMode FilterMode { get => _filterMode; set => _filterMode = value; }
+
+        [SerializeField]
+        private bool _showDoors = true;
+        /// <summary>
+        /// If true, shows the doors on the map. Otherwise, only walls are shown.
+        /// </summary>
+        public bool ShowDoors { get => _showDoors; set => _showDoors = value; }
+
+        [SerializeField]
         private Color32 _backgroundColor = Color.clear;
         /// <summary>
         /// The background color.
@@ -30,11 +47,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public Color32 BackgroundColor { get => _backgroundColor; set => _backgroundColor = value; }
 
         [SerializeField]
+        private Color32 _roomColor = new Color32(75, 75, 75, 255);
+        /// <summary>
+        /// The room color if visible.
+        /// </summary>
+        public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
+
+        [SerializeField]
         private Padding _padding = new Padding(1);
         /// <summary>
         /// The tile padding to include around the plot.
         /// </summary>
         public Padding Padding { get => _padding; set => _padding = value; }
+
+        /// <summary>
+        /// A list of layout map layers.
+        /// </summary>
+        private List<LayoutMapLayer> Layers { get; set; } = new List<LayoutMapLayer>();
 
         /// <summary>
         /// The room layout.
@@ -55,6 +84,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// The bounds of the layout.
         /// </summary>
         private RectangleInt LayoutBounds { get; set; }
+
+        /// <summary>
+        /// Returns a readonly list of layers.
+        /// </summary>
+        public IReadOnlyList<LayoutMapLayer> GetLayers()
+        {
+            return Layers;
+        }
 
         /// <summary>
         /// Renders map images of all layout layers and saves them to the designated file path.
@@ -89,7 +126,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             var ext = Path.GetExtension(path);
             var name = Path.ChangeExtension(path, null);
 
-            foreach (var layer in GetComponentsInChildren<LayoutMapLayer>())
+            foreach (var layer in Layers)
             {
                 var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, ext);
                 File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
@@ -126,18 +163,17 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public void CreateLayers(Layout layout, LayoutState state)
         {
             Initialize(layout, state);
-            var zs = new HashSet<int>(Layout.Rooms.Values.Select(x => x.Position.Z));
+            var zs = Layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToList();
+            zs.Sort();
             EnsureCapacity(zs.Count);
 
             // Draw the layers.
-            int i = 0;
             var size = GetTextureSize();
-            var layers = GetComponentsInChildren<LayoutMapLayer>();
 
-            foreach (var z in zs.OrderBy(x => x))
+            for (int i = 0; i < Layers.Count; i++)
             {
-                var layer = layers[i++];
-                layer.Initialize(size, z);
+                var layer = Layers[i];
+                layer.Initialize(size, zs[i]);
                 DrawMap(layer.Sprite.texture, layer.Z);
             }
         }
@@ -151,15 +187,17 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             CreateLayersContainer();
 
             // Destroy extra layers.
-            while (LayersContainer.childCount > capacity)
+            while (Layers.Count > capacity)
             {
-                Destroy(LayersContainer.GetChild(LayersContainer.childCount - 1).gameObject);
+                var index = Layers.Count - 1;
+                Destroy(Layers[index].gameObject);
+                Layers.RemoveAt(index);
             }
 
             // Create missing layers.
-            while (LayersContainer.childCount < capacity)
+            while (Layers.Count < capacity)
             {
-                LayoutMapLayer.Create(this);
+                Layers.Add(LayoutMapLayer.Create(this));
             }
         }
 
@@ -249,7 +287,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                             continue;
 
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.CellIsVisible(position))
+                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
                             continue;
 
                         // Calculate draw position
@@ -273,7 +311,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                         // Add cell background fill
                         var rect = new RectInt(point, MapTiles.TileSize);
-                        TextureUtility.CompositeFill(texture, ColorUtility.ConvertColor(room.Color), rect);
+                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        TextureUtility.CompositeFill(texture, color, rect);
 
                         // Superimpose applicable map tiles
                         TextureUtility.DrawImage(texture, northTile, point);
@@ -315,7 +354,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="direction">The door direction.</param>
         private Texture2D GetTile(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTiles.GetTile(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)

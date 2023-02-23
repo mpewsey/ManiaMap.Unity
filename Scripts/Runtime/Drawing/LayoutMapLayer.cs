@@ -72,6 +72,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             {
                 var texture = new Texture2D(size.x, size.y);
                 texture.name = "Mania Map Layer Texture";
+                texture.filterMode = LayoutMap.FilterMode;
                 Sprite = CreateSprite(texture);
                 SpriteRenderer.sprite = Sprite;
             }

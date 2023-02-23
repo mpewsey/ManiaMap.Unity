@@ -60,6 +60,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 2476830976234359429}
+  _showDoors: 1
+  _roomColor:
+    serializedVersion: 2
+    rgba: 4283124555
 --- !u!1 &8215672663883190826
 GameObject:
   m_ObjectHideFlags: 0
