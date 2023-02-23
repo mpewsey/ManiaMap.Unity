@@ -14,6 +14,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool =
     [ "MaxFeatureCount", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a38a5be90a6d512b90fb30bf5f91e096e", null ],
     [ "FeatureFlags", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#adc67c35ca8d2b7d58d134aa3dc57ab1a", null ],
     [ "FeatureNames", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a0be0d52f170324761695eb5ab97d30eb", null ],
+    [ "FilterMode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a54fd94eee61eaad58c7dc7b0d2218ecc", null ],
     [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#acad6783c5a3143ff53572d83e8e8e680", null ],
     [ "Tiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a8c33c2d63bed2b6e8cdf4072c17d92db", null ]
 ];
