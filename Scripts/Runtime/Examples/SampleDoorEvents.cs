@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// <param name="door">The door sending the event.</param>
         private void OnInitialize(DoorBehavior door)
         {
-            if (door.Exists)
+            if (door.Exists())
                 Destroy(door.gameObject);
         }
     }

@@ -39,7 +39,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// generation template.
         /// </summary>
         /// <param name="template">The generation room template.</param>
-        private void CreateRoomTemplate(ManiaMap.RoomTemplate template)
+        private void CreateRoomTemplate(RoomTemplate template)
         {
             var path = TemplateSavePath(template);
             var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
@@ -62,7 +62,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Returns the save path for the specified room template.
         /// </summary>
         /// <param name="template">The generation room template.</param>
-        private string TemplateSavePath(ManiaMap.RoomTemplate template)
+        private string TemplateSavePath(RoomTemplate template)
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{template.Name} [{template.Id:x}].asset");
             return Path.Combine(SavePath, path);
@@ -79,9 +79,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Returns a new list of sample templates.
         /// </summary>
-        private static List<ManiaMap.RoomTemplate> SampleTemplates()
+        private static List<RoomTemplate> SampleTemplates()
         {
-            return new List<ManiaMap.RoomTemplate>()
+            return new List<RoomTemplate>()
             {
                 Samples.TemplateLibrary.Angles.Angle3x4(),
                 Samples.TemplateLibrary.Squares.Square2x2Template(),
@@ -104,9 +104,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Returns a list of sample template unique variations.
         /// </summary>
-        private static List<ManiaMap.RoomTemplate> SampleVariations()
+        private static List<RoomTemplate> SampleVariations()
         {
-            var result = new List<ManiaMap.RoomTemplate>();
+            var result = new List<RoomTemplate>();
             var seed = new RandomSeed(12345);
             int templateId = 1;
             int collectableId = 1;
@@ -115,7 +115,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 foreach (var variation in template.UniqueVariations())
                 {
-                    var copy = new ManiaMap.RoomTemplate(templateId++, variation.Name, variation.Cells);
+                    var copy = new RoomTemplate(templateId++, variation.Name, variation.Cells);
 
                     foreach (var cell in copy.Cells.Array)
                     {

@@ -121,56 +121,80 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a new generation cell.
         /// </summary>
-        /// <exception cref="DuplicateDirectionException">Raised if multiple doors with the same direction are assigned to the cell.</exception>
-        /// <exception cref="UnassignedCollectableGroupException">Raised if a collectable group is not assigned to a collectable spot.</exception>
-        public ManiaMap.Cell GetCell()
+        public Cell CreateData()
         {
             if (IsEmpty)
-                return GetEmptyCell();
+                return CreateEmptyCell();
+            return CreateCell();
+        }
 
-            var cell = ManiaMap.Cell.New;
+        /// <summary>
+        /// Performs validation and returns an empty generation cell.
+        /// </summary>
+        /// <exception cref="EmptyCellException">Raised if any children are assigned to the cell.</exception>
+        private Cell CreateEmptyCell()
+        {
+            if (FindDoors().Count > 0)
+                throw new EmptyCellException($"Doors assigned to empty cell: {this}.");
+            if (FindCollectableSpots().Count > 0)
+                throw new EmptyCellException($"Collectable spots assigned to empty cell: {this}.");
+            if (FindFeatures().Count > 0)
+                throw new EmptyCellException($"Features assigned to empty cell: {this}.");
+            return Cell.Empty;
+        }
 
-            // Add doors.
+        /// <summary>
+        /// Creates a new generation cell.
+        /// </summary>
+        private Cell CreateCell()
+        {
+            var cell = Cell.New;
+            AddDoorsToCell(cell);
+            AddCollectableSpotsToCell(cell);
+            AddFeaturesToCell(cell);
+            return cell;
+        }
+
+        /// <summary>
+        /// Adds the doors to the specified cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <exception cref="DuplicateDirectionException">Raised if multiple doors with the same direction are assigned to the cell.</exception>
+        private void AddDoorsToCell(Cell cell)
+        {
             foreach (var door in FindDoors())
             {
                 if (cell.GetDoor(door.Direction) != null)
                     throw new DuplicateDirectionException($"Door direction already exists: {door}.");
-                cell.SetDoor(door.Direction, door.GetDoor());
+                cell.SetDoor(door.Direction, door.CreateData());
             }
+        }
 
-            // Add collectable spots.
+        /// <summary>
+        /// Adds the collectable spots to the specified cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <exception cref="UnassignedCollectableGroupException">Raised if a collectable group is not assigned to a collectable spot.</exception>
+        private void AddCollectableSpotsToCell(Cell cell)
+        {
             foreach (var spot in FindCollectableSpots())
             {
                 if (spot.Group == null)
                     throw new UnassignedCollectableGroupException($"Collectable group not assigned to collectable spot: {spot}.");
                 cell.AddCollectableSpot(spot.Id, spot.Group.Name);
             }
+        }
 
-            // Add features.
+        /// <summary>
+        /// Adds the features to the specified cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        private void AddFeaturesToCell(Cell cell)
+        {
             foreach (var feature in FindFeatures())
             {
                 cell.AddFeature(feature.Name);
             }
-
-            return cell;
-        }
-
-        /// <summary>
-        /// Performs validation and returns an empty cell.
-        /// </summary>
-        /// <exception cref="EmptyCellException">Raised if any children are assigned to the cell.</exception>
-        private ManiaMap.Cell GetEmptyCell()
-        {
-            if (FindDoors().Count > 0)
-                throw new EmptyCellException($"Doors assigned to empty cell: {this}.");
-
-            if (FindCollectableSpots().Count > 0)
-                throw new EmptyCellException($"Collectable spots assigned to empty cell: {this}.");
-
-            if (FindFeatures().Count > 0)
-                throw new EmptyCellException($"Features assigned to empty cell: {this}.");
-
-            return ManiaMap.Cell.Empty;
         }
 
         /// <summary>
@@ -180,34 +204,40 @@ namespace MPewsey.ManiaMap.Unity
         /// <exception cref="ArgumentException">Raised if a Room is not a parent of the transform.</exception>
         public static CellBehavior FindClosestCell(Transform transform)
         {
-            CellBehavior closest = null;
-            var minDistance = float.PositiveInfinity;
             var room = transform.GetComponentInParent<RoomBehavior>();
 
             if (room == null)
                 throw new ArgumentException($"Parent room not found for transform: {transform}.");
 
-            for (int i = 0; i < room.Size.x; i++)
+            var cells = room.GetNonEmptyCells();
+            var distances = CellSqrDistances(cells, transform.position);
+            var min = Mathf.Min(distances);
+
+            for (int i = 0; i < distances.Length; i++)
             {
-                for (int j = 0; j < room.Size.y; j++)
-                {
-                    var cell = room.GetCell(i, j);
-
-                    if (cell.IsEmpty)
-                        continue;
-
-                    var delta = cell.transform.position - transform.position;
-                    var distance = delta.sqrMagnitude;
-
-                    if (distance < minDistance)
-                    {
-                        closest = cell;
-                        minDistance = distance;
-                    }
-                }
+                if (distances[i] == min)
+                    return cells[i];
             }
 
-            return closest;
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the square distances between the cells and the specified position.
+        /// </summary>
+        /// <param name="cells">The cells.</param>
+        /// <param name="position">The position.</param>
+        private static float[] CellSqrDistances(List<CellBehavior> cells, Vector3 position)
+        {
+            var distances = new float[cells.Count];
+
+            for (int i = 0; i < distances.Length; i++)
+            {
+                var delta = cells[i].transform.position - position;
+                distances[i] = delta.sqrMagnitude;
+            }
+
+            return distances;
         }
     }
 }

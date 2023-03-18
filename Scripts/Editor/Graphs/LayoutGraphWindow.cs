@@ -429,7 +429,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         {
             GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - GetInspectorWidth(), position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
-            PaginatePlot();
+            // PaginatePlot();
             SetNodePositions();
             DrawEdgeLines();
             DrawEdges();

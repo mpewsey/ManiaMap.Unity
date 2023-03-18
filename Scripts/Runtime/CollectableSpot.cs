@@ -38,17 +38,17 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The assigned collectable ID.
         /// </summary>
-        public int CollectableId => RoomLayout.Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
+        public int CollectableId() => RoomLayout().Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
 
         /// <summary>
         /// True if the collectable spot exists.
         /// </summary>
-        public bool Exists => RoomLayout.Collectables.ContainsKey(Id);
+        public bool Exists() => RoomLayout().Collectables.ContainsKey(Id);
 
         /// <summary>
         /// True if the collectable spot is already acquired.
         /// </summary>
-        public bool IsAcquired => RoomState.AcquiredCollectables.Contains(Id);
+        public bool IsAcquired() => RoomState().AcquiredCollectables.Contains(Id);
 
         private void Start()
         {
@@ -65,14 +65,22 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Returns true if the collectable can be acquired.
+        /// </summary>
+        public bool CanAcquire()
+        {
+            return Exists() && !IsAcquired();
+        }
+
+        /// <summary>
         /// If the collectable spot exists and has not already been acquired,
         /// adds it to the current layout state's acquired collectables
         /// and marks it as acquired. Returns true if this action is performed.
         /// </summary>
         public bool Acquire()
         {
-            if (Exists && !IsAcquired)
-                return RoomState.AcquiredCollectables.Add(Id);
+            if (CanAcquire())
+                return RoomState().AcquiredCollectables.Add(Id);
             return false;
         }
 
@@ -82,7 +90,7 @@ namespace MPewsey.ManiaMap.Unity
         public override void AutoAssign()
         {
             base.AutoAssign();
-            Id = AutoId.AutoAssignId(Id);
+            Id = ManiaMapManager.AutoAssignId(Id);
         }
     }
 }

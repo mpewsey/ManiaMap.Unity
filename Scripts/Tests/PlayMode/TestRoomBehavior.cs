@@ -1,5 +1,6 @@
 using MPewsey.Common.Mathematics;
 using MPewsey.Common.Random;
+using MPewsey.ManiaMap.Graphs;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,7 +61,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestGetTemplate()
         {
             var room = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
-            var template = room.GetTemplate();
+            var template = room.CreateData();
             Object.DestroyImmediate(room.gameObject);
             Assert.IsNotNull(template);
         }
@@ -70,12 +71,12 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var seed = new RandomSeed(12345);
             var room = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
-            var template = room.GetTemplate();
+            var template = room.CreateData();
 
             // Create fake layout.
             var layout = new Layout(1, "Test", seed.Seed);
-            var node = new ManiaMap.Graphs.LayoutNode(1);
-            var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            var node = new LayoutNode(1);
+            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             var layoutState = new LayoutState(layout);
             var doorConnections = new List<DoorConnection>();
@@ -89,12 +90,12 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var seed = new RandomSeed(12345);
             var prefab = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
-            var template = prefab.GetTemplate();
+            var template = prefab.CreateData();
 
             // Create fake layout.
             var layout = new Layout(1, "Test", seed.Seed);
-            var node = new ManiaMap.Graphs.LayoutNode(1);
-            var roomLayout = new ManiaMap.Room(node, Vector2DInt.Zero, template, seed);
+            var node = new LayoutNode(1);
+            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 

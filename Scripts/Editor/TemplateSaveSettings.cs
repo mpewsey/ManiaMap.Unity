@@ -100,7 +100,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var path = TemplateSavePath(room);
             var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
-            var template = room.GetTemplate();
+            var template = room.CreateData();
             EditorUtility.SetDirty(room);
 
             if (asset == null)

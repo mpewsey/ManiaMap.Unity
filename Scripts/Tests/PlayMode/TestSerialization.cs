@@ -1,4 +1,5 @@
 using MPewsey.Common.Serialization;
+using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMap.Unity.Generators;
 using NUnit.Framework;
 using System.IO;
@@ -49,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             graph.AddNodeVariation("Group2", new int[] { 4, 5, 6 });
             var path = "Tests/LayoutGraph.json";
             JsonSerialization.SaveJson(path, graph);
-            var copy = JsonSerialization.LoadJson<ManiaMap.Graphs.LayoutGraph>(path);
+            var copy = JsonSerialization.LoadJson<LayoutGraph>(path);
             Assert.AreEqual(graph.Id, copy.Id);
         }
 

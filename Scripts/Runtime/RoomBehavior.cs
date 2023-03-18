@@ -75,7 +75,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The room data.
         /// </summary>
-        public ManiaMap.Room RoomLayout { get; private set; }
+        public Room RoomLayout { get; private set; }
 
         /// <summary>
         /// The room state.
@@ -95,7 +95,7 @@ namespace MPewsey.ManiaMap.Unity
 
         private void OnValidate()
         {
-            Id = AutoId.AutoAssignId(Id);
+            Id = ManiaMapManager.AutoAssignId(Id);
             Size = Size;
             CellSize = CellSize;
         }
@@ -125,12 +125,7 @@ namespace MPewsey.ManiaMap.Unity
 
             handle.Completed += x =>
             {
-                if (!x.IsValid() || !x.IsDone || x.Result == null)
-                    throw new InstantiationFailedException("Failed to instantiate room.");
-
-                if (!x.Result.TryGetComponent(out RoomBehavior room))
-                    throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
-
+                var room = x.Result.GetComponent<RoomBehavior>();
                 room.Initialize(id, layout, layoutState, doorConnections, position);
             };
 
@@ -208,7 +203,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void AutoAssign()
         {
-            Id = AutoId.AutoAssignId(Id);
+            Id = ManiaMapManager.AutoAssignId(Id);
             CreateCells();
             AutoAssignDoors();
             AutoAssignCollectableSpots();
@@ -285,11 +280,32 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// Returns a list of all non-empty cells.
+        /// </summary>
+        public List<CellBehavior> GetNonEmptyCells()
+        {
+            var result = new List<CellBehavior>();
+
+            for (int i = 0; i < Size.x; i++)
+            {
+                for (int j = 0; j < Size.y; j++)
+                {
+                    var cell = GetCell(i, j);
+
+                    if (!cell.IsEmpty)
+                        result.Add(cell);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Returns the cell at the specified index.
         /// </summary>
         /// <param name="row">The row index.</param>
         /// <param name="column">The column index.</param>
-        /// <exception cref="IndexOutOfRangeException">Raised if the index is out of range.</exception>
+        /// <exception cref="System.IndexOutOfRangeException">Raised if the index is out of range.</exception>
         public CellBehavior GetCell(int row, int column)
         {
             if (!CellIndexExists(row, column))
@@ -384,20 +400,20 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a new generation room template.
         /// </summary>
-        public ManiaMap.RoomTemplate GetTemplate()
+        public RoomTemplate CreateData()
         {
             AutoAssign();
-            var cells = new Array2D<ManiaMap.Cell>(Size.x, Size.y);
+            var cells = new Array2D<Cell>(Size.x, Size.y);
 
             for (int i = 0; i < cells.Rows; i++)
             {
                 for (int j = 0; j < cells.Columns; j++)
                 {
-                    cells[i, j] = GetCell(i, j).GetCell();
+                    cells[i, j] = GetCell(i, j).CreateData();
                 }
             }
 
-            var template = new ManiaMap.RoomTemplate(Id, Name, cells);
+            var template = new RoomTemplate(Id, Name, cells);
             template.Validate();
             return template;
         }

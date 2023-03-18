@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMap.Unity.Graphs;
 using System;
 using System.Collections.Generic;
@@ -34,13 +35,13 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// Returns a list of generation layout graph creation functions for the
         /// supplied layout graphs.
         /// </summary>
-        public List<Func<ManiaMap.Graphs.LayoutGraph>> GetLayoutGraphFunctions()
+        public List<Func<LayoutGraph>> GetLayoutGraphFunctions()
         {
-            var funcs = new List<Func<ManiaMap.Graphs.LayoutGraph>>(LayoutGraphs.Count);
+            var funcs = new List<Func<LayoutGraph>>(LayoutGraphs.Count);
 
             foreach (var graph in LayoutGraphs)
             {
-                funcs.Add(graph.GetLayoutGraph);
+                funcs.Add(graph.CreateData);
             }
 
             return funcs;
