@@ -417,16 +417,5 @@ namespace MPewsey.ManiaMap.Unity
             template.Validate();
             return template;
         }
-
-        /// <summary>
-        /// The cell plane.
-        /// </summary>
-        public enum Plane
-        {
-            /// The XY plane.
-            XY,
-            /// The XZ plane.
-            XZ,
-        }
     }
 }

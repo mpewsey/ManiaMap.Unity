@@ -10,40 +10,58 @@ namespace MPewsey.ManiaMap.Unity
     public abstract class RoomDatabase<T> : ScriptableObject
     {
         [SerializeField]
-        private string[] _searchPaths = new string[] { "Assets" };
+        protected string[] _searchPaths = new string[] { "Assets" };
         /// <summary>
         /// An array of paths to search for rooms.
         /// </summary>
         public string[] SearchPaths { get => _searchPaths; set => _searchPaths = value; }
 
         [SerializeField]
-        protected List<Entry<T>> _entries = new List<Entry<T>>();
+        protected List<RoomDatabaseEntry<T>> _entries = new List<RoomDatabaseEntry<T>>();
         /// <summary>
         /// A list of database entries.
         /// </summary>
-        public List<Entry<T>> Entries { get => _entries; set => _entries = value; }
+        public List<RoomDatabaseEntry<T>> Entries { get => _entries; set => _entries = value; }
 
         /// <summary>
         /// A dictionary of room data sources by room ID.
         /// </summary>
-        protected Dictionary<int, T> RoomPrefabDictionary { get; } = new Dictionary<int, T>();
+        protected Dictionary<int, T> PrefabDictionary { get; } = new Dictionary<int, T>();
 
-        private void OnEnable()
+        /// <summary>
+        /// True if the prefab dictionary has been initialized.
+        /// </summary>
+        protected bool IsInitialized { get; set; }
+
+        /// <summary>
+        /// Initializes the database by creating the prefab dictionary.
+        /// </summary>
+        public void Initialize()
         {
-            CreateRoomPrefabDictionary();
+            CreatePrefabDictionary();
+            IsInitialized = true;
+        }
+
+        /// <summary>
+        /// If the database has not been initialized, initializes it.
+        /// </summary>
+        public void EnsureIsInitialized()
+        {
+            if (!IsInitialized)
+                Initialize();
         }
 
         /// <summary>
         /// Creates the room data dictionary based on the current database entries list.
         /// </summary>
-        public void CreateRoomPrefabDictionary()
+        protected void CreatePrefabDictionary()
         {
-            RoomPrefabDictionary.Clear();
-            RoomPrefabDictionary.EnsureCapacity(Entries.Count);
+            PrefabDictionary.Clear();
+            PrefabDictionary.EnsureCapacity(Entries.Count);
 
             foreach (var entry in Entries)
             {
-                RoomPrefabDictionary.Add(entry.Id, entry.Prefab);
+                PrefabDictionary.Add(entry.Id, entry.Prefab);
             }
         }
 
@@ -54,50 +72,19 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="prefab">The room prefab.</param>
         public void AddEntry(int id, T prefab)
         {
-            RoomPrefabDictionary.Add(id, prefab);
-            Entries.Add(new Entry<T>(id, prefab));
+            EnsureIsInitialized();
+            PrefabDictionary.Add(id, prefab);
+            Entries.Add(new RoomDatabaseEntry<T>(id, prefab));
         }
 
         /// <summary>
-        /// Returns the room data source for the specified ID.
+        /// Returns the room prefab for the specified ID.
         /// </summary>
         /// <param name="id">The room ID.</param>
-        public T GetRoomPrefab(int id)
+        public T GetPrefab(int id)
         {
-            return RoomPrefabDictionary[id];
-        }
-
-        /// <summary>
-        /// A room database entry containing a room ID and room data source.
-        /// </summary>
-        /// <typeparam name="U">The room prefab type.</typeparam>
-        [System.Serializable]
-        public struct Entry<U>
-        {
-            [SerializeField]
-            private int _id;
-            /// <summary>
-            /// The room ID.
-            /// </summary>
-            public int Id { get => _id; set => _id = value; }
-
-            [SerializeField]
-            private U _prefab;
-            /// <summary>
-            /// The room prefab.
-            /// </summary>
-            public U Prefab { get => _prefab; set => _prefab = value; }
-
-            /// <summary>
-            /// Initializes a new entry.
-            /// </summary>
-            /// <param name="id">The room ID.</param>
-            /// <param name="prefab">The room prefab.</param>
-            public Entry(int id, U prefab)
-            {
-                _id = id;
-                _prefab = prefab;
-            }
+            EnsureIsInitialized();
+            return PrefabDictionary[id];
         }
     }
 }

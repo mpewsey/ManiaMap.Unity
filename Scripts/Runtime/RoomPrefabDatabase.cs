@@ -19,7 +19,7 @@ namespace MPewsey.ManiaMap.Unity
             RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
             var roomLayout = ManiaMapManager.Current.GetRoom(id);
-            var prefab = GetRoomPrefab(roomLayout.Template.Id);
+            var prefab = GetPrefab(roomLayout.Template.Id);
             return RoomBehavior.InstantiateRoom(id, prefab.gameObject, parent, position);
         }
 

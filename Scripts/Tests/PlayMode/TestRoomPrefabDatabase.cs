@@ -27,12 +27,11 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             db.AddEntry(room1.Id, room1);
             db.AddEntry(room2.Id, room2);
-            db.CreateRoomPrefabDictionary();
             Assert.AreEqual(2, db.Entries.Count);
 
             foreach (var entry in db.Entries)
             {
-                Assert.AreEqual(entry.Prefab, db.GetRoomPrefab(entry.Id));
+                Assert.AreEqual(entry.Prefab, db.GetPrefab(entry.Id));
             }
         }
 
@@ -53,7 +52,6 @@ namespace MPewsey.ManiaMap.Unity.Tests
             // Create database.
             var db = ScriptableObject.CreateInstance<RoomPrefabDatabase>();
             db.AddEntry(prefab.Id, prefab);
-            db.CreateRoomPrefabDictionary();
 
             var room = db.InstantiateRoom(roomLayout.Id, null, RoomPositionOption.LayoutPosition);
             Object.DestroyImmediate(prefab.gameObject);
