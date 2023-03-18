@@ -1,9 +1,10 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager =
 [
+    [ "AutoAssignId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a3b755026ab910a7f23b5d5fa042e4f02", null ],
     [ "ClearLayout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae81f4ae537a10435a103c7e96ab252ca", null ],
     [ "GetDoorConnections", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a62c48a008f4ca0a7f4e5eb0895e69ab8", null ],
     [ "GetPlayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ad08377f8c7a3da7633e46b7efba37aa5", null ],
-    [ "GetRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a492bf00b5b46067a0d6f35278850fd5b", null ],
+    [ "GetRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a02a744f09b20ed13a26274557dec6e73", null ],
     [ "GetRoomCluster", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a07edcee499a71acbcef1c12334300939", null ],
     [ "GetRoomState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41d48375c2d092219660795b1f2be333", null ],
     [ "IsValid", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a1cfbfd3ee80a2f211e74f9dabaefbae2", null ],

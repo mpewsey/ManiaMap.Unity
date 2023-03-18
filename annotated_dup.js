@@ -5,14 +5,14 @@ var annotated_dup =
         [ "Unity", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html", [
           [ "Drawing", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing.html", [
             [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor.html", [
-              [ "LayoutMapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_editor" ],
-              [ "LayoutTilemapEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_editor" ]
+              [ "LayoutMapBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_map_behavior_editor" ],
+              [ "LayoutTilemapBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_editor_1_1_layout_tilemap_behavior_editor" ]
             ] ],
             [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
             [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile" ],
-            [ "LayoutMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map" ],
+            [ "LayoutMapBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior" ],
             [ "LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer" ],
-            [ "LayoutTilemap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap" ],
+            [ "LayoutTilemapBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_behavior" ],
             [ "LayoutTilemapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer" ],
             [ "MapTileKey", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key" ],
             [ "MapTilePool", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool" ],
@@ -23,15 +23,15 @@ var annotated_dup =
           [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html", [
             [ "CellChildEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor" ],
             [ "CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor" ],
-            [ "DoorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_editor" ],
+            [ "DoorBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_behavior_editor" ],
             [ "FeatureEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html", null ],
             [ "FileUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility" ],
             [ "Log", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log" ],
             [ "ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_mania_map_settings_editor" ],
             [ "RoomAddressableDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor" ],
-            [ "RoomEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_editor" ],
+            [ "RoomBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_behavior_editor" ],
             [ "RoomPrefabDatabaseEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor" ],
-            [ "RoomTemplateEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_editor" ],
+            [ "RoomTemplateObjectEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_object_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_object_editor" ],
             [ "SampleSaveSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings" ],
             [ "SampleSaveSettingsEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor" ],
             [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor" ],
@@ -65,48 +65,49 @@ var annotated_dup =
               [ "GenerationPipelineEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_pipeline_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_pipeline_editor" ],
               [ "GenerationStepEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_step_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_step_editor" ]
             ] ],
-            [ "CollectableGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator" ],
+            [ "CollectableGeneratorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_generator_behavior" ],
             [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input" ],
             [ "GenerationInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_input" ],
             [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_int_input" ],
             [ "GenerationNamedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_named_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_named_input" ],
             [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_pipeline" ],
             [ "GenerationStep", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_step" ],
-            [ "LayoutGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator" ],
-            [ "LayoutGraphRandomizer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer" ],
-            [ "LayoutGraphSelector", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector" ],
+            [ "LayoutGeneratorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_generator_behavior" ],
+            [ "LayoutGraphRandomizerBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer_behavior" ],
+            [ "LayoutGraphSelectorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector_behavior" ],
             [ "LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graphs_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graphs_input" ],
             [ "LayoutIdInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_id_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_id_input" ],
             [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_random_seed_input" ]
           ] ],
           [ "Graphs", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs.html", [
             [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor.html", [
-              [ "LayoutEdgeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_edge_editor.html", null ],
-              [ "LayoutGraphEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_editor" ],
+              [ "LayoutEdgeObjectEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_edge_object_editor.html", null ],
+              [ "LayoutGraphObjectEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_object_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_object_editor" ],
               [ "LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window" ],
               [ "LayoutGraphWindowEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_editor.html", null ],
               [ "LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings" ],
-              [ "LayoutNodeEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_node_editor.html", null ]
+              [ "LayoutNodeObjectEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_node_object_editor.html", null ]
             ] ],
-            [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge" ],
-            [ "LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph" ],
-            [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node" ]
+            [ "LayoutEdgeObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object" ],
+            [ "LayoutGraphObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph_object" ],
+            [ "LayoutNodeObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node_object" ]
           ] ],
-          [ "Cell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell" ],
+          [ "CellBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior" ],
           [ "CellChild", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child" ],
-          [ "Collectable", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable" ],
-          [ "CollectableEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_entry" ],
           [ "CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group" ],
+          [ "CollectableGroupEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry" ],
+          [ "CollectableObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object" ],
           [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
-          [ "Door", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door" ],
+          [ "DoorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior" ],
           [ "Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature" ],
           [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
           [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings" ],
-          [ "Room", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room" ],
           [ "RoomAddressableDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database" ],
+          [ "RoomBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior" ],
           [ "RoomDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database" ],
+          [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
           [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
-          [ "RoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template" ],
+          [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
           [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
         ] ]
       ] ]

@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
 </div><!--header-->
 <div class="contents">
 
-<p>An object that has a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html" title="A component representing a RoomTemplate cell.">Cell</a> as a parent.  
+<p>An object that has a Cell as a parent.  
  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MPewsey.ManiaMap.Unity.CellChild:</div>
@@ -114,7 +114,7 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.CellChild:</div>
   <img src="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.png" usemap="#MPewsey.ManiaMap.Unity.CellChild_map" alt=""/>
   <map id="MPewsey.ManiaMap.Unity.CellChild_map" name="MPewsey.ManiaMap.Unity.CellChild_map">
 <area href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html" title="Represents a collectable spot." alt="MPewsey.ManiaMap.Unity.CollectableSpot" shape="rect" coords="0,112,255,136"/>
-<area href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html" title="A component representing a door." alt="MPewsey.ManiaMap.Unity.Door" shape="rect" coords="265,112,520,136"/>
+<area href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html" title="A component representing a door." alt="MPewsey.ManiaMap.Unity.DoorBehavior" shape="rect" coords="265,112,520,136"/>
 <area href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html" title="A component for defining a cell feature." alt="MPewsey.ManiaMap.Unity.Feature" shape="rect" coords="530,112,785,136"/>
   </map>
 </div></div>
@@ -127,46 +127,52 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae45121b3c0ffe28e4c8ea13de15568df"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae45121b3c0ffe28e4c8ea13de15568df">AutoAssign</a> ()</td></tr>
 <tr class="memdesc:ae45121b3c0ffe28e4c8ea13de15568df"><td class="mdescLeft">&#160;</td><td class="mdescRight">If auto assign is enabled, assigns the closest cell to the object.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae45121b3c0ffe28e4c8ea13de15568df">More...</a><br /></td></tr>
 <tr class="separator:ae45121b3c0ffe28e4c8ea13de15568df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d6072203a48621b51151442d325ac6a"><td class="memItemLeft" align="right" valign="top"><a id="a2d6072203a48621b51151442d325ac6a" name="a2d6072203a48621b51151442d325ac6a"></a>
+IReadOnlyList&lt; DoorConnection &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DoorConnections</b> ()</td></tr>
+<tr class="memdesc:a2d6072203a48621b51151442d325ac6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of room door connections. <br /></td></tr>
+<tr class="separator:a2d6072203a48621b51151442d325ac6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadf08d0b3627e744eeef006bd8bb31da"><td class="memItemLeft" align="right" valign="top"><a id="aadf08d0b3627e744eeef006bd8bb31da" name="aadf08d0b3627e744eeef006bd8bb31da"></a>
+Layout&#160;</td><td class="memItemRight" valign="bottom"><b>Layout</b> ()</td></tr>
+<tr class="memdesc:aadf08d0b3627e744eeef006bd8bb31da"><td class="mdescLeft">&#160;</td><td class="mdescRight">The layout. <br /></td></tr>
+<tr class="separator:aadf08d0b3627e744eeef006bd8bb31da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca2914126d208a6da0444f55148201b"><td class="memItemLeft" align="right" valign="top"><a id="a0ca2914126d208a6da0444f55148201b" name="a0ca2914126d208a6da0444f55148201b"></a>
+LayoutState&#160;</td><td class="memItemRight" valign="bottom"><b>LayoutState</b> ()</td></tr>
+<tr class="memdesc:a0ca2914126d208a6da0444f55148201b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The layout state. <br /></td></tr>
+<tr class="separator:a0ca2914126d208a6da0444f55148201b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a153dec5ed68f8471b1ebd6030519968a"><td class="memItemLeft" align="right" valign="top"><a id="a153dec5ed68f8471b1ebd6030519968a" name="a153dec5ed68f8471b1ebd6030519968a"></a>
+<a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html">RoomBehavior</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Room</b> ()</td></tr>
+<tr class="memdesc:a153dec5ed68f8471b1ebd6030519968a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parent room. <br /></td></tr>
+<tr class="separator:a153dec5ed68f8471b1ebd6030519968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f11084cf8b65c13fef5160b0216be04"><td class="memItemLeft" align="right" valign="top">Uid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a6f11084cf8b65c13fef5160b0216be04">RoomId</a> ()</td></tr>
+<tr class="memdesc:a6f11084cf8b65c13fef5160b0216be04"><td class="mdescLeft">&#160;</td><td class="mdescRight">The room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a6f11084cf8b65c13fef5160b0216be04">More...</a><br /></td></tr>
+<tr class="separator:a6f11084cf8b65c13fef5160b0216be04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b05e58890e3b88236947d3ee65c929c"><td class="memItemLeft" align="right" valign="top"><a id="a1b05e58890e3b88236947d3ee65c929c" name="a1b05e58890e3b88236947d3ee65c929c"></a>
+<a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a153dec5ed68f8471b1ebd6030519968a">Room</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RoomLayout</b> ()</td></tr>
+<tr class="memdesc:a1b05e58890e3b88236947d3ee65c929c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room data. <br /></td></tr>
+<tr class="separator:a1b05e58890e3b88236947d3ee65c929c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac08b3c3b47447f1ec497e45019ed1f49"><td class="memItemLeft" align="right" valign="top"><a id="ac08b3c3b47447f1ec497e45019ed1f49" name="ac08b3c3b47447f1ec497e45019ed1f49"></a>
+RoomState&#160;</td><td class="memItemRight" valign="bottom"><b>RoomState</b> ()</td></tr>
+<tr class="memdesc:ac08b3c3b47447f1ec497e45019ed1f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room state. <br /></td></tr>
+<tr class="separator:ac08b3c3b47447f1ec497e45019ed1f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a34c4ef076d073bf7594be4a0b9007f81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a34c4ef076d073bf7594be4a0b9007f81">AutoAssignCell</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a34c4ef076d073bf7594be4a0b9007f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell will be automatically assigned to the closest cell when update and save operations are performed.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a34c4ef076d073bf7594be4a0b9007f81">More...</a><br /></td></tr>
 <tr class="separator:a34c4ef076d073bf7594be4a0b9007f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a1a0ecbc689d571e89a505530102294"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a2a1a0ecbc689d571e89a505530102294">Cell</a><code> [getset]</code></td></tr>
-<tr class="memdesc:a2a1a0ecbc689d571e89a505530102294"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parent cell.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a2a1a0ecbc689d571e89a505530102294">More...</a><br /></td></tr>
-<tr class="separator:a2a1a0ecbc689d571e89a505530102294"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd90bb21b11a49161f78f15f65c1a15e"><td class="memItemLeft" align="right" valign="top">IReadOnlyList&lt; DoorConnection &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#abd90bb21b11a49161f78f15f65c1a15e">DoorConnections</a><code> [get]</code></td></tr>
-<tr class="memdesc:abd90bb21b11a49161f78f15f65c1a15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of room door connections.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#abd90bb21b11a49161f78f15f65c1a15e">More...</a><br /></td></tr>
-<tr class="separator:abd90bb21b11a49161f78f15f65c1a15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad14720c72e3d95d908046f1ce1d2f866"><td class="memItemLeft" align="right" valign="top">Layout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad14720c72e3d95d908046f1ce1d2f866">Layout</a><code> [get]</code></td></tr>
-<tr class="memdesc:ad14720c72e3d95d908046f1ce1d2f866"><td class="mdescLeft">&#160;</td><td class="mdescRight">The layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad14720c72e3d95d908046f1ce1d2f866">More...</a><br /></td></tr>
-<tr class="separator:ad14720c72e3d95d908046f1ce1d2f866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00bfc1a3f18a985e70e8f4515ba43689"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a00bfc1a3f18a985e70e8f4515ba43689">LayoutState</a><code> [get]</code></td></tr>
-<tr class="memdesc:a00bfc1a3f18a985e70e8f4515ba43689"><td class="mdescLeft">&#160;</td><td class="mdescRight">The layout state.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a00bfc1a3f18a985e70e8f4515ba43689">More...</a><br /></td></tr>
-<tr class="separator:a00bfc1a3f18a985e70e8f4515ba43689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad70c55c03af6de086928dedd77ead7e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad70c55c03af6de086928dedd77ead7e1">Room</a><code> [get]</code></td></tr>
-<tr class="memdesc:ad70c55c03af6de086928dedd77ead7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parent room.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ad70c55c03af6de086928dedd77ead7e1">More...</a><br /></td></tr>
-<tr class="separator:ad70c55c03af6de086928dedd77ead7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00248bdf9551a705a68bf3f44a302262"><td class="memItemLeft" align="right" valign="top">Uid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a00248bdf9551a705a68bf3f44a302262">RoomId</a><code> [get]</code></td></tr>
-<tr class="memdesc:a00248bdf9551a705a68bf3f44a302262"><td class="mdescLeft">&#160;</td><td class="mdescRight">The room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a00248bdf9551a705a68bf3f44a302262">More...</a><br /></td></tr>
-<tr class="separator:a00248bdf9551a705a68bf3f44a302262"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae84e46f20f9771ec4e2dea7bace58907"><td class="memItemLeft" align="right" valign="top">ManiaMap.Room&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae84e46f20f9771ec4e2dea7bace58907">RoomLayout</a><code> [get]</code></td></tr>
-<tr class="memdesc:ae84e46f20f9771ec4e2dea7bace58907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room data.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae84e46f20f9771ec4e2dea7bace58907">More...</a><br /></td></tr>
-<tr class="separator:ae84e46f20f9771ec4e2dea7bace58907"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5580ef06f4f532513c9f2581c9d8ea7"><td class="memItemLeft" align="right" valign="top">RoomState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#af5580ef06f4f532513c9f2581c9d8ea7">RoomState</a><code> [get]</code></td></tr>
-<tr class="memdesc:af5580ef06f4f532513c9f2581c9d8ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room state.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#af5580ef06f4f532513c9f2581c9d8ea7">More...</a><br /></td></tr>
-<tr class="separator:af5580ef06f4f532513c9f2581c9d8ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df0e5c84065e72eb88a67a2d852962f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html">CellBehavior</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a5df0e5c84065e72eb88a67a2d852962f">Cell</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a5df0e5c84065e72eb88a67a2d852962f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parent cell.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a5df0e5c84065e72eb88a67a2d852962f">More...</a><br /></td></tr>
+<tr class="separator:a5df0e5c84065e72eb88a67a2d852962f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a56e2e5ed8d31efa8f0319ed406bcd400"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a56e2e5ed8d31efa8f0319ed406bcd400">_autoAssignCell</a> = true</td></tr>
 <tr class="separator:a56e2e5ed8d31efa8f0319ed406bcd400"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afad763be759bb3177467d7c022e19f1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#afad763be759bb3177467d7c022e19f1b">_cell</a></td></tr>
-<tr class="separator:afad763be759bb3177467d7c022e19f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7308222d46e9c08e038800dfc2d70fc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html">CellBehavior</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#a7308222d46e9c08e038800dfc2d70fc9">_cell</a></td></tr>
+<tr class="separator:a7308222d46e9c08e038800dfc2d70fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >An object that has a <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html" title="A component representing a RoomTemplate cell.">Cell</a> as a parent. </p>
+<div class="textblock"><p >An object that has a Cell as a parent. </p>
 
 <p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00009">9</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -187,7 +193,7 @@ Private Attributes</h2></td></tr>
 
 <p>Assigns the closest cell to the door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00073">73</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00077">77</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -216,9 +222,30 @@ Private Attributes</h2></td></tr>
 
 <p>If auto assign is enabled, assigns the closest cell to the object. </p>
 
-<p>Reimplemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a33750d6cbf3d4ce345848ee1e08e4308">MPewsey.ManiaMap.Unity.CollectableSpot</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door.html#a90262b6e218646e7f2175d82933d2c09">MPewsey.ManiaMap.Unity.Door</a>.</p>
+<p>Reimplemented in <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a33750d6cbf3d4ce345848ee1e08e4308">MPewsey.ManiaMap.Unity.CollectableSpot</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#aa42c1414e5869dc24ff714b1e5438af6">MPewsey.ManiaMap.Unity.DoorBehavior</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00064">64</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00068">68</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6f11084cf8b65c13fef5160b0216be04" name="a6f11084cf8b65c13fef5160b0216be04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f11084cf8b65c13fef5160b0216be04">&#9670;&nbsp;</a></span>RoomId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uid MPewsey.ManiaMap.Unity.CellChild.RoomId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The room ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00029">29</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -247,8 +274,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afad763be759bb3177467d7c022e19f1b" name="afad763be759bb3177467d7c022e19f1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afad763be759bb3177467d7c022e19f1b">&#9670;&nbsp;</a></span>_cell</h2>
+<a id="a7308222d46e9c08e038800dfc2d70fc9" name="a7308222d46e9c08e038800dfc2d70fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7308222d46e9c08e038800dfc2d70fc9">&#9670;&nbsp;</a></span>_cell</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +284,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html">Cell</a> MPewsey.ManiaMap.Unity.CellChild._cell</td>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html">CellBehavior</a> MPewsey.ManiaMap.Unity.CellChild._cell</td>
         </tr>
       </table>
   </td>
@@ -298,8 +325,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2a1a0ecbc689d571e89a505530102294" name="a2a1a0ecbc689d571e89a505530102294"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a1a0ecbc689d571e89a505530102294">&#9670;&nbsp;</a></span>Cell</h2>
+<a id="a5df0e5c84065e72eb88a67a2d852962f" name="a5df0e5c84065e72eb88a67a2d852962f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5df0e5c84065e72eb88a67a2d852962f">&#9670;&nbsp;</a></span>Cell</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,7 +335,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell.html">Cell</a> MPewsey.ManiaMap.Unity.CellChild.Cell</td>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html">CellBehavior</a> MPewsey.ManiaMap.Unity.CellChild.Cell</td>
         </tr>
       </table>
   </td>
@@ -321,188 +348,6 @@ Private Attributes</h2></td></tr>
 <p>The parent cell. </p>
 
 <p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00024">24</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="abd90bb21b11a49161f78f15f65c1a15e" name="abd90bb21b11a49161f78f15f65c1a15e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd90bb21b11a49161f78f15f65c1a15e">&#9670;&nbsp;</a></span>DoorConnections</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">IReadOnlyList&lt;DoorConnection&gt; MPewsey.ManiaMap.Unity.CellChild.DoorConnections</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A list of room door connections. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00059">59</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad14720c72e3d95d908046f1ce1d2f866" name="ad14720c72e3d95d908046f1ce1d2f866"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad14720c72e3d95d908046f1ce1d2f866">&#9670;&nbsp;</a></span>Layout</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Layout MPewsey.ManiaMap.Unity.CellChild.Layout</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The layout. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00039">39</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="a00bfc1a3f18a985e70e8f4515ba43689" name="a00bfc1a3f18a985e70e8f4515ba43689"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00bfc1a3f18a985e70e8f4515ba43689">&#9670;&nbsp;</a></span>LayoutState</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">LayoutState MPewsey.ManiaMap.Unity.CellChild.LayoutState</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The layout state. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00044">44</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad70c55c03af6de086928dedd77ead7e1" name="ad70c55c03af6de086928dedd77ead7e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad70c55c03af6de086928dedd77ead7e1">&#9670;&nbsp;</a></span>Room</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room.html">Room</a> MPewsey.ManiaMap.Unity.CellChild.Room</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The parent room. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00034">34</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="a00248bdf9551a705a68bf3f44a302262" name="a00248bdf9551a705a68bf3f44a302262"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00248bdf9551a705a68bf3f44a302262">&#9670;&nbsp;</a></span>RoomId</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Uid MPewsey.ManiaMap.Unity.CellChild.RoomId</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The room ID. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00029">29</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae84e46f20f9771ec4e2dea7bace58907" name="ae84e46f20f9771ec4e2dea7bace58907"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae84e46f20f9771ec4e2dea7bace58907">&#9670;&nbsp;</a></span>RoomLayout</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ManiaMap.Room MPewsey.ManiaMap.Unity.CellChild.RoomLayout</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the room data. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00049">49</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
-
-</div>
-</div>
-<a id="af5580ef06f4f532513c9f2581c9d8ea7" name="af5580ef06f4f532513c9f2581c9d8ea7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5580ef06f4f532513c9f2581c9d8ea7">&#9670;&nbsp;</a></span>RoomState</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">RoomState MPewsey.ManiaMap.Unity.CellChild.RoomState</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the room state. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00054">54</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
 var namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs =
 [
     [ "Editor", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor.html", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor" ],
-    [ "LayoutEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge" ],
-    [ "LayoutGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph" ],
-    [ "LayoutNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node" ]
+    [ "LayoutEdgeObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object" ],
+    [ "LayoutGraphObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph_object" ],
+    [ "LayoutNodeObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_node_object" ]
 ];
