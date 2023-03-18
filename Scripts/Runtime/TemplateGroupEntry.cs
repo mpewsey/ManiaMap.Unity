@@ -68,9 +68,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a new generation template group entry.
         /// </summary>
-        public TemplateGroups.Entry CreateData()
+        public TemplateGroupsEntry CreateData()
         {
-            return new TemplateGroups.Entry(Template.Template, MinQuantity, MaxQuantity);
+            return new TemplateGroupsEntry(Template.Template, MinQuantity, MaxQuantity);
         }
     }
 }

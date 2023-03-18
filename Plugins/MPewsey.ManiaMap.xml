@@ -592,6 +592,14 @@
             <param name="to">Tne to door type.</param>
             <exception cref="T:System.ArgumentException">Raised is the door types are not compatible.</exception>
         </member>
+        <member name="M:MPewsey.ManiaMap.Door.ShowDoor(MPewsey.ManiaMap.DoorDrawMode,MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns true if the door direction should be drawn for the specified draw mode.
+            </summary>
+            <param name="drawMode">The door draw mode.</param>
+            <param name="direction">The door direction.</param>
+            <exception cref="T:System.ArgumentException">Raised if the draw mode is not handled.</exception>
+        </member>
         <member name="T:MPewsey.ManiaMap.DoorConnection">
             <summary>
             Represents a door connection between two Room.
@@ -670,6 +678,23 @@
         </member>
         <member name="F:MPewsey.ManiaMap.DoorDirection.Bottom">
             %Door points down.
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorDrawMode">
+            <summary>
+            An option controlling which doors are drawn on maps.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.None">
+            No doors are displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.AllDoors">
+            All doors are displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.IntralayerDoors">
+            All doors within a layer are displayed. Any doors between layers are not displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.InterlayerDoors">
+            All doors between layers are displayed. Any doors within a layer are not displayed.
         </member>
         <member name="T:MPewsey.ManiaMap.DoorPair">
             <summary>
@@ -1622,7 +1647,25 @@
             Returns true if the edge is valid.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToSymbolString" -->
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToSymbolString">
+            <summary>
+            Returns the symbol string for the edge.
+            
+            For instance, an edge with a forward flexible edge direction from node 1 to 2
+            is symbolized as (1 => 2).
+            
+            Edge directions are drawn as:
+            
+            * "&lt;=&gt;" : Two way
+            * "=&gt;" and "&lt;=" : One way flexible in the arrow direction.
+            * "-&gt;" and "&lt;-" : One way fixed in the arrow direction.
+            
+            Basically, the "=", with its two lines, signals that the edge can go both directions
+            given the conditions are met, whereas the "-", with its one line, signals that
+            the edge only ever goes in one direction.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">Raised if the edge direction is not handled.</exception>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetName(System.String)">
             <summary>
             Sets the name of the edge and returns the edge.
@@ -2133,13 +2176,13 @@
             </summary>
             <param name="groups">The template groups.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Layout.GetTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.Layout.GetTemplateCount(MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Returns the count for the specified template group entry.
             </summary>
             <param name="entry">The template group entry.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Layout.IncreaseTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.Layout.IncreaseTemplateCount(MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Increases the count by 1 for the template group entry.
             </summary>
@@ -2973,7 +3016,7 @@
             <param name="group">The group name.</param>
             <param name="template">The room template.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Adds a template group entry to the group.
             </summary>
@@ -2987,7 +3030,7 @@
             <param name="group">The group name.</param>
             <param name="templates">An enumerable of templates.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.TemplateGroups.Entry})">
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.TemplateGroupsEntry})">
             <summary>
             Adds a range of template group entries to the group.
             </summary>
@@ -3013,7 +3056,7 @@
         </member>
         <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllEntries">
             <summary>
-            Returns an enumerable of all template group entries.
+            Returns a list of all template group entries.
             </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllTemplates">
@@ -3021,33 +3064,33 @@
             Returns an enumerable of all templates in all groups.
             </summary>
         </member>
-        <member name="T:MPewsey.ManiaMap.TemplateGroups.Entry">
+        <member name="T:MPewsey.ManiaMap.TemplateGroupsEntry">
             <summary>
             A template group entry, consisting of a RoomTemplate and usage constaints.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.Template">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.Template">
             <summary>
             The room template.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MinQuantity">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.MinQuantity">
             <summary>
             The minimum number of uses for the entry.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MaxQuantity">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.MaxQuantity">
             <summary>
             The maximum number of uses for the entry.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.#ctor(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
             Intializes a new entry with no quantity contraints.
             </summary>
             <param name="template">The room template.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate,System.Int32,System.Int32)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.#ctor(MPewsey.ManiaMap.RoomTemplate,System.Int32,System.Int32)">
             <summary>
             Initializes a new entry with quantity constraints.
             </summary>
@@ -3055,13 +3098,13 @@
             <param name="minQuantity">The minimum number of uses for the entry.</param>
             <param name="maxQuantity">The maximum number of uses for the entry.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.QuantitySatisfied(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.QuantitySatisfied(System.Int32)">
             <summary>
             Returns true if the constraint quantity is satisfied.
             </summary>
             <param name="count">The entry count.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.ConsolidateTemplate(MPewsey.ManiaMap.RoomTemplate)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.ConsolidateTemplate(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
             If the specified room template has the same values as the current template,
             sets it as the current template.

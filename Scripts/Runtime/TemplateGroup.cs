@@ -34,9 +34,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a list of generation template group entries.
         /// </summary>
-        public List<TemplateGroups.Entry> CreateData()
+        public List<TemplateGroupsEntry> CreateData()
         {
-            var result = new List<TemplateGroups.Entry>(Entries.Count);
+            var result = new List<TemplateGroupsEntry>(Entries.Count);
 
             foreach (var entry in Entries)
             {
