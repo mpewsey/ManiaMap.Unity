@@ -23,7 +23,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// The parent layout tilemap.
         /// </summary>
-        public LayoutTilemap LayoutTilemap { get; private set; }
+        public LayoutTilemapBehavior LayoutTilemap { get; private set; }
 
         private void Awake()
         {
@@ -44,7 +44,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// Creates a new layer.
         /// </summary>
         /// <param name="map">The layout tilemap.</param>
-        public static LayoutTilemapLayer Create(LayoutTilemap map)
+        public static LayoutTilemapLayer Create(LayoutTilemapBehavior map)
         {
             var obj = new GameObject("Tilemap Layer");
             obj.transform.SetParent(map.Grid.transform);

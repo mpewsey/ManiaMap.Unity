@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
     /// A graph consisting of LayoutNode and LayoutEdge.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Layout Graph")]
-    public class LayoutGraph : ScriptableObject
+    public class LayoutGraphObject : ScriptableObject
     {
         [SerializeField]
         private int _id;
@@ -27,19 +27,19 @@ namespace MPewsey.ManiaMap.Unity.Graphs
 
         [SerializeField]
         [HideInInspector]
-        private List<LayoutNode> _nodes = new List<LayoutNode>();
+        private List<LayoutNodeObject> _nodes = new List<LayoutNodeObject>();
         /// <summary>
         /// A list of nodes in the graph.
         /// </summary>
-        private List<LayoutNode> Nodes { get => _nodes; set => _nodes = value; }
+        private List<LayoutNodeObject> Nodes { get => _nodes; set => _nodes = value; }
 
         [SerializeField]
         [HideInInspector]
-        private List<LayoutEdge> _edges = new List<LayoutEdge>();
+        private List<LayoutEdgeObject> _edges = new List<LayoutEdgeObject>();
         /// <summary>
         /// A list of edges in the graph.
         /// </summary>
-        private List<LayoutEdge> Edges { get => _edges; set => _edges = value; }
+        private List<LayoutEdgeObject> Edges { get => _edges; set => _edges = value; }
 
         /// <summary>
         /// Returns the number of nodes in the graph.
@@ -71,7 +71,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// <summary>
         /// Creates a new node and returns it.
         /// </summary>
-        public LayoutNode CreateNode()
+        public LayoutNodeObject CreateNode()
         {
             return AddNode(GetNextNodeId());
         }
@@ -81,13 +81,13 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// already exists, returns the existing node.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public LayoutNode AddNode(int id)
+        public LayoutNodeObject AddNode(int id)
         {
             var node = GetNode(id);
 
             if (node == null)
             {
-                node = LayoutNode.Create(id);
+                node = LayoutNodeObject.Create(id);
                 Nodes.Add(node);
             }
 
@@ -112,7 +112,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// Returns the node with the ID.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public LayoutNode GetNode(int id)
+        public LayoutNodeObject GetNode(int id)
         {
             return Nodes.Find(x => x.Id == id);
         }
@@ -132,7 +132,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// </summary>
         /// <param name="node1">The first node ID.</param>
         /// <param name="node2">The second node ID.</param>
-        public LayoutEdge AddEdge(int node1, int node2)
+        public LayoutEdgeObject AddEdge(int node1, int node2)
         {
             AddNode(node1);
             AddNode(node2);
@@ -140,7 +140,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
 
             if (edge == null)
             {
-                edge = LayoutEdge.Create(node1, node2);
+                edge = LayoutEdgeObject.Create(node1, node2);
                 Edges.Add(edge);
             }
 
@@ -164,7 +164,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// </summary>
         /// <param name="node1">The first node ID.</param>
         /// <param name="node2">The second node ID.</param>
-        public LayoutEdge GetEdge(int node1, int node2)
+        public LayoutEdgeObject GetEdge(int node1, int node2)
         {
             return Edges.Find(x => (x.FromNode == node1 && x.ToNode == node2) || (x.FromNode == node2 && x.ToNode == node1));
         }
@@ -182,7 +182,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// <summary>
         /// Returns a readonly list of nodes in the graph.
         /// </summary>
-        public IReadOnlyList<LayoutNode> GetNodes()
+        public IReadOnlyList<LayoutNodeObject> GetNodes()
         {
             return Nodes;
         }
@@ -190,7 +190,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// <summary>
         /// Returns a readonly list of edges in the graph.
         /// </summary>
-        public IReadOnlyList<LayoutEdge> GetEdges()
+        public IReadOnlyList<LayoutEdgeObject> GetEdges()
         {
             return Edges;
         }
@@ -198,36 +198,51 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// <summary>
         /// Creates a new Mania Map layout graph.
         /// </summary>
-        public ManiaMap.Graphs.LayoutGraph GetLayoutGraph()
+        public LayoutGraph CreateData()
         {
-            var graph = new ManiaMap.Graphs.LayoutGraph(Id, Name);
+            var graph = new LayoutGraph(Id, Name);
+            AddNodesToGraph(graph);
+            AddEdgesToGraph(graph);
+            return graph;
+        }
 
+        /// <summary>
+        /// Adds the nodes to the generation graph.
+        /// </summary>
+        /// <param name="graph">The generation graph.</param>
+        private void AddNodesToGraph(LayoutGraph graph)
+        {
             foreach (var node in Nodes.OrderBy(x => x.Id))
             {
-                var other = graph.AddNode(node.Id);
-                other.Name = node.Name;
-                other.Z = node.Z;
-                other.TemplateGroup = node.TemplateGroup.Name;
-                other.Color = ConvertColor(node.Color);
+                var dataNode = graph.AddNode(node.Id);
+                dataNode.Name = node.Name;
+                dataNode.Z = node.Z;
+                dataNode.TemplateGroup = node.TemplateGroup.Name;
+                dataNode.Color = ConvertColor(node.Color);
 
                 if (!string.IsNullOrWhiteSpace(node.VariationGroup))
-                    graph.AddNodeVariation(node.VariationGroup, other.Id);
+                    graph.AddNodeVariation(node.VariationGroup, dataNode.Id);
             }
+        }
 
+        /// <summary>
+        /// Adds the edges to the generation graph.
+        /// </summary>
+        /// <param name="graph">The generation graph.</param>
+        private void AddEdgesToGraph(LayoutGraph graph)
+        {
             foreach (var edge in Edges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
             {
-                var other = graph.AddEdge(edge.FromNode, edge.ToNode);
-                other.Name = edge.Name;
-                other.Direction = edge.Direction;
-                other.DoorCode = edge.DoorCode;
-                other.Z = edge.Z;
-                other.RoomChance = edge.RoomChance;
-                other.RequireRoom = edge.RequireRoom;
-                other.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
-                other.Color = ConvertColor(edge.Color);
+                var dataEdge = graph.AddEdge(edge.FromNode, edge.ToNode);
+                dataEdge.Name = edge.Name;
+                dataEdge.Direction = edge.Direction;
+                dataEdge.DoorCode = edge.DoorCode;
+                dataEdge.Z = edge.Z;
+                dataEdge.RoomChance = edge.RoomChance;
+                dataEdge.RequireRoom = edge.RequireRoom;
+                dataEdge.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
+                dataEdge.Color = ConvertColor(edge.Color);
             }
-
-            return graph;
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A container for storing a serialized room template.
     /// </summary>
-    public class RoomTemplate : ScriptableObject
+    public class RoomTemplateObject : ScriptableObject
     {
         [SerializeField]
         private int _id;
@@ -37,17 +37,17 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public string SerializedText { get => _serializedText; private set => _serializedText = value; }
 
-        private ManiaMap.RoomTemplate _template;
+        private RoomTemplate _template;
         /// <summary>
         /// Returns the generation template. If the template is not already assigned, it is loaded
         /// from the serialized text then cached.
         /// </summary>
-        public ManiaMap.RoomTemplate Template
+        public RoomTemplate Template
         {
             get
             {
                 if (_template == null)
-                    _template = JsonSerialization.LoadJsonString<ManiaMap.RoomTemplate>(SerializedText);
+                    _template = JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
                 return _template;
             }
             private set => _template = value;
@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="template">The generation template.</param>
         /// <param name="prefabGuid">The prefab GUID.</param>
-        public void Initialize(ManiaMap.RoomTemplate template, string prefabGuid = null)
+        public void Initialize(RoomTemplate template, string prefabGuid = null)
         {
             Template = null;
             Id = template.Id;

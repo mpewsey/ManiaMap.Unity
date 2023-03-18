@@ -9,8 +9,8 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
     /// <summary>
     /// The LayoutGraph custom inspector.
     /// </summary>
-    [CustomEditor(typeof(LayoutGraph))]
-    public class LayoutGraphEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LayoutGraphObject))]
+    public class LayoutGraphObjectEditor : UnityEditor.Editor
     {
         /// <summary>
         /// Shows the layout graph editor window.
@@ -19,7 +19,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         public static bool OnOpenAsset(int instanceId, int line)
         {
             var path = AssetDatabase.GetAssetPath(instanceId);
-            var graph = AssetDatabase.LoadAssetAtPath<LayoutGraph>(path);
+            var graph = AssetDatabase.LoadAssetAtPath<LayoutGraphObject>(path);
 
             if (graph == null)
                 return false;
@@ -42,9 +42,9 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// <summary>
         /// Returns the target layout graph.
         /// </summary>
-        private LayoutGraph GetLayoutGraph()
+        private LayoutGraphObject GetLayoutGraph()
         {
-            return (LayoutGraph)serializedObject.targetObject;
+            return (LayoutGraphObject)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// <summary>
         /// Draws an error box if any nodes in the graph do not have template groups assigned.
         /// </summary>
-        public static void DrawNodeTemplateGroupErrorBox(LayoutGraph graph)
+        public static void DrawNodeTemplateGroupErrorBox(LayoutGraphObject graph)
         {
             var messages = new List<string>() { "Nodes are missing template groups:" };
 
@@ -79,7 +79,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Draws an error box if any edges in the graph with non-zero room chances do not
         /// have template groups assigned.
         /// </summary>
-        public static void DrawEdgeTemplateGroupErrorBox(LayoutGraph graph)
+        public static void DrawEdgeTemplateGroupErrorBox(LayoutGraphObject graph)
         {
             var messages = new List<string>() { "Edges with non-zero room chances are missing template groups:" };
 

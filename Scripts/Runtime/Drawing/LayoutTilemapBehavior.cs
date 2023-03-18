@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// A component for creating tilemaps of layout layers.
     /// </summary>
     [RequireComponent(typeof(MapTilePool))]
-    public class LayoutTilemap : MonoBehaviour
+    public class LayoutTilemapBehavior : MonoBehaviour
     {
         [SerializeField]
         private Grid _grid;
@@ -90,7 +90,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="room">The room.</param>
         /// <param name="position">The local position of the door.</param>
         /// <param name="direction">The direction of the door.</param>
-        private bool DoorExists(ManiaMap.Room room, Vector2DInt position, DoorDirection direction)
+        private bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
         {
             if (RoomDoors.TryGetValue(room.Id, out var doors))
             {
@@ -235,7 +235,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// Returns the feature flags for the cell.
         /// </summary>
         /// <param name="cell">The cell.</param>
-        private long GetFeatureFlags(ManiaMap.Cell cell)
+        private long GetFeatureFlags(Cell cell)
         {
             long flags = 0;
 
@@ -255,7 +255,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="neighbor">The neighboring cell.</param>
         /// <param name="position">The cell position.</param>
         /// <param name="direction">The door direction.</param>
-        private long GetTileFlag(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
+        private long GetTileFlag(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTilePool.GetFeatureFlag(MapTileType.GetDoorTileType(direction));

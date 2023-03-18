@@ -41,7 +41,7 @@ namespace MPewsey.ManiaMap.Unity
         /// Add an entry for the template to the group if it does not already exist.
         /// </summary>
         /// <param name="template">The room template.</param>
-        public void AddTemplate(RoomTemplate template)
+        public void AddTemplate(RoomTemplateObject template)
         {
             if (template == null)
                 return;
@@ -59,11 +59,11 @@ namespace MPewsey.ManiaMap.Unity
         public class Entry
         {
             [SerializeField]
-            private RoomTemplate _template;
+            private RoomTemplateObject _template;
             /// <summary>
             /// The room template.
             /// </summary>
-            public RoomTemplate Template { get => _template; set => _template = value; }
+            public RoomTemplateObject Template { get => _template; set => _template = value; }
 
             [SerializeField]
             private int _minQuantity;
@@ -97,7 +97,7 @@ namespace MPewsey.ManiaMap.Unity
             /// Initializes a new entry with no quantity constraints.
             /// </summary>
             /// <param name="template">The room template.</param>
-            public Entry(RoomTemplate template)
+            public Entry(RoomTemplateObject template)
             {
                 Template = template;
             }
@@ -108,7 +108,7 @@ namespace MPewsey.ManiaMap.Unity
             /// <param name="template">The room template.</param>
             /// <param name="minQuantity">The minimum use quantity</param>
             /// <param name="maxQuantity">The maximum use quantity.</param>
-            public Entry(RoomTemplate template, int minQuantity, int maxQuantity)
+            public Entry(RoomTemplateObject template, int minQuantity, int maxQuantity)
             {
                 Template = template;
                 MinQuantity = minQuantity;

@@ -89,17 +89,17 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// <summary>
         /// The start node when adding an edge.
         /// </summary>
-        private LayoutNode StartNode { get; set; }
+        private LayoutNodeObject StartNode { get; set; }
 
         /// <summary>
         /// A set of selected nodes.
         /// </summary>
-        public HashSet<LayoutNode> SelectedNodes { get; } = new HashSet<LayoutNode>();
+        public HashSet<LayoutNodeObject> SelectedNodes { get; } = new HashSet<LayoutNodeObject>();
 
         /// <summary>
         /// A set of selected edges.
         /// </summary>
-        public HashSet<LayoutEdge> SelectedEdges { get; } = new HashSet<LayoutEdge>();
+        public HashSet<LayoutEdgeObject> SelectedEdges { get; } = new HashSet<LayoutEdgeObject>();
 
         /// <summary>
         /// A dictionary of node positions by ID.
@@ -125,7 +125,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Show the layout graph window for the specified graph.
         /// </summary>
         /// <param name="graph">The layout graph.</param>
-        public static void ShowWindow(LayoutGraph graph)
+        public static void ShowWindow(LayoutGraphObject graph)
         {
             var window = GetWindow<LayoutGraphWindow>("Layout Graph");
             window.SerializedObject = new SerializedObject(graph);
@@ -178,9 +178,9 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// <summary>
         /// Returns the target layout graph.
         /// </summary>
-        private LayoutGraph GetLayoutGraph()
+        private LayoutGraphObject GetLayoutGraph()
         {
-            return SerializedObject.targetObject as LayoutGraph;
+            return SerializedObject.targetObject as LayoutGraphObject;
         }
 
         /// <summary>
@@ -302,8 +302,8 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
                 DrawNodeInspector();
                 DrawEdgeInspector();
                 EditorGUILayout.Space();
-                LayoutGraphEditor.DrawNodeTemplateGroupErrorBox(GetLayoutGraph());
-                LayoutGraphEditor.DrawEdgeTemplateGroupErrorBox(GetLayoutGraph());
+                LayoutGraphObjectEditor.DrawNodeTemplateGroupErrorBox(GetLayoutGraph());
+                LayoutGraphObjectEditor.DrawEdgeTemplateGroupErrorBox(GetLayoutGraph());
                 DrawInspectorAreaButton();
                 GUILayout.EndScrollView();
                 GUILayout.EndArea();
@@ -429,7 +429,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         {
             GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - GetInspectorWidth(), position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
-            PaginatePlot();
+            // PaginatePlot();
             SetNodePositions();
             DrawEdgeLines();
             DrawEdges();
@@ -600,7 +600,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Draws the line for the specified edge.
         /// </summary>
         /// <param name="edge">The graph edge.</param>
-        private void DrawEdgeLine(LayoutEdge edge)
+        private void DrawEdgeLine(LayoutEdgeObject edge)
         {
             var offset = 0.5f * Settings.NodeSize;
             var fromPosition = NodePositions[edge.FromNode] + offset;
@@ -632,7 +632,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Draws the element for the specified edge.
         /// </summary>
         /// <param name="edge">The graph edge.</param>
-        private void DrawEdge(LayoutEdge edge)
+        private void DrawEdge(LayoutEdgeObject edge)
         {
             var fromPosition = NodePositions[edge.FromNode];
             var toPosition = NodePositions[edge.ToNode];
@@ -679,7 +679,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Draws the specified node.
         /// </summary>
         /// <param name="node">The graph node.</param>
-        private void DrawNode(LayoutNode node)
+        private void DrawNode(LayoutNodeObject node)
         {
             var rect = new Rect(node.Position, Settings.NodeSize);
 
@@ -748,7 +748,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Handles events if the cursor is in an edge element.
         /// </summary>
         /// <param name="edge">The hovered edge.</param>
-        private void HandleEdgeEvent(LayoutEdge edge)
+        private void HandleEdgeEvent(LayoutEdgeObject edge)
         {
             switch (Event.current.type)
             {
@@ -774,7 +774,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Handles events if the cursor is in a node element.
         /// </summary>
         /// <param name="node">The hovered node.</param>
-        private void HandleNodeEvent(LayoutNode node)
+        private void HandleNodeEvent(LayoutNodeObject node)
         {
             switch (Event.current.type)
             {
@@ -892,7 +892,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Displays the context menu when clicking in a node element.
         /// </summary>
         /// <param name="node">The current layout node.</param>
-        private void ShowNodeContextMenu(LayoutNode node)
+        private void ShowNodeContextMenu(LayoutNodeObject node)
         {
             StartNode = node;
             var menu = new GenericMenu();
@@ -913,7 +913,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Completes the add edge operation by adding an edge between the start node and current node.
         /// </summary>
         /// <param name="node">The current node.</param>
-        private void AddEdge(LayoutNode node)
+        private void AddEdge(LayoutNodeObject node)
         {
             ActiveTool = Tool.None;
 
@@ -945,7 +945,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Clears the selected elements and adds the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void SelectEdge(LayoutEdge edge)
+        private void SelectEdge(LayoutEdgeObject edge)
         {
             if (!Multiselecting)
             {
@@ -961,7 +961,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Clears the selected elements and adds the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void SelectNode(LayoutNode node)
+        private void SelectNode(LayoutNodeObject node)
         {
             if (!Multiselecting)
             {
@@ -977,7 +977,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Toggles the selection of the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void MultiselectEdge(LayoutEdge edge)
+        private void MultiselectEdge(LayoutEdgeObject edge)
         {
             ActiveTool = Tool.None;
             Multiselecting = true;
@@ -990,7 +990,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         /// Toggles the selection of the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void MultiselectNode(LayoutNode node)
+        private void MultiselectNode(LayoutNodeObject node)
         {
             ActiveTool = Tool.None;
             Multiselecting = true;

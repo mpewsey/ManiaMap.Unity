@@ -1,22 +1,23 @@
 using MPewsey.Common.Pipelines;
+using MPewsey.ManiaMap.Generators;
 
 namespace MPewsey.ManiaMap.Unity.Generators
 {
     /// <summary>
-    /// A generation step for drawing a random layout graph in a pipeline.
+    /// A generation step for randomizing a layout graph based on the specified parameters.
     /// </summary>
-    public class LayoutGraphSelector : GenerationStep
+    public class LayoutGraphRandomizerBehavior : GenerationStep
     {
         /// <inheritdoc/>
         public override IPipelineStep GetStep()
         {
-            return new ManiaMap.Generators.LayoutGraphSelector();
+            return new LayoutGraphRandomizer();
         }
 
         /// <inheritdoc/>
         public override string[] InputNames()
         {
-            return new string[] { "LayoutGraphs", "RandomSeed" };
+            return new string[] { "LayoutGraph", "RandomSeed" };
         }
 
         /// <inheritdoc/>

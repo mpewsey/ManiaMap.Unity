@@ -17,46 +17,50 @@ namespace MPewsey.ManiaMap.Unity
         public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
 
         [SerializeField]
-        private Cell _cell;
+        private CellBehavior _cell;
         /// <summary>
         /// The parent cell.
         /// </summary>
-        public Cell Cell { get => _cell; set => _cell = value; }
+        public CellBehavior Cell { get => _cell; set => _cell = value; }
 
         /// <summary>
         /// The room ID.
         /// </summary>
-        public Uid RoomId => RoomLayout == null ? new Uid(-1, -1, -1) : RoomLayout.Id;
+        public Uid RoomId()
+        {
+            var room = RoomLayout();
+            return room == null ? new Uid(-1, -1, -1) : room.Id;
+        }
 
         /// <summary>
         /// The parent room.
         /// </summary>
-        public Room Room => Cell.Room;
+        public RoomBehavior Room() => Cell.Room;
 
         /// <summary>
         /// The layout.
         /// </summary>
-        public Layout Layout => Room.Layout;
+        public Layout Layout() => Room().Layout;
 
         /// <summary>
         /// The layout state.
         /// </summary>
-        public LayoutState LayoutState => Room.LayoutState;
+        public LayoutState LayoutState() => Room().LayoutState;
 
         /// <summary>
         /// Returns the room data.
         /// </summary>
-        public ManiaMap.Room RoomLayout => Room.RoomLayout;
+        public Room RoomLayout() => Room().RoomLayout;
 
         /// <summary>
         /// Returns the room state.
         /// </summary>
-        public RoomState RoomState => Room.RoomState;
+        public RoomState RoomState() => Room().RoomState;
 
         /// <summary>
         /// A list of room door connections.
         /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections => Room.DoorConnections;
+        public IReadOnlyList<DoorConnection> DoorConnections() => Room().DoorConnections;
 
         /// <summary>
         /// If auto assign is enabled, assigns the closest cell to the object.
@@ -72,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void AssignClosestCell()
         {
-            Cell = Cell.FindClosestCell(transform);
+            Cell = CellBehavior.FindClosestCell(transform);
         }
     }
 }

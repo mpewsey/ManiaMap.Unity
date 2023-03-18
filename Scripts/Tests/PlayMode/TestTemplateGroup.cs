@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGetTemplateGroupEntries()
         {
-            var templates = new List<ManiaMap.RoomTemplate>
+            var templates = new List<RoomTemplate>
             {
                 Samples.TemplateLibrary.Angles.Angle3x4(),
                 Samples.TemplateLibrary.Squares.Square3x3Template(),
@@ -22,7 +22,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             foreach (var template in templates)
             {
-                var room = ScriptableObject.CreateInstance<RoomTemplate>();
+                var room = ScriptableObject.CreateInstance<RoomTemplateObject>();
                 room.Initialize(template);
                 templateGroup.Entries.Add(new TemplateGroup.Entry(room));
             }
@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             for (int i = 0; i < templates.Count; i++)
             {
-                Assert.IsTrue(ManiaMap.RoomTemplate.ValuesAreEqual(templates[i], copies[i].Template));
+                Assert.IsTrue(RoomTemplate.ValuesAreEqual(templates[i], copies[i].Template));
             }
         }
     }

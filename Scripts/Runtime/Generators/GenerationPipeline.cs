@@ -48,23 +48,23 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Generates a set of results for the pipeline.
         /// </summary>
-        public PipelineResults Generate()
+        public PipelineResults Generate(Dictionary<string, object> inputs = null)
         {
-            Validate();
-            var pipeline = GetPipeline();
-            var inputs = GetInputs();
-            return pipeline.Generate(inputs);
+            inputs ??= new Dictionary<string, object>();
+            Validate(inputs);
+            return GetPipeline().Generate(GetInputs(inputs));
         }
 
         /// <summary>
         /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
-        public Task<PipelineResults> GenerateAsync()
+        public Task<PipelineResults> GenerateAsync(Dictionary<string, object> inputs = null)
         {
-            Validate();
+            inputs ??= new Dictionary<string, object>();
+            Validate(inputs);
             var pipeline = GetPipeline();
-            var inputs = GetInputs();
-            return Task.Run(() => pipeline.Generate(inputs));
+            var args = GetInputs(inputs);
+            return Task.Run(() => pipeline.Generate(args));
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Returns a dictionary of inputs for the pipeline.
         /// </summary>
-        public Dictionary<string, object> GetInputs()
+        public Dictionary<string, object> GetInputs(Dictionary<string, object> inputs)
         {
-            var result = new Dictionary<string, object>();
+            var result = new Dictionary<string, object>(inputs);
 
             foreach (var input in GetGenerationInputs())
             {
@@ -117,9 +117,10 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Validates the pipeline and throws any applicable exceptions.
         /// </summary>
-        public void Validate()
+        public void Validate(Dictionary<string, object> inputs = null)
         {
-            var names = new HashSet<string>();
+            inputs ??= new Dictionary<string, object>();
+            var names = new HashSet<string>(inputs.Keys);
             ValidateInputs(names);
             ValidateSteps(names);
         }

@@ -21,7 +21,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// The parent layout map.
         /// </summary>
-        public LayoutMap LayoutMap { get; private set; }
+        public LayoutMapBehavior LayoutMap { get; private set; }
 
         /// <summary>
         /// The attached sprite renderer component.
@@ -49,7 +49,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// Creates a new layout map layer and returns the result.
         /// </summary>
         /// <param name="map">The parent layout map.</param>
-        public static LayoutMapLayer Create(LayoutMap map)
+        public static LayoutMapLayer Create(LayoutMapBehavior map)
         {
             var obj = new GameObject("Layout Map Layer");
             obj.transform.SetParent(map.LayersContainer);

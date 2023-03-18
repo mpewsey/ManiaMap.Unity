@@ -26,7 +26,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// <param name="spot">The collectable spot sending the event.</param>
         private void OnInitialize(CollectableSpot spot)
         {
-            if (!spot.Exists)
+            if (!spot.Exists())
                 Destroy(spot.gameObject);
         }
     }

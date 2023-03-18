@@ -1,4 +1,5 @@
 using MPewsey.Common.Pipelines;
+using MPewsey.ManiaMap.Generators;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Generators
@@ -6,7 +7,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
     /// <summary>
     /// A component for adding a collectable generator step to a GenerationPipeline.
     /// </summary>
-    public class CollectableGenerator : GenerationStep
+    public class CollectableGeneratorBehavior : GenerationStep
     {
         [SerializeField]
         private float _doorPower = 2;
@@ -32,7 +33,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <inheritdoc/>
         public override IPipelineStep GetStep()
         {
-            return new ManiaMap.Generators.CollectableGenerator(DoorPower, NeighborPower, InitialNeighborWeight);
+            return new CollectableGenerator(DoorPower, NeighborPower, InitialNeighborWeight);
         }
 
         /// <inheritdoc/>

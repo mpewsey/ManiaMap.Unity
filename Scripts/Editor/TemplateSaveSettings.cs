@@ -83,7 +83,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             {
                 var prefab = scope.prefabContentsRoot;
 
-                if (!prefab.TryGetComponent(out Room room))
+                if (!prefab.TryGetComponent(out RoomBehavior room))
                     return;
 
                 Debug.Log($"Processing room at {assetPath}.");
@@ -96,16 +96,16 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// </summary>
         /// <param name="room">The room.</param>
         /// <param name="prefabGuid">The prefab GUID.</param>
-        private void CreateRoomTemplate(Room room, string prefabGuid)
+        private void CreateRoomTemplate(RoomBehavior room, string prefabGuid)
         {
             var path = TemplateSavePath(room);
-            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
-            var template = room.GetTemplate();
+            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
+            var template = room.CreateData();
             EditorUtility.SetDirty(room);
 
             if (asset == null)
             {
-                asset = CreateInstance<RoomTemplate>();
+                asset = CreateInstance<RoomTemplateObject>();
                 asset.Initialize(template, prefabGuid);
                 AssetDatabase.CreateAsset(asset, path);
             }
@@ -131,7 +131,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Returns the template save path for the room.
         /// </summary>
         /// <param name="room">The room.</param>
-        private string TemplateSavePath(Room room)
+        private string TemplateSavePath(RoomBehavior room)
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
             return Path.Combine(SavePath, path);

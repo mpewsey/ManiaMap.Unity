@@ -5,7 +5,7 @@ using System.IO;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
 {
-    public class TestLayoutMap
+    public class TestLayoutMapBehavior
     {
         [SetUp]
         public void SetUp()
@@ -26,7 +26,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
+            var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
             layoutMap.CreateLayers(layout, null);
             Assert.Greater(layoutMap.LayersContainer.childCount, 0);
         }
@@ -49,7 +49,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMap>(Assets.LayoutMapPath);
+            var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");
             layoutMap.SaveLayerImages(imagePath, layout, null);
         }

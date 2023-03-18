@@ -27,11 +27,11 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<CollectableEntry> _collectables = new List<CollectableEntry>();
+        private List<CollectableGroupEntry> _collectables = new List<CollectableGroupEntry>();
         /// <summary>
         /// A list of collectables.
         /// </summary>
-        public List<CollectableEntry> Collectables { get => _collectables; set => _collectables = value; }
+        public List<CollectableGroupEntry> Collectables { get => _collectables; set => _collectables = value; }
 
         public IEnumerable<int> GetCollectableIds()
         {

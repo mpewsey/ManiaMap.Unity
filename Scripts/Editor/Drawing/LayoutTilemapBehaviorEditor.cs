@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Editor
     /// <summary>
     /// The LayoutTilemap editor.
     /// </summary>
-    public static class LayoutTilemapEditor
+    public static class LayoutTilemapBehaviorEditor
     {
         /// <summary>
         /// Creates a new layout tilemap Game Object.
@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Editor
         {
             var obj = new GameObject("Layout Tilemap");
             obj.transform.SetParent(Selection.activeTransform);
-            var layoutTilemap = obj.AddComponent<LayoutTilemap>();
+            var layoutTilemap = obj.AddComponent<LayoutTilemapBehavior>();
             layoutTilemap.CreateGrid();
         }
     }

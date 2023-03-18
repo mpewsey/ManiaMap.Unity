@@ -70,6 +70,17 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
+        /// If the ID is less than or equal to zero, returns a random positive integer. Otherwise, returns the ID.
+        /// </summary>
+        /// <param name="id">The original ID.</param>
+        public static int AutoAssignId(int id)
+        {
+            if (id <= 0)
+                return Random.Range(1, int.MaxValue);
+            return id;
+        }
+
+        /// <summary>
         /// Sets the current layout and layout state to the manager.
         /// </summary>
         /// <param name="layout">The layout.</param>
@@ -124,12 +135,12 @@ namespace MPewsey.ManiaMap.Unity
         /// If the ID does not exist, returns null.
         /// </summary>
         /// <param name="id">The room ID.</param>
-        public ManiaMap.Room GetRoom(Uid id)
+        public Room GetRoom(Uid id)
         {
             if (Layout == null)
                 return null;
 
-            Layout.Rooms.TryGetValue(id, out ManiaMap.Room room);
+            Layout.Rooms.TryGetValue(id, out Room room);
             return room;
         }
 

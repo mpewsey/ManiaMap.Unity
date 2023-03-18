@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// <summary>
     /// A component for creating maps of Layout layers.
     /// </summary>
-    public class LayoutMap : MonoBehaviour
+    public class LayoutMapBehavior : MonoBehaviour
     {
         [SerializeField]
         private Transform _layersContainer;
@@ -243,7 +243,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="room">The room.</param>
         /// <param name="position">The local position of the door.</param>
         /// <param name="direction">The direction of the door.</param>
-        private bool DoorExists(ManiaMap.Room room, Vector2DInt position, DoorDirection direction)
+        private bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
         {
             if (RoomDoors.TryGetValue(room.Id, out var doors))
             {
@@ -334,7 +334,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="texture">The texture.</param>
         /// <param name="cell">The cell.</param>
         /// <param name="point">The tile position within the texture.</param>
-        private void DrawFeatureTiles(Texture2D texture, ManiaMap.Cell cell, Vector2Int point)
+        private void DrawFeatureTiles(Texture2D texture, Cell cell, Vector2Int point)
         {
             foreach (var tileName in cell.Features)
             {
@@ -352,7 +352,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="neighbor">The neighbor cell in the door direction. The neighbor can be null.</param>
         /// <param name="position">The local coordinate.</param>
         /// <param name="direction">The door direction.</param>
-        private Texture2D GetTile(ManiaMap.Room room, ManiaMap.Cell cell, ManiaMap.Cell neighbor, Vector2DInt position, DoorDirection direction)
+        private Texture2D GetTile(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTiles.GetTile(MapTileType.GetDoorTileType(direction));

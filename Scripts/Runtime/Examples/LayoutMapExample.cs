@@ -24,11 +24,11 @@ namespace MPewsey.ManiaMap.Unity.Examples
         public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
 
         [SerializeField]
-        private LayoutMap _layoutMap;
+        private LayoutMapBehavior _layoutMap;
         /// <summary>
         /// The layout map.
         /// </summary>
-        public LayoutMap LayoutMap { get => _layoutMap; set => _layoutMap = value; }
+        public LayoutMapBehavior LayoutMap { get => _layoutMap; set => _layoutMap = value; }
 
         private void Start()
         {

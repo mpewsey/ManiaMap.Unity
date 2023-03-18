@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// An object representing a collectable with a unique ID.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Collectable")]
-    public class Collectable : ScriptableObject
+    public class CollectableObject : ScriptableObject
     {
         [SerializeField]
         private int _id;
@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMap.Unity
 
         protected virtual void OnValidate()
         {
-            Id = AutoId.AutoAssignId(Id);
+            Id = ManiaMapManager.AutoAssignId(Id);
         }
     }
 }
