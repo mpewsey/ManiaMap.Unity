@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -8,12 +7,6 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class CollectableSpot : CellChild
     {
-        /// <summary>
-        /// An event that passes a CollectableSpot argument.
-        /// </summary>
-        [System.Serializable]
-        public class CollectableSpotEvent : UnityEvent<CollectableSpot> { }
-
         [SerializeField]
         private int _id;
         /// <summary>

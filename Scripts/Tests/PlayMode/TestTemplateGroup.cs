@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Tests
@@ -24,10 +23,10 @@ namespace MPewsey.ManiaMap.Unity.Tests
             {
                 var room = ScriptableObject.CreateInstance<RoomTemplateObject>();
                 room.Initialize(template);
-                templateGroup.Entries.Add(new TemplateGroup.Entry(room));
+                templateGroup.Entries.Add(new TemplateGroupEntry(room));
             }
 
-            var copies = templateGroup.GetEntries().ToList();
+            var copies = templateGroup.CreateData();
 
             for (int i = 0; i < templates.Count; i++)
             {

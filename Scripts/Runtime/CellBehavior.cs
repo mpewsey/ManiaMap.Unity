@@ -41,15 +41,25 @@ namespace MPewsey.ManiaMap.Unity
 
         private void OnDrawGizmos()
         {
-            // Draw fill color.
+            DrawFillColorGizmo();
+            DrawOutlineGizmo();
+            DrawXGizmo();
+        }
+
+        private void DrawFillColorGizmo()
+        {
             Gizmos.color = IsEmpty ? new Color(0, 0, 0, 0.25f) : new Color(0.5f, 0.5f, 0.5f, 0.25f);
             Gizmos.DrawCube(transform.position, Room.Swizzle(Room.CellSize));
+        }
 
-            // Draw outline.
+        private void DrawOutlineGizmo()
+        {
             Gizmos.color = Color.grey;
             Gizmos.DrawWireCube(transform.position, Room.Swizzle(Room.CellSize));
+        }
 
-            // If empty, draw an X through the cell.
+        private void DrawXGizmo()
+        {
             if (IsEmpty)
             {
                 var origin = Origin();

@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// <summary>
     /// The TemplateGroup.Entry custom property drawer.
     /// </summary>
-    [CustomPropertyDrawer(typeof(TemplateGroup.Entry))]
+    [CustomPropertyDrawer(typeof(TemplateGroupEntry))]
     public class TemplateGroupEntryDrawer : PropertyDrawer
     {
         /// <summary>

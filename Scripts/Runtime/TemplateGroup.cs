@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -18,23 +17,33 @@ namespace MPewsey.ManiaMap.Unity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private List<Entry> _entries = new List<Entry>();
+        private List<TemplateGroupEntry> _entries = new List<TemplateGroupEntry>();
         /// <summary>
         /// A list of template entries.
         /// </summary>
-        public List<Entry> Entries { get => _entries; set => _entries = value; }
+        public List<TemplateGroupEntry> Entries { get => _entries; set => _entries = value; }
 
         private void OnValidate()
         {
-            Entries.ForEach(x => x.OnValidate());
+            foreach (var entry in Entries)
+            {
+                entry.OnValidate();
+            }
         }
 
         /// <summary>
-        /// Returns an enumerable of generation template group entries.
+        /// Returns a list of generation template group entries.
         /// </summary>
-        public IEnumerable<TemplateGroups.Entry> GetEntries()
+        public List<TemplateGroups.Entry> CreateData()
         {
-            return Entries.Select(x => x.GetEntry());
+            var result = new List<TemplateGroups.Entry>(Entries.Count);
+
+            foreach (var entry in Entries)
+            {
+                result.Add(entry.CreateData());
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -43,85 +52,23 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="template">The room template.</param>
         public void AddTemplate(RoomTemplateObject template)
         {
-            if (template == null)
-                return;
-
-            var index = Entries.FindIndex(x => x.Template == template);
-
-            if (index < 0)
-                Entries.Add(new Entry(template));
+            if (template != null && !ContainsTemplate(template))
+                Entries.Add(new TemplateGroupEntry(template));
         }
 
         /// <summary>
-        /// A TemplateGroup entry.
+        /// Returns true if the template is contained in the group.
         /// </summary>
-        [System.Serializable]
-        public class Entry
+        /// <param name="template">The template.</param>
+        private bool ContainsTemplate(RoomTemplateObject template)
         {
-            [SerializeField]
-            private RoomTemplateObject _template;
-            /// <summary>
-            /// The room template.
-            /// </summary>
-            public RoomTemplateObject Template { get => _template; set => _template = value; }
-
-            [SerializeField]
-            private int _minQuantity;
-            /// <summary>
-            /// The minimum number of times this entry is used in a layout.
-            /// </summary>
-            public int MinQuantity
+            foreach (var entry in Entries)
             {
-                get => _minQuantity;
-                set => _minQuantity = Mathf.Max(value, 0);
+                if (entry.Template == template)
+                    return true;
             }
 
-            [SerializeField]
-            private int _maxQuantity = int.MaxValue;
-            /// <summary>
-            /// The maximum number of times this entry is used in a layout.
-            /// </summary>
-            public int MaxQuantity
-            {
-                get => _maxQuantity;
-                set => _maxQuantity = Mathf.Max(value, 0);
-            }
-
-            public void OnValidate()
-            {
-                MinQuantity = Mathf.Min(MinQuantity, MaxQuantity);
-                MaxQuantity = Mathf.Max(MinQuantity, MaxQuantity);
-            }
-
-            /// <summary>
-            /// Initializes a new entry with no quantity constraints.
-            /// </summary>
-            /// <param name="template">The room template.</param>
-            public Entry(RoomTemplateObject template)
-            {
-                Template = template;
-            }
-
-            /// <summary>
-            /// Initializes a new entry with quantity constraints.
-            /// </summary>
-            /// <param name="template">The room template.</param>
-            /// <param name="minQuantity">The minimum use quantity</param>
-            /// <param name="maxQuantity">The maximum use quantity.</param>
-            public Entry(RoomTemplateObject template, int minQuantity, int maxQuantity)
-            {
-                Template = template;
-                MinQuantity = minQuantity;
-                MaxQuantity = maxQuantity;
-            }
-
-            /// <summary>
-            /// Returns a new generation template group entry.
-            /// </summary>
-            public TemplateGroups.Entry GetEntry()
-            {
-                return new TemplateGroups.Entry(Template.Template, MinQuantity, MaxQuantity);
-            }
+            return false;
         }
     }
 }
