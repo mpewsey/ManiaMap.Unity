@@ -84,11 +84,11 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
             var groups = generator2.GetComponentInChildren<CollectableGroupsInput>();
             Assert.IsNotNull(groups);
             Object.DestroyImmediate(groups);
-            Assert.Throws<MissingInputException>(generator2.Validate);
+            Assert.Throws<MissingInputException>(() => generator2.Validate());
 
             var generator3 = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
             generator3.InputsContainer.AddComponent<CollectableGroupsInput>();
-            Assert.Throws<DuplicateInputException>(generator3.Validate);
+            Assert.Throws<DuplicateInputException>(() => generator3.Validate());
         }
     }
 }

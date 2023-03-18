@@ -22,7 +22,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             foreach (var template in templates)
             {
-                var room = ScriptableObject.CreateInstance<RoomTemplate>();
+                var room = ScriptableObject.CreateInstance<RoomTemplateObject>();
                 room.Initialize(template);
                 templateGroup.Entries.Add(new TemplateGroup.Entry(room));
             }

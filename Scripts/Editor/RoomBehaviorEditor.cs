@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// The Room editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(Room))]
-    public class RoomEditor : UnityEditor.Editor
+    [CustomEditor(typeof(RoomBehavior))]
+    public class RoomBehaviorEditor : UnityEditor.Editor
     {
         /// <summary>
         /// Creates a Game Object with the Room component.
@@ -18,7 +18,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public static void CreateRoomTemplate()
         {
             var obj = new GameObject("Room");
-            var template = obj.AddComponent<Room>();
+            var template = obj.AddComponent<RoomBehavior>();
             template.CreateCells();
             obj.transform.SetParent(Selection.activeTransform);
         }
@@ -34,9 +34,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Returns the target room.
         /// </summary>
-        private Room GetRoom()
+        private RoomBehavior GetRoom()
         {
-            return (Room)serializedObject.targetObject;
+            return (RoomBehavior)serializedObject.targetObject;
         }
 
         /// <summary>

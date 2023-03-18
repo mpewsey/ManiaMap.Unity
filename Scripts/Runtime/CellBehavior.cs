@@ -9,15 +9,15 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A component representing a RoomTemplate cell.
     /// </summary>
-    public class Cell : MonoBehaviour
+    public class CellBehavior : MonoBehaviour
     {
         [SerializeField]
         [HideInInspector]
-        private Room _room;
+        private RoomBehavior _room;
         /// <summary>
         /// The parent room template.
         /// </summary>
-        public Room Room { get => _room; set => _room = value; }
+        public RoomBehavior Room { get => _room; set => _room = value; }
 
         [SerializeField]
         [HideInInspector]
@@ -68,7 +68,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="template">The parent room template.</param>
         /// <param name="index">The index position of the cell in the room template.</param>
-        public void Initialize(Room template, Vector2Int index)
+        public void Initialize(RoomBehavior template, Vector2Int index)
         {
             name = $"<Cell ({index.x}, {index.y})>";
             Room = template;
@@ -97,9 +97,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a list of doors assigned to the cell.
         /// </summary>
-        public List<Door> FindDoors()
+        public List<DoorBehavior> FindDoors()
         {
-            return Room.GetComponentsInChildren<Door>().Where(x => x.Cell == this).ToList();
+            return Room.GetComponentsInChildren<DoorBehavior>().Where(x => x.Cell == this).ToList();
         }
 
         /// <summary>
@@ -178,11 +178,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="transform">The transform.</param>
         /// <exception cref="ArgumentException">Raised if a Room is not a parent of the transform.</exception>
-        public static Cell FindClosestCell(Transform transform)
+        public static CellBehavior FindClosestCell(Transform transform)
         {
-            Cell closest = null;
+            CellBehavior closest = null;
             var minDistance = float.PositiveInfinity;
-            var room = transform.GetComponentInParent<Room>();
+            var room = transform.GetComponentInParent<RoomBehavior>();
 
             if (room == null)
                 throw new ArgumentException($"Parent room not found for transform: {transform}.");

@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// The Door editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(Door))]
-    public class DoorEditor : CellChildEditor
+    [CustomEditor(typeof(DoorBehavior))]
+    public class DoorBehaviorEditor : CellChildEditor
     {
         /// <summary>
         /// Creates a new door Game Object.
@@ -19,7 +19,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var obj = new GameObject("Door");
             obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<Door>();
+            obj.AddComponent<DoorBehavior>();
         }
 
         public override void OnInspectorGUI()

@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A container for storing a serialized room template.
     /// </summary>
-    public class RoomTemplate : ScriptableObject
+    public class RoomTemplateObject : ScriptableObject
     {
         [SerializeField]
         private int _id;

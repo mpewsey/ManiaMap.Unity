@@ -18,10 +18,10 @@ namespace MPewsey.ManiaMap.Unity.Tests
         {
             var db = ScriptableObject.CreateInstance<RoomPrefabDatabase>();
 
-            var room1 = new GameObject("Room1").AddComponent<Room>();
+            var room1 = new GameObject("Room1").AddComponent<RoomBehavior>();
             room1.Id = 1;
 
-            var room2 = new GameObject("Room2").AddComponent<Room>();
+            var room2 = new GameObject("Room2").AddComponent<RoomBehavior>();
             room2.Id = 2;
 
             db.AddEntry(room1.Id, room1);
@@ -39,7 +39,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestInstantiateRoom()
         {
             var seed = new RandomSeed(12345);
-            var prefab = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
+            var prefab = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
             var template = prefab.GetTemplate();
 
             // Create fake layout.

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Tests
 {
-    public class TestRoom
+    public class TestRoomBehavior
     {
         [SetUp]
         public void SetUp()
@@ -14,12 +14,12 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
-        [TestCase(Room.Plane.XY)]
-        [TestCase(Room.Plane.XZ)]
-        public void TestGetCellIndex(Room.Plane plane)
+        [TestCase(RoomBehavior.Plane.XY)]
+        [TestCase(RoomBehavior.Plane.XZ)]
+        public void TestGetCellIndex(RoomBehavior.Plane plane)
         {
             var obj = new GameObject("Room");
-            var room = obj.AddComponent<Room>();
+            var room = obj.AddComponent<RoomBehavior>();
             room.CellPlane = plane;
             room.CellSize = new Vector2(3, 5);
             room.Size = new Vector2Int(8, 10);
@@ -43,7 +43,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestCreateCells()
         {
             var obj = new GameObject("Room");
-            var room = obj.AddComponent<Room>();
+            var room = obj.AddComponent<RoomBehavior>();
             room.CellSize = new Vector2(10, 10);
             room.Size = new Vector2Int(4, 5);
             room.CreateCells();
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestGetTemplate()
         {
-            var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
+            var room = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
             Object.DestroyImmediate(room.gameObject);
             Assert.IsNotNull(template);
@@ -69,7 +69,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestInitialize()
         {
             var seed = new RandomSeed(12345);
-            var room = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
+            var room = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
             var template = room.GetTemplate();
 
             // Create fake layout.
@@ -88,7 +88,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestIntantiateRoom()
         {
             var seed = new RandomSeed(12345);
-            var prefab = Assets.InstantiatePrefab<Room>(Assets.Angle3x4RoomPath);
+            var prefab = Assets.InstantiatePrefab<RoomBehavior>(Assets.Angle3x4RoomPath);
             var template = prefab.GetTemplate();
 
             // Create fake layout.
@@ -98,7 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
 
-            var room = Room.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
+            var room = RoomBehavior.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
             Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }

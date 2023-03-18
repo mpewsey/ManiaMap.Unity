@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Graphs.Tests
 {
-    public class TestLayoutGraph
+    public class TestLayoutGraphObject
     {
         [Test]
         public void TestCreateNode()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.CreateNode();
             CollectionAssert.AreEquivalent(new List<int> { 1 }, graph.GetNodes().Select(x => x.Id).ToList());
             graph.CreateNode();
@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestAddNode()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             var node1 = graph.AddNode(10);
             var node2 = graph.AddNode(10);
             Assert.AreEqual(node1, node2);
@@ -30,7 +30,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestRemoveNode()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddEdge(1, 2);
             CollectionAssert.AreEquivalent(new List<int> { 1, 2 }, graph.GetNodes().Select(x => x.Id).ToList());
             graph.RemoveNode(1);
@@ -40,7 +40,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestAddEdge()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddEdge(1, 2);
             var edge1 = graph.AddEdge(2, 3);
             var edge2 = graph.AddEdge(3, 2);
@@ -53,7 +53,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestRemoveEdge()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddEdge(1, 2);
             Assert.AreEqual(1, graph.GetEdges().Count);
             graph.RemoveEdge(2, 1);
@@ -63,7 +63,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestGetRect()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             var node1 = graph.AddNode(1);
             var node2 = graph.AddNode(2);
             node1.Position = new Vector2(10, 20);
@@ -76,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestPaginate()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddNode(1);
             graph.AddNode(2);
             graph.AddNode(3);
@@ -87,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestGetEdgeIndex()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddEdge(1, 2);
             graph.AddEdge(2, 3);
             graph.AddEdge(7, 8);
@@ -98,7 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestGetNodeIndex()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddNode(1);
             graph.AddNode(2);
             graph.AddNode(3);
@@ -109,7 +109,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestNodeCount()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddNode(1);
             graph.AddNode(2);
             graph.AddNode(3);
@@ -119,7 +119,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Tests
         [Test]
         public void TestEdgeCount()
         {
-            var graph = ScriptableObject.CreateInstance<LayoutGraph>();
+            var graph = ScriptableObject.CreateInstance<LayoutGraphObject>();
             graph.AddEdge(1, 2);
             graph.AddEdge(2, 3);
             graph.AddEdge(3, 4);

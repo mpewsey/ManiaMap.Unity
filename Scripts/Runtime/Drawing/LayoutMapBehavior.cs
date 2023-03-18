@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// <summary>
     /// A component for creating maps of Layout layers.
     /// </summary>
-    public class LayoutMap : MonoBehaviour
+    public class LayoutMapBehavior : MonoBehaviour
     {
         [SerializeField]
         private Transform _layersContainer;

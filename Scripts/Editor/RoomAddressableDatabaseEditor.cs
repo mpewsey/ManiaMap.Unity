@@ -62,7 +62,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
             var path = AssetDatabase.GUIDToAssetPath(guid);
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-            if (!prefab.TryGetComponent(out Room room))
+            if (!prefab.TryGetComponent(out RoomBehavior room))
                 return;
 
             var entry = AddressableAssetSettingsDefaultObject.Settings.FindAssetEntry(guid);

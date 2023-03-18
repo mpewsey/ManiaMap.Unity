@@ -11,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A component for creating a room.
     /// </summary>
-    public class Room : MonoBehaviour
+    public class RoomBehavior : MonoBehaviour
     {
         [SerializeField]
         private int _id;
@@ -128,7 +128,7 @@ namespace MPewsey.ManiaMap.Unity
                 if (!x.IsValid() || !x.IsDone || x.Result == null)
                     throw new InstantiationFailedException("Failed to instantiate room.");
 
-                if (!x.Result.TryGetComponent(out Room room))
+                if (!x.Result.TryGetComponent(out RoomBehavior room))
                     throw new MissingRoomComponentException($"Prefab does not have room component: {x.Result}.");
 
                 room.Initialize(id, layout, layoutState, doorConnections, position);
@@ -144,7 +144,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="prefab">The room prefab.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public static Room InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
+        public static RoomBehavior InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
             RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
             var manager = ManiaMapManager.Current;
@@ -153,7 +153,7 @@ namespace MPewsey.ManiaMap.Unity
             var layoutState = manager.LayoutState;
             var doorConnections = manager.GetDoorConnections(id);
 
-            var room = Instantiate(prefab, parent).GetComponent<Room>();
+            var room = Instantiate(prefab, parent).GetComponent<RoomBehavior>();
             room.Initialize(id, layout, layoutState, doorConnections, position);
             return room;
         }
@@ -219,7 +219,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void AutoAssignDoors()
         {
-            foreach (var door in GetComponentsInChildren<Door>())
+            foreach (var door in GetComponentsInChildren<DoorBehavior>())
             {
                 door.AutoAssign();
             }
@@ -290,11 +290,11 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="row">The row index.</param>
         /// <param name="column">The column index.</param>
         /// <exception cref="IndexOutOfRangeException">Raised if the index is out of range.</exception>
-        public Cell GetCell(int row, int column)
+        public CellBehavior GetCell(int row, int column)
         {
             if (!CellIndexExists(row, column))
                 throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column}).");
-            return CellContainer.GetChild(row).GetChild(column).GetComponent<Cell>();
+            return CellContainer.GetChild(row).GetChild(column).GetComponent<CellBehavior>();
         }
 
         /// <summary>
@@ -370,13 +370,13 @@ namespace MPewsey.ManiaMap.Unity
             {
                 var obj = new GameObject("<New Cell>");
                 obj.transform.SetParent(container);
-                obj.AddComponent<Cell>();
+                obj.AddComponent<CellBehavior>();
             }
 
             for (int j = 0; j < container.childCount; j++)
             {
                 var index = new Vector2Int(row, j);
-                var cell = container.GetChild(j).GetComponent<Cell>();
+                var cell = container.GetChild(j).GetComponent<CellBehavior>();
                 cell.Initialize(this, index);
             }
         }

@@ -8,14 +8,14 @@ namespace MPewsey.ManiaMap.Unity
     /// A structure containing a collectable and a quantity.
     /// </summary>
     [Serializable]
-    public struct CollectableEntry : IEquatable<CollectableEntry>
+    public struct CollectableGroupEntry : IEquatable<CollectableGroupEntry>
     {
         [SerializeField]
-        private Collectable _collectable;
+        private CollectableObject _collectable;
         /// <summary>
         /// The collectable.
         /// </summary>
-        public Collectable Collectable { get => _collectable; set => _collectable = value; }
+        public CollectableObject Collectable { get => _collectable; set => _collectable = value; }
 
         [SerializeField]
         private int _quantity;
@@ -29,7 +29,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         /// <param name="collectable">The collectable.</param>
         /// <param name="quantity">The quantity.</param>
-        public CollectableEntry(Collectable collectable, int quantity)
+        public CollectableGroupEntry(CollectableObject collectable, int quantity)
         {
             _collectable = collectable;
             _quantity = quantity;
@@ -37,12 +37,12 @@ namespace MPewsey.ManiaMap.Unity
 
         public override bool Equals(object obj)
         {
-            return obj is CollectableEntry entry && Equals(entry);
+            return obj is CollectableGroupEntry entry && Equals(entry);
         }
 
-        public bool Equals(CollectableEntry other)
+        public bool Equals(CollectableGroupEntry other)
         {
-            return EqualityComparer<Collectable>.Default.Equals(Collectable, other.Collectable) &&
+            return EqualityComparer<CollectableObject>.Default.Equals(Collectable, other.Collectable) &&
                    Quantity == other.Quantity;
         }
 
@@ -51,12 +51,12 @@ namespace MPewsey.ManiaMap.Unity
             return HashCode.Combine(Collectable, Quantity);
         }
 
-        public static bool operator ==(CollectableEntry left, CollectableEntry right)
+        public static bool operator ==(CollectableGroupEntry left, CollectableGroupEntry right)
         {
             return left.Equals(right);
         }
 
-        public static bool operator !=(CollectableEntry left, CollectableEntry right)
+        public static bool operator !=(CollectableGroupEntry left, CollectableGroupEntry right)
         {
             return !(left == right);
         }

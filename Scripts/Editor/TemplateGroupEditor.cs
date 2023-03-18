@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
             foreach (var obj in DragAndDrop.objectReferences)
             {
-                group.AddTemplate(obj as RoomTemplate);
+                group.AddTemplate(obj as RoomTemplateObject);
             }
 
             if (DragAndDrop.objectReferences.Length > 0)

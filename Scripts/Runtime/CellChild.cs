@@ -17,11 +17,11 @@ namespace MPewsey.ManiaMap.Unity
         public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
 
         [SerializeField]
-        private Cell _cell;
+        private CellBehavior _cell;
         /// <summary>
         /// The parent cell.
         /// </summary>
-        public Cell Cell { get => _cell; set => _cell = value; }
+        public CellBehavior Cell { get => _cell; set => _cell = value; }
 
         /// <summary>
         /// The room ID.
@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The parent room.
         /// </summary>
-        public Room Room => Cell.Room;
+        public RoomBehavior Room => Cell.Room;
 
         /// <summary>
         /// The layout.
@@ -72,7 +72,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void AssignClosestCell()
         {
-            Cell = Cell.FindClosestCell(transform);
+            Cell = CellBehavior.FindClosestCell(transform);
         }
     }
 }

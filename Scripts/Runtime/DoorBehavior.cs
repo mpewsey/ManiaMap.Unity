@@ -9,13 +9,13 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// A component representing a door.
     /// </summary>
-    public class Door : CellChild
+    public class DoorBehavior : CellChild
     {
         /// <summary>
         /// An event that passes a Door argument.
         /// </summary>
         [System.Serializable]
-        public class DoorEvent : UnityEvent<Door> { }
+        public class UnityDoorEvent : UnityEvent<DoorBehavior> { }
 
         [SerializeField]
         private bool _autoAssignDirection = true;
@@ -47,11 +47,11 @@ namespace MPewsey.ManiaMap.Unity
         public int Code { get => _code; set => _code = value; }
 
         [SerializeField]
-        private DoorEvent _onInitialize = new DoorEvent();
+        private UnityDoorEvent _onInitialize = new UnityDoorEvent();
         /// <summary>
         /// The event invoked after the door is initialized. This occurs on start.
         /// </summary>
-        public DoorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
+        public UnityDoorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// True if the door exists in the layout.

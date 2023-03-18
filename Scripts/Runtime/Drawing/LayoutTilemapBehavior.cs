@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// A component for creating tilemaps of layout layers.
     /// </summary>
     [RequireComponent(typeof(MapTilePool))]
-    public class LayoutTilemap : MonoBehaviour
+    public class LayoutTilemapBehavior : MonoBehaviour
     {
         [SerializeField]
         private Grid _grid;

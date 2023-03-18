@@ -11,11 +11,11 @@ namespace MPewsey.ManiaMap.Unity.Generators
     public class LayoutGraphsInput : GenerationInput
     {
         [SerializeField]
-        private List<LayoutGraph> _layoutGraphs = new List<LayoutGraph>();
+        private List<LayoutGraphObject> _layoutGraphs = new List<LayoutGraphObject>();
         /// <summary>
         /// A list of layout graphs.
         /// </summary>
-        public List<LayoutGraph> LayoutGraphs { get => _layoutGraphs; set => _layoutGraphs = value; }
+        public List<LayoutGraphObject> LayoutGraphs { get => _layoutGraphs; set => _layoutGraphs = value; }
 
         /// <inheritdoc/>
         public override void AddInputs(Dictionary<string, object> input)

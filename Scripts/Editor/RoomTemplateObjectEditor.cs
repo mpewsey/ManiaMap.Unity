@@ -6,8 +6,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// <summary>
     /// The RoomTemplate editor.
     /// </summary>
-    [CustomEditor(typeof(RoomTemplate))]
-    public class RoomTemplateEditor : UnityEditor.Editor
+    [CustomEditor(typeof(RoomTemplateObject))]
+    public class RoomTemplateObjectEditor : UnityEditor.Editor
     {
         /// <summary>
         /// If the assigned prefab GUID is valid, opens the prefab.
@@ -16,7 +16,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         public static bool OnOpenAsset(int instanceId, int line)
         {
             var path = AssetDatabase.GetAssetPath(instanceId);
-            var template = AssetDatabase.LoadAssetAtPath<RoomTemplate>(path);
+            var template = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
 
             if (template == null)
                 return false;
@@ -40,9 +40,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Returns the target room template.
         /// </summary>
         /// <returns></returns>
-        private RoomTemplate GetRoomTemplate()
+        private RoomTemplateObject GetRoomTemplate()
         {
-            return (RoomTemplate)serializedObject.targetObject;
+            return (RoomTemplateObject)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// Opens the prefab for the specified room template.
         /// </summary>
         /// <param name="template">The room template.</param>
-        private static void OpenPrefab(RoomTemplate template)
+        private static void OpenPrefab(RoomTemplateObject template)
         {
             var assetPath = AssetDatabase.GUIDToAssetPath(template.PrefabGuid);
             var obj = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
 {
-    public class TestLayoutTilemap
+    public class TestLayoutTilemapBehavior
     {
         [SetUp]
         public void SetUp()
@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
-            var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemap>(Assets.LayoutTilemapPath);
+            var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemapBehavior>(Assets.LayoutTilemapPath);
             layoutTilemap.CreateLayers(layout, null);
             Assert.Greater(layoutTilemap.Grid.transform.childCount, 0);
         }
