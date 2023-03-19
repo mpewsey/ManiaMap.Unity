@@ -1,5 +1,6 @@
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -17,10 +18,8 @@ namespace MPewsey.ManiaMap.Unity
         {
             get
             {
-                if (_current != null)
-                    return _current;
-
-                _current = new GameObject("Mania Map Manager").AddComponent<ManiaMapManager>();
+                if (_current == null)
+                    _current = new GameObject("Mania Map Manager").AddComponent<ManiaMapManager>();
                 return _current;
             }
             private set => _current = value;
@@ -177,7 +176,7 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (RoomClusters.TryGetValue(id, out HashSet<Uid> cluster))
                 return cluster;
-            return System.Array.Empty<Uid>();
+            return Enumerable.Empty<Uid>();
         }
     }
 }
