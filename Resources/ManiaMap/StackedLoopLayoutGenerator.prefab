@@ -98,8 +98,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7759761333052284917}
-  - component: {fileID: 54050558749315489}
-  - component: {fileID: 2695204311196202088}
   - component: {fileID: 6808647731486427652}
   - component: {fileID: 6792529236406371550}
   m_Layer: 0
@@ -124,32 +122,6 @@ Transform:
   m_Father: {fileID: 6807432722397563541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &54050558749315489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8698191238217901945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4653d953a5d007748a8f96f4d29ca48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _seed: -1
---- !u!114 &2695204311196202088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8698191238217901945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: becc46d5dc7ce304e9610a59cd5bfaea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: 589364590
 --- !u!114 &6808647731486427652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputsContainer: {fileID: 8698191238217901945}
   _stepsContainer: {fileID: 1285619896668626152}
+  _manualInputNames:
+  - LayoutId
+  - RandomSeed

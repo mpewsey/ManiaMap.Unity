@@ -1,6 +1,8 @@
+using MPewsey.Common.Random;
 using MPewsey.ManiaMap.Unity.Generators;
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MPewsey.ManiaMap.Unity.Drawing.Tests
@@ -20,9 +22,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [TestCase(Assets.StackedLoopLayoutPath)]
         public void TestCreateLayers(string path)
         {
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
+
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            pipeline.SetSeed(12345);
-            var results = pipeline.Generate();
+            var results = pipeline.Generate(inputs);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
@@ -43,9 +50,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
         [TestCase(Assets.StackedLoopLayoutPath, "Tests/StackedLoopLayout.jpg")]
         public void TestSaveLayoutImages(string path, string imagePath)
         {
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
+
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            pipeline.SetSeed(12345);
-            var results = pipeline.Generate();
+            var results = pipeline.Generate(inputs);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);

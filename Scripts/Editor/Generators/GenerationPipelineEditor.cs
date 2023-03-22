@@ -24,9 +24,12 @@ namespace MPewsey.ManiaMap.Unity.Generators.Editor
             var inputs = new GameObject("<Inputs>");
             inputs.transform.SetParent(obj.transform);
             pipeline.InputsContainer = inputs;
+
+            var layoutId = inputs.AddComponent<GenerationIntInput>();
+            layoutId.Name = "LayoutId";
+            layoutId.Value = Random.Range(1, int.MaxValue);
+
             inputs.AddComponent<RandomSeedInput>();
-            var layoutId = inputs.AddComponent<LayoutIdInput>();
-            layoutId.Id = Random.Range(1, int.MaxValue);
             inputs.AddComponent<LayoutGraphsInput>();
             inputs.AddComponent<CollectableGroupsInput>();
 
@@ -61,7 +64,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Editor
         /// </summary>
         private void DrawPipelineErrorBox()
         {
-            var names = new HashSet<string>();
+            var names = new HashSet<string>(GetGenerationPipeline().ManualInputNames);
             DrawGenerationInputErrorBox(names);
             DrawGenerationStepErrorBox(names);
         }
