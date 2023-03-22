@@ -229,6 +229,8 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
                 AddMenuItem(menu, "Delete Selected _DEL", SelectedNodes.Count + SelectedEdges.Count > 0, DeleteSelected);
                 AddMenuItem(menu, "Delete Selected Nodes", SelectedNodes.Count > 0, DeleteNodes);
                 AddMenuItem(menu, "Delete Selected Edges", SelectedEdges.Count > 0, DeleteEdges);
+                menu.AddSeparator("");
+                AddMenuItem(menu, "Paginate Graph", graph.NodeCount > 0, PaginateGraph);
                 menu.DropDown(new Rect(0, 5, 0, 16));
             }
         }
@@ -429,7 +431,6 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         {
             GUILayout.BeginArea(new Rect(0, Settings.MenuHeight, position.width - GetInspectorWidth(), position.height - Settings.MenuHeight));
             PlotScrollPosition = GUILayout.BeginScrollView(PlotScrollPosition);
-            // PaginatePlot();
             SetNodePositions();
             DrawEdgeLines();
             DrawEdges();
@@ -539,18 +540,15 @@ namespace MPewsey.ManiaMap.Unity.Graphs.Editor
         }
 
         /// <summary>
-        /// If not in moving mode, adjusts the node positions to prevent overlapping elements.
+        /// Adjusts the node positions to prevent overlapping elements.
         /// </summary>
-        private void PaginatePlot()
+        private void PaginateGraph()
         {
-            if (ActiveTool != Tool.Move)
-            {
-                var graph = GetLayoutGraph();
-                var spacing = Settings.Spacing + Settings.NodeSize;
+            var graph = GetLayoutGraph();
+            var spacing = Settings.Spacing + Settings.NodeSize;
 
-                if (graph.Paginate(spacing))
-                    EditorUtility.SetDirty(graph);
-            }
+            if (graph.Paginate(spacing))
+                EditorUtility.SetDirty(graph);
         }
 
         /// <summary>

@@ -44,11 +44,12 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// </summary>
         public EdgeDirection Direction { get => _direction; set => _direction = value; }
 
-        private int _doorCode;
+        [SerializeField]
+        private DoorCode _doorCode;
         /// <summary>
         /// The door code.
         /// </summary>
-        public int DoorCode { get => _doorCode; set => _doorCode = value; }
+        public DoorCode DoorCode { get => _doorCode; set => _doorCode = value; }
 
         [SerializeField]
         private int _z;

@@ -433,7 +433,7 @@
             </summary>
             <param name="z">The z offset between the templates.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -441,7 +441,7 @@
             <param name="code">The door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector2DInt,System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector2DInt,System.Int32,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -450,7 +450,7 @@
             <param name="code">the door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector3DInt,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -537,10 +537,10 @@
         </member>
         <member name="P:MPewsey.ManiaMap.Door.Code">
             <summary>
-            The door code required for matching two doors.
+            The door code for matching two doors.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.DoorType,System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.DoorType,MPewsey.ManiaMap.DoorCode)">
             <summary>
             Initializes a new door.
             </summary>
@@ -556,7 +556,7 @@
             Returns a copy of the door.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Door.SetCode(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Door.SetCode(MPewsey.ManiaMap.DoorCode)">
             <summary>
             Sets the door code and returns the door.
             </summary>
@@ -591,6 +591,107 @@
             <param name="from">The from door type.</param>
             <param name="to">Tne to door type.</param>
             <exception cref="T:System.ArgumentException">Raised is the door types are not compatible.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.ShowDoor(MPewsey.ManiaMap.DoorDrawMode,MPewsey.ManiaMap.DoorDirection)">
+            <summary>
+            Returns true if the door direction should be drawn for the specified draw mode.
+            </summary>
+            <param name="drawMode">The door draw mode.</param>
+            <param name="direction">The door direction.</param>
+            <exception cref="T:System.ArgumentException">Raised if the draw mode is not handled.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.DoorCodesAlign(MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.DoorCode)">
+            <summary>
+            Returns true if the door codes are equal or intersect.
+            </summary>
+            <param name="code1">The first door code.</param>
+            <param name="code2">The second door code.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorCode">
+            <summary>
+            A set of door code flags.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.None">
+            No door code. This can match only with other no door codes.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.A">
+            The A flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.B">
+            The B flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.C">
+            The C flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.D">
+            The D flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.E">
+            The E flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.F">
+            The F flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.G">
+            The G flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.H">
+            The H flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.I">
+            The I flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.J">
+            The J flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.K">
+            The K flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.L">
+            The L flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.M">
+            The M flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.N">
+            The N flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.O">
+            The O flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.P">
+            The P flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Q">
+            The Q flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.R">
+            The R flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.S">
+            The S flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.T">
+            The T flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.U">
+            The U flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.V">
+            The V flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.W">
+            The W flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.X">
+            The X flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Y">
+            The Y flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Z">
+            The Z flag.
         </member>
         <member name="T:MPewsey.ManiaMap.DoorConnection">
             <summary>
@@ -670,6 +771,23 @@
         </member>
         <member name="F:MPewsey.ManiaMap.DoorDirection.Bottom">
             %Door points down.
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorDrawMode">
+            <summary>
+            An option controlling which doors are drawn on maps.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.None">
+            No doors are displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.AllDoors">
+            All doors are displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.IntralayerDoors">
+            All doors within a layer are displayed. Any doors between layers are not displayed.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorDrawMode.InterlayerDoors">
+            All doors between layers are displayed. Any doors within a layer are not displayed.
         </member>
         <member name="T:MPewsey.ManiaMap.DoorPair">
             <summary>
@@ -1122,7 +1240,7 @@
             </summary>
             <param name="source">The room source.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Attempts to add a new room for the to node of the edge. Returns true if successful.
             </summary>
@@ -1131,7 +1249,7 @@
             <param name="code">The door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Attemps to insert a new room between two rooms. Returns true if successful.
             </summary>
@@ -1622,7 +1740,25 @@
             Returns true if the edge is valid.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToSymbolString" -->
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToSymbolString">
+            <summary>
+            Returns the symbol string for the edge.
+            
+            For instance, an edge with a forward flexible edge direction from node 1 to 2
+            is symbolized as (1 => 2).
+            
+            Edge directions are drawn as:
+            
+            * "&lt;=&gt;" : Two way
+            * "=&gt;" and "&lt;=" : One way flexible in the arrow direction.
+            * "-&gt;" and "&lt;-" : One way fixed in the arrow direction.
+            
+            Basically, the "=", with its two lines, signals that the edge can go both directions
+            given the conditions are met, whereas the "-", with its one line, signals that
+            the edge only ever goes in one direction.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">Raised if the edge direction is not handled.</exception>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetName(System.String)">
             <summary>
             Sets the name of the edge and returns the edge.
@@ -1659,7 +1795,7 @@
             </summary>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDoorCode(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDoorCode(MPewsey.ManiaMap.DoorCode)">
             <summary>
             Sets the door code of the edge and returns the edge.
             </summary>
@@ -2133,13 +2269,13 @@
             </summary>
             <param name="groups">The template groups.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Layout.GetTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.Layout.GetTemplateCount(MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Returns the count for the specified template group entry.
             </summary>
             <param name="entry">The template group entry.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Layout.IncreaseTemplateCount(MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.Layout.IncreaseTemplateCount(MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Increases the count by 1 for the template group entry.
             </summary>
@@ -2973,7 +3109,7 @@
             <param name="group">The group name.</param>
             <param name="template">The room template.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.TemplateGroups.Entry)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,MPewsey.ManiaMap.TemplateGroupsEntry)">
             <summary>
             Adds a template group entry to the group.
             </summary>
@@ -2987,7 +3123,7 @@
             <param name="group">The group name.</param>
             <param name="templates">An enumerable of templates.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.TemplateGroups.Entry})">
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.Add(System.String,System.Collections.Generic.IEnumerable{MPewsey.ManiaMap.TemplateGroupsEntry})">
             <summary>
             Adds a range of template group entries to the group.
             </summary>
@@ -3013,7 +3149,7 @@
         </member>
         <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllEntries">
             <summary>
-            Returns an enumerable of all template group entries.
+            Returns a list of all template group entries.
             </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.TemplateGroups.GetAllTemplates">
@@ -3021,33 +3157,33 @@
             Returns an enumerable of all templates in all groups.
             </summary>
         </member>
-        <member name="T:MPewsey.ManiaMap.TemplateGroups.Entry">
+        <member name="T:MPewsey.ManiaMap.TemplateGroupsEntry">
             <summary>
             A template group entry, consisting of a RoomTemplate and usage constaints.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.Template">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.Template">
             <summary>
             The room template.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MinQuantity">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.MinQuantity">
             <summary>
             The minimum number of uses for the entry.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.TemplateGroups.Entry.MaxQuantity">
+        <member name="P:MPewsey.ManiaMap.TemplateGroupsEntry.MaxQuantity">
             <summary>
             The maximum number of uses for the entry.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.#ctor(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
             Intializes a new entry with no quantity contraints.
             </summary>
             <param name="template">The room template.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.#ctor(MPewsey.ManiaMap.RoomTemplate,System.Int32,System.Int32)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.#ctor(MPewsey.ManiaMap.RoomTemplate,System.Int32,System.Int32)">
             <summary>
             Initializes a new entry with quantity constraints.
             </summary>
@@ -3055,13 +3191,13 @@
             <param name="minQuantity">The minimum number of uses for the entry.</param>
             <param name="maxQuantity">The maximum number of uses for the entry.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.QuantitySatisfied(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.QuantitySatisfied(System.Int32)">
             <summary>
             Returns true if the constraint quantity is satisfied.
             </summary>
             <param name="count">The entry count.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.TemplateGroups.Entry.ConsolidateTemplate(MPewsey.ManiaMap.RoomTemplate)">
+        <member name="M:MPewsey.ManiaMap.TemplateGroupsEntry.ConsolidateTemplate(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
             If the specified room template has the same values as the current template,
             sets it as the current template.

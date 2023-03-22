@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: _showDoors
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5307314653226013473, guid: 13e3136c11ca1514aaa8a5c4ffc5f862, type: 3}
+      propertyPath: _doorDrawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8121468524637875155, guid: 13e3136c11ca1514aaa8a5c4ffc5f862, type: 3}
       propertyPath: m_Name
       value: BigLayoutMapSample

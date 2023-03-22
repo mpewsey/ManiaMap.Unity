@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: _showDoors
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6079686167743617705, guid: f9e50f413662cb842883ec466ea22529, type: 3}
+      propertyPath: _doorDrawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9088594016579796244, guid: f9e50f413662cb842883ec466ea22529, type: 3}
       propertyPath: m_RootOrder
       value: 1

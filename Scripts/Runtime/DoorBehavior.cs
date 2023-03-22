@@ -1,6 +1,5 @@
 using MPewsey.Common.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -9,12 +8,6 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class DoorBehavior : CellChild
     {
-        /// <summary>
-        /// An event that passes a Door argument.
-        /// </summary>
-        [System.Serializable]
-        public class UnityDoorEvent : UnityEvent<DoorBehavior> { }
-
         [SerializeField]
         private bool _autoAssignDirection = true;
         /// <summary>
@@ -38,18 +31,18 @@ namespace MPewsey.ManiaMap.Unity
         public DoorType Type { get => _type; set => _type = value; }
 
         [SerializeField]
-        private int _code;
+        private DoorCode _code;
         /// <summary>
         /// The door code.
         /// </summary>
-        public int Code { get => _code; set => _code = value; }
+        public DoorCode Code { get => _code; set => _code = value; }
 
         [SerializeField]
-        private UnityDoorEvent _onInitialize = new UnityDoorEvent();
+        private DoorBehaviorEvent _onInitialize = new DoorBehaviorEvent();
         /// <summary>
         /// The event invoked after the door is initialized. This occurs on start.
         /// </summary>
-        public UnityDoorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
+        public DoorBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// The associated door connection in the layout.
