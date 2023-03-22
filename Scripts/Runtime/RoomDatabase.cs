@@ -33,6 +33,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         protected bool IsInitialized { get; set; }
 
+        protected void OnDisable()
+        {
+            IsInitialized = false;
+        }
+
         /// <summary>
         /// Initializes the database by creating the prefab dictionary.
         /// </summary>

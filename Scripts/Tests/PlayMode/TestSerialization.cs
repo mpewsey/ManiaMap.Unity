@@ -1,7 +1,9 @@
+using MPewsey.Common.Random;
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMap.Unity.Generators;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MPewsey.ManiaMap.Unity.Tests
@@ -18,8 +20,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestSaveAndLoadLayout()
         {
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
+
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Generate();
+            var results = pipeline.Generate(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var path = "Tests/Layout.json";
@@ -31,8 +39,14 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestSaveAndLoadLayoutState()
         {
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
+
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Generate();
+            var results = pipeline.Generate(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var state = new LayoutState(layout);

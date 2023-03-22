@@ -1,5 +1,7 @@
+using MPewsey.Common.Random;
 using MPewsey.ManiaMap.Unity.Drawing;
 using MPewsey.ManiaMap.Unity.Generators;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Examples
@@ -57,8 +59,13 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// <param name="seed">The random seed.</param>
         public void CreateLayers(int seed)
         {
-            Pipeline.SetSeed(seed);
-            var results = Pipeline.Generate();
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(seed) },
+            };
+
+            var results = Pipeline.Generate(inputs);
 
             if (!results.Success)
             {

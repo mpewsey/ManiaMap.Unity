@@ -1,7 +1,9 @@
+using MPewsey.Common.Random;
 using MPewsey.ManiaMap.Unity.Exceptions;
 using MPewsey.ManiaMap.Unity.Tests;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -22,8 +24,14 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
         [TestCase(Assets.StackedLoopLayoutPath)]
         public void TestGenerate(string path)
         {
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
+
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate();
+            var results = pipeline.Generate(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
         }
@@ -31,23 +39,14 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
         [UnityTest]
         public IEnumerator TestBigLayoutGeneratorAsync()
         {
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var task = pipeline.GenerateAsync();
-            yield return new WaitUntil(() => task.IsCompleted);
-            Assert.IsTrue(task.IsCompleted);
-            Assert.IsTrue(task.IsCompletedSuccessfully);
-            var results = task.Result;
-            Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
-            Assert.IsNotNull(layout);
-        }
+            var inputs = new Dictionary<string, object>()
+            {
+                { "LayoutId", 1 },
+                { "RandomSeed", new RandomSeed(12345) },
+            };
 
-        [UnityTest]
-        public IEnumerator TestSeededBigLayoutGeneratorAsync()
-        {
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            pipeline.SetSeed(12345);
-            var task = pipeline.GenerateAsync();
+            var task = pipeline.GenerateAsync(inputs);
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);

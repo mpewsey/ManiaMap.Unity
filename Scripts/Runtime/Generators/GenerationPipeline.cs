@@ -25,25 +25,12 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// </summary>
         public GameObject StepsContainer { get => _stepsContainer; set => _stepsContainer = value; }
 
+        [SerializeField]
+        private string[] _manualInputNames = System.Array.Empty<string>();
         /// <summary>
-        /// Sets the value of the random seed input.
+        /// An array of manual input names passed to the generate function.
         /// </summary>
-        /// <param name="seed">The random seed.</param>
-        public void SetSeed(int seed)
-        {
-            var input = InputsContainer.GetComponent<RandomSeedInput>();
-            input.Seed = seed;
-        }
-
-        /// <summary>
-        /// Sets the value of the layout ID input.
-        /// </summary>
-        /// <param name="id">The layout ID.</param>
-        public void SetLayoutId(int id)
-        {
-            var input = InputsContainer.GetComponent<LayoutIdInput>();
-            input.Id = id;
-        }
+        public string[] ManualInputNames { get => _manualInputNames; set => _manualInputNames = value; }
 
         /// <summary>
         /// Generates a set of results for the pipeline.
@@ -117,10 +104,20 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Validates the pipeline and throws any applicable exceptions.
         /// </summary>
-        public void Validate(Dictionary<string, object> inputs = null)
+        /// <param name="inputs">A dictionary of manual inputs.</param>
+        public void Validate(Dictionary<string, object> inputs)
         {
-            inputs ??= new Dictionary<string, object>();
             var names = new HashSet<string>(inputs.Keys);
+            ValidateInputs(names);
+            ValidateSteps(names);
+        }
+
+        /// <summary>
+        /// Validates the pipeline and throws any applicable exceptions.
+        /// </summary>
+        public void Validate()
+        {
+            var names = new HashSet<string>(ManualInputNames);
             ValidateInputs(names);
             ValidateSteps(names);
         }
@@ -171,9 +168,38 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Returns true if the pipeline is valid.
         /// </summary>
+        /// <param name="inputs">A dictionary of manual inputs.</param>
+        public bool IsValid(Dictionary<string, object> inputs)
+        {
+            var names = new HashSet<string>(inputs.Keys);
+
+            try
+            {
+                ValidateInputs(names);
+            }
+            catch (DuplicateInputException)
+            {
+                return false;
+            }
+
+            try
+            {
+                ValidateSteps(names);
+            }
+            catch (MissingInputException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Returns true if the pipeline is valid.
+        /// </summary>
         public bool IsValid()
         {
-            var names = new HashSet<string>();
+            var names = new HashSet<string>(ManualInputNames);
 
             try
             {
