@@ -31,11 +31,11 @@ namespace MPewsey.ManiaMap.Unity
         public DoorType Type { get => _type; set => _type = value; }
 
         [SerializeField]
-        private int _code;
+        private DoorCode _code;
         /// <summary>
         /// The door code.
         /// </summary>
-        public int Code { get => _code; set => _code = value; }
+        public DoorCode Code { get => _code; set => _code = value; }
 
         [SerializeField]
         private DoorBehaviorEvent _onInitialize = new DoorBehaviorEvent();

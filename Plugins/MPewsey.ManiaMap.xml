@@ -433,7 +433,7 @@
             </summary>
             <param name="z">The z offset between the templates.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -441,7 +441,7 @@
             <param name="code">The door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector2DInt,System.Int32,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector2DInt,System.Int32,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -450,7 +450,7 @@
             <param name="code">the door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector3DInt,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Configuration.Matches(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Returns true if the parameters match the configuration.
             </summary>
@@ -537,10 +537,10 @@
         </member>
         <member name="P:MPewsey.ManiaMap.Door.Code">
             <summary>
-            The door code required for matching two doors.
+            The door code for matching two doors.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.DoorType,System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Door.#ctor(MPewsey.ManiaMap.DoorType,MPewsey.ManiaMap.DoorCode)">
             <summary>
             Initializes a new door.
             </summary>
@@ -556,7 +556,7 @@
             Returns a copy of the door.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Door.SetCode(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Door.SetCode(MPewsey.ManiaMap.DoorCode)">
             <summary>
             Sets the door code and returns the door.
             </summary>
@@ -599,6 +599,99 @@
             <param name="drawMode">The door draw mode.</param>
             <param name="direction">The door direction.</param>
             <exception cref="T:System.ArgumentException">Raised if the draw mode is not handled.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.DoorCodesAlign(MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.DoorCode)">
+            <summary>
+            Returns true if the door codes are equal or intersect.
+            </summary>
+            <param name="code1">The first door code.</param>
+            <param name="code2">The second door code.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.DoorCode">
+            <summary>
+            A set of door code flags.
+            </summary>
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.None">
+            No door code. This can match only with other no door codes.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.A">
+            The A flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.B">
+            The B flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.C">
+            The C flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.D">
+            The D flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.E">
+            The E flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.F">
+            The F flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.G">
+            The G flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.H">
+            The H flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.I">
+            The I flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.J">
+            The J flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.K">
+            The K flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.L">
+            The L flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.M">
+            The M flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.N">
+            The N flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.O">
+            The O flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.P">
+            The P flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Q">
+            The Q flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.R">
+            The R flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.S">
+            The S flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.T">
+            The T flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.U">
+            The U flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.V">
+            The V flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.W">
+            The W flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.X">
+            The X flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Y">
+            The Y flag.
+        </member>
+        <member name="F:MPewsey.ManiaMap.DoorCode.Z">
+            The Z flag.
         </member>
         <member name="T:MPewsey.ManiaMap.DoorConnection">
             <summary>
@@ -1147,7 +1240,7 @@
             </summary>
             <param name="source">The room source.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.AddRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Attempts to add a new room for the to node of the edge. Returns true if successful.
             </summary>
@@ -1156,7 +1249,7 @@
             <param name="code">The door code.</param>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection,MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.EdgeDirection)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.InsertRoom(MPewsey.ManiaMap.IRoomSource,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection,MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.DoorCode,MPewsey.ManiaMap.EdgeDirection)">
             <summary>
             Attemps to insert a new room between two rooms. Returns true if successful.
             </summary>
@@ -1702,7 +1795,7 @@
             </summary>
             <param name="direction">The edge direction.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDoorCode(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.SetDoorCode(MPewsey.ManiaMap.DoorCode)">
             <summary>
             Sets the door code of the edge and returns the edge.
             </summary>
