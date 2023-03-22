@@ -12,7 +12,9 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "CollectableGroupEntry.cs", "_collectable_group_entry_8cs_source.html", null ],
     [ "CollectableObject.cs", "_collectable_object_8cs_source.html", null ],
     [ "CollectableSpot.cs", "_collectable_spot_8cs_source.html", null ],
+    [ "CollectableSpotEvent.cs", "_collectable_spot_event_8cs_source.html", null ],
     [ "DoorBehavior.cs", "_door_behavior_8cs_source.html", null ],
+    [ "DoorBehaviorEvent.cs", "_door_behavior_event_8cs_source.html", null ],
     [ "Feature.cs", "_feature_8cs_source.html", null ],
     [ "ManiaMapManager.cs", "_mania_map_manager_8cs_source.html", null ],
     [ "ManiaMapSettings.cs", "_mania_map_settings_8cs_source.html", null ],
@@ -24,5 +26,6 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "RoomPositionOption.cs", "_room_position_option_8cs_source.html", null ],
     [ "RoomPrefabDatabase.cs", "_room_prefab_database_8cs_source.html", null ],
     [ "RoomTemplateObject.cs", "_room_template_object_8cs_source.html", null ],
-    [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ]
+    [ "TemplateGroup.cs", "_template_group_8cs_source.html", null ],
+    [ "TemplateGroupEntry.cs", "_template_group_entry_8cs_source.html", null ]
 ];

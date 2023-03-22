@@ -12,7 +12,9 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "CollectableGroupEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry" ],
     [ "CollectableObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object" ],
     [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
+    [ "CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_event.html", null ],
     [ "DoorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior" ],
+    [ "DoorBehaviorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html", null ],
     [ "Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature" ],
     [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
     [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings" ],
@@ -23,6 +25,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
     [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
+    [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ],
     [ "Plane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7", [
       [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7a74c53bcd3dcb2bb79993b2fec37d362a", null ],
       [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7a27db3b98d01e664c17a6620b222c6469", null ]

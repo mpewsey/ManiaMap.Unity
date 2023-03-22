@@ -16,6 +16,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior =
     [ "SaveLayerImages", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a953c4f9e52bf36a9fe3656d1399133d1", null ],
     [ "SaveLayerImages", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#abd719965165679234d00c7af4531c6dc", null ],
     [ "BackgroundColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#ac18ed9cec6d5b57c8fa35215585d0113", null ],
+    [ "DoorDrawMode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a0b8960d557d35c4755d6df01fe2fa39c", null ],
     [ "FilterMode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a4093c61662fe083cc5715d9ce965ff48", null ],
     [ "Layers", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#af73067f5f5adff82f9e3002970680fb3", null ],
     [ "LayersContainer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a7ecd869968ed4bc332085cb78668ccf9", null ],
@@ -25,6 +26,5 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior =
     [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a05d2e36a9e9c52ab50e92ee23b9b893a", null ],
     [ "Padding", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a4cdfc9bc3381aeb637a5e09af9b52fbd", null ],
     [ "RoomColor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#af2640411a7789bb5d92ba903028031a8", null ],
-    [ "RoomDoors", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a85b2ec215de1cda8e99ac7316de71095", null ],
-    [ "ShowDoors", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#ad169e5eaf373fa06b406db866099e443", null ]
+    [ "RoomDoors", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a85b2ec215de1cda8e99ac7316de71095", null ]
 ];

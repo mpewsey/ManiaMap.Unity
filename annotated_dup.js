@@ -98,7 +98,9 @@ var annotated_dup =
           [ "CollectableGroupEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry" ],
           [ "CollectableObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object" ],
           [ "CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot" ],
+          [ "CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_event.html", null ],
           [ "DoorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior" ],
+          [ "DoorBehaviorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html", null ],
           [ "Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature" ],
           [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager" ],
           [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings" ],
@@ -108,7 +110,8 @@ var annotated_dup =
           [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
           [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
           [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
-          [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ]
+          [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
+          [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ]
         ] ]
       ] ]
     ] ]

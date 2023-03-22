@@ -48,7 +48,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_grap
     [ "MoveNodes", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a7623529eb57e32f1493f446904329876", null ],
     [ "MultiselectEdge", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a1ac6eace859ef525314c0f714d33d179", null ],
     [ "MultiselectNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a3aa4633ae4f1f5c0f653eda68fa8761e", null ],
-    [ "PaginatePlot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#aaede979caf58b9c179c123041571c770", null ],
+    [ "PaginateGraph", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a5a678683a82e53caebc5cb6168e9d028", null ],
     [ "RepaintIfToolActive", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#abfcf7b536f161843988de8f091433038", null ],
     [ "SaveAsset", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a32aa75ad9420474318bf98d5f987f713", null ],
     [ "SelectAll", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#ac2bb1c2bb7b7337d909daed52c1d6a09", null ],

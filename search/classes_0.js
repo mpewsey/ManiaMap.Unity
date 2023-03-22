@@ -11,6 +11,6 @@ var searchData=
   ['collectableobject_8',['CollectableObject',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html',1,'MPewsey::ManiaMap::Unity']]],
   ['collectablespot_9',['CollectableSpot',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html',1,'MPewsey::ManiaMap::Unity']]],
   ['collectablespoteditor_10',['CollectableSpotEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['collectablespotevent_11',['CollectableSpotEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_1_1_collectable_spot_event.html',1,'MPewsey::ManiaMap::Unity::CollectableSpot']]],
+  ['collectablespotevent_11',['CollectableSpotEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_event.html',1,'MPewsey::ManiaMap::Unity']]],
   ['colorutility_12',['ColorUtility',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html',1,'MPewsey::ManiaMap::Unity::Drawing']]]
 ];

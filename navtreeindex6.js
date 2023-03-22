@@ -1,5 +1,10 @@
 var NAVTREEINDEX6 =
 {
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#aab607e1e49410198c6e43b7b9b36fbe7":[4,0,0,0,0,9,0],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#afa5b679cfb54bf63c1217dcd75405cde":[4,0,0,0,0,9,1],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#afa5b679cfb54bf63c1217dcd75405cde":[3,0,0,0,0,9,1],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html":[3,0,0,0,0,0,2],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html":[4,0,0,0,0,0,2],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a4ebd63e7367d42b17a71a8b185582c2b":[4,0,0,0,0,0,2,1],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a4ebd63e7367d42b17a71a8b185582c2b":[3,0,0,0,0,0,2,1],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a6663f0b048f1c333dad4976daf7bbc98":[3,0,0,0,0,0,2,0],
@@ -26,12 +31,12 @@ var NAVTREEINDEX6 =
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#ae3249b74a2ab86403940b5ec64421aaa":[4,0,0,0,0,0,10,0],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#afe626e26bbe556fe460f551cbeb87a8e":[3,0,0,0,0,0,10,1],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#afe626e26bbe556fe460f551cbeb87a8e":[4,0,0,0,0,0,10,1],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html":[4,0,0,0,0,19],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html":[3,0,0,0,0,19],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#ac07d09da5a8b7fbf43c205e1e26b0a8c":[3,0,0,0,0,19,2],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#ac07d09da5a8b7fbf43c205e1e26b0a8c":[4,0,0,0,0,19,2],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#acf88297047ef016e359c3a6908421edc":[3,0,0,0,0,19,0],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#acf88297047ef016e359c3a6908421edc":[4,0,0,0,0,19,0],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#af603b08dfb29a5070ce8835a5e8584b7":[3,0,0,0,0,19,1],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#af603b08dfb29a5070ce8835a5e8584b7":[4,0,0,0,0,19,1]
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html":[4,0,0,0,0,21],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html":[3,0,0,0,0,21],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#ac07d09da5a8b7fbf43c205e1e26b0a8c":[3,0,0,0,0,21,2],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#ac07d09da5a8b7fbf43c205e1e26b0a8c":[4,0,0,0,0,21,2],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#acf88297047ef016e359c3a6908421edc":[3,0,0,0,0,21,0],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#acf88297047ef016e359c3a6908421edc":[4,0,0,0,0,21,0],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#af603b08dfb29a5070ce8835a5e8584b7":[3,0,0,0,0,21,1],
+"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html#af603b08dfb29a5070ce8835a5e8584b7":[4,0,0,0,0,21,1]
 };

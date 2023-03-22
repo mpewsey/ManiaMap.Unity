@@ -1,6 +1,5 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot =
 [
-    [ "CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_1_1_collectable_spot_event.html", null ],
     [ "Acquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a4f8b42853f457c3d5bd03895afbb39b7", null ],
     [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#a33750d6cbf3d4ce345848ee1e08e4308", null ],
     [ "CanAcquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html#abc4288e2d5fc3827c465b876e5b765a8", null ],
