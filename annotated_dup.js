@@ -76,7 +76,6 @@ var annotated_dup =
             [ "LayoutGraphRandomizerBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_randomizer_behavior" ],
             [ "LayoutGraphSelectorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector_behavior" ],
             [ "LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graphs_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graphs_input" ],
-            [ "LayoutIdInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_id_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_id_input" ],
             [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_random_seed_input" ]
           ] ],
           [ "Graphs", "namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs.html", [

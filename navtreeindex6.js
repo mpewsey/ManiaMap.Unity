@@ -1,12 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#aab607e1e49410198c6e43b7b9b36fbe7":[4,0,0,0,0,9,0],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#afa5b679cfb54bf63c1217dcd75405cde":[4,0,0,0,0,9,1],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html#afa5b679cfb54bf63c1217dcd75405cde":[3,0,0,0,0,9,1],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html":[3,0,0,0,0,0,2],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html":[4,0,0,0,0,0,2],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a4ebd63e7367d42b17a71a8b185582c2b":[4,0,0,0,0,0,2,1],
-"struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a4ebd63e7367d42b17a71a8b185582c2b":[3,0,0,0,0,0,2,1],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a6663f0b048f1c333dad4976daf7bbc98":[3,0,0,0,0,0,2,0],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html#a6663f0b048f1c333dad4976daf7bbc98":[4,0,0,0,0,0,2,0],
 "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key.html":[3,0,0,0,0,0,7],
