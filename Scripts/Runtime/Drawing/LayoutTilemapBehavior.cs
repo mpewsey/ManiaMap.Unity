@@ -20,11 +20,11 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         public Grid Grid { get => _grid; set => _grid = value; }
 
         [SerializeField]
-        private bool _showDoors = true;
+        private DoorDrawMode _doorDrawMode = DoorDrawMode.AllDoors;
         /// <summary>
-        /// If true, shows the doors on the map. Otherwise, only walls are shown.
+        /// An option controlling which doors will be drawn.
         /// </summary>
-        public bool ShowDoors { get => _showDoors; set => _showDoors = value; }
+        public DoorDrawMode DoorDrawMode { get => _doorDrawMode; set => _doorDrawMode = value; }
 
         [SerializeField]
         private Color32 _roomColor = new Color32(75, 75, 75, 255);
@@ -257,7 +257,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="direction">The door direction.</param>
         private long GetTileFlag(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (ShowDoors && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTilePool.GetFeatureFlag(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
