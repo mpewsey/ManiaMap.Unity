@@ -585,13 +585,29 @@
             <summary>
             Returns the cumulative sums of the list.
             </summary>
-            <param name="values">An list of values.</param>
+            <param name="values">A list of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Double},System.Double[]@)">
+            <summary>
+            Adds the cumulative sums of the list to the specified results array.
+            The results array is resized if it is not already the same length of the values list.
+            </summary>
+            <param name="values">A list of values</param>
+            <param name="result">The results array.</param>
         </member>
         <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Single})">
             <summary>
             Returns the cumulative sums of the list.
             </summary>
-            <param name="values">An list of values.</param>
+            <param name="values">A list of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Single},System.Double[]@)">
+            <summary>
+            Adds the cumulative sums of the list to the specified results array.
+            The results array is resized if it is not already the same length of the values list.
+            </summary>
+            <param name="values">A list of values</param>
+            <param name="result">The results array.</param>
         </member>
         <member name="M:MPewsey.Common.Mathematics.Maths.Softmax(System.Collections.Generic.IList{System.Double})">
             <summary>
@@ -950,7 +966,7 @@
             <summary>
             Returns a new shuffled copy of the collection.
             </summary>
-            <param name="list">The collection</param>
+            <param name="collection">The collection</param>
         </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Double})">
             <summary>
@@ -958,11 +974,49 @@
             </summary>
             <param name="weights">A list of weights.</param>
         </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Double},System.Double[]@)">
+            <summary>
+            Draws a random weighted index from a list.
+            The specified totals buffer allows for minimal garbage generation.
+            The buffer will be resized to match the weights list if it is not already the correct size.
+            </summary>
+            <param name="weights">A list of weights.</param>
+            <param name="totals">The totals buffer.</param>
+        </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Single})">
             <summary>
             Draws a random weighted index from a list.
             </summary>
             <param name="weights">A list of weights.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Single},System.Double[]@)">
+            <summary>
+            Draws a random weighted index from a list.
+            The specified totals buffer allows for minimal garbage generation.
+            The buffer will be resized to match the weights list if it is not already the correct size.
+            </summary>
+            <param name="weights">A list of weights.</param>
+            <param name="totals">The totals buffer.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndexes(System.Collections.Generic.IList{System.Double},System.Int32,System.Boolean)">
+            <summary>
+            Draws a quantity of random weighted indexes from a list.
+            Based on the draw weights and whether indexes are drawn with replacement, the resulting
+            list may be less than the specified count.
+            </summary>
+            <param name="weights">A list of index draw weights.</param>
+            <param name="count">The desired number of drawn indexes.</param>
+            <param name="withReplacement">If false, the indexes will be drawn without replacement.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndexes(System.Collections.Generic.IList{System.Single},System.Int32,System.Boolean)">
+            <summary>
+            Draws a quantity of random weighted indexes from a list.
+            Based on the draw weights and whether indexes are drawn with replacement, the resulting
+            list may be less than the specified count.
+            </summary>
+            <param name="weights">A list of index draw weights.</param>
+            <param name="count">The desired number of drawn indexes.</param>
+            <param name="withReplacement">If false, the indexes will be drawn without replacement.</param>
         </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.ChanceSatisfied(System.Double)">
             <summary>
