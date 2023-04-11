@@ -27,20 +27,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="texture">The texture.</param>
         public static void FillBorder(Texture2D texture)
         {
-            var width = texture.width;
-            var height = texture.height;
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 1; i < height - 1; i++)
+            if (texture != null)
             {
-                pixels[Index(i, width - 1, width)] = pixels[Index(i, width - 2, width)];
-                pixels[Index(i, 0, width)] = pixels[Index(i, 1, width)];
-            }
+                var width = texture.width;
+                var height = texture.height;
+                var pixels = texture.GetRawTextureData<Color32>();
 
-            for (int j = 0; j < width; j++)
-            {
-                pixels[Index(height - 1, j, width)] = pixels[Index(height - 2, j, width)];
-                pixels[Index(0, j, width)] = pixels[Index(1, j, width)];
+                for (int i = 1; i < height - 1; i++)
+                {
+                    pixels[Index(i, width - 1, width)] = pixels[Index(i, width - 2, width)];
+                    pixels[Index(i, 0, width)] = pixels[Index(i, 1, width)];
+                }
+
+                for (int j = 0; j < width; j++)
+                {
+                    pixels[Index(height - 1, j, width)] = pixels[Index(height - 2, j, width)];
+                    pixels[Index(0, j, width)] = pixels[Index(1, j, width)];
+                }
             }
         }
 
@@ -51,11 +54,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="color">The color.</param>
         public static void Fill(Texture2D texture, Color32 color)
         {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < pixels.Length; i++)
+            if (texture != null)
             {
-                pixels[i] = color;
+                var pixels = texture.GetRawTextureData<Color32>();
+
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    pixels[i] = color;
+                }
             }
         }
 
@@ -67,16 +73,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="area">The area to fill from the bottom left of the texture.</param>
         public static void Fill(Texture2D texture, Color32 color, RectInt area)
         {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < area.height; i++)
+            if (texture != null && texture.width > 0 && texture.height > 0)
             {
-                var row = i + area.y;
+                var pixels = texture.GetRawTextureData<Color32>();
 
-                for (int j = 0; j < area.width; j++)
+                for (int i = 0; i < area.height; i++)
                 {
-                    var column = j + area.x;
-                    pixels[Index(row, column, texture.width)] = color;
+                    var row = i + area.y;
+
+                    for (int j = 0; j < area.width; j++)
+                    {
+                        var column = j + area.x;
+                        pixels[Index(row, column, texture.width)] = color;
+                    }
                 }
             }
         }
@@ -88,11 +97,14 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="color">The color.</param>
         public static void CompositeFill(Texture2D texture, Color color)
         {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < pixels.Length; i++)
+            if (texture != null)
             {
-                pixels[i] = ColorUtility.CompositeColors(color, pixels[i]);
+                var pixels = texture.GetRawTextureData<Color32>();
+
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    pixels[i] = ColorUtility.CompositeColors(color, pixels[i]);
+                }
             }
         }
 
@@ -104,17 +116,20 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="area">The area to fill from the bottom left of the texture.</param>
         public static void CompositeFill(Texture2D texture, Color color, RectInt area)
         {
-            var pixels = texture.GetRawTextureData<Color32>();
-
-            for (int i = 0; i < area.height; i++)
+            if (texture != null && texture.width > 0 && texture.height > 0)
             {
-                var row = i + area.y;
+                var pixels = texture.GetRawTextureData<Color32>();
 
-                for (int j = 0; j < area.width; j++)
+                for (int i = 0; i < area.height; i++)
                 {
-                    var column = j + area.x;
-                    var index = Index(row, column, texture.width);
-                    pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
+                    var row = i + area.y;
+
+                    for (int j = 0; j < area.width; j++)
+                    {
+                        var column = j + area.x;
+                        var index = Index(row, column, texture.width);
+                        pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
+                    }
                 }
             }
         }
@@ -126,22 +141,28 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="brush">The tile texture.</param>
         public static void TileImage(Texture2D texture, Texture2D brush)
         {
-            if (brush != null)
+            if (texture != null && brush != null && brush.width > 0 && brush.height > 0)
             {
+                var row = 0;
                 var brushPixels = brush.GetRawTextureData<Color32>();
                 var pixels = texture.GetRawTextureData<Color32>();
 
                 for (int i = 0; i < texture.height; i++)
                 {
-                    var row = i % brush.height;
+                    var column = 0;
 
                     for (int j = 0; j < texture.width; j++)
                     {
-                        var column = j % brush.width;
                         var index = Index(i, j, texture.width);
                         var color = brushPixels[Index(row, column, brush.width)];
                         pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
+
+                        if (++column >= brush.width)
+                            column = 0;
                     }
+
+                    if (++row >= brush.height)
+                        row = 0;
                 }
             }
         }
@@ -154,7 +175,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="point">The draw point from the bottom left of the texture.</param>
         public static void DrawImage(Texture2D texture, Texture2D brush, Vector2Int point)
         {
-            if (brush != null)
+            if (texture != null && brush != null && texture.width > 0 && texture.height > 0)
             {
                 var pixels = texture.GetRawTextureData<Color32>();
                 var brushPixels = brush.GetRawTextureData<Color32>();
@@ -178,22 +199,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// Returns the image format bytes for the texture corresponding to the file extension (.png or .jpg).
         /// </summary>
         /// <param name="texture">The texture.</param>
-        /// <param name="ext">The file extension.</param>
+        /// <param name="extension">The file extension.</param>
         /// <exception cref="ArgumentException">Raised if the file extension is not handled.</exception>
-        public static byte[] EncodeToBytes(Texture2D texture, string ext)
+        public static byte[] EncodeToBytes(Texture2D texture, string extension)
         {
-            switch (ext.ToLower())
+            switch (extension.TrimStart('.').ToLower())
             {
                 case "png":
-                case ".png":
                     return texture.EncodeToPNG();
                 case "jpg":
-                case ".jpg":
                 case "jpeg":
-                case ".jpeg":
                     return texture.EncodeToJPG();
                 default:
-                    throw new ArgumentException($"Unhandled file extension: {ext}");
+                    throw new ArgumentException($"Unhandled file extension: {extension}");
             }
         }
     }
