@@ -227,15 +227,7 @@ namespace MPewsey.ManiaMap.Unity
                 Vector3.Dot(delta, room.Swizzle(Vector3.back)), // Bottom
             };
 
-            var max = Mathf.Max(distances);
-
-            for (int i = 0; i < distances.Length; i++)
-            {
-                if (distances[i] == max)
-                    return directions[i];
-            }
-
-            return directions[0];
+            return directions[Maths.MaxIndex(distances)];
         }
     }
 }

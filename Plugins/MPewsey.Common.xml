@@ -621,6 +621,48 @@
             </summary>
             <param name="values">A list of values.</param>
         </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MaxIndex(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Returns the index in the collection where the first maximum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MaxIndex(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Returns the index in the collection where the first maximum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MaxIndex(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Returns the index in the collection where the first maximum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MinIndex(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Returns the index in the collection where the first minimum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MinIndex(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Returns the index in the collection where the first minimum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.MinIndex(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Returns the index in the collection where the first minimum value occurs.
+            Returns -1 if the collection is empty.
+            </summary>
+            <param name="values">The collection of values.</param>
+        </member>
         <member name="T:MPewsey.Common.Mathematics.Vector2DInt">
             <summary>
             A 2D vector with integer values.
