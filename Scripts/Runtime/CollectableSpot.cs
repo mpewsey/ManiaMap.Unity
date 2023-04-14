@@ -48,6 +48,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsAcquired() => RoomState().AcquiredCollectables.Contains(Id);
 
+        private void OnValidate()
+        {
+            Id = ManiaMapManager.AutoAssignId(Id);
+        }
+
         private void Awake()
         {
             Room().OnInitialize.AddListener(Initialize);
