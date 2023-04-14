@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MPewsey.ManiaMap.Unity
@@ -57,6 +58,10 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Vector2Int Size { get => _size; set => _size = Vector2Int.Max(value, Vector2Int.one); }
 
+        [SerializeField]
+        private UnityEvent _onInitialize;
+        public UnityEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
+
         /// <summary>
         /// True if the room has been initialized.
         /// </summary>
@@ -85,12 +90,12 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The room's door connections.
         /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; }
+        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; } = System.Array.Empty<DoorConnection>();
 
         private void Start()
         {
             if (!IsInitialized)
-                throw new RoomNotInitializedException($"Room not initialized: {this}.");
+                throw new RoomNotInitializedException($"Room has not initialized: {this}.");
         }
 
         private void OnValidate()
@@ -173,6 +178,8 @@ namespace MPewsey.ManiaMap.Unity
 
             if (position == RoomPositionOption.LayoutPosition)
                 AssignLayoutPosition();
+
+            OnInitialize.Invoke();
         }
 
         /// <summary>

@@ -28,8 +28,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Uid RoomId()
         {
-            var room = RoomLayout();
-            return room == null ? new Uid(-1, -1, -1) : room.Id;
+            return RoomLayout().Id;
         }
 
         /// <summary>
@@ -56,6 +55,11 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the room state.
         /// </summary>
         public RoomState RoomState() => Room().RoomState;
+
+        /// <summary>
+        /// Returns true if the room is initialized.
+        /// </summary>
+        public bool RoomIsInitialized() => Room().IsInitialized;
 
         /// <summary>
         /// A list of room door connections.

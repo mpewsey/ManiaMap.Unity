@@ -1,4 +1,5 @@
 using MPewsey.Common.Mathematics;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -8,6 +9,8 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class DoorBehavior : CellChild
     {
+        private static Dictionary<Uid, List<DoorBehavior>> Doors { get; } = new Dictionary<Uid, List<DoorBehavior>>();
+
         [SerializeField]
         private bool _autoAssignDirection = true;
         /// <summary>
@@ -59,28 +62,28 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Uid ToRoomId()
         {
-            if (!Exists())
-                return new Uid(-1, -1, -1);
-            if (Connection.FromRoom == RoomId())
-                return Connection.ToRoom;
-            return Connection.FromRoom;
+            if (Exists())
+            {
+                var roomId = RoomId();
+
+                if (Connection.FromRoom == roomId)
+                    return Connection.ToRoom;
+                if (Connection.ToRoom == roomId)
+                    return Connection.FromRoom;
+            }
+
+            return new Uid(-1, -1, -1);
         }
 
-        /// <summary>
-        /// The door position in the room that this door connects to.
-        /// </summary>
-        public DoorPosition ToDoorPosition()
+        private void Awake()
         {
-            if (!Exists())
-                return null;
-            if (Connection.FromRoom == RoomId())
-                return Connection.ToDoor;
-            return Connection.FromDoor;
+            Room().OnInitialize.AddListener(Initialize);
         }
 
-        private void Start()
+        private void OnDestroy()
         {
-            Initialize();
+            RemoveFromDoorsDictionary();
+            Room().OnInitialize.RemoveListener(Initialize);
         }
 
         /// <summary>
@@ -89,8 +92,49 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void Initialize()
         {
+            AddToDoorsDictionary();
             Connection = FindDoorConnection();
             OnInitialize.Invoke(this);
+        }
+
+        public static DoorBehavior FindDoor(Uid roomId, DoorConnection connection)
+        {
+            if (connection != null && Doors.TryGetValue(roomId, out var doors))
+            {
+                foreach (var door in doors)
+                {
+                    if (door.Connection == connection)
+                        return door;
+                }
+            }
+
+            return null;
+        }
+
+        private void AddToDoorsDictionary()
+        {
+            var id = RoomId();
+
+            if (!Doors.TryGetValue(id, out var doors))
+            {
+                doors = new List<DoorBehavior>();
+                Doors.Add(id, doors);
+            }
+
+            doors.Add(this);
+        }
+
+        private void RemoveFromDoorsDictionary()
+        {
+            var id = RoomId();
+
+            if (Doors.TryGetValue(id, out var doors))
+            {
+                doors.Remove(this);
+
+                if (doors.Count == 0)
+                    Doors.Remove(id);
+            }
         }
 
         /// <summary>

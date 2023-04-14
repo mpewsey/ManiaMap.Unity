@@ -97,7 +97,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new LayoutNode(1);
             var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
-            ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
+            ManiaMapManager.Current.Initialize(layout, new LayoutState(layout));
 
             var room = RoomBehavior.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
             Object.DestroyImmediate(prefab.gameObject);

@@ -1,6 +1,5 @@
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -28,7 +27,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The manager settings.
         /// </summary>
-        public ManiaMapSettings Settings { get; set; }
+        public ManiaMapSettings Settings { get; private set; }
 
         /// <summary>
         /// The current layout.
@@ -46,9 +45,9 @@ namespace MPewsey.ManiaMap.Unity
         private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
 
         /// <summary>
-        /// A dictionary of room clusters by room ID.
+        /// True if the object has been initialized.
         /// </summary>
-        private Dictionary<Uid, HashSet<Uid>> RoomClusters { get; set; } = new Dictionary<Uid, HashSet<Uid>>();
+        public bool IsInitialized { get; private set; }
 
         private void Awake()
         {
@@ -80,14 +79,21 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Sets the current layout and layout state to the manager.
+        /// Sets the current layout and layout state to the manager and initializes it.
         /// </summary>
         /// <param name="layout">The layout.</param>
         /// <param name="layoutState">The layout state.</param>
+        /// <param name="settings">
+        /// The manager settings. If null, the settings will fallback to the first valid of the following:
+        /// 
+        /// 1. The existing manager settings, if they are not null.
+        /// 2. The settings loaded from the resources path, if it exists.
+        /// 3. A newly initialized settings object.
+        /// </param>
         /// <exception cref="LayoutIsNullException">Raised if the layout is null.</exception>
         /// <exception cref="LayoutStateIsNullException">Raised if the layout state is null.</exception>
         /// <exception cref="System.ArgumentException">Raised if the layout and layout state's ID's do not match.</exception>
-        public void SetLayout(Layout layout, LayoutState layoutState)
+        public void Initialize(Layout layout, LayoutState layoutState, ManiaMapSettings settings = null)
         {
             if (layout == null)
                 throw new LayoutIsNullException("Layout cannot be null.");
@@ -96,29 +102,11 @@ namespace MPewsey.ManiaMap.Unity
             if (layout.Id != layoutState.Id)
                 throw new System.ArgumentException("Layout and layout state ID's do not match.");
 
+            Settings = settings != null ? settings : Settings != null ? Settings : ManiaMapSettings.GetSettings();
             Layout = layout;
             LayoutState = layoutState;
             RoomConnections = layout.GetRoomConnections();
-            RoomClusters = layout.FindClusters(Settings.MaxClusterDepth);
-        }
-
-        /// <summary>
-        /// Clears the current layout from the manager.
-        /// </summary>
-        public void ClearLayout()
-        {
-            Layout = null;
-            LayoutState = null;
-            RoomConnections = new Dictionary<Uid, List<DoorConnection>>();
-            RoomClusters = new Dictionary<Uid, HashSet<Uid>>();
-        }
-
-        /// <summary>
-        /// Returns true if a layout and layout state are assigned.
-        /// </summary>
-        public bool IsValid()
-        {
-            return Layout != null && LayoutState != null;
+            IsInitialized = true;
         }
 
         /// <summary>
@@ -166,17 +154,6 @@ namespace MPewsey.ManiaMap.Unity
             if (RoomConnections.TryGetValue(id, out var connections))
                 return connections;
             return System.Array.Empty<DoorConnection>();
-        }
-
-        /// <summary>
-        /// Returns an enumerable of rooms belonging to the room cluster.
-        /// </summary>
-        /// <param name="id">The room ID for which the cluster will be returned.</param>
-        public IEnumerable<Uid> GetRoomCluster(Uid id)
-        {
-            if (RoomClusters.TryGetValue(id, out HashSet<Uid> cluster))
-                return cluster;
-            return Enumerable.Empty<Uid>();
         }
     }
 }

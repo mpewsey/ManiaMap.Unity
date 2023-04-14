@@ -87,7 +87,7 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Returns the local position for the bottom-left corner of the cell.
+        /// Returns the local position for the top-left corner of the cell.
         /// </summary>
         public Vector2 Origin()
         {

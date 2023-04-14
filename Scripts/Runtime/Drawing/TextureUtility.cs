@@ -152,7 +152,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 var textureWidth = texture.width;
                 var brushHeight = brush.height;
                 var brushWidth = brush.width;
-                
+
                 for (int i = 0; i < textureHeight; i++)
                 {
                     var column = 0;

@@ -43,9 +43,14 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsAcquired() => RoomState().AcquiredCollectables.Contains(Id);
 
-        private void Start()
+        private void Awake()
         {
-            Initialize();
+            Room().OnInitialize.AddListener(Initialize);
+        }
+
+        private void OnDestroy()
+        {
+            Room().OnInitialize.RemoveListener(Initialize);
         }
 
         /// <summary>
