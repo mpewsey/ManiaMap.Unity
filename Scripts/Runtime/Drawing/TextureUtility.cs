@@ -27,7 +27,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="texture">The texture.</param>
         public static void FillBorder(Texture2D texture)
         {
-            if (texture != null)
+            if (!TextureIsNullOrEmpty(texture) && texture.width > 2 && texture.height > 2)
             {
                 var width = texture.width;
                 var height = texture.height;
@@ -54,7 +54,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="color">The color.</param>
         public static void Fill(Texture2D texture, Color32 color)
         {
-            if (texture != null)
+            if (!TextureIsNullOrEmpty(texture))
             {
                 var pixels = texture.GetRawTextureData<Color32>();
 
@@ -73,9 +73,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="area">The area to fill from the bottom left of the texture.</param>
         public static void Fill(Texture2D texture, Color32 color, RectInt area)
         {
-            if (texture != null && texture.width > 0 && texture.height > 0)
+            if (!TextureIsNullOrEmpty(texture))
             {
                 var pixels = texture.GetRawTextureData<Color32>();
+                var textureWidth = texture.width;
 
                 for (int i = 0; i < area.height; i++)
                 {
@@ -84,7 +85,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                     for (int j = 0; j < area.width; j++)
                     {
                         var column = j + area.x;
-                        pixels[Index(row, column, texture.width)] = color;
+                        pixels[Index(row, column, textureWidth)] = color;
                     }
                 }
             }
@@ -97,7 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="color">The color.</param>
         public static void CompositeFill(Texture2D texture, Color color)
         {
-            if (texture != null)
+            if (!TextureIsNullOrEmpty(texture))
             {
                 var pixels = texture.GetRawTextureData<Color32>();
 
@@ -116,9 +117,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="area">The area to fill from the bottom left of the texture.</param>
         public static void CompositeFill(Texture2D texture, Color color, RectInt area)
         {
-            if (texture != null && texture.width > 0 && texture.height > 0)
+            if (!TextureIsNullOrEmpty(texture))
             {
                 var pixels = texture.GetRawTextureData<Color32>();
+                var textureWidth = texture.width;
 
                 for (int i = 0; i < area.height; i++)
                 {
@@ -127,7 +129,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                     for (int j = 0; j < area.width; j++)
                     {
                         var column = j + area.x;
-                        var index = Index(row, column, texture.width);
+                        var index = Index(row, column, textureWidth);
                         pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
                     }
                 }
@@ -141,27 +143,31 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="brush">The tile texture.</param>
         public static void TileImage(Texture2D texture, Texture2D brush)
         {
-            if (texture != null && brush != null && brush.width > 0 && brush.height > 0)
+            if (!TextureIsNullOrEmpty(texture) && !TextureIsNullOrEmpty(brush))
             {
                 var row = 0;
                 var brushPixels = brush.GetRawTextureData<Color32>();
                 var pixels = texture.GetRawTextureData<Color32>();
-
-                for (int i = 0; i < texture.height; i++)
+                var textureHeight = texture.height;
+                var textureWidth = texture.width;
+                var brushHeight = brush.height;
+                var brushWidth = brush.width;
+                
+                for (int i = 0; i < textureHeight; i++)
                 {
                     var column = 0;
 
-                    for (int j = 0; j < texture.width; j++)
+                    for (int j = 0; j < textureWidth; j++)
                     {
-                        var index = Index(i, j, texture.width);
-                        var color = brushPixels[Index(row, column, brush.width)];
+                        var index = Index(i, j, textureWidth);
+                        var color = brushPixels[Index(row, column, brushWidth)];
                         pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
 
-                        if (++column >= brush.width)
+                        if (++column >= brushWidth)
                             column = 0;
                     }
 
-                    if (++row >= brush.height)
+                    if (++row >= brushHeight)
                         row = 0;
                 }
             }
@@ -175,20 +181,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <param name="point">The draw point from the bottom left of the texture.</param>
         public static void DrawImage(Texture2D texture, Texture2D brush, Vector2Int point)
         {
-            if (texture != null && brush != null && texture.width > 0 && texture.height > 0)
+            if (!TextureIsNullOrEmpty(texture) && !TextureIsNullOrEmpty(brush))
             {
                 var pixels = texture.GetRawTextureData<Color32>();
                 var brushPixels = brush.GetRawTextureData<Color32>();
+                var textureWidth = texture.width;
+                var brushWidth = brush.width;
+                var brushHeight = brush.height;
 
-                for (int i = 0; i < brush.height; i++)
+                for (int i = 0; i < brushHeight; i++)
                 {
                     var row = i + point.y;
 
-                    for (int j = 0; j < brush.width; j++)
+                    for (int j = 0; j < brushWidth; j++)
                     {
                         var column = j + point.x;
-                        var index = Index(row, column, texture.width);
-                        var color = brushPixels[Index(i, j, brush.width)];
+                        var index = Index(row, column, textureWidth);
+                        var color = brushPixels[Index(i, j, brushWidth)];
                         pixels[index] = ColorUtility.CompositeColors(color, pixels[index]);
                     }
                 }
@@ -213,6 +222,15 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                 default:
                     throw new ArgumentException($"Unhandled file extension: {extension}");
             }
+        }
+
+        /// <summary>
+        /// Returns true if the texture is null or an empty array.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        public static bool TextureIsNullOrEmpty(Texture2D texture)
+        {
+            return texture == null || texture.width == 0 || texture.height == 0;
         }
     }
 }
