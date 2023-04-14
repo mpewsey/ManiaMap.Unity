@@ -15,9 +15,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
-        [TestCase(Plane.XY)]
-        [TestCase(Plane.XZ)]
-        public void TestGetCellIndex(Plane plane)
+        [TestCase(CellPlane.XY)]
+        [TestCase(CellPlane.XZ)]
+        public void TestGetCellIndex(CellPlane plane)
         {
             var obj = new GameObject("Room");
             var room = obj.AddComponent<RoomBehavior>();

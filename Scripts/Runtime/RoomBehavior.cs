@@ -38,11 +38,11 @@ namespace MPewsey.ManiaMap.Unity
         public Transform CellContainer { get => _cellContainer; set => _cellContainer = value; }
 
         [SerializeField]
-        private Plane _cellPlane;
+        private CellPlane _cellPlane;
         /// <summary>
         /// The plane in which the cells reside.
         /// </summary>
-        public Plane CellPlane { get => _cellPlane; set => _cellPlane = value; }
+        public CellPlane CellPlane { get => _cellPlane; set => _cellPlane = value; }
 
         [SerializeField]
         private Vector2 _cellSize = Vector2.one;
@@ -95,7 +95,7 @@ namespace MPewsey.ManiaMap.Unity
         private void Start()
         {
             if (!IsInitialized)
-                throw new RoomNotInitializedException($"Room has not initialized: {this}.");
+                throw new RoomNotInitializedException($"Room has not been initialized: {this}.");
         }
 
         private void OnValidate()
@@ -247,9 +247,9 @@ namespace MPewsey.ManiaMap.Unity
         {
             switch (CellPlane)
             {
-                case Plane.XY:
+                case CellPlane.XY:
                     return new Vector3(vector.x, vector.y, -vector.z);
-                case Plane.XZ:
+                case CellPlane.XZ:
                     return new Vector3(vector.x, vector.z, vector.y);
                 default:
                     throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
@@ -265,9 +265,9 @@ namespace MPewsey.ManiaMap.Unity
         {
             switch (CellPlane)
             {
-                case Plane.XY:
+                case CellPlane.XY:
                     return new Vector3(vector.x, vector.y, -vector.z);
-                case Plane.XZ:
+                case CellPlane.XZ:
                     return new Vector3(vector.x, vector.z, vector.y);
                 default:
                     throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
@@ -422,7 +422,24 @@ namespace MPewsey.ManiaMap.Unity
 
             var template = new RoomTemplate(Id, Name, cells);
             template.Validate();
+            ValidateRoomFlags();
             return template;
+        }
+
+        /// <summary>
+        /// Validates that all room flags are unique and raises an exception if not.
+        /// </summary>
+        /// <exception cref="DuplicateRoomFlagIdException">Raised if any room flag ID is not unique.</exception>
+        public void ValidateRoomFlags()
+        {
+            var set = new HashSet<int>();
+            var flags = GetComponentsInChildren<RoomFlag>();
+
+            foreach (var flag in flags)
+            {
+                if (!set.Add(flag.Id))
+                    throw new DuplicateRoomFlagIdException($"Duplicate room flag ID {flag.Id} for object {flag}.");
+            }
         }
     }
 }
