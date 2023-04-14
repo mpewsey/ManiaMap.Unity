@@ -46,7 +46,7 @@ namespace MPewsey.ManiaMap.Unity
         [SerializeField]
         private DoorBehaviorEvent _onInitialize = new DoorBehaviorEvent();
         /// <summary>
-        /// The event invoked after the door is initialized. This occurs on start.
+        /// The event invoked after the door is initialized.
         /// </summary>
         public DoorBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 

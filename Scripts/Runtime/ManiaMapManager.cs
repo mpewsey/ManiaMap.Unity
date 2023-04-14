@@ -24,25 +24,29 @@ namespace MPewsey.ManiaMap.Unity
             private set => _current = value;
         }
 
+        private ManiaMapSettings _settings;
         /// <summary>
         /// The manager settings.
         /// </summary>
-        public ManiaMapSettings Settings { get; private set; }
+        public ManiaMapSettings Settings { get => _settings; private set => _settings = value; }
 
+        private Layout _layout;
         /// <summary>
         /// The current layout.
         /// </summary>
-        public Layout Layout { get; private set; }
+        public Layout Layout { get => AssertIsInitialized(_layout); private set => _layout = value; }
 
+        private LayoutState _layoutState;
         /// <summary>
         /// The current layout state.
         /// </summary>
-        public LayoutState LayoutState { get; private set; }
+        public LayoutState LayoutState { get => AssertIsInitialized(_layoutState); private set => _layoutState = value; }
 
+        private Dictionary<Uid, List<DoorConnection>> _roomConnections = new Dictionary<Uid, List<DoorConnection>>();
         /// <summary>
         /// A dictionary of door connections by room ID.
         /// </summary>
-        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
+        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get => AssertIsInitialized(_roomConnections); set => _roomConnections = value; }
 
         /// <summary>
         /// True if the object has been initialized.
@@ -65,6 +69,18 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (Current == this)
                 Current = null;
+        }
+
+        /// <summary>
+        /// Checks that the manager is initialized and returns the value if it is.
+        /// </summary>
+        /// <param name="value">The guarded value.</param>
+        /// <exception cref="ManiaMapManagerNotInitializedException">Thrown if the manager is not initialized.</exception>
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new ManiaMapManagerNotInitializedException("Mania Map Manager must be initialized prior to accessing initialized members.");
+            return value;
         }
 
         /// <summary>
@@ -102,11 +118,11 @@ namespace MPewsey.ManiaMap.Unity
             if (layout.Id != layoutState.Id)
                 throw new System.ArgumentException("Layout and layout state ID's do not match.");
 
+            IsInitialized = true;
             Settings = settings != null ? settings : Settings != null ? Settings : ManiaMapSettings.GetSettings();
             Layout = layout;
             LayoutState = layoutState;
             RoomConnections = layout.GetRoomConnections();
-            IsInitialized = true;
         }
 
         /// <summary>
@@ -115,34 +131,6 @@ namespace MPewsey.ManiaMap.Unity
         public GameObject GetPlayer()
         {
             return GameObject.FindGameObjectWithTag(Settings.PlayerTag);
-        }
-
-        /// <summary>
-        /// Returns the room in the layout corresponding to the specified ID.
-        /// If the ID does not exist, returns null.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        public Room GetRoom(Uid id)
-        {
-            if (Layout == null)
-                return null;
-
-            Layout.Rooms.TryGetValue(id, out Room room);
-            return room;
-        }
-
-        /// <summary>
-        /// Returns the room state in the layout corresponding to the specified ID.
-        /// If the ID does not exist, returns null.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        public RoomState GetRoomState(Uid id)
-        {
-            if (LayoutState == null)
-                return null;
-
-            LayoutState.RoomStates.TryGetValue(id, out RoomState state);
-            return state;
         }
 
         /// <summary>

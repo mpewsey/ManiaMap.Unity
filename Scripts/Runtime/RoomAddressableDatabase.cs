@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMap.Unity
         public AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, Transform parent = null,
             RoomPositionOption position = RoomPositionOption.UseManagerSettings)
         {
-            var roomLayout = ManiaMapManager.Current.GetRoom(id);
+            var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
             return RoomBehavior.InstantiateRoomAsync(id, prefab, parent, position);
         }
