@@ -6,10 +6,10 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// An object that has a Cell as a parent.
     /// </summary>
-    public class CellChild : MonoBehaviour
+    public abstract class CellChild : MonoBehaviour
     {
         [SerializeField]
-        private bool _autoAssignCell = true;
+        protected bool _autoAssignCell = true;
         /// <summary>
         /// If true, the cell will be automatically assigned to the closest cell when update and save operations
         /// are performed.
@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMap.Unity
         public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
 
         [SerializeField]
-        private CellBehavior _cell;
+        protected CellBehavior _cell;
         /// <summary>
         /// The parent cell.
         /// </summary>
@@ -26,10 +26,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The room ID.
         /// </summary>
-        public Uid RoomId()
-        {
-            return RoomLayout().Id;
-        }
+        public Uid RoomId() => RoomLayout().Id;
 
         /// <summary>
         /// The parent room.
@@ -55,11 +52,6 @@ namespace MPewsey.ManiaMap.Unity
         /// Returns the room state.
         /// </summary>
         public RoomState RoomState() => Room().RoomState;
-
-        /// <summary>
-        /// Returns true if the room is initialized.
-        /// </summary>
-        public bool RoomIsInitialized() => Room().IsInitialized;
 
         /// <summary>
         /// A list of room door connections.

@@ -9,7 +9,10 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class DoorBehavior : CellChild
     {
-        private static Dictionary<Uid, List<DoorBehavior>> Doors { get; } = new Dictionary<Uid, List<DoorBehavior>>();
+        /// <summary>
+        /// A dictionary of doors by their room ID.
+        /// </summary>
+        private static Dictionary<Uid, LinkedList<DoorBehavior>> Doors { get; } = new Dictionary<Uid, LinkedList<DoorBehavior>>();
 
         [SerializeField]
         private bool _autoAssignDirection = true;
@@ -53,6 +56,11 @@ namespace MPewsey.ManiaMap.Unity
         public DoorConnection Connection { get; private set; }
 
         /// <summary>
+        /// True if the door has been initialized.
+        /// </summary>
+        public bool IsInitialized { get; private set; }
+
+        /// <summary>
         /// True if the door exists in the layout.
         /// </summary>
         public bool Exists() => Connection != null;
@@ -82,21 +90,29 @@ namespace MPewsey.ManiaMap.Unity
 
         private void OnDestroy()
         {
-            RemoveFromDoorsDictionary();
             Room().OnInitialize.RemoveListener(Initialize);
+            RemoveFromDoorsDictionary();
         }
 
         /// <summary>
-        /// Initializes the door based on the layout and layout state
-        /// assigned to the current manager.
+        /// Initializes the door.
         /// </summary>
         private void Initialize()
         {
-            AddToDoorsDictionary();
-            Connection = FindDoorConnection();
-            OnInitialize.Invoke(this);
+            if (!IsInitialized)
+            {
+                IsInitialized = true;
+                AddToDoorsDictionary();
+                Connection = FindDoorConnection();
+                OnInitialize.Invoke(this);
+            }
         }
 
+        /// <summary>
+        /// Finds the door with the specified room ID and door connection.
+        /// </summary>
+        /// <param name="roomId">The room ID.</param>
+        /// <param name="connection">The door connection.</param>
         public static DoorBehavior FindDoor(Uid roomId, DoorConnection connection)
         {
             if (connection != null && Doors.TryGetValue(roomId, out var doors))
@@ -111,30 +127,29 @@ namespace MPewsey.ManiaMap.Unity
             return null;
         }
 
+        /// <summary>
+        /// Adds the door to the doors dictionary.
+        /// </summary>
         private void AddToDoorsDictionary()
         {
             var id = RoomId();
 
             if (!Doors.TryGetValue(id, out var doors))
             {
-                doors = new List<DoorBehavior>();
+                doors = new LinkedList<DoorBehavior>();
                 Doors.Add(id, doors);
             }
 
-            doors.Add(this);
+            doors.AddLast(this);
         }
 
+        /// <summary>
+        /// Removes the door from the doors dictionary.
+        /// </summary>
         private void RemoveFromDoorsDictionary()
         {
-            var id = RoomId();
-
-            if (Doors.TryGetValue(id, out var doors))
-            {
+            if (IsInitialized && Doors.TryGetValue(RoomId(), out var doors))
                 doors.Remove(this);
-
-                if (doors.Count == 0)
-                    Doors.Remove(id);
-            }
         }
 
         /// <summary>
