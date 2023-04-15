@@ -1,4 +1,5 @@
 using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// A component for creating tilemaps of layout layers.
     /// </summary>
     [RequireComponent(typeof(MapTilePool))]
-    public class LayoutTilemapBehavior : MonoBehaviour
+    public class LayoutTilemapBehavior : MonoBehaviour, IOnionMapTarget
     {
         [SerializeField]
         private Grid _grid;
@@ -38,25 +39,33 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private List<LayoutTilemapLayer> Layers { get; set; } = new List<LayoutTilemapLayer>();
 
+        private Layout _layout;
         /// <summary>
         /// The room layout.
         /// </summary>
-        private Layout Layout { get; set; }
+        private Layout Layout { get => AssertIsInitialized(_layout); set => _layout = value; }
 
+        private LayoutState _layoutState;
         /// <summary>
         /// A dictionary of room door positions by room ID.
         /// </summary>
-        private LayoutState LayoutState { get; set; }
+        private LayoutState LayoutState { get => AssertIsInitialized(_layoutState); set => _layoutState = value; }
 
+        private Dictionary<Uid, List<DoorPosition>> _roomDoors;
         /// <summary>
-        /// A dictionary of 
+        /// A dictionary of door positions by their containing room.
         /// </summary>
-        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; }
+        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get => AssertIsInitialized(_roomDoors); set => _roomDoors = value; }
+
+        private int[] _layerPositions;
+        private int[] LayerPositions { get => AssertIsInitialized(_layerPositions); set => _layerPositions = value; }
 
         /// <summary>
         /// The attached map tile pool component.
         /// </summary>
         public MapTilePool MapTilePool { get; private set; }
+
+        public bool IsInitialized { get; private set; }
 
         private void Awake()
         {
@@ -66,9 +75,46 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// Returns a readonly list of layers.
         /// </summary>
-        public IReadOnlyList<LayoutTilemapLayer> GetLayers()
+        public IReadOnlyList<LayoutTilemapLayer> GetLayers() => Layers;
+
+        IEnumerable<IOnionMapLayer> IOnionMapTarget.Layers() => Layers;
+
+        public Vector2 LayerRange()
         {
-            return Layers;
+            var positions = LayerPositions;
+
+            if (positions.Length == 0)
+                return Vector2.zero;
+
+            return new Vector2(positions[0], positions[positions.Length - 1]);
+        }
+
+        /// <summary>
+        /// Initializes the map.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="state">The layout state.</param>
+        public void Initialize(Layout layout, LayoutState state = null)
+        {
+            Layout = layout;
+            LayoutState = state;
+            RoomDoors = layout.GetRoomDoors();
+            LayerPositions = DistinctLayerPositions(layout);
+            IsInitialized = true;
+        }
+
+        private static int[] DistinctLayerPositions(Layout layout)
+        {
+            var result = layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToArray();
+            System.Array.Sort(result);
+            return result;
+        }
+
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new LayoutMapNotInitializedException($"Attempting to access initialized method when not initialized: {this}.");
+            return value;
         }
 
         /// <summary>
@@ -79,8 +125,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             if (Grid == null)
             {
                 var obj = new GameObject("Grid");
-                Grid = obj.AddComponent<Grid>();
                 obj.transform.SetParent(transform);
+                Grid = obj.AddComponent<Grid>();
             }
         }
 
@@ -105,43 +151,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         }
 
         /// <summary>
-        /// Initializes the tilemap buffers.
+        /// Creates layer tilemaps for a layout.
         /// </summary>
-        /// <param name="layout">The layout.</param>
-        /// <param name="state">The layout state.</param>
-        private void Initialize(Layout layout, LayoutState state)
+        public void Draw()
         {
-            Layout = layout;
-            LayoutState = state;
-            RoomDoors = layout.GetRoomDoors();
-        }
+            CreateLayers();
 
-        /// <summary>
-        /// Creates layer tilemaps for the current layout.
-        /// </summary>
-        public void CreateLayers()
-        {
-            var manager = ManiaMapManager.Current;
-            CreateLayers(manager.Layout, manager.LayoutState);
-        }
-
-        /// <summary>
-        /// Creates layer tilemaps for a layout and returns a list of layers.
-        /// </summary>
-        /// <param name="layout">The layout.</param>
-        /// <param name="state">The layout state.</param>
-        public void CreateLayers(Layout layout, LayoutState state)
-        {
-            Initialize(layout, state);
-            var zs = Layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToList();
-            zs.Sort();
-            EnsureCapacity(zs.Count);
-
-            // Draw the layers.
             for (int i = 0; i < Layers.Count; i++)
             {
                 var layer = Layers[i];
-                layer.Initialize(zs[i]);
+                layer.Initialize(LayerPositions[i]);
                 DrawMap(layer.Tilemap, layer.Z);
             }
         }
@@ -150,9 +169,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// Destroys or creates layers until the specified size is met.
         /// </summary>
         /// <param name="capacity">The capacity.</param>
-        private void EnsureCapacity(int capacity)
+        private void CreateLayers()
         {
             CreateGrid();
+            var capacity = LayerPositions.Length;
 
             // Destroy extra layers.
             while (Layers.Count > capacity)

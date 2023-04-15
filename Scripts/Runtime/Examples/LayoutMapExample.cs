@@ -74,7 +74,8 @@ namespace MPewsey.ManiaMap.Unity.Examples
             }
 
             var layout = results.GetOutput<Layout>("Layout");
-            LayoutMap.CreateLayers(layout, null);
+            LayoutMap.Initialize(layout);
+            LayoutMap.Draw();
         }
     }
 }

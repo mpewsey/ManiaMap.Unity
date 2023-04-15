@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// A layer of a LayoutMap.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
-    public class LayoutMapLayer : MonoBehaviour
+    public class LayoutMapLayer : MonoBehaviour, IOnionMapLayer
     {
         /// <summary>
         /// The layer coordinate.
@@ -33,6 +33,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             SpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        float IOnionMapLayer.Position() => Z;
+
+        void IOnionMapLayer.Apply(Color color)
+        {
+            SpriteRenderer.color = color;
+        }
+
         /// <summary>
         /// Initializes the layer.
         /// </summary>
@@ -53,10 +60,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             var obj = new GameObject("Layout Map Layer");
             obj.transform.SetParent(map.LayersContainer);
-
             var layer = obj.AddComponent<LayoutMapLayer>();
             layer.LayoutMap = map;
-
             return layer;
         }
 

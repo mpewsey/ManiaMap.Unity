@@ -34,7 +34,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
-            layoutMap.CreateLayers(layout, null);
+            layoutMap.Initialize(layout);
+            layoutMap.Draw();
             Assert.Greater(layoutMap.LayersContainer.childCount, 0);
         }
 
@@ -63,7 +64,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");
-            layoutMap.SaveLayerImages(imagePath, layout, null);
+            layoutMap.Initialize(layout);
+            layoutMap.SaveImages(imagePath);
         }
     }
 }

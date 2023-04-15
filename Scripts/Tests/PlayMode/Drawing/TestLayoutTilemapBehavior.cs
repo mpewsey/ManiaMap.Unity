@@ -33,7 +33,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemapBehavior>(Assets.LayoutTilemapPath);
-            layoutTilemap.CreateLayers(layout, null);
+            layoutTilemap.Initialize(layout);
+            layoutTilemap.Draw();
             Assert.Greater(layoutTilemap.Grid.transform.childCount, 0);
         }
     }

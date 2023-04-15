@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// </summary>
     [RequireComponent(typeof(Tilemap))]
     [RequireComponent(typeof(TilemapRenderer))]
-    public class LayoutTilemapLayer : MonoBehaviour
+    public class LayoutTilemapLayer : MonoBehaviour, IOnionMapLayer
     {
         /// <summary>
         /// The layer value.
@@ -30,6 +30,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             Tilemap = GetComponent<Tilemap>();
         }
 
+        float IOnionMapLayer.Position() => Z;
+
+        void IOnionMapLayer.Apply(Color color)
+        {
+            Tilemap.color = color;
+        }
+
         /// <summary>
         /// Initializes the layer.
         /// </summary>
@@ -48,10 +55,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         {
             var obj = new GameObject("Tilemap Layer");
             obj.transform.SetParent(map.Grid.transform);
-
             var layer = obj.AddComponent<LayoutTilemapLayer>();
             layer.LayoutTilemap = map;
-
             return layer;
         }
     }
