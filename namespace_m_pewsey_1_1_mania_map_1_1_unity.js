@@ -22,16 +22,18 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior" ],
     [ "RoomDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database" ],
     [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
+    [ "RoomFlag", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag" ],
+    [ "RoomFlagEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag_event.html", null ],
     [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
     [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
     [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ],
-    [ "Plane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7", [
-      [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7a74c53bcd3dcb2bb79993b2fec37d362a", null ],
-      [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7a27db3b98d01e664c17a6620b222c6469", null ]
+    [ "CellPlane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004d", [
+      [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da74c53bcd3dcb2bb79993b2fec37d362a", null ],
+      [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da27db3b98d01e664c17a6620b222c6469", null ]
     ] ],
     [ "RoomPositionOption", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374", [
-      [ "UseManagerSettings", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a93ba4e8528de8bd8e68e13e3abdcdc80", null ],
+      [ "UseManagerSetting", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374ae8a0ab6ca97f9460b836d5ea11ffba75", null ],
       [ "Origin", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a3edf8ca26a1ec14dd6e91dd277ae1de6", null ],
       [ "LayoutPosition", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374aa5507bf7e73ad7695e2b8cd157025666", null ]
     ] ]

@@ -8,5 +8,6 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility =
     [ "Fill", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#aa754c62a3368eccf5e60b97ec2360532", null ],
     [ "FillBorder", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#a8058ce38a1feb770c9ea0604af447f75", null ],
     [ "Index", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#aa7e9de73a40a3045fbd45c7b39eb5546", null ],
+    [ "TextureIsNullOrEmpty", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#a8e2bdb1cce8a292a0a2cc27cb89b7990", null ],
     [ "TileImage", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html#a09417db4b622d0b4c578332f4139934d", null ]
 ];

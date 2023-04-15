@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plane_0',['Plane',['../namespace_m_pewsey_1_1_mania_map_1_1_unity.html#adf7eb18eeb8a8d7c7d7a2ea95be553a7',1,'MPewsey::ManiaMap::Unity']]]
+  ['cellplane_0',['CellPlane',['../namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004d',1,'MPewsey::ManiaMap::Unity']]]
 ];

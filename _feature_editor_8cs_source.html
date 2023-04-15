@@ -100,18 +100,29 @@ $(document).ready(function(){initNavTree('_feature_editor_8cs_source.html',''); 
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using</span> UnityEditor;</div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    [CanEditMultipleObjects]</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [CustomEditor(typeof(Feature))]</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">   10</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">FeatureEditor</a> : <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html">CellChildEditor</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using</span> UnityEngine;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [CanEditMultipleObjects]</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    [CustomEditor(typeof(Feature))]</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">   11</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">FeatureEditor</a> : <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html">CellChildEditor</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        [MenuItem(<span class="stringliteral">&quot;GameObject/Mania Map/Feature&quot;</span>, priority = 20)]</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        [MenuItem(<span class="stringliteral">&quot;Mania Map/Create Feature&quot;</span>, priority = 100)]</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html#a854d0c1ac5bf5ebd76817a7444bbfa5c">   18</a></span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html#a854d0c1ac5bf5ebd76817a7444bbfa5c">CreateFeature</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            var obj = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;Feature&quot;</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            obj.transform.SetParent(Selection.activeTransform);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            obj.AddComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html">Feature</a>&gt;();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html">MPewsey.ManiaMap.Unity.Editor.CellChildEditor</a></div><div class="ttdoc">The base class for CellChild editors.</div><div class="ttdef"><b>Definition:</b> <a href="_cell_child_editor_8cs_source.html#l00009">CellChildEditor.cs:10</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">MPewsey.ManiaMap.Unity.Editor.FeatureEditor</a></div><div class="ttdoc">The Feature editor.</div><div class="ttdef"><b>Definition:</b> <a href="_feature_editor_8cs_source.html#l00010">FeatureEditor.cs:11</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html">MPewsey.ManiaMap.Unity.Editor.FeatureEditor</a></div><div class="ttdoc">The Feature editor.</div><div class="ttdef"><b>Definition:</b> <a href="_feature_editor_8cs_source.html#l00011">FeatureEditor.cs:12</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor_html_a854d0c1ac5bf5ebd76817a7444bbfa5c"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html#a854d0c1ac5bf5ebd76817a7444bbfa5c">MPewsey.ManiaMap.Unity.Editor.FeatureEditor.CreateFeature</a></div><div class="ttdeci">static void CreateFeature()</div><div class="ttdoc">Creates a new collectable spot Game Object.</div><div class="ttdef"><b>Definition:</b> <a href="_feature_editor_8cs_source.html#l00018">FeatureEditor.cs:18</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html">MPewsey.ManiaMap.Unity.Feature</a></div><div class="ttdoc">A component for defining a cell feature.</div><div class="ttdef"><b>Definition:</b> <a href="_feature_8cs_source.html#l00008">Feature.cs:9</a></div></div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor.html">MPewsey.ManiaMap.Unity.Editor</a></div><div class="ttdoc">Contains editor customizations.</div><div class="ttdef"><b>Definition:</b> <a href="_editor_2_____docs_____8cs_source.html#l00004">__Docs__.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

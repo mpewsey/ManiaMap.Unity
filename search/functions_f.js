@@ -15,7 +15,7 @@ var searchData=
   ['selectedge_12',['SelectEdge',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a36790238866512b778c7912dfc03b429',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
   ['selectnode_13',['SelectNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a251ed95909195a991b47b08487b1f432',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
   ['setcellvisibility_14',['SetCellVisibility',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a44d345aeac87bf12bf3f39d2cf51b9ab',1,'MPewsey::ManiaMap::Unity::RoomBehavior']]],
-  ['setlayout_15',['SetLayout',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a686bf82ecdc7a82b492a37dcd17404d0',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]],
+  ['setflag_15',['SetFlag',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html#a0cc74bf9bfeefb29214e5bcd765ea5bb',1,'MPewsey::ManiaMap::Unity::RoomFlag']]],
   ['setnodepositions_16',['SetNodePositions',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a3f5227f23b2bb1d7f2828cd2642454fc',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
   ['showareacontextmenu_17',['ShowAreaContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#ac6ccfe824d503131593865ebe35f9716',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
   ['shownodecontextmenu_18',['ShowNodeContextMenu',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a5d05a5425dce48a517c3aeae784847ad',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],

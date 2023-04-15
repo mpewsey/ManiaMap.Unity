@@ -13,6 +13,7 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "ManiaMapSettingsEditor.cs", "_mania_map_settings_editor_8cs_source.html", null ],
     [ "RoomAddressableDatabaseEditor.cs", "_room_addressable_database_editor_8cs_source.html", null ],
     [ "RoomBehaviorEditor.cs", "_room_behavior_editor_8cs_source.html", null ],
+    [ "RoomFlagEditor.cs", "_room_flag_editor_8cs_source.html", null ],
     [ "RoomPrefabDatabaseEditor.cs", "_room_prefab_database_editor_8cs_source.html", null ],
     [ "RoomTemplateObjectEditor.cs", "_room_template_object_editor_8cs_source.html", null ],
     [ "SampleSaveSettings.cs", "_sample_save_settings_8cs_source.html", null ],

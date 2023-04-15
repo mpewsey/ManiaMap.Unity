@@ -101,6 +101,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_1_1_unity
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MPewsey.ManiaMap.Unity.ManiaMapManager Class Reference</div></div>
@@ -118,30 +119,15 @@ Inheritance diagram for MPewsey.ManiaMap.Unity.ManiaMapManager:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae81f4ae537a10435a103c7e96ab252ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae81f4ae537a10435a103c7e96ab252ca">ClearLayout</a> ()</td></tr>
-<tr class="memdesc:ae81f4ae537a10435a103c7e96ab252ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the current layout from the manager.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae81f4ae537a10435a103c7e96ab252ca">More...</a><br /></td></tr>
-<tr class="separator:ae81f4ae537a10435a103c7e96ab252ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62c48a008f4ca0a7f4e5eb0895e69ab8"><td class="memItemLeft" align="right" valign="top">IReadOnlyList&lt; DoorConnection &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a62c48a008f4ca0a7f4e5eb0895e69ab8">GetDoorConnections</a> (Uid id)</td></tr>
 <tr class="memdesc:a62c48a008f4ca0a7f4e5eb0895e69ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of door connections by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a62c48a008f4ca0a7f4e5eb0895e69ab8">More...</a><br /></td></tr>
 <tr class="separator:a62c48a008f4ca0a7f4e5eb0895e69ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad08377f8c7a3da7633e46b7efba37aa5"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ad08377f8c7a3da7633e46b7efba37aa5">GetPlayer</a> ()</td></tr>
 <tr class="memdesc:ad08377f8c7a3da7633e46b7efba37aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the player GameObject based on the player tag assigned to the settings.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ad08377f8c7a3da7633e46b7efba37aa5">More...</a><br /></td></tr>
 <tr class="separator:ad08377f8c7a3da7633e46b7efba37aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02a744f09b20ed13a26274557dec6e73"><td class="memItemLeft" align="right" valign="top">Room&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a02a744f09b20ed13a26274557dec6e73">GetRoom</a> (Uid id)</td></tr>
-<tr class="memdesc:a02a744f09b20ed13a26274557dec6e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room in the layout corresponding to the specified ID. If the ID does not exist, returns null.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a02a744f09b20ed13a26274557dec6e73">More...</a><br /></td></tr>
-<tr class="separator:a02a744f09b20ed13a26274557dec6e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07edcee499a71acbcef1c12334300939"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; Uid &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a07edcee499a71acbcef1c12334300939">GetRoomCluster</a> (Uid id)</td></tr>
-<tr class="memdesc:a07edcee499a71acbcef1c12334300939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an enumerable of rooms belonging to the room cluster.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a07edcee499a71acbcef1c12334300939">More...</a><br /></td></tr>
-<tr class="separator:a07edcee499a71acbcef1c12334300939"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d48375c2d092219660795b1f2be333"><td class="memItemLeft" align="right" valign="top">RoomState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41d48375c2d092219660795b1f2be333">GetRoomState</a> (Uid id)</td></tr>
-<tr class="memdesc:a41d48375c2d092219660795b1f2be333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room state in the layout corresponding to the specified ID. If the ID does not exist, returns null.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41d48375c2d092219660795b1f2be333">More...</a><br /></td></tr>
-<tr class="separator:a41d48375c2d092219660795b1f2be333"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cfbfd3ee80a2f211e74f9dabaefbae2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a1cfbfd3ee80a2f211e74f9dabaefbae2">IsValid</a> ()</td></tr>
-<tr class="memdesc:a1cfbfd3ee80a2f211e74f9dabaefbae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if a layout and layout state are assigned.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a1cfbfd3ee80a2f211e74f9dabaefbae2">More...</a><br /></td></tr>
-<tr class="separator:a1cfbfd3ee80a2f211e74f9dabaefbae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a686bf82ecdc7a82b492a37dcd17404d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a686bf82ecdc7a82b492a37dcd17404d0">SetLayout</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a> layoutState)</td></tr>
-<tr class="memdesc:a686bf82ecdc7a82b492a37dcd17404d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current layout and layout state to the manager.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a686bf82ecdc7a82b492a37dcd17404d0">More...</a><br /></td></tr>
-<tr class="separator:a686bf82ecdc7a82b492a37dcd17404d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9474f1230c56e65dd3d4be5983a9dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#af9474f1230c56e65dd3d4be5983a9dcc">Initialize</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a> layoutState, <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a> settings=null)</td></tr>
+<tr class="memdesc:af9474f1230c56e65dd3d4be5983a9dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current layout and layout state to the manager and initializes it.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#af9474f1230c56e65dd3d4be5983a9dcc">More...</a><br /></td></tr>
+<tr class="separator:af9474f1230c56e65dd3d4be5983a9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -154,30 +140,44 @@ Properties</h2></td></tr>
 <tr class="memitem:afd45767f0c514406a10cca09e9e3f97b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html">ManiaMapManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afd45767f0c514406a10cca09e9e3f97b">Current</a><code> [getprivate set]</code></td></tr>
 <tr class="memdesc:afd45767f0c514406a10cca09e9e3f97b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current manager.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afd45767f0c514406a10cca09e9e3f97b">More...</a><br /></td></tr>
 <tr class="separator:afd45767f0c514406a10cca09e9e3f97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28661621a56a2bb2119ed86995992772"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a28661621a56a2bb2119ed86995992772">IsInitialized</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:a28661621a56a2bb2119ed86995992772"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the object has been initialized.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a28661621a56a2bb2119ed86995992772">More...</a><br /></td></tr>
+<tr class="separator:a28661621a56a2bb2119ed86995992772"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41be1170e966251855372aeb303f7526"><td class="memItemLeft" align="right" valign="top">Layout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a><code> [getprivate set]</code></td></tr>
 <tr class="memdesc:a41be1170e966251855372aeb303f7526"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current layout.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">More...</a><br /></td></tr>
 <tr class="separator:a41be1170e966251855372aeb303f7526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e6202998d6ec156734e0420295222a"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a><code> [getprivate set]</code></td></tr>
 <tr class="memdesc:ae1e6202998d6ec156734e0420295222a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current layout state.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">More...</a><br /></td></tr>
 <tr class="separator:ae1e6202998d6ec156734e0420295222a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0f02a848a41c67da0d99c49a494099b"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, HashSet&lt; Uid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ad0f02a848a41c67da0d99c49a494099b">RoomClusters</a> = new Dictionary&lt;Uid, HashSet&lt;Uid&gt;&gt;()<code> [getset]</code></td></tr>
-<tr class="memdesc:ad0f02a848a41c67da0d99c49a494099b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of room clusters by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ad0f02a848a41c67da0d99c49a494099b">More...</a><br /></td></tr>
-<tr class="separator:ad0f02a848a41c67da0d99c49a494099b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd323caa8191f6f79c8aba92ce611dbf"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; DoorConnection &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#abd323caa8191f6f79c8aba92ce611dbf">RoomConnections</a> = new Dictionary&lt;Uid, List&lt;DoorConnection&gt;&gt;()<code> [getset]</code></td></tr>
+<tr class="memitem:abd323caa8191f6f79c8aba92ce611dbf"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; DoorConnection &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#abd323caa8191f6f79c8aba92ce611dbf">RoomConnections</a><code> [getset]</code></td></tr>
 <tr class="memdesc:abd323caa8191f6f79c8aba92ce611dbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of door connections by room ID.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#abd323caa8191f6f79c8aba92ce611dbf">More...</a><br /></td></tr>
 <tr class="separator:abd323caa8191f6f79c8aba92ce611dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76bb9f0d753499fa4c49163ee837c81d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a76bb9f0d753499fa4c49163ee837c81d">Settings</a><code> [getset]</code></td></tr>
+<tr class="memitem:a76bb9f0d753499fa4c49163ee837c81d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a76bb9f0d753499fa4c49163ee837c81d">Settings</a><code> [getsetprivate set]</code></td></tr>
 <tr class="memdesc:a76bb9f0d753499fa4c49163ee837c81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The manager settings.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a76bb9f0d753499fa4c49163ee837c81d">More...</a><br /></td></tr>
 <tr class="separator:a76bb9f0d753499fa4c49163ee837c81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a5ace1e6a8cbe148f7cc70f969912680a"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a5ace1e6a8cbe148f7cc70f969912680a">AssertIsInitialized&lt; T &gt;</a> (T value)</td></tr>
+<tr class="memdesc:a5ace1e6a8cbe148f7cc70f969912680a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the manager is initialized and returns the value if it is.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a5ace1e6a8cbe148f7cc70f969912680a">More...</a><br /></td></tr>
+<tr class="separator:a5ace1e6a8cbe148f7cc70f969912680a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa258e08daaf4b8ac9205531c85b0353d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#aa258e08daaf4b8ac9205531c85b0353d">Awake</a> ()</td></tr>
 <tr class="separator:aa258e08daaf4b8ac9205531c85b0353d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50e3e78db1d4c7f03b74203a0bd40853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a50e3e78db1d4c7f03b74203a0bd40853">OnDestroy</a> ()</td></tr>
 <tr class="separator:a50e3e78db1d4c7f03b74203a0bd40853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bf755f9faed463bad760d7eb01788d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a2bf755f9faed463bad760d7eb01788d0">Start</a> ()</td></tr>
 <tr class="separator:a2bf755f9faed463bad760d7eb01788d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9adb050b0199c67c0b2d6e3d976bee71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a9adb050b0199c67c0b2d6e3d976bee71">_layout</a></td></tr>
+<tr class="separator:a9adb050b0199c67c0b2d6e3d976bee71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27554673c58bc6199588b6e05a97fe04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a27554673c58bc6199588b6e05a97fe04">_layoutState</a></td></tr>
+<tr class="separator:a27554673c58bc6199588b6e05a97fe04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa80bf1871671c745af7561af1b0fc43"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; DoorConnection &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afa80bf1871671c745af7561af1b0fc43">_roomConnections</a> = new Dictionary&lt;Uid, List&lt;DoorConnection&gt;&gt;()</td></tr>
+<tr class="separator:afa80bf1871671c745af7561af1b0fc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7affe715c9351b8576d2db0643beb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#afc7affe715c9351b8576d2db0643beb5">_settings</a></td></tr>
+<tr class="separator:afc7affe715c9351b8576d2db0643beb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -187,8 +187,50 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A manager for maintaining the current map data and state. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00011">11</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00010">10</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5ace1e6a8cbe148f7cc70f969912680a" name="a5ace1e6a8cbe148f7cc70f969912680a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ace1e6a8cbe148f7cc70f969912680a">&#9670;&nbsp;</a></span>AssertIsInitialized&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T MPewsey.ManiaMap.Unity.ManiaMapManager.AssertIsInitialized&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks that the manager is initialized and returns the value if it is. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The guarded value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ManiaMapManagerNotInitializedException</td><td>Thrown if the manager is not initialized.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00110">110</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
 <a id="a3b755026ab910a7f23b5d5fa042e4f02" name="a3b755026ab910a7f23b5d5fa042e4f02"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b755026ab910a7f23b5d5fa042e4f02">&#9670;&nbsp;</a></span>AutoAssignId()</h2>
 
@@ -221,7 +263,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00075">75</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00121">121</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -248,28 +290,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00053">53</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae81f4ae537a10435a103c7e96ab252ca" name="ae81f4ae537a10435a103c7e96ab252ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae81f4ae537a10435a103c7e96ab252ca">&#9670;&nbsp;</a></span>ClearLayout()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.ManiaMapManager.ClearLayout </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clears the current layout from the manager. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00108">108</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00056">56</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -297,7 +318,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00164">164</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00140">140</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -318,112 +339,66 @@ Static Private Attributes</h2></td></tr>
 
 <p>Returns the player GameObject based on the player tag assigned to the settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00127">127</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00131">131</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
-<a id="a02a744f09b20ed13a26274557dec6e73" name="a02a744f09b20ed13a26274557dec6e73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02a744f09b20ed13a26274557dec6e73">&#9670;&nbsp;</a></span>GetRoom()</h2>
+<a id="af9474f1230c56e65dd3d4be5983a9dcc" name="af9474f1230c56e65dd3d4be5983a9dcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9474f1230c56e65dd3d4be5983a9dcc">&#9670;&nbsp;</a></span>Initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Room MPewsey.ManiaMap.Unity.ManiaMapManager.GetRoom </td>
+          <td class="memname">void MPewsey.ManiaMap.Unity.ManiaMapManager.Initialize </td>
           <td>(</td>
-          <td class="paramtype">Uid&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a>&#160;</td>
+          <td class="paramname"><em>layout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a>&#160;</td>
+          <td class="paramname"><em>layoutState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a>&#160;</td>
+          <td class="paramname"><em>settings</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the room in the layout corresponding to the specified ID. If the ID does not exist, returns null. </p>
+<p>Sets the current layout and layout state to the manager and initializes it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
+    <tr><td class="paramname">layout</td><td>The layout.</td></tr>
+    <tr><td class="paramname">layoutState</td><td>The layout state.</td></tr>
+    <tr><td class="paramname">settings</td><td>The manager settings. If null, the settings will fallback to the first valid of the following:</td></tr>
+  </table>
+  </dd>
+</dl>
+<ol type="1">
+<li>The existing manager settings, if they are not null.</li>
+<li>The settings loaded from the resources path, if it exists.</li>
+<li>A newly initialized settings object. </li>
+</ol>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">LayoutIsNullException</td><td>Raised if the layout is null.</td></tr>
+    <tr><td class="paramname">LayoutStateIsNullException</td><td>Raised if the layout state is null.</td></tr>
+    <tr><td class="paramname">System.ArgumentException</td><td>Raised if the layout and layout state's ID's do not match.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00137">137</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="a07edcee499a71acbcef1c12334300939" name="a07edcee499a71acbcef1c12334300939"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07edcee499a71acbcef1c12334300939">&#9670;&nbsp;</a></span>GetRoomCluster()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">IEnumerable&lt; Uid &gt; MPewsey.ManiaMap.Unity.ManiaMapManager.GetRoomCluster </td>
-          <td>(</td>
-          <td class="paramtype">Uid&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns an enumerable of rooms belonging to the room cluster. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>The room ID for which the cluster will be returned.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00175">175</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="a41d48375c2d092219660795b1f2be333" name="a41d48375c2d092219660795b1f2be333"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d48375c2d092219660795b1f2be333">&#9670;&nbsp;</a></span>GetRoomState()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RoomState MPewsey.ManiaMap.Unity.ManiaMapManager.GetRoomState </td>
-          <td>(</td>
-          <td class="paramtype">Uid&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the room state in the layout corresponding to the specified ID. If the ID does not exist, returns null. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00151">151</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1cfbfd3ee80a2f211e74f9dabaefbae2" name="a1cfbfd3ee80a2f211e74f9dabaefbae2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cfbfd3ee80a2f211e74f9dabaefbae2">&#9670;&nbsp;</a></span>IsValid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MPewsey.ManiaMap.Unity.ManiaMapManager.IsValid </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns true if a layout and layout state are assigned. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00119">119</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00089">89</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -450,54 +425,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00065">65</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="a686bf82ecdc7a82b492a37dcd17404d0" name="a686bf82ecdc7a82b492a37dcd17404d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a686bf82ecdc7a82b492a37dcd17404d0">&#9670;&nbsp;</a></span>SetLayout()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MPewsey.ManiaMap.Unity.ManiaMapManager.SetLayout </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a>&#160;</td>
-          <td class="paramname"><em>layout</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a>&#160;</td>
-          <td class="paramname"><em>layoutState</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the current layout and layout state to the manager. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">layout</td><td>The layout.</td></tr>
-    <tr><td class="paramname">layoutState</td><td>The layout state.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">LayoutIsNullException</td><td>Raised if the layout is null.</td></tr>
-    <tr><td class="paramname">LayoutStateIsNullException</td><td>Raised if the layout state is null.</td></tr>
-    <tr><td class="paramname">System.ArgumentException</td><td>Raised if the layout and layout state's ID's do not match.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00090">90</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00068">68</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -524,7 +452,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00059">59</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00062">62</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -549,7 +477,103 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00013">13</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00012">12</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a9adb050b0199c67c0b2d6e3d976bee71" name="a9adb050b0199c67c0b2d6e3d976bee71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9adb050b0199c67c0b2d6e3d976bee71">&#9670;&nbsp;</a></span>_layout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526">Layout</a> MPewsey.ManiaMap.Unity.ManiaMapManager._layout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00033">33</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a27554673c58bc6199588b6e05a97fe04" name="a27554673c58bc6199588b6e05a97fe04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27554673c58bc6199588b6e05a97fe04">&#9670;&nbsp;</a></span>_layoutState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a">LayoutState</a> MPewsey.ManiaMap.Unity.ManiaMapManager._layoutState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00039">39</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="afa80bf1871671c745af7561af1b0fc43" name="afa80bf1871671c745af7561af1b0fc43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa80bf1871671c745af7561af1b0fc43">&#9670;&nbsp;</a></span>_roomConnections</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;Uid, List&lt;DoorConnection&gt; &gt; MPewsey.ManiaMap.Unity.ManiaMapManager._roomConnections = new Dictionary&lt;Uid, List&lt;DoorConnection&gt;&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00045">45</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="afc7affe715c9351b8576d2db0643beb5" name="afc7affe715c9351b8576d2db0643beb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc7affe715c9351b8576d2db0643beb5">&#9670;&nbsp;</a></span>_settings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_settings.html">ManiaMapSettings</a> MPewsey.ManiaMap.Unity.ManiaMapManager._settings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00027">27</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -576,7 +600,33 @@ Static Private Attributes</h2></td></tr>
 
 <p>The current manager. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00017">17</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00016">16</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a28661621a56a2bb2119ed86995992772" name="a28661621a56a2bb2119ed86995992772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28661621a56a2bb2119ed86995992772">&#9670;&nbsp;</a></span>IsInitialized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MPewsey.ManiaMap.Unity.ManiaMapManager.IsInitialized</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>True if the object has been initialized. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00054">54</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -602,7 +652,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The current layout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00036">36</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00037">37</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -628,33 +678,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The current layout state. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00041">41</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad0f02a848a41c67da0d99c49a494099b" name="ad0f02a848a41c67da0d99c49a494099b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0f02a848a41c67da0d99c49a494099b">&#9670;&nbsp;</a></span>RoomClusters</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;Uid, HashSet&lt;Uid&gt; &gt; MPewsey.ManiaMap.Unity.ManiaMapManager.RoomClusters = new Dictionary&lt;Uid, HashSet&lt;Uid&gt;&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A dictionary of room clusters by room ID. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00051">51</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00043">43</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -668,7 +692,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;Uid, List&lt;DoorConnection&gt; &gt; MPewsey.ManiaMap.Unity.ManiaMapManager.RoomConnections = new Dictionary&lt;Uid, List&lt;DoorConnection&gt;&gt;()</td>
+          <td class="memname">Dictionary&lt;Uid, List&lt;DoorConnection&gt; &gt; MPewsey.ManiaMap.Unity.ManiaMapManager.RoomConnections</td>
         </tr>
       </table>
   </td>
@@ -680,7 +704,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>A dictionary of door connections by room ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00046">46</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_manager_8cs_source.html#l00049">49</a> of file <a class="el" href="_mania_map_manager_8cs_source.html">ManiaMapManager.cs</a>.</p>
 
 </div>
 </div>
@@ -699,7 +723,7 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
