@@ -1,4 +1,5 @@
 using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,16 +45,17 @@ namespace MPewsey.ManiaMap.Unity
         public DoorCode Code { get => _code; set => _code = value; }
 
         [SerializeField]
-        private DoorBehaviorEvent _onInitialize = new DoorBehaviorEvent();
+        private DoorBehaviorEvent _onInitialize;
         /// <summary>
         /// The event invoked after the door is initialized.
         /// </summary>
         public DoorBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
+        private DoorConnection _connection;
         /// <summary>
         /// The associated door connection in the layout.
         /// </summary>
-        public DoorConnection Connection { get; private set; }
+        public DoorConnection Connection { get => AssertIsInitialized(_connection); private set => _connection = value; }
 
         /// <summary>
         /// True if the door has been initialized.
@@ -106,6 +108,19 @@ namespace MPewsey.ManiaMap.Unity
                 Connection = FindDoorConnection();
                 OnInitialize.Invoke(this);
             }
+        }
+
+        /// <summary>
+        /// If the door is initialized, returns the value. Otherwise, throws an exception.
+        /// </summary>
+        /// <param name="value">The return value.</param>
+        /// <exception cref="DoorNotInitializedException">Raised if the door is not initialized.</exception>
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new DoorNotInitializedException($"Attempting to access initialized member on uninitialized door: {this}.");
+
+            return value;
         }
 
         /// <summary>

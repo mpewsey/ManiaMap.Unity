@@ -22,7 +22,7 @@ namespace MPewsey.ManiaMap.Unity
         public RoomPositionOption RoomPositionOption
         {
             get => _roomPositionOption;
-            set => _roomPositionOption = value != RoomPositionOption.UseManagerSettings ? value : RoomPositionOption.Origin;
+            set => _roomPositionOption = value != RoomPositionOption.UseManagerSetting ? value : RoomPositionOption.Origin;
         }
 
         private void OnValidate()
@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="option">The local room position option.</param>
         public RoomPositionOption GetRoomPositionOption(RoomPositionOption option)
         {
-            return option != RoomPositionOption.UseManagerSettings ? option : RoomPositionOption;
+            return option != RoomPositionOption.UseManagerSetting ? option : RoomPositionOption;
         }
     }
 }

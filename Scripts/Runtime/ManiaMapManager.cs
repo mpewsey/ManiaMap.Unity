@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The manager settings.
         /// </summary>
-        public ManiaMapSettings Settings { get => _settings; private set => _settings = value; }
+        public ManiaMapSettings Settings { get => AssertIsInitialized(_settings); private set => _settings = value; }
 
         private Layout _layout;
         /// <summary>
@@ -72,29 +72,6 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Checks that the manager is initialized and returns the value if it is.
-        /// </summary>
-        /// <param name="value">The guarded value.</param>
-        /// <exception cref="ManiaMapManagerNotInitializedException">Thrown if the manager is not initialized.</exception>
-        private T AssertIsInitialized<T>(T value)
-        {
-            if (!IsInitialized)
-                throw new ManiaMapManagerNotInitializedException("Mania Map Manager must be initialized prior to accessing initialized members.");
-            return value;
-        }
-
-        /// <summary>
-        /// If the ID is less than or equal to zero, returns a random positive integer. Otherwise, returns the ID.
-        /// </summary>
-        /// <param name="id">The original ID.</param>
-        public static int AutoAssignId(int id)
-        {
-            if (id <= 0)
-                return Random.Range(1, int.MaxValue);
-            return id;
-        }
-
-        /// <summary>
         /// Sets the current layout and layout state to the manager and initializes it.
         /// </summary>
         /// <param name="layout">The layout.</param>
@@ -123,6 +100,29 @@ namespace MPewsey.ManiaMap.Unity
             Layout = layout;
             LayoutState = layoutState;
             RoomConnections = layout.GetRoomConnections();
+        }
+
+        /// <summary>
+        /// Checks that the manager is initialized and returns the value if it is.
+        /// </summary>
+        /// <param name="value">The guarded value.</param>
+        /// <exception cref="ManiaMapManagerNotInitializedException">Thrown if the manager is not initialized.</exception>
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new ManiaMapManagerNotInitializedException("Mania Map Manager must be initialized prior to accessing initialized members.");
+            return value;
+        }
+
+        /// <summary>
+        /// If the ID is less than or equal to zero, returns a random positive integer. Otherwise, returns the ID.
+        /// </summary>
+        /// <param name="id">The original ID.</param>
+        public static int AutoAssignId(int id)
+        {
+            if (id <= 0)
+                return Random.Range(1, int.MaxValue);
+            return id;
         }
 
         /// <summary>
