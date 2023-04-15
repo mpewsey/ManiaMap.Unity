@@ -749,6 +749,13 @@
             <param name="position">The door position.</param>
             <param name="direction">The door direction.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.GetDoorPosition(MPewsey.ManiaMap.Uid)">
+            <summary>
+            Returns the door position corresponding to the room ID.
+            Returns null if the door connection does not contain the room ID.
+            </summary>
+            <param name="roomId">The room ID.</param>
+        </member>
         <member name="T:MPewsey.ManiaMap.DoorDirection">
             <summary>
             The door direction.
@@ -2390,6 +2397,18 @@
             Returns the rectangular bounds of the layout.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Layout.VisibleCellProgress(MPewsey.ManiaMap.LayoutState)">
+            <summary>
+            Returns the ratio of visible cells over total cells.
+            </summary>
+            <param name="layoutState">The layout state.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.VisibleCellCount(MPewsey.ManiaMap.LayoutState)">
+            <summary>
+            Returns a vector with of the visible cell count (X) and total cell count (Y).
+            </summary>
+            <param name="layoutState">The layout state.</param>
+        </member>
         <member name="T:MPewsey.ManiaMap.LayoutState">
             <summary>
             Contains the states of a Layout.
@@ -2598,6 +2617,18 @@
             Sets the room template based on the current template ID.
             </summary>
             <param name="templates">A dictionary of room templates.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.VisibleCellProgress(MPewsey.ManiaMap.RoomState)">
+            <summary>
+            Returns the ratio of visible cells over total cells.
+            </summary>
+            <param name="state">The room state.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.VisibleCellCount(MPewsey.ManiaMap.RoomState)">
+            <summary>
+            Returns a vector with of the visible cell count (X) and total cell count (Y).
+            </summary>
+            <param name="state">The room state.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.RoomPair">
             <summary>

@@ -192,14 +192,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                     for (int j = 0; j < cells.Columns; j++)
                     {
                         var cell = cells[i, j];
-                        var position = new Vector2DInt(i, j);
 
                         // If cell it empty, go to next cell.
                         if (cell == null)
                             continue;
 
+                        var position = new Vector2DInt(i, j);
+                        var isCompletelyVisible = roomState == null || roomState.CellIsVisible(position);
+
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
+                        if (!isCompletelyVisible && !roomState.IsVisible)
                             continue;
 
                         // Calculate draw position
@@ -214,16 +216,18 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         var east = cells.GetOrDefault(i, j + 1);
 
                         // Accumulate map tile types
-                        var flags = GetFeatureFlags(cell);
-                        flags |= GetTileFlag(room, cell, null, position, DoorDirection.Top);
+                        var flags = GetTileFlag(room, cell, null, position, DoorDirection.Top);
                         flags |= GetTileFlag(room, cell, null, position, DoorDirection.Bottom);
                         flags |= GetTileFlag(room, cell, north, position, DoorDirection.North);
                         flags |= GetTileFlag(room, cell, south, position, DoorDirection.South);
                         flags |= GetTileFlag(room, cell, west, position, DoorDirection.West);
                         flags |= GetTileFlag(room, cell, east, position, DoorDirection.East);
 
+                        if (isCompletelyVisible)
+                            flags |= GetFeatureFlags(cell);
+
                         // Set the map tile.
-                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        var color = isCompletelyVisible ? ColorUtility.ConvertColor(room.Color) : RoomColor;
                         var tile = MapTilePool.GetTile(flags, color);
                         tilemap.SetTile(point, tile);
                     }

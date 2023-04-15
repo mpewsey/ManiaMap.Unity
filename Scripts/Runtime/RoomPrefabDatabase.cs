@@ -16,9 +16,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
         public RoomBehavior InstantiateRoom(Uid id, Transform parent = null,
-            RoomPositionOption position = RoomPositionOption.UseManagerSettings)
+            RoomPositionOption position = RoomPositionOption.UseManagerSetting)
         {
-            var roomLayout = ManiaMapManager.Current.GetRoom(id);
+            var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
             return RoomBehavior.InstantiateRoom(id, prefab.gameObject, parent, position);
         }

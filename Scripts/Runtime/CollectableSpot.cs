@@ -24,9 +24,14 @@ namespace MPewsey.ManiaMap.Unity
         [SerializeField]
         private CollectableSpotEvent _onInitialize = new CollectableSpotEvent();
         /// <summary>
-        /// The event invoked after the collectable spot is initialized. This occurs on start.
+        /// The event invoked after the object is initialized.
         /// </summary>
         public CollectableSpotEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
+
+        /// <summary>
+        /// True if the collectable spot is initialized.
+        /// </summary>
+        public bool IsInitialized { get; private set; }
 
         /// <summary>
         /// The assigned collectable ID.
@@ -43,18 +48,31 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsAcquired() => RoomState().AcquiredCollectables.Contains(Id);
 
-        private void Start()
+        private void OnValidate()
         {
-            Initialize();
+            Id = ManiaMapManager.AutoAssignId(Id);
+        }
+
+        private void Awake()
+        {
+            Room().OnInitialize.AddListener(Initialize);
+        }
+
+        private void OnDestroy()
+        {
+            Room().OnInitialize.RemoveListener(Initialize);
         }
 
         /// <summary>
-        /// Initializes the collectable spot based on the layout and layout state
-        /// assigned to the current manager.
+        /// Initializes the collectable spot.
         /// </summary>
         private void Initialize()
         {
-            OnInitialize.Invoke(this);
+            if (!IsInitialized)
+            {
+                IsInitialized = true;
+                OnInitialize.Invoke(this);
+            }
         }
 
         /// <summary>

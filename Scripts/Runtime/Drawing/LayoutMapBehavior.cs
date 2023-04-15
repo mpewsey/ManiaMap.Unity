@@ -280,14 +280,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                     for (int j = 0; j < cells.Columns; j++)
                     {
                         var cell = cells[i, j];
-                        var position = new Vector2DInt(i, j);
 
                         // If cell it empty, go to next cell.
                         if (cell == null)
                             continue;
 
+                        var position = new Vector2DInt(i, j);
+                        var isCompletelyVisible = roomState == null || roomState.CellIsVisible(position);
+
                         // If room state is defined and is not visible, go to next cell.
-                        if (roomState != null && !roomState.IsVisible && !roomState.CellIsVisible(position))
+                        if (!isCompletelyVisible && !roomState.IsVisible)
                             continue;
 
                         // Calculate draw position
@@ -311,7 +313,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
                         // Add cell background fill
                         var rect = new RectInt(point, MapTiles.TileSize);
-                        var color = roomState == null || roomState.CellIsVisible(position) ? ColorUtility.ConvertColor(room.Color) : RoomColor;
+                        var color = isCompletelyVisible ? ColorUtility.ConvertColor(room.Color) : RoomColor;
                         TextureUtility.CompositeFill(texture, color, rect);
 
                         // Superimpose applicable map tiles
@@ -322,7 +324,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing
                         TextureUtility.DrawImage(texture, topTile, point);
                         TextureUtility.DrawImage(texture, bottomTile, point);
 
-                        DrawFeatureTiles(texture, cell, point);
+                        if (isCompletelyVisible)
+                            DrawFeatureTiles(texture, cell, point);
                     }
                 }
             }

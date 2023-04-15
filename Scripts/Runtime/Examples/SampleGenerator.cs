@@ -67,7 +67,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
 
             var layout = (Layout)results.Outputs["Layout"];
             var layoutState = new LayoutState(layout);
-            ManiaMapManager.Current.SetLayout(layout, layoutState);
+            ManiaMapManager.Current.Initialize(layout, layoutState);
             RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
         }
 

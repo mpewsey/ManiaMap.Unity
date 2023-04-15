@@ -1,3 +1,4 @@
+using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -87,7 +88,7 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// Returns the local position for the bottom-left corner of the cell.
+        /// Returns the local position for the top-left corner of the cell.
         /// </summary>
         public Vector2 Origin()
         {
@@ -221,15 +222,8 @@ namespace MPewsey.ManiaMap.Unity
 
             var cells = room.GetNonEmptyCells();
             var distances = CellSqrDistances(cells, transform.position);
-            var min = Mathf.Min(distances);
-
-            for (int i = 0; i < distances.Length; i++)
-            {
-                if (distances[i] == min)
-                    return cells[i];
-            }
-
-            return null;
+            var index = Maths.MinIndex(distances);
+            return index < 0 ? null : cells[index];
         }
 
         /// <summary>

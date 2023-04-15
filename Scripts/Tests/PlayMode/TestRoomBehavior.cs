@@ -15,9 +15,9 @@ namespace MPewsey.ManiaMap.Unity.Tests
             Assets.DestroyAllGameObjects();
         }
 
-        [TestCase(Plane.XY)]
-        [TestCase(Plane.XZ)]
-        public void TestGetCellIndex(Plane plane)
+        [TestCase(CellPlane.XY)]
+        [TestCase(CellPlane.XZ)]
+        public void TestGetCellIndex(CellPlane plane)
         {
             var obj = new GameObject("Room");
             var room = obj.AddComponent<RoomBehavior>();
@@ -79,9 +79,10 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             var layoutState = new LayoutState(layout);
+            var roomState = layoutState.RoomStates[roomLayout.Id];
             var doorConnections = new List<DoorConnection>();
 
-            room.Initialize(roomLayout.Id, layout, layoutState, doorConnections, RoomPositionOption.LayoutPosition);
+            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, RoomPositionOption.LayoutPosition);
             Assert.IsTrue(room.IsInitialized);
         }
 
@@ -97,7 +98,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             var node = new LayoutNode(1);
             var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
             layout.Rooms.Add(roomLayout.Id, roomLayout);
-            ManiaMapManager.Current.SetLayout(layout, new LayoutState(layout));
+            ManiaMapManager.Current.Initialize(layout, new LayoutState(layout));
 
             var room = RoomBehavior.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
             Object.DestroyImmediate(prefab.gameObject);

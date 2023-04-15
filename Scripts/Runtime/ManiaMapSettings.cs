@@ -22,24 +22,11 @@ namespace MPewsey.ManiaMap.Unity
         public RoomPositionOption RoomPositionOption
         {
             get => _roomPositionOption;
-            set => _roomPositionOption = value != RoomPositionOption.UseManagerSettings ? value : RoomPositionOption.Origin;
-        }
-
-        [SerializeField]
-        private int _maxClusterDepth = 1;
-        /// <summary>
-        /// The maximum cluster depth used to calculate room clusters for a layout
-        /// when it it assigned to the manager.
-        /// </summary>
-        public int MaxClusterDepth
-        {
-            get => _maxClusterDepth;
-            set => _maxClusterDepth = Mathf.Max(value, 1);
+            set => _roomPositionOption = value != RoomPositionOption.UseManagerSetting ? value : RoomPositionOption.Origin;
         }
 
         private void OnValidate()
         {
-            MaxClusterDepth = MaxClusterDepth;
             RoomPositionOption = RoomPositionOption;
         }
 
@@ -63,7 +50,7 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="option">The local room position option.</param>
         public RoomPositionOption GetRoomPositionOption(RoomPositionOption option)
         {
-            return option != RoomPositionOption.UseManagerSettings ? option : RoomPositionOption;
+            return option != RoomPositionOption.UseManagerSetting ? option : RoomPositionOption;
         }
     }
 }

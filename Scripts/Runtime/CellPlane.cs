@@ -3,7 +3,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// The cell plane.
     /// </summary>
-    public enum Plane
+    public enum CellPlane
     {
         /// The XY plane.
         XY,

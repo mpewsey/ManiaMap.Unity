@@ -1,4 +1,6 @@
 using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap.Unity.Exceptions;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -8,6 +10,11 @@ namespace MPewsey.ManiaMap.Unity
     /// </summary>
     public class DoorBehavior : CellChild
     {
+        /// <summary>
+        /// A dictionary of doors by their room ID.
+        /// </summary>
+        private static Dictionary<Uid, LinkedList<DoorBehavior>> Doors { get; } = new Dictionary<Uid, LinkedList<DoorBehavior>>();
+
         [SerializeField]
         private bool _autoAssignDirection = true;
         /// <summary>
@@ -38,16 +45,22 @@ namespace MPewsey.ManiaMap.Unity
         public DoorCode Code { get => _code; set => _code = value; }
 
         [SerializeField]
-        private DoorBehaviorEvent _onInitialize = new DoorBehaviorEvent();
+        private DoorBehaviorEvent _onInitialize;
         /// <summary>
-        /// The event invoked after the door is initialized. This occurs on start.
+        /// The event invoked after the door is initialized.
         /// </summary>
         public DoorBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
+        private DoorConnection _connection;
         /// <summary>
         /// The associated door connection in the layout.
         /// </summary>
-        public DoorConnection Connection { get; private set; }
+        public DoorConnection Connection { get => AssertIsInitialized(_connection); private set => _connection = value; }
+
+        /// <summary>
+        /// True if the door has been initialized.
+        /// </summary>
+        public bool IsInitialized { get; private set; }
 
         /// <summary>
         /// True if the door exists in the layout.
@@ -59,38 +72,99 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public Uid ToRoomId()
         {
-            if (!Exists())
-                return new Uid(-1, -1, -1);
-            if (Connection.FromRoom == RoomId())
-                return Connection.ToRoom;
-            return Connection.FromRoom;
+            if (Exists())
+            {
+                var roomId = RoomId();
+
+                if (Connection.FromRoom == roomId)
+                    return Connection.ToRoom;
+                if (Connection.ToRoom == roomId)
+                    return Connection.FromRoom;
+            }
+
+            return new Uid(-1, -1, -1);
+        }
+
+        private void Awake()
+        {
+            Room().OnInitialize.AddListener(Initialize);
+        }
+
+        private void OnDestroy()
+        {
+            Room().OnInitialize.RemoveListener(Initialize);
+            RemoveFromDoorsDictionary();
         }
 
         /// <summary>
-        /// The door position in the room that this door connects to.
-        /// </summary>
-        public DoorPosition ToDoorPosition()
-        {
-            if (!Exists())
-                return null;
-            if (Connection.FromRoom == RoomId())
-                return Connection.ToDoor;
-            return Connection.FromDoor;
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes the door based on the layout and layout state
-        /// assigned to the current manager.
+        /// Initializes the door.
         /// </summary>
         private void Initialize()
         {
-            Connection = FindDoorConnection();
-            OnInitialize.Invoke(this);
+            if (!IsInitialized)
+            {
+                IsInitialized = true;
+                AddToDoorsDictionary();
+                Connection = FindDoorConnection();
+                OnInitialize.Invoke(this);
+            }
+        }
+
+        /// <summary>
+        /// If the door is initialized, returns the value. Otherwise, throws an exception.
+        /// </summary>
+        /// <param name="value">The return value.</param>
+        /// <exception cref="DoorNotInitializedException">Raised if the door is not initialized.</exception>
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new DoorNotInitializedException($"Attempting to access initialized member on uninitialized door: {this}.");
+
+            return value;
+        }
+
+        /// <summary>
+        /// Finds the door with the specified room ID and door connection.
+        /// </summary>
+        /// <param name="roomId">The room ID.</param>
+        /// <param name="connection">The door connection.</param>
+        public static DoorBehavior FindDoor(Uid roomId, DoorConnection connection)
+        {
+            if (connection != null && Doors.TryGetValue(roomId, out var doors))
+            {
+                foreach (var door in doors)
+                {
+                    if (door.Connection == connection)
+                        return door;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Adds the door to the doors dictionary.
+        /// </summary>
+        private void AddToDoorsDictionary()
+        {
+            var id = RoomId();
+
+            if (!Doors.TryGetValue(id, out var doors))
+            {
+                doors = new LinkedList<DoorBehavior>();
+                Doors.Add(id, doors);
+            }
+
+            doors.AddLast(this);
+        }
+
+        /// <summary>
+        /// Removes the door from the doors dictionary.
+        /// </summary>
+        private void RemoveFromDoorsDictionary()
+        {
+            if (IsInitialized && Doors.TryGetValue(RoomId(), out var doors))
+                doors.Remove(this);
         }
 
         /// <summary>
@@ -168,15 +242,7 @@ namespace MPewsey.ManiaMap.Unity
                 Vector3.Dot(delta, room.Swizzle(Vector3.back)), // Bottom
             };
 
-            var max = Mathf.Max(distances);
-
-            for (int i = 0; i < distances.Length; i++)
-            {
-                if (distances[i] == max)
-                    return directions[i];
-            }
-
-            return directions[0];
+            return directions[Maths.MaxIndex(distances)];
         }
     }
 }
