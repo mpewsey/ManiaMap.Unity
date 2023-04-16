@@ -117,6 +117,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return value;
         }
 
+        public void Clear()
+        {
+            foreach (var layer in Layers)
+            {
+                Destroy(layer.gameObject);
+            }
+
+            Layers.Clear();
+        }
+
         /// <summary>
         /// Creates a new child grid component if it does not already exist.
         /// </summary>

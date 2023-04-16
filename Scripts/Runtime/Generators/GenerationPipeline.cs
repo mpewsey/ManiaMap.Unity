@@ -45,6 +45,7 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <summary>
         /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
+        /// <param name="inputs">A dictionary of pipeline inputs.</param>
         public Task<PipelineResults> GenerateAsync(Dictionary<string, object> inputs = null)
         {
             inputs ??= new Dictionary<string, object>();

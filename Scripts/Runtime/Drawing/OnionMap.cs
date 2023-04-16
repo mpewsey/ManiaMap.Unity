@@ -12,7 +12,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         private Gradient _gradient = DefaultGradient();
         public Gradient Gradient { get => _gradient; set => _gradient = value; }
 
-        private float _position = 1e10f;
+        private float _position = -1e20f;
         public float Position { get => _position; set => SetPosition(value); }
 
         public IOnionMapTarget Target { get; private set; }
@@ -22,21 +22,23 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             Target = GetComponent<IOnionMapTarget>();
         }
 
-        private static Gradient DefaultGradient()
+        public static Gradient DefaultGradient()
         {
             var gradient = new Gradient();
 
             var colorKeys = new GradientColorKey[]
             {
-                new GradientColorKey(Color.white, 0),
-                new GradientColorKey(Color.white, 0.5f),
-                new GradientColorKey(Color.white, 1),
+                new GradientColorKey(Color.red, 0),
+                new GradientColorKey(Color.white, 0.45f),
+                new GradientColorKey(Color.white, 0.55f),
+                new GradientColorKey(Color.blue, 1),
             };
 
             var alphaKeys = new GradientAlphaKey[]
             {
                 new GradientAlphaKey(0, 0),
-                new GradientAlphaKey(1, 0.5f),
+                new GradientAlphaKey(1, 0.45f),
+                new GradientAlphaKey(1, 0.55f),
                 new GradientAlphaKey(0, 1),
             };
 
@@ -65,7 +67,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
 
             foreach (var layer in Target.Layers())
             {
-                var t = (layer.Position() - Position) * scale;
+                var t = (layer.Position() - Position) * scale + 0.5f;
                 layer.Apply(Gradient.Evaluate(t));
             }
         }

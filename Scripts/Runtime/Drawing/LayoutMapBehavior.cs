@@ -141,6 +141,16 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return value;
         }
 
+        public void Clear()
+        {
+            foreach (var layer in Layers)
+            {
+                Destroy(layer.gameObject);
+            }
+
+            Layers.Clear();
+        }
+
         /// <summary>
         /// Renders map images of all layout layers and saves them to the designated file path.
         /// The z (layer) values are added into the file paths before the file extension.
