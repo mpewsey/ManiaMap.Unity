@@ -97,7 +97,7 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 
 ![Generation Pipeline](https://user-images.githubusercontent.com/23442063/175828818-3a0a09da-69d8-4d60-a48c-b69d4ceac374.png)
 
-3. To run the pipeline and generate a layout, run the `Generate` method from a script.
+3. To run the pipeline and generate a layout, run the `Run` method from a script.
 
 ```Generate.cs
 var results = Pipeline.Run();
