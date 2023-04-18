@@ -27,7 +27,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Generate(inputs);
+            var results = pipeline.Run(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var path = "Tests/Layout.json";
@@ -46,7 +46,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Generate(inputs);
+            var results = pipeline.Run(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var state = new LayoutState(layout);

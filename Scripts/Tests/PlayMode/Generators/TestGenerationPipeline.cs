@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate(inputs);
+            var results = pipeline.Run(inputs);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
         }
@@ -46,7 +46,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var task = pipeline.GenerateAsync(inputs);
+            var task = pipeline.RunAsync(inputs);
             yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);

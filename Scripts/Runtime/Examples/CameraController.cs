@@ -4,7 +4,6 @@ namespace MPewsey.ManiaMap.Unity.Examples
 {
     /// <summary>
     /// A component that moves that attached camera based on the user's input.
-    /// Zoom out = 1 Key. Zoom in = 2 Key. Arrow keys move the camera.
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public class CameraController : MonoBehaviour
@@ -23,6 +22,20 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// </summary>
         public float ZoomSpeed { get => _zoomSpeed; set => _zoomSpeed = value; }
 
+        [SerializeField]
+        private KeyCode _zoomInKey = KeyCode.Alpha2;
+        /// <summary>
+        /// The zoom in key.
+        /// </summary>
+        public KeyCode ZoomInKey { get => _zoomInKey; set => _zoomInKey = value; }
+
+        [SerializeField]
+        private KeyCode _zoomOutKey = KeyCode.Alpha1;
+        /// <summary>
+        /// The zoom out key.
+        /// </summary>
+        public KeyCode ZoomOutKey { get => _zoomOutKey; set => _zoomOutKey = value; }
+
         /// <summary>
         /// The attached camera component.
         /// </summary>
@@ -36,9 +49,8 @@ namespace MPewsey.ManiaMap.Unity.Examples
         private void Update()
         {
             var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            var zoom = Input.GetKey(ZoomOutKey) ? 1 : Input.GetKey(ZoomInKey) ? -1 : 0;
             Camera.transform.Translate(ScrollSpeed * Time.deltaTime * move);
-
-            var zoom = Input.GetKey("1") ? 1 : Input.GetKey("2") ? -1 : 0;
             Camera.orthographicSize += ZoomSpeed * Time.deltaTime * zoom;
         }
     }

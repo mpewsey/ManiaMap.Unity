@@ -57,7 +57,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
         {
             Destroy(RoomContainer);
             RoomContainer = new GameObject("Rooms");
-            var results = Generator.Generate();
+            var results = Generator.Run();
 
             if (!results.Success)
             {

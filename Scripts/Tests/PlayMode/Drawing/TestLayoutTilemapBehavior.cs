@@ -28,12 +28,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate(inputs);
+            var results = pipeline.Run(inputs);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);
             var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemapBehavior>(Assets.LayoutTilemapPath);
-            layoutTilemap.CreateLayers(layout, null);
+            layoutTilemap.Initialize(layout);
+            layoutTilemap.Draw();
             Assert.Greater(layoutTilemap.Grid.transform.childCount, 0);
         }
     }

@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seed: 12345
+  _generateButton: Fire1
+  _timeout: 10000
   _pipeline: {fileID: 3407621297442670389}
   _layoutMap: {fileID: 5307314653226013473}
 --- !u!1001 &177126458357444514

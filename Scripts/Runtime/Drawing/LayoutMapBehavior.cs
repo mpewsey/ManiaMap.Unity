@@ -1,4 +1,5 @@
 using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing
     /// <summary>
     /// A component for creating maps of Layout layers.
     /// </summary>
-    public class LayoutMapBehavior : MonoBehaviour
+    public class LayoutMapBehavior : MonoBehaviour, IOnionMapTarget
     {
         [SerializeField]
         private Transform _layersContainer;
@@ -65,126 +66,132 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         private List<LayoutMapLayer> Layers { get; set; } = new List<LayoutMapLayer>();
 
+        private Layout _layout;
         /// <summary>
         /// The room layout.
         /// </summary>
-        private Layout Layout { get; set; }
+        private Layout Layout { get => AssertIsInitialized(_layout); set => _layout = value; }
 
+        private LayoutState _layoutState;
         /// <summary>
         /// A dictionary of room door positions by room ID.
         /// </summary>
-        private LayoutState LayoutState { get; set; }
+        private LayoutState LayoutState { get => AssertIsInitialized(_layoutState); set => _layoutState = value; }
 
+        private Dictionary<Uid, List<DoorPosition>> _roomDoors;
         /// <summary>
-        /// A dictionary of 
+        /// A dictionary of door positions by their containing room.
         /// </summary>
-        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; }
+        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get => AssertIsInitialized(_roomDoors); set => _roomDoors = value; }
 
+        private RectangleInt _layoutBounds;
         /// <summary>
         /// The bounds of the layout.
         /// </summary>
-        private RectangleInt LayoutBounds { get; set; }
+        private RectangleInt LayoutBounds { get => AssertIsInitialized(_layoutBounds); set => _layoutBounds = value; }
+
+        private int[] _layerPositions;
+        private int[] LayerPositions { get => AssertIsInitialized(_layerPositions); set => _layerPositions = value; }
+
+        public bool IsInitialized { get; private set; }
 
         /// <summary>
         /// Returns a readonly list of layers.
         /// </summary>
-        public IReadOnlyList<LayoutMapLayer> GetLayers()
+        public IReadOnlyList<LayoutMapLayer> GetLayers() => Layers;
+
+        IEnumerable<IOnionMapLayer> IOnionMapTarget.Layers() => Layers;
+
+        public Vector2 LayerRange()
         {
-            return Layers;
+            var positions = LayerPositions;
+
+            if (positions.Length == 0)
+                return Vector2.zero;
+
+            return new Vector2(positions[0], positions[positions.Length - 1]);
         }
 
         /// <summary>
-        /// Renders map images of all layout layers and saves them to the designated file path.
-        /// The z (layer) values are added into the file paths before the file extension.
-        /// </summary>
-        /// <param name="path">The file path.</param>
-        public void SaveLayerImages(string path)
-        {
-            CreateLayers();
-            SaveCurrentLayerImages(path);
-        }
-
-        /// <summary>
-        /// Renders map images of all layout layers and saves them to the designated file path.
-        /// The z (layer) values are added into the file paths before the file extension.
-        /// </summary>
-        /// <param name="path">The file path.</param>
-        /// <param name="layout">The room layout.</param>
-        /// <param name="state">The room layout state.</param>
-        public void SaveLayerImages(string path, Layout layout, LayoutState state)
-        {
-            CreateLayers(layout, state);
-            SaveCurrentLayerImages(path);
-        }
-
-        /// <summary>
-        /// Saves the currently rendered layer images.
-        /// </summary>
-        /// <param name="path">The file path.</param>
-        public void SaveCurrentLayerImages(string path)
-        {
-            var ext = Path.GetExtension(path);
-            var name = Path.ChangeExtension(path, null);
-
-            foreach (var layer in Layers)
-            {
-                var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, ext);
-                File.WriteAllBytes($"{name}_Z={layer.Z}{ext}", bytes);
-            }
-        }
-
-        /// <summary>
-        /// Instantiates the map's buffers.
+        /// Initializes the map.
         /// </summary>
         /// <param name="layout">The room layout.</param>
         /// <param name="state">The room layout state.</param>
-        private void Initialize(Layout layout, LayoutState state)
+        public void Initialize(Layout layout, LayoutState state = null)
         {
             Layout = layout;
             LayoutState = state;
             RoomDoors = layout.GetRoomDoors();
             LayoutBounds = layout.GetBounds();
+            LayerPositions = DistinctLayerPositions(layout);
+            IsInitialized = true;
+        }
+
+        private static int[] DistinctLayerPositions(Layout layout)
+        {
+            var result = layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToArray();
+            System.Array.Sort(result);
+            return result;
+        }
+
+        private T AssertIsInitialized<T>(T value)
+        {
+            if (!IsInitialized)
+                throw new LayoutMapNotInitializedException($"Attempting to access initialized method when not initialized: {this}.");
+            return value;
+        }
+
+        public void Clear()
+        {
+            foreach (var layer in Layers)
+            {
+                Destroy(layer.gameObject);
+            }
+
+            Layers.Clear();
         }
 
         /// <summary>
-        /// Creates and draws the maps for the current layout.
+        /// Renders map images of all layout layers and saves them to the designated file path.
+        /// The z (layer) values are added into the file paths before the file extension.
         /// </summary>
-        public void CreateLayers()
+        /// <param name="path">The file path.</param>
+        public void SaveImages(string path)
         {
-            var manager = ManiaMapManager.Current;
-            CreateLayers(manager.Layout, manager.LayoutState);
+            Draw();
+            var extension = Path.GetExtension(path);
+            var name = Path.ChangeExtension(path, null);
+
+            foreach (var layer in Layers)
+            {
+                var bytes = TextureUtility.EncodeToBytes(layer.Sprite.texture, extension);
+                File.WriteAllBytes($"{name}_Z={layer.Z}{extension}", bytes);
+            }
         }
 
         /// <summary>
         /// Creates and draws the maps for the layout.
         /// </summary>
-        /// <param name="layout">The room layout.</param>
-        /// <param name="state">The room layout state.</param>
-        public void CreateLayers(Layout layout, LayoutState state)
+        public void Draw()
         {
-            Initialize(layout, state);
-            var zs = Layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToList();
-            zs.Sort();
-            EnsureCapacity(zs.Count);
-
-            // Draw the layers.
+            CreateLayers();
             var size = GetTextureSize();
 
             for (int i = 0; i < Layers.Count; i++)
             {
                 var layer = Layers[i];
-                layer.Initialize(size, zs[i]);
+                layer.Initialize(size, LayerPositions[i]);
                 DrawMap(layer.Sprite.texture, layer.Z);
             }
         }
 
         /// <summary>
-        /// Destroys or creates layers until the specified size is met.
+        /// Destroys or creates layers until the required quantity is met.
         /// </summary>
-        /// <param name="capacity">The capacity.</param>
-        private void EnsureCapacity(int capacity)
+        private void CreateLayers()
         {
             CreateLayersContainer();
+            var capacity = LayerPositions.Length;
 
             // Destroy extra layers.
             while (Layers.Count > capacity)

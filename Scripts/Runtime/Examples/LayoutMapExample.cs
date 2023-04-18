@@ -1,6 +1,6 @@
-using MPewsey.Common.Random;
 using MPewsey.ManiaMap.Unity.Drawing;
 using MPewsey.ManiaMap.Unity.Generators;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,9 +14,16 @@ namespace MPewsey.ManiaMap.Unity.Examples
         [SerializeField]
         private int _seed = 12345;
         /// <summary>
-        /// The random seed.
+        /// The initial random seed.
         /// </summary>
         public int Seed { get => _seed; set => _seed = value; }
+
+        [SerializeField]
+        private string _generateButton = "Fire1";
+        /// <summary>
+        /// The button pressed to generate a new layout.
+        /// </summary>
+        public string GenerateButton { get => _generateButton; set => _generateButton = value; }
 
         [SerializeField]
         private GenerationPipeline _pipeline;
@@ -32,49 +39,58 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// </summary>
         public LayoutMapBehavior LayoutMap { get => _layoutMap; set => _layoutMap = value; }
 
+        /// <summary>
+        /// True if the generation task is running.
+        /// </summary>
+        public bool TaskIsRunning { get; private set; }
+
         private void Start()
         {
-            CreateLayers(Seed);
+            StartCoroutine(DrawCoroutine(Seed));
         }
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                CreateLayers();
-            }
+            if (!TaskIsRunning && Input.GetButtonDown(GenerateButton))
+                StartCoroutine(DrawCoroutine());
         }
 
         /// <summary>
         /// Runs the pipeline and creates a map.
         /// </summary>
-        public void CreateLayers()
+        public IEnumerator DrawCoroutine()
         {
-            CreateLayers(Random.Range(1, int.MaxValue));
+            return DrawCoroutine(Random.Range(1, int.MaxValue));
         }
 
         /// <summary>
         /// Runs the pipeline and creates a map for the specified seed.
         /// </summary>
         /// <param name="seed">The random seed.</param>
-        public void CreateLayers(int seed)
+        public IEnumerator DrawCoroutine(int seed)
         {
             var inputs = new Dictionary<string, object>()
             {
                 { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(seed) },
             };
 
-            var results = Pipeline.Generate(inputs);
+            LayoutMap.Clear();
+            TaskIsRunning = true;
+            var task = Pipeline.RunAttemptsAsync(seed, 10, 5000, inputs);
 
-            if (!results.Success)
+            while (!task.IsCompleted)
             {
-                Debug.LogError("Failed to generate layout.");
-                return;
+                yield return null;
             }
 
-            var layout = results.GetOutput<Layout>("Layout");
-            LayoutMap.CreateLayers(layout, null);
+            TaskIsRunning = false;
+
+            if (!task.Result.Success)
+                throw new System.TimeoutException("Task timed out.");
+
+            var layout = task.Result.GetOutput<Layout>("Layout");
+            LayoutMap.Initialize(layout);
+            LayoutMap.Draw();
         }
     }
 }
