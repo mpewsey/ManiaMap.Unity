@@ -1,8 +1,20 @@
 var searchData=
 [
-  ['samplecollectablespotevents_0',['SampleCollectableSpotEvents',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
-  ['sampledoorevents_1',['SampleDoorEvents',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
-  ['samplegenerator_2',['SampleGenerator',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
-  ['samplesavesettings_3',['SampleSaveSettings',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['samplesavesettingseditor_4',['SampleSaveSettingsEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
+  ['randomseedinput_0',['RandomSeedInput',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_random_seed_input.html',1,'MPewsey::ManiaMap::Unity::Generators']]],
+  ['roomaddressabledatabase_1',['RoomAddressableDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_addressable_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomaddressabledatabaseeditor_2',['RoomAddressableDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_addressable_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roombehavior_3',['RoomBehavior',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roombehavioreditor_4',['RoomBehaviorEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_behavior_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roomdatabase_5',['RoomDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomdatabase_3c_20assetreferencegameobject_20_3e_6',['RoomDatabase&lt; AssetReferenceGameObject &gt;',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomdatabase_3c_20roombehavior_20_3e_7',['RoomDatabase&lt; RoomBehavior &gt;',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomdatabaseentry_8',['RoomDatabaseEntry',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomflag_9',['RoomFlag',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomflageditor_10',['RoomFlagEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_flag_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roomflagevent_11',['RoomFlagEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag_event.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomnotinitializedexception_12',['RoomNotInitializedException',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_room_not_initialized_exception.html',1,'MPewsey::ManiaMap::Unity::Exceptions']]],
+  ['roomprefabdatabase_13',['RoomPrefabDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomprefabdatabaseeditor_14',['RoomPrefabDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roomtemplateobject_15',['RoomTemplateObject',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomtemplateobjecteditor_16',['RoomTemplateObjectEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_object_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
 ];

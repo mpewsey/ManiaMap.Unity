@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['templategroup_0',['TemplateGroup',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['templategroupeditor_1',['TemplateGroupEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['templategroupentry_2',['TemplateGroupEntry',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['templategroupentrydrawer_3',['TemplateGroupEntryDrawer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_entry_drawer.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['templatesavesettings_4',['TemplateSaveSettings',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['templatesavesettingseditor_5',['TemplateSaveSettingsEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_save_settings_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['textureutility_6',['TextureUtility',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html',1,'MPewsey::ManiaMap::Unity::Drawing']]]
+  ['samplecollectablespotevents_0',['SampleCollectableSpotEvents',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
+  ['sampledoorevents_1',['SampleDoorEvents',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
+  ['samplegenerator_2',['SampleGenerator',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html',1,'MPewsey::ManiaMap::Unity::Examples']]],
+  ['samplesavesettings_3',['SampleSaveSettings',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['samplesavesettingseditor_4',['SampleSaveSettingsEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
 ];

@@ -185,7 +185,7 @@ Step 4: Create Generation Pipeline</h2>
 <li>To run the pipeline and generate a layout, run the <code>Generate</code> method from a script.</li>
 </ol>
 <div class="fragment"><div class="line">{Generate.cs} </div>
-<div class="line">var results = Pipeline.Generate();</div>
+<div class="line">var results = Pipeline.Run();</div>
 <div class="line"> </div>
 <div class="line">// Retrieve the generated layout data from the ouput results</div>
 <div class="line">var layout = results.GetOutput&lt;Layout&gt;(&quot;Layout&quot;);</div>

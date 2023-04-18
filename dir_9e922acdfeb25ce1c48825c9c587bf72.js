@@ -8,6 +8,7 @@ var dir_9e922acdfeb25ce1c48825c9c587bf72 =
     [ "EmptyCellException.cs", "_empty_cell_exception_8cs_source.html", null ],
     [ "InstantiationFailedException.cs", "_instantiation_failed_exception_8cs_source.html", null ],
     [ "LayoutIsNullException.cs", "_layout_is_null_exception_8cs_source.html", null ],
+    [ "LayoutMapNotInitializedException.cs", "_layout_map_not_initialized_exception_8cs_source.html", null ],
     [ "LayoutStateIsNullException.cs", "_layout_state_is_null_exception_8cs_source.html", null ],
     [ "ManiaMapManagerNotInitializedException.cs", "_mania_map_manager_not_initialized_exception_8cs_source.html", null ],
     [ "MissingInputException.cs", "_missing_input_exception_8cs_source.html", null ],

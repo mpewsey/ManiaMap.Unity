@@ -7,6 +7,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions =
     [ "EmptyCellException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html", null ],
     [ "InstantiationFailedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_instantiation_failed_exception.html", null ],
     [ "LayoutIsNullException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_is_null_exception.html", null ],
+    [ "LayoutMapNotInitializedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_map_not_initialized_exception.html", null ],
     [ "LayoutStateIsNullException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_state_is_null_exception.html", null ],
     [ "ManiaMapManagerNotInitializedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_mania_map_manager_not_initialized_exception.html", null ],
     [ "MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],

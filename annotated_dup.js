@@ -10,6 +10,8 @@ var annotated_dup =
             ] ],
             [ "ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility" ],
             [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_feature_map_tile" ],
+            [ "IOnionMapLayer", "interface_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_i_onion_map_layer.html", null ],
+            [ "IOnionMapTarget", "interface_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_i_onion_map_target.html", null ],
             [ "LayoutMapBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior" ],
             [ "LayoutMapLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer" ],
             [ "LayoutTilemapBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_behavior.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_behavior" ],
@@ -17,6 +19,7 @@ var annotated_dup =
             [ "MapTileKey", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_key" ],
             [ "MapTilePool", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool" ],
             [ "MapTiles", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tiles" ],
+            [ "OnionMap", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_onion_map.html", null ],
             [ "Padding", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding" ],
             [ "TextureUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility" ]
           ] ],
@@ -44,6 +47,7 @@ var annotated_dup =
             [ "CameraController", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_camera_controller" ],
             [ "LayoutMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_map_example" ],
             [ "LayoutTilemapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_layout_tilemap_example" ],
+            [ "OnionMapExample", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_onion_map_example.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_onion_map_example" ],
             [ "SampleCollectableSpotEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_collectable_spot_events" ],
             [ "SampleDoorEvents", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_door_events" ],
             [ "SampleGenerator", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_examples_1_1_sample_generator" ]
@@ -56,6 +60,7 @@ var annotated_dup =
             [ "EmptyCellException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_empty_cell_exception.html", null ],
             [ "InstantiationFailedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_instantiation_failed_exception.html", null ],
             [ "LayoutIsNullException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_is_null_exception.html", null ],
+            [ "LayoutMapNotInitializedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_map_not_initialized_exception.html", null ],
             [ "LayoutStateIsNullException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_layout_state_is_null_exception.html", null ],
             [ "ManiaMapManagerNotInitializedException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_mania_map_manager_not_initialized_exception.html", null ],
             [ "MissingInputException", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
