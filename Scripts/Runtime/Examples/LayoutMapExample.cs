@@ -1,9 +1,7 @@
-using MPewsey.Common.Random;
 using MPewsey.ManiaMap.Unity.Drawing;
 using MPewsey.ManiaMap.Unity.Generators;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Examples
@@ -26,13 +24,6 @@ namespace MPewsey.ManiaMap.Unity.Examples
         /// The button pressed to generate a new layout.
         /// </summary>
         public string GenerateButton { get => _generateButton; set => _generateButton = value; }
-
-        [SerializeField]
-        private int _timeout = 10000;
-        /// <summary>
-        /// The timeout in milliseconds.
-        /// </summary>
-        public int Timeout { get => _timeout; set => _timeout = value; }
 
         [SerializeField]
         private GenerationPipeline _pipeline;
@@ -81,25 +72,21 @@ namespace MPewsey.ManiaMap.Unity.Examples
             var inputs = new Dictionary<string, object>()
             {
                 { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(seed) },
             };
 
             LayoutMap.Clear();
             TaskIsRunning = true;
-            var task = Pipeline.GenerateAsync(inputs);
-            var tasks = Task.WhenAny(task, Task.Delay(Timeout));
+            var task = Pipeline.RunAttemptsAsync(seed, 10, 5000, inputs);
 
-            while (!tasks.IsCompleted)
+            while (!task.IsCompleted)
             {
                 yield return null;
             }
 
             TaskIsRunning = false;
 
-            if (!task.IsCompletedSuccessfully)
-                throw new System.TimeoutException("Task timed out.");
             if (!task.Result.Success)
-                throw new System.Exception("Failed to generate layout.");
+                throw new System.TimeoutException("Task timed out.");
 
             var layout = task.Result.GetOutput<Layout>("Layout");
             LayoutMap.Initialize(layout);

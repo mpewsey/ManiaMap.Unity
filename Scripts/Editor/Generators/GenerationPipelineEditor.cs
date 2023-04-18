@@ -77,7 +77,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Editor
         {
             var messages = new List<string>() { "Inputs contain errors:" };
             var pipeline = GetGenerationPipeline();
-            var inputs = pipeline.GetGenerationInputs();
+            var inputs = pipeline.GetInputs();
 
             foreach (var input in inputs)
             {
@@ -102,7 +102,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Editor
         {
             var messages = new List<string>() { "Steps contain errors:" };
             var pipeline = GetGenerationPipeline();
-            var steps = pipeline.GetGenerationSteps();
+            var steps = pipeline.GetSteps();
 
             foreach (var step in steps)
             {

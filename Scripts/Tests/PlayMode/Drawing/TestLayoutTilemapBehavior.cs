@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             };
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Generate(inputs);
+            var results = pipeline.Run(inputs);
             Assert.IsTrue(results.Success);
             var layout = (Layout)results.Outputs["Layout"];
             Assert.IsNotNull(layout);

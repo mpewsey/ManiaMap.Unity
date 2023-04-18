@@ -69,6 +69,9 @@
             </summary>
             <param name="array">The built-in 2D array.</param>
         </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.Copy">
             <summary>
             Returns a shallow copy of the array.
@@ -265,6 +268,78 @@
             The underlying dictionary.
             </summary>
         </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Item(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.IsSynchronized">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.SyncRoot">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Add(`0,`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.ContainsKey(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.CopyTo(System.Array,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.TryGetValue(`0,`1@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.Common.Collections.BitArray2D">
             <summary>
             An 2D array of bits.
@@ -317,6 +392,12 @@
             <param name="columns">The number of columns in the array.</param>
             <exception cref="T:System.ArgumentException">Raised if either the input rows or columns are negative.</exception>
         </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.#ctor(MPewsey.Common.Collections.BitArray2D)">
+            <summary>
+            Initializes a copy of an array.
+            </summary>
+            <param name="other">The array to copy.</param>
+        </member>
         <member name="M:MPewsey.Common.Collections.BitArray2D.Copy">
             <summary>
             Returns a copy of the array.
@@ -328,6 +409,9 @@
             </summary>
             <param name="rows">The number of rows.</param>
             <param name="columns">The number of columns.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.BitArray2D.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.Common.Collections.BitArray2D.ToArrayString">
             <summary>
@@ -452,6 +536,69 @@
             Returns a new array of hash set entries.
             </summary>
         </member>
+        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.CopyTo(`0[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.Common.Collections.DataContractValueDictionary`2">
             <summary>
             A dictionary whose values are data contract serializable.
@@ -527,6 +674,9 @@
             </summary>
             <param name="key">The key.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.KeyValue`2.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.Common.Constants">
             <summary>
@@ -695,6 +845,41 @@
             <param name="x">The x value.</param>
             <param name="y">The y value.</param>
         </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.To3D">
+            <summary>
+            Converts the vector to a 3D vector with a Z value of zero.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Equals(MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.CompareTo(MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.op_Equality(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.op_Inequality(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.op_Addition(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.op_Subtraction(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector2DInt.op_UnaryNegation(MPewsey.Common.Mathematics.Vector2DInt)">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.Common.Mathematics.Vector2DInt.Max(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">
             <summary>
             Returns the maximum values of the two vectors.
@@ -760,6 +945,41 @@
             <param name="y">The y value.</param>
             <param name="z">The z value.</param>
         </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.To2D">
+            <summary>
+            Converts the vector to a 2D vector, without the Z value.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Equals(MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.CompareTo(MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.op_Equality(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.op_Inequality(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.op_Addition(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.op_Subtraction(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Vector3DInt.op_UnaryNegation(MPewsey.Common.Mathematics.Vector3DInt)">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.Common.Mathematics.Vector3DInt.Max(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
             <summary>
             Returns the maximum values of the two vectors.
@@ -792,12 +1012,13 @@
             An interface for creating a step of a Pipeline.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Pipelines.IPipelineStep.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+        <member name="M:MPewsey.Common.Pipelines.IPipelineStep.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
             <summary>
             Performs the operations for this step.
             Artifacts should be written to the results outputs.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.Common.Pipelines.Pipeline">
             <summary>
@@ -815,11 +1036,19 @@
             </summary>
             <param name="steps">The pipeline steps.</param>
         </member>
-        <member name="M:MPewsey.Common.Pipelines.Pipeline.Generate(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.Run(System.Collections.Generic.Dictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>
-            Invokes all generators of the pipeline and returns the results.
+            Invokes all steps of the pipeline and returns the results.
             </summary>
-            <param name="inputs">A dictionary of generator inputs.</param>
+            <param name="inputs">A dictionary of pipeline inputs.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.RunAsync(System.Collections.Generic.Dictionary{System.String,System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Runs the pipeline asynchonously.
+            </summary>
+            <param name="inputs">A dictionary of pipeline inputs.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.Common.Pipelines.PipelineResults">
             <summary>
@@ -932,6 +1161,9 @@
             Initializes a copy of a random seed.
             </summary>
             <param name="other">The random seed to be copied.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.Copy">
             <summary>

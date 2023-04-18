@@ -26,6 +26,9 @@
             <param name="min">The minimum range of the box.</param>
             <param name="max">The maximum range of the box.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Box.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Box.Intersects(MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Mathematics.Vector3DInt)">
             <summary>
             Returns true if the room template intersects the Box.
@@ -115,6 +118,9 @@
             <summary>
             Returns a new copy of the cell.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Cell.GetDoor(MPewsey.ManiaMap.DoorDirection)">
             <summary>
@@ -268,6 +274,24 @@
             <param name="id">The ID.</param>
             <param name="group">The group name.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.Equals(MPewsey.ManiaMap.Collectable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.op_Equality(MPewsey.ManiaMap.Collectable,MPewsey.ManiaMap.Collectable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Collectable.op_Inequality(MPewsey.ManiaMap.Collectable,MPewsey.ManiaMap.Collectable)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.CollectableGroups">
             <summary>
             A class for creating groups of collectables.
@@ -282,6 +306,9 @@
             <summary>
             A readonly dictionary of collectables by group name.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.CollectableGroups.Add(System.String,System.Int32)">
             <summary>
@@ -353,6 +380,9 @@
             <param name="id">The location ID.</param>
             <param name="group">The collectable group.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.CollectableSpot.GetWeight(System.Double,System.Double)">
             <summary>
             Returns the draw weight for the spot.
@@ -394,6 +424,24 @@
             <param name="b">The blue channel.</param>
             <param name="a">The alpha channel.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Color4.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.Equals(MPewsey.ManiaMap.Color4)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.op_Equality(MPewsey.ManiaMap.Color4,MPewsey.ManiaMap.Color4)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Color4.op_Inequality(MPewsey.ManiaMap.Color4,MPewsey.ManiaMap.Color4)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Configuration">
             <summary>
             A configuration where two RoomTemplate can be joined.
@@ -426,6 +474,9 @@
             <param name="position">The to template position relative to the from template.</param>
             <param name="from">The from door position.</param>
             <param name="to">The to door position.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Configuration.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Configuration.Matches(System.Int32)">
             <summary>
@@ -484,6 +535,9 @@
             </summary>
             <param name="from">The from template.</param>
             <param name="to">The to template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.ConfigurationSpace.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.ConfigurationSpace.FindConfigurations">
             <summary>
@@ -550,6 +604,9 @@
             Initializes a copy of a door.
             </summary>
             <param name="other">The door to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Door.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Door.Copy">
             <summary>
@@ -741,6 +798,9 @@
             <param name="toDoor">The to door position.</param>
             <param name="shaft">The shaft connecting the two rooms.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.DoorConnection.ContainsDoor(MPewsey.ManiaMap.Uid,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorDirection)">
             <summary>
             Returns true if the connection includes the room door.
@@ -818,6 +878,24 @@
             <param name="from">The from door position.</param>
             <param name="to">The to door position.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.Equals(MPewsey.ManiaMap.DoorPair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.op_Equality(MPewsey.ManiaMap.DoorPair,MPewsey.ManiaMap.DoorPair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPair.op_Inequality(MPewsey.ManiaMap.DoorPair,MPewsey.ManiaMap.DoorPair)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.DoorPosition">
             <summary>
             A class referencing a Door and its local position within a Room.
@@ -845,6 +923,9 @@
             <param name="position">The local position.</param>
             <param name="direction">The door direction.</param>
             <param name="door">The referenced door.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorPosition.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.DoorPosition.Matches(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.DoorDirection)">
             <summary>
@@ -898,55 +979,88 @@
             Exception thrown when cells are not fully connected.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.CellsNotFullyConnectedException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.CollectableSpotNotFoundException">
             <summary>
             Exception for collectable spot not found errors.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.CollectableSpotNotFoundException.#ctor(System.String)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">
             <summary>
             Exception for duplicate ID errors.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.DuplicateIdException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.EmptyGraphException">
             <summary>
             Exception for empty graph errors.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.EmptyGraphException.#ctor(System.String)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.GraphNotFullyConnectedException">
             <summary>
             Exception thrown when a graph is not fully connected.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.GraphNotFullyConnectedException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.InvalidChainOrderException">
             <summary>
             Exception for invalid chain order errors.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.InvalidChainOrderException.#ctor(System.String)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.InvalidIdException">
             <summary>
             Exception for invalid ID errors.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.InvalidIdException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">
             <summary>
             Exception for invalid name errors.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.InvalidNameException.#ctor(System.String)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.NoDoorsExistException">
             <summary>
             Exception raised when a no doors exist.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.NoDoorsExistException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.NoTemplateGroupAssignedException">
             <summary>
             Exception raised when no template group is assigned to a room source.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.NoTemplateGroupAssignedException.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">
             <summary>
             Exception for unhandled switch case exceptions.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Exceptions.UnhandledCaseException.#ctor(System.String)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Generators.CollectableGenerator">
             <summary>
@@ -1010,7 +1124,10 @@
             <param name="neighborPower">The exponent used for the neighbor weight.</param>
             <param name="initialNeighborWeight">The initial neighbor weight.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
             <summary>
             Adds collectables to the layout.
             
@@ -1019,7 +1136,8 @@
             * %CollectableGroups - The collectable groups.
             * %RandomSeed - The random seed.
             </summary>
-            <param name="result">The pipeline results.</param>
+            <param name="results">The pipeline results.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Initialize(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed)">
             <summary>
@@ -1163,13 +1281,16 @@
             <param name="rebaseDecayRate">The rebase decay rate. This should be a value greater than or equal to zero.</param>
             <param name="maxBranchLength">The maximum branch chain length. Branch chains exceeding this length will be split. Negative and zero values will be ignored.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.SetAllowableRebases(System.Int32)">
             <summary>
             Sets the allowable number of rebases for the specified chain index.
             </summary>
             <param name="chain">The chain index.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
             <summary>
             Generates a new layout and adds it to the results output dictionary.
             
@@ -1183,6 +1304,7 @@
             * %Layout - The generated layout.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Initialize(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed)">
             <summary>
@@ -1192,7 +1314,7 @@
             <param name="templateGroups">The template groups.</param>
             <param name="randomSeed">The random seed.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Generate(System.Int32,MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Generate(System.Int32,MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed,System.Threading.CancellationToken)">
             <summary>
             Generates and returns a new layout.
             </summary>
@@ -1200,6 +1322,7 @@
             <param name="graph">The layout graph.</param>
             <param name="templateGroups">The template groups.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.GetConfigurations(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
             <summary>
@@ -1282,7 +1405,7 @@
             A class for generating randomized variations in a LayoutGraph.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
             <summary>
             Creates a randomized copy of a layout graph and adds it to the results output dictionary.
             
@@ -1294,6 +1417,7 @@
             * %LayoutGraph - The randomized layout graph.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.RandomizeGraph(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.Common.Random.RandomSeed)">
             <summary>
@@ -1307,7 +1431,7 @@
             A class for drawing a random LayoutGraph from multiple.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.ApplyStep(MPewsey.Common.Pipelines.PipelineResults)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
             <summary>
             Draws a random layout graph and adds a copy to the results output dictionary.
             
@@ -1319,6 +1443,7 @@
             * %LayoutGraph - The drawn layout graph.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{MPewsey.ManiaMap.Graphs.LayoutGraph},MPewsey.Common.Random.RandomSeed)">
             <summary>
@@ -1377,6 +1502,27 @@
             </summary>
             <param name="from">The from node index.</param>
             <param name="to">The to node index.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.Equals(MPewsey.ManiaMap.Graphs.EdgeIndexes)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.CompareTo(MPewsey.ManiaMap.Graphs.EdgeIndexes)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.op_Equality(MPewsey.ManiaMap.Graphs.EdgeIndexes,MPewsey.ManiaMap.Graphs.EdgeIndexes)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.EdgeIndexes.op_Inequality(MPewsey.ManiaMap.Graphs.EdgeIndexes,MPewsey.ManiaMap.Graphs.EdgeIndexes)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.Graphs.GraphBranchDecomposer`1">
             <summary>
@@ -1724,6 +1870,9 @@
             </summary>
             <param name="other">The edge to be copied.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.Copy">
             <summary>
             Returns a copy of the edge.
@@ -1899,6 +2048,9 @@
             Initializes a copy of the graph.
             </summary>
             <param name="other">The graph to be copied.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.Copy">
             <summary>
@@ -2144,6 +2296,9 @@
             </summary>
             <param name="other">The node to be copied.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.Copy">
             <summary>
             Returns a copy of the node.
@@ -2269,6 +2424,9 @@
             Initializes a new layout from a base.
             </summary>
             <param name="baseLayout">The base layout.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Layout.IsComplete(MPewsey.ManiaMap.TemplateGroups)">
             <summary>
@@ -2548,6 +2706,24 @@
             <param name="width">The width.</param>
             <param name="height">The height.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.Equals(MPewsey.ManiaMap.RectangleInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.op_Equality(MPewsey.ManiaMap.RectangleInt,MPewsey.ManiaMap.RectangleInt)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RectangleInt.op_Inequality(MPewsey.ManiaMap.RectangleInt,MPewsey.ManiaMap.RectangleInt)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Room">
             <summary>
             Represents a room in a Layout.
@@ -2605,6 +2781,9 @@
             <param name="template">The room template.</param>
             <param name="random">The random seed.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Room.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Room.Intersects(MPewsey.Common.Mathematics.Vector3DInt,MPewsey.Common.Mathematics.Vector3DInt)">
             <summary>
             Returns true if the range intersects the room.
@@ -2651,6 +2830,27 @@
             </summary>
             <param name="from">The from room ID.</param>
             <param name="to">The to room ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.Equals(MPewsey.ManiaMap.RoomPair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.CompareTo(MPewsey.ManiaMap.RoomPair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.op_Equality(MPewsey.ManiaMap.RoomPair,MPewsey.ManiaMap.RoomPair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomPair.op_Inequality(MPewsey.ManiaMap.RoomPair,MPewsey.ManiaMap.RoomPair)">
+            <inheritdoc/>
         </member>
         <member name="T:MPewsey.ManiaMap.RoomState">
             <summary>
@@ -2758,6 +2958,9 @@
             Returns a copy of the room template.
             </summary>
             <param name="other">The room template to copy.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ToString">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.ValuesAreEqual(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
             <summary>
@@ -2908,11 +3111,19 @@
             Returns the template groups for the big layout sample.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.Generate(System.Int32)">
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.Generate(System.Int32,System.Threading.CancellationToken)">
             <summary>
             Generates the big layout using default parameters and returns the results.
             </summary>
             <param name="seed">The random seed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.GenerateAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Generates the big layout asynchronously using default parameters and returns the results.
+            </summary>
+            <param name="seed">The random seed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.Samples.GraphLibrary">
             <summary>
@@ -3122,6 +3333,9 @@
             A readonly dictionary of templates by group name.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.TemplateGroups.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.TemplateGroups.ConsolidateTemplates">
             <summary>
             Consolidates duplicate templates into a single reference.
@@ -3250,6 +3464,31 @@
             The to room template.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.#ctor(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Initializes a new template pair.
+            </summary>
+            <param name="from">The from template.</param>
+            <param name="to">The to template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.Equals(MPewsey.ManiaMap.TemplatePair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.op_Equality(MPewsey.ManiaMap.TemplatePair,MPewsey.ManiaMap.TemplatePair)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.TemplatePair.op_Inequality(MPewsey.ManiaMap.TemplatePair,MPewsey.ManiaMap.TemplatePair)">
+            <inheritdoc/>
+        </member>
         <member name="T:MPewsey.ManiaMap.Uid">
             <summary>
             A structure for representing a unique ID consisting of 3 integers.
@@ -3290,6 +3529,27 @@
             <param name="a">The first ID value.</param>
             <param name="b">The second ID value.</param>
             <param name="c">The third ID value.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.Equals(MPewsey.ManiaMap.Uid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.CompareTo(MPewsey.ManiaMap.Uid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.op_Equality(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Uid.op_Inequality(MPewsey.ManiaMap.Uid,MPewsey.ManiaMap.Uid)">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

@@ -100,7 +100,7 @@ The generator creates rooms by pulling from user-defined rooms. To the generator
 3. To run the pipeline and generate a layout, run the `Generate` method from a script.
 
 ```Generate.cs
-var results = Pipeline.Generate();
+var results = Pipeline.Run();
 
 // Retrieve the generated layout data from the ouput results
 var layout = results.GetOutput<Layout>("Layout");
