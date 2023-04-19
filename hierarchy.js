@@ -3,7 +3,7 @@ var hierarchy =
     [ "MPewsey.ManiaMap.Unity.Drawing.ColorUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html", null ],
     [ "UnityEditor.Editor", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.CellChildEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html", [
-        [ "MPewsey.ManiaMap.Unity.Editor.CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", null ],
+        [ "MPewsey.ManiaMap.Unity.Editor.CollectableSpotBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html", null ],
         [ "MPewsey.ManiaMap.Unity.Editor.DoorBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_behavior_editor.html", null ],
         [ "MPewsey.ManiaMap.Unity.Editor.FeatureEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html", null ],
         [ "MPewsey.ManiaMap.Unity.Editor.RoomFlagEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_flag_editor.html", null ]
@@ -67,7 +67,7 @@ var hierarchy =
     [ "MonoBehaviour", null, [
       [ "MPewsey.ManiaMap.Unity.CellBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html", null ],
       [ "MPewsey.ManiaMap.Unity.CellChild", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html", [
-        [ "MPewsey.ManiaMap.Unity.CollectableSpot", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html", null ],
+        [ "MPewsey.ManiaMap.Unity.CollectableSpotBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html", null ],
         [ "MPewsey.ManiaMap.Unity.DoorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html", null ],
         [ "MPewsey.ManiaMap.Unity.Feature", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_feature.html", null ],
         [ "MPewsey.ManiaMap.Unity.RoomFlag", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html", null ]
@@ -129,7 +129,7 @@ var hierarchy =
     [ "MPewsey.ManiaMap.Unity.TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", null ],
     [ "MPewsey.ManiaMap.Unity.Drawing.TextureUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_texture_utility.html", null ],
     [ "UnityEvent", null, [
-      [ "MPewsey.ManiaMap.Unity.CollectableSpotEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_event.html", null ],
+      [ "MPewsey.ManiaMap.Unity.CollectableSpotBehaviorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior_event.html", null ],
       [ "MPewsey.ManiaMap.Unity.DoorBehaviorEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html", null ],
       [ "MPewsey.ManiaMap.Unity.RoomFlagEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag_event.html", null ]
     ] ]

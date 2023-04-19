@@ -8,6 +8,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object =
     [ "Name", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#aa2934022f8453bae65a96ed56fc1e785", null ],
     [ "RequireRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a5b3e7775c8cbf8511b9ccfadb2690f9b", null ],
     [ "RoomChance", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a3b2250ae7e5f7707735540f7d298eb9a", null ],
+    [ "Tags", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a4630fe1660fab5cf01850da0f389da1f", null ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a05504006e96ae8a544c2b0a2675e1292", null ],
     [ "ToNode", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a8f4afe961109108d144d2c8918777b81", null ],
     [ "Z", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_edge_object.html#a887440513934c2e9507c481eedaf5cea", null ]

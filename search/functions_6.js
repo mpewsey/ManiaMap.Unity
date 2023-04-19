@@ -5,7 +5,7 @@ var searchData=
   ['getcellchild_2',['GetCellChild',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html#a0457109939e1547eab62774813d22775',1,'MPewsey::ManiaMap::Unity::Editor::CellChildEditor']]],
   ['getcellindex_3',['GetCellIndex',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a94fa8eddeb4fd7f5f5f96de5b62693d3',1,'MPewsey::ManiaMap::Unity::RoomBehavior']]],
   ['getcollectablegroups_4',['GetCollectableGroups',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#ad975f6c33671ff781668ab6c0307e2de',1,'MPewsey::ManiaMap::Unity::Generators::CollectableGroupsInput']]],
-  ['getcollectablespot_5',['GetCollectableSpot',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html#a34c4859d6e0d778c43d8395c059fce1a',1,'MPewsey::ManiaMap::Unity::Editor::CollectableSpotEditor']]],
+  ['getcollectablespot_5',['GetCollectableSpot',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html#a60effe24de25aa00da031dab60125b83',1,'MPewsey::ManiaMap::Unity::Editor::CollectableSpotBehaviorEditor']]],
   ['getdoorconnections_6',['GetDoorConnections',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a62c48a008f4ca0a7f4e5eb0895e69ab8',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]],
   ['getdragrect_7',['GetDragRect',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a77c95772dd33dbb10fc17aa5d568a2f4',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
   ['getedge_8',['GetEdge',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_layout_graph_object.html#a0e81a638f8a06a6d0394b41659f1bf95',1,'MPewsey::ManiaMap::Unity::Graphs::LayoutGraphObject']]],
@@ -45,5 +45,5 @@ var searchData=
   ['gettexturesize_42',['GetTextureSize',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#a7a4b1e03696bbc6f620550124564eedc',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMapBehavior']]],
   ['gettile_43',['GetTile',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_behavior.html#afa1740fa8507b011606abadff0241d67',1,'MPewsey.ManiaMap.Unity.Drawing.LayoutMapBehavior.GetTile()'],['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_map_tile_pool.html#a37cdf13e6bfd302ecf26d9eb23670984',1,'MPewsey.ManiaMap.Unity.Drawing.MapTilePool.GetTile()']]],
   ['gettileflag_44',['GetTileFlag',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_behavior.html#abd7d946436a0892be771dfa3b5bfaf4d',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutTilemapBehavior']]],
-  ['groupisassigned_45',['GroupIsAssigned',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html#abe857ae5e6904c277bf0495dc17b8e60',1,'MPewsey::ManiaMap::Unity::Editor::CollectableSpotEditor']]]
+  ['groupisassigned_45',['GroupIsAssigned',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html#a47386185e78f7991420dbe3733f628cd',1,'MPewsey::ManiaMap::Unity::Editor::CollectableSpotBehaviorEditor']]]
 ];

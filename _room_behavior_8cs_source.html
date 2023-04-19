@@ -278,7 +278,7 @@ $(document).ready(function(){initNavTree('_room_behavior_8cs_source.html',''); i
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a499efb1e6ed3b39ac5fb3abedeff8e6e">  262</a></span>        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a499efb1e6ed3b39ac5fb3abedeff8e6e">AutoAssignCollectableSpots</a>()</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <span class="keywordflow">foreach</span> (var spot <span class="keywordflow">in</span> GetComponentsInChildren&lt;CollectableSpot&gt;())</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <span class="keywordflow">foreach</span> (var spot <span class="keywordflow">in</span> GetComponentsInChildren&lt;CollectableSpotBehavior&gt;())</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            {</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                spot.AutoAssign();</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            }</div>

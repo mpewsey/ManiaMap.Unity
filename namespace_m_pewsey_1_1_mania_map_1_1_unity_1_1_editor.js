@@ -1,7 +1,7 @@
 var namespace_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor =
 [
     [ "CellChildEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_cell_child_editor" ],
-    [ "CollectableSpotEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor" ],
+    [ "CollectableSpotBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor" ],
     [ "DoorBehaviorEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_behavior_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_door_behavior_editor" ],
     [ "FeatureEditor", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_feature_editor" ],
     [ "FileUtility", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_file_utility" ],

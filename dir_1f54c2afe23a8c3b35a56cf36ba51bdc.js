@@ -5,7 +5,7 @@ var dir_1f54c2afe23a8c3b35a56cf36ba51bdc =
     [ "Graphs", "dir_a88096eb10d8412f3997e02d45f6bf76.html", "dir_a88096eb10d8412f3997e02d45f6bf76" ],
     [ "__Docs__.cs", "_editor_2_____docs_____8cs_source.html", null ],
     [ "CellChildEditor.cs", "_cell_child_editor_8cs_source.html", null ],
-    [ "CollectableSpotEditor.cs", "_collectable_spot_editor_8cs_source.html", null ],
+    [ "CollectableSpotBehaviorEditor.cs", "_collectable_spot_behavior_editor_8cs_source.html", null ],
     [ "DoorBehaviorEditor.cs", "_door_behavior_editor_8cs_source.html", null ],
     [ "FeatureEditor.cs", "_feature_editor_8cs_source.html", null ],
     [ "FileUtility.cs", "_file_utility_8cs_source.html", null ],

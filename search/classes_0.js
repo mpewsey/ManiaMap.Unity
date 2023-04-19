@@ -9,8 +9,8 @@ var searchData=
   ['collectablegroupentry_6',['CollectableGroupEntry',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group_entry.html',1,'MPewsey::ManiaMap::Unity']]],
   ['collectablegroupsinput_7',['CollectableGroupsInput',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html',1,'MPewsey::ManiaMap::Unity::Generators']]],
   ['collectableobject_8',['CollectableObject',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['collectablespot_9',['CollectableSpot',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['collectablespoteditor_10',['CollectableSpotEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['collectablespotevent_11',['CollectableSpotEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_event.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['collectablespotbehavior_9',['CollectableSpotBehavior',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['collectablespotbehavioreditor_10',['CollectableSpotBehaviorEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['collectablespotbehaviorevent_11',['CollectableSpotBehaviorEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior_event.html',1,'MPewsey::ManiaMap::Unity']]],
   ['colorutility_12',['ColorUtility',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html',1,'MPewsey::ManiaMap::Unity::Drawing']]]
 ];

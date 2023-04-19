@@ -9,7 +9,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior =
     [ "CreateData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a43c38774126a34c0791d3f1e35c34d4f", null ],
     [ "CreateEmptyCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#ac426906071d7a04e4542603d7cc43fab", null ],
     [ "FindClosestCell", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a2e844c7f114574bce9ed53be76214330", null ],
-    [ "FindCollectableSpots", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#af43bf6391b13589eacb9f5f594399e18", null ],
+    [ "FindCollectableSpots", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a1064c55117bd89859dea22dbea3e1c1b", null ],
     [ "FindDoors", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a8de3d83358f50d0eeedfa85425b6194b", null ],
     [ "FindFeatures", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a59ccae0a5e41ab5ba66a6c59e84e83c3", null ],
     [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html#a910a61a31f919c0edaf06602ddc83e16", null ],
