@@ -307,6 +307,9 @@
             A readonly dictionary of collectables by group name.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.CollectableGroups.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.CollectableGroups.ToString">
             <inheritdoc/>
         </member>
@@ -780,7 +783,7 @@
             The shaft (if any) connecting the two rooms.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.DoorConnection.Key">
+        <member name="P:MPewsey.ManiaMap.DoorConnection.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#RoomPair}#Key">
             <inheritdoc/>
         </member>
         <member name="P:MPewsey.ManiaMap.DoorConnection.EdgeDirection">
@@ -1851,10 +1854,16 @@
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.TemplateGroup">
             <inheritdoc/>
         </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Tags">
+            <inheritdoc/>
+        </member>
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.RoomId">
             <inheritdoc/>
         </member>
-        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.Key">
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Graphs#EdgeIndexes}#Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.#ctor(System.Int32,System.Int32)">
@@ -1957,6 +1966,12 @@
             </summary>
             <param name="doorCode">The matching door code.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.AddTag(System.String)">
+            <summary>
+            Adds the tag to the edge if it doesn't already exist and returns the edge.
+            </summary>
+            <param name="tag">The tag.</param>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.Reverse">
             <summary>
             Reverses the nodes and direction of the edge.
@@ -2036,6 +2051,9 @@
             The number of edges in the graph.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.#ctor(System.Int32,System.String)">
             <summary>
             Initializes a graph.
@@ -2091,7 +2109,7 @@
             </summary>
             <param name="randomSeed">The random seed.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.FetchNodeVariations(System.String)">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AcquireNodeVariations(System.String)">
             <summary>
             Returns the node variations list for the group. If the group does not already exist,
             creates it and returns a new list.
@@ -2278,10 +2296,16 @@
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Color">
             <inheritdoc/>
         </member>
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Tags">
+            <inheritdoc/>
+        </member>
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.RoomId">
             <inheritdoc/>
         </member>
-        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.Key">
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.MPewsey#Common#Collections#IDataContractValueDictionaryValue{System#Int32}#Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.#ctor(System.Int32)">
@@ -2339,6 +2363,12 @@
             </summary>
             <param name="value">The template group name.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.AddTag(System.String)">
+            <summary>
+            Adds the tag to the node if it doesn't already exist and returns the node.
+            </summary>
+            <param name="tag">The tag.</param>
+        </member>
         <member name="T:MPewsey.ManiaMap.IRoomSource">
             <summary>
             An interface for objects that may be made into Room.
@@ -2367,6 +2397,11 @@
         <member name="P:MPewsey.ManiaMap.IRoomSource.TemplateGroup">
             <summary>
             The template group name.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.IRoomSource.Tags">
+            <summary>
+            A list of tags.
             </summary>
         </member>
         <member name="T:MPewsey.ManiaMap.Layout">
@@ -2567,6 +2602,25 @@
             </summary>
             <param name="layoutState">The layout state.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Layout.FindRoomWithTag(System.String)">
+            <summary>
+            Returns the first room with the specified tag. Returns null if the tag doesn't exist.
+            </summary>
+            <param name="tag">The tag.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.FindRoomsWithTag(System.String)">
+            <summary>
+            Returns a list of all rooms with the specified tag.
+            </summary>
+            <param name="tag">The tag.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.FindRoomsWithTag(System.String,System.Collections.Generic.List{MPewsey.ManiaMap.Room}@)">
+            <summary>
+            Populates the referenced list with all rooms with the specified tag.
+            </summary>
+            <param name="tag">The tag.</param>
+            <param name="results">The referenced results list.</param>
+        </member>
         <member name="T:MPewsey.ManiaMap.LayoutState">
             <summary>
             Contains the states of a Layout.
@@ -2581,6 +2635,9 @@
             <summary>
             A dictionary of room states by ID.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.LayoutState.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.LayoutState.#ctor(MPewsey.ManiaMap.Layout)">
             <summary>
@@ -2769,7 +2826,15 @@
             A dictionary of collectable object ID's by location ID.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.Room.Key">
+        <member name="P:MPewsey.ManiaMap.Room.Tags">
+            <summary>
+            A list of tags.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Room.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Room.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Uid}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Room.#ctor(MPewsey.ManiaMap.IRoomSource,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Random.RandomSeed)">
@@ -2882,7 +2947,10 @@
             A set of flags that are set for a room.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.RoomState.Key">
+        <member name="P:MPewsey.ManiaMap.RoomState.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Uid}#Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomState.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomState.#ctor(MPewsey.ManiaMap.Room)">
@@ -2940,10 +3008,11 @@
             and properties of the room.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.RoomTemplate.Key">
-            <summary>
-            The unique key.
-            </summary>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.MPewsey#Common#Collections#IDataContractValueDictionaryValue{System#Int32}#Key">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell})">
             <summary>

@@ -17,12 +17,14 @@ MonoBehaviour:
   _name: <Edge (5, 9)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-8342340511854246524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +46,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 855, y: 89}
+  _tags: []
 --- !u!114 &-8131053292077871170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,12 +64,14 @@ MonoBehaviour:
   _name: <Edge (4, 5)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-8049669937717604468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +93,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 33, y: 85}
+  _tags: []
 --- !u!114 &-8001444006963028400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,12 +111,14 @@ MonoBehaviour:
   _name: <Edge (23, 29)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &-7832065066634113935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,12 +136,14 @@ MonoBehaviour:
   _name: <Edge (9, 10)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-7484664808438318346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,12 +161,14 @@ MonoBehaviour:
   _name: <Edge (2, 3)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-7437824036728971040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,12 +186,14 @@ MonoBehaviour:
   _name: <Edge (17, 18)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &-7203158320012561426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +215,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 681, y: 88}
+  _tags: []
 --- !u!114 &-6969814586083523727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,12 +233,14 @@ MonoBehaviour:
   _name: <Edge (22, 23)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &-6677870905238097382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +262,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 272, y: 368}
+  _tags: []
 --- !u!114 &-6235194971601913311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,12 +280,14 @@ MonoBehaviour:
   _name: <Edge (13, 16)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &-6130238705496093003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,12 +305,14 @@ MonoBehaviour:
   _name: <Edge (30, 31)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &-5908833451774847878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,12 +330,14 @@ MonoBehaviour:
   _name: <Edge (6, 7)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-5452443026721798964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +359,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 272, y: 429}
+  _tags: []
 --- !u!114 &-5303102046461155908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,12 +377,14 @@ MonoBehaviour:
   _name: <Edge (33, 34)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &-4990618756650973654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,12 +402,14 @@ MonoBehaviour:
   _name: <Edge (28, 27)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &-4963884633630037907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +431,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 631, y: 375}
+  _tags: []
 --- !u!114 &-4868963563811133729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +453,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 628, y: 474}
+  _tags: []
 --- !u!114 &-4500973838695727094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +475,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 849, y: 339}
+  _tags: []
 --- !u!114 &-3765901655483935158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +497,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 449, y: 373}
+  _tags: []
 --- !u!114 &-3545615355761221632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +519,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 38, y: 144}
+  _tags: []
 --- !u!114 &-3375094726692491427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +541,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 853, y: 144}
+  _tags: []
 --- !u!114 &-2532988717934005823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +563,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 472, y: 88}
+  _tags: []
 --- !u!114 &-2494483192280248333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,12 +581,14 @@ MonoBehaviour:
   _name: <Edge (13, 14)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &-2455678766475562711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +610,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 639, y: 609}
+  _tags: []
 --- !u!114 &-1778181635355844743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +632,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 271, y: 301}
+  _tags: []
 --- !u!114 &-1435607129863434755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +654,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 678, y: 34}
+  _tags: []
 --- !u!114 &-1121429240582842295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,6 +676,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 851, y: 468}
+  _tags: []
 --- !u!114 &-794749273739245410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,6 +698,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 689, y: 262}
+  _tags: []
 --- !u!114 &-452592211607975275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +720,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 32, y: 669}
+  _tags: []
 --- !u!114 &-243348240697775820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +742,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 626, y: 559}
+  _tags: []
 --- !u!114 &-234989695249847781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,12 +760,14 @@ MonoBehaviour:
   _name: <Edge (1, 10)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &-192631558959551929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +789,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 279, y: 560}
+  _tags: []
 --- !u!114 &-103972371005097302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,12 +807,14 @@ MonoBehaviour:
   _name: <Edge (12, 13)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &-82203663385778534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +836,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 452, y: 476}
+  _tags: []
 --- !u!114 &-66024598630021978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,12 +854,14 @@ MonoBehaviour:
   _name: <Edge (3, 4)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,12 +963,14 @@ MonoBehaviour:
   _name: <Edge (28, 29)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &1014069939109305454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,12 +988,14 @@ MonoBehaviour:
   _name: <Edge (21, 22)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &1141444034127265399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +1017,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 470, y: 34}
+  _tags: []
 --- !u!114 &1388261289437990382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,6 +1039,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 38, y: 217}
+  _tags: []
 --- !u!114 &1743717376398054014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1061,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 247, y: 33}
+  _tags: []
 --- !u!114 &1830831442199792625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,12 +1079,14 @@ MonoBehaviour:
   _name: <Edge (21, 24)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &2040175218751658861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,12 +1104,14 @@ MonoBehaviour:
   _name: <Edge (32, 33)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &2044115956825907479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,12 +1129,14 @@ MonoBehaviour:
   _name: <Edge (13, 15)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &2300305407187183247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,12 +1154,14 @@ MonoBehaviour:
   _name: <Edge (4, 6)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &2932825628501408561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,12 +1179,14 @@ MonoBehaviour:
   _name: <Edge (19, 20)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &3260754536670957165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,12 +1204,14 @@ MonoBehaviour:
   _name: <Edge (11, 12)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &3310291459146888378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,6 +1233,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 498, y: 207}
+  _tags: []
 --- !u!114 &3332074385885978024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,6 +1255,7 @@ MonoBehaviour:
     rgba: 4278190335
   _variationGroup: 
   _position: {x: 850, y: 669}
+  _tags: []
 --- !u!114 &3739472945529440361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,12 +1273,14 @@ MonoBehaviour:
   _name: <Edge (18, 19)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &3948703518237540309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,12 +1298,14 @@ MonoBehaviour:
   _name: <Edge (25, 26)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &5208687897444031981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,12 +1323,14 @@ MonoBehaviour:
   _name: <Edge (12, 17)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &5702170484054984221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,12 +1348,14 @@ MonoBehaviour:
   _name: <Edge (10, 11)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278255360
+  _tags: []
 --- !u!114 &5811437316318807937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,12 +1373,14 @@ MonoBehaviour:
   _name: <Edge (20, 21)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &5913003947442450332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,6 +1402,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 456, y: 559}
+  _tags: []
 --- !u!114 &6260196780304355692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,12 +1420,14 @@ MonoBehaviour:
   _name: <Edge (31, 28)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &6280898602302622829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,12 +1445,14 @@ MonoBehaviour:
   _name: <Edge (31, 32)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4278190335
+  _tags: []
 --- !u!114 &6382599549888577451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,6 +1474,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 500, y: 261}
+  _tags: []
 --- !u!114 &7202661465793978356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,12 +1492,14 @@ MonoBehaviour:
   _name: <Edge (25, 24)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4286578816
+  _tags: []
 --- !u!114 &7378259920564020953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,6 +1521,7 @@ MonoBehaviour:
     rgba: 4294901760
   _variationGroup: 
   _position: {x: 247, y: 88}
+  _tags: []
 --- !u!114 &7619355699908383617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,6 +1543,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 699, y: 210}
+  _tags: []
 --- !u!114 &7800765123974876983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,12 +1561,14 @@ MonoBehaviour:
   _name: <Edge (1, 2)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &7849356174866588076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1590,7 @@ MonoBehaviour:
     rgba: 4278255360
   _variationGroup: 
   _position: {x: 271, y: 213}
+  _tags: []
 --- !u!114 &7856384905490116995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,12 +1608,14 @@ MonoBehaviour:
   _name: <Edge (7, 8)>
   _templateGroup: {fileID: 11400000, guid: 11f47122fb3b833418d5d6bc4bc661c4, type: 2}
   _direction: 0
+  _doorCode: 0
   _z: 0
   _roomChance: 0.5
   _requireRoom: 0
   _color:
     serializedVersion: 2
     rgba: 4294901760
+  _tags: []
 --- !u!114 &8162068552765962728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,6 +1637,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 449, y: 609}
+  _tags: []
 --- !u!114 &8716247665799637964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,6 +1659,7 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 25, y: 555}
+  _tags: []
 --- !u!114 &8809632131188770132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1580,3 +1681,4 @@ MonoBehaviour:
     rgba: 4286578816
   _variationGroup: 
   _position: {x: 275, y: 504}
+  _tags: []

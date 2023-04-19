@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Graphs
@@ -57,6 +58,13 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// The draw position of the node in the graph.
         /// </summary>
         public Vector2 Position { get => _position; set => _position = Vector2.Max(value, Vector2.zero); }
+
+        [SerializeField]
+        private List<string> _tags = new List<string>();
+        /// <summary>
+        /// A list of tags.
+        /// </summary>
+        public List<string> Tags { get => _tags; set => _tags = value; }
 
         /// <summary>
         /// Creates a new node.

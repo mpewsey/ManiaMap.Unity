@@ -219,6 +219,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
                 dataNode.Z = node.Z;
                 dataNode.TemplateGroup = node.TemplateGroup.Name;
                 dataNode.Color = ConvertColor(node.Color);
+                dataNode.Tags = new List<string>(node.Tags);
 
                 if (!string.IsNullOrWhiteSpace(node.VariationGroup))
                     graph.AddNodeVariation(node.VariationGroup, dataNode.Id);
@@ -242,6 +243,7 @@ namespace MPewsey.ManiaMap.Unity.Graphs
                 dataEdge.RequireRoom = edge.RequireRoom;
                 dataEdge.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
                 dataEdge.Color = ConvertColor(edge.Color);
+                dataEdge.Tags = new List<string>(edge.Tags);
             }
         }
 
