@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMap.Unity
     /// An event that passes a CollectableSpot argument.
     /// </summary>
     [System.Serializable]
-    public class CollectableSpotEvent : UnityEvent<CollectableSpot>
+    public class CollectableSpotBehaviorEvent : UnityEvent<CollectableSpotBehavior>
     {
 
     }
