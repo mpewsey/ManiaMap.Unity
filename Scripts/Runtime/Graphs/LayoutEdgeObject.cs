@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity.Graphs
@@ -81,6 +82,13 @@ namespace MPewsey.ManiaMap.Unity.Graphs
         /// The color.
         /// </summary>
         public Color32 Color { get => _color; set => _color = value; }
+
+        [SerializeField]
+        private List<string> _tags = new List<string>();
+        /// <summary>
+        /// A list of tags.
+        /// </summary>
+        public List<string> Tags { get => _tags; set => _tags = value; }
 
         /// <summary>
         /// Creates a new edge.

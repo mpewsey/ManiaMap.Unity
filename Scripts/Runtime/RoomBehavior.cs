@@ -261,7 +261,7 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         private void AutoAssignCollectableSpots()
         {
-            foreach (var spot in GetComponentsInChildren<CollectableSpot>())
+            foreach (var spot in GetComponentsInChildren<CollectableSpotBehavior>())
             {
                 spot.AutoAssign();
             }

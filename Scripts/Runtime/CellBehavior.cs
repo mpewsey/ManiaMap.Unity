@@ -116,9 +116,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a list of collectable spots assigned to the cell.
         /// </summary>
-        public List<CollectableSpot> FindCollectableSpots()
+        public List<CollectableSpotBehavior> FindCollectableSpots()
         {
-            return Room.GetComponentsInChildren<CollectableSpot>().Where(x => x.Cell == this).ToList();
+            return Room.GetComponentsInChildren<CollectableSpotBehavior>().Where(x => x.Cell == this).ToList();
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ namespace MPewsey.ManiaMap.Unity
     /// <summary>
     /// Represents a collectable spot.
     /// </summary>
-    public class CollectableSpot : CellChild
+    public class CollectableSpotBehavior : CellChild
     {
         [SerializeField]
         private int _id;
@@ -22,11 +22,11 @@ namespace MPewsey.ManiaMap.Unity
         public CollectableGroup Group { get => _group; set => _group = value; }
 
         [SerializeField]
-        private CollectableSpotEvent _onInitialize = new CollectableSpotEvent();
+        private CollectableSpotBehaviorEvent _onInitialize = new CollectableSpotBehaviorEvent();
         /// <summary>
         /// The event invoked after the object is initialized.
         /// </summary>
-        public CollectableSpotEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
+        public CollectableSpotBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
         /// <summary>
         /// True if the collectable spot is initialized.

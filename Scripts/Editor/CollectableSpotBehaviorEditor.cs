@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMap.Unity.Editor
     /// The CollectableSpot editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(CollectableSpot))]
-    public class CollectableSpotEditor : CellChildEditor
+    [CustomEditor(typeof(CollectableSpotBehavior))]
+    public class CollectableSpotBehaviorEditor : CellChildEditor
     {
         /// <summary>
         /// Creates a new collectable spot Game Object.
@@ -19,7 +19,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             var obj = new GameObject("Collectable Spot");
             obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<CollectableSpot>();
+            obj.AddComponent<CollectableSpotBehavior>();
         }
 
         public override void OnInspectorGUI()
@@ -31,9 +31,9 @@ namespace MPewsey.ManiaMap.Unity.Editor
         /// <summary>
         /// Returns the target collectable spot.
         /// </summary>
-        private CollectableSpot GetCollectableSpot()
+        private CollectableSpotBehavior GetCollectableSpot()
         {
-            return (CollectableSpot)serializedObject.targetObject;
+            return (CollectableSpotBehavior)serializedObject.targetObject;
         }
 
         /// <summary>
