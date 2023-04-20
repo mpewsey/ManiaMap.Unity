@@ -1,6 +1,7 @@
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MPewsey.ManiaMap.Unity
 {
@@ -53,10 +54,16 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public bool IsInitialized { get; private set; }
 
+        /// <summary>
+        /// The event invoked each time a generation message is logged.
+        /// </summary>
+        public UnityEvent<string> OnLog { get; } = new UnityEvent<string>();
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
             Settings = ManiaMapSettings.GetSettings();
+            Common.Logging.Logger.AddListener(OnLog.Invoke);
         }
 
         private void Start()
@@ -69,6 +76,8 @@ namespace MPewsey.ManiaMap.Unity
         {
             if (Current == this)
                 Current = null;
+
+            Common.Logging.Logger.RemoveListener(OnLog.Invoke);
         }
 
         /// <summary>

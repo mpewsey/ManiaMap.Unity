@@ -38,10 +38,10 @@ namespace MPewsey.ManiaMap.Unity
         {
             var settings = Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
 
-            if (settings != null)
-                return settings;
+            if (settings == null)
+                settings = CreateInstance<ManiaMapSettings>();
 
-            return CreateInstance<ManiaMapSettings>();
+            return settings;
         }
 
         /// <summary>
