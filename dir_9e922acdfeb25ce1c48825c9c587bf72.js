@@ -1,6 +1,5 @@
 var dir_9e922acdfeb25ce1c48825c9c587bf72 =
 [
-    [ "__Docs__.cs", "_runtime_2_exceptions_2_____docs_____8cs_source.html", null ],
     [ "DoorNotInitializedException.cs", "_door_not_initialized_exception_8cs_source.html", null ],
     [ "DuplicateDirectionException.cs", "_duplicate_direction_exception_8cs_source.html", null ],
     [ "DuplicateInputException.cs", "_duplicate_input_exception_8cs_source.html", null ],

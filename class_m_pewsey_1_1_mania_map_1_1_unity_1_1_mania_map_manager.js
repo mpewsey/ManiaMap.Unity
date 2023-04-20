@@ -9,6 +9,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager =
     [ "IsInitialized", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a28661621a56a2bb2119ed86995992772", null ],
     [ "Layout", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a41be1170e966251855372aeb303f7526", null ],
     [ "LayoutState", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#ae1e6202998d6ec156734e0420295222a", null ],
+    [ "OnLog", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a6c479850e1e299a8dbda4168e4b99a8e", null ],
     [ "RoomConnections", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#abd323caa8191f6f79c8aba92ce611dbf", null ],
     [ "Settings", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a76bb9f0d753499fa4c49163ee837c81d", null ]
 ];
