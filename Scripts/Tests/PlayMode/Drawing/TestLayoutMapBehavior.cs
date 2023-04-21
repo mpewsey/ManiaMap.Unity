@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
             var results = pipeline.Run(inputs);
             Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
             layoutMap.Initialize(layout);
@@ -60,7 +60,7 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
             var results = pipeline.Run(inputs);
             Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
             var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");

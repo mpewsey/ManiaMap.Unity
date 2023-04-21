@@ -2079,14 +2079,29 @@
             <summary>
             Validates the graph and raises any applicable exceptions.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.ValidateIsFullyConnected">
+            <summary>
+            Validates that the graph is fully connected and raises an exception otherwise.
+            </summary>
             <exception cref="T:MPewsey.ManiaMap.Exceptions.GraphNotFullyConnectedException">Raised if the graph is not fully connected.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.ValidateNodes">
+            <summary>
+            Validates the nodes.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.ValidateEdges">
+            <summary>
+            Validates the edges.
+            </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.IsValid">
             <summary>
             Returns true if the graph is valid.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNodeVariations(System.String)">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetNodeVariationsGroup(System.String)">
             <summary>
             Returns a readonly list of the node variations for the group.
             </summary>
@@ -2097,7 +2112,7 @@
             Returns an enumerable of variation groups and their associated nodes.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetVariation(MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.CreateVariation(MPewsey.Common.Random.RandomSeed)">
             <summary>
             Returns a new variation of the graph.
             </summary>
@@ -2123,7 +2138,7 @@
             <param name="group">The group name.</param>
             <param name="id">The node ID.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNodeVariation(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNodeVariations(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>
             Adds node variations to the graph. If the nodes do not already exist, creates them.
             </summary>
@@ -2143,12 +2158,18 @@
             <param name="group">The group name.</param>
             <param name="id">The node ID.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariation(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariations(System.String,System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>
             Removes the node variations from the graph.
             </summary>
             <param name="group">The group name.</param>
             <param name="ids">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeVariationsGroup(System.String)">
+            <summary>
+            Completely removes the specified node variation group.
+            </summary>
+            <param name="group">The group.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.GetEdges(System.Int32)">
             <summary>
@@ -2179,9 +2200,22 @@
             <param name="fromNode">The from node ID.</param>
             <param name="toNode">The to node ID.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.AddNeighbor(System.Int32,System.Int32)">
+            <summary>
+            Adds a neighbor to the node.
+            </summary>
+            <param name="id">The node ID.</param>
+            <param name="neighbor">The neighboring node ID.</param>
+        </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNode(System.Int32)">
             <summary>
             Removes a node from the graph.
+            </summary>
+            <param name="id">The node ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Graphs.LayoutGraph.RemoveNodeEdges(System.Int32)">
+            <summary>
+            Removes all edges for the specified node.
             </summary>
             <param name="id">The node ID.</param>
         </member>

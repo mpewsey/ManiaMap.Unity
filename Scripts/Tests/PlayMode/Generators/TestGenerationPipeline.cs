@@ -32,7 +32,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
             var results = pipeline.Run(inputs);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
         }
 
@@ -52,7 +52,7 @@ namespace MPewsey.ManiaMap.Unity.Generators.Tests
             Assert.IsTrue(task.IsCompletedSuccessfully);
             var results = task.Result;
             Assert.IsTrue(results.Success);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
         }
 

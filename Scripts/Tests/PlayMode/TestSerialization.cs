@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
             var results = pipeline.Run(inputs);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
             var path = "Tests/Layout.json";
             JsonSerialization.SaveJson(path, layout);
@@ -47,7 +47,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
 
             var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
             var results = pipeline.Run(inputs);
-            var layout = (Layout)results.Outputs["Layout"];
+            var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
             var state = new LayoutState(layout);
             var path = "Tests/LayoutState.json";
@@ -60,8 +60,8 @@ namespace MPewsey.ManiaMap.Unity.Tests
         public void TestSaveAndLoadLayoutGraph()
         {
             var graph = Samples.GraphLibrary.BigGraph();
-            graph.AddNodeVariation("Group1", new int[] { 1, 2, 3 });
-            graph.AddNodeVariation("Group2", new int[] { 4, 5, 6 });
+            graph.AddNodeVariations("Group1", new int[] { 1, 2, 3 });
+            graph.AddNodeVariations("Group2", new int[] { 4, 5, 6 });
             var path = "Tests/LayoutGraph.json";
             JsonSerialization.SaveJson(path, graph);
             var copy = JsonSerialization.LoadJson<LayoutGraph>(path);
