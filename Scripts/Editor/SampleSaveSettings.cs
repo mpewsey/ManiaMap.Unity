@@ -119,7 +119,7 @@ namespace MPewsey.ManiaMap.Unity.Editor
 
                     foreach (var cell in copy.Cells.Array)
                     {
-                        if (seed.NextDouble() <= 0.5)
+                        if (seed.ChanceSatisfied(0.5))
                             cell?.AddCollectableSpot(collectableId++, "Default");
                     }
 
