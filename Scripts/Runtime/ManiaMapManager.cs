@@ -1,6 +1,8 @@
 using MPewsey.ManiaMap.Unity.Exceptions;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 
 namespace MPewsey.ManiaMap.Unity
@@ -29,25 +31,76 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The manager settings.
         /// </summary>
-        public ManiaMapSettings Settings { get => AssertIsInitialized(_settings); private set => _settings = value; }
+        public ManiaMapSettings Settings
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _settings;
+            }
+            private set => _settings = value;
+        }
 
         private Layout _layout;
         /// <summary>
         /// The current layout.
         /// </summary>
-        public Layout Layout { get => AssertIsInitialized(_layout); private set => _layout = value; }
+        public Layout Layout
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layout;
+            }
+            private set => _layout = value;
+        }
 
         private LayoutState _layoutState;
         /// <summary>
         /// The current layout state.
         /// </summary>
-        public LayoutState LayoutState { get => AssertIsInitialized(_layoutState); private set => _layoutState = value; }
+        public LayoutState LayoutState
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layoutState;
+            }
+            private set => _layoutState = value;
+        }
 
         private Dictionary<Uid, List<DoorConnection>> _roomConnections = new Dictionary<Uid, List<DoorConnection>>();
         /// <summary>
         /// A dictionary of door connections by room ID.
         /// </summary>
-        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get => AssertIsInitialized(_roomConnections); set => _roomConnections = value; }
+        private Dictionary<Uid, List<DoorConnection>> RoomConnections
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _roomConnections;
+            }
+            set => _roomConnections = value;
+        }
+
+        private Dictionary<Uid, HashSet<Uid>> _roomClusters = new Dictionary<Uid, HashSet<Uid>>();
+        /// <summary>
+        /// A dictionary of room clusters by room ID.
+        /// </summary>
+        private Dictionary<Uid, HashSet<Uid>> RoomClusters
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _roomClusters;
+            }
+            set => _roomClusters = value;
+        }
+
+        /// <summary>
+        /// A dictionary of room handles by template ID.
+        /// </summary>
+        private Dictionary<int, RoomHandle> RoomHandles { get; } = new Dictionary<int, RoomHandle>();
 
         /// <summary>
         /// True if the object has been initialized.
@@ -78,6 +131,7 @@ namespace MPewsey.ManiaMap.Unity
                 Current = null;
 
             Common.Logging.Logger.RemoveListener(OnLog.Invoke);
+            ReleaseRoomHandles();
         }
 
         /// <summary>
@@ -109,18 +163,17 @@ namespace MPewsey.ManiaMap.Unity
             Layout = layout;
             LayoutState = layoutState;
             RoomConnections = layout.GetRoomConnections();
+            RoomClusters = layout.FindClusters(Settings.MaxClusterDepth);
+            ReleaseRoomHandles();
         }
 
         /// <summary>
-        /// Checks that the manager is initialized and returns the value if it is.
+        /// Checks that the manager is initialized and throws an exception if it isn't.
         /// </summary>
-        /// <param name="value">The guarded value.</param>
-        /// <exception cref="ManiaMapManagerNotInitializedException">Thrown if the manager is not initialized.</exception>
-        private T AssertIsInitialized<T>(T value)
+        private void AssertIsInitialized()
         {
             if (!IsInitialized)
                 throw new ManiaMapManagerNotInitializedException("Mania Map Manager must be initialized prior to accessing initialized members.");
-            return value;
         }
 
         /// <summary>
@@ -151,6 +204,96 @@ namespace MPewsey.ManiaMap.Unity
             if (RoomConnections.TryGetValue(id, out var connections))
                 return connections;
             return System.Array.Empty<DoorConnection>();
+        }
+
+        /// <summary>
+        /// Returns the room cluster by room ID.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        public IEnumerable<Uid> GetRoomCluster(Uid id)
+        {
+            if (RoomClusters.TryGetValue(id, out var cluster))
+                return cluster;
+            return Enumerable.Empty<Uid>();
+        }
+
+        /// <summary>
+        /// Releases all room handles.
+        /// </summary>
+        public void ReleaseRoomHandles()
+        {
+            foreach (var handle in RoomHandles.Values)
+            {
+                Addressables.Release(handle.Handle);
+            }
+
+            RoomHandles.Clear();
+        }
+
+        /// <summary>
+        /// Loads the rooms in the room cluster.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="database">The addressable database.</param>
+        public void LoadRoomCluster(Uid id, RoomAddressableDatabase database)
+        {
+            IncrementRoomHandles();
+            CreateRoomHandles(id, database);
+            ReleaseStaleRoomHandles();
+        }
+
+        /// <summary>
+        /// Creates load handles for the rooms in the cluster and sets the stale count
+        /// to zero for any already existing.
+        /// </summary>
+        /// <param name="id">The room ID.</param>
+        /// <param name="database">The addressable database.</param>
+        private void CreateRoomHandles(Uid id, RoomAddressableDatabase database)
+        {
+            foreach (var roomId in GetRoomCluster(id))
+            {
+                var room = Layout.Rooms[roomId];
+                var templateId = room.Template.Id;
+
+                if (!RoomHandles.TryGetValue(templateId, out var handle))
+                {
+                    var prefab = database.GetPrefab(templateId);
+                    handle = new RoomHandle(prefab.LoadAssetAsync());
+                    RoomHandles.Add(templateId, handle);
+                }
+
+                handle.StaleCount = 0;
+            }
+        }
+
+        /// <summary>
+        /// Increments the stale counts for the room handles.
+        /// </summary>
+        private void IncrementRoomHandles()
+        {
+            foreach (var handle in RoomHandles.Values)
+            {
+                handle.StaleCount++;
+            }
+        }
+
+        /// <summary>
+        /// Releases any room handles that have exceeded the maximum stale count.
+        /// </summary>
+        private void ReleaseStaleRoomHandles()
+        {
+            var maxStaleCount = Settings.MaxStaleCount;
+
+            foreach (var id in RoomHandles.Keys.ToList())
+            {
+                var handle = RoomHandles[id];
+
+                if (handle.StaleCount > maxStaleCount)
+                {
+                    Addressables.Release(handle.Handle);
+                    RoomHandles.Remove(id);
+                }
+            }
         }
     }
 }

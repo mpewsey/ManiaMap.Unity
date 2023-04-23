@@ -70,29 +70,75 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// <summary>
         /// The room layout.
         /// </summary>
-        private Layout Layout { get => AssertIsInitialized(_layout); set => _layout = value; }
+        private Layout Layout
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layout;
+            }
+            set => _layout = value;
+        }
 
         private LayoutState _layoutState;
         /// <summary>
         /// A dictionary of room door positions by room ID.
         /// </summary>
-        private LayoutState LayoutState { get => AssertIsInitialized(_layoutState); set => _layoutState = value; }
+        private LayoutState LayoutState
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layoutState;
+            }
+            set => _layoutState = value;
+        }
 
         private Dictionary<Uid, List<DoorPosition>> _roomDoors;
         /// <summary>
         /// A dictionary of door positions by their containing room.
         /// </summary>
-        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get => AssertIsInitialized(_roomDoors); set => _roomDoors = value; }
+        private Dictionary<Uid, List<DoorPosition>> RoomDoors
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _roomDoors;
+            }
+            set => _roomDoors = value;
+        }
 
         private RectangleInt _layoutBounds;
         /// <summary>
         /// The bounds of the layout.
         /// </summary>
-        private RectangleInt LayoutBounds { get => AssertIsInitialized(_layoutBounds); set => _layoutBounds = value; }
+        private RectangleInt LayoutBounds
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layoutBounds;
+            }
+            set => _layoutBounds = value;
+        }
 
         private int[] _layerPositions;
-        private int[] LayerPositions { get => AssertIsInitialized(_layerPositions); set => _layerPositions = value; }
+        /// <summary>
+        /// An array of sorted layer positions.
+        /// </summary>
+        private int[] LayerPositions
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layerPositions;
+            }
+            set => _layerPositions = value;
+        }
 
+        /// <summary>
+        /// True if the map is initialized.
+        /// </summary>
         public bool IsInitialized { get; private set; }
 
         /// <summary>
@@ -100,8 +146,10 @@ namespace MPewsey.ManiaMap.Unity.Drawing
         /// </summary>
         public IReadOnlyList<LayoutMapLayer> GetLayers() => Layers;
 
+        /// <inheritdoc/>
         IEnumerable<IOnionMapLayer> IOnionMapTarget.Layers() => Layers;
 
+        /// <inheritdoc/>
         public Vector2 LayerRange()
         {
             var positions = LayerPositions;
@@ -127,6 +175,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             IsInitialized = true;
         }
 
+        /// <summary>
+        /// Initializes the map from the current ManiaMapManager.
+        /// </summary>
+        public void InitializeFromManager()
+        {
+            var manager = ManiaMapManager.Current;
+            Initialize(manager.Layout, manager.LayoutState);
+        }
+
+        /// <summary>
+        /// Returns an array of sorted distinct layer positions for the layout.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
         private static int[] DistinctLayerPositions(Layout layout)
         {
             var result = layout.Rooms.Values.Select(x => x.Position.Z).Distinct().ToArray();
@@ -134,13 +195,19 @@ namespace MPewsey.ManiaMap.Unity.Drawing
             return result;
         }
 
-        private T AssertIsInitialized<T>(T value)
+        /// <summary>
+        /// Checks that the map is initialized and raises an exception if it isn't.
+        /// </summary>
+        /// <exception cref="LayoutMapNotInitializedException">Raised if the map is not initialized.</exception>
+        private void AssertIsInitialized()
         {
             if (!IsInitialized)
                 throw new LayoutMapNotInitializedException($"Attempting to access initialized method when not initialized: {this}.");
-            return value;
         }
 
+        /// <summary>
+        /// Destroys all layers and clears the layers list.
+        /// </summary>
         public void Clear()
         {
             foreach (var layer in Layers)

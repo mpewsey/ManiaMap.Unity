@@ -25,9 +25,25 @@ namespace MPewsey.ManiaMap.Unity
             set => _roomPositionOption = value != RoomPositionOption.UseManagerSetting ? value : RoomPositionOption.Origin;
         }
 
+        [SerializeField]
+        private int _maxClusterDepth = 1;
+        /// <summary>
+        /// The maximum depth for computed room clusters.
+        /// </summary>
+        public int MaxClusterDepth { get => _maxClusterDepth; set => _maxClusterDepth = Mathf.Max(value, 0); }
+
+        [SerializeField]
+        private int _maxStaleCount = 1;
+        /// <summary>
+        /// The maximum count beyond which a loaded room will be considered stale.
+        /// </summary>
+        public int MaxStaleCount { get => _maxStaleCount; set => _maxStaleCount = Mathf.Max(value, 0); }
+
         private void OnValidate()
         {
             RoomPositionOption = RoomPositionOption;
+            MaxClusterDepth = MaxClusterDepth;
+            MaxStaleCount = MaxStaleCount;
         }
 
         /// <summary>
