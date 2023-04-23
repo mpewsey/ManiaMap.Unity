@@ -74,31 +74,71 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The layout.
         /// </summary>
-        public Layout Layout { get => AssertIsInitialized(_layout); private set => _layout = value; }
+        public Layout Layout
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layout;
+            }
+            private set => _layout = value;
+        }
 
         private LayoutState _layoutState;
         /// <summary>
         /// The layout state.
         /// </summary>
-        public LayoutState LayoutState { get => AssertIsInitialized(_layoutState); private set => _layoutState = value; }
+        public LayoutState LayoutState
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _layoutState;
+            }
+            private set => _layoutState = value;
+        }
 
         private Room _roomLayout;
         /// <summary>
         /// The room data.
         /// </summary>
-        public Room RoomLayout { get => AssertIsInitialized(_roomLayout); private set => _roomLayout = value; }
+        public Room RoomLayout
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _roomLayout;
+            }
+            private set => _roomLayout = value;
+        }
 
         private RoomState _roomState;
         /// <summary>
         /// The room state.
         /// </summary>
-        public RoomState RoomState { get => AssertIsInitialized(_roomState); private set => _roomState = value; }
+        public RoomState RoomState
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _roomState;
+            }
+            private set => _roomState = value;
+        }
 
         private IReadOnlyList<DoorConnection> _doorConnections = System.Array.Empty<DoorConnection>();
         /// <summary>
         /// The room's door connections.
         /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections { get => AssertIsInitialized(_doorConnections); private set => _doorConnections = value; }
+        public IReadOnlyList<DoorConnection> DoorConnections
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _doorConnections;
+            }
+            private set => _doorConnections = value;
+        }
 
         private void Start()
         {
@@ -122,16 +162,12 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// If the room is initialized, returns the value. Otherwise, throws an exception.
+        /// Checks that the room is initialized and throws an exception if it isn't.
         /// </summary>
-        /// <param name="value">The return value.</param>
-        /// <exception cref="RoomNotInitializedException">Raised if the room is not initialized.</exception>
-        private T AssertIsInitialized<T>(T value)
+        private void AssertIsInitialized()
         {
             if (!IsInitialized)
                 throw new RoomNotInitializedException($"Attempting to access initialized member on uninitialized room: {this}.");
-
-            return value;
         }
 
         /// <summary>
@@ -221,7 +257,7 @@ namespace MPewsey.ManiaMap.Unity
             if (player != null)
             {
                 var index = GetCellIndex(player.transform.position);
-                RoomState?.SetCellVisibility(index.x, index.y, true);
+                RoomState.SetCellVisibility(index.x, index.y, true);
             }
         }
 

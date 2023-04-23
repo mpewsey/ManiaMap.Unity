@@ -55,7 +55,15 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// The associated door connection in the layout.
         /// </summary>
-        public DoorConnection Connection { get => AssertIsInitialized(_connection); private set => _connection = value; }
+        public DoorConnection Connection
+        {
+            get
+            {
+                AssertIsInitialized();
+                return _connection;
+            }
+            private set => _connection = value;
+        }
 
         /// <summary>
         /// True if the door has been initialized.
@@ -111,20 +119,17 @@ namespace MPewsey.ManiaMap.Unity
         }
 
         /// <summary>
-        /// If the door is initialized, returns the value. Otherwise, throws an exception.
+        /// Checks that the door is initialized and throws an exception if it isn't.
         /// </summary>
-        /// <param name="value">The return value.</param>
-        /// <exception cref="DoorNotInitializedException">Raised if the door is not initialized.</exception>
-        private T AssertIsInitialized<T>(T value)
+        private void AssertIsInitialized()
         {
             if (!IsInitialized)
                 throw new DoorNotInitializedException($"Attempting to access initialized member on uninitialized door: {this}.");
-
-            return value;
         }
 
         /// <summary>
         /// Finds the door with the specified room ID and door connection.
+        /// Returns null if the door is not found.
         /// </summary>
         /// <param name="roomId">The room ID.</param>
         /// <param name="connection">The door connection.</param>
