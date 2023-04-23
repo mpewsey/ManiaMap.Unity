@@ -12,9 +12,10 @@ var searchData=
   ['roomflag_9',['RoomFlag',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html',1,'MPewsey::ManiaMap::Unity']]],
   ['roomflageditor_10',['RoomFlagEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_flag_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
   ['roomflagevent_11',['RoomFlagEvent',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag_event.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['roomnotinitializedexception_12',['RoomNotInitializedException',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_room_not_initialized_exception.html',1,'MPewsey::ManiaMap::Unity::Exceptions']]],
-  ['roomprefabdatabase_13',['RoomPrefabDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['roomprefabdatabaseeditor_14',['RoomPrefabDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['roomtemplateobject_15',['RoomTemplateObject',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html',1,'MPewsey::ManiaMap::Unity']]],
-  ['roomtemplateobjecteditor_16',['RoomTemplateObjectEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_object_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
+  ['roomhandle_12',['RoomHandle',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_handle.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomnotinitializedexception_13',['RoomNotInitializedException',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_exceptions_1_1_room_not_initialized_exception.html',1,'MPewsey::ManiaMap::Unity::Exceptions']]],
+  ['roomprefabdatabase_14',['RoomPrefabDatabase',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomprefabdatabaseeditor_15',['RoomPrefabDatabaseEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['roomtemplateobject_16',['RoomTemplateObject',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html',1,'MPewsey::ManiaMap::Unity']]],
+  ['roomtemplateobjecteditor_17',['RoomTemplateObjectEditor',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_template_object_editor.html',1,'MPewsey::ManiaMap::Unity::Editor']]]
 ];

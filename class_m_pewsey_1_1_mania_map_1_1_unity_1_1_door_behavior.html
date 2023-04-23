@@ -173,7 +173,7 @@ RoomState&#160;</td><td class="memItemRight" valign="bottom"><b>RoomState</b> ()
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a85665944fa249a41cd3bada0c8ed573e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html">DoorBehavior</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a85665944fa249a41cd3bada0c8ed573e">FindDoor</a> (Uid roomId, DoorConnection connection)</td></tr>
-<tr class="memdesc:a85665944fa249a41cd3bada0c8ed573e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the door with the specified room ID and door connection.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a85665944fa249a41cd3bada0c8ed573e">More...</a><br /></td></tr>
+<tr class="memdesc:a85665944fa249a41cd3bada0c8ed573e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the door with the specified room ID and door connection. Returns null if the door is not found.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a85665944fa249a41cd3bada0c8ed573e">More...</a><br /></td></tr>
 <tr class="separator:a85665944fa249a41cd3bada0c8ed573e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
@@ -215,9 +215,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ad044c389425450cfff0b7c8f6cff0bb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#ad044c389425450cfff0b7c8f6cff0bb6">AddToDoorsDictionary</a> ()</td></tr>
 <tr class="memdesc:ad044c389425450cfff0b7c8f6cff0bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the door to the doors dictionary.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#ad044c389425450cfff0b7c8f6cff0bb6">More...</a><br /></td></tr>
 <tr class="separator:ad044c389425450cfff0b7c8f6cff0bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17f5aaefc27a07a89a07497f46ab213f"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a17f5aaefc27a07a89a07497f46ab213f">AssertIsInitialized&lt; T &gt;</a> (T value)</td></tr>
-<tr class="memdesc:a17f5aaefc27a07a89a07497f46ab213f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the door is initialized, returns the value. Otherwise, throws an exception.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a17f5aaefc27a07a89a07497f46ab213f">More...</a><br /></td></tr>
-<tr class="separator:a17f5aaefc27a07a89a07497f46ab213f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9017378f006c1b11bdb09e4c2f0931af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a9017378f006c1b11bdb09e4c2f0931af">AssertIsInitialized</a> ()</td></tr>
+<tr class="memdesc:a9017378f006c1b11bdb09e4c2f0931af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the door is initialized and throws an exception if it isn't.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a9017378f006c1b11bdb09e4c2f0931af">More...</a><br /></td></tr>
+<tr class="separator:a9017378f006c1b11bdb09e4c2f0931af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5202043696a779a7d4bbdaae4846619a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a5202043696a779a7d4bbdaae4846619a">Awake</a> ()</td></tr>
 <tr class="separator:a5202043696a779a7d4bbdaae4846619a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e81499781dd4078ec1aadfbaa8aa8bf"><td class="memItemLeft" align="right" valign="top">DoorDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#a3e81499781dd4078ec1aadfbaa8aa8bf">FindClosestDirection</a> ()</td></tr>
@@ -288,12 +288,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Adds the door to the doors dictionary. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00148">148</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00153">153</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
-<a id="a17f5aaefc27a07a89a07497f46ab213f" name="a17f5aaefc27a07a89a07497f46ab213f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17f5aaefc27a07a89a07497f46ab213f">&#9670;&nbsp;</a></span>AssertIsInitialized&lt; T &gt;()</h2>
+<a id="a9017378f006c1b11bdb09e4c2f0931af" name="a9017378f006c1b11bdb09e4c2f0931af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9017378f006c1b11bdb09e4c2f0931af">&#9670;&nbsp;</a></span>AssertIsInitialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,10 +302,9 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T MPewsey.ManiaMap.Unity.DoorBehavior.AssertIsInitialized&lt; T &gt; </td>
+          <td class="memname">void MPewsey.ManiaMap.Unity.DoorBehavior.AssertIsInitialized </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -316,21 +315,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>If the door is initialized, returns the value. Otherwise, throws an exception. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The return value.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">DoorNotInitializedException</td><td>Raised if the door is not initialized.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Checks that the door is initialized and throws an exception if it isn't. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00118">118</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00124">124</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -351,7 +338,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Assigns the closest direction to the door based on the door's relative position to the assigned cell. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00211">211</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00216">216</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -382,7 +369,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_child.html#ae45121b3c0ffe28e4c8ea13de15568df">MPewsey.ManiaMap.Unity.CellChild</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00199">199</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00204">204</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -409,7 +396,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00088">88</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00096">96</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -430,7 +417,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns a new generation door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00191">191</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00196">196</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -459,7 +446,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Finds the closest door direction based on the door's relative position to the assigned cell. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00220">220</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00225">225</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -497,7 +484,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Finds the door with the specified room ID and door connection. </p>
+<p>Finds the door with the specified room ID and door connection. Returns null if the door is not found. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">roomId</td><td>The room ID.</td></tr>
@@ -506,7 +493,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00131">131</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00136">136</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -535,7 +522,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the door connection in the layout associated with the door. Returns null if the door connection does not exist in the layout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00174">174</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00179">179</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -564,7 +551,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Initializes the door. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00102">102</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00110">110</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -591,7 +578,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00093">93</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00101">101</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -620,7 +607,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Removes the door from the doors dictionary. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00164">164</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00169">169</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -641,7 +628,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The room ID of the room this door connects to. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00073">73</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00081">81</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -943,7 +930,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>True if the door has been initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00063">63</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_behavior_8cs_source.html#l00071">71</a> of file <a class="el" href="_door_behavior_8cs_source.html">DoorBehavior.cs</a>.</p>
 
 </div>
 </div>

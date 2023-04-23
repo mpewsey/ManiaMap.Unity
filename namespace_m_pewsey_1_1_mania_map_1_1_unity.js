@@ -24,6 +24,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomDatabaseEntry", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry" ],
     [ "RoomFlag", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag" ],
     [ "RoomFlagEvent", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_flag_event.html", null ],
+    [ "RoomHandle", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_handle.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_handle" ],
     [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
     [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
