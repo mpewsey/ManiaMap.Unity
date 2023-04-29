@@ -1,7 +1,7 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database =
 [
     [ "AddEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a7b0915ce398bf1089e7fa8e8218a67a8", null ],
-    [ "CreatePrefabDictionary", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#ab159ed4f576db5c071951b5806d99973", null ],
+    [ "CreatePrefabDictionary", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#ad907da39b1fd89228b47b882b15ecda6", null ],
     [ "EnsureIsInitialized", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#afd41941b0694cc4a21a986f85d5fe13d", null ],
     [ "GetPrefab", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#a2f913411d4575d9ed66202e587ee2ed2", null ],
     [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database.html#ad00fba762e0817fec25835143cb6851c", null ],
