@@ -47,30 +47,41 @@ namespace MPewsey.ManiaMap.Unity
             DrawXGizmo();
         }
 
+        /// <summary>
+        /// Draws the cell fill color gizmo.
+        /// </summary>
         private void DrawFillColorGizmo()
         {
-            Gizmos.color = IsEmpty ? new Color(0, 0, 0, 0.25f) : new Color(0.5f, 0.5f, 0.5f, 0.25f);
+            Gizmos.color = IsEmpty ? Color.black : Color.grey;
+            Gizmos.color *= new Color(1, 1, 1, 0.25f);
             Gizmos.DrawCube(transform.position, Room.Swizzle(Room.CellSize));
         }
 
+        /// <summary>
+        /// Draws the cell outline color gizmo.
+        /// </summary>
         private void DrawOutlineGizmo()
         {
             Gizmos.color = Color.grey;
             Gizmos.DrawWireCube(transform.position, Room.Swizzle(Room.CellSize));
         }
 
+        /// <summary>
+        /// If the cell is empty, draws a gizmo for an X through the cell.
+        /// </summary>
         private void DrawXGizmo()
         {
             if (IsEmpty)
             {
+                var position = Room.transform.position;
                 var origin = Origin();
                 var from1 = Room.Swizzle(origin);
                 var to1 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, -Room.CellSize.y));
                 var from2 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, 0));
                 var to2 = Room.Swizzle(origin + new Vector2(0, -Room.CellSize.y));
                 Gizmos.color = Color.grey;
-                Gizmos.DrawLine(from1, to1);
-                Gizmos.DrawLine(from2, to2);
+                Gizmos.DrawLine(from1 + position, to1 + position);
+                Gizmos.DrawLine(from2 + position, to2 + position);
             }
         }
 
