@@ -1,3 +1,4 @@
+using MPewsey.Common.Mathematics;
 using UnityEngine;
 
 namespace MPewsey.ManiaMap.Unity
@@ -20,6 +21,10 @@ namespace MPewsey.ManiaMap.Unity
         /// The collectable group.
         /// </summary>
         public CollectableGroup Group { get => _group; set => _group = value; }
+
+        [SerializeField]
+        private float _weight = 1;
+        public float Weight { get => _weight; set => _weight = Mathf.Max(value, 0); }
 
         [SerializeField]
         private CollectableSpotBehaviorEvent _onInitialize = new CollectableSpotBehaviorEvent();
@@ -51,6 +56,7 @@ namespace MPewsey.ManiaMap.Unity
         private void OnValidate()
         {
             Id = ManiaMapManager.AutoAssignId(Id);
+            Weight = Weight;
         }
 
         private void Awake()
@@ -102,6 +108,15 @@ namespace MPewsey.ManiaMap.Unity
         {
             base.AutoAssign();
             Id = ManiaMapManager.AutoAssignId(Id);
+        }
+
+        /// <summary>
+        /// Returns new generation data for the collectable spot.
+        /// </summary>
+        public CollectableSpot CreateData()
+        {
+            var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+            return new CollectableSpot(position, Group.Name, Weight);
         }
     }
 }

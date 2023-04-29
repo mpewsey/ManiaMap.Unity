@@ -475,6 +475,17 @@ namespace MPewsey.ManiaMap.Unity
         public RoomTemplate CreateData()
         {
             AutoAssign();
+            var template = new RoomTemplate(Id, Name, CreateDataCells(), CreateCollectableSpots());
+            template.Validate();
+            ValidateRoomFlags();
+            return template;
+        }
+
+        /// <summary>
+        /// Returns a new array of generation data cells for the room.
+        /// </summary>
+        private Array2D<Cell> CreateDataCells()
+        {
             var cells = new Array2D<Cell>(Size.x, Size.y);
 
             for (int i = 0; i < cells.Rows; i++)
@@ -485,10 +496,23 @@ namespace MPewsey.ManiaMap.Unity
                 }
             }
 
-            var template = new RoomTemplate(Id, Name, cells);
-            template.Validate();
-            ValidateRoomFlags();
-            return template;
+            return cells;
+        }
+
+        /// <summary>
+        /// Returns a new dictionary of generation data collectable spots for the room.
+        /// </summary>
+        private Dictionary<int, CollectableSpot> CreateCollectableSpots()
+        {
+            var result = new Dictionary<int, CollectableSpot>();
+            var spots = GetComponentsInChildren<CollectableSpotBehavior>();
+
+            foreach (var spot in spots)
+            {
+                result.Add(spot.Id, spot.CreateData());
+            }
+
+            return result;
         }
 
         /// <summary>

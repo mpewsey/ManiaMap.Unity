@@ -178,25 +178,90 @@
             <param name="index">The index.</param>
             <param name="fallback">The fallback value.</param>
         </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated90(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the index corresponding to when the array is rotated clockwise 90 degrees.
+            </summary>
+            <param name="index">The index vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated90(System.Int32,System.Int32)">
+            <summary>
+            Returns the index corresponding to when the array is rotated clockwise 90 degrees.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated90">
             <summary>
             Returns a new array rotated clockwise 90 degrees.
             </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated180(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the index corresponding to when the array is rotated 180 degrees.
+            </summary>
+            <param name="index">The index vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated180(System.Int32,System.Int32)">
+            <summary>
+            Returns the index corresponding to when the array is rotated 180 degrees.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
         </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated180">
             <summary>
             Returns a new array rotated 180 degrees.
             </summary>
         </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated270(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the index corresponding to when the array is rotated clockwise 270 degrees.
+            </summary>
+            <param name="index">The index vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexRotated270(System.Int32,System.Int32)">
+            <summary>
+            Returns the index corresponding to when the array is rotated clockwise 270 degrees.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.Rotated270">
             <summary>
             Returns a new array rotated clockwise 270 degrees.
             </summary>
         </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexMirroredHorizontally(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the index corresponding to when the array is mirrored horizontally.
+            </summary>
+            <param name="index">The index vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexMirroredHorizontally(System.Int32,System.Int32)">
+            <summary>
+            Returns the index corresponding to when the array is mirrored horizontally.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+        </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.MirroredHorizontally">
             <summary>
             Returns a new array mirrored horizontally, i.e. about the vertical axis.
             </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexMirroredVertically(MPewsey.Common.Mathematics.Vector2DInt)">
+            <summary>
+            Returns the index corresponding to when the array is mirrored vertically.
+            </summary>
+            <param name="index">The index vector.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Array2D`1.IndexMirroredVertically(System.Int32,System.Int32)">
+            <summary>
+            Returns the index corresponding to when the array is mirrored vertically.
+            </summary>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
         </member>
         <member name="M:MPewsey.Common.Collections.Array2D`1.MirroredVertically">
             <summary>
