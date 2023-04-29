@@ -217,6 +217,12 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a46e46e06e3cc3d77ca86800d2a66ab58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a46e46e06e3cc3d77ca86800d2a66ab58">AutoAssignDoors</a> ()</td></tr>
 <tr class="memdesc:a46e46e06e3cc3d77ca86800d2a66ab58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the auto assign operation on all door components that are children of the room.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a46e46e06e3cc3d77ca86800d2a66ab58">More...</a><br /></td></tr>
 <tr class="separator:a46e46e06e3cc3d77ca86800d2a66ab58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846af5074b88714893987c5ef89b16ad"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, CollectableSpot &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a846af5074b88714893987c5ef89b16ad">CreateCollectableSpots</a> ()</td></tr>
+<tr class="memdesc:a846af5074b88714893987c5ef89b16ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new dictionary of generation data collectable spots for the room.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a846af5074b88714893987c5ef89b16ad">More...</a><br /></td></tr>
+<tr class="separator:a846af5074b88714893987c5ef89b16ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296c373cd14af0a27b2aae3f9cb6c771"><td class="memItemLeft" align="right" valign="top">Array2D&lt; Cell &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a296c373cd14af0a27b2aae3f9cb6c771">CreateDataCells</a> ()</td></tr>
+<tr class="memdesc:a296c373cd14af0a27b2aae3f9cb6c771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new array of generation data cells for the room.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#a296c373cd14af0a27b2aae3f9cb6c771">More...</a><br /></td></tr>
+<tr class="separator:a296c373cd14af0a27b2aae3f9cb6c771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb7e122bcb9eb347f577a48f325dd36a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#abb7e122bcb9eb347f577a48f325dd36a">CreateRow</a> (int row)</td></tr>
 <tr class="memdesc:abb7e122bcb9eb347f577a48f325dd36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the row and cells for the specified index. This method will attempt to reuse existing objects if it can. Extra cells are also destroyed.  <a href="class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html#abb7e122bcb9eb347f577a48f325dd36a">More...</a><br /></td></tr>
 <tr class="separator:abb7e122bcb9eb347f577a48f325dd36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -444,6 +450,35 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a846af5074b88714893987c5ef89b16ad" name="a846af5074b88714893987c5ef89b16ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a846af5074b88714893987c5ef89b16ad">&#9670;&nbsp;</a></span>CreateCollectableSpots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt; int, CollectableSpot &gt; MPewsey.ManiaMap.Unity.RoomBehavior.CreateCollectableSpots </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a new dictionary of generation data collectable spots for the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_behavior_8cs_source.html#l00505">505</a> of file <a class="el" href="_room_behavior_8cs_source.html">RoomBehavior.cs</a>.</p>
+
+</div>
+</div>
 <a id="ab78cdb573d649dadbc8651353c59c8c8" name="ab78cdb573d649dadbc8651353c59c8c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab78cdb573d649dadbc8651353c59c8c8">&#9670;&nbsp;</a></span>CreateData()</h2>
 
@@ -462,6 +497,35 @@ Private Attributes</h2></td></tr>
 <p>Returns a new generation room template. </p>
 
 <p class="definition">Definition at line <a class="el" href="_room_behavior_8cs_source.html#l00475">475</a> of file <a class="el" href="_room_behavior_8cs_source.html">RoomBehavior.cs</a>.</p>
+
+</div>
+</div>
+<a id="a296c373cd14af0a27b2aae3f9cb6c771" name="a296c373cd14af0a27b2aae3f9cb6c771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296c373cd14af0a27b2aae3f9cb6c771">&#9670;&nbsp;</a></span>CreateDataCells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Array2D&lt; Cell &gt; MPewsey.ManiaMap.Unity.RoomBehavior.CreateDataCells </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a new array of generation data cells for the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_behavior_8cs_source.html#l00487">487</a> of file <a class="el" href="_room_behavior_8cs_source.html">RoomBehavior.cs</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1095,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_behavior_8cs_source.html#l00498">498</a> of file <a class="el" href="_room_behavior_8cs_source.html">RoomBehavior.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_behavior_8cs_source.html#l00522">522</a> of file <a class="el" href="_room_behavior_8cs_source.html">RoomBehavior.cs</a>.</p>
 
 </div>
 </div>

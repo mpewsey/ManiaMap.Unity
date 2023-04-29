@@ -4,6 +4,7 @@ var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior =
     [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a9e5ccca9ee512bc0c66f262cfb0daf80", null ],
     [ "CanAcquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#af74783ae9008b86a557285168d1b4390", null ],
     [ "CollectableId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a2199de405c5de0445525ef2830764a9e", null ],
+    [ "CreateData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#afa9bd5a351ca90aff2e96258e624d3ff", null ],
     [ "Exists", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a4c7ce5221efc72d7b82c8e12e6198eda", null ],
     [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#ac577d9a40d95c6d862b62936ca038a7e", null ],
     [ "IsAcquired", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a2c2200129535fe8eceab3be9ccdcb0f2", null ],
