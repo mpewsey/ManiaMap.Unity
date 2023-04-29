@@ -23,10 +23,19 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public List<RoomDatabaseEntry<T>> Entries { get => _entries; set => _entries = value; }
 
+        protected Dictionary<int, T> _prefabDictionary = new Dictionary<int, T>();
         /// <summary>
         /// A dictionary of room data sources by room ID.
         /// </summary>
-        protected Dictionary<int, T> PrefabDictionary { get; } = new Dictionary<int, T>();
+        protected Dictionary<int, T> PrefabDictionary
+        {
+            get
+            {
+                EnsureIsInitialized();
+                return _prefabDictionary;
+            }
+            set => _prefabDictionary = value;
+        }
 
         /// <summary>
         /// True if the prefab dictionary has been initialized.
@@ -43,14 +52,14 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         public void Initialize()
         {
-            CreatePrefabDictionary();
+            PrefabDictionary = CreatePrefabDictionary();
             IsInitialized = true;
         }
 
         /// <summary>
         /// If the database has not been initialized, initializes it.
         /// </summary>
-        public void EnsureIsInitialized()
+        protected void EnsureIsInitialized()
         {
             if (!IsInitialized)
                 Initialize();
@@ -59,15 +68,16 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Creates the room data dictionary based on the current database entries list.
         /// </summary>
-        protected void CreatePrefabDictionary()
+        protected Dictionary<int, T> CreatePrefabDictionary()
         {
-            PrefabDictionary.Clear();
-            PrefabDictionary.EnsureCapacity(Entries.Count);
+            var dict = new Dictionary<int, T>(Entries.Count);
 
             foreach (var entry in Entries)
             {
-                PrefabDictionary.Add(entry.Id, entry.Prefab);
+                dict.Add(entry.Id, entry.Prefab);
             }
+
+            return dict;
         }
 
         /// <summary>
@@ -77,7 +87,6 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="prefab">The room prefab.</param>
         public void AddEntry(int id, T prefab)
         {
-            EnsureIsInitialized();
             PrefabDictionary.Add(id, prefab);
             Entries.Add(new RoomDatabaseEntry<T>(id, prefab));
         }
@@ -88,7 +97,6 @@ namespace MPewsey.ManiaMap.Unity
         /// <param name="id">The room ID.</param>
         public T GetPrefab(int id)
         {
-            EnsureIsInitialized();
             return PrefabDictionary[id];
         }
     }
