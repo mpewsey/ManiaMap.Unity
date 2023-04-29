@@ -76,7 +76,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             // Create fake layout.
             var layout = new Layout(1, "Test", seed.Seed);
             var node = new LayoutNode(1);
-            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
+            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed.Next());
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             var layoutState = new LayoutState(layout);
             var roomState = layoutState.RoomStates[roomLayout.Id];
@@ -96,7 +96,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
             // Create fake layout.
             var layout = new Layout(1, "Test", seed.Seed);
             var node = new LayoutNode(1);
-            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed);
+            var roomLayout = new Room(node, Vector2DInt.Zero, template, seed.Next());
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.Initialize(layout, new LayoutState(layout));
 

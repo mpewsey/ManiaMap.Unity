@@ -108,25 +108,17 @@ namespace MPewsey.ManiaMap.Unity
         /// <summary>
         /// Returns a list of doors assigned to the cell.
         /// </summary>
-        public List<DoorBehavior> FindDoors()
+        private IEnumerable<DoorBehavior> FindDoors()
         {
-            return Room.GetComponentsInChildren<DoorBehavior>().Where(x => x.Cell == this).ToList();
-        }
-
-        /// <summary>
-        /// Returns a list of collectable spots assigned to the cell.
-        /// </summary>
-        public List<CollectableSpotBehavior> FindCollectableSpots()
-        {
-            return Room.GetComponentsInChildren<CollectableSpotBehavior>().Where(x => x.Cell == this).ToList();
+            return Room.GetComponentsInChildren<DoorBehavior>().Where(x => x.Cell == this);
         }
 
         /// <summary>
         /// Returns a list of features assigned to the cell.
         /// </summary>
-        public List<Feature> FindFeatures()
+        private IEnumerable<Feature> FindFeatures()
         {
-            return Room.GetComponentsInChildren<Feature>().Where(x => x.Cell == this).ToList();
+            return Room.GetComponentsInChildren<Feature>().Where(x => x.Cell == this);
         }
 
         /// <summary>
@@ -145,11 +137,9 @@ namespace MPewsey.ManiaMap.Unity
         /// <exception cref="EmptyCellException">Raised if any children are assigned to the cell.</exception>
         private Cell CreateEmptyCell()
         {
-            if (FindDoors().Count > 0)
+            if (FindDoors().Any())
                 throw new EmptyCellException($"Doors assigned to empty cell: {this}.");
-            if (FindCollectableSpots().Count > 0)
-                throw new EmptyCellException($"Collectable spots assigned to empty cell: {this}.");
-            if (FindFeatures().Count > 0)
+            if (FindFeatures().Any())
                 throw new EmptyCellException($"Features assigned to empty cell: {this}.");
             return Cell.Empty;
         }
@@ -161,7 +151,6 @@ namespace MPewsey.ManiaMap.Unity
         {
             var cell = Cell.New;
             AddDoorsToCell(cell);
-            AddCollectableSpotsToCell(cell);
             AddFeaturesToCell(cell);
             return cell;
         }
@@ -178,21 +167,6 @@ namespace MPewsey.ManiaMap.Unity
                 if (cell.GetDoor(door.Direction) != null)
                     throw new DuplicateDirectionException($"Door direction already exists: {door}.");
                 cell.SetDoor(door.Direction, door.CreateData());
-            }
-        }
-
-        /// <summary>
-        /// Adds the collectable spots to the specified cell.
-        /// </summary>
-        /// <param name="cell">The cell.</param>
-        /// <exception cref="UnassignedCollectableGroupException">Raised if a collectable group is not assigned to a collectable spot.</exception>
-        private void AddCollectableSpotsToCell(Cell cell)
-        {
-            foreach (var spot in FindCollectableSpots())
-            {
-                if (spot.Group == null)
-                    throw new UnassignedCollectableGroupException($"Collectable group not assigned to collectable spot: {spot}.");
-                cell.AddCollectableSpot(spot.Id, spot.Group.Name);
             }
         }
 

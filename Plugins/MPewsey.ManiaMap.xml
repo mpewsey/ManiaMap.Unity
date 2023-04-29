@@ -63,11 +63,6 @@
             A dictionary of doors.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.Cell.CollectableSpots">
-            <summary>
-            A dictionary of collectable group names by location ID.
-            </summary>
-        </member>
         <member name="P:MPewsey.ManiaMap.Cell.Features">
             <summary>
             A list of feature names.
@@ -135,11 +130,6 @@
             <param name="direction">The door direction.</param>
             <param name="door">The door.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Cell.CollectableGroupNamesAreValid">
-            <summary>
-            Returns true if all collectable group names are not null or white space.
-            </summary>
-        </member>
         <member name="M:MPewsey.ManiaMap.Cell.SetDoors(System.String,MPewsey.ManiaMap.Door)">
             <summary>
             Sets the doors of the cell based on specified direction characters.
@@ -157,15 +147,6 @@
             </param>
             <param name="door">The door to be copied and assigned to each location.</param>
             <exception cref="T:MPewsey.ManiaMap.Exceptions.UnhandledCaseException">Raised if a character in the directions string is invalid.</exception>
-        </member>
-        <member name="M:MPewsey.ManiaMap.Cell.AddCollectableSpot(System.Int32,System.String)">
-            <summary>
-            Adds the collectable spot and returns the cell.
-            </summary>
-            <param name="id">The location ID, unique to the cell.</param>
-            <param name="group">The collectable group name.</param>
-            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if the group name is null or white space.</exception>
-            <exception cref="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">Raised if the location ID already exists.</exception>
         </member>
         <member name="M:MPewsey.ManiaMap.Cell.AddFeature(System.String)">
             <summary>
@@ -244,6 +225,18 @@
         <member name="M:MPewsey.ManiaMap.Cell.ValuesAreEqual(MPewsey.ManiaMap.Cell)">
             <summary>
             Returns true if the values of the two cells are equal.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.DoorValuesAreEqual(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the values of the doors of the two cells are equal.
+            </summary>
+            <param name="other">The other cell.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Cell.FeatureValuesAreEqual(MPewsey.ManiaMap.Cell)">
+            <summary>
+            Returns true if the values of the features of the two cells are equal.
             </summary>
             <param name="other">The other cell.</param>
         </member>
@@ -341,22 +334,12 @@
         </member>
         <member name="T:MPewsey.ManiaMap.CollectableSpot">
             <summary>
-            A class containing data for a collectable location.
-            </summary>
-        </member>
-        <member name="P:MPewsey.ManiaMap.CollectableSpot.Room">
-            <summary>
-            The room ID.
+            A room collectable spot.
             </summary>
         </member>
         <member name="P:MPewsey.ManiaMap.CollectableSpot.Position">
             <summary>
-            The local position in the room.
-            </summary>
-        </member>
-        <member name="P:MPewsey.ManiaMap.CollectableSpot.Id">
-            <summary>
-            The location ID.
+            The local cell position within the room.
             </summary>
         </member>
         <member name="P:MPewsey.ManiaMap.CollectableSpot.Group">
@@ -364,34 +347,70 @@
             The collectable group name.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.CollectableSpot.DoorWeight">
+        <member name="P:MPewsey.ManiaMap.CollectableSpot.Weight">
             <summary>
-            The door draw weight.
+            The base draw weight.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.CollectableSpot.NeighborWeight">
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.#ctor(MPewsey.Common.Mathematics.Vector2DInt,System.String,System.Single)">
             <summary>
-            The neighboring collectable draw weight.
+            Initializes a new collectable spot.
             </summary>
+            <param name="position">The local cell position within the room.</param>
+            <param name="group">The collectable group name.</param>
+            <param name="weight">The base draw weight.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.CollectableSpot.#ctor(MPewsey.ManiaMap.Uid,MPewsey.Common.Mathematics.Vector2DInt,System.Int32,System.String)">
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.#ctor(MPewsey.ManiaMap.CollectableSpot)">
             <summary>
-            Initializes a new spot.
+            Returns a copy of a collectable spot.
             </summary>
-            <param name="room">The room ID.</param>
-            <param name="position">The local position in the room.</param>
-            <param name="id">The location ID.</param>
-            <param name="group">The collectable group.</param>
+            <param name="other">The collectable spot to copy.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.CollectableSpot.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:MPewsey.ManiaMap.CollectableSpot.GetWeight(System.Double,System.Double)">
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.Copy">
             <summary>
-            Returns the draw weight for the spot.
+            Returns a copy of the collectable spot.
             </summary>
-            <param name="doorPower">The exponent used for the door weight.</param>
-            <param name="neighborPower">The exponent used for the neighbor weight.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.ValuesAreEqual(MPewsey.ManiaMap.CollectableSpot,MPewsey.ManiaMap.CollectableSpot)">
+            <summary>
+            Returns true if the values of the two collectable spots are equal.
+            </summary>
+            <param name="value1">The first spot.</param>
+            <param name="value2">The second spot.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.ValuesAreEqual(MPewsey.ManiaMap.CollectableSpot)">
+            <summary>
+            Returns true if the values of the collectable spot are equal to the specified.
+            </summary>
+            <param name="other">The other spot.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.Validate(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Checks that the collectable spot is valid and raises exceptions otherwise.
+            </summary>
+            <param name="template">The room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.ValidatePosition(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Checks that the position is within the bounds of the template and raises an exception otherwise.
+            </summary>
+            <param name="template">The room template.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Raised if the position is outside the bounds of the template.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.ValidateGroupName">
+            <summary>
+            Checks that the group name is valid and raises an exception otherwise.
+            </summary>
+            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if the group name is null or whitespace.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.CollectableSpot.IsValid(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if the collectable spot's position and group name are valid.
+            </summary>
+            <param name="template">The room template.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.Color4">
             <summary>
@@ -1104,7 +1123,7 @@
             The random seed.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.CollectableSpots">
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableGenerator.CollectableSpotWeights">
             <summary>
             A list of collectable spots.
             </summary>
@@ -1171,7 +1190,7 @@
             <param name="id">The collectable ID.</param>
             <exception cref="T:MPewsey.ManiaMap.Exceptions.CollectableSpotNotFoundException">Raised if a collectable spot can not be found for the group.</exception>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.UpdateNeighborWeights(MPewsey.ManiaMap.CollectableSpot)">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.UpdateNeighborWeights(MPewsey.ManiaMap.Generators.CollectableSpotWeight)">
             <summary>
             Updates the neighbor weights of the collectable spots in the same
             or neighboring rooms.
@@ -1184,12 +1203,12 @@
             </summary>
             <param name="group">The group name.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AddCollectableSpots">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.CreateCollectableSpotWeights">
             <summary>
             Creates a new list of collectable spots.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.AddRoomCollectableSpots(MPewsey.ManiaMap.Room)">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.CreateRoomCollectableSpotWeights(MPewsey.ManiaMap.Room)">
             <summary>
             Adds new collectable spots for the room.
             </summary>
@@ -1213,6 +1232,54 @@
             <param name="room">The room.</param>
             <param name="index1">The first point.</param>
             <param name="index2">the second point.</param>
+        </member>
+        <member name="T:MPewsey.ManiaMap.Generators.CollectableSpotWeight">
+            <summary>
+            A class containing data for a collectable location.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableSpotWeight.Room">
+            <summary>
+            The room ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableSpotWeight.Id">
+            <summary>
+            The location ID.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableSpotWeight.CollectableSpot">
+            <summary>
+            The collectable spot.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableSpotWeight.DoorWeight">
+            <summary>
+            The door draw weight.
+            </summary>
+        </member>
+        <member name="P:MPewsey.ManiaMap.Generators.CollectableSpotWeight.NeighborWeight">
+            <summary>
+            The neighboring collectable draw weight.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableSpotWeight.#ctor(MPewsey.ManiaMap.Uid,System.Int32,MPewsey.ManiaMap.CollectableSpot)">
+            <summary>
+            Initializes a new spot.
+            </summary>
+            <param name="room">The room ID.</param>
+            <param name="id">The location ID.</param>
+            <param name="spot">The collectble spot.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableSpotWeight.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableSpotWeight.GetWeight(System.Double,System.Double)">
+            <summary>
+            Returns the draw weight for the spot.
+            </summary>
+            <param name="doorPower">The exponent used for the door weight.</param>
+            <param name="neighborPower">The exponent used for the neighbor weight.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.Generators.LayoutGenerator">
             <summary>
@@ -2871,14 +2938,14 @@
         <member name="P:MPewsey.ManiaMap.Room.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Uid}#Key">
             <inheritdoc/>
         </member>
-        <member name="M:MPewsey.ManiaMap.Room.#ctor(MPewsey.ManiaMap.IRoomSource,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.RoomTemplate,MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Room.#ctor(MPewsey.ManiaMap.IRoomSource,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.RoomTemplate,System.Int32)">
             <summary>
             Initializes a room from a room source.
             </summary>
             <param name="source">The room source.</param>
             <param name="position">The position in the layout.</param>
             <param name="template">The room template.</param>
-            <param name="random">The random seed.</param>
+            <param name="seed">The room seed.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Room.ToString">
             <inheritdoc/>
@@ -3042,19 +3109,25 @@
             and properties of the room.
             </summary>
         </member>
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.CollectableSpots">
+            <summary>
+            A dictionary of collectable spots by ID.
+            </summary>
+        </member>
         <member name="P:MPewsey.ManiaMap.RoomTemplate.MPewsey#Common#Collections#IDataContractValueDictionaryValue{System#Int32}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell})">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell},MPewsey.Common.Collections.DataContractDictionary{System.Int32,MPewsey.ManiaMap.CollectableSpot})">
             <summary>
             Initializes a room template.
             </summary>
             <param name="id">The unique ID.</param>
             <param name="name">The template name.</param>
             <param name="cells">An array of cells in the template.</param>
+            <param name="collectableSpots">A dictionary of collectable spots by ID.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
@@ -3064,6 +3137,12 @@
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.ToString">
             <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CopyCells(MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell})">
+            <summary>
+            Returns a deep copy of a cells array.
+            </summary>
+            <param name="cells">The cells array to copy.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.ValuesAreEqual(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
             <summary>
@@ -3082,25 +3161,32 @@
             <summary>
             Validates the template and raises any associated exceptions.
             </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ValidateIsFullyConnected">
+            <summary>
+            Validates that the cells of the template are fully connected and throws an exception if not.
+            </summary>
             <exception cref="T:MPewsey.ManiaMap.Exceptions.CellsNotFullyConnectedException">Raised if the cells are not fully connected.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ValidateAnyDoorExists">
+            <summary>
+            Validates that any doors exist in the template and throws an exception if not.
+            </summary>
             <exception cref="T:MPewsey.ManiaMap.Exceptions.NoDoorsExistException">Raised if no typed door is assigned to the template.</exception>
-            <exception cref="T:MPewsey.ManiaMap.Exceptions.InvalidNameException">Raised if a collectable group name is null or whitespace.</exception>
-            <exception cref="T:MPewsey.ManiaMap.Exceptions.DuplicateIdException">Raised if a duplicate collectable spot ID exists.</exception>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.ValidateCollectableSpots">
+            <summary>
+            Checks that all collectable spots are valid.
+            </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.IsValid">
             <summary>
             Returns true if the room template is valid.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableGroupNamesAreValid">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsAreValid">
             <summary>
-            Returns true if all collectable group names assigned to the template are valid.
-            </summary>
-        </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotIdsAreUnique">
-            <summary>
-            Returns true if the collectable spots assigned to the template
-            all have unique ID's.
+            Returns true if all collectable spots are valid.
             </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.AnyDoorExists">
@@ -3121,6 +3207,22 @@
             </summary>
             <param name="index">The index for which distances will be calculated.</param>
         </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.AddCollectableSpot(System.Int32,MPewsey.Common.Mathematics.Vector2DInt,System.String,System.Single)">
+            <summary>
+            Adds a collectable spot to the template and returns the template.
+            </summary>
+            <param name="id">The collectable location ID.</param>
+            <param name="position">The collectable index.</param>
+            <param name="group">The collectable group.</param>
+            <param name="weight">The collectable spot base draw weight.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.AddCollectableSpot(System.Int32,MPewsey.ManiaMap.CollectableSpot)">
+            <summary>
+            Adds a collectable spot to the template and returns the template.
+            </summary>
+            <param name="id">The collectable location ID.</param>
+            <param name="spot">The collectable spot.</param>
+        </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.AllVariations">
             <summary>
             Returns an array of this template plus all mirrored and rotated variations.
@@ -3131,9 +3233,21 @@
             Returns a new list of this template plus all unique variations.
             </summary>
         </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.IsEquivalentTo(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if the cell and collectable spot values are equal to the specified template.
+            </summary>
+            <param name="other">The other template.</param>
+        </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.CellValuesAreEqual(MPewsey.ManiaMap.RoomTemplate)">
             <summary>
             Returns true if all cells in this template match the cells of another template.
+            </summary>
+            <param name="other">The other room template.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotValuesAreEqual(MPewsey.ManiaMap.RoomTemplate)">
+            <summary>
+            Returns true if all collectable spots in this template match the spots of another template.
             </summary>
             <param name="other">The other room template.</param>
         </member>
@@ -3142,29 +3256,79 @@
             Returns a copy of the room template.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated90">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated90(System.Int32)">
             <summary>
             Returns a new room template rotated 90 degrees clockwise.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated180">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellsRotated90">
+            <summary>
+            Returns an array of cells rotated 90 degress clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsRotated90">
+            <summary>
+            Returns a dictionary of collectable spots rotated 90 degrees clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated180(System.Int32)">
             <summary>
             Returns a new room template rotated 180 degrees.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated270">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellsRotated180">
+            <summary>
+            Returns an array of cells rotated 180 degress.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsRotated180">
+            <summary>
+            Returns a dictionary of collectable spots rotated 180 degrees.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.Rotated270(System.Int32)">
             <summary>
             Returns a new room template rotated 270 degrees clockwise.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredVertically">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellsRotated270">
+            <summary>
+            Returns an array of cells rotated 270 degress clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsRotated270">
+            <summary>
+            Returns a dictionary of collectable spots rotated 270 degrees clockwise.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredVertically(System.Int32)">
             <summary>
             Returns a new room template mirrored vertically, i.e. about the horizontal axis.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredHorizontally">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellsMirroredVertically">
+            <summary>
+            Returns an array of cells mirrored vertically.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsMirroredVertically">
+            <summary>
+            Returns a dictionary of collectable spots mirrored vertically.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.MirroredHorizontally(System.Int32)">
             <summary>
             Returns a new room template mirrored horizontally, i.e. about the vertical axis.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CellsMirroredHorizontally">
+            <summary>
+            Returns an array of cells mirrored horizontally.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.CollectableSpotsMirroredHorizontally">
+            <summary>
+            Returns a dictionary of collectable spots mirrored horizontally.
             </summary>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.Intersects(MPewsey.Common.Mathematics.Vector2DInt,MPewsey.Common.Mathematics.Vector2DInt)">

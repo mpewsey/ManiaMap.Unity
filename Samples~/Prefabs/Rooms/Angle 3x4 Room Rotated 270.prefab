@@ -485,6 +485,9 @@ MonoBehaviour:
   _cellPlane: 0
   _cellSize: {x: 10, y: 10}
   _size: {x: 3, y: 4}
+  _onInitialize:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5353340032624798384
 GameObject:
   m_ObjectHideFlags: 0

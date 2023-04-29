@@ -1,3 +1,4 @@
+using MPewsey.Common.Mathematics;
 using MPewsey.Common.Random;
 using System.Collections.Generic;
 using System.IO;
@@ -117,10 +118,13 @@ namespace MPewsey.ManiaMap.Unity.Editor
                 {
                     var copy = new RoomTemplate(templateId++, variation.Name, variation.Cells);
 
-                    foreach (var cell in copy.Cells.Array)
+                    for (int i = 0; i < variation.Cells.Rows; i++)
                     {
-                        if (seed.ChanceSatisfied(0.5))
-                            cell?.AddCollectableSpot(collectableId++, "Default");
+                        for (int j = 0; j < variation.Cells.Columns; j++)
+                        {
+                            if (seed.ChanceSatisfied(0.5))
+                                copy.AddCollectableSpot(collectableId++, new Vector2DInt(i, j), "Default");
+                        }
                     }
 
                     result.Add(copy);
