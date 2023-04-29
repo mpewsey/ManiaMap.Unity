@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bcbab901c8344cb342c09e213e556, type: 3}
+  m_Name: LTemplate__Rotated180 [19]
+  m_EditorClassIdentifier: 
+  _id: 25
+  _name: LTemplate::Rotated180
+  _prefabGuid: 
+  _serializedText: '{"Id":25,"Name":"LTemplate::Rotated180","Cells":{"Rows":4,"Columns":3,"Array":[{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Dictionary":[]},"Features":[]},{"Doors":{"Dictionary":[{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}}]},"Features":[]},null,null,{"Doors":{"Dictionary":[]},"Features":[]},null,null,{"Doors":{"Dictionary":[]},"Features":[]},null,null,{"Doors":{"Dictionary":[{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}}]},"Features":[]}]},"CollectableSpots":{"Dictionary":[{"Key":102,"Value":{"Position":{"X":0,"Y":0},"Group":"Default","Weight":1}},{"Key":103,"Value":{"Position":{"X":0,"Y":1},"Group":"Default","Weight":1}},{"Key":104,"Value":{"Position":{"X":1,"Y":0},"Group":"Default","Weight":1}},{"Key":105,"Value":{"Position":{"X":1,"Y":1},"Group":"Default","Weight":1}},{"Key":106,"Value":{"Position":{"X":3,"Y":0},"Group":"Default","Weight":1}},{"Key":107,"Value":{"Position":{"X":3,"Y":1},"Group":"Default","Weight":1}},{"Key":108,"Value":{"Position":{"X":3,"Y":2},"Group":"Default","Weight":1}}]}}'
