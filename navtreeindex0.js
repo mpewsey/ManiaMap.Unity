@@ -103,6 +103,7 @@ var NAVTREEINDEX0 =
 "_template_save_settings_8cs_source.html":[5,0,0,0,19],
 "_template_save_settings_editor_8cs_source.html":[5,0,0,0,20],
 "_texture_utility_8cs_source.html":[5,0,0,1,0,13],
+"_threshold_8cs_source.html":[5,0,0,1,30],
 "_unassigned_collectable_group_exception_8cs_source.html":[5,0,0,1,2,13],
 "annotated.html":[4,0],
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_cell_behavior.html":[3,0,0,0,0,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#aec3b4ced51384a1bbcda5609835710f3":[3,0,0,0,0,13,19],
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior.html#aec3b4ced51384a1bbcda5609835710f3":[4,0,0,0,0,13,19],
 "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html":[3,0,0,0,0,14],
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html":[4,0,0,0,0,14],
-"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_color_utility.html":[3,0,0,0,0,0,1]
+"class_m_pewsey_1_1_mania_map_1_1_unity_1_1_door_behavior_event.html":[4,0,0,0,0,14]
 };

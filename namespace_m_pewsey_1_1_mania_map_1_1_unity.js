@@ -29,6 +29,7 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
     [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ],
+    [ "Threshold", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold" ],
     [ "CellPlane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004d", [
       [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da74c53bcd3dcb2bb79993b2fec37d362a", null ],
       [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da27db3b98d01e664c17a6620b222c6469", null ]

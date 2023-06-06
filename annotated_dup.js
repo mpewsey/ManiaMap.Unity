@@ -122,7 +122,8 @@ var annotated_dup =
           [ "RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database" ],
           [ "RoomTemplateObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_template_object" ],
           [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
-          [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ]
+          [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ],
+          [ "Threshold", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold" ]
         ] ]
       ] ]
     ] ]

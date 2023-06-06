@@ -99,7 +99,8 @@ var hierarchy =
         [ "MPewsey.ManiaMap.Unity.Generators.LayoutGraphSelectorBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_layout_graph_selector_behavior.html", null ]
       ] ],
       [ "MPewsey.ManiaMap.Unity.ManiaMapManager", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html", null ],
-      [ "MPewsey.ManiaMap.Unity.RoomBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html", null ]
+      [ "MPewsey.ManiaMap.Unity.RoomBehavior", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_behavior.html", null ],
+      [ "MPewsey.ManiaMap.Unity.Threshold", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold.html", null ]
     ] ],
     [ "PropertyDrawer", null, [
       [ "MPewsey.ManiaMap.Unity.Editor.TemplateGroupEntryDrawer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_template_group_entry_drawer.html", null ]
