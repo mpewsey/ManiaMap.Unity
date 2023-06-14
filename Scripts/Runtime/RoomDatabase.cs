@@ -42,6 +42,11 @@ namespace MPewsey.ManiaMap.Unity
         /// </summary>
         protected bool IsInitialized { get; set; }
 
+        protected void OnEnable()
+        {
+            IsInitialized = false;
+        }
+
         protected void OnDisable()
         {
             IsInitialized = false;
