@@ -810,6 +810,13 @@
             <param name="values">A list of values</param>
             <param name="result">The results array.</param>
         </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Adds the cumulative sum of the list to teh specified results list.
+            </summary>
+            <param name="values">A list of values.</param>
+            <param name="result">The results list.</param>
+        </member>
         <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Single})">
             <summary>
             Returns the cumulative sums of the list.
@@ -823,6 +830,13 @@
             </summary>
             <param name="values">A list of values</param>
             <param name="result">The results array.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.CumSum(System.Collections.Generic.IList{System.Single},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Adds the cumulative sum of the list to teh specified results list.
+            </summary>
+            <param name="values">A list of values.</param>
+            <param name="result">The results list.</param>
         </member>
         <member name="M:MPewsey.Common.Mathematics.Maths.Softmax(System.Collections.Generic.IList{System.Double})">
             <summary>
@@ -1333,6 +1347,22 @@
             Draws a random weighted index from a list.
             The specified totals buffer allows for minimal garbage generation.
             The buffer will be resized to match the weights list if it is not already the correct size.
+            </summary>
+            <param name="weights">A list of weights.</param>
+            <param name="totals">The totals buffer.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Draws a random weighted index from a list.
+            The specified totals buffer allows for minimal garbage generation.
+            </summary>
+            <param name="weights">A list of weights.</param>
+            <param name="totals">The totals buffer.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DrawWeightedIndex(System.Collections.Generic.IList{System.Single},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Draws a random weighted index from a list.
+            The specified totals buffer allows for minimal garbage generation.
             </summary>
             <param name="weights">A list of weights.</param>
             <param name="totals">The totals buffer.</param>
