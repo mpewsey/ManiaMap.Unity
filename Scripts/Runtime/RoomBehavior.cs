@@ -190,11 +190,8 @@ namespace MPewsey.ManiaMap.Unity
             var doorConnections = manager.GetDoorConnections(id);
             var handle = prefab.InstantiateAsync(parent);
 
-            handle.Completed += x =>
-            {
-                var room = x.Result.GetComponent<RoomBehavior>();
-                room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, position);
-            };
+            handle.Completed += handle => handle.Result.GetComponent<RoomBehavior>()
+                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, position);
 
             return handle;
         }
