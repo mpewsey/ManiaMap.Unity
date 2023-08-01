@@ -24,7 +24,6 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "RoomDatabaseEntry.cs", "_room_database_entry_8cs_source.html", null ],
     [ "RoomFlag.cs", "_room_flag_8cs_source.html", null ],
     [ "RoomFlagEvent.cs", "_room_flag_event_8cs_source.html", null ],
-    [ "RoomHandle.cs", "_room_handle_8cs_source.html", null ],
     [ "RoomPositionOption.cs", "_room_position_option_8cs_source.html", null ],
     [ "RoomPrefabDatabase.cs", "_room_prefab_database_8cs_source.html", null ],
     [ "RoomTemplateObject.cs", "_room_template_object_8cs_source.html", null ],

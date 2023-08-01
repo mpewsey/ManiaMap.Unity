@@ -39,7 +39,6 @@ var searchData=
   ['layouttilemaplayer_36',['LayoutTilemapLayer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_tilemap_layer.html',1,'MPewsey::ManiaMap::Unity::Drawing']]],
   ['left_37',['Left',['../struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_padding.html#a737e62572e655abe99135879ee2d8526',1,'MPewsey::ManiaMap::Unity::Drawing::Padding']]],
   ['leftmousebutton_38',['LeftMouseButton',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#ad36669ef2d11d950b625747fae875f1a',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
-  ['loadroomcluster_39',['LoadRoomCluster',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_mania_map_manager.html#a530267920d819afbefec44e0cdafefaa',1,'MPewsey::ManiaMap::Unity::ManiaMapManager']]],
-  ['log_40',['Log',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
-  ['longdash_41',['LongDash',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_step_editor.html#aa5813b42955ed32d9493548107f1b543',1,'MPewsey::ManiaMap::Unity::Generators::Editor::GenerationStepEditor']]]
+  ['log_39',['Log',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_log.html',1,'MPewsey::ManiaMap::Unity::Editor']]],
+  ['longdash_40',['LongDash',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_editor_1_1_generation_step_editor.html#aa5813b42955ed32d9493548107f1b543',1,'MPewsey::ManiaMap::Unity::Generators::Editor::GenerationStepEditor']]]
 ];

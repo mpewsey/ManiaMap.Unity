@@ -21,8 +21,7 @@ var searchData=
   ['spacing_18',['Spacing',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a385d517212e01e6e7f8a292e87aaf3de',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindowSettings']]],
   ['sprite_19',['Sprite',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html#aeaf6b02e3942d30365005cc459cc553b',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMapLayer']]],
   ['spriterenderer_20',['SpriteRenderer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_drawing_1_1_layout_map_layer.html#ab209a3f3505e8c1a761f76b0bd8c5eb8',1,'MPewsey::ManiaMap::Unity::Drawing::LayoutMapLayer']]],
-  ['stalecount_21',['StaleCount',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_handle.html#a2b2e7339d1def5dc9814b717ecf2e45b',1,'MPewsey::ManiaMap::Unity::RoomHandle']]],
-  ['startmouseplotposition_22',['StartMousePlotPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#aba950a287f6155639281d7e312d7083e',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
-  ['startnode_23',['StartNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a40aeb27259fe8eccf2c1f717f411c334',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
-  ['stepscontainer_24',['StepsContainer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_pipeline.html#aee3260a108639bd3c0d422dfc851e393',1,'MPewsey::ManiaMap::Unity::Generators::GenerationPipeline']]]
+  ['startmouseplotposition_21',['StartMousePlotPosition',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#aba950a287f6155639281d7e312d7083e',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
+  ['startnode_22',['StartNode',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a40aeb27259fe8eccf2c1f717f411c334',1,'MPewsey::ManiaMap::Unity::Graphs::Editor::LayoutGraphWindow']]],
+  ['stepscontainer_23',['StepsContainer',['../class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_generation_pipeline.html#aee3260a108639bd3c0d422dfc851e393',1,'MPewsey::ManiaMap::Unity::Generators::GenerationPipeline']]]
 ];

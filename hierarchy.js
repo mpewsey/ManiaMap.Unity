@@ -112,7 +112,6 @@ var hierarchy =
       [ "MPewsey.ManiaMap.Unity.RoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html", null ]
     ] ],
     [ "MPewsey.ManiaMap.Unity.RoomDatabaseEntry< T >", "struct_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_database_entry.html", null ],
-    [ "MPewsey.ManiaMap.Unity.RoomHandle", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_handle.html", null ],
     [ "ScriptableObject", null, [
       [ "MPewsey.ManiaMap.Unity.CollectableGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_group.html", null ],
       [ "MPewsey.ManiaMap.Unity.CollectableObject", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_object.html", null ],
