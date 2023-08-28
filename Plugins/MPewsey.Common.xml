@@ -902,6 +902,29 @@
             </summary>
             <param name="values">The collection of values.</param>
         </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.Clamp01(System.Double)">
+            <summary>
+            Clamps the value between 0 and 1.
+            </summary>
+            <param name="t">The value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.Lerp(System.Double,System.Double,System.Double)">
+            <summary>
+            Linearly interpolates between two points based on a fractional distance parameter.
+            This method will clamp the parameter to [0, 1].
+            </summary>
+            <param name="a">The first point.</param>
+            <param name="b">The second point.</param>
+            <param name="t">The fractional distance parameter, measured from the first point.</param>
+        </member>
+        <member name="M:MPewsey.Common.Mathematics.Maths.LerpUnclamped(System.Double,System.Double,System.Double)">
+            <summary>
+            Linearly interpolates between two points based on a fractional distance parameter.
+            </summary>
+            <param name="a">The first point.</param>
+            <param name="b">The second point.</param>
+            <param name="t">The fractional distance parameter, measured from the first point.</param>
+        </member>
         <member name="T:MPewsey.Common.Mathematics.Vector2DInt">
             <summary>
             A 2D vector with integer values.
