@@ -1,10 +1,10 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings =
 [
-    [ "CreateRoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a01d68dc2f85707d187e66faf2f159094", null ],
-    [ "CreateSamplesDirectory", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a18fceabf57360b836715b12edc0dae95", null ],
-    [ "CreateSampleTemplates", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a22578dca491b0a18e594813a4d952be6", null ],
-    [ "SampleTemplates", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a0c00fb469235efb871b99bde65a1a1ce", null ],
-    [ "SampleVariations", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a5d143c6c63bd9665448543933a87d749", null ],
-    [ "TemplateSavePath", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#ad40d301db75f0b0101ea68df0708d517", null ],
-    [ "SavePath", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a7271970e6f871f592a4cc36409ebb3fc", null ]
+    [ "CreateRoomTemplate", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#aaa4c5718346d9f39539ad364db8e5756", null ],
+    [ "CreateSamplesDirectory", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a457efc86b40167ac4ee3d7153e83bfd3", null ],
+    [ "CreateSampleTemplates", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a4c45f263a1713bffa424154416ea119e", null ],
+    [ "SampleTemplates", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#af567de47153ee56c768a2adc0e890474", null ],
+    [ "SampleVariations", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a4074641ad6d7bca0742991dfea5f5187", null ],
+    [ "TemplateSavePath", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#a2d66c70a6704a5e6934eeae00f0a889e", null ],
+    [ "SavePath", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_sample_save_settings.html#afa83db25fd4b8853aafbb2625786d4a8", null ]
 ];

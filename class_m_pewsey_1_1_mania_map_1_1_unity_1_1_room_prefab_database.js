@@ -1,5 +1,5 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database =
 [
-    [ "InstantiateLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#a2804a7759bfd5cc53a66b442bcac719a", null ],
-    [ "InstantiateRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#ade9fcac2f545554d5337bb36ccf13dff", null ]
+    [ "InstantiateLayer", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#a6c3e52bc705555b544a364d3624782c2", null ],
+    [ "InstantiateRoom", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_room_prefab_database.html#ae7c0747862681cef90e0cb896831d101", null ]
 ];

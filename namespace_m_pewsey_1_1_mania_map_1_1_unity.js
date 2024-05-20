@@ -29,13 +29,13 @@ var namespace_m_pewsey_1_1_mania_map_1_1_unity =
     [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group" ],
     [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_template_group_entry" ],
     [ "Threshold", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold.html", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_threshold" ],
-    [ "CellPlane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004d", [
-      [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da74c53bcd3dcb2bb79993b2fec37d362a", null ],
-      [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a7bd81e2409c3dfdb3717148beaad004da27db3b98d01e664c17a6620b222c6469", null ]
+    [ "CellPlane", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a9e31acfe421391f4b5bd45025bc255c2", [
+      [ "XY", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a9e31acfe421391f4b5bd45025bc255c2a74c53bcd3dcb2bb79993b2fec37d362a", null ],
+      [ "XZ", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a9e31acfe421391f4b5bd45025bc255c2a27db3b98d01e664c17a6620b222c6469", null ]
     ] ],
-    [ "RoomPositionOption", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374", [
-      [ "UseManagerSetting", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374ae8a0ab6ca97f9460b836d5ea11ffba75", null ],
-      [ "Origin", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374a3edf8ca26a1ec14dd6e91dd277ae1de6", null ],
-      [ "LayoutPosition", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#a690eae53aaba7ef3c643487b84e14374aa5507bf7e73ad7695e2b8cd157025666", null ]
+    [ "RoomPositionOption", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#abf6a059a411adb15a18ae0273dc7e885", [
+      [ "UseManagerSetting", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#abf6a059a411adb15a18ae0273dc7e885ae8a0ab6ca97f9460b836d5ea11ffba75", null ],
+      [ "Origin", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#abf6a059a411adb15a18ae0273dc7e885a3edf8ca26a1ec14dd6e91dd277ae1de6", null ],
+      [ "LayoutPosition", "namespace_m_pewsey_1_1_mania_map_1_1_unity.html#abf6a059a411adb15a18ae0273dc7e885aa5507bf7e73ad7695e2b8cd157025666", null ]
     ] ]
 ];

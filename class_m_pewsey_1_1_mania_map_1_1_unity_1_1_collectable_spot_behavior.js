@@ -1,15 +1,15 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior =
 [
-    [ "Acquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a46d4fc01f989b6b674afb42eff95fb5b", null ],
-    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a9e5ccca9ee512bc0c66f262cfb0daf80", null ],
-    [ "CanAcquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#af74783ae9008b86a557285168d1b4390", null ],
-    [ "CollectableId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a2199de405c5de0445525ef2830764a9e", null ],
-    [ "CreateData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#afa9bd5a351ca90aff2e96258e624d3ff", null ],
-    [ "Exists", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a4c7ce5221efc72d7b82c8e12e6198eda", null ],
-    [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#ac577d9a40d95c6d862b62936ca038a7e", null ],
-    [ "IsAcquired", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a2c2200129535fe8eceab3be9ccdcb0f2", null ],
-    [ "Group", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a83b7e7a45c9a77c82392879354ddbbe9", null ],
-    [ "Id", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a4e1b9f8467b80cf4bd33a2b79e9984f2", null ],
-    [ "IsInitialized", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#add7f906c2eb656962c983bdb2c44064a", null ],
-    [ "OnInitialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a80341513e0f08a05d6b3a58d9fd505c7", null ]
+    [ "Acquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#abb3913604158c4a1019ccb25409a53c8", null ],
+    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a13a58a2214b67dce380eb6bd7997bdb4", null ],
+    [ "CanAcquire", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a627d670568946961902a16053c0a8a87", null ],
+    [ "CollectableId", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#ac0d455bd0f7b901b4c6e6676a921fcf6", null ],
+    [ "CreateData", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a676c621a501d11c5643bf63889ad0a61", null ],
+    [ "Exists", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#aa9a207f89881ad3eeb418619bef880ed", null ],
+    [ "Initialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a98b1050f09da390896f964fb7a892391", null ],
+    [ "IsAcquired", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#aa054c2746496e46c5fa69bfb1d893e7a", null ],
+    [ "Group", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#a611dbbf90338baa4d20f3e42553537b7", null ],
+    [ "Id", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#afe0b47b3c92f2f69ea3da50cb72553eb", null ],
+    [ "IsInitialized", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#acf7e27e5129fb4febbb44dbd372a8a5a", null ],
+    [ "OnInitialize", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_collectable_spot_behavior.html#aec2f7f050a4e4ce64ebf13bb355730c4", null ]
 ];

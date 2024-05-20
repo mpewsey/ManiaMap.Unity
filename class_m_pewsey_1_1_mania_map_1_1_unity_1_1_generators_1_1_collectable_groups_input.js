@@ -1,7 +1,7 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input =
 [
-    [ "AddInputs", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#a1d01d7ac61dd4fe631bfdafa6da7842b", null ],
-    [ "GetCollectableGroups", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#ad975f6c33671ff781668ab6c0307e2de", null ],
-    [ "OutputNames", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#a6e0a6a4f8c9d8fe6563b1979077d4e4e", null ],
-    [ "CollectableGroups", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#a0d367c2d114bd721b18da2c483cb77e4", null ]
+    [ "AddInputs", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#ae292e6a56fbd4a0ecd271b418ea911b1", null ],
+    [ "GetCollectableGroups", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#af55289a698182f247ebce3fdd5a27a42", null ],
+    [ "OutputNames", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#abf900fd13a84a36f7adcb8d6b9eff677", null ],
+    [ "CollectableGroups", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_generators_1_1_collectable_groups_input.html#ac060ff0a3f3e9105316eea203a7d3be6", null ]
 ];

@@ -1,7 +1,7 @@
 var class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor =
 [
-    [ "AddPrefabEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a2c14e0eec1ce21180844a3b1a3d2c960", null ],
-    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a2acc0a789bb1489f7328728c83127153", null ],
-    [ "DrawAutoAssignButton", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a7a3783315b3c7fd0ee7b0139c422ab5a", null ],
-    [ "GetRoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a2fa191efe9318c80612cb933b7a56d10", null ]
+    [ "AddPrefabEntry", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a490ed644061c9ef92690060343ff0b11", null ],
+    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a3e8e4d0e62d35f2ba30a9cee47abffba", null ],
+    [ "DrawAutoAssignButton", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#a806eef06e094e67d99c6c3346af4d301", null ],
+    [ "GetRoomPrefabDatabase", "class_m_pewsey_1_1_mania_map_1_1_unity_1_1_editor_1_1_room_prefab_database_editor.html#aaaf5e2941725155ed380f9eee48143bd", null ]
 ];
