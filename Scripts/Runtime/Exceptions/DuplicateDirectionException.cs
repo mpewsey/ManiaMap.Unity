@@ -1,6 +1,6 @@
 using System;
 
-namespace MPewsey.ManiaMap.Unity.Exceptions
+namespace MPewsey.ManiaMapUnity.Exceptions
 {
     /// <summary>
     /// An exception raised when a duplicate direction exists.

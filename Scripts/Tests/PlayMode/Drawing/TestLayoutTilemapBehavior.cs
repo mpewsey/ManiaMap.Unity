@@ -1,10 +1,11 @@
 using MPewsey.Common.Random;
-using MPewsey.ManiaMap.Unity.Generators;
-using MPewsey.ManiaMap.Unity.Tests;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Generators;
+using MPewsey.ManiaMapUnity.Tests;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Tests
+namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestLayoutTilemapBehavior
     {
@@ -32,9 +33,8 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var layoutTilemap = Assets.InstantiatePrefab<LayoutTilemapBehavior>(Assets.LayoutTilemapPath);
-            layoutTilemap.Initialize(layout);
-            layoutTilemap.Draw();
+            var layoutTilemap = Assets.InstantiatePrefab<LayoutTileMapBook>(Assets.LayoutTilemapPath);
+            layoutTilemap.DrawPages(layout);
             Assert.Greater(layoutTilemap.Grid.transform.childCount, 0);
         }
     }

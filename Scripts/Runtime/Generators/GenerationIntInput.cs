@@ -1,4 +1,4 @@
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A component for adding a named integer input to a GenerationPipeline.

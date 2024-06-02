@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A unique room flag.

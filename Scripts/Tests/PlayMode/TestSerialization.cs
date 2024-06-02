@@ -1,12 +1,14 @@
 using MPewsey.Common.Random;
 using MPewsey.Common.Serialization;
+using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
-using MPewsey.ManiaMap.Unity.Generators;
+using MPewsey.ManiaMap.Samples;
+using MPewsey.ManiaMapUnity.Generators;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MPewsey.ManiaMap.Unity.Tests
+namespace MPewsey.ManiaMapUnity.Tests
 {
     public class TestSerialization
     {
@@ -59,7 +61,7 @@ namespace MPewsey.ManiaMap.Unity.Tests
         [Test]
         public void TestSaveAndLoadLayoutGraph()
         {
-            var graph = Samples.GraphLibrary.BigGraph();
+            var graph = GraphLibrary.BigGraph();
             graph.AddNodeVariations("Group1", new int[] { 1, 2, 3 });
             graph.AddNodeVariations("Group2", new int[] { 4, 5, 6 });
             var path = "Tests/LayoutGraph.json";

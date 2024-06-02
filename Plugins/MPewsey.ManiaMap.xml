@@ -802,7 +802,7 @@
             The shaft (if any) connecting the two rooms.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.DoorConnection.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#RoomPair}#Key">
+        <member name="P:MPewsey.ManiaMap.DoorConnection.MPewsey#Common#Collections#IValueHashMapEntry{MPewsey#ManiaMap#RoomPair}#Key">
             <inheritdoc/>
         </member>
         <member name="P:MPewsey.ManiaMap.DoorConnection.EdgeDirection">
@@ -835,6 +835,19 @@
             <summary>
             Returns the door position corresponding to the room ID.
             Returns null if the door connection does not contain the room ID.
+            </summary>
+            <param name="roomId">The room ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.GetConnectingRoom(MPewsey.ManiaMap.Uid)">
+            <summary>
+            Returns the ID of the connecting room, e.g. the "to room" if the "from room" ID is specified and vice versa.
+            If the specified room ID does not exist in the connection, returns Uid(-1, -1, -1).
+            </summary>
+            <param name="roomId">The room ID.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.DoorConnection.ContainsRoom(MPewsey.ManiaMap.Uid)">
+            <summary>
+            Returns true if the door connections "from room" or "to room" matches the specified room ID.
             </summary>
             <param name="roomId">The room ID.</param>
         </member>
@@ -1149,7 +1162,7 @@
         <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Adds collectables to the layout.
             
@@ -1159,6 +1172,7 @@
             * %RandomSeed - The random seed.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Initialize(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed)">
@@ -1169,13 +1183,14 @@
             <param name="collectableGroups">The collectable groups.</param>
             <param name="randomSeed">The random seed.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Generate(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.Generate(MPewsey.ManiaMap.Layout,MPewsey.ManiaMap.CollectableGroups,MPewsey.Common.Random.RandomSeed,System.Action{System.String})">
             <summary>
             Adds collectables to the layout.
             </summary>
             <param name="layout">The layout.</param>
             <param name="collectableGroups">The collectable groups.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.CollectableGenerator.GetCollectables">
             <summary>
@@ -1360,7 +1375,7 @@
             </summary>
             <param name="chain">The chain index.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Generates a new layout and adds it to the results output dictionary.
             
@@ -1374,6 +1389,7 @@
             * %Layout - The generated layout.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Initialize(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed)">
@@ -1384,7 +1400,7 @@
             <param name="templateGroups">The template groups.</param>
             <param name="randomSeed">The random seed.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Generate(System.Int32,MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.Generate(System.Int32,MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.ManiaMap.TemplateGroups,MPewsey.Common.Random.RandomSeed,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Generates and returns a new layout.
             </summary>
@@ -1392,6 +1408,7 @@
             <param name="graph">The layout graph.</param>
             <param name="templateGroups">The template groups.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MPewsey.ManiaMap.Generators.LayoutGenerator.GetConfigurations(MPewsey.ManiaMap.RoomTemplate,MPewsey.ManiaMap.RoomTemplate)">
@@ -1475,7 +1492,7 @@
             A class for generating randomized variations in a LayoutGraph.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Creates a randomized copy of a layout graph and adds it to the results output dictionary.
             
@@ -1487,21 +1504,28 @@
             * %LayoutGraph - The randomized layout graph.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.RandomizeGraph(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphRandomizer.RandomizeGraph(MPewsey.ManiaMap.Graphs.LayoutGraph,MPewsey.Common.Random.RandomSeed,System.Action{System.String})">
             <summary>
             Returns a randomized copy of the layout graph based on the available variations.
             </summary>
             <param name="graph">The layout graph.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.Generators.LayoutGraphSelector">
             <summary>
             A class for drawing a random LayoutGraph from multiple.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
+        <member name="T:MPewsey.ManiaMap.Generators.LayoutGraphSelector.LayoutGraphDelegate">
+            <summary>
+            A delegate returning a LayoutGraph.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Draws a random layout graph and adds a copy to the results output dictionary.
             
@@ -1513,28 +1537,32 @@
             * %LayoutGraph - The drawn layout graph.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{MPewsey.ManiaMap.Graphs.LayoutGraph},MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{MPewsey.ManiaMap.Graphs.LayoutGraph},MPewsey.Common.Random.RandomSeed,System.Action{System.String})">
             <summary>
             Returns a copy of a random layout graph from the list.
             </summary>
             <param name="graphs">A list of layout graphs.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{System.Func{MPewsey.ManiaMap.Graphs.LayoutGraph}},MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Collections.Generic.IList{MPewsey.ManiaMap.Generators.LayoutGraphSelector.LayoutGraphDelegate},MPewsey.Common.Random.RandomSeed,System.Action{System.String})">
             <summary>
             Returns a copy of a random layout graph from the list.
             </summary>
             <param name="functions">A list of functions returning a layout graph.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Object,MPewsey.Common.Random.RandomSeed)">
+        <member name="M:MPewsey.ManiaMap.Generators.LayoutGraphSelector.DrawSelection(System.Object,MPewsey.Common.Random.RandomSeed,System.Action{System.String})">
             <summary>
             Returns a copy of a random layout graph from the list.
             </summary>
             <param name="graphs">A list of layout graphs or functions returning layout graphs.</param>
             <param name="randomSeed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <exception cref="T:System.ArgumentException">Raised if the type of `graphs` is not handled.</exception>
         </member>
         <member name="T:MPewsey.ManiaMap.Generators.PipelineBuilder">
@@ -1927,7 +1955,7 @@
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.RoomId">
             <inheritdoc/>
         </member>
-        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Graphs#EdgeIndexes}#Key">
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutEdge.MPewsey#Common#Collections#IValueHashMapEntry{MPewsey#ManiaMap#Graphs#EdgeIndexes}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutEdge.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
@@ -2403,7 +2431,7 @@
         <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.RoomId">
             <inheritdoc/>
         </member>
-        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.MPewsey#Common#Collections#IDataContractValueDictionaryValue{System#Int32}#Key">
+        <member name="P:MPewsey.ManiaMap.Graphs.LayoutNode.MPewsey#Common#Collections#IValueHashMapEntry{System#Int32}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Graphs.LayoutNode.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
@@ -2715,12 +2743,22 @@
             </summary>
             <param name="tag">The tag.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Layout.FindRoomsWithTag(System.String,System.Collections.Generic.List{MPewsey.ManiaMap.Room}@)">
+        <member name="M:MPewsey.ManiaMap.Layout.FindRoomsWithTag(System.String,System.Collections.Generic.List{MPewsey.ManiaMap.Room})">
             <summary>
             Populates the referenced list with all rooms with the specified tag.
             </summary>
             <param name="tag">The tag.</param>
             <param name="results">The referenced results list.</param>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetLayers">
+            <summary>
+            Returns an array of sorted layer (Z) coordinates in the room.
+            </summary>
+        </member>
+        <member name="M:MPewsey.ManiaMap.Layout.GetRoomsByLayer">
+            <summary>
+            Returns a dictionary of rooms by layer (Z) coordinate.
+            </summary>
         </member>
         <member name="T:MPewsey.ManiaMap.LayoutState">
             <summary>
@@ -2935,7 +2973,7 @@
         <member name="M:MPewsey.ManiaMap.Room.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
-        <member name="P:MPewsey.ManiaMap.Room.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Uid}#Key">
+        <member name="P:MPewsey.ManiaMap.Room.MPewsey#Common#Collections#IValueHashMapEntry{MPewsey#ManiaMap#Uid}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.Room.#ctor(MPewsey.ManiaMap.IRoomSource,MPewsey.Common.Mathematics.Vector2DInt,MPewsey.ManiaMap.RoomTemplate,System.Int32)">
@@ -3048,7 +3086,7 @@
             A set of flags that are set for a room.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.RoomState.MPewsey#Common#Collections#IDataContractValueDictionaryValue{MPewsey#ManiaMap#Uid}#Key">
+        <member name="P:MPewsey.ManiaMap.RoomState.MPewsey#Common#Collections#IValueHashMapEntry{MPewsey#ManiaMap#Uid}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomState.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
@@ -3114,13 +3152,13 @@
             A dictionary of collectable spots by ID.
             </summary>
         </member>
-        <member name="P:MPewsey.ManiaMap.RoomTemplate.MPewsey#Common#Collections#IDataContractValueDictionaryValue{System#Int32}#Key">
+        <member name="P:MPewsey.ManiaMap.RoomTemplate.MPewsey#Common#Collections#IValueHashMapEntry{System#Int32}#Key">
             <inheritdoc/>
         </member>
         <member name="M:MPewsey.ManiaMap.RoomTemplate.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <inheritdoc/>
         </member>
-        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell},MPewsey.Common.Collections.DataContractDictionary{System.Int32,MPewsey.ManiaMap.CollectableSpot})">
+        <member name="M:MPewsey.ManiaMap.RoomTemplate.#ctor(System.Int32,System.String,MPewsey.Common.Collections.Array2D{MPewsey.ManiaMap.Cell},MPewsey.Common.Collections.HashMap{System.Int32,MPewsey.ManiaMap.CollectableSpot})">
             <summary>
             Initializes a room template.
             </summary>
@@ -3378,18 +3416,20 @@
             Returns the template groups for the big layout sample.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.Generate(System.Int32,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.Generate(System.Int32,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Generates the big layout using default parameters and returns the results.
             </summary>
             <param name="seed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.GenerateAsync(System.Int32,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.ManiaMap.Samples.BigLayoutSample.GenerateAsync(System.Int32,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Generates the big layout asynchronously using default parameters and returns the results.
             </summary>
             <param name="seed">The random seed.</param>
+            <param name="logger">The logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.ManiaMap.Samples.GraphLibrary">
@@ -3472,7 +3512,7 @@
             Returns a layout graph for the Mania Map layout.
             </summary>
         </member>
-        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.ManiaMapLayout">
+        <member name="M:MPewsey.ManiaMap.Samples.ManiaMapSample.ManiaMapLayout(System.Action{System.String})">
             <summary>
             Generates the Mania Map layout and returns it.
             </summary>

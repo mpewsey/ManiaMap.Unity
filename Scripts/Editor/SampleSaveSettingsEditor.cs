@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Editor
+namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
     /// The SampleSaveSettings editor.

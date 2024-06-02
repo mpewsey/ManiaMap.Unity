@@ -1,6 +1,6 @@
 using System;
 
-namespace MPewsey.ManiaMap.Unity.Exceptions
+namespace MPewsey.ManiaMapUnity.Exceptions
 {
     /// <summary>
     /// Exception raised when a cell is empty.

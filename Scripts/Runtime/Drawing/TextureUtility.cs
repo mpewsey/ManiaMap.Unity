@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing
+namespace MPewsey.ManiaMapUnity.Drawing
 {
     /// <summary>
     /// Contains methods for manipulating textures.

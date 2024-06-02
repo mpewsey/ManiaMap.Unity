@@ -1,7 +1,8 @@
-using MPewsey.ManiaMap.Unity.Generators;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Generators;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Examples
+namespace MPewsey.ManiaMapUnity.Examples
 {
     /// <summary>
     /// The layout generation controller for the sample scene.

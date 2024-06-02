@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Editor
+namespace MPewsey.ManiaMapUnity.Drawing.Editor
 {
     /// <summary>
     /// The LayoutMap editor.
@@ -11,14 +11,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Editor
         /// <summary>
         /// Creates a new layout map Game Object.
         /// </summary>
-        [MenuItem("GameObject/Mania Map/Layout Map", priority = 20)]
-        [MenuItem("Mania Map/Create Layout Map", priority = 100)]
+        [MenuItem("GameObject/Mania Map/Layout Map Book", priority = 20)]
+        [MenuItem("Mania Map/Create Layout Map Book", priority = 100)]
         public static void CreateLayoutMap()
         {
-            var obj = new GameObject("Layout Map");
+            var obj = new GameObject("Layout Map Book");
             obj.transform.SetParent(Selection.activeTransform);
-            var layoutMap = obj.AddComponent<LayoutMapBehavior>();
-            layoutMap.CreateLayersContainer();
+            obj.AddComponent<LayoutMapBook>();
         }
     }
 }

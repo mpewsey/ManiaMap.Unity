@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A structure containing a collectable and a quantity.

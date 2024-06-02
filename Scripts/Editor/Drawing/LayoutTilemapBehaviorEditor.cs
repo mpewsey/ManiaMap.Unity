@@ -1,7 +1,8 @@
+using MPewsey.ManiaMap;
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Editor
+namespace MPewsey.ManiaMapUnity.Drawing.Editor
 {
     /// <summary>
     /// The LayoutTilemap editor.
@@ -11,13 +12,13 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Editor
         /// <summary>
         /// Creates a new layout tilemap Game Object.
         /// </summary>
-        [MenuItem("GameObject/Mania Map/Layout Tilemap", priority = 20)]
-        [MenuItem("Mania Map/Create Layout Tilemap", priority = 100)]
+        [MenuItem("GameObject/Mania Map/Layout Tile Map", priority = 20)]
+        [MenuItem("Mania Map/Create Layout Tile Map", priority = 100)]
         public static void CreateLayoutTilemap()
         {
-            var obj = new GameObject("Layout Tilemap");
+            var obj = new GameObject("Layout Tile Map");
             obj.transform.SetParent(Selection.activeTransform);
-            var layoutTilemap = obj.AddComponent<LayoutTilemapBehavior>();
+            var layoutTilemap = obj.AddComponent<LayoutTileMap>();
             layoutTilemap.CreateGrid();
         }
     }

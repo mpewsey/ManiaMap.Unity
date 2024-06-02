@@ -1,10 +1,11 @@
-using MPewsey.ManiaMap.Unity.Drawing;
-using MPewsey.ManiaMap.Unity.Generators;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Drawing;
+using MPewsey.ManiaMapUnity.Generators;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Examples
+namespace MPewsey.ManiaMapUnity.Examples
 {
     /// <summary>
     /// A component for initializing the LayoutTilemap samples.
@@ -33,11 +34,11 @@ namespace MPewsey.ManiaMap.Unity.Examples
         public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
 
         [SerializeField]
-        private LayoutTilemapBehavior _layoutTilemap;
+        private LayoutTileMap _layoutTilemap;
         /// <summary>
         /// The layout tilemap.
         /// </summary>
-        public LayoutTilemapBehavior LayoutTilemap { get => _layoutTilemap; set => _layoutTilemap = value; }
+        public LayoutTileMap LayoutTilemap { get => _layoutTilemap; set => _layoutTilemap = value; }
 
         /// <summary>
         /// True if the generation task is currently running.
@@ -74,7 +75,6 @@ namespace MPewsey.ManiaMap.Unity.Examples
                 { "LayoutId", 1 },
             };
 
-            LayoutTilemap.Clear();
             TaskIsRunning = true;
             var task = Pipeline.RunAttemptsAsync(seed, 10, 5000, inputs);
 
@@ -89,8 +89,7 @@ namespace MPewsey.ManiaMap.Unity.Examples
                 throw new System.TimeoutException("Task timed out.");
 
             var layout = task.Result.GetOutput<Layout>("Layout");
-            LayoutTilemap.Initialize(layout);
-            LayoutTilemap.Draw();
+            LayoutTilemap.DrawMap(layout);
         }
     }
 }

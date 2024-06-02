@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Examples
+namespace MPewsey.ManiaMapUnity.Examples
 {
     /// <summary>
     /// Contains events for the doors used in the samples.

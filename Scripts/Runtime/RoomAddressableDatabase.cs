@@ -1,9 +1,10 @@
+using MPewsey.ManiaMap;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A room database with references to room addressables.

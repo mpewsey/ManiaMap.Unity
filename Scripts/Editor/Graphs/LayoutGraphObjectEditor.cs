@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs.Editor
+namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
     /// The LayoutGraph custom inspector.

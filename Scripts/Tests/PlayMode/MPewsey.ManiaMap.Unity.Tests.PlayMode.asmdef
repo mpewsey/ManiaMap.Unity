@@ -1,10 +1,10 @@
 {
-    "name": "MPewsey.ManiaMap.Unity.Tests.PlayMode",
+    "name": "MPewsey.ManiaMapUnity.Tests.PlayMode",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "MPewsey.ManiaMap.Unity",
+        "MPewsey.ManiaMapUnity",
         "Unity.Addressables",
         "Unity.ResourceManager"
     ],

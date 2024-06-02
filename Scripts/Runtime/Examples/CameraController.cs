@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Examples
+namespace MPewsey.ManiaMapUnity.Examples
 {
     /// <summary>
     /// A component that moves that attached camera based on the user's input.

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// Contains global settings used by Mania Map components.

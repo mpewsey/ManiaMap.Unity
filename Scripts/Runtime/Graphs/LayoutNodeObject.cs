@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs
+namespace MPewsey.ManiaMapUnity.Graphs
 {
     /// <summary>
     /// A node in a LayoutGraph.

@@ -1,4 +1,4 @@
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// The cell plane.

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Tests
+namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestMapTileKey
     {

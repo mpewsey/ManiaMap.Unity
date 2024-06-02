@@ -1,7 +1,7 @@
 using MPewsey.Common.Pipelines;
 using MPewsey.ManiaMap.Generators;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A generation step for drawing a random layout graph in a pipeline.

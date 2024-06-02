@@ -1,7 +1,8 @@
+using MPewsey.ManiaMap;
 using MPewsey.Common.Serialization;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A container for storing a serialized room template.

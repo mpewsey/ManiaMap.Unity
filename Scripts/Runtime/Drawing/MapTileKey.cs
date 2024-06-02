@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing
+namespace MPewsey.ManiaMapUnity.Drawing
 {
     /// <summary>
     /// A structure containing map tile type flags and an associated color.

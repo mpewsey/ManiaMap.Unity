@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Editor
+namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
     /// Contains methods for logging styled messages in %Unity.

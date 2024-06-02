@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Drawing
+namespace MPewsey.ManiaMapUnity.Drawing
 {
     /// <summary>
     /// A structure for specifying the padding around an object.

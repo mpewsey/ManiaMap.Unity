@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs.Editor
+namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
     /// Contains settings related to the LayoutGraphWindow.

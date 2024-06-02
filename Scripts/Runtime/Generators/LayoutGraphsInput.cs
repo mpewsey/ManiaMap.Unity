@@ -1,10 +1,11 @@
+using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
-using MPewsey.ManiaMap.Unity.Graphs;
+using MPewsey.ManiaMapUnity.Graphs;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A generation input for supplying layout graphs inputs to a pipeline.

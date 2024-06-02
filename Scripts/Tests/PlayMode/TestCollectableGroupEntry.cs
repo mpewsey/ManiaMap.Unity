@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Tests
+namespace MPewsey.ManiaMapUnity.Tests
 {
     public class TestCollectableGroupEntry
     {

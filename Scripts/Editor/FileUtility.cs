@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEditor;
 
-namespace MPewsey.ManiaMap.Unity.Editor
+namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
     /// Contains methods for dealing with files in in %Unity.

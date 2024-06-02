@@ -4,36 +4,23 @@
         <name>MPewsey.Common</name>
     </assembly>
     <members>
-        <member name="T:MPewsey.Common.Buffers.ListPool`1">
-            <summary>
-            A pool of lists.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Buffers.ListPool`1.Pool">
-            <summary>
-            The list pool.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Buffers.ListPool`1.Clear">
-            <summary>
-            Clears all lists from the pool.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Buffers.ListPool`1.Rent">
-            <summary>
-            Returns a list from the pool or a new list if the pool is empty.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Buffers.ListPool`1.Return(System.Collections.Generic.List{`0}@)">
-            <summary>
-            Returns the specified list to the pool and sets the reference to null.
-            </summary>
-            <param name="list">The list.</param>
-        </member>
         <member name="T:MPewsey.Common.Collections.Array2D`1">
             <summary>
             A 2D array that can be serialized.
             </summary>
+        </member>
+        <member name="T:MPewsey.Common.Collections.Array2D`1.EqualityComparerDelegate">
+            <summary>
+            A delegate that returns true if the values are equal.
+            </summary>
+            <param name="x">The first value.</param>
+            <param name="y">The second value.</param>
+        </member>
+        <member name="T:MPewsey.Common.Collections.Array2D`1.PredicateDelegate">
+            <summary>
+            A selector predicate delegate for a single element.
+            </summary>
+            <param name="element">The input element.</param>
         </member>
         <member name="P:MPewsey.Common.Collections.Array2D`1.Rows">
             <summary>
@@ -126,7 +113,7 @@
             <param name="x">The first array.</param>
             <param name="y">The second array.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0},System.Func{`0,`0,System.Boolean})">
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0}.EqualityComparerDelegate)">
             <summary>
             Returns true if the values in the arrays are equal.
             </summary>
@@ -140,7 +127,7 @@
             </summary>
             <param name="other">The other array.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},System.Func{`0,`0,System.Boolean})">
+        <member name="M:MPewsey.Common.Collections.Array2D`1.ValuesAreEqual(MPewsey.Common.Collections.Array2D{`0},MPewsey.Common.Collections.Array2D{`0}.EqualityComparerDelegate)">
             <summary>
             Returns true if the values in the arrays are equal.
             </summary>
@@ -168,14 +155,14 @@
             <param name="index">The flat index.</param>
             <exception cref="T:System.IndexOutOfRangeException">Raised if the index is outside the bounds of the array.</exception>
         </member>
-        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndex(System.Func{`0,System.Boolean})">
+        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndex(MPewsey.Common.Collections.Array2D{`0}.PredicateDelegate)">
             <summary>
             Returns the first 2D index where the specified predicate is true.
             Returns a -1 vector if no index is found.
             </summary>
             <param name="predicate">The predicate, taking each element.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndexes(System.Func{`0,System.Boolean})">
+        <member name="M:MPewsey.Common.Collections.Array2D`1.FindIndexes(MPewsey.Common.Collections.Array2D{`0}.PredicateDelegate)">
             <summary>
             Returns a list of indexes where the specified predicate is true.
             </summary>
@@ -299,6 +286,12 @@
             A class for calculating distances between cells.
             </summary>
         </member>
+        <member name="T:MPewsey.Common.Collections.Array2DDistanceSearch`1.PredicateDelegate">
+            <summary>
+            The cell predicate delegate.
+            </summary>
+            <param name="cell">The input cell.</param>
+        </member>
         <member name="P:MPewsey.Common.Collections.Array2DDistanceSearch`1.Array">
             <summary>
             The base array.
@@ -314,7 +307,7 @@
             The empty cell predicate. The function should return true when an empty cell is encountered.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.#ctor(System.Func{`0,System.Boolean})">
+        <member name="M:MPewsey.Common.Collections.Array2DDistanceSearch`1.#ctor(MPewsey.Common.Collections.Array2DDistanceSearch{`0}.PredicateDelegate)">
             <summary>
             Initializes a new search.
             </summary>
@@ -348,88 +341,6 @@
             <param name="row">The row.</param>
             <param name="column">The column.</param>
             <param name="distance">The distance to the current index.</param>
-        </member>
-        <member name="T:MPewsey.Common.Collections.BaseDataContractDictionary`2">
-            <summary>
-            The base class for dictionaries with custom data contract serialization.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Dictionary">
-            <summary>
-            The underlying dictionary.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Item(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.IsReadOnly">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Keys">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.Values">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.IsSynchronized">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.SyncRoot">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Add(`0,`1)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Clear">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.ContainsKey(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.CopyTo(System.Array,System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.Remove(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.TryGetValue(`0,`1@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.BaseDataContractDictionary`2.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
         </member>
         <member name="T:MPewsey.Common.Collections.BitArray2D">
             <summary>
@@ -546,200 +457,138 @@
             <param name="index">The index.</param>
             <param name="fallback">The fallback value.</param>
         </member>
-        <member name="T:MPewsey.Common.Collections.DataContractDictionary`2">
+        <member name="T:MPewsey.Common.Collections.HashMap`2">
             <summary>
             A dictionary that is data contract serializable.
             </summary>
         </member>
-        <member name="P:MPewsey.Common.Collections.DataContractDictionary`2.KeyValueArray">
+        <member name="P:MPewsey.Common.Collections.HashMap`2.KeyValueArray">
             <summary>
             An array of key value pairs.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.#ctor">
             <summary>
             Initializes a new empty dictionary.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor(System.Int32)">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.#ctor(System.Int32)">
             <summary>
             Initializes a new dictionary with the specified capacity.
             </summary>
             <param name="capacity">The capacity.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.#ctor(MPewsey.Common.Collections.DataContractDictionary{`0,`1})">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.#ctor(MPewsey.Common.Collections.HashMap{`0,`1})">
             <summary>
             Initializes a copy of the specified dictionary.
             </summary>
             <param name="dict">The dictionary.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.DataContractDictionary{`0,`1}">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.HashMap{`0,`1}">
             <summary>
             Creates a new data contract dictionary instance with the specified dictionary assigned.
             </summary>
             <param name="dict">The dictionary.</param>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.GetKeyValueArray">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.GetKeyValueArray">
             <summary>
             Returns a new array of key value pairs for the dictionary.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractDictionary`2.SetDictionary(MPewsey.Common.Collections.KeyValue{`0,`1}[])">
+        <member name="M:MPewsey.Common.Collections.HashMap`2.SetDictionary(MPewsey.Common.Collections.KeyValue{`0,`1}[])">
             <summary>
             Sets the dictionary from an array of key value pairs.
             </summary>
             <param name="array">An array of key value pairs.</param>
         </member>
-        <member name="T:MPewsey.Common.Collections.DataContractHashSet`1">
+        <member name="T:MPewsey.Common.Collections.HashMapBase`2">
             <summary>
-            A hash set that is data contract serializable.
+            The base class for dictionaries with custom data contract serialization.
             </summary>
         </member>
-        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.HashSet">
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.Dictionary">
             <summary>
-            The underlying hash set.
+            The underlying dictionary.
             </summary>
         </member>
-        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.Array">
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.Item(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.IsSynchronized">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.SyncRoot">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.HashMapBase`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Add(`0,`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.ContainsKey(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.CopyTo(System.Array,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.TryGetValue(`0,`1@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.HashMapBase`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:MPewsey.Common.Collections.IValueHashMapEntry`1">
             <summary>
-            An array of hash set entries.
+            An interface for values of the ValueHashMap.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.#ctor">
-            <summary>
-            Initializes a new hash set.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Initializes a new hash set from a collection.
-            </summary>
-            <param name="collection">A collection of values.</param>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.op_Implicit(System.Collections.Generic.HashSet{`0})~MPewsey.Common.Collections.DataContractHashSet{`0}">
-            <summary>
-            Creates a new data contract hash set with the specified hash set assigned.
-            </summary>
-            <param name="set">The hash set.</param>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.GetArray">
-            <summary>
-            Returns a new array of hash set entries.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:MPewsey.Common.Collections.DataContractHashSet`1.IsReadOnly">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Clear">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Contains(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.CopyTo(`0[],System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Remove(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.Add(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractHashSet`1.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="T:MPewsey.Common.Collections.DataContractValueDictionary`2">
-            <summary>
-            A dictionary whose values are data contract serializable.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Collections.DataContractValueDictionary`2.ValuesArray">
-            <summary>
-            An array of dictionary values.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor">
-            <summary>
-            Initializes a new empty dictionary.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor(System.Int32)">
-            <summary>
-            Initializes a new dictionary with the specified capacity.
-            </summary>
-            <param name="capacity">The capacity.</param>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.#ctor(MPewsey.Common.Collections.DataContractValueDictionary{`0,`1})">
-            <summary>
-            Initializes a copy of the specified dictionary.
-            </summary>
-            <param name="dict">The dictionary.</param>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.DataContractValueDictionary{`0,`1}">
-            <summary>
-            Creates a new data contract dictionary instance with the specified dictionary assigned.
-            </summary>
-            <param name="dict">The dictionary.</param>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.GetValuesArray">
-            <summary>
-            Returns a new array of dictionary values.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Collections.DataContractValueDictionary`2.SetDictionary(`1[])">
-            <summary>
-            Sets the dictionary from an array of dictionary values.
-            </summary>
-            <param name="array">An array of dictionary values.</param>
-        </member>
-        <member name="T:MPewsey.Common.Collections.IDataContractValueDictionaryValue`1">
-            <summary>
-            An interface for values of the DataContractValueDictionary.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Collections.IDataContractValueDictionaryValue`1.Key">
+        <member name="P:MPewsey.Common.Collections.IValueHashMapEntry`1.Key">
             <summary>
             The unique key.
             </summary>
@@ -769,6 +618,162 @@
         <member name="M:MPewsey.Common.Collections.KeyValue`2.ToString">
             <inheritdoc/>
         </member>
+        <member name="T:MPewsey.Common.Collections.Set`1">
+            <summary>
+            A hash set that is data contract serializable.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Set`1.HashSet">
+            <summary>
+            The underlying hash set.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Set`1.Array">
+            <summary>
+            An array of hash set entries.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.#ctor">
+            <summary>
+            Initializes a new hash set.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new hash set from a collection.
+            </summary>
+            <param name="collection">A collection of values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.op_Implicit(System.Collections.Generic.HashSet{`0})~MPewsey.Common.Collections.Set{`0}">
+            <summary>
+            Creates a new data contract hash set with the specified hash set assigned.
+            </summary>
+            <param name="set">The hash set.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.GetArray">
+            <summary>
+            Returns a new array of hash set entries.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Set`1.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:MPewsey.Common.Collections.Set`1.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.CopyTo(`0[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MPewsey.Common.Collections.Set`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:MPewsey.Common.Collections.ValueHashMap`2">
+            <summary>
+            A dictionary whose values are data contract serializable.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Collections.ValueHashMap`2.ValuesArray">
+            <summary>
+            An array of dictionary values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.#ctor">
+            <summary>
+            Initializes a new empty dictionary.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new dictionary with the specified capacity.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.#ctor(MPewsey.Common.Collections.ValueHashMap{`0,`1})">
+            <summary>
+            Initializes a copy of the specified dictionary.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.op_Implicit(System.Collections.Generic.Dictionary{`0,`1})~MPewsey.Common.Collections.ValueHashMap{`0,`1}">
+            <summary>
+            Creates a new data contract dictionary instance with the specified dictionary assigned.
+            </summary>
+            <param name="dict">The dictionary.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.GetValuesArray">
+            <summary>
+            Returns a new array of dictionary values.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.SetDictionary(`1[])">
+            <summary>
+            Sets the dictionary from an array of dictionary values.
+            </summary>
+            <param name="array">An array of dictionary values.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.Add(`1)">
+            <summary>
+            Adds a value to the dictionary.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Collections.ValueHashMap`2.SetValue(`1)">
+            <summary>
+            Sets a value to the dictionary.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
         <member name="T:MPewsey.Common.Constants">
             <summary>
             Contains library constants.
@@ -777,44 +782,6 @@
         <member name="F:MPewsey.Common.Constants.DataContractNamespace">
             <summary>
             The data contract namespace.
-            </summary>
-        </member>
-        <member name="T:MPewsey.Common.Logging.Logger">
-            <summary>
-            A singleton class for handling generation logging events.
-            </summary>
-        </member>
-        <member name="P:MPewsey.Common.Logging.Logger.Current">
-            <summary>
-            The logger singleton.
-            </summary>
-        </member>
-        <member name="E:MPewsey.Common.Logging.Logger.LogEvent">
-            <summary>
-            The logging event.
-            </summary>
-        </member>
-        <member name="M:MPewsey.Common.Logging.Logger.Log(System.String)">
-            <summary>
-            Sends the message via the logging event.
-            </summary>
-            <param name="message">The log message.</param>
-        </member>
-        <member name="M:MPewsey.Common.Logging.Logger.AddListener(System.Action{System.String})">
-            <summary>
-            Adds the listener to the logging event.
-            </summary>
-            <param name="action">The delegate to register.</param>
-        </member>
-        <member name="M:MPewsey.Common.Logging.Logger.RemoveListener(System.Action{System.String})">
-            <summary>
-            Removes the listener from the logging event.
-            </summary>
-            <param name="action">The delegate to remove.</param>
-        </member>
-        <member name="M:MPewsey.Common.Logging.Logger.RemoveAllListeners">
-            <summary>
-            Removes all listeners from the logger.
             </summary>
         </member>
         <member name="T:MPewsey.Common.Mathematics.Maths">
@@ -1124,12 +1091,13 @@
             An interface for creating a step of a Pipeline.
             </summary>
         </member>
-        <member name="M:MPewsey.Common.Pipelines.IPipelineStep.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Threading.CancellationToken)">
+        <member name="M:MPewsey.Common.Pipelines.IPipelineStep.ApplyStep(MPewsey.Common.Pipelines.PipelineResults,System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Performs the operations for this step.
             Artifacts should be written to the results outputs.
             </summary>
             <param name="results">The pipeline results.</param>
+            <param name="logger">A logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.Common.Pipelines.Pipeline">
@@ -1148,18 +1116,20 @@
             </summary>
             <param name="steps">The pipeline steps.</param>
         </member>
-        <member name="M:MPewsey.Common.Pipelines.Pipeline.Run(System.Collections.Generic.Dictionary{System.String,System.Object},System.Threading.CancellationToken)">
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.Run(System.Collections.Generic.Dictionary{System.String,System.Object},System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Invokes all steps of the pipeline and returns the results.
             </summary>
             <param name="inputs">A dictionary of pipeline inputs.</param>
+            <param name="logger">A logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MPewsey.Common.Pipelines.Pipeline.RunAsync(System.Collections.Generic.Dictionary{System.String,System.Object},System.Threading.CancellationToken)">
+        <member name="M:MPewsey.Common.Pipelines.Pipeline.RunAsync(System.Collections.Generic.Dictionary{System.String,System.Object},System.Action{System.String},System.Threading.CancellationToken)">
             <summary>
             Runs the pipeline asynchonously.
             </summary>
             <param name="inputs">A dictionary of pipeline inputs.</param>
+            <param name="logger">A logging action. Ignored if null.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="T:MPewsey.Common.Pipelines.PipelineResults">
@@ -1235,6 +1205,11 @@
             ----------
             * [1] Rossetta Code. Subtractive generator. Retrieved April 12, 2022, from https://rosettacode.org/wiki/Subtractive_generator.
             * [2] Microsoft Corporation. Reference Source .NET Framework 4.8. Retrieved April 12, 2022, from https://referencesource.microsoft.com/#mscorlib/system/random.cs,bb77e610694e64ca.
+            </summary>
+        </member>
+        <member name="P:MPewsey.Common.Random.RandomSeed.Current">
+            <summary>
+            The current global random number generator.
             </summary>
         </member>
         <member name="P:MPewsey.Common.Random.RandomSeed.Seed">
@@ -1319,6 +1294,24 @@
             <param name="minValue">The minimum value.</param>
             <param name="maxValue">The maximum value.</param>
         </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextFloat">
+            <summary>
+            Returns a random float on the interval [0, 1).
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextFloat(System.Single)">
+            <summary>
+            Returns a random float on the interval [0, maxValue).
+            </summary>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.NextFloat(System.Single,System.Single)">
+            <summary>
+            Returns a random float on the interval [minValue, maxValue).
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+        </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.NextDouble">
             <summary>
             Returns a random double on the interval [0, 1).
@@ -1336,6 +1329,16 @@
             </summary>
             <param name="minValue">The minimum value.</param>
             <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.FloatInsideUnitCircle">
+            <summary>
+            Returns a random floating precision point inside the unit circle.
+            </summary>
+        </member>
+        <member name="M:MPewsey.Common.Random.RandomSeed.DoubleInsideUnitCircle">
+            <summary>
+            Returns a random double precision point inside the unit circle.
+            </summary>
         </member>
         <member name="M:MPewsey.Common.Random.RandomSeed.NextLargeDouble">
             <summary>

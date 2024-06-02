@@ -1,11 +1,12 @@
 using MPewsey.Common.Random;
-using MPewsey.ManiaMap.Unity.Generators;
-using MPewsey.ManiaMap.Unity.Tests;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Generators;
+using MPewsey.ManiaMapUnity.Tests;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Tests
+namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestLayoutMapBehavior
     {
@@ -33,10 +34,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
-            layoutMap.Initialize(layout);
-            layoutMap.Draw();
-            Assert.Greater(layoutMap.LayersContainer.childCount, 0);
+            var layoutMap = Assets.InstantiatePrefab<LayoutMapBook>(Assets.LayoutMapPath);
+            layoutMap.DrawPages(layout);
+            Assert.Greater(layoutMap.transform.childCount, 0);
         }
 
         [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.png")]
@@ -62,9 +62,9 @@ namespace MPewsey.ManiaMap.Unity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMapBehavior>(Assets.LayoutMapPath);
+            var layoutMap = Assets.InstantiatePrefab<LayoutMapBook>(Assets.LayoutMapPath);
             Directory.CreateDirectory("Tests");
-            layoutMap.Initialize(layout);
+            layoutMap.DrawPages(layout);
             layoutMap.SaveImages(imagePath);
         }
     }

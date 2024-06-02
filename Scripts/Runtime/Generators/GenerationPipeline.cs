@@ -1,12 +1,12 @@
 using MPewsey.Common.Pipelines;
 using MPewsey.Common.Random;
-using MPewsey.ManiaMap.Unity.Exceptions;
+using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A component for generating layouts using a sequence of steps.
@@ -39,10 +39,10 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// </summary>
         /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        public PipelineResults Run(Dictionary<string, object> inputs = null, CancellationToken cancellationToken = default)
+        public PipelineResults Run(Dictionary<string, object> inputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
         {
             inputs ??= new Dictionary<string, object>();
-            return BuildPipeline().Run(BuildInputs(inputs), cancellationToken);
+            return BuildPipeline().Run(BuildInputs(inputs), logger, cancellationToken);
         }
 
         /// <summary>
@@ -50,10 +50,10 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// </summary>
         /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        public Task<PipelineResults> RunAsync(Dictionary<string, object> inputs = null, CancellationToken cancellationToken = default)
+        public Task<PipelineResults> RunAsync(Dictionary<string, object> inputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
         {
             inputs ??= new Dictionary<string, object>();
-            return BuildPipeline().RunAsync(BuildInputs(inputs), cancellationToken);
+            return BuildPipeline().RunAsync(BuildInputs(inputs), logger, cancellationToken);
         }
 
         /// <summary>
@@ -64,11 +64,11 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// <param name="attempts">The maximum number of attempts.</param>
         /// <param name="timeout">The timeout for each attempt.</param>
         /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
-        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> inputs = null)
+        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> inputs = null, System.Action<string> logger = null)
         {
             for (int i = 0; i < attempts; i++)
             {
-                Common.Logging.Logger.Log($"[Generation Pipeline] Beginning attempt {i + 1} / {attempts}...");
+                logger?.Invoke($"[Generation Pipeline] Beginning attempt {i + 1} / {attempts}...");
 
                 var args = new Dictionary<string, object>(inputs)
                 {
@@ -76,16 +76,16 @@ namespace MPewsey.ManiaMap.Unity.Generators
                 };
 
                 var token = new CancellationTokenSource(timeout).Token;
-                var results = await RunAsync(args, token);
+                var results = await RunAsync(args, logger, token);
 
                 if (results.Success)
                 {
-                    Common.Logging.Logger.Log("[Generation Pipeline] Attempt successful.");
+                    logger?.Invoke("[Generation Pipeline] Attempt successful.");
                     return results;
                 }
             }
 
-            Common.Logging.Logger.Log("[Generation Pipeline] Generation failed for all attempts.");
+            logger?.Invoke("[Generation Pipeline] Generation failed for all attempts.");
             return new PipelineResults(inputs);
         }
 

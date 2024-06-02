@@ -1,7 +1,8 @@
+using MPewsey.ManiaMap;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs
+namespace MPewsey.ManiaMapUnity.Graphs
 {
     /// <summary>
     /// An edge in a LayoutGraph.
