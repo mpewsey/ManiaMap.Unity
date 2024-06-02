@@ -4,9 +4,9 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Drawing.Editor
 {
     /// <summary>
-    /// The LayoutMap editor.
+    /// The LayoutMapBook editor.
     /// </summary>
-    public static class LayoutMapBehaviorEditor
+    public static class LayoutMapBookEditor
     {
         /// <summary>
         /// Creates a new layout map Game Object.

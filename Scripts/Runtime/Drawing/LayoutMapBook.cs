@@ -27,6 +27,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
         private List<SpriteRenderer> Pages { get; } = new List<SpriteRenderer>();
         private List<int> PageLayerCoordinates { get; set; } = new List<int>();
 
+        public IReadOnlyList<SpriteRenderer> GetPages() => Pages;
+        public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
+
         private void Awake()
         {
             if (Container == null)
@@ -106,6 +109,7 @@ namespace MPewsey.ManiaMapUnity.Drawing
             var size = GetTextureSize();
             var texture = new Texture2D(size.x, size.y);
             texture.filterMode = MapTileSet.FilterMode;
+            texture.name = "Mania Map Texture";
             return texture;
         }
 

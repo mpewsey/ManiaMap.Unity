@@ -4,9 +4,9 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Drawing.Editor
 {
     /// <summary>
-    /// The LayoutTilemap editor.
+    /// The LayoutTileMap editor.
     /// </summary>
-    public static class LayoutTilemapBehaviorEditor
+    public static class LayoutTileMapEditor
     {
         /// <summary>
         /// Creates a new layout tilemap Game Object.

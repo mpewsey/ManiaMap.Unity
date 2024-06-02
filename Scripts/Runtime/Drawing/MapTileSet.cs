@@ -267,7 +267,10 @@ namespace MPewsey.ManiaMapUnity.Drawing
         private Tile CreateTile(long flags, Color32 color)
         {
             var tile = CreateInstance<Tile>();
-            tile.sprite = CreateSprite(CreateFeatureTexture(flags, color));
+            var sprite = CreateSprite(CreateFeatureTexture(flags, color));
+            sprite.name = "Mania Map Tile Sprite";
+            tile.sprite = sprite;
+            tile.name = "Mania Map Tile";
             return tile;
         }
 
@@ -275,7 +278,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
         {
             var pivot = new Vector2(0.5f, 0.5f);
             var rect = new Rect(1, 1, texture.width - 2, texture.height - 2);
-            return Sprite.Create(texture, rect, pivot, PixelsPerUnit);
+            var sprite = Sprite.Create(texture, rect, pivot, PixelsPerUnit);
+            sprite.name = "Mania Map Tile Sprite";
+            return sprite;
         }
 
         private Texture2D CreateFeatureTexture(long flags, Color32 color)

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
-    public class TestLayoutMapBehavior
+    public class TestLayoutMapBook
     {
         [SetUp]
         public void SetUp()

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
-    public class TestLayoutTilemapBehavior
+    public class TestLayoutTileMap
     {
         [SetUp]
         public void SetUp()

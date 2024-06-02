@@ -18,6 +18,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
         private List<Tilemap> Pages { get; } = new List<Tilemap>();
         private List<int> PageLayerCoordinates { get; set; } = new List<int>();
 
+        public IReadOnlyList<Tilemap> GetPages() => Pages;
+        public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
+
         protected override void Initialize(Layout layout, LayoutState layoutState)
         {
             base.Initialize(layout, layoutState);
@@ -57,6 +60,7 @@ namespace MPewsey.ManiaMapUnity.Drawing
                 var obj = new GameObject($"Tile Map {Pages.Count}");
                 obj.transform.SetParent(Grid.transform);
                 Pages.Add(obj.AddComponent<Tilemap>());
+                obj.AddComponent<TilemapRenderer>();
             }
         }
 

@@ -37,6 +37,7 @@ namespace MPewsey.ManiaMapUnity.Drawing
                 var obj = new GameObject("TileMap");
                 obj.transform.SetParent(Grid.transform);
                 TileMap = obj.AddComponent<Tilemap>();
+                obj.AddComponent<TilemapRenderer>();
             }
         }
 
