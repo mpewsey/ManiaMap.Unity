@@ -2,7 +2,6 @@ using MPewsey.ManiaMap;
 using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MPewsey.ManiaMapUnity
 {

@@ -1,5 +1,5 @@
-using MPewsey.ManiaMap;
 using MPewsey.Common.Serialization;
+using MPewsey.ManiaMap;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity
