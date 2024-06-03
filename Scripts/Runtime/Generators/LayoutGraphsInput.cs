@@ -1,5 +1,5 @@
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMap.Graphs;
+using MPewsey.ManiaMap.Generators;
 using MPewsey.ManiaMapUnity.Graphs;
 using System;
 using System.Collections.Generic;
@@ -36,9 +36,9 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// Returns a list of generation layout graph creation functions for the
         /// supplied layout graphs.
         /// </summary>
-        public List<Func<LayoutGraph>> GetLayoutGraphFunctions()
+        public List<LayoutGraphSelector.LayoutGraphDelegate> GetLayoutGraphFunctions()
         {
-            var funcs = new List<Func<LayoutGraph>>(LayoutGraphs.Count);
+            var funcs = new List<LayoutGraphSelector.LayoutGraphDelegate>(LayoutGraphs.Count);
 
             foreach (var graph in LayoutGraphs)
             {

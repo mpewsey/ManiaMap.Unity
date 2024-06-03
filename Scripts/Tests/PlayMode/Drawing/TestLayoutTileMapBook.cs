@@ -7,18 +7,18 @@ using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
-    public class TestLayoutTileMap
+    public class TestLayoutTileMapBook
     {
-        private const string TestScene = "ManiaMap/Tests/TestLayoutTileMap";
+        private const string TestScene = "ManiaMap/Tests/TestLayoutTileMapBook";
         private GameObject GameObject { get; set; }
-        private LayoutTileMap Map { get; set; }
+        private LayoutTileMapBook Map { get; set; }
 
         [SetUp]
         public void SetUp()
         {
             var resource = Resources.Load<GameObject>(TestScene);
             GameObject = Object.Instantiate(resource);
-            Map = GameObject.GetComponent<LayoutTileMap>();
+            Map = GameObject.GetComponent<LayoutTileMapBook>();
             Assert.IsTrue(Map != null);
         }
 
@@ -29,7 +29,7 @@ namespace MPewsey.ManiaMapUnity.Drawing.Tests
         }
 
         [UnityTest]
-        public IEnumerator TestDrawMap()
+        public IEnumerator TestDrawPages()
         {
             var task = BigLayoutSample.GenerateAsync(12345, Debug.Log);
             yield return new WaitUntil(() => task.IsCompleted);
@@ -38,7 +38,7 @@ namespace MPewsey.ManiaMapUnity.Drawing.Tests
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            Map.DrawMap(layout);
+            Map.DrawPages(layout);
             Assert.IsTrue(Map.Grid != null);
             Assert.AreEqual(Map.Grid.transform.childCount, 1);
         }

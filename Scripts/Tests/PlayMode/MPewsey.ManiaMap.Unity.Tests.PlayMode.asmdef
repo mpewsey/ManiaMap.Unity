@@ -6,7 +6,8 @@
         "UnityEditor.TestRunner",
         "MPewsey.ManiaMapUnity",
         "Unity.Addressables",
-        "Unity.ResourceManager"
+        "Unity.ResourceManager",
+        "MPewsey.ManiaMapUnity.Examples"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

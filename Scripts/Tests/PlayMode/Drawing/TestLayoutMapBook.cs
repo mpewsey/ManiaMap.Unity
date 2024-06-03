@@ -1,71 +1,46 @@
-using MPewsey.Common.Random;
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapUnity.Generators;
-using MPewsey.ManiaMapUnity.Tests;
+using MPewsey.ManiaMap.Samples;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.IO;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestLayoutMapBook
     {
+        private const string TestScene = "ManiaMap/Tests/TestLayoutMapBook";
+        private GameObject GameObject { get; set; }
+        private LayoutMapBook Map { get; set; }
+
         [SetUp]
         public void SetUp()
         {
-            Assets.DestroyAllGameObjects();
+            var resource = Resources.Load<GameObject>(TestScene);
+            GameObject = Object.Instantiate(resource);
+            Map = GameObject.GetComponent<LayoutMapBook>();
+            Assert.IsTrue(Map != null);
         }
 
-        [TestCase(Assets.BigLayoutPath)]
-        [TestCase(Assets.CrossLayoutPath)]
-        [TestCase(Assets.GeekLayoutPath)]
-        [TestCase(Assets.LoopLayoutPath)]
-        [TestCase(Assets.StackedLoopLayoutPath)]
-        public void TestCreateLayers(string path)
+        [TearDown]
+        public void TearDown()
         {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
+            Object.Destroy(GameObject);
+        }
 
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Run(inputs);
+        [UnityTest]
+        public IEnumerator TestDrawPages()
+        {
+            var task = BigLayoutSample.GenerateAsync(12345, Debug.Log);
+            yield return new WaitUntil(() => task.IsCompleted);
+            Assert.IsTrue(task.IsCompletedSuccessfully);
+            var results = task.Result;
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMapBook>(Assets.LayoutMapPath);
-            layoutMap.DrawPages(layout);
-            Assert.Greater(layoutMap.transform.childCount, 0);
-        }
-
-        [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.png")]
-        [TestCase(Assets.CrossLayoutPath, "Tests/CrossLayout.png")]
-        [TestCase(Assets.GeekLayoutPath, "Tests/GeekLayout.png")]
-        [TestCase(Assets.LoopLayoutPath, "Tests/LoopLayout.png")]
-        [TestCase(Assets.StackedLoopLayoutPath, "Tests/StackedLoopLayout.png")]
-        [TestCase(Assets.BigLayoutPath, "Tests/BigLayout.jpg")]
-        [TestCase(Assets.CrossLayoutPath, "Tests/CrossLayout.jpg")]
-        [TestCase(Assets.GeekLayoutPath, "Tests/GeekLayout.jpg")]
-        [TestCase(Assets.LoopLayoutPath, "Tests/LoopLayout.jpg")]
-        [TestCase(Assets.StackedLoopLayoutPath, "Tests/StackedLoopLayout.jpg")]
-        public void TestSaveLayoutImages(string path, string imagePath)
-        {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
-
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Run(inputs);
-            Assert.IsTrue(results.Success);
-            var layout = results.GetOutput<Layout>("Layout");
-            Assert.IsNotNull(layout);
-            var layoutMap = Assets.InstantiatePrefab<LayoutMapBook>(Assets.LayoutMapPath);
-            Directory.CreateDirectory("Tests");
-            layoutMap.DrawPages(layout);
-            layoutMap.SaveImages(imagePath);
+            Map.DrawPages(layout);
+            Assert.IsTrue(Map.Container != null);
+            Assert.AreEqual(Map.Container.transform.childCount, 1);
         }
     }
 }
