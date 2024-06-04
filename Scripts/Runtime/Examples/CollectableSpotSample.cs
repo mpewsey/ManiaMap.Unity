@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapUnity.Examples
     /// Contains events for the collectable spots used in the samples.
     /// </summary>
     [RequireComponent(typeof(CollectableSpotBehavior))]
-    public class SampleCollectableSpotEvents : MonoBehaviour
+    public class CollectableSpotSample : MonoBehaviour
     {
         /// <summary>
         /// The attached collectable spot component.
@@ -24,10 +24,10 @@ namespace MPewsey.ManiaMapUnity.Examples
         /// destroys it.
         /// </summary>
         /// <param name="spot">The collectable spot sending the event.</param>
-        private void OnInitialize(CollectableSpotBehavior spot)
+        private void OnInitialize()
         {
-            if (!spot.Exists())
-                Destroy(spot.gameObject);
+            if (!CollectableSpot.CollectableExists())
+                Destroy(CollectableSpot.gameObject);
         }
     }
 }

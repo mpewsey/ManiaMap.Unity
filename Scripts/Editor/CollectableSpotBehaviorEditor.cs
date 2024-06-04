@@ -25,34 +25,10 @@ namespace MPewsey.ManiaMapUnity.Editor
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            DrawCollectableGroupErrorBox();
-        }
+            var spot = (CollectableSpotBehavior)serializedObject.targetObject;
 
-        /// <summary>
-        /// Returns the target collectable spot.
-        /// </summary>
-        private CollectableSpotBehavior GetCollectableSpot()
-        {
-            return (CollectableSpotBehavior)serializedObject.targetObject;
-        }
-
-        /// <summary>
-        /// Draws an error box if a collectable group has not been assigned to the collectable spot.
-        /// </summary>
-        private void DrawCollectableGroupErrorBox()
-        {
-            if (GroupIsAssigned())
-                return;
-
-            EditorGUILayout.HelpBox("Collectable group not assigned.", MessageType.Error, true);
-        }
-
-        /// <summary>
-        /// True if the group is assigned.
-        /// </summary>
-        private bool GroupIsAssigned()
-        {
-            return GetCollectableSpot().Group != null;
+            if (spot.Group == null)
+                EditorGUILayout.HelpBox("Collectable group not assigned.", MessageType.Error, true);
         }
     }
 }

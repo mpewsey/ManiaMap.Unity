@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
     /// <summary>
     /// A node in a LayoutGraph.
     /// </summary>
-    public class LayoutNodeObject : ScriptableObject
+    public class LayoutGraphNode : ScriptableObject
     {
         [SerializeField]
         [HideInInspector]
@@ -70,9 +70,9 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// Creates a new node.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public static LayoutNodeObject Create(int id)
+        public static LayoutGraphNode Create(int id)
         {
-            var node = CreateInstance<LayoutNodeObject>();
+            var node = CreateInstance<LayoutGraphNode>();
             node.Id = id;
             node.Name = $"<Node {id}>";
             node.name = node.Name;

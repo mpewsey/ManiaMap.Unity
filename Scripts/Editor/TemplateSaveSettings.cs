@@ -67,7 +67,7 @@ namespace MPewsey.ManiaMapUnity.Editor
                 CreateRoomTemplate(guid);
             }
 
-            Log.Success("Saved room templates.");
+            Debug.Log("<color=#00FF00><b>Saved room templates.</b></color>");
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             {
                 var prefab = scope.prefabContentsRoot;
 
-                if (!prefab.TryGetComponent(out RoomBehavior room))
+                if (!prefab.TryGetComponent(out RoomComponent room))
                     return;
 
                 Debug.Log($"Processing room at {assetPath}.");
@@ -96,11 +96,11 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         /// <param name="room">The room.</param>
         /// <param name="prefabGuid">The prefab GUID.</param>
-        private void CreateRoomTemplate(RoomBehavior room, string prefabGuid)
+        private void CreateRoomTemplate(RoomComponent room, string prefabGuid)
         {
             var path = TemplateSavePath(room);
             var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
-            var template = room.CreateData();
+            var template = room.GetMMRoomTemplate();
             EditorUtility.SetDirty(room);
 
             if (asset == null)
@@ -116,7 +116,7 @@ namespace MPewsey.ManiaMapUnity.Editor
                 // AssetDatabase.SaveAssetIfDirty(asset);
             }
 
-            Log.Success($"Saved room template to {path}.");
+            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// Returns the template save path for the room.
         /// </summary>
         /// <param name="room">The room.</param>
-        private string TemplateSavePath(RoomBehavior room)
+        private string TemplateSavePath(RoomComponent room)
         {
             var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
             return Path.Combine(SavePath, path);

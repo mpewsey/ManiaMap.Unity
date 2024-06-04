@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapUnity.Generators
     /// <summary>
     /// A generation step for drawing a random layout graph in a pipeline.
     /// </summary>
-    public class LayoutGraphSelectorBehavior : GenerationStep
+    public class LayoutGraphSelectorStep : GenerationStep
     {
         /// <inheritdoc/>
         public override IPipelineStep GetStep()

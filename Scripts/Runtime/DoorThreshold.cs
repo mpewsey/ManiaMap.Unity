@@ -5,7 +5,7 @@ namespace MPewsey.ManiaMapUnity
     /// <summary>
     /// An interpolatable area, useful for locating characters moving between door thresholds.
     /// </summary>
-    public class Threshold : MonoBehaviour
+    public class DoorThreshold : MonoBehaviour
     {
         [SerializeField] private Vector3 _center;
         /// <summary>

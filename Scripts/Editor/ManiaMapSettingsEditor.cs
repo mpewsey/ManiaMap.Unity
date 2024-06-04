@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             settings = CreateInstance<ManiaMapSettings>();
             var path = "Assets/Resources/ManiaMap/ManiaMapSettings.asset";
             AssetDatabase.CreateAsset(settings, path);
-            Log.Success($"Mania map settings created at: {path}");
+            Debug.Log($"<color=#00FF00><b>Mania map settings created at: {path}</b></color>");
             EditorGUIUtility.PingObject(settings);
         }
     }

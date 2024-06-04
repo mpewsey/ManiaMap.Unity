@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
     /// <summary>
     /// An edge in a LayoutGraph.
     /// </summary>
-    public class LayoutEdgeObject : ScriptableObject
+    public class LayoutGraphEdge : ScriptableObject
     {
         [SerializeField]
         [HideInInspector]
@@ -96,9 +96,9 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// </summary>
         /// <param name="fromNode">The from node ID.</param>
         /// <param name="toNode">The to node ID.</param>
-        public static LayoutEdgeObject Create(int fromNode, int toNode)
+        public static LayoutGraphEdge Create(int fromNode, int toNode)
         {
-            var edge = CreateInstance<LayoutEdgeObject>();
+            var edge = CreateInstance<LayoutGraphEdge>();
             edge.FromNode = fromNode;
             edge.ToNode = toNode;
             edge.Name = $"<Edge ({fromNode}, {toNode})>";

@@ -36,10 +36,10 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
             var steps = new GameObject("<Steps>");
             steps.transform.SetParent(obj.transform);
             pipeline.StepsContainer = steps;
-            steps.AddComponent<LayoutGraphSelectorBehavior>();
-            steps.AddComponent<LayoutGraphRandomizerBehavior>();
-            steps.AddComponent<LayoutGeneratorBehavior>();
-            steps.AddComponent<CollectableGeneratorBehavior>();
+            steps.AddComponent<LayoutGraphSelectorStep>();
+            steps.AddComponent<LayoutGraphRandomizerStep>();
+            steps.AddComponent<LayoutGeneratorStep>();
+            steps.AddComponent<CollectableGeneratorStep>();
         }
 
         public override void OnInspectorGUI()

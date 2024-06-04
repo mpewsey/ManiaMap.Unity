@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapUnity.Generators
     /// <summary>
     /// A component for adding a collectable generator step to a GenerationPipeline.
     /// </summary>
-    public class CollectableGeneratorBehavior : GenerationStep
+    public class CollectableGeneratorStep : GenerationStep
     {
         [SerializeField]
         private float _doorPower = 2;

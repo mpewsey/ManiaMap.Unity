@@ -89,17 +89,17 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// <summary>
         /// The start node when adding an edge.
         /// </summary>
-        private LayoutNodeObject StartNode { get; set; }
+        private LayoutGraphNode StartNode { get; set; }
 
         /// <summary>
         /// A set of selected nodes.
         /// </summary>
-        public HashSet<LayoutNodeObject> SelectedNodes { get; } = new HashSet<LayoutNodeObject>();
+        public HashSet<LayoutGraphNode> SelectedNodes { get; } = new HashSet<LayoutGraphNode>();
 
         /// <summary>
         /// A set of selected edges.
         /// </summary>
-        public HashSet<LayoutEdgeObject> SelectedEdges { get; } = new HashSet<LayoutEdgeObject>();
+        public HashSet<LayoutGraphEdge> SelectedEdges { get; } = new HashSet<LayoutGraphEdge>();
 
         /// <summary>
         /// A dictionary of node positions by ID.
@@ -125,7 +125,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Show the layout graph window for the specified graph.
         /// </summary>
         /// <param name="graph">The layout graph.</param>
-        public static void ShowWindow(LayoutGraphObject graph)
+        public static void ShowWindow(LayoutGraphResource graph)
         {
             var window = GetWindow<LayoutGraphWindow>("Layout Graph");
             window.SerializedObject = new SerializedObject(graph);
@@ -178,9 +178,9 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// <summary>
         /// Returns the target layout graph.
         /// </summary>
-        private LayoutGraphObject GetLayoutGraph()
+        private LayoutGraphResource GetLayoutGraph()
         {
-            return SerializedObject.targetObject as LayoutGraphObject;
+            return SerializedObject.targetObject as LayoutGraphResource;
         }
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Draws the line for the specified edge.
         /// </summary>
         /// <param name="edge">The graph edge.</param>
-        private void DrawEdgeLine(LayoutEdgeObject edge)
+        private void DrawEdgeLine(LayoutGraphEdge edge)
         {
             var offset = 0.5f * Settings.NodeSize;
             var fromPosition = NodePositions[edge.FromNode] + offset;
@@ -630,7 +630,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Draws the element for the specified edge.
         /// </summary>
         /// <param name="edge">The graph edge.</param>
-        private void DrawEdge(LayoutEdgeObject edge)
+        private void DrawEdge(LayoutGraphEdge edge)
         {
             var fromPosition = NodePositions[edge.FromNode];
             var toPosition = NodePositions[edge.ToNode];
@@ -677,7 +677,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Draws the specified node.
         /// </summary>
         /// <param name="node">The graph node.</param>
-        private void DrawNode(LayoutNodeObject node)
+        private void DrawNode(LayoutGraphNode node)
         {
             var rect = new Rect(node.Position, Settings.NodeSize);
 
@@ -746,7 +746,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Handles events if the cursor is in an edge element.
         /// </summary>
         /// <param name="edge">The hovered edge.</param>
-        private void HandleEdgeEvent(LayoutEdgeObject edge)
+        private void HandleEdgeEvent(LayoutGraphEdge edge)
         {
             switch (Event.current.type)
             {
@@ -772,7 +772,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Handles events if the cursor is in a node element.
         /// </summary>
         /// <param name="node">The hovered node.</param>
-        private void HandleNodeEvent(LayoutNodeObject node)
+        private void HandleNodeEvent(LayoutGraphNode node)
         {
             switch (Event.current.type)
             {
@@ -890,7 +890,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Displays the context menu when clicking in a node element.
         /// </summary>
         /// <param name="node">The current layout node.</param>
-        private void ShowNodeContextMenu(LayoutNodeObject node)
+        private void ShowNodeContextMenu(LayoutGraphNode node)
         {
             StartNode = node;
             var menu = new GenericMenu();
@@ -911,7 +911,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Completes the add edge operation by adding an edge between the start node and current node.
         /// </summary>
         /// <param name="node">The current node.</param>
-        private void AddEdge(LayoutNodeObject node)
+        private void AddEdge(LayoutGraphNode node)
         {
             ActiveTool = Tool.None;
 
@@ -943,7 +943,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Clears the selected elements and adds the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void SelectEdge(LayoutEdgeObject edge)
+        private void SelectEdge(LayoutGraphEdge edge)
         {
             if (!Multiselecting)
             {
@@ -959,7 +959,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Clears the selected elements and adds the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void SelectNode(LayoutNodeObject node)
+        private void SelectNode(LayoutGraphNode node)
         {
             if (!Multiselecting)
             {
@@ -975,7 +975,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Toggles the selection of the edge.
         /// </summary>
         /// <param name="edge">The edge.</param>
-        private void MultiselectEdge(LayoutEdgeObject edge)
+        private void MultiselectEdge(LayoutGraphEdge edge)
         {
             ActiveTool = Tool.None;
             Multiselecting = true;
@@ -988,7 +988,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Toggles the selection of the node.
         /// </summary>
         /// <param name="node">The node.</param>
-        private void MultiselectNode(LayoutNodeObject node)
+        private void MultiselectNode(LayoutGraphNode node)
         {
             ActiveTool = Tool.None;
             Multiselecting = true;

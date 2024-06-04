@@ -31,18 +31,13 @@ namespace MPewsey.ManiaMapUnity.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawOpenPrefabButton();
+            var template = (RoomTemplateObject)serializedObject.targetObject;
+
+            if (PrefabGuidIsValid(template.PrefabGuid) && GUILayout.Button("Open Prefab"))
+                OpenPrefab(template);
+
             DrawInspector();
             serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Returns the target room template.
-        /// </summary>
-        /// <returns></returns>
-        private RoomTemplateObject GetRoomTemplate()
-        {
-            return (RoomTemplateObject)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -63,20 +58,6 @@ namespace MPewsey.ManiaMapUnity.Editor
         }
 
         /// <summary>
-        /// Drawsn the open prefab button if the prefab GUID is valid.
-        /// </summary>
-        private void DrawOpenPrefabButton()
-        {
-            var template = GetRoomTemplate();
-
-            if (!PrefabGuidIsValid(template.PrefabGuid))
-                return;
-
-            if (GUILayout.Button("Open Prefab"))
-                OpenPrefab(template);
-        }
-
-        /// <summary>
         /// Opens the prefab for the specified room template.
         /// </summary>
         /// <param name="template">The room template.</param>
@@ -88,7 +69,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         }
 
         /// <summary>
-        /// Draws the inspector will all fields inactive.
+        /// Draws the inspector with all fields inactive.
         /// </summary>
         private void DrawInspector()
         {

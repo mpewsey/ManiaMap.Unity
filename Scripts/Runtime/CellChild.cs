@@ -1,6 +1,5 @@
-using MPewsey.ManiaMap;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MPewsey.ManiaMapUnity
 {
@@ -24,56 +23,32 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public CellBehavior Cell { get => _cell; set => _cell = value; }
 
-        /// <summary>
-        /// The room ID.
-        /// </summary>
-        public Uid RoomId() => RoomLayout().Id;
+        [SerializeField]
+        protected RoomComponent _room;
+        public RoomComponent Room { get => _room; set => _room = value; }
 
-        /// <summary>
-        /// The parent room.
-        /// </summary>
-        public RoomBehavior Room() => Cell.Room;
+        [SerializeField]
+        protected Vector2Int _cellIndex;
+        public Vector2Int CellIndex { get => _cellIndex; set => _cellIndex = Vector2Int.Max(value, Vector2Int.zero); }
 
+        [SerializeField] private UnityEvent _onInitialize = new UnityEvent();
         /// <summary>
-        /// The layout.
+        /// The event invoked after the object is initialized.
         /// </summary>
-        public Layout Layout() => Room().Layout;
+        public UnityEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
-        /// <summary>
-        /// The layout state.
-        /// </summary>
-        public LayoutState LayoutState() => Room().LayoutState;
-
-        /// <summary>
-        /// Returns the room data.
-        /// </summary>
-        public Room RoomLayout() => Room().RoomLayout;
-
-        /// <summary>
-        /// Returns the room state.
-        /// </summary>
-        public RoomState RoomState() => Room().RoomState;
-
-        /// <summary>
-        /// A list of room door connections.
-        /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections() => Room().DoorConnections;
+        public int Row { get => CellIndex.x; set => CellIndex = new Vector2Int(value, CellIndex.y); }
+        public int Column { get => CellIndex.y; set => CellIndex = new Vector2Int(CellIndex.x, value); }
 
         /// <summary>
         /// If auto assign is enabled, assigns the closest cell to the object.
         /// </summary>
-        public virtual void AutoAssign()
+        public virtual void AutoAssign(RoomComponent room)
         {
-            if (AutoAssignCell)
-                AssignClosestCell();
-        }
+            Room = room;
 
-        /// <summary>
-        /// Assigns the closest cell to the door.
-        /// </summary>
-        public void AssignClosestCell()
-        {
-            Cell = CellBehavior.FindClosestCell(transform);
+            if (AutoAssignCell)
+                Cell = CellBehavior.FindClosestCell(transform);
         }
     }
 }

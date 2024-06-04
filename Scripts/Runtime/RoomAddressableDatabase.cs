@@ -23,7 +23,7 @@ namespace MPewsey.ManiaMapUnity
         {
             var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
-            return RoomBehavior.InstantiateRoomAsync(id, prefab, parent, position);
+            return RoomComponent.InstantiateRoomAsync(id, prefab, parent, position);
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         /// <param name="z">The layer.</param>
         /// <param name="parent">The parent of the instantiated rooms.</param>
-        public List<RoomBehavior> InstantiateLayer(int z, Transform parent = null)
+        public List<RoomComponent> InstantiateLayer(int z, Transform parent = null)
         {
-            var result = new List<RoomBehavior>();
+            var result = new List<RoomComponent>();
             var manager = ManiaMapManager.Current;
 
             foreach (var room in manager.Layout.Rooms.Values)
@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMapUnity
                 if (room.Position.Z == z)
                 {
                     var handle = InstantiateRoomAsync(room.Id, parent, RoomPositionOption.LayoutPosition);
-                    var instance = handle.WaitForCompletion().GetComponent<RoomBehavior>();
+                    var instance = handle.WaitForCompletion().GetComponent<RoomComponent>();
                     result.Add(instance);
                 }
             }

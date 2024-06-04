@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapUnity.Editor
     /// The Room editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(RoomBehavior))]
+    [CustomEditor(typeof(RoomComponent))]
     public class RoomBehaviorEditor : UnityEditor.Editor
     {
         /// <summary>
@@ -18,33 +18,22 @@ namespace MPewsey.ManiaMapUnity.Editor
         public static void CreateRoomTemplate()
         {
             var obj = new GameObject("Room");
-            var template = obj.AddComponent<RoomBehavior>();
-            template.CreateCells();
+            obj.AddComponent<RoomComponent>();
             obj.transform.SetParent(Selection.activeTransform);
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawUpdateRoomButton();
+
+            if (!MultipleTargetsSelected() && !TargetIsPrefabAsset())
+            {
+                if (GUILayout.Button("Auto Assign"))
+                    AutoAssign();
+            }
+
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Returns the target room.
-        /// </summary>
-        private RoomBehavior GetRoom()
-        {
-            return (RoomBehavior)serializedObject.targetObject;
-        }
-
-        /// <summary>
-        /// True if multiple targets are not selected, and it is open.
-        /// </summary>
-        private bool ButtonsEnabled()
-        {
-            return !MultipleTargetsSelected() && !TargetIsPrefabAsset();
         }
 
         /// <summary>
@@ -60,30 +49,19 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         private bool TargetIsPrefabAsset()
         {
-            return GetRoom().gameObject.scene.name == null;
+            var room = (RoomComponent)serializedObject.targetObject;
+            return room.gameObject.scene.name == null;
         }
 
         /// <summary>
-        /// Draws the update room button.
+        /// Runs auto assign on the room.
         /// </summary>
-        private void DrawUpdateRoomButton()
+        private void AutoAssign()
         {
-            if (!ButtonsEnabled())
-                return;
-
-            if (GUILayout.Button("Update Room"))
-                UpdateRoom();
-        }
-
-        /// <summary>
-        /// Updates the room cells.
-        /// </summary>
-        private void UpdateRoom()
-        {
-            var room = GetRoom();
-            room.AutoAssign();
+            var room = (RoomComponent)serializedObject.targetObject;
+            var count = room.AutoAssign();
             EditorUtility.SetDirty(room);
-            Log.Success("Room updated.");
+            Debug.Log($"<color=#00FF00><b>Auto assigned {count} cell children.</b></color>");
         }
     }
 }

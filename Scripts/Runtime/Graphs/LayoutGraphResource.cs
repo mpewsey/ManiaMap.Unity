@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
     /// A graph consisting of LayoutNode and LayoutEdge.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Layout Graph")]
-    public class LayoutGraphObject : ScriptableObject
+    public class LayoutGraphResource : ScriptableObject
     {
         [SerializeField]
         private int _id;
@@ -28,19 +28,19 @@ namespace MPewsey.ManiaMapUnity.Graphs
 
         [SerializeField]
         [HideInInspector]
-        private List<LayoutNodeObject> _nodes = new List<LayoutNodeObject>();
+        private List<LayoutGraphNode> _nodes = new List<LayoutGraphNode>();
         /// <summary>
         /// A list of nodes in the graph.
         /// </summary>
-        private List<LayoutNodeObject> Nodes { get => _nodes; set => _nodes = value; }
+        private List<LayoutGraphNode> Nodes { get => _nodes; set => _nodes = value; }
 
         [SerializeField]
         [HideInInspector]
-        private List<LayoutEdgeObject> _edges = new List<LayoutEdgeObject>();
+        private List<LayoutGraphEdge> _edges = new List<LayoutGraphEdge>();
         /// <summary>
         /// A list of edges in the graph.
         /// </summary>
-        private List<LayoutEdgeObject> Edges { get => _edges; set => _edges = value; }
+        private List<LayoutGraphEdge> Edges { get => _edges; set => _edges = value; }
 
         /// <summary>
         /// Returns the number of nodes in the graph.
@@ -72,7 +72,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// <summary>
         /// Creates a new node and returns it.
         /// </summary>
-        public LayoutNodeObject CreateNode()
+        public LayoutGraphNode CreateNode()
         {
             return AddNode(GetNextNodeId());
         }
@@ -82,13 +82,13 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// already exists, returns the existing node.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public LayoutNodeObject AddNode(int id)
+        public LayoutGraphNode AddNode(int id)
         {
             var node = GetNode(id);
 
             if (node == null)
             {
-                node = LayoutNodeObject.Create(id);
+                node = LayoutGraphNode.Create(id);
                 Nodes.Add(node);
             }
 
@@ -113,7 +113,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// Returns the node with the ID.
         /// </summary>
         /// <param name="id">The unique ID.</param>
-        public LayoutNodeObject GetNode(int id)
+        public LayoutGraphNode GetNode(int id)
         {
             return Nodes.Find(x => x.Id == id);
         }
@@ -133,7 +133,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// </summary>
         /// <param name="node1">The first node ID.</param>
         /// <param name="node2">The second node ID.</param>
-        public LayoutEdgeObject AddEdge(int node1, int node2)
+        public LayoutGraphEdge AddEdge(int node1, int node2)
         {
             AddNode(node1);
             AddNode(node2);
@@ -141,7 +141,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
 
             if (edge == null)
             {
-                edge = LayoutEdgeObject.Create(node1, node2);
+                edge = LayoutGraphEdge.Create(node1, node2);
                 Edges.Add(edge);
             }
 
@@ -165,7 +165,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// </summary>
         /// <param name="node1">The first node ID.</param>
         /// <param name="node2">The second node ID.</param>
-        public LayoutEdgeObject GetEdge(int node1, int node2)
+        public LayoutGraphEdge GetEdge(int node1, int node2)
         {
             return Edges.Find(x => (x.FromNode == node1 && x.ToNode == node2) || (x.FromNode == node2 && x.ToNode == node1));
         }
@@ -183,7 +183,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// <summary>
         /// Returns a readonly list of nodes in the graph.
         /// </summary>
-        public IReadOnlyList<LayoutNodeObject> GetNodes()
+        public IReadOnlyList<LayoutGraphNode> GetNodes()
         {
             return Nodes;
         }
@@ -191,7 +191,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// <summary>
         /// Returns a readonly list of edges in the graph.
         /// </summary>
-        public IReadOnlyList<LayoutEdgeObject> GetEdges()
+        public IReadOnlyList<LayoutGraphEdge> GetEdges()
         {
             return Edges;
         }

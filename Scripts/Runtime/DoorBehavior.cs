@@ -45,26 +45,10 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public DoorCode Code { get => _code; set => _code = value; }
 
-        [SerializeField]
-        private DoorBehaviorEvent _onInitialize;
-        /// <summary>
-        /// The event invoked after the door is initialized.
-        /// </summary>
-        public DoorBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
-
-        private DoorConnection _connection;
         /// <summary>
         /// The associated door connection in the layout.
         /// </summary>
-        public DoorConnection Connection
-        {
-            get
-            {
-                AssertIsInitialized();
-                return _connection;
-            }
-            private set => _connection = value;
-        }
+        public DoorConnection Connection { get; private set; }
 
         /// <summary>
         /// True if the door has been initialized.
@@ -74,34 +58,27 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// True if the door exists in the layout.
         /// </summary>
-        public bool Exists() => Connection != null;
+        public bool DoorExists() => Connection != null;
 
         /// <summary>
         /// The room ID of the room this door connects to.
         /// </summary>
         public Uid ToRoomId()
         {
-            if (Exists())
-            {
-                var roomId = RoomId();
+            if (!DoorExists())
+                return new Uid(-1, -1, -1);
 
-                if (Connection.FromRoom == roomId)
-                    return Connection.ToRoom;
-                if (Connection.ToRoom == roomId)
-                    return Connection.FromRoom;
-            }
-
-            return new Uid(-1, -1, -1);
+            return Connection.GetConnectingRoom(Room.RoomLayout.Id);
         }
 
         private void Awake()
         {
-            Room().OnInitialize.AddListener(Initialize);
+            Room.OnInitialize.AddListener(Initialize);
         }
 
         private void OnDestroy()
         {
-            Room().OnInitialize.RemoveListener(Initialize);
+            Room.OnInitialize.RemoveListener(Initialize);
             RemoveFromDoorsDictionary();
         }
 
@@ -115,7 +92,7 @@ namespace MPewsey.ManiaMapUnity
                 IsInitialized = true;
                 AddToDoorsDictionary();
                 Connection = FindDoorConnection();
-                OnInitialize.Invoke(this);
+                OnInitialize.Invoke();
             }
         }
 
@@ -153,7 +130,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         private void AddToDoorsDictionary()
         {
-            var id = RoomId();
+            var id = Room.RoomLayout.Id;
 
             if (!Doors.TryGetValue(id, out var doors))
             {
@@ -169,7 +146,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         private void RemoveFromDoorsDictionary()
         {
-            if (IsInitialized && Doors.TryGetValue(RoomId(), out var doors))
+            if (Room.IsInitialized && Doors.TryGetValue(Room.RoomLayout.Id, out var doors))
                 doors.Remove(this);
         }
 
@@ -179,10 +156,10 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         private DoorConnection FindDoorConnection()
         {
-            var roomId = RoomId();
+            var roomId = Room.RoomLayout.Id;
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
 
-            foreach (var connection in DoorConnections())
+            foreach (var connection in Room.DoorConnections)
             {
                 if (connection.ContainsDoor(roomId, position, Direction))
                     return connection;
@@ -202,22 +179,17 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Auto assigns elements to the door.
         /// </summary>
-        public override void AutoAssign()
+        public override void AutoAssign(RoomComponent room)
         {
-            base.AutoAssign();
+            base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                AssignClosestDirection();
+                Direction = FindClosestDirection();
         }
 
-        /// <summary>
-        /// Assigns the closest direction to the door based on the door's relative
-        /// position to the assigned cell.
-        /// </summary>
-        public void AssignClosestDirection()
+        public Door GetMMDoor()
         {
-            if (Cell != null)
-                Direction = FindClosestDirection();
+            return new Door(Type, Code);
         }
 
         /// <summary>
@@ -225,7 +197,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         private DoorDirection FindClosestDirection()
         {
-            var room = Room();
+            var room = Room;
             var delta = transform.position - Cell.transform.position;
 
             System.Span<DoorDirection> directions = stackalloc DoorDirection[]
@@ -240,12 +212,12 @@ namespace MPewsey.ManiaMapUnity
 
             var distances = new float[]
             {
-                Vector3.Dot(delta, room.Swizzle(Vector2.up)), // North
-                Vector3.Dot(delta, room.Swizzle(Vector2.down)), // South
-                Vector3.Dot(delta, room.Swizzle(Vector2.right)), // East
-                Vector3.Dot(delta, room.Swizzle(Vector2.left)), // West
-                Vector3.Dot(delta, room.Swizzle(Vector3.forward)), // Top
-                Vector3.Dot(delta, room.Swizzle(Vector3.back)), // Bottom
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.up)), // North
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.down)), // South
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.right)), // East
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.left)), // West
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector3.forward)), // Top
+                Vector3.Dot(delta, room.GridToLocalPosition(Vector3.back)), // Bottom
             };
 
             return directions[Maths.MaxIndex(distances)];

@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMapUnity.Editor
                 CreateRoomTemplate(template);
             }
 
-            Log.Success("Saved sample room templates.");
+            Debug.Log("<color=#00FF00><b>Saved sample room templates.</b></color>");
         }
 
         /// <summary>

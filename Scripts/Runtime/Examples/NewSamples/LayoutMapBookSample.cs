@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace MPewsey.ManiaMapUnity.Examples
 {
+    [RequireComponent(typeof(LayoutMapBook))]
     public class LayoutMapBookSample : MonoBehaviour
     {
         [SerializeField] private Button _generateButton;

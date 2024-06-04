@@ -25,10 +25,9 @@ namespace MPewsey.ManiaMapUnity.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawAutoAssignButton();
             DrawFields(x => x.name == "m_Script" || x.name.StartsWith("_auto"));
             DrawFields(x => x.name != "m_Script" && !x.name.StartsWith("_auto"));
-            DrawCellErrorBox();
+            DrawRoomErrorBox();
             serializedObject.ApplyModifiedProperties();
         }
 

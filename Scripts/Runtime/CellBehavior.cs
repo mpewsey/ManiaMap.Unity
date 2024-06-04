@@ -15,11 +15,11 @@ namespace MPewsey.ManiaMapUnity
     {
         [SerializeField]
         [HideInInspector]
-        private RoomBehavior _room;
+        private RoomComponent _room;
         /// <summary>
         /// The parent room template.
         /// </summary>
-        public RoomBehavior Room { get => _room; set => _room = value; }
+        public RoomComponent Room { get => _room; set => _room = value; }
 
         [SerializeField]
         [HideInInspector]
@@ -55,7 +55,7 @@ namespace MPewsey.ManiaMapUnity
         {
             Gizmos.color = IsEmpty ? Color.black : Color.grey;
             Gizmos.color *= new Color(1, 1, 1, 0.25f);
-            Gizmos.DrawCube(transform.position, Room.Swizzle(Room.CellSize));
+            Gizmos.DrawCube(transform.position, Room.GridToLocalPosition(Room.CellSize));
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace MPewsey.ManiaMapUnity
         private void DrawOutlineGizmo()
         {
             Gizmos.color = Color.grey;
-            Gizmos.DrawWireCube(transform.position, Room.Swizzle(Room.CellSize));
+            Gizmos.DrawWireCube(transform.position, Room.GridToLocalPosition(Room.CellSize));
         }
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace MPewsey.ManiaMapUnity
             {
                 var position = Room.transform.position;
                 var origin = Origin();
-                var from1 = Room.Swizzle(origin);
-                var to1 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, -Room.CellSize.y));
-                var from2 = Room.Swizzle(origin + new Vector2(Room.CellSize.x, 0));
-                var to2 = Room.Swizzle(origin + new Vector2(0, -Room.CellSize.y));
+                var from1 = Room.GridToLocalPosition(origin);
+                var to1 = Room.GridToLocalPosition(origin + new Vector2(Room.CellSize.x, -Room.CellSize.y));
+                var from2 = Room.GridToLocalPosition(origin + new Vector2(Room.CellSize.x, 0));
+                var to2 = Room.GridToLocalPosition(origin + new Vector2(0, -Room.CellSize.y));
                 Gizmos.color = Color.grey;
                 Gizmos.DrawLine(from1 + position, to1 + position);
                 Gizmos.DrawLine(from2 + position, to2 + position);
@@ -91,12 +91,12 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         /// <param name="template">The parent room template.</param>
         /// <param name="index">The index position of the cell in the room template.</param>
-        public void Initialize(RoomBehavior template, Vector2Int index)
+        public void Initialize(RoomComponent template, Vector2Int index)
         {
             name = $"<Cell ({index.x}, {index.y})>";
             Room = template;
             Index = index;
-            transform.localPosition = template.Swizzle(Center());
+            transform.localPosition = template.GridToLocalPosition(Center());
         }
 
         /// <summary>
@@ -201,12 +201,12 @@ namespace MPewsey.ManiaMapUnity
         /// <exception cref="ArgumentException">Raised if a Room is not a parent of the transform.</exception>
         public static CellBehavior FindClosestCell(Transform transform)
         {
-            var room = transform.GetComponentInParent<RoomBehavior>();
+            var room = transform.GetComponentInParent<RoomComponent>();
 
             if (room == null)
                 throw new ArgumentException($"Parent room not found for transform: {transform}.");
 
-            var cells = room.GetNonEmptyCells();
+            var cells = new List<CellBehavior>();
             var distances = CellSqrDistances(cells, transform.position);
             var index = Maths.MinIndex(distances);
             return index < 0 ? null : cells[index];

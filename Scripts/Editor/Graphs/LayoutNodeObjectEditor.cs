@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
     /// The LayoutNode editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(LayoutNodeObject))]
+    [CustomEditor(typeof(LayoutGraphNode))]
     public class LayoutNodeObjectEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()

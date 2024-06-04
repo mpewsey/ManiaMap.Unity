@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
     /// <summary>
     /// The LayoutGraph custom inspector.
     /// </summary>
-    [CustomEditor(typeof(LayoutGraphObject))]
+    [CustomEditor(typeof(LayoutGraphResource))]
     public class LayoutGraphObjectEditor : UnityEditor.Editor
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         public static bool OnOpenAsset(int instanceId, int line)
         {
             var path = AssetDatabase.GetAssetPath(instanceId);
-            var graph = AssetDatabase.LoadAssetAtPath<LayoutGraphObject>(path);
+            var graph = AssetDatabase.LoadAssetAtPath<LayoutGraphResource>(path);
 
             if (graph == null)
                 return false;
@@ -42,9 +42,9 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// <summary>
         /// Returns the target layout graph.
         /// </summary>
-        private LayoutGraphObject GetLayoutGraph()
+        private LayoutGraphResource GetLayoutGraph()
         {
-            return (LayoutGraphObject)serializedObject.targetObject;
+            return (LayoutGraphResource)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// <summary>
         /// Draws an error box if any nodes in the graph do not have template groups assigned.
         /// </summary>
-        public static void DrawNodeTemplateGroupErrorBox(LayoutGraphObject graph)
+        public static void DrawNodeTemplateGroupErrorBox(LayoutGraphResource graph)
         {
             var messages = new List<string>() { "Nodes are missing template groups:" };
 
@@ -79,7 +79,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Draws an error box if any edges in the graph with non-zero room chances do not
         /// have template groups assigned.
         /// </summary>
-        public static void DrawEdgeTemplateGroupErrorBox(LayoutGraphObject graph)
+        public static void DrawEdgeTemplateGroupErrorBox(LayoutGraphResource graph)
         {
             var messages = new List<string>() { "Edges with non-zero room chances are missing template groups:" };
 

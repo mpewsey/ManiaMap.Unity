@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMapUnity
     public class CollectableSpotBehavior : CellChild
     {
         [SerializeField]
-        private int _id;
+        private int _id = -1;
         /// <summary>
         /// The unique location ID, relative to the cell.
         /// </summary>
@@ -27,47 +27,24 @@ namespace MPewsey.ManiaMapUnity
         private float _weight = 1;
         public float Weight { get => _weight; set => _weight = Mathf.Max(value, 0); }
 
-        [SerializeField]
-        private CollectableSpotBehaviorEvent _onInitialize = new CollectableSpotBehaviorEvent();
-        /// <summary>
-        /// The event invoked after the object is initialized.
-        /// </summary>
-        public CollectableSpotBehaviorEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
-
         /// <summary>
         /// True if the collectable spot is initialized.
         /// </summary>
         public bool IsInitialized { get; private set; }
 
-        /// <summary>
-        /// The assigned collectable ID.
-        /// </summary>
-        public int CollectableId() => RoomLayout().Collectables.TryGetValue(Id, out int value) ? value : int.MinValue;
-
-        /// <summary>
-        /// True if the collectable spot exists.
-        /// </summary>
-        public bool Exists() => RoomLayout().Collectables.ContainsKey(Id);
-
-        /// <summary>
-        /// True if the collectable spot is already acquired.
-        /// </summary>
-        public bool IsAcquired() => RoomState().AcquiredCollectables.Contains(Id);
-
         private void OnValidate()
         {
-            Id = ManiaMapManager.AutoAssignId(Id);
             Weight = Weight;
         }
 
         private void Awake()
         {
-            Room().OnInitialize.AddListener(Initialize);
+            Room.OnInitialize.AddListener(Initialize);
         }
 
         private void OnDestroy()
         {
-            Room().OnInitialize.RemoveListener(Initialize);
+            Room.OnInitialize.RemoveListener(Initialize);
         }
 
         /// <summary>
@@ -78,8 +55,35 @@ namespace MPewsey.ManiaMapUnity
             if (!IsInitialized)
             {
                 IsInitialized = true;
-                OnInitialize.Invoke(this);
+                OnInitialize.Invoke();
             }
+        }
+
+        /// <summary>
+        /// The assigned collectable ID.
+        /// </summary>
+        public int CollectableId()
+        {
+            if (Room.RoomLayout.Collectables.TryGetValue(Id, out int value))
+                return value;
+
+            return int.MinValue;
+        }
+
+        /// <summary>
+        /// True if the collectable spot exists.
+        /// </summary>
+        public bool CollectableExists()
+        {
+            return Room.RoomLayout.Collectables.ContainsKey(Id);
+        }
+
+        /// <summary>
+        /// True if the collectable spot is already acquired.
+        /// </summary>
+        public bool IsAcquired()
+        {
+            return Room.RoomState.AcquiredCollectables.Contains(Id);
         }
 
         /// <summary>
@@ -87,7 +91,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool CanAcquire()
         {
-            return Exists() && !IsAcquired();
+            return CollectableExists() && !IsAcquired();
         }
 
         /// <summary>
@@ -98,23 +102,24 @@ namespace MPewsey.ManiaMapUnity
         public bool Acquire()
         {
             if (CanAcquire())
-                return RoomState().AcquiredCollectables.Add(Id);
+                return Room.RoomState.AcquiredCollectables.Add(Id);
+
             return false;
         }
 
         /// <summary>
         /// Auto assigns elements to the collectable spot.
         /// </summary>
-        public override void AutoAssign()
+        public override void AutoAssign(RoomComponent room)
         {
-            base.AutoAssign();
+            base.AutoAssign(room);
             Id = ManiaMapManager.AutoAssignId(Id);
         }
 
         /// <summary>
         /// Returns new generation data for the collectable spot.
         /// </summary>
-        public CollectableSpot CreateData()
+        public CollectableSpot GetMMCollectableSpot()
         {
             var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
             return new CollectableSpot(position, Group.Name, Weight);

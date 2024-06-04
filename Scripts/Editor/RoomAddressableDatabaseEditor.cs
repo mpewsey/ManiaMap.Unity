@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             }
 
             EditorUtility.SetDirty(db);
-            Log.Success("Added prefabs to database.");
+            Debug.Log("<color=#00FF00><b>Added prefabs to database.</b></color>");
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             var path = AssetDatabase.GUIDToAssetPath(guid);
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-            if (!prefab.TryGetComponent(out RoomBehavior room))
+            if (!prefab.TryGetComponent(out RoomComponent room))
                 return;
 
             var entry = AddressableAssetSettingsDefaultObject.Settings.FindAssetEntry(guid);

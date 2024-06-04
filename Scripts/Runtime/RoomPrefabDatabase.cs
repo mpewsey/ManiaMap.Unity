@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMapUnity
     /// A room database with references to room prefabs.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Room Databases/Room Prefab Database")]
-    public class RoomPrefabDatabase : RoomDatabase<RoomBehavior>
+    public class RoomPrefabDatabase : RoomDatabase<RoomComponent>
     {
         /// <summary>
         /// Instantiates the room based on current layout.
@@ -16,12 +16,12 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
-        public RoomBehavior InstantiateRoom(Uid id, Transform parent = null,
+        public RoomComponent InstantiateRoom(Uid id, Transform parent = null,
             RoomPositionOption position = RoomPositionOption.UseManagerSetting)
         {
             var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
-            return RoomBehavior.InstantiateRoom(id, prefab.gameObject, parent, position);
+            return RoomComponent.InstantiateRoom(id, prefab.gameObject, parent, position);
         }
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         /// <param name="z">The layer.</param>
         /// <param name="parent">The parent of the instantiated rooms.</param>
-        public List<RoomBehavior> InstantiateLayer(int z, Transform parent = null)
+        public List<RoomComponent> InstantiateLayer(int z, Transform parent = null)
         {
-            var result = new List<RoomBehavior>();
+            var result = new List<RoomComponent>();
             var manager = ManiaMapManager.Current;
 
             foreach (var room in manager.Layout.Rooms.Values)

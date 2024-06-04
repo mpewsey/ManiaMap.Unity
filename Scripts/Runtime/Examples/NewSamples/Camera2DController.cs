@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Examples
 {
+    [RequireComponent(typeof(Camera))]
     public class Camera2DController : MonoBehaviour
     {
         [SerializeField] private float _scrollSpeed = 1;

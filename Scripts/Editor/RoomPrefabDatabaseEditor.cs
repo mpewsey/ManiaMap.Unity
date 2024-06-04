@@ -48,7 +48,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             }
 
             EditorUtility.SetDirty(db);
-            Log.Success("Added prefabs to database.");
+            Debug.Log("<color=#00FF00><b>Added prefabs to database.</b></color>");
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-            if (prefab.TryGetComponent(out RoomBehavior room))
+            if (prefab.TryGetComponent(out RoomComponent room))
             {
                 var db = GetRoomPrefabDatabase();
                 db.AddEntry(room.Id, room);

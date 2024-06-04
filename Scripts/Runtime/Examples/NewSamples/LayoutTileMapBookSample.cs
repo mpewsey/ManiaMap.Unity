@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 namespace MPewsey.ManiaMapUnity.Examples
 {
+    [RequireComponent(typeof(LayoutTileMapBook))]
     public class LayoutTileMapBookSample : MonoBehaviour
     {
         [SerializeField] private Button _generateButton;

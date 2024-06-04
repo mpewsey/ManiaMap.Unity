@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapUnity.Generators
     /// <summary>
     /// A component for generation layouts as part of a GenerationPipeline.
     /// </summary>
-    public class LayoutGeneratorBehavior : GenerationStep
+    public class LayoutGeneratorStep : GenerationStep
     {
         [SerializeField]
         private int _maxRebases = 100;

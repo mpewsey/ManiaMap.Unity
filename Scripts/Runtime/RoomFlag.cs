@@ -13,12 +13,6 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public int Id { get => _id; set => _id = value; }
 
-        [SerializeField] private RoomFlagEvent _onInitialize;
-        /// <summary>
-        /// The event invoked after the object is initialized.
-        /// </summary>
-        public RoomFlagEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
-
         /// <summary>
         /// True if the object has been initialized.
         /// </summary>
@@ -31,12 +25,12 @@ namespace MPewsey.ManiaMapUnity
 
         private void Awake()
         {
-            Room().OnInitialize.AddListener(Initialize);
+            Room.OnInitialize.AddListener(Initialize);
         }
 
         private void OnDestroy()
         {
-            Room().OnInitialize.RemoveListener(Initialize);
+            Room.OnInitialize.RemoveListener(Initialize);
         }
 
         /// <summary>
@@ -47,7 +41,7 @@ namespace MPewsey.ManiaMapUnity
             if (!IsInitialized)
             {
                 IsInitialized = true;
-                OnInitialize.Invoke(this);
+                OnInitialize.Invoke();
             }
         }
 
@@ -56,7 +50,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool Exists()
         {
-            return RoomState().Flags.Contains(Id);
+            return Room.RoomState.Flags.Contains(Id);
         }
 
         /// <summary>
@@ -64,7 +58,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool SetFlag()
         {
-            return RoomState().Flags.Add(Id);
+            return Room.RoomState.Flags.Add(Id);
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool RemoveFlag()
         {
-            return RoomState().Flags.Remove(Id);
+            return Room.RoomState.Flags.Remove(Id);
         }
 
         /// <summary>
@@ -80,15 +74,11 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool ToggleFlag()
         {
-            var flags = RoomState().Flags;
+            if (Room.RoomState.Flags.Add(Id))
+                return true;
 
-            if (!flags.Add(Id))
-            {
-                flags.Remove(Id);
-                return false;
-            }
-
-            return true;
+            Room.RoomState.Flags.Remove(Id);
+            return false;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapUnity.Examples
     /// Contains events for the doors used in the samples.
     /// </summary>
     [RequireComponent(typeof(DoorBehavior))]
-    public class SampleDoorEvents : MonoBehaviour
+    public class DoorSample : MonoBehaviour
     {
         /// <summary>
         /// The attached door component.
@@ -23,10 +23,10 @@ namespace MPewsey.ManiaMapUnity.Examples
         /// The on initialize event. If the door exists, destroys it, leaving an opening.
         /// </summary>
         /// <param name="door">The door sending the event.</param>
-        private void OnInitialize(DoorBehavior door)
+        private void OnInitialize()
         {
-            if (door.Exists())
-                Destroy(door.gameObject);
+            if (Door.DoorExists())
+                Destroy(Door.gameObject);
         }
     }
 }
