@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace MPewsey.ManiaMap.Unity.Drawing.Tests
+namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestPadding
     {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators.Editor
+namespace MPewsey.ManiaMapUnity.Generators.Editor
 {
     /// <summary>
     /// The GenerationPipeline editor.

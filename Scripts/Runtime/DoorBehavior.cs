@@ -1,9 +1,10 @@
 using MPewsey.Common.Mathematics;
-using MPewsey.ManiaMap.Unity.Exceptions;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A component representing a door.

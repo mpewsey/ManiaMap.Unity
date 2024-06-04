@@ -1,6 +1,6 @@
 using System;
 
-namespace MPewsey.ManiaMap.Unity.Exceptions
+namespace MPewsey.ManiaMapUnity.Exceptions
 {
     /// <summary>
     /// Raised if the layout state is null.

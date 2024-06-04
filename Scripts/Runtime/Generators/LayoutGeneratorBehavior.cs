@@ -2,7 +2,7 @@ using MPewsey.Common.Pipelines;
 using MPewsey.ManiaMap.Generators;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A component for generation layouts as part of a GenerationPipeline.

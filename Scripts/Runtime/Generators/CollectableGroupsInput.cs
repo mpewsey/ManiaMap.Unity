@@ -1,7 +1,8 @@
+using MPewsey.ManiaMap;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A generation input for supplying collectable groups to a GenerationPipeline.

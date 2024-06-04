@@ -1,6 +1,6 @@
 using System;
 
-namespace MPewsey.ManiaMap.Unity.Exceptions
+namespace MPewsey.ManiaMapUnity.Exceptions
 {
     /// <summary>
     /// Exception raised when a generation step is missing an input argument.

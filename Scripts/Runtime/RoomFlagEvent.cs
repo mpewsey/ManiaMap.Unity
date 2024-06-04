@@ -1,6 +1,6 @@
 using UnityEngine.Events;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// An event that takes a room flag argument.

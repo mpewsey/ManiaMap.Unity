@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Editor
+namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
     /// Settings for batch saving room templates for prefabs in a project.

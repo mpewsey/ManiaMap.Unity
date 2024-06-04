@@ -1,4 +1,4 @@
-namespace MPewsey.ManiaMap.Unity.Exceptions
+namespace MPewsey.ManiaMapUnity.Exceptions
 {
     /// <summary>
     /// Exception raised when a duplicate room flag ID exists.

@@ -1,5 +1,6 @@
 using MPewsey.Common.Collections;
-using MPewsey.ManiaMap.Unity.Exceptions;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// A component for creating a room.

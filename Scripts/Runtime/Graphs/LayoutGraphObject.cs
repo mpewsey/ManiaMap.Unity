@@ -1,9 +1,10 @@
+using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs
+namespace MPewsey.ManiaMapUnity.Graphs
 {
     /// <summary>
     /// A graph consisting of LayoutNode and LayoutEdge.

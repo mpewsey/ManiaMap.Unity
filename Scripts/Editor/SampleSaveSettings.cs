@@ -1,11 +1,13 @@
 using MPewsey.Common.Mathematics;
 using MPewsey.Common.Random;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Samples;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Editor
+namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
     /// Contains settings related to saving the samples room templates from the Mania Map library to the project.
@@ -84,21 +86,21 @@ namespace MPewsey.ManiaMap.Unity.Editor
         {
             return new List<RoomTemplate>()
             {
-                Samples.TemplateLibrary.Angles.Angle3x4(),
-                Samples.TemplateLibrary.Squares.Square2x2Template(),
-                Samples.TemplateLibrary.Squares.Square1x1Template(),
-                Samples.TemplateLibrary.Squares.Square3x3Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle2x4Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle1x2Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle1x4Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle2x3Template(),
-                Samples.TemplateLibrary.Rectangles.Rectangle1x3Template(),
-                Samples.TemplateLibrary.Miscellaneous.RingTemplate(),
-                Samples.TemplateLibrary.Miscellaneous.LTemplate(),
-                Samples.TemplateLibrary.Miscellaneous.SquareTemplate(),
-                Samples.TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
-                Samples.TemplateLibrary.Miscellaneous.PlusTemplate(),
-                Samples.TemplateLibrary.Squares.Square1x1SavePointTemplate(),
+                TemplateLibrary.Angles.Angle3x4(),
+                TemplateLibrary.Squares.Square2x2Template(),
+                TemplateLibrary.Squares.Square1x1Template(),
+                TemplateLibrary.Squares.Square3x3Template(),
+                TemplateLibrary.Rectangles.Rectangle2x4Template(),
+                TemplateLibrary.Rectangles.Rectangle1x2Template(),
+                TemplateLibrary.Rectangles.Rectangle1x4Template(),
+                TemplateLibrary.Rectangles.Rectangle2x3Template(),
+                TemplateLibrary.Rectangles.Rectangle1x3Template(),
+                TemplateLibrary.Miscellaneous.RingTemplate(),
+                TemplateLibrary.Miscellaneous.LTemplate(),
+                TemplateLibrary.Miscellaneous.SquareTemplate(),
+                TemplateLibrary.Miscellaneous.HyperSquareTemplate(),
+                TemplateLibrary.Miscellaneous.PlusTemplate(),
+                TemplateLibrary.Squares.Square1x1SavePointTemplate(),
             };
         }
 

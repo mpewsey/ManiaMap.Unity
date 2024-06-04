@@ -1,10 +1,11 @@
-using MPewsey.ManiaMap.Graphs;
-using MPewsey.ManiaMap.Unity.Graphs;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Generators;
+using MPewsey.ManiaMapUnity.Graphs;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A generation input for supplying layout graphs inputs to a pipeline.
@@ -35,9 +36,9 @@ namespace MPewsey.ManiaMap.Unity.Generators
         /// Returns a list of generation layout graph creation functions for the
         /// supplied layout graphs.
         /// </summary>
-        public List<Func<LayoutGraph>> GetLayoutGraphFunctions()
+        public List<LayoutGraphSelector.LayoutGraphDelegate> GetLayoutGraphFunctions()
         {
-            var funcs = new List<Func<LayoutGraph>>(LayoutGraphs.Count);
+            var funcs = new List<LayoutGraphSelector.LayoutGraphDelegate>(LayoutGraphs.Count);
 
             foreach (var graph in LayoutGraphs)
             {

@@ -1,7 +1,7 @@
 using MPewsey.Common.Pipelines;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// The base class for creating a GenerationPipeline step.

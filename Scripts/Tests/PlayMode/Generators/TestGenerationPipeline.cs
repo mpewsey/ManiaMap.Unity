@@ -1,13 +1,14 @@
 using MPewsey.Common.Random;
-using MPewsey.ManiaMap.Unity.Exceptions;
-using MPewsey.ManiaMap.Unity.Tests;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Exceptions;
+using MPewsey.ManiaMapUnity.Tests;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace MPewsey.ManiaMap.Unity.Generators.Tests
+namespace MPewsey.ManiaMapUnity.Generators.Tests
 {
     public class TestGenerationPipeline
     {

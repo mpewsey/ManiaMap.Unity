@@ -2,7 +2,7 @@ using MPewsey.Common.Random;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Generators
+namespace MPewsey.ManiaMapUnity.Generators
 {
     /// <summary>
     /// A generation input for specifying a random seed.

@@ -1,5 +1,5 @@
 {
-    "name": "MPewsey.ManiaMap.Unity.Editor",
+    "name": "MPewsey.ManiaMapUnity.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:8ab10455655f7f641be4a800d5eac73d",

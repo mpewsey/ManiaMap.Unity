@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Graphs.Editor
+namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
     /// The LayoutEdge editor.

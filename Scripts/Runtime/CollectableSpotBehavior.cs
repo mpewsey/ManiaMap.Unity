@@ -1,7 +1,8 @@
 using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity
+namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
     /// Represents a collectable spot.

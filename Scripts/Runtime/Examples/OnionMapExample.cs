@@ -1,11 +1,12 @@
 using MPewsey.Common.Random;
+using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Generators;
 using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMap.Samples;
-using MPewsey.ManiaMap.Unity.Drawing;
+using MPewsey.ManiaMapUnity.Drawing;
 using UnityEngine;
 
-namespace MPewsey.ManiaMap.Unity.Examples
+namespace MPewsey.ManiaMapUnity.Examples
 {
     public class OnionMapExample : MonoBehaviour
     {
@@ -29,18 +30,17 @@ namespace MPewsey.ManiaMap.Unity.Examples
         public KeyCode DecreaseKey { get => _decreaseKey; set => _decreaseKey = value; }
 
         [SerializeField]
-        private OnionMap _onionMap;
-        /// <summary>
-        /// The onion map.
-        /// </summary>
-        public OnionMap OnionMap { get => _onionMap; set => _onionMap = value; }
+        private Gradient _gradient;
+        public Gradient Gradient { get => _gradient; set => _gradient = value; }
 
         [SerializeField]
-        private LayoutTilemapBehavior _layoutTilemap;
+        private LayoutTileMapBook _layoutTilemap;
         /// <summary>
         /// The layout tilemap.
         /// </summary>
-        public LayoutTilemapBehavior LayoutTilemap { get => _layoutTilemap; set => _layoutTilemap = value; }
+        public LayoutTileMapBook LayoutTilemap { get => _layoutTilemap; set => _layoutTilemap = value; }
+
+        private float Z { get; set; }
 
         private void Start()
         {
@@ -50,14 +50,12 @@ namespace MPewsey.ManiaMap.Unity.Examples
         private void Update()
         {
             var direction = Input.GetKey(IncreaseKey) ? 1 : Input.GetKey(DecreaseKey) ? -1 : 0;
-            OnionMap.Position += Speed * Time.deltaTime * direction;
+            Z = LayoutTilemap.SetOnionMapColors(Z + Speed * Time.deltaTime * direction, Gradient);
         }
 
         public void Draw()
         {
-            LayoutTilemap.Initialize(Layout());
-            LayoutTilemap.Draw();
-            OnionMap.Position = 0;
+            LayoutTilemap.DrawPages(Layout());
         }
 
         private Layout Layout()
