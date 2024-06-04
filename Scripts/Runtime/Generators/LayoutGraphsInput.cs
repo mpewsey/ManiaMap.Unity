@@ -85,7 +85,7 @@ namespace MPewsey.ManiaMapUnity.Generators
             {
                 if (!names.Add(group.Name))
                     throw new ArgumentException($"Duplicate group name: {group.Name}.");
-                groups.Add(group.Name, group.CreateData());
+                groups.Add(group.Name, group.GetMMTemplateGroupEntries());
             }
 
             return groups;

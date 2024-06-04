@@ -35,13 +35,14 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Returns a list of generation template group entries.
         /// </summary>
-        public List<TemplateGroupsEntry> CreateData()
+        public List<TemplateGroupsEntry> GetMMTemplateGroupEntries()
         {
             var result = new List<TemplateGroupsEntry>(Entries.Count);
+            var templateCache = new Dictionary<RoomTemplateObject, RoomTemplate>();
 
             foreach (var entry in Entries)
             {
-                result.Add(entry.CreateData());
+                result.Add(entry.GetMMTemplateGroupsEntry(templateCache));
             }
 
             return result;

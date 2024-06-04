@@ -121,7 +121,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public CollectableSpot GetMMCollectableSpot()
         {
-            var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+            var position = new Vector2DInt(Row, Column);
             return new CollectableSpot(position, Group.Name, Weight);
         }
     }

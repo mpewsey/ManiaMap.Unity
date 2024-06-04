@@ -157,7 +157,7 @@ namespace MPewsey.ManiaMapUnity
         private DoorConnection FindDoorConnection()
         {
             var roomId = Room.RoomLayout.Id;
-            var position = new Vector2DInt(Cell.Index.x, Cell.Index.y);
+            var position = new Vector2DInt(Row, Column);
 
             foreach (var connection in Room.DoorConnections)
             {
@@ -184,43 +184,12 @@ namespace MPewsey.ManiaMapUnity
             base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                Direction = FindClosestDirection();
+                Direction = room.FindClosestDoorDirection(Row, Column, transform.position);
         }
 
         public Door GetMMDoor()
         {
             return new Door(Type, Code);
-        }
-
-        /// <summary>
-        /// Finds the closest door direction based on the door's relative position to the assigned cell.
-        /// </summary>
-        private DoorDirection FindClosestDirection()
-        {
-            var room = Room;
-            var delta = transform.position - Cell.transform.position;
-
-            System.Span<DoorDirection> directions = stackalloc DoorDirection[]
-            {
-                DoorDirection.North,
-                DoorDirection.South,
-                DoorDirection.East,
-                DoorDirection.West,
-                DoorDirection.Top,
-                DoorDirection.Bottom,
-            };
-
-            var distances = new float[]
-            {
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.up)), // North
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.down)), // South
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.right)), // East
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector2.left)), // West
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector3.forward)), // Top
-                Vector3.Dot(delta, room.GridToLocalPosition(Vector3.back)), // Bottom
-            };
-
-            return directions[Maths.MaxIndex(distances)];
         }
     }
 }

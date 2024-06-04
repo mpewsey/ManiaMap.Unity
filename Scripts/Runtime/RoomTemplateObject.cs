@@ -1,5 +1,6 @@
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMapUnity.Exceptions;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity
@@ -38,22 +39,6 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public string SerializedText { get => _serializedText; private set => _serializedText = value; }
 
-        private RoomTemplate _template;
-        /// <summary>
-        /// Returns the generation template. If the template is not already assigned, it is loaded
-        /// from the serialized text then cached.
-        /// </summary>
-        public RoomTemplate Template
-        {
-            get
-            {
-                if (_template == null)
-                    _template = JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
-                return _template;
-            }
-            private set => _template = value;
-        }
-
         /// <summary>
         /// Initializes the template based on the specified generation template.
         /// </summary>
@@ -61,19 +46,18 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="prefabGuid">The prefab GUID.</param>
         public void Initialize(RoomTemplate template, string prefabGuid = null)
         {
-            Template = null;
             Id = template.Id;
             Name = template.Name;
             PrefabGuid = prefabGuid;
-            SerializedText = JsonSerialization.GetJsonString(template, JsonWriterSettings());
+            SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
         }
 
-        /// <summary>
-        /// The JSON writer formatting settings.
-        /// </summary>
-        private static JsonWriterSettings JsonWriterSettings()
+        public RoomTemplate GetMMRoomTemplate()
         {
-            return new JsonWriterSettings();
+            if (string.IsNullOrWhiteSpace(SerializedText))
+                throw new RoomTemplateNotInitializedException($"Serialized text has not been assigned: {this}");
+
+            return JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMapUnity.Editor
     /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RoomComponent))]
-    public class RoomBehaviorEditor : UnityEditor.Editor
+    public class RoomComponentEditor : UnityEditor.Editor
     {
         /// <summary>
         /// Creates a Game Object with the Room component.

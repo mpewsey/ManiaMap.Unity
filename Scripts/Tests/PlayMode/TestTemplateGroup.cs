@@ -28,7 +28,7 @@ namespace MPewsey.ManiaMapUnity.Tests
                 templateGroup.Entries.Add(new TemplateGroupEntry(room));
             }
 
-            var copies = templateGroup.CreateData();
+            var copies = templateGroup.GetMMTemplateGroupEntries();
 
             for (int i = 0; i < templates.Count; i++)
             {

@@ -1,4 +1,5 @@
 using MPewsey.ManiaMap;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity
@@ -69,9 +70,15 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Returns a new generation template group entry.
         /// </summary>
-        public TemplateGroupsEntry CreateData()
+        public TemplateGroupsEntry GetMMTemplateGroupsEntry(Dictionary<RoomTemplateObject, RoomTemplate> templateCache)
         {
-            return new TemplateGroupsEntry(Template.Template, MinQuantity, MaxQuantity);
+            if (!templateCache.TryGetValue(Template, out var template))
+            {
+                template = Template.GetMMRoomTemplate();
+                templateCache.Add(Template, template);
+            }
+
+            return new TemplateGroupsEntry(template, MinQuantity, MaxQuantity);
         }
     }
 }

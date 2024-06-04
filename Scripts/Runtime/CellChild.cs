@@ -9,23 +9,16 @@ namespace MPewsey.ManiaMapUnity
     public abstract class CellChild : MonoBehaviour
     {
         [SerializeField]
+        protected RoomComponent _room;
+        public RoomComponent Room { get => _room; set => _room = value; }
+
+        [SerializeField]
         protected bool _autoAssignCell = true;
         /// <summary>
         /// If true, the cell will be automatically assigned to the closest cell when update and save operations
         /// are performed.
         /// </summary>
         public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
-
-        [SerializeField]
-        protected CellBehavior _cell;
-        /// <summary>
-        /// The parent cell.
-        /// </summary>
-        public CellBehavior Cell { get => _cell; set => _cell = value; }
-
-        [SerializeField]
-        protected RoomComponent _room;
-        public RoomComponent Room { get => _room; set => _room = value; }
 
         [SerializeField]
         protected Vector2Int _cellIndex;
@@ -48,7 +41,7 @@ namespace MPewsey.ManiaMapUnity
             Room = room;
 
             if (AutoAssignCell)
-                Cell = CellBehavior.FindClosestCell(transform);
+                CellIndex = room.FindClosestActiveCellIndex(transform.position);
         }
     }
 }

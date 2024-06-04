@@ -1,6 +1,7 @@
 using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMapUnity.Exceptions;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -33,15 +34,8 @@ namespace MPewsey.ManiaMapUnity
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
-        private CellColliderType _cellColliderType;
-        public CellColliderType CellCollider { get => _cellColliderType; set => _cellColliderType = value; }
-
-        [SerializeField]
-        private CellPlane _cellPlane;
-        /// <summary>
-        /// The plane in which the cells reside.
-        /// </summary>
-        public CellPlane CellPlane { get => _cellPlane; set => _cellPlane = value; }
+        private RoomType _roomType;
+        public RoomType RoomType { get => _roomType; set => _roomType = value; }
 
         [SerializeField]
         private Vector2Int _size = Vector2Int.one;
@@ -51,11 +45,11 @@ namespace MPewsey.ManiaMapUnity
         public Vector2Int Size { get => _size; set => SetSizeField(ref _size, value); }
 
         [SerializeField]
-        private Vector3 _cellSize = new Vector3(1, 1, 0);
+        private Vector3 _cellSize = new Vector3(1, 1, 0.001f);
         /// <summary>
         /// The size of each cell.
         /// </summary>
-        public Vector3 CellSize { get => _cellSize; set => _cellSize = Vector3.Max(value, new Vector3(0.001f, 0.001f, 0)); }
+        public Vector3 CellSize { get => _cellSize; set => _cellSize = Vector3.Max(value, 0.001f * Vector3.one); }
 
         [HideInInspector]
         [SerializeField]
@@ -230,21 +224,111 @@ namespace MPewsey.ManiaMapUnity
             OnInitialize.Invoke();
         }
 
-        /// <summary>
-        /// Assigns the local position of the room based on the position in the current layout.
-        /// </summary>
         private void MoveToLayoutPosition()
         {
             var position = new Vector2(RoomLayout.Position.Y, RoomLayout.Position.X) * CellSize;
             transform.localPosition = GridToLocalPosition(position);
         }
 
-        /// <summary>
-        /// Auto assigns elements to the room.
-        /// </summary>
+        public void SizeActiveCells()
+        {
+            while (ActiveCells.Count > Rows)
+            {
+                ActiveCells.RemoveAt(ActiveCells.Count - 1);
+            }
+
+            foreach (var row in ActiveCells)
+            {
+                while (row.Values.Count > Columns)
+                {
+                    row.Values.RemoveAt(row.Values.Count - 1);
+                }
+
+                while (row.Values.Count < Columns)
+                {
+                    row.Values.Add(true);
+                }
+            }
+
+            while (ActiveCells.Count < Rows)
+            {
+                ActiveCells.Add(new ActiveCellsRow(Columns, true));
+            }
+        }
+
+        public bool SetCellActivities(Vector2Int startIndex, Vector2Int endIndex, CellActivity activity)
+        {
+            if (activity == CellActivity.None || !CellIndexRangeExists(startIndex, endIndex))
+                return false;
+
+            var startRow = Mathf.Min(startIndex.x, endIndex.x);
+            var endRow = Mathf.Max(startIndex.x, endIndex.x);
+            var startColumn = Mathf.Min(startIndex.y, endIndex.y);
+            var endColumn = Mathf.Max(startIndex.y, endIndex.y);
+
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = startColumn; j <= endColumn; j++)
+                {
+                    SetCellActivity(i, j, activity);
+                }
+            }
+
+            return true;
+        }
+
+        public void SetCellActivity(int row, int column, CellActivity activity)
+        {
+            if (!CellIndexExists(row, column))
+                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column})");
+
+            switch (activity)
+            {
+                case CellActivity.None:
+                    break;
+                case CellActivity.Activate:
+                    ActiveCells[row].Values[column] = true;
+                    break;
+                case CellActivity.Deactivate:
+                    ActiveCells[row].Values[column] = false;
+                    break;
+                case CellActivity.Toggle:
+                    ActiveCells[row].Values[column] = !ActiveCells[row].Values[column];
+                    break;
+                default:
+                    throw new System.NotImplementedException($"Unhandled cell activity: {activity}.");
+            }
+        }
+
+        public void SetCellActivity(int row, int column, bool activity)
+        {
+            if (!CellIndexExists(row, column))
+                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column})");
+
+            ActiveCells[row].Values[column] = activity;
+        }
+
+        public bool GetCellActivity(int row, int column)
+        {
+            if (!CellIndexExists(row, column))
+                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column})");
+
+            return ActiveCells[row].Values[column];
+        }
+
+        public bool CellIndexExists(int row, int column)
+        {
+            return (uint)row < (uint)Rows && (uint)column < (uint)Columns;
+        }
+
+        public bool CellIndexRangeExists(Vector2Int startIndex, Vector2Int endIndex)
+        {
+            return CellIndexExists(startIndex.x, startIndex.y) && CellIndexExists(endIndex.x, endIndex.y);
+        }
+
         public int AutoAssign()
         {
-            SizeActiveCells();
+            Size = Size;
             Id = ManiaMapManager.AutoAssignId(Id);
             var children = GetComponentsInChildren<CellChild>();
 
@@ -256,30 +340,37 @@ namespace MPewsey.ManiaMapUnity
             return children.Length;
         }
 
-        public Vector3 GridToLocalPosition(Vector3 vector)
+        public Vector3 GridToLocalPosition(Vector3 gridPosition)
         {
-            switch (CellPlane)
+            switch (RoomType)
             {
-                case CellPlane.XY:
-                    return new Vector3(vector.x, -vector.y, -vector.z);
-                case CellPlane.XZ:
-                    return new Vector3(vector.x, vector.z, -vector.y);
+                case RoomType.TwoDimensional:
+                case RoomType.ThreeDimensionalXY:
+                    return new Vector3(gridPosition.x, -gridPosition.y, -gridPosition.z);
+                case RoomType.ThreeDimensionalXZ:
+                    return new Vector3(gridPosition.x, gridPosition.z, -gridPosition.y);
                 default:
-                    throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
+                    throw new System.ArgumentException($"Unhandled room type: {RoomType}.");
             }
         }
 
-        public Vector3 LocalToGridPosition(Vector3 vector)
+        public Vector3 LocalToGridPosition(Vector3 localPosition)
         {
-            switch (CellPlane)
+            switch (RoomType)
             {
-                case CellPlane.XY:
-                    return new Vector3(vector.x, -vector.y, -vector.z);
-                case CellPlane.XZ:
-                    return new Vector3(vector.x, -vector.z, vector.y);
+                case RoomType.TwoDimensional:
+                case RoomType.ThreeDimensionalXY:
+                    return new Vector3(localPosition.x, -localPosition.y, -localPosition.z);
+                case RoomType.ThreeDimensionalXZ:
+                    return new Vector3(localPosition.x, -localPosition.z, localPosition.y);
                 default:
-                    throw new System.ArgumentException($"Unhandled cell plane: {CellPlane}.");
+                    throw new System.ArgumentException($"Unhandled room type: {RoomType}.");
             }
+        }
+
+        public Vector3 GlobalToGridPosition(Vector3 globalPosition)
+        {
+            return LocalToGridPosition(globalPosition - transform.position);
         }
 
         public Vector3 CellCenterGridPosition(int row, int column)
@@ -314,9 +405,6 @@ namespace MPewsey.ManiaMapUnity
             return LocalPositionToCellIndex(position - transform.position);
         }
 
-        /// <summary>
-        /// Returns a new generation room template.
-        /// </summary>
         public RoomTemplate GetMMRoomTemplate()
         {
             AutoAssign();
@@ -338,7 +426,7 @@ namespace MPewsey.ManiaMapUnity
             {
                 for (int j = 0; j < cells.Columns; j++)
                 {
-                    if (CellIsActive(i, j))
+                    if (GetCellActivity(i, j))
                         cells[i, j] = Cell.New;
                 }
             }
@@ -364,9 +452,6 @@ namespace MPewsey.ManiaMapUnity
             }
         }
 
-        /// <summary>
-        /// Returns a new dictionary of generation data collectable spots for the room.
-        /// </summary>
         private Dictionary<int, CollectableSpot> GetMMCollectableSpots()
         {
             var result = new Dictionary<int, CollectableSpot>();
@@ -380,10 +465,6 @@ namespace MPewsey.ManiaMapUnity
             return result;
         }
 
-        /// <summary>
-        /// Validates that all room flags are unique and raises an exception if not.
-        /// </summary>
-        /// <exception cref="DuplicateRoomFlagIdException">Raised if any room flag ID is not unique.</exception>
         public void ValidateRoomFlags()
         {
             var set = new HashSet<int>();
@@ -395,51 +476,80 @@ namespace MPewsey.ManiaMapUnity
             }
         }
 
-        private void SizeActiveCells()
+        public Vector2Int FindClosestActiveCellIndex(Vector3 position)
         {
-            while (ActiveCells.Count > Rows)
-            {
-                ActiveCells.RemoveAt(ActiveCells.Count - 1);
-            }
+            var fastIndex = GlobalPositionToCellIndex(position);
 
-            foreach (var row in ActiveCells)
+            if (CellIndexExists(fastIndex.x, fastIndex.y) && GetCellActivity(fastIndex.x, fastIndex.y))
+                return fastIndex;
+
+            var index = Vector2Int.zero;
+            var minDistance = float.PositiveInfinity;
+            var gridPosition = GlobalToGridPosition(position);
+
+            for (int i = 0; i < Rows; i++)
             {
-                while (row.Values.Count > Columns)
+                for (int j = 0; j < Columns; j++)
                 {
-                    row.Values.RemoveAt(row.Values.Count - 1);
-                }
+                    if (GetCellActivity(i, j))
+                    {
+                        Vector2 delta = CellCenterGridPosition(i, j) - gridPosition;
+                        var distance = delta.sqrMagnitude;
 
-                while (row.Values.Count < Columns)
-                {
-                    row.Values.Add(true);
+                        if (distance < minDistance)
+                        {
+                            minDistance = distance;
+                            index = new Vector2Int(i, j);
+                        }
+                    }
                 }
             }
 
-            while (ActiveCells.Count < Rows)
+            return index;
+        }
+
+        public DoorDirection FindClosestDoorDirection(int row, int column, Vector3 position)
+        {
+            Span<DoorDirection> directions = stackalloc DoorDirection[]
             {
-                ActiveCells.Add(new ActiveCellsRow(Columns, true));
+                DoorDirection.North,
+                DoorDirection.East,
+                DoorDirection.South,
+                DoorDirection.West,
+                DoorDirection.Top,
+                DoorDirection.Bottom,
+            };
+
+            Span<Vector3> vectors = stackalloc Vector3[]
+            {
+                new Vector3(0, 1, 0),
+                new Vector3(1, 0, 0),
+                new Vector3(0, -1, 0),
+                new Vector3(-1, 0, 0),
+                new Vector3(0, 0, 1),
+                new Vector3(0, 0, -1),
+            };
+
+            var index = 0;
+            var maxDistance = float.NegativeInfinity;
+            var count = RoomType == RoomType.TwoDimensional ? 4 : vectors.Length;
+            var delta = GlobalToGridPosition(position) - CellCenterGridPosition(row, column);
+            delta.x /= CellSize.x;
+            delta.y /= CellSize.y;
+            delta.z /= CellSize.z;
+
+            for (int i = 0; i < count; i++)
+            {
+                var distance = Vector2.Dot(delta, vectors[i]);
+
+                if (distance > maxDistance)
+                {
+                    maxDistance = distance;
+                    index = i;
+                }
             }
-        }
 
-        public void SetCellActivity(int row, int column, bool activity)
-        {
-            if (!CellIndexExists(row, column))
-                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column})");
-
-            ActiveCells[row].Values[column] = activity;
-        }
-
-        public bool CellIsActive(int row, int column)
-        {
-            if (!CellIndexExists(row, column))
-                throw new System.IndexOutOfRangeException($"Index out of range: ({row}, {column})");
-
-            return ActiveCells[row].Values[column];
-        }
-
-        public bool CellIndexExists(int row, int column)
-        {
-            return (uint)row < (uint)Rows && (uint)column < (uint)Columns;
+            return directions[index];
         }
     }
 }

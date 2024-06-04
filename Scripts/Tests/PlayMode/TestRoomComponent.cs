@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Tests
 {
-    public class TestRoomBehavior
+    public class TestRoomComponent
     {
         [SetUp]
         public void SetUp()

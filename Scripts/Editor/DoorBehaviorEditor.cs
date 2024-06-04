@@ -21,35 +21,5 @@ namespace MPewsey.ManiaMapUnity.Editor
             obj.transform.SetParent(Selection.activeTransform);
             obj.AddComponent<DoorBehavior>();
         }
-
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();
-            DrawFields(x => x.name == "m_Script" || x.name.StartsWith("_auto"));
-            DrawFields(x => x.name != "m_Script" && !x.name.StartsWith("_auto"));
-            DrawRoomErrorBox();
-            serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Draws the fields for which the specified selector returns true.
-        /// </summary>
-        /// <param name="selector">The selector function.</param>
-        private void DrawFields(System.Func<SerializedProperty, bool> selector)
-        {
-            var iterator = serializedObject.GetIterator();
-            var enterChildren = true;
-
-            while (iterator.NextVisible(enterChildren))
-            {
-                using (new EditorGUI.DisabledScope("m_Script" == iterator.propertyPath))
-                {
-                    if (selector.Invoke(iterator))
-                        EditorGUILayout.PropertyField(iterator, true);
-                }
-
-                enterChildren = false;
-            }
-        }
     }
 }
