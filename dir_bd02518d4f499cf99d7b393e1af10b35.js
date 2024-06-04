@@ -13,6 +13,7 @@ var dir_bd02518d4f499cf99d7b393e1af10b35 =
     [ "CollectableObject.cs", "_collectable_object_8cs_source.html", null ],
     [ "CollectableSpotBehavior.cs", "_collectable_spot_behavior_8cs_source.html", null ],
     [ "CollectableSpotBehaviorEvent.cs", "_collectable_spot_behavior_event_8cs_source.html", null ],
+    [ "ColorUtility.cs", "_color_utility_8cs_source.html", null ],
     [ "DoorBehavior.cs", "_door_behavior_8cs_source.html", null ],
     [ "DoorBehaviorEvent.cs", "_door_behavior_event_8cs_source.html", null ],
     [ "Feature.cs", "_feature_8cs_source.html", null ],
