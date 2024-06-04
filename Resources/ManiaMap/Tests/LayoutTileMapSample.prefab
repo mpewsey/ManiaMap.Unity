@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _generateButton: {fileID: 6128999367740135005}
   _messageLabel: {fileID: 2761987577622037327}
+  _camera: {fileID: 410365598717809440}
 --- !u!1 &2969839466479477482
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +267,7 @@ GameObject:
   - component: {fileID: 6205384230298898753}
   - component: {fileID: 1932883828016732213}
   - component: {fileID: 6645883574817365029}
+  - component: {fileID: 410365598717809440}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -323,7 +325,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -347,6 +349,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2969839466479477482}
   m_Enabled: 1
+--- !u!114 &410365598717809440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969839466479477482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be877b29fd65ae449bfe01af8e05d5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollSpeed: 1
+  _zoomSpeed: 1
 --- !u!1 &3760688795530490619
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,8 +501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 15}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 155, y: 105}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7666512697588237566
 CanvasRenderer:
@@ -529,7 +545,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Pan = Right Click & Drag
+
+    Zoom = Middle Mouse Wheel'
 --- !u!1 &4817385267627750147
 GameObject:
   m_ObjectHideFlags: 0

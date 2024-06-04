@@ -15,6 +15,9 @@ namespace MPewsey.ManiaMapUnity.Examples
         [SerializeField] private Text _messageLabel;
         public Text MessageLabel { get => _messageLabel; set => _messageLabel = value; }
 
+        [SerializeField] private Camera2DController _camera;
+        public Camera2DController Camera { get => _camera; set => _camera = value; }
+
         private LayoutTileMap Map { get; set; }
 
         private void Awake()
@@ -46,6 +49,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             MessageLabel.text = string.Empty;
             var layout = result.GetOutput<Layout>("Layout");
             Map.DrawMap(layout);
+            Camera.ResetPosition();
         }
     }
 }
