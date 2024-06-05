@@ -10,6 +10,9 @@ namespace MPewsey.ManiaMapUnity.Editor
     [CustomEditor(typeof(RoomComponent))]
     public class RoomComponentEditor : UnityEditor.Editor
     {
+        public static bool DisplayCells { get; private set; } = true;
+        public static CellActivity CellEditMode { get; private set; } = CellActivity.None;
+
         /// <summary>
         /// Creates a Game Object with the Room component.
         /// </summary>
@@ -22,18 +25,90 @@ namespace MPewsey.ManiaMapUnity.Editor
             obj.transform.SetParent(Selection.activeTransform);
         }
 
+        private void OnEnable()
+        {
+            var room = (RoomComponent)serializedObject.targetObject;
+
+            if (!room.TryGetComponent(out RoomCellEditorComponent editor))
+                room.gameObject.AddComponent<RoomCellEditorComponent>();
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
             if (!MultipleTargetsSelected() && !TargetIsPrefabAsset())
-            {
-                if (GUILayout.Button("Auto Assign"))
-                    AutoAssign();
-            }
+                DrawToolbar();
 
             DrawDefaultInspector();
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawToolbar()
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+            DisplayCells = GUILayout.Toggle(DisplayCells, GetGUIContent("Display Cells", "ManiaMap/Icons/CellDisplayIcon"), EditorStyles.toolbarButton);
+            EditorGUILayout.Separator();
+
+            for (int i = 0; i < 4; i++)
+            {
+                var editMode = GetEditMode(i);
+
+                if (GUILayout.Toggle(CellEditMode == editMode, GetEditModeGUIContent(i), EditorStyles.toolbarButton))
+                    CellEditMode = editMode;
+            }
+
+            EditorGUILayout.Separator();
+
+            if (GUILayout.Button(GetGUIContent("Auto Assign", "ManiaMap/Icons/AutoAssignIcon"), EditorStyles.toolbarButton))
+                AutoAssign();
+
+            EditorGUILayout.EndHorizontal();
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Separator();
+        }
+
+        private static GUIContent GetGUIContent(string tooltip, string iconPath)
+        {
+            var icon = Resources.Load<Texture2D>(iconPath);
+            return new GUIContent(icon, tooltip);
+        }
+
+        private static GUIContent GetEditModeGUIContent(int slot)
+        {
+            switch (slot)
+            {
+                case 0:
+                    return GetGUIContent("Disable Cell Editing", "ManiaMap/Icons/NoneEditModeIcon");
+                case 1:
+                    return GetGUIContent("Activate Cells", "ManiaMap/Icons/ActivateEditModeIcon");
+                case 2:
+                    return GetGUIContent("Deactivate Cells", "ManiaMap/Icons/DeactivateEditModeIcon");
+                case 3:
+                    return GetGUIContent("Toggle Cells", "ManiaMap/Icons/ToggleEditModeIcon");
+                default:
+                    throw new System.NotImplementedException($"Unhandled slot: {slot}.");
+            }
+        }
+
+        private static CellActivity GetEditMode(int slot)
+        {
+            switch (slot)
+            {
+                case 0:
+                    return CellActivity.None;
+                case 1:
+                    return CellActivity.Activate;
+                case 2:
+                    return CellActivity.Deactivate;
+                case 3:
+                    return CellActivity.Toggle;
+                default:
+                    throw new System.NotImplementedException($"Unhandled slot: {slot}.");
+            }
         }
 
         /// <summary>
