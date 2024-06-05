@@ -2,6 +2,7 @@ using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMapUnity.Exceptions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace MPewsey.ManiaMapUnity
 {
@@ -58,6 +59,11 @@ namespace MPewsey.ManiaMapUnity
                 throw new RoomTemplateNotInitializedException($"Serialized text has not been assigned: {this}");
 
             return JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
+        }
+
+        public AssetReferenceGameObject GetAssetReference()
+        {
+            return new AssetReferenceGameObject(PrefabGuid);
         }
     }
 }

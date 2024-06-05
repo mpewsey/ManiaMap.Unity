@@ -6,8 +6,8 @@ namespace MPewsey.ManiaMapUnity.Editor
     /// <summary>
     /// The RoomPrefabDatabase editor.
     /// </summary>
-    [CustomEditor(typeof(RoomPrefabDatabase))]
-    public class RoomPrefabDatabaseEditor : UnityEditor.Editor
+    [CustomEditor(typeof(RoomTemplatePrefabDatabase))]
+    public class RoomTemplatePrefabDatabaseEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -20,9 +20,9 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// <summary>
         /// Returns the target database.
         /// </summary>
-        private RoomPrefabDatabase GetRoomPrefabDatabase()
+        private RoomTemplatePrefabDatabase GetRoomPrefabDatabase()
         {
-            return (RoomPrefabDatabase)serializedObject.targetObject;
+            return (RoomTemplatePrefabDatabase)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -39,16 +39,16 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         private void AutoAssign()
         {
-            var db = GetRoomPrefabDatabase();
-            db.Entries.Clear();
+            //var db = GetRoomPrefabDatabase();
+            //db.Entries.Clear();
 
-            foreach (var path in FileUtility.FindPrefabPaths(db.SearchPaths))
-            {
-                AddPrefabEntry(path);
-            }
+            //foreach (var path in FileUtility.FindPrefabPaths(db.SearchPaths))
+            //{
+            //    AddPrefabEntry(path);
+            //}
 
-            EditorUtility.SetDirty(db);
-            Debug.Log("<color=#00FF00><b>Added prefabs to database.</b></color>");
+            //EditorUtility.SetDirty(db);
+            //Debug.Log("<color=#00FF00><b>Added prefabs to database.</b></color>");
         }
 
         /// <summary>
@@ -57,13 +57,13 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// <param name="path">The prefab path.</param>
         private void AddPrefabEntry(string path)
         {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            //var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-            if (prefab.TryGetComponent(out RoomComponent room))
-            {
-                var db = GetRoomPrefabDatabase();
-                db.AddEntry(room.Id, room);
-            }
+            //if (prefab.TryGetComponent(out RoomComponent room))
+            //{
+            //    var db = GetRoomPrefabDatabase();
+            //    db.AddEntry(room.Id, room);
+            //}
         }
     }
 }

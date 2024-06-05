@@ -129,7 +129,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         {
             var window = GetWindow<LayoutGraphWindow>("Layout Graph");
             window.SerializedObject = new SerializedObject(graph);
-            window.Settings = LayoutGraphWindowSettings.GetSettings();
+            window.Settings = LayoutGraphWindowSettings.LoadSettings();
             window.minSize = window.Settings.MinWindowSize;
             window.maxSize = window.Settings.MaxWindowSize;
             window.SelectedNodes.Clear();

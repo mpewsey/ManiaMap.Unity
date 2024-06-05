@@ -7,7 +7,6 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
     /// 
     /// This asset may be placed at ManiaMap/LayoutGraphWindowSettings within a Resources folder to override the default settings.
     /// </summary>
-    [CreateAssetMenu(menuName = "Mania Map/Settings/Layout Graph Window Settings")]
     public class LayoutGraphWindowSettings : ScriptableObject
     {
         /// <summary>
@@ -128,7 +127,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         /// Returns the layout graph window settings. If the settings exist in the project,
         /// these settings are loaded and returned. Otherwise, the default settings are returned.
         /// </summary>
-        public static LayoutGraphWindowSettings GetSettings()
+        public static LayoutGraphWindowSettings LoadSettings()
         {
             var settings = Resources.Load<LayoutGraphWindowSettings>("ManiaMap/LayoutGraphWindowSettings");
 

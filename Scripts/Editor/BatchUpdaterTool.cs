@@ -7,16 +7,9 @@ namespace MPewsey.ManiaMapUnity.Editor
     /// <summary>
     /// Settings for batch saving room templates for prefabs in a project.
     /// </summary>
-    [CreateAssetMenu(menuName = "Mania Map/Settings/Template Save Settings", fileName = "TemplateSaveSettings")]
-    public class TemplateSaveSettings : ScriptableObject
+    [CreateAssetMenu(menuName = "Mania Map/Batch Updater Tool", fileName = "BatchUpdaterTool")]
+    public class BatchUpdaterTool : ScriptableObject
     {
-        [SerializeField]
-        private string _savePath = "Assets/ManiaMap/RoomTemplates";
-        /// <summary>
-        /// The save path for the generated room templates.
-        /// </summary>
-        public string SavePath { get => _savePath; set => _savePath = value; }
-
         [SerializeField]
         private string[] _searchPaths = new string[] { "Assets" };
         /// <summary>
@@ -28,10 +21,10 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// Batch saves room templates for prefabs based on the settings at ManiaMap/TemplateSaveSettings
         /// Resources path or the default settings.
         /// </summary>
-        [MenuItem("Mania Map/Batch Save Templates", priority = 0)]
-        public static void SaveAllTemplates()
+        [MenuItem("Mania Map/Batch Update Room Templates", priority = 0)]
+        public static void BatchUpdateRoomTemplates()
         {
-            GetSettings().BatchSaveTemplates();
+            LoadSettings().BatchSaveTemplates();
         }
 
         /// <summary>
@@ -39,19 +32,14 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// loads and returns it. Otherwise, creates a new asset within the Resources folder
         /// and returns it.
         /// </summary>
-        private static TemplateSaveSettings GetSettings()
+        private static BatchUpdaterTool LoadSettings()
         {
-            var settings = Resources.Load<TemplateSaveSettings>("ManiaMap/TemplateSaveSettings");
+            var settings = Resources.Load<BatchUpdaterTool>("ManiaMap/BatchUpdaterTool");
 
             if (settings != null)
                 return settings;
 
-            settings = CreateInstance<TemplateSaveSettings>();
-            FileUtility.CreateDirectory("Assets/Resources/ManiaMap");
-            var path = "Assets/Resources/ManiaMap/TemplateSaveSettings.asset";
-            AssetDatabase.CreateAsset(settings, path);
-            Debug.Log($"Template save settings created at: {path}");
-            return settings;
+            return CreateInstance<BatchUpdaterTool>();
         }
 
         /// <summary>
@@ -60,9 +48,9 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         public void BatchSaveTemplates()
         {
-            CreateSaveDirectory();
+            var guids = AssetDatabase.FindAssets("t:prefab", SearchPaths);
 
-            foreach (var guid in FileUtility.FindPrefabGuids(SearchPaths))
+            foreach (var guid in guids)
             {
                 CreateRoomTemplate(guid);
             }
@@ -98,7 +86,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// <param name="prefabGuid">The prefab GUID.</param>
         private void CreateRoomTemplate(RoomComponent room, string prefabGuid)
         {
-            var path = TemplateSavePath(room);
+            var path = Path.ChangeExtension(AssetDatabase.GUIDToAssetPath(prefabGuid), ".room_template.asset");
             var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(path);
             var template = room.GetMMRoomTemplate();
             EditorUtility.SetDirty(room);
@@ -117,24 +105,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             }
 
             Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
-        }
-
-        /// <summary>
-        /// Creates the save directory within the project.
-        /// </summary>
-        private void CreateSaveDirectory()
-        {
-            FileUtility.CreateDirectory(SavePath);
-        }
-
-        /// <summary>
-        /// Returns the template save path for the room.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        private string TemplateSavePath(RoomComponent room)
-        {
-            var path = FileUtility.ReplaceInvalidFileNameCharacters($"{room.name} [{room.Id:x}].asset");
-            return Path.Combine(SavePath, path);
         }
     }
 }

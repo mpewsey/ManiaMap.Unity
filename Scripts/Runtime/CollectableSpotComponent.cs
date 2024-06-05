@@ -87,7 +87,7 @@ namespace MPewsey.ManiaMapUnity
         public override void AutoAssign(RoomComponent room)
         {
             base.AutoAssign(room);
-            Id = ManiaMapManager.AutoAssignId(Id);
+            Id = Rand.AutoAssignId(Id);
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
 using MPewsey.ManiaMap;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity
 {
@@ -31,7 +30,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
 
-        public void Initialize(Layout layout, LayoutState layoutState, ManiaMapSettings settings = null)
+        public static ManiaMapManager Initialize(Layout layout, LayoutState layoutState, ManiaMapSettings settings = null)
         {
             if (layout == null)
                 throw new System.ArgumentException("Layout cannot be null.");
@@ -40,21 +39,21 @@ namespace MPewsey.ManiaMapUnity
             if (layout.Id != layoutState.Id)
                 throw new System.ArgumentException($"Layout and layout state ID's do not match: (Layout ID = {layout.Id}, Layout State ID = {layoutState.Id})");
 
-            Layout = layout;
-            LayoutState = layoutState;
-            Settings = settings != null ? settings : ManiaMapSettings.LoadSettings();
-            RoomConnections = layout.GetRoomConnections();
+            var manager = new ManiaMapManager()
+            {
+                Layout = layout,
+                LayoutState = layoutState,
+                Settings = settings != null ? settings : new ManiaMapSettings(),
+                RoomConnections = layout.GetRoomConnections(),
+            };
+
+            manager.SetAsCurrent();
+            return manager;
         }
 
-        /// <summary>
-        /// If the ID is less than or equal to zero, returns a random positive integer. Otherwise, returns the ID.
-        /// </summary>
-        /// <param name="id">The original ID.</param>
-        public static int AutoAssignId(int id)
+        private void SetAsCurrent()
         {
-            if (id <= 0)
-                return Random.Range(1, int.MaxValue);
-            return id;
+            Current = this;
         }
 
         /// <summary>

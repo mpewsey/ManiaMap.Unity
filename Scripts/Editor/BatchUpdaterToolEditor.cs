@@ -4,10 +4,10 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The SampleSaveSettings editor.
+    /// The TemplateSaveSettings editor.
     /// </summary>
-    [CustomEditor(typeof(SampleSaveSettings))]
-    public class SampleSaveSettingsEditor : UnityEditor.Editor
+    [CustomEditor(typeof(BatchUpdaterTool))]
+    public class BatchUpdaterToolEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -20,9 +20,9 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// <summary>
         /// Returns the target settings.
         /// </summary>
-        private SampleSaveSettings GetSettings()
+        private BatchUpdaterTool GetSettings()
         {
-            return (SampleSaveSettings)serializedObject.targetObject;
+            return (BatchUpdaterTool)serializedObject.targetObject;
         }
 
         /// <summary>
@@ -30,8 +30,8 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         private void DrawSaveTemplatesButton()
         {
-            if (GUILayout.Button("Save Sample Templates"))
-                GetSettings().CreateSampleTemplates();
+            if (GUILayout.Button("Batch Save Templates"))
+                GetSettings().BatchSaveTemplates();
         }
     }
 }

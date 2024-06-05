@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMapUnity
 
         protected virtual void OnValidate()
         {
-            Id = ManiaMapManager.AutoAssignId(Id);
+            Id = Rand.AutoAssignId(Id);
         }
     }
 }

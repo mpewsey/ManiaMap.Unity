@@ -24,11 +24,11 @@ namespace MPewsey.ManiaMapUnity.Examples
         public GenerationPipeline Generator { get => _generator; set => _generator = value; }
 
         [SerializeField]
-        private RoomPrefabDatabase _roomDatabase;
+        private RoomTemplatePrefabDatabase _roomDatabase;
         /// <summary>
         /// The room prefab database.
         /// </summary>
-        public RoomPrefabDatabase RoomDatabase { get => _roomDatabase; set => _roomDatabase = value; }
+        public RoomTemplatePrefabDatabase RoomDatabase { get => _roomDatabase; set => _roomDatabase = value; }
 
         private GameObject _roomContainer;
         /// <summary>
@@ -68,8 +68,8 @@ namespace MPewsey.ManiaMapUnity.Examples
 
             var layout = results.GetOutput<Layout>("Layout");
             var layoutState = new LayoutState(layout);
-            ManiaMapManager.Current.Initialize(layout, layoutState);
-            RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
+            ManiaMapManager.Initialize(layout, layoutState);
+            // RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Exceptions;
 using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
@@ -113,7 +114,7 @@ namespace MPewsey.ManiaMapUnity
 
         private void OnValidate()
         {
-            Id = ManiaMapManager.AutoAssignId(Id);
+            Id = Rand.AutoAssignId(Id);
             Size = Size;
             CellSize = CellSize;
         }
@@ -328,7 +329,7 @@ namespace MPewsey.ManiaMapUnity
         public int AutoAssign()
         {
             Size = Size;
-            Id = ManiaMapManager.AutoAssignId(Id);
+            Id = Rand.AutoAssignId(Id);
             var children = GetComponentsInChildren<CellChild>();
 
             foreach (var child in children)
