@@ -107,7 +107,7 @@ namespace MPewsey.ManiaMapUnity
 
         private void Start()
         {
-            if (!IsInitialized && Application.isPlaying)
+            if (!IsInitialized)
                 throw new RoomNotInitializedException($"Room not initialized: {this}.");
         }
 
@@ -149,52 +149,49 @@ namespace MPewsey.ManiaMapUnity
             }
         }
 
-        /// <summary>
-        /// Instantiates a room prefab and initializes it.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        /// <param name="prefab">The asset reference for the room prefab.</param>
-        /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="position">The option guiding the positioning of the room.</param>
         public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id,
             AssetReferenceGameObject prefab, Transform parent = null,
-            RoomPositionOption position = RoomPositionOption.UseManagerSetting)
+            bool assignLayoutPosition = false)
         {
             var manager = ManiaMapManager.Current;
-            position = manager.Settings.GetRoomPositionOption(position);
             var layout = manager.Layout;
             var layoutState = manager.LayoutState;
             var roomLayout = layout.Rooms[id];
             var roomState = layoutState.RoomStates[id];
             var doorConnections = manager.GetDoorConnections(id);
+            return InstantiateRoomAsync(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+        }
+
+        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(AssetReferenceGameObject prefab, Transform parent,
+            Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
+            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
+        {
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += handle => handle.Result.GetComponent<RoomComponent>()
-                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, position);
+                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
 
             return handle;
         }
 
-        /// <summary>
-        /// Instantiates a room prefab and initializes it.
-        /// </summary>
-        /// <param name="id">The room ID.</param>
-        /// <param name="prefab">The room prefab.</param>
-        /// <param name="parent">The parent of the instantiated room.</param>
-        /// <param name="position">The option guiding the positioning of the room.</param>
         public static RoomComponent InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
-            RoomPositionOption position = RoomPositionOption.UseManagerSetting)
+            bool assignLayoutPosition = false)
         {
             var manager = ManiaMapManager.Current;
-            position = manager.Settings.GetRoomPositionOption(position);
             var layout = manager.Layout;
             var layoutState = manager.LayoutState;
             var roomLayout = layout.Rooms[id];
             var roomState = layoutState.RoomStates[id];
             var doorConnections = manager.GetDoorConnections(id);
+            return InstantiateRoom(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+        }
 
+        public static RoomComponent InstantiateRoom(GameObject prefab, Transform parent,
+            Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
+            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
+        {
             var room = Instantiate(prefab, parent).GetComponent<RoomComponent>();
-            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, position);
+            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
             return room;
         }
 
@@ -206,21 +203,24 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="layoutState">The layout state.</param>
         /// <param name="doorConnections">A list of door connections for the room.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public void Initialize(Layout layout, LayoutState layoutState,
-            Room roomLayout, RoomState roomState, IReadOnlyList<DoorConnection> doorConnections,
-            RoomPositionOption position)
+        public bool Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
+            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
         {
+            if (IsInitialized)
+                return false;
+
             Layout = layout;
             LayoutState = layoutState;
             RoomLayout = roomLayout;
             RoomState = roomState;
             DoorConnections = doorConnections;
 
-            if (position == RoomPositionOption.LayoutPosition)
+            if (assignLayoutPosition)
                 MoveToLayoutPosition();
 
             IsInitialized = true;
             OnInitialize.Invoke();
+            return true;
         }
 
         private void MoveToLayoutPosition()
@@ -482,8 +482,8 @@ namespace MPewsey.ManiaMapUnity
 
         private Dictionary<int, CollectableSpot> GetMMCollectableSpots()
         {
-            var result = new Dictionary<int, CollectableSpot>();
             var spots = GetComponentsInChildren<CollectableSpotComponent>();
+            var result = new Dictionary<int, CollectableSpot>(spots.Length);
 
             foreach (var spot in spots)
             {
@@ -500,7 +500,7 @@ namespace MPewsey.ManiaMapUnity
             foreach (var flag in GetComponentsInChildren<RoomFlag>())
             {
                 if (!set.Add(flag.Id))
-                    throw new DuplicateRoomFlagIdException($"Duplicate room flag ID {flag.Id} for object {flag}.");
+                    throw new DuplicateIdException($"Duplicate room flag ID {flag.Id} for object {flag}.");
             }
         }
 

@@ -54,7 +54,7 @@ namespace MPewsey.ManiaMapUnity.Tests
             var db = ScriptableObject.CreateInstance<RoomPrefabDatabase>();
             db.AddEntry(prefab.Id, prefab);
 
-            var room = db.InstantiateRoom(roomLayout.Id, null, RoomPositionOption.LayoutPosition);
+            var room = db.InstantiateRoom(roomLayout.Id, null, true);
             Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }

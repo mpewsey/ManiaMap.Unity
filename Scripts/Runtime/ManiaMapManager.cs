@@ -1,5 +1,4 @@
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,140 +7,43 @@ namespace MPewsey.ManiaMapUnity
     /// <summary>
     /// A manager for maintaining the current map data and state.
     /// </summary>
-    public class ManiaMapManager : MonoBehaviour
+    public class ManiaMapManager
     {
-        private static ManiaMapManager _current;
-        /// <summary>
-        /// The current manager.
-        /// </summary>
-        public static ManiaMapManager Current
-        {
-            get
-            {
-                if (_current == null)
-                    _current = new GameObject("Mania Map Manager").AddComponent<ManiaMapManager>();
-                return _current;
-            }
-            private set => _current = value;
-        }
+        public static ManiaMapManager Current { get; private set; }
 
-        private ManiaMapSettings _settings;
-        /// <summary>
-        /// The manager settings.
-        /// </summary>
-        public ManiaMapSettings Settings
-        {
-            get
-            {
-                AssertIsInitialized();
-                return _settings;
-            }
-            private set => _settings = value;
-        }
-
-        private Layout _layout;
         /// <summary>
         /// The current layout.
         /// </summary>
-        public Layout Layout
-        {
-            get
-            {
-                AssertIsInitialized();
-                return _layout;
-            }
-            private set => _layout = value;
-        }
+        public Layout Layout { get; private set; }
 
-        private LayoutState _layoutState;
         /// <summary>
         /// The current layout state.
         /// </summary>
-        public LayoutState LayoutState
-        {
-            get
-            {
-                AssertIsInitialized();
-                return _layoutState;
-            }
-            private set => _layoutState = value;
-        }
+        public LayoutState LayoutState { get; private set; }
 
-        private Dictionary<Uid, List<DoorConnection>> _roomConnections = new Dictionary<Uid, List<DoorConnection>>();
+        /// <summary>
+        /// The manager settings.
+        /// </summary>
+        public ManiaMapSettings Settings { get; private set; }
+
         /// <summary>
         /// A dictionary of door connections by room ID.
         /// </summary>
-        private Dictionary<Uid, List<DoorConnection>> RoomConnections
-        {
-            get
-            {
-                AssertIsInitialized();
-                return _roomConnections;
-            }
-            set => _roomConnections = value;
-        }
+        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
 
-        /// <summary>
-        /// True if the object has been initialized.
-        /// </summary>
-        public bool IsInitialized { get; private set; }
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-            Settings = ManiaMapSettings.GetSettings();
-        }
-
-        private void Start()
-        {
-            if (Current != this)
-                Destroy(gameObject);
-        }
-
-        private void OnDestroy()
-        {
-            if (Current == this)
-                Current = null;
-        }
-
-        /// <summary>
-        /// Sets the current layout and layout state to the manager and initializes it.
-        /// </summary>
-        /// <param name="layout">The layout.</param>
-        /// <param name="layoutState">The layout state.</param>
-        /// <param name="settings">
-        /// The manager settings. If null, the settings will fallback to the first valid of the following:
-        /// 
-        /// 1. The existing manager settings, if they are not null.
-        /// 2. The settings loaded from the resources path, if it exists.
-        /// 3. A newly initialized settings object.
-        /// </param>
-        /// <exception cref="LayoutIsNullException">Raised if the layout is null.</exception>
-        /// <exception cref="LayoutStateIsNullException">Raised if the layout state is null.</exception>
-        /// <exception cref="System.ArgumentException">Raised if the layout and layout state's ID's do not match.</exception>
         public void Initialize(Layout layout, LayoutState layoutState, ManiaMapSettings settings = null)
         {
             if (layout == null)
-                throw new LayoutIsNullException("Layout cannot be null.");
+                throw new System.ArgumentException("Layout cannot be null.");
             if (layoutState == null)
-                throw new LayoutStateIsNullException("Layout state cannot be null.");
+                throw new System.ArgumentException("Layout state cannot be null.");
             if (layout.Id != layoutState.Id)
-                throw new System.ArgumentException("Layout and layout state ID's do not match.");
+                throw new System.ArgumentException($"Layout and layout state ID's do not match: (Layout ID = {layout.Id}, Layout State ID = {layoutState.Id})");
 
-            IsInitialized = true;
-            Settings = settings != null ? settings : Settings != null ? Settings : ManiaMapSettings.GetSettings();
             Layout = layout;
             LayoutState = layoutState;
+            Settings = settings != null ? settings : ManiaMapSettings.LoadSettings();
             RoomConnections = layout.GetRoomConnections();
-        }
-
-        /// <summary>
-        /// Checks that the manager is initialized and throws an exception if it isn't.
-        /// </summary>
-        private void AssertIsInitialized()
-        {
-            if (!IsInitialized)
-                throw new ManiaMapManagerNotInitializedException("Mania Map Manager must be initialized prior to accessing initialized members.");
         }
 
         /// <summary>
@@ -153,14 +55,6 @@ namespace MPewsey.ManiaMapUnity
             if (id <= 0)
                 return Random.Range(1, int.MaxValue);
             return id;
-        }
-
-        /// <summary>
-        /// Returns the player GameObject based on the player tag assigned to the settings.
-        /// </summary>
-        public GameObject GetPlayer()
-        {
-            return GameObject.FindGameObjectWithTag(Settings.PlayerTag);
         }
 
         /// <summary>

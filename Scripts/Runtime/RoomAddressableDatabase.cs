@@ -19,11 +19,11 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
         public AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, Transform parent = null,
-            RoomPositionOption position = RoomPositionOption.UseManagerSetting)
+            bool assignLayoutPosition = false)
         {
             var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
-            return RoomComponent.InstantiateRoomAsync(id, prefab, parent, position);
+            return RoomComponent.InstantiateRoomAsync(id, prefab, parent, assignLayoutPosition);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace MPewsey.ManiaMapUnity
             {
                 if (room.Position.Z == z)
                 {
-                    var handle = InstantiateRoomAsync(room.Id, parent, RoomPositionOption.LayoutPosition);
+                    var handle = InstantiateRoomAsync(room.Id, parent, true);
                     var instance = handle.WaitForCompletion().GetComponent<RoomComponent>();
                     result.Add(instance);
                 }

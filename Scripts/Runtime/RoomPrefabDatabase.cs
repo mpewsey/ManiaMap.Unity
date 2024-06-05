@@ -17,11 +17,11 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="parent">The parent of the instantiated room.</param>
         /// <param name="position">The option guiding the positioning of the room.</param>
         public RoomComponent InstantiateRoom(Uid id, Transform parent = null,
-            RoomPositionOption position = RoomPositionOption.UseManagerSetting)
+            bool assignLayoutPosition = false)
         {
             var roomLayout = ManiaMapManager.Current.Layout.Rooms[id];
             var prefab = GetPrefab(roomLayout.Template.Id);
-            return RoomComponent.InstantiateRoom(id, prefab.gameObject, parent, position);
+            return RoomComponent.InstantiateRoom(id, prefab.gameObject, parent, assignLayoutPosition);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace MPewsey.ManiaMapUnity
             {
                 if (room.Position.Z == z)
                 {
-                    var instance = InstantiateRoom(room.Id, parent, RoomPositionOption.LayoutPosition);
+                    var instance = InstantiateRoom(room.Id, parent, true);
                     result.Add(instance);
                 }
             }

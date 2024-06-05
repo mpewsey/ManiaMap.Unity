@@ -14,22 +14,11 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public string PlayerTag { get => _playerTag; set => _playerTag = value; }
 
-        [SerializeField]
-        private RoomPositionOption _roomPositionOption = RoomPositionOption.Origin;
-        /// <summary>
-        /// The room position option.
-        /// </summary>
-        public RoomPositionOption RoomPositionOption
-        {
-            get => _roomPositionOption;
-            set => _roomPositionOption = value != RoomPositionOption.UseManagerSetting ? value : RoomPositionOption.Origin;
-        }
-
         /// <summary>
         /// Attempts to load the settings from teh resources folder. If they do not exist,
         /// returns a new settings object.
         /// </summary>
-        public static ManiaMapSettings GetSettings()
+        public static ManiaMapSettings LoadSettings()
         {
             var settings = Resources.Load<ManiaMapSettings>("ManiaMap/ManiaMapSettings");
 
@@ -37,15 +26,6 @@ namespace MPewsey.ManiaMapUnity
                 return settings;
 
             return CreateInstance<ManiaMapSettings>();
-        }
-
-        /// <summary>
-        /// Returns the controlling room position option.
-        /// </summary>
-        /// <param name="option">The local room position option.</param>
-        public RoomPositionOption GetRoomPositionOption(RoomPositionOption option)
-        {
-            return option != RoomPositionOption.UseManagerSetting ? option : RoomPositionOption;
         }
     }
 }

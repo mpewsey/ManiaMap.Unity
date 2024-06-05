@@ -41,7 +41,7 @@ namespace MPewsey.ManiaMapUnity.Tests
             var roomState = layoutState.RoomStates[roomLayout.Id];
             var doorConnections = new List<DoorConnection>();
 
-            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, RoomPositionOption.LayoutPosition);
+            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, true);
             Assert.IsTrue(room.IsInitialized);
         }
 
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMapUnity.Tests
             layout.Rooms.Add(roomLayout.Id, roomLayout);
             ManiaMapManager.Current.Initialize(layout, new LayoutState(layout));
 
-            var room = RoomComponent.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, RoomPositionOption.LayoutPosition);
+            var room = RoomComponent.InstantiateRoom(roomLayout.Id, prefab.gameObject, null, true);
             Object.DestroyImmediate(prefab.gameObject);
             Assert.IsNotNull(room);
         }
