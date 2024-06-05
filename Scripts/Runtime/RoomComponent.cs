@@ -1,7 +1,6 @@
 using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMapUnity.Exceptions;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -121,9 +120,9 @@ namespace MPewsey.ManiaMapUnity
 
         private void OnDrawGizmos()
         {
-            var activeFillColor = new Color(0, 0, 1, 0.1f);
-            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-            var lineColor = new Color(0.29f, 0.29f, 0.29f);
+            var activeFillColor = new Color(0, 0, 1, 0.3f);
+            var inactiveFillColor = new Color(1, 0, 0, 0.3f);
+            var lineColor = new Color(0, 0, 0);
             DrawCells(activeFillColor, lineColor, true);
             DrawCells(inactiveFillColor, lineColor, false);
         }
@@ -340,6 +339,35 @@ namespace MPewsey.ManiaMapUnity
             return children.Length;
         }
 
+        public Quaternion GetCellViewDirection()
+        {
+            switch (RoomType)
+            {
+                case RoomType.TwoDimensional:
+                case RoomType.ThreeDimensionalXY:
+                    return Quaternion.Euler(0, 0, 0);
+                case RoomType.ThreeDimensionalXZ:
+                    return Quaternion.Euler(90, 0, 0);
+                default:
+                    throw new System.ArgumentException($"Unhandled room type: {RoomType}.");
+            }
+        }
+
+        public Vector3 CenterGridPosition()
+        {
+            return new Vector3(Columns * CellSize.x, Rows * CellSize.y, CellSize.z) * 0.5f;
+        }
+
+        public Vector3 CenterLocalPosition()
+        {
+            return GridToLocalPosition(CenterGridPosition());
+        }
+
+        public Vector3 CenterGlobalPosition()
+        {
+            return CenterLocalPosition() + transform.position;
+        }
+
         public Vector3 GridToLocalPosition(Vector3 gridPosition)
         {
             switch (RoomType)
@@ -510,7 +538,7 @@ namespace MPewsey.ManiaMapUnity
 
         public DoorDirection FindClosestDoorDirection(int row, int column, Vector3 position)
         {
-            Span<DoorDirection> directions = stackalloc DoorDirection[]
+            System.Span<DoorDirection> directions = stackalloc DoorDirection[]
             {
                 DoorDirection.North,
                 DoorDirection.East,
@@ -520,7 +548,7 @@ namespace MPewsey.ManiaMapUnity
                 DoorDirection.Bottom,
             };
 
-            Span<Vector3> vectors = stackalloc Vector3[]
+            System.Span<Vector3> vectors = stackalloc Vector3[]
             {
                 new Vector3(0, 1, 0),
                 new Vector3(1, 0, 0),
