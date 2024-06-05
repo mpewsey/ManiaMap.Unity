@@ -17,19 +17,11 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// </summary>
         public int Seed { get => _seed; set => _seed = Mathf.Clamp(value, -1, int.MaxValue); }
 
-        /// <summary>
-        /// Returns a new random seed.
-        /// </summary>
-        private RandomSeed GetRandomSeed()
-        {
-            var seed = Seed <= 0 ? Random.Range(1, int.MaxValue) : Seed;
-            return new RandomSeed(seed);
-        }
-
         /// <inheritdoc/>
         public override void AddInputs(Dictionary<string, object> input)
         {
-            input.Add("RandomSeed", GetRandomSeed());
+            var seed = Seed <= 0 ? Random.Range(1, int.MaxValue) : Seed;
+            input.Add("RandomSeed", new RandomSeed(seed));
         }
 
         /// <inheritdoc/>

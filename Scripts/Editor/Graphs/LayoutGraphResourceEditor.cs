@@ -10,7 +10,7 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
     /// The LayoutGraph custom inspector.
     /// </summary>
     [CustomEditor(typeof(LayoutGraphResource))]
-    public class LayoutGraphObjectEditor : UnityEditor.Editor
+    public class LayoutGraphResourceEditor : UnityEditor.Editor
     {
         /// <summary>
         /// Shows the layout graph editor window.

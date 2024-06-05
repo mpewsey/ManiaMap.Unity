@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Graphs.Tests
 {
-    public class TestLayoutGraphObject
+    public class TestLayoutGraphResource
     {
         [Test]
         public void TestCreateNode()

@@ -7,42 +7,16 @@ namespace MPewsey.ManiaMapUnity
     /// </summary>
     public class RoomFlag : CellChild
     {
-        [SerializeField] private int _id;
+        [Header("Room Flag:")]
+        [SerializeField] private int _id = -1;
         /// <summary>
         /// The unique flag ID.
         /// </summary>
         public int Id { get => _id; set => _id = value; }
 
-        /// <summary>
-        /// True if the object has been initialized.
-        /// </summary>
-        public bool IsInitialized { get; private set; }
-
         private void OnValidate()
         {
             Id = ManiaMapManager.AutoAssignId(Id);
-        }
-
-        private void Awake()
-        {
-            Room.OnInitialize.AddListener(Initialize);
-        }
-
-        private void OnDestroy()
-        {
-            Room.OnInitialize.RemoveListener(Initialize);
-        }
-
-        /// <summary>
-        /// Initializes the object.
-        /// </summary>
-        private void Initialize()
-        {
-            if (!IsInitialized)
-            {
-                IsInitialized = true;
-                OnInitialize.Invoke();
-            }
         }
 
         /// <summary>

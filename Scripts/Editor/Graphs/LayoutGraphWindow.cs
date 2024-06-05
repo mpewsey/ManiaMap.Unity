@@ -304,8 +304,8 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
                 DrawNodeInspector();
                 DrawEdgeInspector();
                 EditorGUILayout.Space();
-                LayoutGraphObjectEditor.DrawNodeTemplateGroupErrorBox(GetLayoutGraph());
-                LayoutGraphObjectEditor.DrawEdgeTemplateGroupErrorBox(GetLayoutGraph());
+                LayoutGraphResourceEditor.DrawNodeTemplateGroupErrorBox(GetLayoutGraph());
+                LayoutGraphResourceEditor.DrawEdgeTemplateGroupErrorBox(GetLayoutGraph());
                 DrawInspectorAreaButton();
                 GUILayout.EndScrollView();
                 GUILayout.EndArea();

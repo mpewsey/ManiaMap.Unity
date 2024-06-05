@@ -45,11 +45,11 @@ namespace MPewsey.ManiaMapUnity.Editor
         private void CreateRoomTemplate(RoomTemplate template)
         {
             var path = TemplateSavePath(template);
-            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(path);
 
             if (asset == null)
             {
-                asset = CreateInstance<RoomTemplateObject>();
+                asset = CreateInstance<RoomTemplateResource>();
                 asset.Initialize(template);
                 AssetDatabase.CreateAsset(asset, path);
             }

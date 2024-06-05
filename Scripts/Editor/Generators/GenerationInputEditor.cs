@@ -31,10 +31,9 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         /// </summary>
         private void DrawOutputNamesLabel()
         {
-            const string LongDash = "\u2012";
             var input = GetGenerationInput();
             var names = input.OutputNames();
-            var label = names.Length > 0 ? string.Join(", ", names) : LongDash;
+            var label = names.Length > 0 ? string.Join(", ", names) : "<N/A>";
 
             GUI.enabled = false;
             EditorGUILayout.LabelField("Output Names", label);

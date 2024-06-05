@@ -9,11 +9,6 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
     [CustomEditor(typeof(GenerationStep), true)]
     public class GenerationStepEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// The long dash character.
-        /// </summary>
-        private const string LongDash = "\u2012";
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -38,7 +33,7 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         {
             var step = GetGenerationStep();
             var names = step.InputNames();
-            var label = names.Length > 0 ? string.Join(", ", names) : LongDash;
+            var label = names.Length > 0 ? string.Join(", ", names) : "<N/A>";
 
             GUI.enabled = false;
             EditorGUILayout.LabelField("Input Names", label);
@@ -52,7 +47,7 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         {
             var step = GetGenerationStep();
             var names = step.OutputNames();
-            var label = names.Length > 0 ? string.Join(", ", names) : LongDash;
+            var label = names.Length > 0 ? string.Join(", ", names) : "<N/A>";
 
             GUI.enabled = false;
             EditorGUILayout.LabelField("Output Names", label);

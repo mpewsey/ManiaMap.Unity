@@ -11,11 +11,11 @@ namespace MPewsey.ManiaMapUnity
     public struct CollectableGroupEntry : IEquatable<CollectableGroupEntry>
     {
         [SerializeField]
-        private CollectableObject _collectable;
+        private CollectableResource _collectable;
         /// <summary>
         /// The collectable.
         /// </summary>
-        public CollectableObject Collectable { get => _collectable; set => _collectable = value; }
+        public CollectableResource Collectable { get => _collectable; set => _collectable = value; }
 
         [SerializeField]
         private int _quantity;
@@ -29,7 +29,7 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         /// <param name="collectable">The collectable.</param>
         /// <param name="quantity">The quantity.</param>
-        public CollectableGroupEntry(CollectableObject collectable, int quantity)
+        public CollectableGroupEntry(CollectableResource collectable, int quantity)
         {
             _collectable = collectable;
             _quantity = quantity;
@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMapUnity
 
         public bool Equals(CollectableGroupEntry other)
         {
-            return EqualityComparer<CollectableObject>.Default.Equals(Collectable, other.Collectable) &&
+            return EqualityComparer<CollectableResource>.Default.Equals(Collectable, other.Collectable) &&
                    Quantity == other.Quantity;
         }
 

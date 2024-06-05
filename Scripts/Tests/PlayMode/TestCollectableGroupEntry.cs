@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestEquals()
         {
-            var collectable = ScriptableObject.CreateInstance<CollectableObject>();
+            var collectable = ScriptableObject.CreateInstance<CollectableResource>();
             var entry1 = new CollectableGroupEntry(collectable, 10);
             var entry2 = new CollectableGroupEntry(collectable, 10);
             var entry3 = new CollectableGroupEntry(collectable, 1);
@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestDoesNotEqual()
         {
-            var collectable = ScriptableObject.CreateInstance<CollectableObject>();
+            var collectable = ScriptableObject.CreateInstance<CollectableResource>();
             var entry1 = new CollectableGroupEntry(collectable, 10);
             var entry2 = new CollectableGroupEntry(collectable, 10);
             var entry3 = new CollectableGroupEntry(collectable, 1);
@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestGetHashCode()
         {
-            var collectable = ScriptableObject.CreateInstance<CollectableObject>();
+            var collectable = ScriptableObject.CreateInstance<CollectableResource>();
             var entry1 = new CollectableGroupEntry(collectable, 10);
             var entry2 = new CollectableGroupEntry(collectable, 10);
             var entry3 = new CollectableGroupEntry(collectable, 1);

@@ -8,10 +8,10 @@ namespace MPewsey.ManiaMapUnity
     /// <summary>
     /// A container for storing a serialized room template.
     /// </summary>
-    public class RoomTemplateObject : ScriptableObject
+    public class RoomTemplateResource : ScriptableObject
     {
         [SerializeField]
-        private int _id;
+        private int _id = -1;
         /// <summary>
         /// The template unique ID.
         /// </summary>

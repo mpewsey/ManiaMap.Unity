@@ -5,17 +5,17 @@ namespace MPewsey.ManiaMapUnity.Examples
     /// <summary>
     /// Contains events for the collectable spots used in the samples.
     /// </summary>
-    [RequireComponent(typeof(CollectableSpotBehavior))]
+    [RequireComponent(typeof(CollectableSpotComponent))]
     public class CollectableSpotSample : MonoBehaviour
     {
         /// <summary>
         /// The attached collectable spot component.
         /// </summary>
-        public CollectableSpotBehavior CollectableSpot { get; private set; }
+        public CollectableSpotComponent CollectableSpot { get; private set; }
 
         private void Awake()
         {
-            CollectableSpot = GetComponent<CollectableSpotBehavior>();
+            CollectableSpot = GetComponent<CollectableSpotComponent>();
             CollectableSpot.OnInitialize.AddListener(OnInitialize);
         }
 

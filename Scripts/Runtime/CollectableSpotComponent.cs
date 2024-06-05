@@ -7,8 +7,9 @@ namespace MPewsey.ManiaMapUnity
     /// <summary>
     /// Represents a collectable spot.
     /// </summary>
-    public class CollectableSpotBehavior : CellChild
+    public class CollectableSpotComponent : CellChild
     {
+        [Header("Collectable Spot:")]
         [SerializeField]
         private int _id = -1;
         /// <summary>
@@ -27,36 +28,9 @@ namespace MPewsey.ManiaMapUnity
         private float _weight = 1;
         public float Weight { get => _weight; set => _weight = Mathf.Max(value, 0); }
 
-        /// <summary>
-        /// True if the collectable spot is initialized.
-        /// </summary>
-        public bool IsInitialized { get; private set; }
-
         private void OnValidate()
         {
             Weight = Weight;
-        }
-
-        private void Awake()
-        {
-            Room.OnInitialize.AddListener(Initialize);
-        }
-
-        private void OnDestroy()
-        {
-            Room.OnInitialize.RemoveListener(Initialize);
-        }
-
-        /// <summary>
-        /// Initializes the collectable spot.
-        /// </summary>
-        private void Initialize()
-        {
-            if (!IsInitialized)
-            {
-                IsInitialized = true;
-                OnInitialize.Invoke();
-            }
         }
 
         /// <summary>

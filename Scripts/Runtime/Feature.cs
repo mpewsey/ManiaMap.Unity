@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapUnity
     /// </summary>
     public class Feature : CellChild
     {
+        [Header("Feature:")]
         [SerializeField]
         private string _name = "<None>";
         /// <summary>

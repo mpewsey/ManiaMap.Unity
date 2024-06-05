@@ -2,6 +2,7 @@ using MPewsey.Common.Pipelines;
 using MPewsey.Common.Random;
 using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -14,20 +15,6 @@ namespace MPewsey.ManiaMapUnity.Generators
     public class GenerationPipeline : MonoBehaviour
     {
         [SerializeField]
-        private GameObject _inputsContainer;
-        /// <summary>
-        /// The container containing the GenerationInput components for the pipeline.
-        /// </summary>
-        public GameObject InputsContainer { get => _inputsContainer; set => _inputsContainer = value; }
-
-        [SerializeField]
-        private GameObject _stepsContainer;
-        /// <summary>
-        /// The container containing the GenerationStep components for the pipeline.
-        /// </summary>
-        public GameObject StepsContainer { get => _stepsContainer; set => _stepsContainer = value; }
-
-        [SerializeField]
         private List<string> _manualInputNames = new List<string>();
         /// <summary>
         /// An array of manual input names passed to the generate function.
@@ -37,23 +24,23 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <summary>
         /// Generates a set of results for the pipeline.
         /// </summary>
-        /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
+        /// <param name="manualInputs">A dictionary of manually specified pipeline inputs.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        public PipelineResults Run(Dictionary<string, object> inputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
+        public PipelineResults Run(Dictionary<string, object> manualInputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
         {
-            inputs ??= new Dictionary<string, object>();
-            return BuildPipeline().Run(BuildInputs(inputs), logger, cancellationToken);
+            manualInputs ??= new Dictionary<string, object>();
+            return BuildPipeline().Run(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
         /// <summary>
         /// Generates a set of results for the pipeline asynchronously.
         /// </summary>
-        /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
+        /// <param name="manualInputs">A dictionary of manually specified pipeline inputs.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        public Task<PipelineResults> RunAsync(Dictionary<string, object> inputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
+        public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, System.Action<string> logger = null, CancellationToken cancellationToken = default)
         {
-            inputs ??= new Dictionary<string, object>();
-            return BuildPipeline().RunAsync(BuildInputs(inputs), logger, cancellationToken);
+            manualInputs ??= new Dictionary<string, object>();
+            return BuildPipeline().RunAsync(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
         /// <summary>
@@ -63,20 +50,18 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <param name="seed">The random seed.</param>
         /// <param name="attempts">The maximum number of attempts.</param>
         /// <param name="timeout">The timeout for each attempt.</param>
-        /// <param name="inputs">A dictionary of manually specified pipeline inputs.</param>
-        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> inputs = null, System.Action<string> logger = null)
+        /// <param name="manualInputs">A dictionary of manually specified pipeline inputs.</param>
+        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null, System.Action<string> logger = null)
         {
+            manualInputs ??= new Dictionary<string, object>();
+
             for (int i = 0; i < attempts; i++)
             {
                 logger?.Invoke($"[Generation Pipeline] Beginning attempt {i + 1} / {attempts}...");
-
-                var args = new Dictionary<string, object>(inputs)
-                {
-                    { "RandomSeed", new RandomSeed(seed + i * 1447) },
-                };
-
+                var inputs = new Dictionary<string, object>(manualInputs);
+                inputs.Add("RandomSeed", new RandomSeed(seed + i * 1447));
                 var token = new CancellationTokenSource(timeout).Token;
-                var results = await RunAsync(args, logger, token);
+                var results = await RunAsync(inputs, logger, token);
 
                 if (results.Success)
                 {
@@ -86,23 +71,23 @@ namespace MPewsey.ManiaMapUnity.Generators
             }
 
             logger?.Invoke("[Generation Pipeline] Generation failed for all attempts.");
-            return new PipelineResults(inputs);
+            return new PipelineResults(manualInputs);
         }
 
         /// <summary>
         /// Returns an array of generation steps attached to the steps container.
         /// </summary>
-        public GenerationStep[] GetSteps()
+        public GenerationStep[] FindStepComponents()
         {
-            return StepsContainer.GetComponents<GenerationStep>();
+            return GetComponentsInChildren<GenerationStep>();
         }
 
         /// <summary>
         /// Returns an array of generation inputs attached to the inputs container.
         /// </summary>
-        public GenerationInput[] GetInputs()
+        public GenerationInput[] FindInputComponents()
         {
-            return InputsContainer.GetComponents<GenerationInput>();
+            return GetComponentsInChildren<GenerationInput>();
         }
 
         /// <summary>
@@ -110,7 +95,7 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// </summary>
         public Pipeline BuildPipeline()
         {
-            var steps = GetSteps();
+            var steps = FindStepComponents();
             var pipelineSteps = new IPipelineStep[steps.Length];
 
             for (int i = 0; i < steps.Length; i++)
@@ -124,12 +109,13 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <summary>
         /// Validates and builts a dictionary of inputs for the pipeline.
         /// </summary>
-        public Dictionary<string, object> BuildInputs(Dictionary<string, object> inputs)
+        public Dictionary<string, object> BuildInputs(Dictionary<string, object> manualInputs = null)
         {
-            Validate(inputs);
-            var result = new Dictionary<string, object>(inputs);
+            manualInputs ??= new Dictionary<string, object>();
+            Validate(manualInputs.Keys);
+            var result = new Dictionary<string, object>(manualInputs);
 
-            foreach (var input in GetInputs())
+            foreach (var input in FindInputComponents())
             {
                 input.AddInputs(result);
             }
@@ -137,23 +123,15 @@ namespace MPewsey.ManiaMapUnity.Generators
             return result;
         }
 
-        /// <summary>
-        /// Validates the pipeline and throws any applicable exceptions.
-        /// </summary>
-        /// <param name="inputs">A dictionary of manual inputs.</param>
-        public void Validate(Dictionary<string, object> inputs)
-        {
-            var names = new HashSet<string>(inputs.Keys);
-            ValidateInputs(names);
-            ValidateSteps(names);
-        }
-
-        /// <summary>
-        /// Validates the pipeline and throws any applicable exceptions.
-        /// </summary>
         public void Validate()
         {
-            var names = new HashSet<string>(ManualInputNames);
+            Validate(ManualInputNames);
+        }
+
+        public void Validate(IEnumerable<string> manualInputNames)
+        {
+            manualInputNames ??= Enumerable.Empty<string>();
+            var names = new HashSet<string>(manualInputNames);
             ValidateInputs(names);
             ValidateSteps(names);
         }
@@ -165,7 +143,7 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <exception cref="DuplicateInputException">Raised if a duplicate input name exists.</exception>
         private void ValidateInputs(HashSet<string> names)
         {
-            var inputs = GetInputs();
+            var inputs = FindInputComponents();
 
             foreach (var input in inputs)
             {
@@ -184,7 +162,7 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <exception cref="MissingInputException">Raised if a step is missing an input name.</exception>
         private void ValidateSteps(HashSet<string> names)
         {
-            var steps = GetSteps();
+            var steps = FindStepComponents();
 
             foreach (var step in steps)
             {
@@ -201,61 +179,14 @@ namespace MPewsey.ManiaMapUnity.Generators
             }
         }
 
-        /// <summary>
-        /// Returns true if the pipeline is valid.
-        /// </summary>
-        /// <param name="inputs">A dictionary of manual inputs.</param>
-        public bool IsValid(Dictionary<string, object> inputs)
+        public void SetRandomSeed(int seed)
         {
-            var names = new HashSet<string>(inputs.Keys);
+            var input = GetComponentInChildren<RandomSeedInput>();
 
-            try
-            {
-                ValidateInputs(names);
-            }
-            catch (DuplicateInputException)
-            {
-                return false;
-            }
+            if (input == null)
+                throw new MissingInputException("Random seed input not found.");
 
-            try
-            {
-                ValidateSteps(names);
-            }
-            catch (MissingInputException)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Returns true if the pipeline is valid.
-        /// </summary>
-        public bool IsValid()
-        {
-            var names = new HashSet<string>(ManualInputNames);
-
-            try
-            {
-                ValidateInputs(names);
-            }
-            catch (DuplicateInputException)
-            {
-                return false;
-            }
-
-            try
-            {
-                ValidateSteps(names);
-            }
-            catch (MissingInputException)
-            {
-                return false;
-            }
-
-            return true;
+            input.Seed = seed;
         }
     }
 }

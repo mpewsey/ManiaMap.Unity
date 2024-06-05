@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMapUnity.Editor
     /// The CollectableSpot editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(CollectableSpotBehavior))]
-    public class CollectableSpotBehaviorEditor : CellChildEditor
+    [CustomEditor(typeof(CollectableSpotComponent))]
+    public class CollectableSpotComponentEditor : CellChildEditor
     {
         /// <summary>
         /// Creates a new collectable spot Game Object.
@@ -19,16 +19,16 @@ namespace MPewsey.ManiaMapUnity.Editor
         {
             var obj = new GameObject("Collectable Spot");
             obj.transform.SetParent(Selection.activeTransform);
-            obj.AddComponent<CollectableSpotBehavior>();
+            obj.AddComponent<CollectableSpotComponent>();
         }
 
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            var spot = (CollectableSpotBehavior)serializedObject.targetObject;
+            var spot = (CollectableSpotComponent)serializedObject.targetObject;
 
             if (spot.Group == null)
-                EditorGUILayout.HelpBox("Collectable group not assigned.", MessageType.Error, true);
+                EditorGUILayout.HelpBox("Collectable group is not assigned.", MessageType.Error, true);
         }
     }
 }

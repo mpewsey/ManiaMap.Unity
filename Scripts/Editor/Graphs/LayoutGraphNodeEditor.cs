@@ -4,11 +4,11 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
-    /// The LayoutEdge editor.
+    /// The LayoutNode editor.
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(LayoutGraphEdge))]
-    public class LayoutEdgeObjectEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LayoutGraphNode))]
+    public class LayoutGraphNodeEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

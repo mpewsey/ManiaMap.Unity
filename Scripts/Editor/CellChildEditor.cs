@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             var child = (CellChild)serializedObject.targetObject;
 
             if (child.Room == null)
-                EditorGUILayout.HelpBox("Room not assigned.", MessageType.Error, true);
+                EditorGUILayout.HelpBox("Room is not assigned. Run auto assign on room to resolve.", MessageType.Error, true);
         }
     }
 }

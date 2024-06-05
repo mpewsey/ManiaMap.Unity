@@ -38,7 +38,7 @@ namespace MPewsey.ManiaMapUnity
         public List<TemplateGroupsEntry> GetMMTemplateGroupEntries()
         {
             var result = new List<TemplateGroupsEntry>(Entries.Count);
-            var templateCache = new Dictionary<RoomTemplateObject, RoomTemplate>();
+            var templateCache = new Dictionary<RoomTemplateResource, RoomTemplate>();
 
             foreach (var entry in Entries)
             {
@@ -52,7 +52,7 @@ namespace MPewsey.ManiaMapUnity
         /// Add an entry for the template to the group if it does not already exist.
         /// </summary>
         /// <param name="template">The room template.</param>
-        public void AddTemplate(RoomTemplateObject template)
+        public void AddTemplate(RoomTemplateResource template)
         {
             if (template != null && !ContainsTemplate(template))
                 Entries.Add(new TemplateGroupEntry(template));
@@ -62,7 +62,7 @@ namespace MPewsey.ManiaMapUnity
         /// Returns true if the template is contained in the group.
         /// </summary>
         /// <param name="template">The template.</param>
-        private bool ContainsTemplate(RoomTemplateObject template)
+        private bool ContainsTemplate(RoomTemplateResource template)
         {
             foreach (var entry in Entries)
             {

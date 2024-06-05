@@ -21,9 +21,8 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
             obj.transform.SetParent(Selection.activeTransform);
             var pipeline = obj.AddComponent<GenerationPipeline>();
 
-            var inputs = new GameObject("<Inputs>");
+            var inputs = new GameObject("Inputs");
             inputs.transform.SetParent(obj.transform);
-            pipeline.InputsContainer = inputs;
 
             var layoutId = inputs.AddComponent<GenerationIntInput>();
             layoutId.Name = "LayoutId";
@@ -33,9 +32,8 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
             inputs.AddComponent<LayoutGraphsInput>();
             inputs.AddComponent<CollectableGroupsInput>();
 
-            var steps = new GameObject("<Steps>");
+            var steps = new GameObject("Steps");
             steps.transform.SetParent(obj.transform);
-            pipeline.StepsContainer = steps;
             steps.AddComponent<LayoutGraphSelectorStep>();
             steps.AddComponent<LayoutGraphRandomizerStep>();
             steps.AddComponent<LayoutGeneratorStep>();
@@ -77,7 +75,7 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         {
             var messages = new List<string>() { "Inputs contain errors:" };
             var pipeline = GetGenerationPipeline();
-            var inputs = pipeline.GetInputs();
+            var inputs = pipeline.FindInputComponents();
 
             foreach (var input in inputs)
             {
@@ -102,7 +100,7 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         {
             var messages = new List<string>() { "Steps contain errors:" };
             var pipeline = GetGenerationPipeline();
-            var steps = pipeline.GetSteps();
+            var steps = pipeline.FindStepComponents();
 
             foreach (var step in steps)
             {

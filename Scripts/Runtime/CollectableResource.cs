@@ -6,10 +6,10 @@ namespace MPewsey.ManiaMapUnity
     /// An object representing a collectable with a unique ID.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Collectable")]
-    public class CollectableObject : ScriptableObject
+    public class CollectableResource : ScriptableObject
     {
         [SerializeField]
-        private int _id;
+        private int _id = -1;
         /// <summary>
         /// The unique ID.
         /// </summary>

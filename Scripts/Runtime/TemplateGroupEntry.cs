@@ -11,11 +11,11 @@ namespace MPewsey.ManiaMapUnity
     public class TemplateGroupEntry
     {
         [SerializeField]
-        private RoomTemplateObject _template;
+        private RoomTemplateResource _template;
         /// <summary>
         /// The room template.
         /// </summary>
-        public RoomTemplateObject Template { get => _template; set => _template = value; }
+        public RoomTemplateResource Template { get => _template; set => _template = value; }
 
         [SerializeField]
         private int _minQuantity;
@@ -49,7 +49,7 @@ namespace MPewsey.ManiaMapUnity
         /// Initializes a new entry with no quantity constraints.
         /// </summary>
         /// <param name="template">The room template.</param>
-        public TemplateGroupEntry(RoomTemplateObject template)
+        public TemplateGroupEntry(RoomTemplateResource template)
         {
             Template = template;
         }
@@ -60,7 +60,7 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="template">The room template.</param>
         /// <param name="minQuantity">The minimum use quantity</param>
         /// <param name="maxQuantity">The maximum use quantity.</param>
-        public TemplateGroupEntry(RoomTemplateObject template, int minQuantity, int maxQuantity)
+        public TemplateGroupEntry(RoomTemplateResource template, int minQuantity, int maxQuantity)
         {
             Template = template;
             MinQuantity = minQuantity;
@@ -70,7 +70,7 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Returns a new generation template group entry.
         /// </summary>
-        public TemplateGroupsEntry GetMMTemplateGroupsEntry(Dictionary<RoomTemplateObject, RoomTemplate> templateCache)
+        public TemplateGroupsEntry GetMMTemplateGroupsEntry(Dictionary<RoomTemplateResource, RoomTemplate> templateCache)
         {
             if (!templateCache.TryGetValue(Template, out var template))
             {

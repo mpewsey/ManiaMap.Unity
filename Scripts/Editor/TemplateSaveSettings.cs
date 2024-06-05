@@ -99,13 +99,13 @@ namespace MPewsey.ManiaMapUnity.Editor
         private void CreateRoomTemplate(RoomComponent room, string prefabGuid)
         {
             var path = TemplateSavePath(room);
-            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateObject>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(path);
             var template = room.GetMMRoomTemplate();
             EditorUtility.SetDirty(room);
 
             if (asset == null)
             {
-                asset = CreateInstance<RoomTemplateObject>();
+                asset = CreateInstance<RoomTemplateResource>();
                 asset.Initialize(template, prefabGuid);
                 AssetDatabase.CreateAsset(asset, path);
             }

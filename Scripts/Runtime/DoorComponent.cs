@@ -9,13 +9,14 @@ namespace MPewsey.ManiaMapUnity
     /// <summary>
     /// A component representing a door.
     /// </summary>
-    public class DoorBehavior : CellChild
+    public class DoorComponent : CellChild
     {
         /// <summary>
         /// A dictionary of doors by their room ID.
         /// </summary>
-        private static Dictionary<Uid, LinkedList<DoorBehavior>> Doors { get; } = new Dictionary<Uid, LinkedList<DoorBehavior>>();
+        private static Dictionary<Uid, LinkedList<DoorComponent>> Doors { get; } = new Dictionary<Uid, LinkedList<DoorComponent>>();
 
+        [Header("Door:")]
         [SerializeField]
         private bool _autoAssignDirection = true;
         /// <summary>
@@ -51,14 +52,12 @@ namespace MPewsey.ManiaMapUnity
         public DoorConnection Connection { get; private set; }
 
         /// <summary>
-        /// True if the door has been initialized.
-        /// </summary>
-        public bool IsInitialized { get; private set; }
-
-        /// <summary>
         /// True if the door exists in the layout.
         /// </summary>
-        public bool DoorExists() => Connection != null;
+        public bool DoorExists()
+        {
+            return Connection != null;
+        }
 
         /// <summary>
         /// The room ID of the room this door connects to.
@@ -71,21 +70,13 @@ namespace MPewsey.ManiaMapUnity
             return Connection.GetConnectingRoom(Room.RoomLayout.Id);
         }
 
-        private void Awake()
+        protected override void OnDestroy()
         {
-            Room.OnInitialize.AddListener(Initialize);
-        }
-
-        private void OnDestroy()
-        {
-            Room.OnInitialize.RemoveListener(Initialize);
+            base.OnDestroy();
             RemoveFromDoorsDictionary();
         }
 
-        /// <summary>
-        /// Initializes the door.
-        /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             if (!IsInitialized)
             {
@@ -97,21 +88,12 @@ namespace MPewsey.ManiaMapUnity
         }
 
         /// <summary>
-        /// Checks that the door is initialized and throws an exception if it isn't.
-        /// </summary>
-        private void AssertIsInitialized()
-        {
-            if (!IsInitialized)
-                throw new DoorNotInitializedException($"Attempting to access initialized member on uninitialized door: {this}.");
-        }
-
-        /// <summary>
         /// Finds the door with the specified room ID and door connection.
         /// Returns null if the door is not found.
         /// </summary>
         /// <param name="roomId">The room ID.</param>
         /// <param name="connection">The door connection.</param>
-        public static DoorBehavior FindDoor(Uid roomId, DoorConnection connection)
+        public static DoorComponent FindDoor(Uid roomId, DoorConnection connection)
         {
             if (connection != null && Doors.TryGetValue(roomId, out var doors))
             {
@@ -134,7 +116,7 @@ namespace MPewsey.ManiaMapUnity
 
             if (!Doors.TryGetValue(id, out var doors))
             {
-                doors = new LinkedList<DoorBehavior>();
+                doors = new LinkedList<DoorComponent>();
                 Doors.Add(id, doors);
             }
 
@@ -166,14 +148,6 @@ namespace MPewsey.ManiaMapUnity
             }
 
             return null;
-        }
-
-        /// <summary>
-        /// Returns a new generation door.
-        /// </summary>
-        public Door CreateData()
-        {
-            return new Door(Type, Code);
         }
 
         /// <summary>

@@ -15,8 +15,8 @@ namespace MPewsey.ManiaMapUnity
     public class RoomComponent : MonoBehaviour
     {
         [SerializeField]
-        private RoomTemplateObject _roomTemplate;
-        public RoomTemplateObject RoomTemplate { get => _roomTemplate; set => _roomTemplate = value; }
+        private RoomTemplateResource _roomTemplate;
+        public RoomTemplateResource RoomTemplate { get => _roomTemplate; set => _roomTemplate = value; }
 
         [SerializeField]
         private int _id;
@@ -464,7 +464,7 @@ namespace MPewsey.ManiaMapUnity
 
         private void AddMMDoors(Array2D<Cell> cells)
         {
-            foreach (var door in GetComponentsInChildren<DoorBehavior>())
+            foreach (var door in GetComponentsInChildren<DoorComponent>())
             {
                 var cell = cells[door.Row, door.Column];
                 cell.SetDoor(door.Direction, door.GetMMDoor());
@@ -483,7 +483,7 @@ namespace MPewsey.ManiaMapUnity
         private Dictionary<int, CollectableSpot> GetMMCollectableSpots()
         {
             var result = new Dictionary<int, CollectableSpot>();
-            var spots = GetComponentsInChildren<CollectableSpotBehavior>();
+            var spots = GetComponentsInChildren<CollectableSpotComponent>();
 
             foreach (var spot in spots)
             {

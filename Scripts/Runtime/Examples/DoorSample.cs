@@ -5,17 +5,17 @@ namespace MPewsey.ManiaMapUnity.Examples
     /// <summary>
     /// Contains events for the doors used in the samples.
     /// </summary>
-    [RequireComponent(typeof(DoorBehavior))]
+    [RequireComponent(typeof(DoorComponent))]
     public class DoorSample : MonoBehaviour
     {
         /// <summary>
         /// The attached door component.
         /// </summary>
-        public DoorBehavior Door { get; private set; }
+        public DoorComponent Door { get; private set; }
 
         private void Awake()
         {
-            Door = GetComponent<DoorBehavior>();
+            Door = GetComponent<DoorComponent>();
             Door.OnInitialize.AddListener(OnInitialize);
         }
 
