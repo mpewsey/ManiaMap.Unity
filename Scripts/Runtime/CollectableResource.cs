@@ -9,6 +9,10 @@ namespace MPewsey.ManiaMapUnity
     public class CollectableResource : ScriptableObject
     {
         [SerializeField]
+        private bool _editId;
+        public bool EditId { get => _editId; set => _editId = value; }
+
+        [SerializeField]
         private int _id = -1;
         /// <summary>
         /// The unique ID.

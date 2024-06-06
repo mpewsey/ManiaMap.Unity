@@ -74,7 +74,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
         {
             var node = CreateInstance<LayoutGraphNode>();
             node.Id = id;
-            node.Name = $"<Node {id}>";
+            node.Name = $"Node {id}";
             node.name = node.Name;
             return node;
         }

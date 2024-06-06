@@ -102,7 +102,7 @@ namespace MPewsey.ManiaMapUnity.Editor
             EditorGUILayout.Separator();
 
             if (GUILayout.Button(GetGUIContent("Auto Assign", "ManiaMap/Icons/AutoAssignIcon"), EditorStyles.toolbarButton))
-                AutoAssign();
+                BatchUpdaterTool.AutoAssign(Room);
 
             EditorGUILayout.EndHorizontal();
             GUILayout.FlexibleSpace();
@@ -149,13 +149,6 @@ namespace MPewsey.ManiaMapUnity.Editor
                 default:
                     throw new System.NotImplementedException($"Unhandled slot: {slot}.");
             }
-        }
-
-        private static void AutoAssign()
-        {
-            var count = Room.AutoAssign();
-            EditorUtility.SetDirty(Room);
-            Debug.Log($"<color=#00FF00><b>Auto assigned {count} cell children.</b></color>");
         }
 
         private static void OrientView(SceneView sceneView)

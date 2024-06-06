@@ -20,17 +20,7 @@ namespace MPewsey.ManiaMapUnity
         public RoomTemplateResource RoomTemplate { get => _roomTemplate; set => _roomTemplate = value; }
 
         [SerializeField]
-        private int _id;
-        /// <summary>
-        /// The unique template ID.
-        /// </summary>
-        public int Id { get => _id; set => _id = value; }
-
-        [SerializeField]
         private string _name = "<None>";
-        /// <summary>
-        /// The template name.
-        /// </summary>
         public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
@@ -114,7 +104,6 @@ namespace MPewsey.ManiaMapUnity
 
         private void OnValidate()
         {
-            Id = Rand.AutoAssignId(Id);
             Size = Size;
             CellSize = CellSize;
         }
@@ -329,7 +318,6 @@ namespace MPewsey.ManiaMapUnity
         public int AutoAssign()
         {
             Size = Size;
-            Id = Rand.AutoAssignId(Id);
             var children = GetComponentsInChildren<CellChild>();
 
             foreach (var child in children)
@@ -434,14 +422,13 @@ namespace MPewsey.ManiaMapUnity
             return LocalPositionToCellIndex(position - transform.position);
         }
 
-        public RoomTemplate GetMMRoomTemplate()
+        public RoomTemplate GetMMRoomTemplate(int id, string name)
         {
-            AutoAssign();
             var cells = GetMMCells();
             AddMMDoors(cells);
             AddMMFeatures(cells);
             var spots = GetMMCollectableSpots();
-            var template = new RoomTemplate(Id, Name, cells, spots);
+            var template = new RoomTemplate(id, name, cells, spots);
             template.Validate();
             ValidateRoomFlags();
             return template;

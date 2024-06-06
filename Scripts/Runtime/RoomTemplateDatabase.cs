@@ -64,7 +64,7 @@ namespace MPewsey.ManiaMapUnity
                     if (!RoomTemplates.TryGetValue(id, out var template))
                         RoomTemplates.Add(id, entry.Template);
                     else if (template != entry.Template)
-                        throw new DuplicateIdException($"Duplicate room template ID: {id}.");
+                        throw new DuplicateIdException($"Duplicate room template ID: (ID = {id}, Template1 = {template}, Template2 = {entry.Template}).");
                 }
             }
         }

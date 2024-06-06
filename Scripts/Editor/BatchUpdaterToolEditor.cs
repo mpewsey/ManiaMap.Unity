@@ -31,7 +31,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         private void DrawSaveTemplatesButton()
         {
             if (GUILayout.Button("Batch Save Templates"))
-                GetSettings().BatchSaveTemplates();
+                GetSettings().BatchUpdateRoomTemplates();
         }
     }
 }

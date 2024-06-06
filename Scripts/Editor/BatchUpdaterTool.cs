@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -5,33 +6,21 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// Settings for batch saving room templates for prefabs in a project.
+    /// Tool for batch updating room templates for prefabs in a project.
     /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Batch Updater Tool", fileName = "BatchUpdaterTool")]
     public class BatchUpdaterTool : ScriptableObject
     {
         [SerializeField]
         private string[] _searchPaths = new string[] { "Assets" };
-        /// <summary>
-        /// The search paths used when searching for room prefabs.
-        /// </summary>
         public string[] SearchPaths { get => _searchPaths; set => _searchPaths = value; }
 
-        /// <summary>
-        /// Batch saves room templates for prefabs based on the settings at ManiaMap/TemplateSaveSettings
-        /// Resources path or the default settings.
-        /// </summary>
         [MenuItem("Mania Map/Batch Update Room Templates", priority = 0)]
-        public static void BatchUpdateRoomTemplates()
+        public static void RunBatchUpdateRoomTemplates()
         {
-            LoadSettings().BatchSaveTemplates();
+            LoadSettings().BatchUpdateRoomTemplates();
         }
 
-        /// <summary>
-        /// If a ManiaMap/TemplateSaveSettings asset exists within a Resources folder,
-        /// loads and returns it. Otherwise, creates a new asset within the Resources folder
-        /// and returns it.
-        /// </summary>
         private static BatchUpdaterTool LoadSettings()
         {
             var settings = Resources.Load<BatchUpdaterTool>("ManiaMap/BatchUpdaterTool");
@@ -42,69 +31,69 @@ namespace MPewsey.ManiaMapUnity.Editor
             return CreateInstance<BatchUpdaterTool>();
         }
 
-        /// <summary>
-        /// Saves room templates for all prefabs with Room components found at the
-        /// specified search paths.
-        /// </summary>
-        public void BatchSaveTemplates()
+        public void BatchUpdateRoomTemplates()
         {
+            var count = 0;
+            Debug.Log("Beginning room template batch update...");
             var guids = AssetDatabase.FindAssets("t:prefab", SearchPaths);
 
             foreach (var guid in guids)
             {
-                CreateRoomTemplate(guid);
+                if (UpdateRoomTemplate(guid))
+                    count++;
             }
 
-            Debug.Log("<color=#00FF00><b>Saved room templates.</b></color>");
+            Debug.Log($"<color=#00FF00><b>Completed room template batch update on {count} rooms.</b></color>");
         }
 
-        /// <summary>
-        /// Creates or overwrites the room template for the prefab at the specified
-        /// project path, provided it has a Room component.
-        /// </summary>
-        /// <param name="guid">The asset GUID.</param>
-        private void CreateRoomTemplate(string guid)
+        public static void AutoAssign(RoomComponent room)
         {
-            var assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            var count = room.AutoAssign();
 
-            using (var scope = new PrefabUtility.EditPrefabContentsScope(assetPath))
+            if (room.RoomTemplate != null)
             {
-                var prefab = scope.prefabContentsRoot;
-
-                if (!prefab.TryGetComponent(out RoomComponent room))
-                    return;
-
-                Debug.Log($"Processing room at {assetPath}.");
-                CreateRoomTemplate(room, guid);
+                room.RoomTemplate.Id = Rand.AutoAssignId(room.RoomTemplate.Id);
+                room.RoomTemplate.Name = room.Name;
+                EditorUtility.SetDirty(room.RoomTemplate);
             }
-        }
 
-        /// <summary>
-        /// Creates or overwrites the room template for the specified room.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        /// <param name="prefabGuid">The prefab GUID.</param>
-        private void CreateRoomTemplate(RoomComponent room, string prefabGuid)
-        {
-            var path = Path.ChangeExtension(AssetDatabase.GUIDToAssetPath(prefabGuid), ".room_template.asset");
-            var asset = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(path);
-            var template = room.GetMMRoomTemplate();
             EditorUtility.SetDirty(room);
+            Debug.Log($"<color=#00FF00><b>Auto assigned {count} cell children.</b></color>");
+        }
 
-            if (asset == null)
+        private bool UpdateRoomTemplate(string roomGuid)
+        {
+            var roomPath = AssetDatabase.GUIDToAssetPath(roomGuid);
+            using var scope = new PrefabUtility.EditPrefabContentsScope(roomPath);
+
+            if (!scope.prefabContentsRoot.TryGetComponent(out RoomComponent room))
+                return false;
+
+            Debug.Log($"Processing room at {roomPath}...");
+            AutoAssign(room);
+            var savePath = Path.ChangeExtension(roomPath, ".room_template.asset");
+
+            if (room.RoomTemplate == null)
+                room.RoomTemplate = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(savePath);
+
+            if (room.RoomTemplate == null)
             {
-                asset = CreateInstance<RoomTemplateResource>();
-                asset.Initialize(template, prefabGuid);
-                AssetDatabase.CreateAsset(asset, path);
-            }
-            else
-            {
-                asset.Initialize(template, prefabGuid);
-                EditorUtility.SetDirty(asset);
-                // AssetDatabase.SaveAssetIfDirty(asset);
+                var templateResource = CreateInstance<RoomTemplateResource>();
+                AssetDatabase.CreateAsset(templateResource, savePath);
+                room.RoomTemplate = AssetDatabase.LoadAssetAtPath<RoomTemplateResource>(savePath);
+                Debug.Log($"Saved room template to {savePath}");
             }
 
-            Debug.Log($"<color=#00FF00><b>Saved room template to {path}.</b></color>");
+            room.RoomTemplate.Id = Rand.AutoAssignId(room.RoomTemplate.Id);
+            room.RoomTemplate.Name = room.Name;
+            EditorUtility.SetDirty(room.RoomTemplate);
+
+            var template = room.GetMMRoomTemplate(room.RoomTemplate.Id, room.RoomTemplate.Name);
+            room.RoomTemplate.Initialize(template, roomGuid, roomPath);
+            EditorUtility.SetDirty(room.RoomTemplate);
+            EditorUtility.SetDirty(room);
+            Debug.Log($"Updated room template.");
+            return true;
         }
     }
 }

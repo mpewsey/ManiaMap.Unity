@@ -17,60 +17,17 @@ namespace MPewsey.ManiaMapUnity.Examples
         public Vector2 CellSize { get => _cellSize; set => _cellSize = value; }
 
         [SerializeField]
-        private GenerationPipeline _generator;
+        private GenerationPipeline _pipeline;
         /// <summary>
         /// The generation pipeline.
         /// </summary>
-        public GenerationPipeline Generator { get => _generator; set => _generator = value; }
+        public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
 
-        [SerializeField]
-        private RoomTemplatePrefabDatabase _roomDatabase;
-        /// <summary>
-        /// The room prefab database.
-        /// </summary>
-        public RoomTemplatePrefabDatabase RoomDatabase { get => _roomDatabase; set => _roomDatabase = value; }
-
-        private GameObject _roomContainer;
+        private GameObject _container;
         /// <summary>
         /// The container where all rooms are instantiated.
         /// </summary>
-        public GameObject RoomContainer { get => _roomContainer; set => _roomContainer = value; }
-
-        private void Start()
-        {
-            GenerateLayout();
-            CenterCamera();
-        }
-
-        private void Update()
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                GenerateLayout();
-                CenterCamera();
-            }
-        }
-
-        /// <summary>
-        /// Generates a new layout.
-        /// </summary>
-        public void GenerateLayout()
-        {
-            Destroy(RoomContainer);
-            RoomContainer = new GameObject("Rooms");
-            var results = Generator.Run();
-
-            if (!results.Success)
-            {
-                Debug.LogError("Failed to generate layout.");
-                return;
-            }
-
-            var layout = results.GetOutput<Layout>("Layout");
-            var layoutState = new LayoutState(layout);
-            ManiaMapManager.Initialize(layout, layoutState);
-            // RoomDatabase.InstantiateLayer(0, RoomContainer.transform);
-        }
+        public GameObject Container { get => _container; set => _container = value; }
 
         /// <summary>
         /// Centers the camera on the current layout and sets its view size.

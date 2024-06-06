@@ -73,12 +73,15 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         private void DrawInspector()
         {
+            var editId = ((RoomTemplateResource)serializedObject.targetObject).EditId;
+
             GUI.enabled = false;
             var prop = serializedObject.GetIterator();
             var enterChildren = true;
 
             while (prop.NextVisible(enterChildren))
             {
+                GUI.enabled = prop.name == "_editId" || (prop.name == "_id" && editId);
                 EditorGUILayout.PropertyField(prop, true);
                 enterChildren = false;
             }

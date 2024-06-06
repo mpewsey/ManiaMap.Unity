@@ -12,45 +12,52 @@ namespace MPewsey.ManiaMapUnity
     public class RoomTemplateResource : ScriptableObject
     {
         [SerializeField]
+        private bool _editId;
+        public bool EditId { get => _editId; set => _editId = value; }
+
+        [SerializeField]
         private int _id = -1;
         /// <summary>
         /// The template unique ID.
         /// </summary>
-        public int Id { get => _id; private set => _id = value; }
+        public int Id { get => _id; set => _id = value; }
 
         [SerializeField]
-        private string _name;
+        private string _name = "<None>";
         /// <summary>
         /// The template name.
         /// </summary>
-        public string Name { get => _name; private set => _name = value; }
+        public string Name { get => _name; set => _name = value; }
 
         [SerializeField]
         private string _prefabGuid;
         /// <summary>
         /// The prefab GUID.
         /// </summary>
-        public string PrefabGuid { get => _prefabGuid; set => _prefabGuid = value; }
+        public string PrefabGuid { get => _prefabGuid; private set => _prefabGuid = value; }
+
+        [SerializeField]
+        private string _prefabPath;
+        public string PrefabPath { get => _prefabPath; private set => _prefabPath = value; }
 
         [SerializeField]
         [TextArea(3, int.MaxValue)]
-        private string _serializedText = string.Empty;
+        private string _serializedText;
         /// <summary>
         /// The serialized text for the template.
         /// </summary>
         public string SerializedText { get => _serializedText; private set => _serializedText = value; }
 
-        /// <summary>
-        /// Initializes the template based on the specified generation template.
-        /// </summary>
-        /// <param name="template">The generation template.</param>
-        /// <param name="prefabGuid">The prefab GUID.</param>
-        public void Initialize(RoomTemplate template, string prefabGuid = null)
+        private void OnValidate()
         {
-            Id = template.Id;
-            Name = template.Name;
-            PrefabGuid = prefabGuid;
+            Id = Rand.AutoAssignId(Id);
+        }
+
+        public void Initialize(RoomTemplate template, string prefabGuid, string prefabPath)
+        {
             SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
+            PrefabGuid = prefabGuid;
+            PrefabPath = prefabPath;
         }
 
         public RoomTemplate GetMMRoomTemplate()

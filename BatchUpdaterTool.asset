@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c107d86a69bd129469101849ad2d02e1, type: 3}
-  m_Name: GeekTemplateGroup
+  m_Script: {fileID: 11500000, guid: c14d7b74688fba74fba9e053341f4904, type: 3}
+  m_Name: BatchUpdaterTool
   m_EditorClassIdentifier: 
-  _name: Geek Template Group
-  _templates: []
-  _entries:
-  - _template: {fileID: 11400000, guid: 034d2e12d64a75740a23331b073c3e64, type: 2}
-    _minQuantity: 0
-    _maxQuantity: 2147483647
+  _searchPaths:
+  - Packages/com.mpewsey.maniamap.unity

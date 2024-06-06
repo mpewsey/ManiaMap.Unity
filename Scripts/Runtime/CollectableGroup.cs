@@ -20,7 +20,7 @@ namespace MPewsey.ManiaMapUnity
     public class CollectableGroup : ScriptableObject
     {
         [SerializeField]
-        private string _name = "<Name>";
+        private string _name = "<None>";
         /// <summary>
         /// The group name.
         /// </summary>

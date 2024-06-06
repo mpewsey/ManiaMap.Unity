@@ -101,7 +101,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
             var edge = CreateInstance<LayoutGraphEdge>();
             edge.FromNode = fromNode;
             edge.ToNode = toNode;
-            edge.Name = $"<Edge ({fromNode}, {toNode})>";
+            edge.Name = $"Edge ({fromNode}, {toNode})";
             edge.name = edge.Name;
             return edge;
         }
