@@ -57,6 +57,14 @@ namespace MPewsey.ManiaMapUnity
         private UnityEvent _onInitialized = new UnityEvent();
         public UnityEvent OnInitialized { get => _onInitialized; set => _onInitialized = value; }
 
+        [SerializeField]
+        private CellAreaTriggeredEvent _onCellAreaEntered = new CellAreaTriggeredEvent();
+        public CellAreaTriggeredEvent OnCellAreaEntered { get => _onCellAreaEntered; set => _onCellAreaEntered = value; }
+
+        [SerializeField]
+        private CellAreaTriggeredEvent _onCellAreaExited = new CellAreaTriggeredEvent();
+        public CellAreaTriggeredEvent OnCellAreaExited { get => _onCellAreaExited; set => _onCellAreaExited = value; }
+
         /// <summary>
         /// True if the room has been initialized.
         /// </summary>
@@ -149,17 +157,19 @@ namespace MPewsey.ManiaMapUnity
             var roomLayout = layout.Rooms[id];
             var roomState = layoutState.RoomStates[id];
             var doorConnections = manager.GetDoorConnections(id);
-            return InstantiateRoomAsync(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+            var cellLayer = manager.Settings.CellLayer;
+            var triggeringLayer = manager.Settings.TriggeringLayer;
+            return InstantiateRoomAsync(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
         }
 
         public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(AssetReferenceGameObject prefab, Transform parent,
             Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
+            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += handle => handle.Result.GetComponent<RoomComponent>()
-                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
 
             return handle;
         }
@@ -173,15 +183,17 @@ namespace MPewsey.ManiaMapUnity
             var roomLayout = layout.Rooms[id];
             var roomState = layoutState.RoomStates[id];
             var doorConnections = manager.GetDoorConnections(id);
-            return InstantiateRoom(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+            var cellLayer = manager.Settings.CellLayer;
+            var triggeringLayer = manager.Settings.TriggeringLayer;
+            return InstantiateRoom(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
         }
 
         public static RoomComponent InstantiateRoom(GameObject prefab, Transform parent,
             Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
+            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             var room = Instantiate(prefab, parent).GetComponent<RoomComponent>();
-            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, assignLayoutPosition);
+            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
             return room;
         }
 
@@ -194,7 +206,7 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="doorConnections">A list of door connections for the room.</param>
         /// <param name="position">The option guiding the position of the room.</param>
         public bool Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, bool assignLayoutPosition)
+            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             if (IsInitialized)
                 return false;
@@ -208,6 +220,7 @@ namespace MPewsey.ManiaMapUnity
             if (assignLayoutPosition)
                 MoveToLayoutPosition();
 
+            CreateCellAreas(cellLayer, triggeringLayer);
             IsInitialized = true;
             OnInitialize.Invoke();
             return true;
@@ -217,6 +230,18 @@ namespace MPewsey.ManiaMapUnity
         {
             var position = new Vector2(RoomLayout.Position.Y, RoomLayout.Position.X) * CellSize;
             transform.localPosition = GridToLocalPosition(position);
+        }
+
+        private void CreateCellAreas(LayerMask cellLayer, LayerMask triggeringLayer)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    if (GetCellActivity(i, j))
+                        CellArea.InstantiateCellArea(i, j, this, cellLayer, triggeringLayer);
+                }
+            }
         }
 
         public void SizeActiveCells()
@@ -355,6 +380,20 @@ namespace MPewsey.ManiaMapUnity
         public Vector3 CenterGlobalPosition()
         {
             return CenterLocalPosition() + transform.position;
+        }
+
+        public Vector3 LocalCellSize()
+        {
+            switch (RoomType)
+            {
+                case RoomType.TwoDimensional:
+                case RoomType.ThreeDimensionalXY:
+                    return CellSize;
+                case RoomType.ThreeDimensionalXZ:
+                    return new Vector3(CellSize.x, CellSize.z, CellSize.y);
+                default:
+                    throw new System.ArgumentException($"Unhandled room type: {RoomType}.");
+            }
         }
 
         public Vector3 GridToLocalPosition(Vector3 gridPosition)
