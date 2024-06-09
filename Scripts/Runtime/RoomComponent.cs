@@ -58,12 +58,12 @@ namespace MPewsey.ManiaMapUnity
         public UnityEvent OnInitialized { get => _onInitialized; set => _onInitialized = value; }
 
         [SerializeField]
-        private CellAreaTriggeredEvent _onCellAreaEntered = new CellAreaTriggeredEvent();
-        public CellAreaTriggeredEvent OnCellAreaEntered { get => _onCellAreaEntered; set => _onCellAreaEntered = value; }
+        private CellAreaTriggerEvent _onCellAreaEntered = new CellAreaTriggerEvent();
+        public CellAreaTriggerEvent OnCellAreaEntered { get => _onCellAreaEntered; set => _onCellAreaEntered = value; }
 
         [SerializeField]
-        private CellAreaTriggeredEvent _onCellAreaExited = new CellAreaTriggeredEvent();
-        public CellAreaTriggeredEvent OnCellAreaExited { get => _onCellAreaExited; set => _onCellAreaExited = value; }
+        private CellAreaTriggerEvent _onCellAreaExited = new CellAreaTriggerEvent();
+        public CellAreaTriggerEvent OnCellAreaExited { get => _onCellAreaExited; set => _onCellAreaExited = value; }
 
         /// <summary>
         /// True if the room has been initialized.
@@ -563,9 +563,9 @@ namespace MPewsey.ManiaMapUnity
 
             System.Span<Vector3> vectors = stackalloc Vector3[]
             {
-                new Vector3(0, 1, 0),
-                new Vector3(1, 0, 0),
                 new Vector3(0, -1, 0),
+                new Vector3(1, 0, 0),
+                new Vector3(0, 1, 0),
                 new Vector3(-1, 0, 0),
                 new Vector3(0, 0, 1),
                 new Vector3(0, 0, -1),

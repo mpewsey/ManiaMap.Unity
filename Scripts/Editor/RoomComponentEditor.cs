@@ -21,5 +21,13 @@ namespace MPewsey.ManiaMapUnity.Editor
             obj.AddComponent<RoomComponent>();
             obj.transform.SetParent(Selection.activeTransform);
         }
+
+        public override void OnInspectorGUI()
+        {
+            if (GUILayout.Button(RoomComponentToolbar.DisplayToolbar ? "Hide Toolbar" : "Show Toolbar"))
+                RoomComponentToolbar.ToggleToolbarDisplay();
+
+            base.OnInspectorGUI();
+        }
     }
 }

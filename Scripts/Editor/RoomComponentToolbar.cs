@@ -9,20 +9,28 @@ namespace MPewsey.ManiaMapUnity.Editor
         private const int LeftMouseButton = 0;
         private static RoomComponent Room { get; set; }
         private static CellActivity CellEditMode { get; set; }
-        private static bool DisplayCells { get; set; } = true;
+        public static bool DisplayToolbar { get; private set; } = true;
+        private static bool DisplayCells { get; set; }
         private static bool MouseButtonPressed { get; set; }
         private static Vector2Int MouseButtonDownIndex { get; set; }
 
         static RoomComponentToolbar()
         {
             SceneView.duringSceneGui += OnDuringSceneGui;
+            GizmoUtility.SetGizmoEnabled(typeof(RoomComponent), DisplayCells, false);
+        }
+
+        public static void ToggleToolbarDisplay()
+        {
+            DisplayToolbar = !DisplayToolbar;
+            SceneView.RepaintAll();
         }
 
         private static void OnDuringSceneGui(SceneView sceneView)
         {
             PollSelectedRoom();
 
-            if (Room != null)
+            if (DisplayToolbar && Room != null)
                 DrawToolbar(sceneView);
 
             ProcessEditCells(sceneView);
@@ -38,7 +46,7 @@ namespace MPewsey.ManiaMapUnity.Editor
 
         private static void ProcessEditCells(SceneView sceneView)
         {
-            if (!DisplayCells || CellEditMode == CellActivity.None || Room == null || !Event.current.isMouse)
+            if (!DisplayToolbar || !DisplayCells || CellEditMode == CellActivity.None || Room == null || !Event.current.isMouse)
                 return;
 
             if (Event.current.type == EventType.MouseDown && Event.current.button == LeftMouseButton)
@@ -79,7 +87,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         private static void DrawToolbar(SceneView sceneView)
         {
             Handles.BeginGUI();
-            EditorGUILayout.Separator();
+            // EditorGUILayout.Separator();
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);

@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMapUnity.Graphs
     public class LayoutGraphResource : ScriptableObject
     {
         [SerializeField]
-        private int _id;
+        private int _id = -1;
         /// <summary>
         /// The unique ID.
         /// </summary>
@@ -51,6 +51,11 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// Returns the number of edges in the graph.
         /// </summary>
         public int EdgeCount => Edges.Count;
+
+        private void OnValidate()
+        {
+            Id = Rand.AutoAssignId(Id);
+        }
 
         /// <summary>
         /// Returns the next available unique node ID.
