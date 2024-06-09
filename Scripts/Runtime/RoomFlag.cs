@@ -8,14 +8,18 @@ namespace MPewsey.ManiaMapUnity
     public class RoomFlag : CellChild
     {
         [Header("Room Flag:")]
+        [SerializeField] private bool _editId;
+        public bool EditId { get => _editId; set => _editId = value; }
+
         [SerializeField] private int _id = -1;
         /// <summary>
         /// The unique flag ID.
         /// </summary>
         public int Id { get => _id; set => _id = value; }
 
-        private void OnValidate()
+        public override void AutoAssign(RoomComponent room)
         {
+            base.AutoAssign(room);
             Id = Rand.AutoAssignId(Id);
         }
 

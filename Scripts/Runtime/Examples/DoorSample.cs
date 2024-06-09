@@ -8,6 +8,12 @@ namespace MPewsey.ManiaMapUnity.Examples
     [RequireComponent(typeof(DoorComponent))]
     public class DoorSample : MonoBehaviour
     {
+        [SerializeField] private GameObject _doorContainer;
+        public GameObject DoorContainer { get => _doorContainer; set => _doorContainer = value; }
+
+        [SerializeField] private GameObject _wallContainer;
+        public GameObject WallContainer { get => _wallContainer; set => _wallContainer = value; }
+
         /// <summary>
         /// The attached door component.
         /// </summary>
@@ -25,8 +31,8 @@ namespace MPewsey.ManiaMapUnity.Examples
         /// <param name="door">The door sending the event.</param>
         private void OnInitialize()
         {
-            if (Door.DoorExists())
-                Destroy(Door.gameObject);
+            var container = Door.DoorExists() ? WallContainer : DoorContainer;
+            Destroy(container);
         }
     }
 }

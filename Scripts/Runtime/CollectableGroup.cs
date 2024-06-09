@@ -43,5 +43,22 @@ namespace MPewsey.ManiaMapUnity
                 }
             }
         }
+
+        public void AddCollectable(CollectableResource collectable)
+        {
+            if (collectable != null && !ContainsCollectable(collectable))
+                Collectables.Add(new CollectableGroupEntry(collectable, 0));
+        }
+
+        public bool ContainsCollectable(CollectableResource collectable)
+        {
+            foreach (var entry in Collectables)
+            {
+                if (entry.Collectable == collectable)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

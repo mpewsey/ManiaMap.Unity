@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bcbab901c8344cb342c09e213e556, type: 3}
+  m_Name: Square3x3Room2D.room_template
+  m_EditorClassIdentifier: 
+  _editId: 0
+  _id: 378301451
+  _name: 2D Square 3x3
+  _prefabGuid: e318b17f5c4ec424382397ebc33a6cec
+  _prefabPath: Packages/com.mpewsey.maniamap.unity/2DRooms/Square3x3Room2D.prefab
+  _serializedText: '{"Id":378301451,"Name":"2D Square 3x3","Cells":{"Rows":3,"Columns":3,"Array":[{"Doors":{"Map":[{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":0,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":3,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[]},"Features":[]},{"Doors":{"Map":[{"Key":2,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":3,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":1,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":2,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}}]},"Features":[]}]},"CollectableSpots":{"Map":[{"Key":1802052628,"Value":{"Position":{"X":0,"Y":0},"Group":"Collectable
+    Group 2D","Weight":1}},{"Key":827512706,"Value":{"Position":{"X":0,"Y":2},"Group":"Collectable
+    Group 2D","Weight":1}},{"Key":1329810772,"Value":{"Position":{"X":2,"Y":2},"Group":"Collectable
+    Group 2D","Weight":1}},{"Key":887590718,"Value":{"Position":{"X":2,"Y":0},"Group":"Collectable
+    Group 2D","Weight":1}}]}}'

@@ -24,11 +24,33 @@ namespace MPewsey.ManiaMapUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
+            serializedObject.Update();
+            DrawInspector();
             var spot = (CollectableSpotComponent)serializedObject.targetObject;
 
             if (spot.Group == null)
                 EditorGUILayout.HelpBox("Collectable group is not assigned.", MessageType.Error, true);
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawInspector()
+        {
+            var editId = ((CollectableSpotComponent)serializedObject.targetObject).EditId;
+
+            GUI.enabled = false;
+            var prop = serializedObject.GetIterator();
+            var enterChildren = true;
+
+            while (prop.NextVisible(enterChildren))
+            {
+                var disabled = prop.name == "m_Script" || (prop.name == "_id" && !editId);
+                GUI.enabled = !disabled;
+                EditorGUILayout.PropertyField(prop, true);
+                enterChildren = false;
+            }
+
+            GUI.enabled = true;
         }
     }
 }

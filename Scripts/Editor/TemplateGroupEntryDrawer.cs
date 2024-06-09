@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The TemplateGroup.Entry custom property drawer.
+    /// The TemplateGroupEntry custom property drawer.
     /// </summary>
     [CustomPropertyDrawer(typeof(TemplateGroupEntry))]
     public class TemplateGroupEntryDrawer : PropertyDrawer

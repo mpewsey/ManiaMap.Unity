@@ -10,6 +10,9 @@ namespace MPewsey.ManiaMapUnity
     public class CollectableSpotComponent : CellChild
     {
         [Header("Collectable Spot:")]
+        [SerializeField] private bool _editId;
+        public bool EditId { get => _editId; set => _editId = value; }
+
         [SerializeField]
         private int _id = -1;
         /// <summary>
