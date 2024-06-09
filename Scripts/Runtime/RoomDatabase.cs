@@ -69,10 +69,9 @@ namespace MPewsey.ManiaMapUnity
             return RoomsByTemplateId[id];
         }
 
-        public RoomComponent GetRoomPrefab(Uid id)
+        public RoomComponent GetRoomPrefab(Uid id, LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
-            var room = manager.Layout.Rooms[id];
+            var room = layoutPack.Layout.Rooms[id];
             return GetRoomPrefab(room.Template.Id);
         }
     }

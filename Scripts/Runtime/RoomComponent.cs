@@ -71,14 +71,9 @@ namespace MPewsey.ManiaMapUnity
         public bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// The layout.
+        /// The layout pack.
         /// </summary>
-        public Layout Layout { get; private set; }
-
-        /// <summary>
-        /// The layout state.
-        /// </summary>
-        public LayoutState LayoutState { get; private set; }
+        public LayoutPack LayoutPack { get; private set; }
 
         /// <summary>
         /// The room data.
@@ -147,53 +142,46 @@ namespace MPewsey.ManiaMapUnity
             }
         }
 
-        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id,
+        public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, LayoutPack layoutPack,
             AssetReferenceGameObject prefab, Transform parent = null,
             bool assignLayoutPosition = false)
         {
-            var manager = ManiaMapManager.Current;
-            var layout = manager.Layout;
-            var layoutState = manager.LayoutState;
-            var roomLayout = layout.Rooms[id];
-            var roomState = layoutState.RoomStates[id];
-            var doorConnections = manager.GetDoorConnections(id);
-            var cellLayer = manager.Settings.CellLayer;
-            var triggeringLayer = manager.Settings.TriggeringLayer;
-            return InstantiateRoomAsync(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
+            var roomLayout = layoutPack.Layout.Rooms[id];
+            var roomState = layoutPack.LayoutState.RoomStates[id];
+            var cellLayer = layoutPack.Settings.CellLayer;
+            var triggeringLayer = layoutPack.Settings.TriggeringLayer;
+            return InstantiateRoomAsync(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
         }
 
         public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(AssetReferenceGameObject prefab, Transform parent,
-            Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+            LayoutPack layoutPack, Room roomLayout, RoomState roomState,
+            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += handle => handle.Result.GetComponent<RoomComponent>()
-                .Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
+                .Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
 
             return handle;
         }
 
-        public static RoomComponent InstantiateRoom(Uid id, GameObject prefab, Transform parent = null,
+        public static RoomComponent InstantiateRoom(Uid id, LayoutPack layoutPack, GameObject prefab, Transform parent = null,
             bool assignLayoutPosition = false)
         {
-            var manager = ManiaMapManager.Current;
-            var layout = manager.Layout;
-            var layoutState = manager.LayoutState;
-            var roomLayout = layout.Rooms[id];
-            var roomState = layoutState.RoomStates[id];
-            var doorConnections = manager.GetDoorConnections(id);
-            var cellLayer = manager.Settings.CellLayer;
-            var triggeringLayer = manager.Settings.TriggeringLayer;
-            return InstantiateRoom(prefab, parent, layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
+            var roomLayout = layoutPack.Layout.Rooms[id];
+            var roomState = layoutPack.LayoutState.RoomStates[id];
+            var doorConnections = layoutPack.GetDoorConnections(id);
+            var cellLayer = layoutPack.Settings.CellLayer;
+            var triggeringLayer = layoutPack.Settings.TriggeringLayer;
+            return InstantiateRoom(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
         }
 
         public static RoomComponent InstantiateRoom(GameObject prefab, Transform parent,
-            Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+            LayoutPack layoutPack, Room roomLayout, RoomState roomState,
+            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             var room = Instantiate(prefab, parent).GetComponent<RoomComponent>();
-            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellLayer, triggeringLayer, assignLayoutPosition);
+            room.Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
             return room;
         }
 
@@ -205,17 +193,15 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="layoutState">The layout state.</param>
         /// <param name="doorConnections">A list of door connections for the room.</param>
         /// <param name="position">The option guiding the position of the room.</param>
-        public bool Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+        public bool Initialize(LayoutPack layoutPack, Room roomLayout, RoomState roomState,
+            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
         {
             if (IsInitialized)
                 return false;
 
-            Layout = layout;
-            LayoutState = layoutState;
+            LayoutPack = layoutPack;
             RoomLayout = roomLayout;
             RoomState = roomState;
-            DoorConnections = doorConnections;
 
             if (assignLayoutPosition)
                 MoveToLayoutPosition();

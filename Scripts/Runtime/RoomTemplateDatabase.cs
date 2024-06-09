@@ -75,22 +75,20 @@ namespace MPewsey.ManiaMapUnity
             return RoomTemplates[id];
         }
 
-        public RoomTemplateResource GetRoomTemplate(Uid id)
+        public RoomTemplateResource GetRoomTemplate(Uid id, LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
-            var room = manager.Layout.Rooms[id];
+            var room = layoutPack.Layout.Rooms[id];
             return GetRoomTemplate(room.Template.Id);
         }
 
-        public async Task<List<RoomComponent>> InstantiateAllRoomsAsync(Transform parent = null)
+        public async Task<List<RoomComponent>> InstantiateAllRoomsAsync(LayoutPack layoutPack, Transform parent = null)
         {
-            var manager = ManiaMapManager.Current;
-            var result = new List<RoomComponent>(manager.Layout.Rooms.Count);
+            var result = new List<RoomComponent>(layoutPack.Layout.Rooms.Count);
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
-                var handle = RoomComponent.InstantiateRoomAsync(room.Id, prefab, parent, true);
+                var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
                 var roomInstance = await handle.Task;
                 result.Add(roomInstance.GetComponent<RoomComponent>());
             }
@@ -98,15 +96,14 @@ namespace MPewsey.ManiaMapUnity
             return result;
         }
 
-        public List<RoomComponent> InstantiateAllRooms(Transform parent = null)
+        public List<RoomComponent> InstantiateAllRooms(LayoutPack layoutPack, Transform parent = null)
         {
-            var manager = ManiaMapManager.Current;
-            var result = new List<RoomComponent>(manager.Layout.Rooms.Count);
+            var result = new List<RoomComponent>(layoutPack.Layout.Rooms.Count);
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
-                var handle = RoomComponent.InstantiateRoomAsync(room.Id, prefab, parent, true);
+                var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
                 var roomInstance = handle.WaitForCompletion();
                 result.Add(roomInstance.GetComponent<RoomComponent>());
             }
@@ -114,18 +111,17 @@ namespace MPewsey.ManiaMapUnity
             return result;
         }
 
-        public async Task<List<RoomComponent>> InstantiateRoomsAsync(Transform parent = null, int? z = null)
+        public async Task<List<RoomComponent>> InstantiateRoomsAsync(LayoutPack layoutPack, Transform parent = null, int? z = null)
         {
-            var manager = ManiaMapManager.Current;
-            z ??= manager.Layout.Rooms.Values.Select(x => x.Position.Z).First();
+            z ??= layoutPack.Layout.Rooms.Values.Select(x => x.Position.Z).First();
             var result = new List<RoomComponent>();
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 if (room.Position.Z == z)
                 {
                     var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
-                    var handle = RoomComponent.InstantiateRoomAsync(room.Id, prefab, parent, true);
+                    var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
                     var roomInstance = await handle.Task;
                     result.Add(roomInstance.GetComponent<RoomComponent>());
                 }
@@ -134,18 +130,17 @@ namespace MPewsey.ManiaMapUnity
             return result;
         }
 
-        public List<RoomComponent> InstantiateRooms(Transform parent = null, int? z = null)
+        public List<RoomComponent> InstantiateRooms(LayoutPack layoutPack, Transform parent = null, int? z = null)
         {
-            var manager = ManiaMapManager.Current;
-            z ??= manager.Layout.Rooms.Values.Select(x => x.Position.Z).First();
+            z ??= layoutPack.Layout.Rooms.Values.Select(x => x.Position.Z).First();
             var result = new List<RoomComponent>();
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 if (room.Position.Z == z)
                 {
                     var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
-                    var handle = RoomComponent.InstantiateRoomAsync(room.Id, prefab, parent, true);
+                    var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
                     var roomInstance = handle.WaitForCompletion();
                     result.Add(roomInstance.GetComponent<RoomComponent>());
                 }
@@ -154,15 +149,15 @@ namespace MPewsey.ManiaMapUnity
             return result;
         }
 
-        public AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, Transform parent = null, bool assignLayoutPosition = false)
+        public AsyncOperationHandle<GameObject> InstantiateRoomAsync(Uid id, LayoutPack layoutPack, Transform parent = null, bool assignLayoutPosition = false)
         {
-            var prefab = GetRoomTemplate(id).GetAssetReference();
-            return RoomComponent.InstantiateRoomAsync(id, prefab, parent, assignLayoutPosition);
+            var prefab = GetRoomTemplate(id, layoutPack).GetAssetReference();
+            return RoomComponent.InstantiateRoomAsync(id, layoutPack, prefab, parent, assignLayoutPosition);
         }
 
-        public RoomComponent InstantiateRoom(Uid id, Transform parent = null, bool assignLayoutPosition = false)
+        public RoomComponent InstantiateRoom(Uid id, LayoutPack layoutPack, Transform parent = null, bool assignLayoutPosition = false)
         {
-            var result = InstantiateRoomAsync(id, parent, assignLayoutPosition).WaitForCompletion();
+            var result = InstantiateRoomAsync(id, layoutPack, parent, assignLayoutPosition).WaitForCompletion();
             return result.GetComponent<RoomComponent>();
         }
     }

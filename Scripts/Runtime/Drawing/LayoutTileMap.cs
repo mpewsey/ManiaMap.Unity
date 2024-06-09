@@ -14,10 +14,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
         public Tilemap TileMap { get; private set; }
         public int LayerCoordinate { get; private set; }
 
-        public void DrawMap(int? z = null)
+        public void DrawMap(LayoutPack layoutPack, int? z = null)
         {
-            var manager = ManiaMapManager.Current;
-            DrawMap(manager.Layout, manager.LayoutState, z);
+            DrawMap(layoutPack.Layout, layoutPack.LayoutState, z);
         }
 
         public void DrawMap(Layout layout, LayoutState layoutState = null, int? z = null)

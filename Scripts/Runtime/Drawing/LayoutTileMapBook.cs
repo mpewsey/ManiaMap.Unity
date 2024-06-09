@@ -27,10 +27,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             PageLayerCoordinates = RoomsByLayer.Keys.OrderBy(x => x).ToList();
         }
 
-        public void DrawPages()
+        public void DrawPages(LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
-            DrawPages(manager.Layout, manager.LayoutState);
+            DrawPages(layoutPack.Layout, layoutPack.LayoutState);
         }
 
         public void DrawPages(Layout layout, LayoutState layoutState = null)

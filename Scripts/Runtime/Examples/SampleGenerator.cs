@@ -33,12 +33,12 @@ namespace MPewsey.ManiaMapUnity.Examples
         /// </summary>
         public void CenterCamera()
         {
-            var camera = Camera.main;
-            var bounds = ManiaMapManager.Current.Layout.GetBounds();
-            var x = CellSize.x * (bounds.X + 0.5f * bounds.Width);
-            var y = -CellSize.y * (bounds.Y + 0.5f * bounds.Height);
-            camera.transform.position = new Vector3(x, y, camera.transform.position.z);
-            camera.orthographicSize = 0.5f * CellSize.y * (bounds.Height + 2);
+            //var camera = Camera.main;
+            //var bounds = ManiaMapManager.Current.Layout.GetBounds();
+            //var x = CellSize.x * (bounds.X + 0.5f * bounds.Width);
+            //var y = -CellSize.y * (bounds.Y + 0.5f * bounds.Height);
+            //camera.transform.position = new Vector3(x, y, camera.transform.position.z);
+            //camera.orthographicSize = 0.5f * CellSize.y * (bounds.Height + 2);
         }
     }
 }
