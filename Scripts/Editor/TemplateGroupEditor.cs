@@ -18,14 +18,6 @@ namespace MPewsey.ManiaMapUnity.Editor
         }
 
         /// <summary>
-        /// Returns the target template group.
-        /// </summary>
-        private TemplateGroup GetTemplateGroup()
-        {
-            return (TemplateGroup)serializedObject.targetObject;
-        }
-
-        /// <summary>
         /// Draws the drag and drop area and evaluates user input within the area.
         /// </summary>
         private void DrawDragAndDropArea()
@@ -55,7 +47,7 @@ namespace MPewsey.ManiaMapUnity.Editor
         /// </summary>
         private void AddDragAndDropTemplates()
         {
-            var group = GetTemplateGroup();
+            var group = (TemplateGroup)serializedObject.targetObject;
 
             foreach (var obj in DragAndDrop.objectReferences)
             {

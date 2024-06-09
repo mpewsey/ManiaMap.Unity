@@ -31,29 +31,16 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawEditButton();
+            var graph = (LayoutGraphResource)serializedObject.targetObject;
+
+            if (GUILayout.Button("Edit"))
+                LayoutGraphWindow.ShowWindow(graph);
+
             DrawDefaultInspector();
             EditorGUILayout.Space();
-            DrawNodeTemplateGroupErrorBox(GetLayoutGraph());
-            DrawEdgeTemplateGroupErrorBox(GetLayoutGraph());
+            DrawNodeTemplateGroupErrorBox(graph);
+            DrawEdgeTemplateGroupErrorBox(graph);
             serializedObject.ApplyModifiedProperties();
-        }
-
-        /// <summary>
-        /// Returns the target layout graph.
-        /// </summary>
-        private LayoutGraphResource GetLayoutGraph()
-        {
-            return (LayoutGraphResource)serializedObject.targetObject;
-        }
-
-        /// <summary>
-        /// Draws the edit button.
-        /// </summary>
-        private void DrawEditButton()
-        {
-            if (GUILayout.Button("Edit"))
-                LayoutGraphWindow.ShowWindow(GetLayoutGraph());
         }
 
         /// <summary>
@@ -69,10 +56,8 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
                     messages.Add($"  * {node.Id} : {node.Name}");
             }
 
-            if (messages.Count <= 1)
-                return;
-
-            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
 
         /// <summary>
@@ -89,10 +74,8 @@ namespace MPewsey.ManiaMapUnity.Graphs.Editor
                     messages.Add($"  * ({edge.FromNode}, {edge.ToNode}) : {edge.Name}");
             }
 
-            if (messages.Count <= 1)
-                return;
-
-            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
     }
 }

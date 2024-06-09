@@ -19,19 +19,11 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         }
 
         /// <summary>
-        /// Returns the target generation step.
-        /// </summary>
-        private GenerationStep GetGenerationStep()
-        {
-            return (GenerationStep)serializedObject.targetObject;
-        }
-
-        /// <summary>
         /// Draws the input names label.
         /// </summary>
         private void DrawInputNamesLabel()
         {
-            var step = GetGenerationStep();
+            var step = (GenerationStep)serializedObject.targetObject;
             var names = step.InputNames();
             var label = names.Length > 0 ? string.Join(", ", names) : "<N/A>";
 
@@ -45,7 +37,7 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         /// </summary>
         private void DrawOutputNamesLabel()
         {
-            var step = GetGenerationStep();
+            var step = (GenerationStep)serializedObject.targetObject;
             var names = step.OutputNames();
             var label = names.Length > 0 ? string.Join(", ", names) : "<N/A>";
 

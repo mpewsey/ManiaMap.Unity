@@ -49,32 +49,25 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
         }
 
         /// <summary>
-        /// Returns the target generation pipeline.
-        /// </summary>
-        private GenerationPipeline GetGenerationPipeline()
-        {
-            return (GenerationPipeline)serializedObject.targetObject;
-        }
-
-        /// <summary>
         /// Draws error boxes for the generation inputs and generation steps if there are
         /// errors in their input or output names.
         /// </summary>
         private void DrawPipelineErrorBox()
         {
-            var names = new HashSet<string>(GetGenerationPipeline().ManualInputNames);
-            DrawGenerationInputErrorBox(names);
-            DrawGenerationStepErrorBox(names);
+            var pipeline = (GenerationPipeline)serializedObject.targetObject;
+            var names = new HashSet<string>(pipeline.ManualInputNames);
+            DrawGenerationInputErrorBox(pipeline, names);
+            DrawGenerationStepErrorBox(pipeline, names);
         }
 
         /// <summary>
         /// Draws the generation pipeline error box.
         /// </summary>
         /// <param name="names">A set of argument names.</param>
-        private void DrawGenerationInputErrorBox(HashSet<string> names)
+        /// <param name="pipeline">The generation pipeline.</param>
+        private static void DrawGenerationInputErrorBox(GenerationPipeline pipeline, HashSet<string> names)
         {
             var messages = new List<string>() { "Inputs contain errors:" };
-            var pipeline = GetGenerationPipeline();
             var inputs = pipeline.FindInputComponents();
 
             foreach (var input in inputs)
@@ -86,20 +79,18 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
                 }
             }
 
-            if (messages.Count <= 1)
-                return;
-
-            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
 
         /// <summary>
         /// Draws the generation step error box.
         /// </summary>
         /// <param name="names">A set of argument names.</param>
-        private void DrawGenerationStepErrorBox(HashSet<string> names)
+        /// <param name="pipeline">The generation pipeline.</param>
+        private static void DrawGenerationStepErrorBox(GenerationPipeline pipeline, HashSet<string> names)
         {
             var messages = new List<string>() { "Steps contain errors:" };
-            var pipeline = GetGenerationPipeline();
             var steps = pipeline.FindStepComponents();
 
             foreach (var step in steps)
@@ -116,10 +107,8 @@ namespace MPewsey.ManiaMapUnity.Generators.Editor
                 }
             }
 
-            if (messages.Count <= 1)
-                return;
-
-            EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
+            if (messages.Count > 1)
+                EditorGUILayout.HelpBox(string.Join('\n', messages), MessageType.Error, true);
         }
     }
 }
