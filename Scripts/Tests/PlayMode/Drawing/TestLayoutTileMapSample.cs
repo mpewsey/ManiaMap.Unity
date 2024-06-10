@@ -1,6 +1,7 @@
 using MPewsey.ManiaMapUnity.Examples;
 using NUnit.Framework;
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -30,11 +31,15 @@ namespace MPewsey.ManiaMapUnity.Drawing.Tests
         [UnityTest]
         public IEnumerator TestPressGenerateButton()
         {
+            var timeout = 20;
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
             Assert.IsTrue(Sample.GenerateButton.interactable);
             Sample.GenerateButton.onClick.Invoke();
             Assert.IsFalse(Sample.GenerateButton.interactable);
-            yield return new WaitUntil(() => Sample.GenerateButton.interactable);
+            yield return new WaitUntil(() => Sample.GenerateButton.interactable || stopwatch.Elapsed.TotalSeconds > timeout);
             Assert.IsTrue(Sample.GenerateButton.interactable);
+            Assert.IsTrue(stopwatch.Elapsed.TotalSeconds <= timeout);
         }
     }
 }

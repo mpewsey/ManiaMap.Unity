@@ -1,11 +1,8 @@
-using MPewsey.Common.Random;
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMap.Samples;
-using MPewsey.ManiaMapUnity.Generators;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.IO;
 
 namespace MPewsey.ManiaMapUnity.Tests
@@ -15,24 +12,17 @@ namespace MPewsey.ManiaMapUnity.Tests
         [SetUp]
         public void SetUp()
         {
-            Assets.DestroyAllGameObjects();
             Directory.CreateDirectory("Tests");
         }
 
         [Test]
         public void TestSaveAndLoadLayout()
         {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
-
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Run(inputs);
+            var path = "Tests/Layout.json";
+            var results = BigLayoutSample.Generate(12345);
+            Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var path = "Tests/Layout.json";
             JsonSerialization.SaveJson(path, layout);
             var copy = JsonSerialization.LoadJson<Layout>(path);
             Assert.AreEqual(layout.Id, copy.Id);
@@ -41,30 +31,24 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestSaveAndLoadLayoutState()
         {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
-
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var results = pipeline.Run(inputs);
+            var path = "Tests/LayoutState.json";
+            var results = BigLayoutSample.Generate(12345);
+            Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
-            var state = new LayoutState(layout);
-            var path = "Tests/LayoutState.json";
-            JsonSerialization.SaveJson(path, state);
-            var copy = JsonSerialization.LoadJson<LayoutState>(path);
-            Assert.AreEqual(state.Id, copy.Id);
+            var layoutState = new LayoutState(layout);
+            JsonSerialization.SaveJson(path, layoutState);
+            var copy = JsonSerialization.LoadJson<Layout>(path);
+            Assert.AreEqual(layoutState.Id, copy.Id);
         }
 
         [Test]
         public void TestSaveAndLoadLayoutGraph()
         {
+            var path = "Tests/LayoutGraph.json";
             var graph = GraphLibrary.BigGraph();
             graph.AddNodeVariations("Group1", new int[] { 1, 2, 3 });
             graph.AddNodeVariations("Group2", new int[] { 4, 5, 6 });
-            var path = "Tests/LayoutGraph.json";
             JsonSerialization.SaveJson(path, graph);
             var copy = JsonSerialization.LoadJson<LayoutGraph>(path);
             Assert.AreEqual(graph.Id, copy.Id);
@@ -73,10 +57,10 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestSaveAndLoadCollectableGroups()
         {
+            var path = "Tests/CollectableGroups.json";
             var group = new CollectableGroups();
             group.Add("Group1", new int[] { 1, 2, 3 });
             group.Add("Group2", new int[] { 4, 5, 6 });
-            var path = "Tests/CollectableGroups.json";
             JsonSerialization.SaveJson(path, group);
             var copy = JsonSerialization.LoadJson<CollectableGroups>(path);
 

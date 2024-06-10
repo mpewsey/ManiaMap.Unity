@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity
@@ -8,7 +7,7 @@ namespace MPewsey.ManiaMapUnity
     /// A structure containing a collectable and a quantity.
     /// </summary>
     [Serializable]
-    public struct CollectableGroupEntry : IEquatable<CollectableGroupEntry>
+    public struct CollectableGroupEntry
     {
         [SerializeField]
         private CollectableResource _collectable;
@@ -33,32 +32,6 @@ namespace MPewsey.ManiaMapUnity
         {
             _collectable = collectable;
             _quantity = quantity;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is CollectableGroupEntry entry && Equals(entry);
-        }
-
-        public bool Equals(CollectableGroupEntry other)
-        {
-            return EqualityComparer<CollectableResource>.Default.Equals(Collectable, other.Collectable) &&
-                   Quantity == other.Quantity;
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Collectable, Quantity);
-        }
-
-        public static bool operator ==(CollectableGroupEntry left, CollectableGroupEntry right)
-        {
-            return left.Equals(right);
-        }
-
-        public static bool operator !=(CollectableGroupEntry left, CollectableGroupEntry right)
-        {
-            return !(left == right);
         }
     }
 }

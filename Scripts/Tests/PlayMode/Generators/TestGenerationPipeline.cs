@@ -1,9 +1,6 @@
-using MPewsey.Common.Random;
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapUnity.Tests;
 using NUnit.Framework;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -11,44 +8,55 @@ namespace MPewsey.ManiaMapUnity.Generators.Tests
 {
     public class TestGenerationPipeline
     {
+        private const string TestScene = "ManiaMap/Tests/TestGenerationPipeline";
+        private GameObject GameObject { get; set; }
+        private GenerationPipeline Pipeline { get; set; }
+
         [SetUp]
         public void SetUp()
         {
-            Assets.DestroyAllGameObjects();
+            var prefab = Resources.Load<GameObject>(TestScene);
+            GameObject = Object.Instantiate(prefab);
+            Pipeline = GameObject.GetComponent<GenerationPipeline>();
+            Assert.IsTrue(Pipeline != null);
+            Pipeline.SetRandomSeed(12345);
         }
 
-        [TestCase(Assets.BigLayoutPath)]
-        [TestCase(Assets.CrossLayoutPath)]
-        [TestCase(Assets.GeekLayoutPath)]
-        [TestCase(Assets.LoopLayoutPath)]
-        [TestCase(Assets.StackedLoopLayoutPath)]
-        public void TestGenerate(string path)
+        [TearDown]
+        public void TearDown()
         {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
+            Object.Destroy(GameObject);
+        }
 
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(path);
-            var results = pipeline.Run(inputs);
+        [Test]
+        public void TestRun()
+        {
+            var results = Pipeline.Run(logger: Debug.Log);
+            Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
             Assert.IsNotNull(layout);
         }
 
         [UnityTest]
-        public IEnumerator TestBigLayoutGeneratorAsync()
+        public IEnumerator TestRunAsync()
         {
-            var inputs = new Dictionary<string, object>()
-            {
-                { "LayoutId", 1 },
-                { "RandomSeed", new RandomSeed(12345) },
-            };
-
-            var pipeline = Assets.InstantiatePrefab<GenerationPipeline>(Assets.BigLayoutPath);
-            var task = pipeline.RunAsync(inputs);
+            var task = Pipeline.RunAsync(logger: Debug.Log);
             yield return new WaitUntil(() => task.IsCompleted);
-            Assert.IsTrue(task.IsCompleted);
+            Assert.IsTrue(task.IsCompletedSuccessfully);
+            var results = task.Result;
+            Assert.IsTrue(results.Success);
+            var layout = results.GetOutput<Layout>("Layout");
+            Assert.IsNotNull(layout);
+        }
+
+        [UnityTest]
+        public IEnumerator TestRunAttemptsAsync()
+        {
+            var randomSeed = Pipeline.GetComponentInChildren<RandomSeedInput>();
+            Assert.IsTrue(randomSeed != null);
+            Object.DestroyImmediate(randomSeed);
+            var task = Pipeline.RunAttemptsAsync(12345);
+            yield return new WaitUntil(() => task.IsCompleted);
             Assert.IsTrue(task.IsCompletedSuccessfully);
             var results = task.Result;
             Assert.IsTrue(results.Success);
