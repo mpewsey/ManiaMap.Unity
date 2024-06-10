@@ -108,8 +108,8 @@ namespace MPewsey.ManiaMapUnity
 
         private void OnDrawGizmos()
         {
-            var activeFillColor = new Color(0, 0, 1, 0.3f);
-            var inactiveFillColor = new Color(1, 0, 0, 0.3f);
+            var activeFillColor = new Color(0, 0, 1, 0.2f);
+            var inactiveFillColor = new Color(1, 0, 0, 0.2f);
             var lineColor = new Color(0, 0, 0);
             DrawCells(activeFillColor, lineColor, true);
             DrawCells(inactiveFillColor, lineColor, false);
