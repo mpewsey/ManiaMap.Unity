@@ -42,7 +42,7 @@ namespace MPewsey.ManiaMapUnity.Generators
 
             foreach (var graph in LayoutGraphs)
             {
-                funcs.Add(graph.CreateData);
+                funcs.Add(graph.GetMMLayoutGraph);
             }
 
             return funcs;

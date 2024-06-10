@@ -1,24 +1,23 @@
-using MPewsey.ManiaMapUnity.Examples;
 using NUnit.Framework;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace MPewsey.ManiaMapUnity.Drawing.Tests
+namespace MPewsey.ManiaMapUnity.Examples.Tests
 {
-    public class TestLayoutMapBookSample
+    public class TestLayoutTileMapBookSample
     {
-        private const string TestScene = "ManiaMap/Tests/LayoutMapBookSample";
+        private const string TestScene = "ManiaMap/Tests/LayoutTileMapBookSample";
         private GameObject GameObject { get; set; }
-        private LayoutMapBookSample Sample { get; set; }
+        private LayoutTileMapBookSample Sample { get; set; }
 
         [SetUp]
         public void SetUp()
         {
             var resource = Resources.Load<GameObject>(TestScene);
             GameObject = Object.Instantiate(resource);
-            Sample = GameObject.GetComponentInChildren<LayoutMapBookSample>();
+            Sample = GameObject.GetComponentInChildren<LayoutTileMapBookSample>();
             Assert.IsTrue(Sample != null);
         }
 

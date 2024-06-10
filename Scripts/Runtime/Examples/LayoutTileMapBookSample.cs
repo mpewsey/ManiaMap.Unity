@@ -30,7 +30,7 @@ namespace MPewsey.ManiaMapUnity.Examples
         [SerializeField] private Text _zLabel;
         public Text ZLabel { get => _zLabel; set => _zLabel = value; }
 
-        [SerializeField] private Gradient _gradient = DefaultGradient();
+        [SerializeField] private Gradient _gradient = Gradients.RedWhiteBlueGradient();
         public Gradient Gradient { get => _gradient; set => _gradient = value; }
 
         [SerializeField] private Camera2DController _camera;
@@ -44,30 +44,6 @@ namespace MPewsey.ManiaMapUnity.Examples
             GenerateButton.onClick.AddListener(OnGenerateButtonPressed);
             Slider.onValueChanged.AddListener(OnSliderValueChanged);
             SliderContainer.SetActive(false);
-        }
-
-        public static Gradient DefaultGradient()
-        {
-            var gradient = new Gradient();
-
-            var colorKeys = new GradientColorKey[]
-            {
-                new GradientColorKey(Color.red, 0),
-                new GradientColorKey(Color.white, 0.45f),
-                new GradientColorKey(Color.white, 0.55f),
-                new GradientColorKey(Color.blue, 1),
-            };
-
-            var alphaKeys = new GradientAlphaKey[]
-            {
-                new GradientAlphaKey(0, 0),
-                new GradientAlphaKey(1, 0.45f),
-                new GradientAlphaKey(1, 0.55f),
-                new GradientAlphaKey(0, 1),
-            };
-
-            gradient.SetKeys(colorKeys, alphaKeys);
-            return gradient;
         }
 
         private void OnSliderValueChanged(float value)

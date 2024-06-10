@@ -1,4 +1,5 @@
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Graphs;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -104,6 +105,20 @@ namespace MPewsey.ManiaMapUnity.Graphs
             edge.Name = $"Edge ({fromNode}, {toNode})";
             edge.name = edge.Name;
             return edge;
+        }
+
+        public void AddMMLayoutEdge(LayoutGraph graph)
+        {
+            var edge = graph.AddEdge(FromNode, ToNode);
+            edge.Name = Name;
+            edge.Direction = Direction;
+            edge.DoorCode = DoorCode;
+            edge.Z = Z;
+            edge.RoomChance = RoomChance;
+            edge.RequireRoom = RequireRoom;
+            edge.TemplateGroup = TemplateGroup != null ? TemplateGroup.Name : null;
+            edge.Color = ColorUtility.ConvertColor32ToColor4(Color);
+            edge.Tags = new List<string>(Tags);
         }
     }
 }

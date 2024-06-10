@@ -85,11 +85,6 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public RoomState RoomState { get; private set; }
 
-        /// <summary>
-        /// The room's door connections.
-        /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; } = System.Array.Empty<DoorConnection>();
-
         public int Rows { get => Size.x; set => Size = new Vector2Int(value, Size.y); }
         public int Columns { get => Size.y; set => Size = new Vector2Int(Size.x, value); }
 

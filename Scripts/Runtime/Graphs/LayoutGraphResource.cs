@@ -204,11 +204,11 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// <summary>
         /// Creates a new Mania Map layout graph.
         /// </summary>
-        public LayoutGraph CreateData()
+        public LayoutGraph GetMMLayoutGraph()
         {
             var graph = new LayoutGraph(Id, Name);
-            AddNodesToGraph(graph);
-            AddEdgesToGraph(graph);
+            AddMMLayoutNodes(graph);
+            AddMMLayoutEdges(graph);
             return graph;
         }
 
@@ -216,19 +216,11 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// Adds the nodes to the generation graph.
         /// </summary>
         /// <param name="graph">The generation graph.</param>
-        private void AddNodesToGraph(LayoutGraph graph)
+        private void AddMMLayoutNodes(LayoutGraph graph)
         {
-            foreach (var node in Nodes.OrderBy(x => x.Id))
+            foreach (var node in Nodes)
             {
-                var dataNode = graph.AddNode(node.Id);
-                dataNode.Name = node.Name;
-                dataNode.Z = node.Z;
-                dataNode.TemplateGroup = node.TemplateGroup.Name;
-                dataNode.Color = ConvertColor(node.Color);
-                dataNode.Tags = new List<string>(node.Tags);
-
-                if (!string.IsNullOrWhiteSpace(node.VariationGroup))
-                    graph.AddNodeVariation(node.VariationGroup, dataNode.Id);
+                node.AddMMLayoutNode(graph);
             }
         }
 
@@ -236,30 +228,12 @@ namespace MPewsey.ManiaMapUnity.Graphs
         /// Adds the edges to the generation graph.
         /// </summary>
         /// <param name="graph">The generation graph.</param>
-        private void AddEdgesToGraph(LayoutGraph graph)
+        private void AddMMLayoutEdges(LayoutGraph graph)
         {
-            foreach (var edge in Edges.OrderBy(x => new EdgeIndexes(x.FromNode, x.ToNode)))
+            foreach (var edge in Edges)
             {
-                var dataEdge = graph.AddEdge(edge.FromNode, edge.ToNode);
-                dataEdge.Name = edge.Name;
-                dataEdge.Direction = edge.Direction;
-                dataEdge.DoorCode = edge.DoorCode;
-                dataEdge.Z = edge.Z;
-                dataEdge.RoomChance = edge.RoomChance;
-                dataEdge.RequireRoom = edge.RequireRoom;
-                dataEdge.TemplateGroup = edge.TemplateGroup != null ? edge.TemplateGroup.Name : null;
-                dataEdge.Color = ConvertColor(edge.Color);
-                dataEdge.Tags = new List<string>(edge.Tags);
+                edge.AddMMLayoutEdge(graph);
             }
-        }
-
-        /// <summary>
-        /// Converts a %Unity color to a Mania Map color.
-        /// </summary>
-        /// <param name="color">The %Unity color.</param>
-        private static Color4 ConvertColor(Color32 color)
-        {
-            return new Color4(color.r, color.g, color.b, color.a);
         }
 
         /// <summary>

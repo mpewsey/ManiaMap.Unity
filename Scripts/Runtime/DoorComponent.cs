@@ -140,7 +140,7 @@ namespace MPewsey.ManiaMapUnity
             var roomId = Room.RoomLayout.Id;
             var position = new Vector2DInt(Row, Column);
 
-            foreach (var connection in Room.DoorConnections)
+            foreach (var connection in Room.LayoutPack.GetDoorConnections(roomId))
             {
                 if (connection.ContainsDoor(roomId, position, Direction))
                     return connection;

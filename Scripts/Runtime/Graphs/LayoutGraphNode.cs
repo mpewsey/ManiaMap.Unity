@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap.Graphs;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -77,6 +78,19 @@ namespace MPewsey.ManiaMapUnity.Graphs
             node.Name = $"Node {id}";
             node.name = node.Name;
             return node;
+        }
+
+        public void AddMMLayoutNode(LayoutGraph graph)
+        {
+            var node = graph.AddNode(Id);
+            node.Name = Name;
+            node.Z = Z;
+            node.TemplateGroup = TemplateGroup.Name;
+            node.Color = ColorUtility.ConvertColor32ToColor4(Color);
+            node.Tags = new List<string>(Tags);
+
+            if (!string.IsNullOrWhiteSpace(VariationGroup))
+                graph.AddNodeVariation(VariationGroup, Id);
         }
     }
 }
