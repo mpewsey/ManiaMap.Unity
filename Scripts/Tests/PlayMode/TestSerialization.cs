@@ -9,16 +9,21 @@ namespace MPewsey.ManiaMapUnity.Tests
 {
     public class TestSerialization
     {
-        [SetUp]
-        public void SetUp()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
-            Directory.CreateDirectory("Tests");
+            var path = "Tests/Serialization";
+
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
+
+            Directory.CreateDirectory(path);
         }
 
         [Test]
         public void TestSaveAndLoadLayout()
         {
-            var path = "Tests/Layout.json";
+            var path = "Tests/Serialization/Layout.json";
             var results = BigLayoutSample.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
@@ -31,7 +36,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestSaveAndLoadLayoutState()
         {
-            var path = "Tests/LayoutState.json";
+            var path = "Tests/Serialization/LayoutState.json";
             var results = BigLayoutSample.Generate(12345);
             Assert.IsTrue(results.Success);
             var layout = results.GetOutput<Layout>("Layout");
@@ -45,7 +50,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestSaveAndLoadLayoutGraph()
         {
-            var path = "Tests/LayoutGraph.json";
+            var path = "Tests/Serialization/LayoutGraph.json";
             var graph = GraphLibrary.BigGraph();
             graph.AddNodeVariations("Group1", new int[] { 1, 2, 3 });
             graph.AddNodeVariations("Group2", new int[] { 4, 5, 6 });
@@ -57,7 +62,7 @@ namespace MPewsey.ManiaMapUnity.Tests
         [Test]
         public void TestSaveAndLoadCollectableGroups()
         {
-            var path = "Tests/CollectableGroups.json";
+            var path = "Tests/Serialization/CollectableGroups.json";
             var group = new CollectableGroups();
             group.Add("Group1", new int[] { 1, 2, 3 });
             group.Add("Group2", new int[] { 4, 5, 6 });

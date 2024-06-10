@@ -23,7 +23,6 @@ namespace MPewsey.ManiaMapUnity.Drawing
         private Transform _container;
         public Transform Container { get => _container; set => _container = value; }
 
-        private RectangleInt LayoutBounds { get; set; }
         private List<SpriteRenderer> Pages { get; } = new List<SpriteRenderer>();
         private List<int> PageLayerCoordinates { get; set; } = new List<int>();
 
@@ -36,15 +35,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
                 Container = transform;
         }
 
-        protected override void Initialize(Layout layout, LayoutState layoutState)
+        public List<string> SaveImages(string path)
         {
-            base.Initialize(layout, layoutState);
-            PageLayerCoordinates = RoomsByLayer.Keys.OrderBy(x => x).ToList();
-            LayoutBounds = layout.GetBounds();
-        }
-
-        public void SaveImages(string path)
-        {
+            var result = new List<string>(Pages.Count);
             var extension = Path.GetExtension(path);
             var name = Path.ChangeExtension(path, null);
 
@@ -52,20 +45,32 @@ namespace MPewsey.ManiaMapUnity.Drawing
             {
                 var texture = Pages[i].sprite.texture;
                 var bytes = TextureUtility.EncodeToBytes(texture, extension);
-                File.WriteAllBytes($"{name}_Z={PageLayerCoordinates[i]}{extension}", bytes);
+                var savePath = $"{name}_Z={PageLayerCoordinates[i]}{extension}";
+                File.WriteAllBytes(savePath, bytes);
+                result.Add(savePath);
             }
+
+            return result;
         }
 
-        public void DrawPages(Layout layout, LayoutState layoutState = null)
+        public void DrawPages(LayoutPack layoutPack)
         {
-            Initialize(layout, layoutState);
+            LayoutPack = layoutPack;
+            PageLayerCoordinates = layoutPack.GetLayerCoordinates().OrderBy(x => x).ToList();
             SizePages();
 
             for (int i = 0; i < Pages.Count; i++)
             {
                 var texture = Pages[i].sprite.texture;
-                DrawTiles(texture, PageLayerCoordinates[i], LayoutBounds, Padding, BackgroundColor);
+                DrawTiles(texture, PageLayerCoordinates[i], Padding, BackgroundColor);
             }
+        }
+
+        public void DrawPages(Layout layout, LayoutState layoutState = null)
+        {
+            layoutState ??= CreateFullyVisibleLayoutState(layout);
+            var layoutPack = new LayoutPack(layout, layoutState);
+            DrawPages(layoutPack);
         }
 
         private void SizePages()
@@ -124,8 +129,8 @@ namespace MPewsey.ManiaMapUnity.Drawing
 
         private Vector2Int GetTextureSize()
         {
-            var width = MapTileSet.TileSize.x * (Padding.Left + Padding.Right + LayoutBounds.Width);
-            var height = MapTileSet.TileSize.y * (Padding.Top + Padding.Bottom + LayoutBounds.Height);
+            var width = MapTileSet.TileSize.x * (Padding.Left + Padding.Right + LayoutPack.LayoutBounds.Width);
+            var height = MapTileSet.TileSize.y * (Padding.Top + Padding.Bottom + LayoutPack.LayoutBounds.Height);
             return new Vector2Int(width, height);
         }
 

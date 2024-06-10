@@ -16,15 +16,17 @@ namespace MPewsey.ManiaMapUnity.Drawing
 
         public void DrawMap(LayoutPack layoutPack, int? z = null)
         {
-            DrawMap(layoutPack.Layout, layoutPack.LayoutState, z);
+            LayoutPack = layoutPack;
+            LayerCoordinate = z ?? layoutPack.GetLayerCoordinates().OrderBy(x => x).First();
+            CreateTileMap();
+            SetTiles(TileMap, LayerCoordinate);
         }
 
         public void DrawMap(Layout layout, LayoutState layoutState = null, int? z = null)
         {
-            Initialize(layout, layoutState);
-            CreateTileMap();
-            LayerCoordinate = z ?? RoomsByLayer.Keys.OrderBy(x => x).First();
-            SetTiles(TileMap, LayerCoordinate);
+            layoutState ??= CreateFullyVisibleLayoutState(layout);
+            var layoutPack = new LayoutPack(layout, layoutState);
+            DrawMap(layoutPack, z);
         }
 
         private void CreateTileMap()

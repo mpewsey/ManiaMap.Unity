@@ -1,6 +1,5 @@
 using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -20,31 +19,18 @@ namespace MPewsey.ManiaMapUnity.Drawing
         private Color32 _roomColor = new Color32(75, 75, 75, 255);
         public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
 
-        public Layout Layout { get; protected set; }
-        public LayoutState LayoutState { get; protected set; }
-        protected Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; } = new Dictionary<Uid, List<DoorPosition>>();
-        protected Dictionary<int, List<Room>> RoomsByLayer { get; set; } = new Dictionary<int, List<Room>>();
+        public LayoutPack LayoutPack { get; protected set; }
 
-        protected virtual void Initialize(Layout layout, LayoutState layoutState)
+        protected static LayoutState CreateFullyVisibleLayoutState(Layout layout)
         {
-            Layout = layout;
-            LayoutState = layoutState;
-            RoomDoors = layout.GetRoomDoors();
-            RoomsByLayer = layout.GetRoomsByLayer();
-        }
+            var layoutState = new LayoutState(layout);
 
-        protected bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
-        {
-            if (RoomDoors.TryGetValue(room.Id, out var doors))
+            foreach (var roomState in layoutState.RoomStates.Values)
             {
-                foreach (var door in doors)
-                {
-                    if (door.Matches(position, direction))
-                        return true;
-                }
+                System.Array.Fill(roomState.VisibleCells.Array, ~0);
             }
 
-            return false;
+            return layoutState;
         }
 
         protected long GetFeatureFlags(Cell cell)
@@ -61,7 +47,7 @@ namespace MPewsey.ManiaMapUnity.Drawing
 
         protected Texture2D GetTile(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && LayoutPack.DoorExists(room.Id, position, direction))
                 return MapTileSet.GetTexture(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
@@ -72,7 +58,7 @@ namespace MPewsey.ManiaMapUnity.Drawing
 
         protected long GetTileFlag(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && LayoutPack.DoorExists(room.Id, position, direction))
                 return MapTileSet.GetFeatureFlag(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
@@ -90,14 +76,15 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
-        protected void DrawTiles(Texture2D texture, int z, RectangleInt bounds, Padding padding, Color32 backgroundColor)
+        protected void DrawTiles(Texture2D texture, int z, Padding padding, Color32 backgroundColor)
         {
+            var bounds = LayoutPack.LayoutBounds;
             TextureUtility.Fill(texture, backgroundColor);
             TextureUtility.TileImage(texture, MapTileSet.GetTexture(MapTileType.Grid));
 
-            foreach (var room in RoomsByLayer[z])
+            foreach (var room in LayoutPack.GetRoomsInLayer(z))
             {
-                var roomState = LayoutState?.RoomStates[room.Id];
+                var roomState = LayoutPack.LayoutState?.RoomStates[room.Id];
                 var cells = room.Template.Cells;
                 var x0 = (room.Position.Y - bounds.X + padding.Left) * MapTileSet.TileSize.x;
                 var y0 = (bounds.Height + padding.Bottom - room.Position.X + bounds.Y - 1) * MapTileSet.TileSize.y;
@@ -164,9 +151,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
         {
             tilemap.ClearAllTiles();
 
-            foreach (var room in RoomsByLayer[z])
+            foreach (var room in LayoutPack.GetRoomsInLayer(z))
             {
-                var roomState = LayoutState?.RoomStates[room.Id];
+                var roomState = LayoutPack.LayoutState?.RoomStates[room.Id];
                 var cells = room.Template.Cells;
 
                 for (int i = 0; i < cells.Rows; i++)

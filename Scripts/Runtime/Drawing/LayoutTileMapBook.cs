@@ -21,26 +21,23 @@ namespace MPewsey.ManiaMapUnity.Drawing
         public IReadOnlyList<Tilemap> GetPages() => Pages;
         public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
 
-        protected override void Initialize(Layout layout, LayoutState layoutState)
-        {
-            base.Initialize(layout, layoutState);
-            PageLayerCoordinates = RoomsByLayer.Keys.OrderBy(x => x).ToList();
-        }
-
         public void DrawPages(LayoutPack layoutPack)
         {
-            DrawPages(layoutPack.Layout, layoutPack.LayoutState);
-        }
-
-        public void DrawPages(Layout layout, LayoutState layoutState = null)
-        {
-            Initialize(layout, layoutState);
+            LayoutPack = layoutPack;
+            PageLayerCoordinates = layoutPack.GetLayerCoordinates().OrderBy(x => x).ToList();
             SizePages();
 
             for (int i = 0; i < Pages.Count; i++)
             {
                 SetTiles(Pages[i], PageLayerCoordinates[i]);
             }
+        }
+
+        public void DrawPages(Layout layout, LayoutState layoutState = null)
+        {
+            layoutState ??= CreateFullyVisibleLayoutState(layout);
+            var layoutPack = new LayoutPack(layout, layoutState);
+            DrawPages(layoutPack);
         }
 
         protected void SizePages()
