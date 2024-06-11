@@ -64,3 +64,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 Assets/AddressableAssetsData/Windows.meta
+Assets/AddressableAssetsData/link.xml
+Assets/AddressableAssetsData/link.xml.meta
