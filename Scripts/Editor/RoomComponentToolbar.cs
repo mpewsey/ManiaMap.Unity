@@ -6,7 +6,15 @@ namespace MPewsey.ManiaMapUnity.Editor
     [InitializeOnLoad]
     public class RoomComponentToolbar : UnityEditor.Editor
     {
+        private const string NoneEditModeIcon = "Packages/com.mpewsey.maniamap.unity/Icons/NoneEditModeIcon.png";
+        private const string ActivateEditModeIcon = "Packages/com.mpewsey.maniamap.unity/Icons/ActivateEditModeIcon.png";
+        private const string DeactivateEditModeIcon = "Packages/com.mpewsey.maniamap.unity/Icons/DeactivateEditModeIcon.png";
+        private const string ToggleEditModeIcon = "Packages/com.mpewsey.maniamap.unity/Icons/ToggleEditModeIcon.png";
+        private const string AutoAssignIcon = "Packages/com.mpewsey.maniamap.unity/Icons/AutoAssignIcon.png";
+        private const string CellDisplayIcon = "Packages/com.mpewsey.maniamap.unity/Icons/CellDisplayIcon.png";
+        private const string OrientViewIcon = "Packages/com.mpewsey.maniamap.unity/Icons/OrientViewIcon.png";
         private const int LeftMouseButton = 0;
+
         private static RoomComponent Room { get; set; }
         private static CellActivity CellEditMode { get; set; }
         public static bool DisplayToolbar { get; private set; } = true;
@@ -91,10 +99,10 @@ namespace MPewsey.ManiaMapUnity.Editor
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
-            DisplayCells = GUILayout.Toggle(DisplayCells, GetGUIContent("Display Cells", "ManiaMap/Icons/CellDisplayIcon"), EditorStyles.toolbarButton);
+            DisplayCells = GUILayout.Toggle(DisplayCells, GetGUIContent("Display Cells", CellDisplayIcon), EditorStyles.toolbarButton);
             GizmoUtility.SetGizmoEnabled(typeof(RoomComponent), DisplayCells, false);
 
-            if (GUILayout.Button(GetGUIContent("Orient View", "ManiaMap/Icons/OrientViewIcon"), EditorStyles.toolbarButton))
+            if (GUILayout.Button(GetGUIContent("Orient View", OrientViewIcon), EditorStyles.toolbarButton))
                 OrientView(sceneView);
 
             EditorGUILayout.Separator();
@@ -109,7 +117,7 @@ namespace MPewsey.ManiaMapUnity.Editor
 
             EditorGUILayout.Separator();
 
-            if (GUILayout.Button(GetGUIContent("Auto Assign", "ManiaMap/Icons/AutoAssignIcon"), EditorStyles.toolbarButton))
+            if (GUILayout.Button(GetGUIContent("Auto Assign", AutoAssignIcon), EditorStyles.toolbarButton))
                 BatchUpdaterTool.AutoAssign(Room);
 
             EditorGUILayout.EndHorizontal();
@@ -121,7 +129,7 @@ namespace MPewsey.ManiaMapUnity.Editor
 
         private static GUIContent GetGUIContent(string tooltip, string iconPath)
         {
-            var icon = Resources.Load<Texture2D>(iconPath);
+            var icon = (Texture2D)EditorGUIUtility.Load(iconPath);
             return new GUIContent(icon, tooltip);
         }
 
@@ -130,13 +138,13 @@ namespace MPewsey.ManiaMapUnity.Editor
             switch (slot)
             {
                 case 0:
-                    return GetGUIContent("Disable Cell Editing", "ManiaMap/Icons/NoneEditModeIcon");
+                    return GetGUIContent("Disable Cell Editing", NoneEditModeIcon);
                 case 1:
-                    return GetGUIContent("Activate Cells", "ManiaMap/Icons/ActivateEditModeIcon");
+                    return GetGUIContent("Activate Cells", ActivateEditModeIcon);
                 case 2:
-                    return GetGUIContent("Deactivate Cells", "ManiaMap/Icons/DeactivateEditModeIcon");
+                    return GetGUIContent("Deactivate Cells", DeactivateEditModeIcon);
                 case 3:
-                    return GetGUIContent("Toggle Cells", "ManiaMap/Icons/ToggleEditModeIcon");
+                    return GetGUIContent("Toggle Cells", ToggleEditModeIcon);
                 default:
                     throw new System.NotImplementedException($"Unhandled slot: {slot}.");
             }
