@@ -175,6 +175,7 @@ namespace MPewsey.ManiaMapUnity.Editor
 
         private static void OrientView(SceneView sceneView)
         {
+            sceneView.orthographic = true;
             sceneView.LookAt(Room.CenterGlobalPosition(), Room.GetCellViewDirection());
         }
     }
