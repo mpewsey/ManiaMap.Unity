@@ -21,8 +21,8 @@
     <type fullname="MPewsey.ManiaMapUnity.Graphs.LayoutGraphNode" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.Graphs.LayoutGraphResource" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.RoomComponent" preserve="all" />
-    <type fullname="MPewsey.ManiaMapUnity.RoomDatabase" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.RoomFlag" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.RoomTemplateDatabase" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.RoomTemplateResource" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.TemplateGroup" preserve="all" />
     <type fullname="MPewsey.ManiaMapUnity.ActiveCellsRow" preserve="nothing" serialized="true" />

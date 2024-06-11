@@ -11,8 +11,8 @@ namespace MPewsey.ManiaMapUnity.Examples
         [SerializeField] private GenerationPipeline _pipeline;
         public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
 
-        [SerializeField] private RoomDatabase _roomDatabase;
-        public RoomDatabase RoomDatabase { get => _roomDatabase; set => _roomDatabase = value; }
+        [SerializeField] private RoomTemplateDatabase _roomTemplateDatabase;
+        public RoomTemplateDatabase RoomTemplateDatabase { get => _roomTemplateDatabase; set => _roomTemplateDatabase = value; }
 
         [SerializeField] private Button _generateButton;
         public Button GenerateButton { get => _generateButton; set => _generateButton = value; }
@@ -55,7 +55,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             var layout = result.GetOutput<Layout>("Layout");
             var layoutPack = new LayoutPack(layout, new LayoutState(layout));
             CreateContainer();
-            RoomDatabase.InstantiateAllRooms(layoutPack, Container.transform);
+            RoomTemplateDatabase.InstantiateAllRooms(layoutPack, Container.transform);
             Camera.ResetPosition();
         }
 

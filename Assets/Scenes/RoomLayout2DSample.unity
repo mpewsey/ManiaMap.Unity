@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pipeline: {fileID: 3579774464441747479}
-  _roomDatabase: {fileID: 11400000, guid: c2b7405bf50773e4f8aff58974382739, type: 2}
+  _roomTemplateDatabase: {fileID: 11400000, guid: 55032dea50ee00740a6311a2603e8ea8, type: 2}
   _generateButton: {fileID: 8313725074727684589}
   _messageLabel: {fileID: 4543133630579008471}
   _camera: {fileID: 5097382717039861220}
