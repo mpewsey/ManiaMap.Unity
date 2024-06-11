@@ -19,13 +19,13 @@ In Unity, select `Window > Package Manager`.
 Select `Add package from git URL...` and paste the following URL:
 
 ```
-https://github.com/mpewsey/ManiaMap.Unity.git
+https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity
 ```
 
 To lock into a specific version, append `#{VERSION_TAG}` to the end of the URL. For example:
 
 ```
-https://github.com/mpewsey/ManiaMap.Unity.git#v0.0.3
+https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity#v0.0.3
 ```
 
 ## Example
