@@ -3,29 +3,28 @@ using MPewsey.ManiaMap.Samples;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMapUnity.Drawing.Tests
 {
     public class TestLayoutTileMapBook
     {
-        private const string TestScene = "ManiaMap/Tests/TestLayoutTileMapBook";
-        private GameObject GameObject { get; set; }
+        private const string TestScene = "TestLayoutTileMapBook";
         private LayoutTileMapBook Map { get; set; }
 
-        [SetUp]
-        public void SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
-            var resource = Resources.Load<GameObject>(TestScene);
-            GameObject = Object.Instantiate(resource);
-            Map = GameObject.GetComponent<LayoutTileMapBook>();
+            yield return Addressables.LoadSceneAsync(TestScene);
+            Map = Object.FindAnyObjectByType<LayoutTileMapBook>();
             Assert.IsTrue(Map != null);
         }
 
-        [TearDown]
-        public void TearDown()
+        [UnityTearDown]
+        public IEnumerator TearDown()
         {
-            Object.Destroy(GameObject);
+            yield return Addressables.LoadSceneAsync("EmptyScene");
         }
 
         [UnityTest]

@@ -2,30 +2,28 @@ using MPewsey.ManiaMap;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMapUnity.Generators.Tests
 {
     public class TestGenerationPipeline
     {
-        private const string TestScene = "ManiaMap/Tests/TestGenerationPipeline";
-        private GameObject GameObject { get; set; }
+        private const string TestScene = "TestGenerationPipeline";
         private GenerationPipeline Pipeline { get; set; }
 
-        [SetUp]
-        public void SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
-            var prefab = Resources.Load<GameObject>(TestScene);
-            GameObject = Object.Instantiate(prefab);
-            Pipeline = GameObject.GetComponent<GenerationPipeline>();
+            yield return Addressables.LoadSceneAsync(TestScene);
+            Pipeline = Object.FindAnyObjectByType<GenerationPipeline>();
             Assert.IsTrue(Pipeline != null);
-            Pipeline.SetRandomSeed(12345);
         }
 
-        [TearDown]
-        public void TearDown()
+        [UnityTearDown]
+        public IEnumerator TearDown()
         {
-            Object.Destroy(GameObject);
+            yield return Addressables.LoadSceneAsync("EmptyScene");
         }
 
         [Test]

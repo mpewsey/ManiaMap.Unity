@@ -1,0 +1,105 @@
+<linker>
+  <assembly fullname="MPewsey.ManiaMapUnity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="MPewsey.ManiaMapUnity.CollectableGroup" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.CollectableResource" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.CollectableSpotComponent" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.DoorComponent" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Drawing.LayoutMapBook" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Drawing.LayoutTileMap" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Drawing.LayoutTileMapBook" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Drawing.MapTileSet" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.CollectableGeneratorStep" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.CollectableGroupsInput" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.GenerationIntInput" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.GenerationPipeline" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.LayoutGeneratorStep" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.LayoutGraphRandomizerStep" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.LayoutGraphSelectorStep" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.LayoutGraphsInput" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Generators.RandomSeedInput" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Graphs.LayoutGraphEdge" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Graphs.LayoutGraphNode" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Graphs.LayoutGraphResource" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.RoomComponent" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.RoomDatabase" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.RoomFlag" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.RoomTemplateResource" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.TemplateGroup" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.ActiveCellsRow" preserve="nothing" serialized="true" />
+    <type fullname="MPewsey.ManiaMapUnity.CellAreaTriggerEvent" preserve="nothing" serialized="true" />
+    <type fullname="MPewsey.ManiaMapUnity.CollectableGroupEntry" preserve="nothing" serialized="true" />
+    <type fullname="MPewsey.ManiaMapUnity.Drawing.Padding" preserve="nothing" serialized="true" />
+    <type fullname="MPewsey.ManiaMapUnity.TemplateGroupEntry" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="MPewsey.ManiaMapUnity.Examples, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="MPewsey.ManiaMapUnity.Examples.Camera2DController" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.CollectableSpotSample" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.DoorSample" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.LayoutMapBookSample" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.LayoutTileMapBookSample" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.LayoutTileMapSample" preserve="all" />
+    <type fullname="MPewsey.ManiaMapUnity.Examples.RoomLayout2DSample" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AudioListener" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Camera" preserve="all" />
+    <type fullname="UnityEngine.Cubemap" preserve="all" />
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.LightmapSettings" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.RenderSettings" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.U2D.SpriteAtlas" preserve="all" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.GridModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Grid" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TilemapModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Tilemaps.Tile" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.Tilemap" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.TilemapRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.StandaloneInputModule" preserve="all" />
+    <type fullname="UnityEngine.UI.Button" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.Image" preserve="all" />
+    <type fullname="UnityEngine.UI.Slider" preserve="all" />
+    <type fullname="UnityEngine.UI.Text" preserve="all" />
+    <type fullname="UnityEngine.UI.AnimationTriggers" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.FontData" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+  </assembly>
+</linker>

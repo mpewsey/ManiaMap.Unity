@@ -13,6 +13,7 @@
 /[Tt]ests/
 
 /[Dd]ocs/output/
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/[Ww]indows/
 .DS_Store
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
@@ -62,4 +63,4 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
+Assets/AddressableAssetsData/Windows.meta
