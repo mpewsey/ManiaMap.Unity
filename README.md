@@ -28,6 +28,33 @@ To lock into a specific version, append `#{VERSION_TAG}` to the end of the URL. 
 https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity#v0.0.3
 ```
 
+## Samples
+
+Sample scenes are available in the project `Assets` directory. To explore them, clone this repository and open the project in Unity.
+
+<table style='text-align: center'>
+    <tr>
+        <td width='50%' align='center'>
+            <img width=450 alt='layout map book' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/866d377b-0887-42cf-b9fb-1204e3ebce61'><br>
+            Layout tile map book sample with onionskin map display.
+        </td>
+        <td width='50%' align='center'>
+            <img width=450 alt='layout map' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/9891dc70-662c-47c8-93c7-3bdbddbd58b1'><br>
+            Layout tile map sample.
+        </td>
+    </tr>
+    <tr>
+        <td width='50%' align='center'>
+            <img width=450 alt='3d layout' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/05fff504-f15d-4c2e-869c-ef59e2e9e4b1'><br>
+            Layout map sample.
+        </td>
+        <td width='50%' align='center'>
+            <img width=450 alt='2d layout' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/e170235f-df4f-475f-bd2c-bbdc90b464e7'><br>
+            2D layout generation sample.
+        </td>
+    </tr>
+</table>
+
 ## Example
 
 The following subsections outline how to procedurally generate a layout.
