@@ -4,6 +4,9 @@
 ![Unity ≥ 2022.1](https://img.shields.io/badge/Unity-%E2%89%A5%202022.1-blue)
 ![Version](https://img.shields.io/github/v/tag/mpewsey/ManiaMap.Unity?label=Version)
 
+> [!Important]
+> Due to a major recent refactor, the README and documentation are out of date. There are plans to update them in the coming dates.
+
 ## About
 
 This package provides components for interfacing the [ManiaMap](https://github.com/mpewsey/ManiaMap) procedural layout generator with Unity.
