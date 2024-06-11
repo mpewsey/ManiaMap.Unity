@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ManiaMap.Unity: /github/workspace/Scripts/Runtime/Drawing/LayoutTileMapBook.cs Source File</title>
+<title>ManiaMap.Unity: /github/workspace/Packages/ManiaMap.Unity/Scripts/Runtime/Drawing/LayoutTileMapBook.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -119,91 +119,87 @@ $(document).ready(function(){initNavTree('_layout_tile_map_book_8cs_source.html'
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">public</span> IReadOnlyList&lt;Tilemap&gt; GetPages() =&gt; Pages;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">public</span> IReadOnlyList&lt;int&gt; GetPageLayerCoordinates() =&gt; PageLayerCoordinates;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Initialize(Layout layout, LayoutState layoutState)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawPages(<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            base.Initialize(layout, layoutState);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            PageLayerCoordinates = RoomsByLayer.Keys.OrderBy(x =&gt; x).ToList();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> = layoutPack;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            PageLayerCoordinates = layoutPack.<a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#abc4d6a7d8ee1d7944b760cf1374a7b6d">GetLayerCoordinates</a>().OrderBy(x =&gt; x).ToList();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            SizePages();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawPages()</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            var manager = <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager.html">ManiaMapManager</a>.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager.html#a8f84c13e784b134583133b6108e9924b">Current</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            DrawPages(manager.Layout, manager.LayoutState);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Pages.Count; i++)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                SetTiles(Pages[i], PageLayerCoordinates[i]);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawPages(Layout layout, LayoutState layoutState = <span class="keyword">null</span>)</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            Initialize(layout, layoutState);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            SizePages();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Pages.Count; i++)</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                SetTiles(Pages[i], PageLayerCoordinates[i]);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            layoutState ??= CreateFullyVisibleLayoutState(layout);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            var layoutPack = <span class="keyword">new</span> <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a>(layout, layoutState);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            DrawPages(layoutPack);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">protected</span> <span class="keywordtype">void</span> SizePages()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            CreateGrid();</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">protected</span> <span class="keywordtype">void</span> SizePages()</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            CreateGrid();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">while</span> (Pages.Count &gt; PageLayerCoordinates.Count)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                var index = Pages.Count - 1;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                Destroy(Pages[index].gameObject);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                Pages.RemoveAt(index);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">while</span> (Pages.Count &lt; PageLayerCoordinates.Count)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                var obj = <span class="keyword">new</span> GameObject($<span class="stringliteral">&quot;Tile Map {Pages.Count}&quot;</span>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                obj.transform.SetParent(Grid.transform);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                Pages.Add(obj.AddComponent&lt;Tilemap&gt;());</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                obj.AddComponent&lt;TilemapRenderer&gt;();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> CreateGrid()</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">if</span> (Grid == <span class="keyword">null</span>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                var obj = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;Grid&quot;</span>);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                obj.transform.SetParent(transform);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                Grid = obj.AddComponent&lt;Grid&gt;();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">public</span> <span class="keywordtype">float</span> SetOnionMapColors(<span class="keywordtype">float</span> z, Gradient gradient, <span class="keywordtype">float</span> drawDepth = 1)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">if</span> (PageLayerCoordinates.Count &gt; 0)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                var scale = 0.5f / drawDepth;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                var minZ = PageLayerCoordinates[0];</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                var maxZ = PageLayerCoordinates[PageLayerCoordinates.Count - 1];</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                z = Mathf.Clamp(z, minZ, maxZ);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; PageLayerCoordinates.Count; i++)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                    var t = (PageLayerCoordinates[i] - z) * scale + 0.5f;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                    Pages[i].color = gradient.Evaluate(Mathf.Clamp(t, 0, 1));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keywordflow">return</span> z;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_map_base_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_map_base.html">MPewsey.ManiaMapUnity.Drawing.LayoutMapBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_layout_map_base_8cs_source.html#l00009">LayoutMapBase.cs:10</a></div></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">while</span> (Pages.Count &gt; PageLayerCoordinates.Count)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                var index = Pages.Count - 1;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                Destroy(Pages[index].gameObject);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                Pages.RemoveAt(index);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">while</span> (Pages.Count &lt; PageLayerCoordinates.Count)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                var obj = <span class="keyword">new</span> GameObject($<span class="stringliteral">&quot;Tile Map {Pages.Count}&quot;</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                obj.transform.SetParent(Grid.transform);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                Pages.Add(obj.AddComponent&lt;Tilemap&gt;());</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                obj.AddComponent&lt;TilemapRenderer&gt;();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> CreateGrid()</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">if</span> (Grid == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                var obj = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;Grid&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                obj.transform.SetParent(transform);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                Grid = obj.AddComponent&lt;Grid&gt;();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">public</span> <span class="keywordtype">float</span> SetOnionMapColors(<span class="keywordtype">float</span> z, Gradient gradient, <span class="keywordtype">float</span> drawDepth = 1)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> (PageLayerCoordinates.Count &gt; 0)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                var scale = 0.5f / drawDepth;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                var minZ = PageLayerCoordinates[0];</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                var maxZ = PageLayerCoordinates[PageLayerCoordinates.Count - 1];</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                z = Mathf.Clamp(z, minZ, maxZ);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; PageLayerCoordinates.Count; i++)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    var t = (PageLayerCoordinates[i] - z) * scale + 0.5f;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    Pages[i].color = gradient.Evaluate(Mathf.Clamp(t, 0, 1));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">return</span> z;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_map_base_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_map_base.html">MPewsey.ManiaMapUnity.Drawing.LayoutMapBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_layout_map_base_8cs_source.html#l00008">LayoutMapBase.cs:9</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_tile_map_book_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_tile_map_book.html">MPewsey.ManiaMapUnity.Drawing.LayoutTileMapBook</a></div><div class="ttdoc">A component for creating tilemaps of layout layers.</div><div class="ttdef"><b>Definition:</b> <a href="_layout_tile_map_book_8cs_source.html#l00012">LayoutTileMapBook.cs:13</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager.html">MPewsey.ManiaMapUnity.ManiaMapManager</a></div><div class="ttdoc">A manager for maintaining the current map data and state.</div><div class="ttdef"><b>Definition:</b> <a href="_mania_map_manager_8cs_source.html#l00011">ManiaMapManager.cs:12</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager_html_a8f84c13e784b134583133b6108e9924b"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_manager.html#a8f84c13e784b134583133b6108e9924b">MPewsey.ManiaMapUnity.ManiaMapManager.Current</a></div><div class="ttdeci">static ManiaMapManager Current</div><div class="ttdoc">The current manager.</div><div class="ttdef"><b>Definition:</b> <a href="_mania_map_manager_8cs_source.html#l00017">ManiaMapManager.cs:18</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_layout_pack_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">MPewsey.ManiaMapUnity.LayoutPack</a></div><div class="ttdoc">A manager for maintaining the current map data and state.</div><div class="ttdef"><b>Definition:</b> <a href="_layout_pack_8cs_source.html#l00011">LayoutPack.cs:12</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_layout_pack_html_abc4d6a7d8ee1d7944b760cf1374a7b6d"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#abc4d6a7d8ee1d7944b760cf1374a7b6d">MPewsey.ManiaMapUnity.LayoutPack.GetLayerCoordinates</a></div><div class="ttdeci">IEnumerable&lt; int &gt; GetLayerCoordinates()</div><div class="ttdoc">Returns an enumerable of unique layer (z) coordinates for the layout. The coordinates are not in any ...</div><div class="ttdef"><b>Definition:</b> <a href="_layout_pack_8cs_source.html#l00123">LayoutPack.cs:123</a></div></div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_1_1_drawing_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity_1_1_drawing.html">MPewsey.ManiaMapUnity.Drawing</a></div><div class="ttdef"><b>Definition:</b> <a href="_layout_map_book_editor_8cs_source.html#l00004">LayoutMapBookEditor.cs:5</a></div></div>
-<div class="ttc" id="anamespace_m_pewsey_html"><div class="ttname"><a href="namespace_m_pewsey.html">MPewsey</a></div><div class="ttdef"><b>Definition:</b> <a href="_cell_child_editor_8cs_source.html#l00004">CellChildEditor.cs:5</a></div></div>
+<div class="ttc" id="anamespace_m_pewsey_html"><div class="ttname"><a href="namespace_m_pewsey.html">MPewsey</a></div><div class="ttdef"><b>Definition:</b> <a href="_batch_updater_tool_8cs_source.html#l00005">BatchUpdaterTool.cs:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_4edcbb236dfd51dd81727243a38df6a0.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_bd02518d4f499cf99d7b393e1af10b35.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_4a582f0a844f56abb6e6b9b2636bc4b3.html">Drawing</a></li><li class="navelem"><b>LayoutTileMapBook.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_3469a6c1e17ee10eead2772b6d6092a4.html">ManiaMap.Unity</a></li><li class="navelem"><a class="el" href="dir_a9fa35bf4235fa1a74a87f6c0038fb4a.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_fbb610b65a60a715f5ff8e691f8c4914.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_48b34e4402ff543d0c5c3b5ef0894cff.html">Drawing</a></li><li class="navelem"><b>LayoutTileMapBook.cs</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

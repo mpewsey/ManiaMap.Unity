@@ -1,23 +1,10 @@
 var searchData=
 [
-  ['sampletemplates_0',['SampleTemplates',['../class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_sample_save_settings.html#af567de47153ee56c768a2adc0e890474',1,'MPewsey::ManiaMapUnity::Editor::SampleSaveSettings']]],
-  ['samplevariations_1',['SampleVariations',['../class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_sample_save_settings.html#a4074641ad6d7bca0742991dfea5f5187',1,'MPewsey::ManiaMapUnity::Editor::SampleSaveSettings']]],
-  ['savealltemplates_2',['SaveAllTemplates',['../class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_template_save_settings.html#aa9fdf7d2f9d9e8989ee75d411cd8ceec',1,'MPewsey::ManiaMapUnity::Editor::TemplateSaveSettings']]],
-  ['saveasset_3',['SaveAsset',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a79bd7deff84b841410aee42c4e163d7a',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectall_4',['SelectAll',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a0c01994932fa09f23849da7465a8c62c',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectalledges_5',['SelectAllEdges',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#aa010ad1b91417a533a0f17cfed23e297',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectallnodes_6',['SelectAllNodes',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a2fded1cd17c741f12d0281ae8ba1c231',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectdraggededges_7',['SelectDraggedEdges',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a49b3c1993f2c996af6e1bd2e5c0b7128',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectdraggedelements_8',['SelectDraggedElements',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a131603133bc1b184d719b58a0efe7cb9',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectdraggednodes_9',['SelectDraggedNodes',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a0887a47a65c259881cb4d1af4dc99938',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectedge_10',['SelectEdge',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#adcdbfee44e50244237b57d41c84f3977',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['selectnode_11',['SelectNode',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a7353131467f8f69da338520d3211bd59',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['setcellvisibility_12',['SetCellVisibility',['../class_m_pewsey_1_1_mania_map_unity_1_1_room_behavior.html#a5ca87e531817c7b3a1dad0172a8246a4',1,'MPewsey::ManiaMapUnity::RoomBehavior']]],
-  ['setflag_13',['SetFlag',['../class_m_pewsey_1_1_mania_map_unity_1_1_room_flag.html#af35ab8e1ac295aeeb43bdb1375f5518c',1,'MPewsey::ManiaMapUnity::RoomFlag']]],
-  ['setnodepositions_14',['SetNodePositions',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#ae81442a92341fe57bf80f29f70439771',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['showareacontextmenu_15',['ShowAreaContextMenu',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a0519baa2ef58b3d3121ae93598e615e3',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['shownodecontextmenu_16',['ShowNodeContextMenu',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a7357573df2e981bd1ac818670c31cde7',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['showwindow_17',['ShowWindow',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a403abe6a47657c6835e1464b412fe85e',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
-  ['success_18',['Success',['../class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_log.html#abcf7af0085d7a76944ccf2bda249e119',1,'MPewsey::ManiaMapUnity::Editor::Log']]],
-  ['swizzle_19',['Swizzle',['../class_m_pewsey_1_1_mania_map_unity_1_1_room_behavior.html#a2124722bf84c31e1d6d7acd67d2e109b',1,'MPewsey::ManiaMapUnity::RoomBehavior']]]
+  ['templategroupentry_0',['TemplateGroupEntry',['../class_m_pewsey_1_1_mania_map_unity_1_1_template_group_entry.html#adbc0b32c0cd506e982f7dac12f34a8af',1,'MPewsey.ManiaMapUnity.TemplateGroupEntry.TemplateGroupEntry(RoomTemplateResource template)'],['../class_m_pewsey_1_1_mania_map_unity_1_1_template_group_entry.html#a4cccf07a49fa66286fcfbc160d29a961',1,'MPewsey.ManiaMapUnity.TemplateGroupEntry.TemplateGroupEntry(RoomTemplateResource template, int minQuantity, int maxQuantity)']]],
+  ['textureisnullorempty_1',['TextureIsNullOrEmpty',['../class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_texture_utility.html#a84d977150b7b8c9c3f523f7dcfe0b4c1',1,'MPewsey::ManiaMapUnity::Drawing::TextureUtility']]],
+  ['tileimage_2',['TileImage',['../class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_texture_utility.html#a1c520f3a1b73b4fd3acf5dd643675721',1,'MPewsey::ManiaMapUnity::Drawing::TextureUtility']]],
+  ['toggleflag_3',['ToggleFlag',['../class_m_pewsey_1_1_mania_map_unity_1_1_room_flag.html#ac47f665811dba2552f7782a251b4ff49',1,'MPewsey::ManiaMapUnity::RoomFlag']]],
+  ['toggleshowedges_4',['ToggleShowEdges',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#aa626787c69b7ddb2fdb218a73d37ce66',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
+  ['toggleshowinspector_5',['ToggleShowInspector',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#a0d71539422810b3018a1273daa1369ff',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]],
+  ['toroomid_6',['ToRoomId',['../class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a4259a636d3d6543f6e0c35a50374853b',1,'MPewsey::ManiaMapUnity::DoorComponent']]]
 ];

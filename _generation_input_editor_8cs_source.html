@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ManiaMap.Unity: /github/workspace/Scripts/Editor/Generators/GenerationInputEditor.cs Source File</title>
+<title>ManiaMap.Unity: /github/workspace/Packages/ManiaMap.Unity/Scripts/Editor/Generators/GenerationInputEditor.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -115,27 +115,20 @@ $(document).ready(function(){initNavTree('_generation_input_editor_8cs_source.ht
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            serializedObject.ApplyModifiedProperties();</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        }</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#a5cb6aca834e246599bbe4cfd82f85edc">   23</a></span>        <span class="keyword">private</span> <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input.html">GenerationInput</a> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#a5cb6aca834e246599bbe4cfd82f85edc">GetGenerationInput</a>()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">return</span> (<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input.html">GenerationInput</a>)serializedObject.targetObject;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        }</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">   32</a></span>        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">DrawOutputNamesLabel</a>()</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keyword">const</span> <span class="keywordtype">string</span> LongDash = <span class="stringliteral">&quot;\u2012&quot;</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            var input = <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#a5cb6aca834e246599bbe4cfd82f85edc">GetGenerationInput</a>();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            var names = input.OutputNames();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            var label = names.Length &gt; 0 ? <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, names) : LongDash;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            GUI.enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            EditorGUILayout.LabelField(<span class="stringliteral">&quot;Output Names&quot;</span>, label);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            GUI.enabled = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">   24</a></span>        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">DrawOutputNamesLabel</a>()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            var input = (<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input.html">GenerationInput</a>)serializedObject.targetObject;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            var names = input.OutputNames();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            var label = names.Length &gt; 0 ? <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, names) : <span class="stringliteral">&quot;&lt;N/A&gt;&quot;</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            GUI.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            EditorGUILayout.LabelField(<span class="stringliteral">&quot;Output Names&quot;</span>, label);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            GUI.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html">MPewsey.ManiaMapUnity.Generators.Editor.GenerationInputEditor</a></div><div class="ttdoc">The GenerationInput editor.</div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_editor_8cs_source.html#l00010">GenerationInputEditor.cs:11</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor_html_a5cb6aca834e246599bbe4cfd82f85edc"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#a5cb6aca834e246599bbe4cfd82f85edc">MPewsey.ManiaMapUnity.Generators.Editor.GenerationInputEditor.GetGenerationInput</a></div><div class="ttdeci">GenerationInput GetGenerationInput()</div><div class="ttdoc">Returns the target generation input object.</div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_editor_8cs_source.html#l00023">GenerationInputEditor.cs:23</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor_html_abbb54ac52ebf1fd97bacfbb9938af2b9"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">MPewsey.ManiaMapUnity.Generators.Editor.GenerationInputEditor.DrawOutputNamesLabel</a></div><div class="ttdeci">void DrawOutputNamesLabel()</div><div class="ttdoc">Draws the output names label. If no output names are defined in the input, a long dash is displayed.</div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_editor_8cs_source.html#l00032">GenerationInputEditor.cs:32</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor_html_abbb54ac52ebf1fd97bacfbb9938af2b9"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html#abbb54ac52ebf1fd97bacfbb9938af2b9">MPewsey.ManiaMapUnity.Generators.Editor.GenerationInputEditor.DrawOutputNamesLabel</a></div><div class="ttdeci">void DrawOutputNamesLabel()</div><div class="ttdoc">Draws the output names label. If no output names are defined in the input, a long dash is displayed.</div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_editor_8cs_source.html#l00024">GenerationInputEditor.cs:24</a></div></div>
 <div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input.html">MPewsey.ManiaMapUnity.Generators.GenerationInput</a></div><div class="ttdoc">The base class for a GenerationPipeline input.</div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_8cs_source.html#l00009">GenerationInput.cs:10</a></div></div>
 <div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor.html">MPewsey.ManiaMapUnity.Generators.Editor</a></div><div class="ttdef"><b>Definition:</b> <a href="_generation_input_editor_8cs_source.html#l00004">GenerationInputEditor.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -143,7 +136,7 @@ $(document).ready(function(){initNavTree('_generation_input_editor_8cs_source.ht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_4edcbb236dfd51dd81727243a38df6a0.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_1f54c2afe23a8c3b35a56cf36ba51bdc.html">Editor</a></li><li class="navelem"><a class="el" href="dir_79dd6e27ef1fbab0c110ff7be9b1bd7a.html">Generators</a></li><li class="navelem"><b>GenerationInputEditor.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_3469a6c1e17ee10eead2772b6d6092a4.html">ManiaMap.Unity</a></li><li class="navelem"><a class="el" href="dir_a9fa35bf4235fa1a74a87f6c0038fb4a.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_a51a55b9bef74878a0232ab003c2c864.html">Editor</a></li><li class="navelem"><a class="el" href="dir_23bcaef57f8d76d7f5234f7d1a26033b.html">Generators</a></li><li class="navelem"><b>GenerationInputEditor.cs</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

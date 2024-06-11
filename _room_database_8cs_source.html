@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ManiaMap.Unity: /github/workspace/Scripts/Runtime/RoomDatabase.cs Source File</title>
+<title>ManiaMap.Unity: /github/workspace/Packages/ManiaMap.Unity/Scripts/Runtime/RoomDatabase.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -99,98 +99,133 @@ $(document).ready(function(){initNavTree('_room_database_8cs_source.html',''); i
   <div class="headertitle"><div class="title">RoomDatabase.cs</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using</span> UnityEngine;</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">   10</a></span>    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">RoomDatabase</a>&lt;T&gt; : ScriptableObject</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        [SerializeField]</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">protected</span> <span class="keywordtype">string</span>[] _searchPaths = <span class="keyword">new</span> <span class="keywordtype">string</span>[] { <span class="stringliteral">&quot;Assets&quot;</span> };</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af8927536e521d7ff515f18cabd8e0aa6">   17</a></span>        <span class="keyword">public</span> <span class="keywordtype">string</span>[] <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af8927536e521d7ff515f18cabd8e0aa6">SearchPaths</a> { <span class="keyword">get</span> =&gt; _searchPaths; <span class="keyword">set</span> =&gt; _searchPaths = value; }</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using</span> <a class="code hl_namespace" href="namespace_m_pewsey.html">MPewsey</a>.ManiaMap;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using</span> <a class="code hl_namespace" href="namespace_m_pewsey.html">MPewsey</a>.ManiaMap.Exceptions;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using</span> UnityEngine;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    [CreateAssetMenu(menuName = <span class="stringliteral">&quot;Mania Map/Room Database&quot;</span>)]</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">   13</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">RoomDatabase</a> : ScriptableObject</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        [SerializeField]</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">private</span> List&lt;RoomComponent&gt; _rooms = <span class="keyword">new</span> List&lt;RoomComponent&gt;();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">public</span> List&lt;RoomComponent&gt; Rooms { <span class="keyword">get</span> =&gt; _rooms; <span class="keyword">set</span> =&gt; _rooms = value; }</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        [SerializeField]</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">protected</span> List&lt;RoomDatabaseEntry&lt;T&gt;&gt; _entries = <span class="keyword">new</span> List&lt;RoomDatabaseEntry&lt;T&gt;&gt;();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">   24</a></span>        <span class="keyword">public</span> List&lt;RoomDatabaseEntry&lt;T&gt;&gt; <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">Entries</a> { <span class="keyword">get</span> =&gt; _entries; <span class="keyword">set</span> =&gt; _entries = value; }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">protected</span> Dictionary&lt;int, T&gt; _prefabDictionary = <span class="keyword">new</span> Dictionary&lt;int, T&gt;();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">   30</a></span>        <span class="keyword">protected</span> Dictionary&lt;int, T&gt; <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">PrefabDictionary</a></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">get</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">EnsureIsInitialized</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordflow">return</span> _prefabDictionary;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keyword">set</span> =&gt; _prefabDictionary = value;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">   43</a></span>        <span class="keyword">protected</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">protected</span> <span class="keywordtype">void</span> OnEnable()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keyword">protected</span> <span class="keywordtype">void</span> OnDisable()</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">   58</a></span>        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">Initialize</a>()</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">PrefabDictionary</a> = <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">CreatePrefabDictionary</a>();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">   67</a></span>        <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">EnsureIsInitialized</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">private</span> Dictionary&lt;int, RoomComponent&gt; RoomsByTemplateId { <span class="keyword">get</span>; } = <span class="keyword">new</span> Dictionary&lt;int, RoomComponent&gt;();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> IsDirty { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; } = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> Awake()</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            IsDirty = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnValidate()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            IsDirty = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">public</span> IReadOnlyDictionary&lt;int, RoomComponent&gt; GetRoomsByTemplateId()</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            PopulateIfDirty();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> RoomsByTemplateId;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">public</span> <span class="keywordtype">void</span> MarkDirty()</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            IsDirty = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> PopulateIfDirty()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">if</span> (IsDirty)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                PopulateRoomsByTemplateId();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                IsDirty = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> PopulateRoomsByTemplateId()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            RoomsByTemplateId.Clear();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">foreach</span> (var room <span class="keywordflow">in</span> Rooms)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                var <span class="keywordtype">id</span> = room.RoomTemplate.Id;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">if</span> (!RoomsByTemplateId.TryGetValue(<span class="keywordtype">id</span>, out var storedRoom))</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    RoomsByTemplateId.Add(<span class="keywordtype">id</span>, room);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (room != storedRoom)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> DuplicateIdException($<span class="stringliteral">&quot;Duplicate room template ID: (ID = {id}, Room1 = {storedRoom}, Room2 = {room}).&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">public</span> <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> GetRoomPrefab(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">Initialize</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            PopulateIfDirty();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> RoomsByTemplateId[id];</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">   76</a></span>        <span class="keyword">protected</span> Dictionary&lt;int, T&gt; <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">CreatePrefabDictionary</a>()</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            var dict = <span class="keyword">new</span> Dictionary&lt;int, T&gt;(<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">Entries</a>.Count);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">foreach</span> (var entry <span class="keywordflow">in</span> <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">Entries</a>)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                dict.Add(entry.Id, entry.Prefab);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">return</span> dict;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a9f85a2eb72eb4793b35b560245c9d8b8">   93</a></span>        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a9f85a2eb72eb4793b35b560245c9d8b8">AddEntry</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, T prefab)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">public</span> <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> GetRoomPrefab(Uid <span class="keywordtype">id</span>, <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            var room = layoutPack.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a>.Rooms[id];</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> GetRoomPrefab(room.Template.Id);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">public</span> List&lt;RoomComponent&gt; InstantiateAllRooms(<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, Transform parent = <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            var result = <span class="keyword">new</span> List&lt;RoomComponent&gt;(layoutPack.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a>.Rooms.Count);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">foreach</span> (var room <span class="keywordflow">in</span> layoutPack.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a>.Rooms.Values)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                var prefab = GetRoomPrefab(room.Template.Id).gameObject;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                var roomInstance = <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>.InstantiateRoom(room.Id, layoutPack, prefab, parent, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                result.Add(roomInstance.GetComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;());</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keyword">public</span> List&lt;RoomComponent&gt; InstantiateRooms(<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, <span class="keywordtype">int</span>? z = <span class="keyword">null</span>, Transform parent = <span class="keyword">null</span>)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">PrefabDictionary</a>.Add(<span class="keywordtype">id</span>, prefab);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">Entries</a>.Add(<span class="keyword">new</span> <a class="code hl_struct" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry&lt;T&gt;</a>(<span class="keywordtype">id</span>, prefab));</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a88f6dfd426dd6e98ddcd0fe00303ff68">  103</a></span>        <span class="keyword">public</span> T <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a88f6dfd426dd6e98ddcd0fe00303ff68">GetPrefab</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">PrefabDictionary</a>[id];</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">MPewsey.ManiaMapUnity.RoomDatabase</a></div><div class="ttdoc">A base class for creating a room data source database.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00010">RoomDatabase.cs:11</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a329c35d85135ba26adde2848f06ac10f"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">MPewsey.ManiaMapUnity.RoomDatabase.EnsureIsInitialized</a></div><div class="ttdeci">void EnsureIsInitialized()</div><div class="ttdoc">If the database has not been initialized, initializes it.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00067">RoomDatabase.cs:67</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a422f1aaeacb4bec13de662ea17194338"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">MPewsey.ManiaMapUnity.RoomDatabase.PrefabDictionary</a></div><div class="ttdeci">Dictionary&lt; int, T &gt; PrefabDictionary</div><div class="ttdoc">A dictionary of room data sources by room ID.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00030">RoomDatabase.cs:31</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a669136267aa690fb2e68fde122a71518"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">MPewsey.ManiaMapUnity.RoomDatabase.Entries</a></div><div class="ttdeci">List&lt; RoomDatabaseEntry&lt; T &gt; &gt; Entries</div><div class="ttdoc">A list of database entries.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00024">RoomDatabase.cs:24</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a7ed04f59832fdb2e6e414f3e4454eccb"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">MPewsey.ManiaMapUnity.RoomDatabase.CreatePrefabDictionary</a></div><div class="ttdeci">Dictionary&lt; int, T &gt; CreatePrefabDictionary()</div><div class="ttdoc">Creates the room data dictionary based on the current database entries list.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00076">RoomDatabase.cs:76</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a88f6dfd426dd6e98ddcd0fe00303ff68"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a88f6dfd426dd6e98ddcd0fe00303ff68">MPewsey.ManiaMapUnity.RoomDatabase.GetPrefab</a></div><div class="ttdeci">T GetPrefab(int id)</div><div class="ttdoc">Returns the room prefab for the specified ID.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00103">RoomDatabase.cs:103</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a98b1050f09da390896f964fb7a892391"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">MPewsey.ManiaMapUnity.RoomDatabase.Initialize</a></div><div class="ttdeci">void Initialize()</div><div class="ttdoc">Initializes the database by creating the prefab dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00058">RoomDatabase.cs:58</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_a9f85a2eb72eb4793b35b560245c9d8b8"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a9f85a2eb72eb4793b35b560245c9d8b8">MPewsey.ManiaMapUnity.RoomDatabase.AddEntry</a></div><div class="ttdeci">void AddEntry(int id, T prefab)</div><div class="ttdoc">Adds an entry to the database.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00093">RoomDatabase.cs:93</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_acf7e27e5129fb4febbb44dbd372a8a5a"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">MPewsey.ManiaMapUnity.RoomDatabase.IsInitialized</a></div><div class="ttdeci">bool IsInitialized</div><div class="ttdoc">True if the prefab dictionary has been initialized.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00043">RoomDatabase.cs:43</a></div></div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html_af8927536e521d7ff515f18cabd8e0aa6"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af8927536e521d7ff515f18cabd8e0aa6">MPewsey.ManiaMapUnity.RoomDatabase.SearchPaths</a></div><div class="ttdeci">string[] SearchPaths</div><div class="ttdoc">An array of paths to search for rooms.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00017">RoomDatabase.cs:17</a></div></div>
-<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_cell_child_editor_8cs_source.html#l00004">CellChildEditor.cs:5</a></div></div>
-<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry_html"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">MPewsey.ManiaMapUnity.RoomDatabaseEntry</a></div><div class="ttdoc">A room database entry containing a room ID and room data source.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_entry_8cs_source.html#l00010">RoomDatabaseEntry.cs:11</a></div></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            z ??= layoutPack.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a>.Rooms.Values.Select(x =&gt; x.Position.Z).First();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            var result = <span class="keyword">new</span> List&lt;RoomComponent&gt;();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">foreach</span> (var room <span class="keywordflow">in</span> layoutPack.<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a>.Rooms.Values)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                <span class="keywordflow">if</span> (room.Position.Z == z)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                    var prefab = GetRoomPrefab(room.Template.Id).gameObject;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                    var roomInstance = <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>.InstantiateRoom(room.Id, layoutPack, prefab, parent, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                    result.Add(roomInstance.GetComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;());</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">public</span> <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> InstantiateRoom(Uid <span class="keywordtype">id</span>, <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, Transform parent = <span class="keyword">null</span>, <span class="keywordtype">bool</span> assignLayoutPosition = <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            var prefab = GetRoomPrefab(<span class="keywordtype">id</span>, layoutPack).gameObject;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            var roomInstance = <a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>.InstantiateRoom(<span class="keywordtype">id</span>, layoutPack, prefab, parent, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">return</span> roomInstance.GetComponent&lt;<a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_layout_pack_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">MPewsey.ManiaMapUnity.LayoutPack</a></div><div class="ttdoc">A manager for maintaining the current map data and state.</div><div class="ttdef"><b>Definition:</b> <a href="_layout_pack_8cs_source.html#l00011">LayoutPack.cs:12</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_layout_pack_html_a6860a4215b072014f8972b7611c569fd"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">MPewsey.ManiaMapUnity.LayoutPack.Layout</a></div><div class="ttdeci">Layout Layout</div><div class="ttdoc">The layout.</div><div class="ttdef"><b>Definition:</b> <a href="_layout_pack_8cs_source.html#l00016">LayoutPack.cs:16</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_component_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">MPewsey.ManiaMapUnity.RoomComponent</a></div><div class="ttdoc">A component for creating a room.</div><div class="ttdef"><b>Definition:</b> <a href="_room_component_8cs_source.html#l00016">RoomComponent.cs:17</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_room_database_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html">MPewsey.ManiaMapUnity.RoomDatabase</a></div><div class="ttdoc">A room database with references to room prefabs.</div><div class="ttdef"><b>Definition:</b> <a href="_room_database_8cs_source.html#l00013">RoomDatabase.cs:14</a></div></div>
+<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_batch_updater_tool_8cs_source.html#l00005">BatchUpdaterTool.cs:6</a></div></div>
+<div class="ttc" id="anamespace_m_pewsey_html"><div class="ttname"><a href="namespace_m_pewsey.html">MPewsey</a></div><div class="ttdef"><b>Definition:</b> <a href="_batch_updater_tool_8cs_source.html#l00005">BatchUpdaterTool.cs:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_4edcbb236dfd51dd81727243a38df6a0.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_bd02518d4f499cf99d7b393e1af10b35.html">Runtime</a></li><li class="navelem"><b>RoomDatabase.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_3469a6c1e17ee10eead2772b6d6092a4.html">ManiaMap.Unity</a></li><li class="navelem"><a class="el" href="dir_a9fa35bf4235fa1a74a87f6c0038fb4a.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_fbb610b65a60a715f5ff8e691f8c4914.html">Runtime</a></li><li class="navelem"><b>RoomDatabase.cs</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

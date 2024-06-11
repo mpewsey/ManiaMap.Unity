@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ManiaMap.Unity: RoomDatabase&lt; T &gt; Class Template Reference</title>
+<title>ManiaMap.Unity: RoomDatabase Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,18 +98,18 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">RoomDatabase&lt; T &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">RoomDatabase Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A base class for creating a room data source database.  
+<p>A room database with references to room prefabs.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for RoomDatabase&lt; T &gt;:</div>
+Inheritance diagram for RoomDatabase:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.png" alt=""/>
@@ -117,81 +117,115 @@ Inheritance diagram for RoomDatabase&lt; T &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9f85a2eb72eb4793b35b560245c9d8b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a9f85a2eb72eb4793b35b560245c9d8b8">AddEntry</a> (int id, T prefab)</td></tr>
-<tr class="memdesc:a9f85a2eb72eb4793b35b560245c9d8b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an entry to the database.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a9f85a2eb72eb4793b35b560245c9d8b8">More...</a><br /></td></tr>
-<tr class="separator:a9f85a2eb72eb4793b35b560245c9d8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88f6dfd426dd6e98ddcd0fe00303ff68"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a88f6dfd426dd6e98ddcd0fe00303ff68">GetPrefab</a> (int id)</td></tr>
-<tr class="memdesc:a88f6dfd426dd6e98ddcd0fe00303ff68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room prefab for the specified ID.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a88f6dfd426dd6e98ddcd0fe00303ff68">More...</a><br /></td></tr>
-<tr class="separator:a88f6dfd426dd6e98ddcd0fe00303ff68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b1050f09da390896f964fb7a892391"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">Initialize</a> ()</td></tr>
-<tr class="memdesc:a98b1050f09da390896f964fb7a892391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the database by creating the prefab dictionary.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a98b1050f09da390896f964fb7a892391">More...</a><br /></td></tr>
-<tr class="separator:a98b1050f09da390896f964fb7a892391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a7ed04f59832fdb2e6e414f3e4454eccb"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">CreatePrefabDictionary</a> ()</td></tr>
-<tr class="memdesc:a7ed04f59832fdb2e6e414f3e4454eccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the room data dictionary based on the current database entries list.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7ed04f59832fdb2e6e414f3e4454eccb">More...</a><br /></td></tr>
-<tr class="separator:a7ed04f59832fdb2e6e414f3e4454eccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a329c35d85135ba26adde2848f06ac10f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">EnsureIsInitialized</a> ()</td></tr>
-<tr class="memdesc:a329c35d85135ba26adde2848f06ac10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the database has not been initialized, initializes it.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a329c35d85135ba26adde2848f06ac10f">More...</a><br /></td></tr>
-<tr class="separator:a329c35d85135ba26adde2848f06ac10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e9a1e1cd7a478a0d00f0efb51a8e4cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a3e9a1e1cd7a478a0d00f0efb51a8e4cf">OnDisable</a> ()</td></tr>
-<tr class="separator:a3e9a1e1cd7a478a0d00f0efb51a8e4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84e23ba394eacd818d2e005cc466c4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a84e23ba394eacd818d2e005cc466c4d1">OnEnable</a> ()</td></tr>
-<tr class="separator:a84e23ba394eacd818d2e005cc466c4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a627c5bf201784d00c92766640e85af36"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a627c5bf201784d00c92766640e85af36">_entries</a> = new List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt;&gt;()</td></tr>
-<tr class="separator:a627c5bf201784d00c92766640e85af36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba7faeeb0bb3275a9f03f2d40edf9ea0"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#aba7faeeb0bb3275a9f03f2d40edf9ea0">_prefabDictionary</a> = new Dictionary&lt;int, T&gt;()</td></tr>
-<tr class="separator:aba7faeeb0bb3275a9f03f2d40edf9ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7017df9fd4cf55b4695b5cbc3151c554"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7017df9fd4cf55b4695b5cbc3151c554">_searchPaths</a> = new string[] { &quot;Assets&quot; }</td></tr>
-<tr class="separator:a7017df9fd4cf55b4695b5cbc3151c554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ca9f219211dfdf3cedcb95589abf60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#ac5ca9f219211dfdf3cedcb95589abf60">GetRoomPrefab</a> (int id)</td></tr>
+<tr class="separator:ac5ca9f219211dfdf3cedcb95589abf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2292be6954f4fa71bbeee159c41a8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#afe2292be6954f4fa71bbeee159c41a8d">GetRoomPrefab</a> (Uid id, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack)</td></tr>
+<tr class="separator:afe2292be6954f4fa71bbeee159c41a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae080c3ebf33bcac8044c3b8ec20af142"><td class="memItemLeft" align="right" valign="top">IReadOnlyDictionary&lt; int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#ae080c3ebf33bcac8044c3b8ec20af142">GetRoomsByTemplateId</a> ()</td></tr>
+<tr class="separator:ae080c3ebf33bcac8044c3b8ec20af142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af265bae2d4c90eebb08d20b65f64041e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af265bae2d4c90eebb08d20b65f64041e">InstantiateAllRooms</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, Transform parent=null)</td></tr>
+<tr class="separator:af265bae2d4c90eebb08d20b65f64041e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11bb1e848a8eae3f8d8b9917b8fb8d2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a11bb1e848a8eae3f8d8b9917b8fb8d2f">InstantiateRoom</a> (Uid id, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, Transform parent=null, bool assignLayoutPosition=false)</td></tr>
+<tr class="separator:a11bb1e848a8eae3f8d8b9917b8fb8d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e753de8c8ea1b5e3374e79c2c66d6fc"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a2e753de8c8ea1b5e3374e79c2c66d6fc">InstantiateRooms</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a> layoutPack, int? z=null, Transform parent=null)</td></tr>
+<tr class="separator:a2e753de8c8ea1b5e3374e79c2c66d6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92fcb5995a583e68e79e2826ff61e5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af92fcb5995a583e68e79e2826ff61e5d">MarkDirty</a> ()</td></tr>
+<tr class="separator:af92fcb5995a583e68e79e2826ff61e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a669136267aa690fb2e68fde122a71518"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">Entries</a><code> [getset]</code></td></tr>
-<tr class="memdesc:a669136267aa690fb2e68fde122a71518"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of database entries.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a669136267aa690fb2e68fde122a71518">More...</a><br /></td></tr>
-<tr class="separator:a669136267aa690fb2e68fde122a71518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a><code> [getset]</code></td></tr>
-<tr class="memdesc:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the prefab dictionary has been initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#acf7e27e5129fb4febbb44dbd372a8a5a">More...</a><br /></td></tr>
-<tr class="separator:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a422f1aaeacb4bec13de662ea17194338"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">PrefabDictionary</a><code> [getset]</code></td></tr>
-<tr class="memdesc:a422f1aaeacb4bec13de662ea17194338"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of room data sources by room ID.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a422f1aaeacb4bec13de662ea17194338">More...</a><br /></td></tr>
-<tr class="separator:a422f1aaeacb4bec13de662ea17194338"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8927536e521d7ff515f18cabd8e0aa6"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af8927536e521d7ff515f18cabd8e0aa6">SearchPaths</a><code> [getset]</code></td></tr>
-<tr class="memdesc:af8927536e521d7ff515f18cabd8e0aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of paths to search for rooms.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#af8927536e521d7ff515f18cabd8e0aa6">More...</a><br /></td></tr>
-<tr class="separator:af8927536e521d7ff515f18cabd8e0aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8bdb89e1ed4be9aa5561d3e7028095"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#aff8bdb89e1ed4be9aa5561d3e7028095">IsDirty</a> = true<code> [getprivate set]</code></td></tr>
+<tr class="separator:aff8bdb89e1ed4be9aa5561d3e7028095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084cd654c7fe521b6200bd1a3d0bbb26"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a084cd654c7fe521b6200bd1a3d0bbb26">Rooms</a><code> [getset]</code></td></tr>
+<tr class="separator:a084cd654c7fe521b6200bd1a3d0bbb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7251b7eb95a5abf81bb79fa4443876b4"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a7251b7eb95a5abf81bb79fa4443876b4">RoomsByTemplateId</a> = new Dictionary&lt;int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;()<code> [get]</code></td></tr>
+<tr class="separator:a7251b7eb95a5abf81bb79fa4443876b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae4b513cddd594f1c359e4f0a3e79a8c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#ae4b513cddd594f1c359e4f0a3e79a8c6">Awake</a> ()</td></tr>
+<tr class="separator:ae4b513cddd594f1c359e4f0a3e79a8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755e7a04dbc0bc114ebd52997a9a2a42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a755e7a04dbc0bc114ebd52997a9a2a42">OnValidate</a> ()</td></tr>
+<tr class="separator:a755e7a04dbc0bc114ebd52997a9a2a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5061f6732f79f2e2483eab65fb5feb86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a5061f6732f79f2e2483eab65fb5feb86">PopulateIfDirty</a> ()</td></tr>
+<tr class="separator:a5061f6732f79f2e2483eab65fb5feb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390dc4088ef44a348e3d8a16c1899c69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a390dc4088ef44a348e3d8a16c1899c69">PopulateRoomsByTemplateId</a> ()</td></tr>
+<tr class="separator:a390dc4088ef44a348e3d8a16c1899c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a51b387e44cd176d7d103907852690a1e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_database.html#a51b387e44cd176d7d103907852690a1e">_rooms</a> = new List&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;()</td></tr>
+<tr class="separator:a51b387e44cd176d7d103907852690a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >A base class for creating a room data source database. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>The room prefab type.</td></tr>
-  </table>
-  </dd>
-</dl>
+<div class="textblock"><p >A room database with references to room prefabs. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00010">10</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00013">13</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9f85a2eb72eb4793b35b560245c9d8b8" name="a9f85a2eb72eb4793b35b560245c9d8b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f85a2eb72eb4793b35b560245c9d8b8">&#9670;&nbsp;</a></span>AddEntry()</h2>
+<a id="ae4b513cddd594f1c359e4f0a3e79a8c6" name="ae4b513cddd594f1c359e4f0a3e79a8c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4b513cddd594f1c359e4f0a3e79a8c6">&#9670;&nbsp;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Awake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00022">22</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac5ca9f219211dfdf3cedcb95589abf60" name="ac5ca9f219211dfdf3cedcb95589abf60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5ca9f219211dfdf3cedcb95589abf60">&#9670;&nbsp;</a></span>GetRoomPrefab() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AddEntry </td>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> GetRoomPrefab </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00067">67</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="afe2292be6954f4fa71bbeee159c41a8d" name="afe2292be6954f4fa71bbeee159c41a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2292be6954f4fa71bbeee159c41a8d">&#9670;&nbsp;</a></span>GetRoomPrefab() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> GetRoomPrefab </td>
+          <td>(</td>
+          <td class="paramtype">Uid&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>prefab</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a>&#160;</td>
+          <td class="paramname"><em>layoutPack</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -201,21 +235,158 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds an entry to the database. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
-    <tr><td class="paramname">prefab</td><td>The room prefab.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00073">73</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae080c3ebf33bcac8044c3b8ec20af142" name="ae080c3ebf33bcac8044c3b8ec20af142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae080c3ebf33bcac8044c3b8ec20af142">&#9670;&nbsp;</a></span>GetRoomsByTemplateId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IReadOnlyDictionary&lt; int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt; GetRoomsByTemplateId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00032">32</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="af265bae2d4c90eebb08d20b65f64041e" name="af265bae2d4c90eebb08d20b65f64041e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af265bae2d4c90eebb08d20b65f64041e">&#9670;&nbsp;</a></span>InstantiateAllRooms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt; InstantiateAllRooms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a>&#160;</td>
+          <td class="paramname"><em>layoutPack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00079">79</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="a11bb1e848a8eae3f8d8b9917b8fb8d2f" name="a11bb1e848a8eae3f8d8b9917b8fb8d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11bb1e848a8eae3f8d8b9917b8fb8d2f">&#9670;&nbsp;</a></span>InstantiateRoom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> InstantiateRoom </td>
+          <td>(</td>
+          <td class="paramtype">Uid&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a>&#160;</td>
+          <td class="paramname"><em>layoutPack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>assignLayoutPosition</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00111">111</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2e753de8c8ea1b5e3374e79c2c66d6fc" name="a2e753de8c8ea1b5e3374e79c2c66d6fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e753de8c8ea1b5e3374e79c2c66d6fc">&#9670;&nbsp;</a></span>InstantiateRooms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> &gt; InstantiateRooms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html">LayoutPack</a>&#160;</td>
+          <td class="paramname"><em>layoutPack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int?&#160;</td>
+          <td class="paramname"><em>z</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00093">93</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
-<a id="a7ed04f59832fdb2e6e414f3e4454eccb" name="a7ed04f59832fdb2e6e414f3e4454eccb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ed04f59832fdb2e6e414f3e4454eccb">&#9670;&nbsp;</a></span>CreatePrefabDictionary()</h2>
+<a id="af92fcb5995a583e68e79e2826ff61e5d" name="af92fcb5995a583e68e79e2826ff61e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92fcb5995a583e68e79e2826ff61e5d">&#9670;&nbsp;</a></span>MarkDirty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MarkDirty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00038">38</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<a id="a755e7a04dbc0bc114ebd52997a9a2a42" name="a755e7a04dbc0bc114ebd52997a9a2a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a755e7a04dbc0bc114ebd52997a9a2a42">&#9670;&nbsp;</a></span>OnValidate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,7 +395,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt; int, T &gt; CreatePrefabDictionary </td>
+          <td class="memname">void OnValidate </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -232,19 +403,17 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates the room data dictionary based on the current database entries list. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00076">76</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00027">27</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
-<a id="a329c35d85135ba26adde2848f06ac10f" name="a329c35d85135ba26adde2848f06ac10f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a329c35d85135ba26adde2848f06ac10f">&#9670;&nbsp;</a></span>EnsureIsInitialized()</h2>
+<a id="a5061f6732f79f2e2483eab65fb5feb86" name="a5061f6732f79f2e2483eab65fb5feb86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5061f6732f79f2e2483eab65fb5feb86">&#9670;&nbsp;</a></span>PopulateIfDirty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +422,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EnsureIsInitialized </td>
+          <td class="memname">void PopulateIfDirty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -261,68 +430,17 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>If the database has not been initialized, initializes it. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00067">67</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00043">43</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
-<a id="a88f6dfd426dd6e98ddcd0fe00303ff68" name="a88f6dfd426dd6e98ddcd0fe00303ff68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88f6dfd426dd6e98ddcd0fe00303ff68">&#9670;&nbsp;</a></span>GetPrefab()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">T GetPrefab </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the room prefab for the specified ID. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00103">103</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="a98b1050f09da390896f964fb7a892391" name="a98b1050f09da390896f964fb7a892391"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98b1050f09da390896f964fb7a892391">&#9670;&nbsp;</a></span>Initialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Initialize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the database by creating the prefab dictionary. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00058">58</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3e9a1e1cd7a478a0d00f0efb51a8e4cf" name="a3e9a1e1cd7a478a0d00f0efb51a8e4cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e9a1e1cd7a478a0d00f0efb51a8e4cf">&#9670;&nbsp;</a></span>OnDisable()</h2>
+<a id="a390dc4088ef44a348e3d8a16c1899c69" name="a390dc4088ef44a348e3d8a16c1899c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a390dc4088ef44a348e3d8a16c1899c69">&#9670;&nbsp;</a></span>PopulateRoomsByTemplateId()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +449,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void OnDisable </td>
+          <td class="memname">void PopulateRoomsByTemplateId </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -339,45 +457,18 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00050">50</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="a84e23ba394eacd818d2e005cc466c4d1" name="a84e23ba394eacd818d2e005cc466c4d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84e23ba394eacd818d2e005cc466c4d1">&#9670;&nbsp;</a></span>OnEnable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OnEnable </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00045">45</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00052">52</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a627c5bf201784d00c92766640e85af36" name="a627c5bf201784d00c92766640e85af36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627c5bf201784d00c92766640e85af36">&#9670;&nbsp;</a></span>_entries</h2>
+<a id="a51b387e44cd176d7d103907852690a1e" name="a51b387e44cd176d7d103907852690a1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51b387e44cd176d7d103907852690a1e">&#9670;&nbsp;</a></span>_rooms</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,12 +477,37 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt; &gt; _entries = new List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt;&gt;()</td>
+          <td class="memname">List&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt; _rooms = new List&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;()</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00016">16</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="aff8bdb89e1ed4be9aa5561d3e7028095" name="aff8bdb89e1ed4be9aa5561d3e7028095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8bdb89e1ed4be9aa5561d3e7028095">&#9670;&nbsp;</a></span>IsDirty</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IsDirty = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -400,8 +516,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aba7faeeb0bb3275a9f03f2d40edf9ea0" name="aba7faeeb0bb3275a9f03f2d40edf9ea0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba7faeeb0bb3275a9f03f2d40edf9ea0">&#9670;&nbsp;</a></span>_prefabDictionary</h2>
+<a id="a084cd654c7fe521b6200bd1a3d0bbb26" name="a084cd654c7fe521b6200bd1a3d0bbb26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084cd654c7fe521b6200bd1a3d0bbb26">&#9670;&nbsp;</a></span>Rooms</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -410,56 +526,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;int, T&gt; _prefabDictionary = new Dictionary&lt;int, T&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00026">26</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="a7017df9fd4cf55b4695b5cbc3151c554" name="a7017df9fd4cf55b4695b5cbc3151c554"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7017df9fd4cf55b4695b5cbc3151c554">&#9670;&nbsp;</a></span>_searchPaths</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string [] _searchPaths = new string[] { &quot;Assets&quot; }</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00013">13</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a669136267aa690fb2e68fde122a71518" name="a669136267aa690fb2e68fde122a71518"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a669136267aa690fb2e68fde122a71518">&#9670;&nbsp;</a></span>Entries</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="struct_m_pewsey_1_1_mania_map_unity_1_1_room_database_entry.html">RoomDatabaseEntry</a>&lt;T&gt; &gt; Entries</td>
+          <td class="memname">List&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt; Rooms</td>
         </tr>
       </table>
   </td>
@@ -468,93 +535,37 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>A list of database entries. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00024">24</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="acf7e27e5129fb4febbb44dbd372a8a5a" name="acf7e27e5129fb4febbb44dbd372a8a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf7e27e5129fb4febbb44dbd372a8a5a">&#9670;&nbsp;</a></span>IsInitialized</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool IsInitialized</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>True if the prefab dictionary has been initialized. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00043">43</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="a422f1aaeacb4bec13de662ea17194338" name="a422f1aaeacb4bec13de662ea17194338"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a422f1aaeacb4bec13de662ea17194338">&#9670;&nbsp;</a></span>PrefabDictionary</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;int, T&gt; PrefabDictionary</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A dictionary of room data sources by room ID. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00030">30</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
-
-</div>
-</div>
-<a id="af8927536e521d7ff515f18cabd8e0aa6" name="af8927536e521d7ff515f18cabd8e0aa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8927536e521d7ff515f18cabd8e0aa6">&#9670;&nbsp;</a></span>SearchPaths</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string [] SearchPaths</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>An array of paths to search for rooms. </p>
 
 <p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00017">17</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
 
 </div>
 </div>
+<a id="a7251b7eb95a5abf81bb79fa4443876b4" name="a7251b7eb95a5abf81bb79fa4443876b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7251b7eb95a5abf81bb79fa4443876b4">&#9670;&nbsp;</a></span>RoomsByTemplateId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt; RoomsByTemplateId = new Dictionary&lt;int, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_room_database_8cs_source.html#l00019">19</a> of file <a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/github/workspace/Scripts/Runtime/<a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a></li>
+<li>/github/workspace/Packages/ManiaMap.Unity/Scripts/Runtime/<a class="el" href="_room_database_8cs_source.html">RoomDatabase.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

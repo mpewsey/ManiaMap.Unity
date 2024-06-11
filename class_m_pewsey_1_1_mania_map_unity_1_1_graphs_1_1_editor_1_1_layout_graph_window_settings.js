@@ -1,6 +1,6 @@
 var class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings =
 [
-    [ "GetSettings", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a3020d7679ab6041c71a84fb69cdbdde4", null ],
+    [ "LoadSettings", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a8d6055286756b02d5a6b2013e4a1aef9", null ],
     [ "AddEdgeColor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a4e4d07021c99b2398639f04231197136", null ],
     [ "DragAreaColor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a1fe16bd38274ccdac4899ab824878d5d", null ],
     [ "DragOutlineColor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#a49aaf101bd0287a4c127483ab61d90e9", null ],

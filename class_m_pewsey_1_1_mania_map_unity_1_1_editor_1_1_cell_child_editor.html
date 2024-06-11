@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>The base class for <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object that has a Cell as a parent.">CellChild</a> editors.  
+<p>The CollectableSpot editor.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for CellChildEditor:</div>
@@ -112,10 +112,10 @@ Inheritance diagram for CellChildEditor:</div>
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.png" usemap="#CellChildEditor_map" alt=""/>
   <map id="CellChildEditor_map" name="CellChildEditor_map">
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_spot_behavior_editor.html" title="The CollectableSpot editor." alt="CollectableSpotBehaviorEditor" shape="rect" coords="0,112,184,136"/>
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_door_behavior_editor.html" title="The Door editor." alt="DoorBehaviorEditor" shape="rect" coords="194,112,378,136"/>
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_feature_editor.html" title="The Feature editor." alt="FeatureEditor" shape="rect" coords="388,112,572,136"/>
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_flag_editor.html" title="The Feature editor." alt="RoomFlagEditor" shape="rect" coords="582,112,766,136"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_spot_component_editor.html" title="The CollectableSpot editor." alt="CollectableSpotComponentEditor" shape="rect" coords="0,112,196,136"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_door_component_editor.html" title="The Door editor." alt="DoorComponentEditor" shape="rect" coords="206,112,402,136"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_feature_editor.html" title="The Feature editor." alt="FeatureEditor" shape="rect" coords="412,112,608,136"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_flag_editor.html" title="The Feature editor." alt="RoomFlagEditor" shape="rect" coords="618,112,814,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -126,38 +126,16 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a3e8e4d0e62d35f2ba30a9cee47abffba">AutoAssign</a> ()</td></tr>
-<tr class="memdesc:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the auto assign method on the object, sets it to dirty, and logs a success message.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a3e8e4d0e62d35f2ba30a9cee47abffba">More...</a><br /></td></tr>
-<tr class="separator:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aded5028009615341df6a916979478614"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#aded5028009615341df6a916979478614">AutoAssignButtonEnabled</a> ()</td></tr>
-<tr class="memdesc:aded5028009615341df6a916979478614"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if only a single object is selected, and it is open.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#aded5028009615341df6a916979478614">More...</a><br /></td></tr>
-<tr class="separator:aded5028009615341df6a916979478614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0803342c4fe040f87956002aed9b4c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ac0803342c4fe040f87956002aed9b4c5">CellIsAssigned</a> ()</td></tr>
-<tr class="memdesc:ac0803342c4fe040f87956002aed9b4c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if a cell has been assigned to the obejct.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ac0803342c4fe040f87956002aed9b4c5">More...</a><br /></td></tr>
-<tr class="separator:ac0803342c4fe040f87956002aed9b4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a806eef06e094e67d99c6c3346af4d301"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a806eef06e094e67d99c6c3346af4d301">DrawAutoAssignButton</a> ()</td></tr>
-<tr class="memdesc:a806eef06e094e67d99c6c3346af4d301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the auto assign button if it is enabled.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a806eef06e094e67d99c6c3346af4d301">More...</a><br /></td></tr>
-<tr class="separator:a806eef06e094e67d99c6c3346af4d301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4f3f1e0b6a3132e1a159277fc6acdd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ab4f3f1e0b6a3132e1a159277fc6acdd2">DrawCellErrorBox</a> ()</td></tr>
-<tr class="memdesc:ab4f3f1e0b6a3132e1a159277fc6acdd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws an error box if a cell has not been assigned.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ab4f3f1e0b6a3132e1a159277fc6acdd2">More...</a><br /></td></tr>
-<tr class="separator:ab4f3f1e0b6a3132e1a159277fc6acdd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0582d58550a0231f9737c4b8cf3d3db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html">CellChild</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ac0582d58550a0231f9737c4b8cf3d3db">GetCellChild</a> ()</td></tr>
-<tr class="memdesc:ac0582d58550a0231f9737c4b8cf3d3db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the target cell child.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ac0582d58550a0231f9737c4b8cf3d3db">More...</a><br /></td></tr>
-<tr class="separator:ac0582d58550a0231f9737c4b8cf3d3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c7c7054955726118b809e4101e790d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a2c7c7054955726118b809e4101e790d6">MultipleTargetsSelected</a> ()</td></tr>
-<tr class="memdesc:a2c7c7054955726118b809e4101e790d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if multiple target objects are selected.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a2c7c7054955726118b809e4101e790d6">More...</a><br /></td></tr>
-<tr class="separator:a2c7c7054955726118b809e4101e790d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dcb95ee68e10efc3225a556bf55ae84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a7dcb95ee68e10efc3225a556bf55ae84">TargetIsPrefabAsset</a> ()</td></tr>
-<tr class="memdesc:a7dcb95ee68e10efc3225a556bf55ae84"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the target object is an unopened prefab being inspected.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#a7dcb95ee68e10efc3225a556bf55ae84">More...</a><br /></td></tr>
-<tr class="separator:a7dcb95ee68e10efc3225a556bf55ae84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64ef30ddf3410e985c6de424fb67e49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html#ac64ef30ddf3410e985c6de424fb67e49">DrawRoomErrorBox</a> ()</td></tr>
+<tr class="separator:ac64ef30ddf3410e985c6de424fb67e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >The base class for <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object that has a Cell as a parent.">CellChild</a> editors. </p>
+<div class="textblock"><p >The CollectableSpot editor. </p>
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00009">9</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00010">10</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3e8e4d0e62d35f2ba30a9cee47abffba" name="a3e8e4d0e62d35f2ba30a9cee47abffba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e8e4d0e62d35f2ba30a9cee47abffba">&#9670;&nbsp;</a></span>AutoAssign()</h2>
+<a id="ac64ef30ddf3410e985c6de424fb67e49" name="ac64ef30ddf3410e985c6de424fb67e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac64ef30ddf3410e985c6de424fb67e49">&#9670;&nbsp;</a></span>DrawRoomErrorBox()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +144,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AutoAssign </td>
+          <td class="memname">void DrawRoomErrorBox </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -179,184 +157,7 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calls the auto assign method on the object, sets it to dirty, and logs a success message. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00035">35</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="aded5028009615341df6a916979478614" name="aded5028009615341df6a916979478614"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aded5028009615341df6a916979478614">&#9670;&nbsp;</a></span>AutoAssignButtonEnabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool AutoAssignButtonEnabled </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>True if only a single object is selected, and it is open. </p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00074">74</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac0803342c4fe040f87956002aed9b4c5" name="ac0803342c4fe040f87956002aed9b4c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0803342c4fe040f87956002aed9b4c5">&#9670;&nbsp;</a></span>CellIsAssigned()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CellIsAssigned </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>True if a cell has been assigned to the obejct. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00057">57</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="a806eef06e094e67d99c6c3346af4d301" name="a806eef06e094e67d99c6c3346af4d301"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a806eef06e094e67d99c6c3346af4d301">&#9670;&nbsp;</a></span>DrawAutoAssignButton()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DrawAutoAssignButton </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Draws the auto assign button if it is enabled. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00023">23</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="ab4f3f1e0b6a3132e1a159277fc6acdd2" name="ab4f3f1e0b6a3132e1a159277fc6acdd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4f3f1e0b6a3132e1a159277fc6acdd2">&#9670;&nbsp;</a></span>DrawCellErrorBox()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DrawCellErrorBox </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Draws an error box if a cell has not been assigned. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00046">46</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac0582d58550a0231f9737c4b8cf3d3db" name="ac0582d58550a0231f9737c4b8cf3d3db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0582d58550a0231f9737c4b8cf3d3db">&#9670;&nbsp;</a></span>GetCellChild()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html">CellChild</a> GetCellChild </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the target cell child. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00065">65</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="a2c7c7054955726118b809e4101e790d6" name="a2c7c7054955726118b809e4101e790d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c7c7054955726118b809e4101e790d6">&#9670;&nbsp;</a></span>MultipleTargetsSelected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MultipleTargetsSelected </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>True if multiple target objects are selected. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00090">90</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00018">18</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
 
 </div>
 </div>
@@ -375,41 +176,12 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00011">11</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
-
-</div>
-</div>
-<a id="a7dcb95ee68e10efc3225a556bf55ae84" name="a7dcb95ee68e10efc3225a556bf55ae84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7dcb95ee68e10efc3225a556bf55ae84">&#9670;&nbsp;</a></span>TargetIsPrefabAsset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool TargetIsPrefabAsset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>True if the target object is an unopened prefab being inspected. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00082">82</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_editor_8cs_source.html#l00012">12</a> of file <a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/github/workspace/Scripts/Editor/<a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a></li>
+<li>/github/workspace/Packages/ManiaMap.Unity/Scripts/Editor/<a class="el" href="_cell_child_editor_8cs_source.html">CellChildEditor.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
