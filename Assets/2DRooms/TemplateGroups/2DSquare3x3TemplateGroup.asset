@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107d86a69bd129469101849ad2d02e1, type: 3}
+  m_Name: 2DSquare3x3TemplateGroup
+  m_EditorClassIdentifier: 
+  _name: 2D Square 3x3
+  _entries:
+  - _template: {fileID: 11400000, guid: d699747e518a8df469584c20c13b83e8, type: 2}
+    _minQuantity: 0
+    _maxQuantity: 2147483647

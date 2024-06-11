@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a96fd216165f400459b78a85ac8b105b
+  m_SerializeEntries:
+  - m_GUID: c2d142e549ccdba489d192ffc2fb39e0
+    m_Address: LayoutMapBookSample
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b371fa212efeb241acbf054fa0aba18
+    m_Address: LayoutTileMapBookSample
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 189c00bd4201c63498ec157df88e207b
+    m_Address: LayoutTileMapSample
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd21e1a3cdb7e8b468fb05f8ba640a75
+    m_Address: RoomLayout2DSample
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e318b17f5c4ec424382397ebc33a6cec
+    m_Address: Assets/2DRooms/Square3x3Room2D.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9cab74f2d6c37a4b840014df07d6423
+    m_Address: EmptyScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9e87338526c7dd4c966874d60c8be93
+    m_Address: TestGenerationPipeline
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bff6395ee49e594aa0f1e9abac5f349
+    m_Address: TestLayoutTileMapBook
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 280a4d3bf94f993408889898e708458b
+    m_Address: TestLayoutTileMap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e31bb1640f09e1340b8c310dbe41d0a5
+    m_Address: TestLayoutMapBook
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ff7884a8fcd03c24da0fe8943408fe28, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: eb9617733b460204c9659400acd4feaf, type: 2}
+    - {fileID: 11400000, guid: 82774d6a35d06f143a0afa03931a2810, type: 2}
