@@ -15,7 +15,7 @@ jobs:
 
       - uses: mpewsey/doxygen-action@v1.9.2
         with:
-          working-directory: 'Docs~/'
+          working-directory: 'Docs/'
           doxyfile-path: 'Doxyfile'
 
       - name: Deploy
@@ -23,4 +23,4 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Docs~/output/html
+          publish_dir: ./Docs/output/html

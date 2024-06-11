@@ -1,0 +1,17 @@
+{
+  "name": "com.mpewsey.maniamap.unity",
+  "author": "Matt Pewsey",
+  "displayName": "ManiaMap.Unity",
+  "version": "0.0.4",
+  "unity": "2021.2",
+  "keywords": [
+    "unity",
+    "metroidvania"
+  ],
+  "description": "Procedural generation of metroidvania style maps for Unity.",
+  "dependencies": {
+    "com.unity.addressables": "1.19.19"
+  },
+  "samples": [],
+  "type": "library"
+}
