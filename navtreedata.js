@@ -27,16 +27,17 @@ var NAVTREE =
   [ "ManiaMap.Unity", "index.html", [
     [ "About", "index.html#autotoc_md2", null ],
     [ "Installation", "index.html#autotoc_md3", null ],
-    [ "Example", "index.html#autotoc_md4", [
-      [ "Step 1: Create Room Templates", "index.html#autotoc_md5", [
-        [ "Creating a Room", "index.html#autotoc_md6", null ],
-        [ "Creating Doors", "index.html#autotoc_md7", null ],
-        [ "Creating Collectable Spots", "index.html#autotoc_md8", null ],
-        [ "Saving Room Templates", "index.html#autotoc_md9", null ]
+    [ "Samples", "index.html#autotoc_md4", null ],
+    [ "Example", "index.html#autotoc_md5", [
+      [ "Step 1: Create Room Templates", "index.html#autotoc_md6", [
+        [ "Creating a Room", "index.html#autotoc_md7", null ],
+        [ "Creating Doors", "index.html#autotoc_md8", null ],
+        [ "Creating Collectable Spots", "index.html#autotoc_md9", null ],
+        [ "Saving Room Templates", "index.html#autotoc_md10", null ]
       ] ],
-      [ "Step 2: Create Room Template Groups", "index.html#autotoc_md10", null ],
-      [ "Step 3: Create Layout Graphs", "index.html#autotoc_md11", null ],
-      [ "Step 4: Create Generation Pipeline", "index.html#autotoc_md12", null ]
+      [ "Step 2: Create Room Template Groups", "index.html#autotoc_md11", null ],
+      [ "Step 3: Create Layout Graphs", "index.html#autotoc_md12", null ],
+      [ "Step 4: Create Generation Pipeline", "index.html#autotoc_md13", null ]
     ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]

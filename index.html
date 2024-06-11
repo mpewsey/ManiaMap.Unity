@@ -100,6 +100,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> <a href="https://mpewsey.github.io/ManiaMap.Unity"><img src="https://github.com/mpewsey/ManiaMap.Unity/workflows/Docs/badge.svg?event=push" alt="Docs" style="pointer-events: none;" class="inline"/></a> <img src="https://img.shields.io/badge/Unity-%E2%89%A5%202022.1-blue" alt="Unity ≥ 2022.1" class="inline"/> <img src="https://img.shields.io/github/v/tag/mpewsey/ManiaMap.Unity?label=Version" alt="Version" class="inline"/></p>
+<blockquote class="doxtable">
+<p >[!Important] Due to a major recent refactor, the README and documentation are out of date. There are plans to update them in the coming dates. </p>
+</blockquote>
 <h1><a class="anchor" id="autotoc_md2"></a>
 About</h1>
 <p >This package provides components for interfacing the <a href="https://github.com/mpewsey/ManiaMap">ManiaMap</a> procedural layout generator with Unity.</p>
@@ -109,16 +112,29 @@ Installation</h1>
 <p >In Unity, select <code>Window &gt; Package Manager</code>.</p>
 <p ><img src="https://user-images.githubusercontent.com/23442063/163601100-191d8699-f4fd-42cc-96d4-f6aa5a8ae29b.png" alt="Unity Package Manager" class="inline"/></p>
 <p >Select <code>Add package from git URL...</code> and paste the following URL:</p>
-<div class="fragment"><div class="line">https://github.com/mpewsey/ManiaMap.Unity.git</div>
+<div class="fragment"><div class="line">https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity</div>
 </div><!-- fragment --><p >To lock into a specific version, append <code>#{VERSION_TAG}</code> to the end of the URL. For example:</p>
-<div class="fragment"><div class="line">https://github.com/mpewsey/ManiaMap.Unity.git#v0.0.3</div>
+<div class="fragment"><div class="line">https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity#v0.0.3</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Samples</h1>
+<p >Sample scenes are available in the project <code>Assets</code> directory. To explore them, clone this repository and open the project in Unity.</p>
+<table style="text-align: center">
+<tr>
+<td width="50%" align="center"><img src="https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/866d377b-0887-42cf-b9fb-1204e3ebce61" alt="layout map book" width="450" class="inline"/><br  />
+ Layout tile map book sample with onionskin map display.  </td><td width="50%" align="center"><img src="https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/9891dc70-662c-47c8-93c7-3bdbddbd58b1" alt="layout map" width="450" class="inline"/><br  />
+ Layout tile map sample.   </td></tr>
+<tr>
+<td width="50%" align="center"><img src="https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/05fff504-f15d-4c2e-869c-ef59e2e9e4b1" alt="3d layout" width="450" class="inline"/><br  />
+ Layout map sample.  </td><td width="50%" align="center"><img src="https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/e170235f-df4f-475f-bd2c-bbdc90b464e7" alt="2d layout" width="450" class="inline"/><br  />
+ 2D layout generation sample.   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Example</h1>
 <p >The following subsections outline how to procedurally generate a layout.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Step 1: Create Room Templates</h2>
 <p >The generator creates rooms by pulling from user-defined rooms. To the generator a room is essentially a collection of cells in a grid, with information, such as door connections, assigned to them.</p>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md7"></a>
 Creating a Room</h3>
 <ol type="1">
 <li>Create a new <code>Room</code> by selecting <code>GameObject &gt; Mania Map &gt; Room</code>. Create a prefab for this Game Object that may be utilized later.</li>
@@ -133,7 +149,7 @@ Creating a Room</h3>
 <ol type="1">
 <li>Next, add all possible doors and collectable spots to the room per the following sections.</li>
 </ol>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md8"></a>
 Creating Doors</h3>
 <ol type="1">
 <li>Create a new <code>Door</code> by selecting the Room Game Object then <code>GameObject &gt; Mania Map &gt; Door</code>. The door should be added as a child of the room.</li>
@@ -142,7 +158,7 @@ Creating Doors</h3>
 <li>To auto assign the closest cell and direction to the door, make sure the applicable flags are selected and click the <code>Auto Assign</code> button. Note that the <code>Update Room</code> button on the Room component will also perform this operation on all doors in the room.</li>
 </ol>
 <p ><img src="https://user-images.githubusercontent.com/23442063/175813945-080a6eab-f333-4036-8816-90a2746401d7.png" alt="Doors" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<h3><a class="anchor" id="autotoc_md9"></a>
 Creating Collectable Spots</h3>
 <ol type="1">
 <li>Create a new <code>CollectableSpot</code> by selecting the Room Game Object then <code>GameObject &gt; Mania Map &gt; Collectable Spot</code>. The collectable spot should be added as a child of the room.</li>
@@ -151,19 +167,19 @@ Creating Collectable Spots</h3>
 <li>To auto assign the closest cell to the collectable spot, make sure the applicable flag is selected and click the <code>Auto Assign</code> button. Note that the <code>Update Room</code> button on the Room component will also perform this operation on all collectable spots in the room.</li>
 </ol>
 <p ><img src="https://user-images.githubusercontent.com/23442063/175827419-9639dd11-18ad-4c99-97b0-571984efab97.png" alt="Collectable Spot" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md9"></a>
+<h3><a class="anchor" id="autotoc_md10"></a>
 Saving Room Templates</h3>
 <ol type="1">
 <li>Ensure that any rooms are saved as prefabs within the project. Next, select <code>Mania Map &gt; Batch Save Templates</code> from the menu to save room templates for all room prefabs discovered within the project. Note that the settings for this action may be configured in the settings at <code>Resources/ManiaMap/TemplateSaveSettings</code> once the action has been run once.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Step 2: Create Room Template Groups</h2>
 <ol type="1">
 <li>Create a <code>TemplateGroup</code> by selecting <code>Assets &gt; Mania Map &gt; Template Group</code>.</li>
 <li>In the inspector, provide a unique name to the group and add any of the generated room templates you wish to associate with the group to the list.</li>
 </ol>
 <p ><img src="https://user-images.githubusercontent.com/23442063/175827410-a61dcbc4-2275-4217-bd83-4fff0f048e5d.png" alt="Template Group" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Step 3: Create Layout Graphs</h2>
 <ol type="1">
 <li>Create a <code>LayoutGraph</code> by selecting <code>Assets &gt; Mania Map &gt; Layout Graph</code>.</li>
@@ -174,7 +190,7 @@ Step 3: Create Layout Graphs</h2>
 <li>To edit the edge attributes, ensure that <code>View &gt; Toggle Edge Display</code> is enabled, then select the edges in the graph area.</li>
 </ol>
 <p ><img src="https://user-images.githubusercontent.com/23442063/175828288-b47a1e3d-ac81-4a2a-b436-0f22b7da3a6c.png" alt="Layout Graph" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Step 4: Create Generation Pipeline</h2>
 <ol type="1">
 <li>Create a <code>GenerationPipeline</code> by selecting <code>GameObject &gt; Mania Map &gt; Generation Pipeline</code>.</li>
