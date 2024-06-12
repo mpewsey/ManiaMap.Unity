@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMapUnity
         }
 
         public static CellArea3D InstantiateCellArea3D(int row, int column, RoomComponent room,
-            LayerMask cellLayer, LayerMask triggeringLayer)
+            int cellLayer, LayerMask triggeringLayers)
         {
             var obj = new GameObject("Cell Area 3D");
             obj.transform.SetParent(room.transform);
@@ -26,8 +26,8 @@ namespace MPewsey.ManiaMapUnity
             collider.gameObject.layer = cellLayer;
             collider.isTrigger = true;
             collider.size = room.LocalCellSize();
-            collider.includeLayers = triggeringLayer;
-            collider.excludeLayers = ~triggeringLayer;
+            collider.includeLayers = triggeringLayers;
+            collider.excludeLayers = ~triggeringLayers;
 
             return area;
         }

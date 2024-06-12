@@ -67,6 +67,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55032dea50ee00740a6311a2603e8ea8
+    m_Address: 2DRoomTemplateDatabase
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f17ed35b220d864abcfe046643b6792
+    m_Address: TestRoomComponent2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ff7884a8fcd03c24da0fe8943408fe28, type: 2}
   m_SchemaSet:
