@@ -65,7 +65,7 @@ namespace MPewsey.ManiaMapUnity
                 max = Vector3.Max(max, corner);
             }
 
-            return new Bounds(Vector3.Lerp(min, max, 0.5f) + transform.position, max - min);
+            return new Bounds(transform.position, max - min);
         }
 
         /// <summary>
