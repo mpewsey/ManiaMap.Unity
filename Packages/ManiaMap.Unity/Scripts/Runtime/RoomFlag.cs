@@ -26,7 +26,7 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// True if the flag is set.
         /// </summary>
-        public bool Exists()
+        public bool FlagIsSet()
         {
             return Room.RoomState.Flags.Contains(Id);
         }

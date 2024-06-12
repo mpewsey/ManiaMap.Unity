@@ -81,14 +81,120 @@ namespace MPewsey.ManiaMapUnity.Tests
             }
         }
 
-        [TestCase]
+        [Test]
+        public void TestCellIndexExists()
+        {
+            Assert.IsTrue(Room.CellIndexExists(0, 0));
+            Assert.IsTrue(Room.CellIndexExists(1, 0));
+            Assert.IsTrue(Room.CellIndexExists(0, 2));
+            Assert.IsFalse(Room.CellIndexExists(-1, 0));
+            Assert.IsFalse(Room.CellIndexExists(0, -1));
+            Assert.IsFalse(Room.CellIndexExists(3, 0));
+            Assert.IsFalse(Room.CellIndexExists(0, 3));
+        }
+
+        [Test]
+        public void TestCellCenterLocalPosition()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+            Room.transform.position = new Vector3(543, 9084, 234);
+
+            Assert.AreEqual(new Vector3(50, -50, -50), Room.CellCenterLocalPosition(0, 0));
+            Assert.AreEqual(new Vector3(50, -150, -50), Room.CellCenterLocalPosition(1, 0));
+            Assert.AreEqual(new Vector3(50, -250, -50), Room.CellCenterLocalPosition(2, 0));
+            Assert.AreEqual(new Vector3(150, -50, -50), Room.CellCenterLocalPosition(0, 1));
+            Assert.AreEqual(new Vector3(250, -50, -50), Room.CellCenterLocalPosition(0, 2));
+            Assert.AreEqual(new Vector3(150, -150, -50), Room.CellCenterLocalPosition(1, 1));
+            Assert.AreEqual(new Vector3(250, -250, -50), Room.CellCenterLocalPosition(2, 2));
+        }
+
+        [Test]
+        public void TestCellCenterGlobalPosition()
+        {
+            var offset = new Vector3(543, 9084, 234);
+            Room.CellSize = new Vector3(100, 100, 100);
+            Room.transform.position = offset;
+
+            Assert.AreEqual(new Vector3(50, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 0));
+            Assert.AreEqual(new Vector3(50, -150, -50) + offset, Room.CellCenterGlobalPosition(1, 0));
+            Assert.AreEqual(new Vector3(50, -250, -50) + offset, Room.CellCenterGlobalPosition(2, 0));
+            Assert.AreEqual(new Vector3(150, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 1));
+            Assert.AreEqual(new Vector3(250, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 2));
+            Assert.AreEqual(new Vector3(150, -150, -50) + offset, Room.CellCenterGlobalPosition(1, 1));
+            Assert.AreEqual(new Vector3(250, -250, -50) + offset, Room.CellCenterGlobalPosition(2, 2));
+        }
+
+        [Test]
+        public void TestGlobalPositionToCellIndex()
+        {
+            var offset = new Vector3(543, 9084, 234);
+            Room.CellSize = new Vector3(100, 100, 100);
+            Room.transform.position = offset;
+
+            for (int i = 0; i < Room.Rows; i++)
+            {
+                for (int j = 0; j < Room.Columns; j++)
+                {
+                    var position = new Vector3(j * Room.CellSize.x, -i * Room.CellSize.y, 0)
+                        + offset + 0.5f * new Vector3(Room.CellSize.x, -Room.CellSize.y, Room.CellSize.x);
+                    Assert.AreEqual(new Vector2Int(i, j), Room.GlobalPositionToCellIndex(position));
+                }
+            }
+
+            Assert.AreEqual(new Vector2Int(-1, -1), Room.GlobalPositionToCellIndex(Vector3.zero));
+        }
+
+        [Test]
+        public void TestLocalPositionToCellIndex()
+        {
+            var offset = new Vector3(543, 9084, 234);
+            Room.CellSize = new Vector3(100, 100, 100);
+            Room.transform.position = offset;
+
+            for (int i = 0; i < Room.Rows; i++)
+            {
+                for (int j = 0; j < Room.Columns; j++)
+                {
+                    var position = new Vector3(j * Room.CellSize.x, -i * Room.CellSize.y, 0)
+                        + 0.5f * new Vector3(Room.CellSize.x, -Room.CellSize.y, Room.CellSize.x);
+                    Assert.AreEqual(new Vector2Int(i, j), Room.LocalPositionToCellIndex(position));
+                }
+            }
+
+            Assert.AreEqual(new Vector2Int(-1, -1), Room.LocalPositionToCellIndex(new Vector3(-100, -100, -100)));
+        }
+
+        [Test]
+        public void TestFindClosestDoorDirection()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+
+            Assert.AreEqual(DoorDirection.North, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 0, 50)));
+            Assert.AreEqual(DoorDirection.West, Room.FindClosestDoorDirection(0, 0, new Vector3(0, -50, 50)));
+            Assert.AreEqual(DoorDirection.South, Room.FindClosestDoorDirection(0, 0, new Vector3(50, -100, 50)));
+            Assert.AreEqual(DoorDirection.East, Room.FindClosestDoorDirection(0, 0, new Vector3(100, -50, 50)));
+        }
+
+        [Test]
+        public void TestFindClosestActiveCellIndex()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+            Room.SetCellActivities(new Vector2Int(1, 1), new Vector2Int(2, 2), CellActivity.Deactivate);
+
+            Assert.AreEqual(Vector2Int.zero, Room.FindClosestActiveCellIndex(Vector3.zero));
+            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(125, -50, 1000)));
+            Assert.AreEqual(new Vector2Int(1, 0), Room.FindClosestActiveCellIndex(new Vector3(125, -150, -1000)));
+            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(150, -125, 0)));
+        }
+
+        [Test]
         public void TestGetCellActivityThrowsOutOfRangeException()
         {
             Assert.Throws<System.IndexOutOfRangeException>(() => Room.GetCellActivity(-1, 1));
             Assert.Throws<System.IndexOutOfRangeException>(() => Room.GetCellActivity(1, -1));
         }
 
-        [TestCase]
+        [Test]
         public void TestSetCellActivityByBoolean()
         {
             Assert.IsTrue(Room.GetCellActivity(0, 0));

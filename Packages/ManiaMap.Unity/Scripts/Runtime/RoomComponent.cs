@@ -428,7 +428,11 @@ namespace MPewsey.ManiaMapUnity
         {
             var row = Mathf.FloorToInt(position.y / CellSize.y);
             var column = Mathf.FloorToInt(position.x / CellSize.x);
-            return new Vector2Int(row, column);
+
+            if (CellIndexExists(row, column))
+                return new Vector2Int(row, column);
+
+            return new Vector2Int(-1, -1);
         }
 
         public Vector2Int LocalPositionToCellIndex(Vector3 position)
