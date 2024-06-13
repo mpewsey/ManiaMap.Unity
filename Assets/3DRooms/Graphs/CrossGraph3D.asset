@@ -1,0 +1,286 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5034213701956503660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29ab6493f5384bbfff9b51b3fb305, type: 3}
+  m_Name: Edge (3, 2)
+  m_EditorClassIdentifier: 
+  _fromNode: 3
+  _toNode: 2
+  _name: Edge (3, 2)
+  _templateGroup: {fileID: 0}
+  _direction: 0
+  _doorCode: 0
+  _z: 0
+  _roomChance: 0
+  _requireRoom: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _tags: []
+--- !u!114 &-4864211560887821445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 1
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: Node 1
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 69, y: 293}
+  _tags: []
+--- !u!114 &-4755676162969978674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 4
+  m_EditorClassIdentifier: 
+  _id: 4
+  _name: Node 4
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 447, y: 496}
+  _tags: []
+--- !u!114 &-2339816064167175672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29ab6493f5384bbfff9b51b3fb305, type: 3}
+  m_Name: Edge (2, 4)
+  m_EditorClassIdentifier: 
+  _fromNode: 2
+  _toNode: 4
+  _name: Edge (2, 4)
+  _templateGroup: {fileID: 0}
+  _direction: 0
+  _doorCode: 0
+  _z: 0
+  _roomChance: 0
+  _requireRoom: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _tags: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15805794f0986b047a1aa88f3edf0b14, type: 3}
+  m_Name: CrossGraph3D
+  m_EditorClassIdentifier: 
+  _id: 828614791
+  _name: CrossGraph3D
+  _nodes:
+  - {fileID: -4864211560887821445}
+  - {fileID: 4373768220231389757}
+  - {fileID: 3976474624917611700}
+  - {fileID: -4755676162969978674}
+  - {fileID: 7782110441596354462}
+  - {fileID: 4927918864951251874}
+  _edges:
+  - {fileID: 8572958822871868329}
+  - {fileID: -5034213701956503660}
+  - {fileID: -2339816064167175672}
+  - {fileID: 9135321940434949848}
+  - {fileID: 2604643885583993800}
+--- !u!114 &2604643885583993800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29ab6493f5384bbfff9b51b3fb305, type: 3}
+  m_Name: Edge (5, 6)
+  m_EditorClassIdentifier: 
+  _fromNode: 5
+  _toNode: 6
+  _name: Edge (5, 6)
+  _templateGroup: {fileID: 0}
+  _direction: 0
+  _doorCode: 0
+  _z: 0
+  _roomChance: 0
+  _requireRoom: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _tags: []
+--- !u!114 &3976474624917611700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 3
+  m_EditorClassIdentifier: 
+  _id: 3
+  _name: Node 3
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 445, y: 91}
+  _tags: []
+--- !u!114 &4373768220231389757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 2
+  m_EditorClassIdentifier: 
+  _id: 2
+  _name: Node 2
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 447, y: 295}
+  _tags: []
+--- !u!114 &4927918864951251874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 6
+  m_EditorClassIdentifier: 
+  _id: 6
+  _name: Node 6
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 783, y: 106}
+  _tags: []
+--- !u!114 &7782110441596354462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0d6503f7aaa1a46a942317d19b97c2, type: 3}
+  m_Name: Node 5
+  m_EditorClassIdentifier: 
+  _id: 5
+  _name: Node 5
+  _templateGroup: {fileID: 11400000, guid: 40981243a52267741abdb37e627354af, type: 2}
+  _z: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _variationGroup: 
+  _position: {x: 783, y: 297}
+  _tags: []
+--- !u!114 &8572958822871868329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29ab6493f5384bbfff9b51b3fb305, type: 3}
+  m_Name: Edge (1, 2)
+  m_EditorClassIdentifier: 
+  _fromNode: 1
+  _toNode: 2
+  _name: Edge (1, 2)
+  _templateGroup: {fileID: 0}
+  _direction: 0
+  _doorCode: 0
+  _z: 0
+  _roomChance: 0
+  _requireRoom: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _tags: []
+--- !u!114 &9135321940434949848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29ab6493f5384bbfff9b51b3fb305, type: 3}
+  m_Name: Edge (2, 5)
+  m_EditorClassIdentifier: 
+  _fromNode: 2
+  _toNode: 5
+  _name: Edge (2, 5)
+  _templateGroup: {fileID: 0}
+  _direction: 0
+  _doorCode: 0
+  _z: 0
+  _roomChance: 0
+  _requireRoom: 0
+  _color:
+    serializedVersion: 2
+    rgba: 4285535766
+  _tags: []

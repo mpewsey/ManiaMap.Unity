@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc2f6b806b333344b499617794dd55c, type: 3}
+  m_Name: 3DRoomTemplateDatabase
+  m_EditorClassIdentifier: 
+  _templateGroups:
+  - {fileID: 11400000, guid: d24d7fabca9b8a34bb3e623f3803bd4e, type: 2}
