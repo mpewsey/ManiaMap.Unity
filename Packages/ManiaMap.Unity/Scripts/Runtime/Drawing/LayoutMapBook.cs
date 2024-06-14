@@ -13,20 +13,43 @@ namespace MPewsey.ManiaMapUnity.Drawing
     {
         [SerializeField]
         private Color32 _backgroundColor = Color.clear;
+        /// <summary>
+        /// The page background color.
+        /// </summary>
         public Color32 BackgroundColor { get => _backgroundColor; set => _backgroundColor = value; }
 
         [SerializeField]
         private Padding _padding = new Padding(1);
+        /// <summary>
+        /// The border padding applied to each page.
+        /// </summary>
         public Padding Padding { get => _padding; set => _padding = value; }
 
         [SerializeField]
         private Transform _container;
+        /// <summary>
+        /// The container used for newly created pages. If not assigned, this object will be used.
+        /// </summary>
         public Transform Container { get => _container; set => _container = value; }
 
+        /// <summary>
+        /// A list of pages representing layers of the map.
+        /// </summary>
         private List<SpriteRenderer> Pages { get; } = new List<SpriteRenderer>();
+
+        /// <summary>
+        /// A list of layer (z) coordiantes corresponding to the pages at the same indices.
+        /// </summary>
         private List<int> PageLayerCoordinates { get; set; } = new List<int>();
 
+        /// <summary>
+        /// A list of pages representing layers of the map.
+        /// </summary>
         public IReadOnlyList<SpriteRenderer> GetPages() => Pages;
+
+        /// <summary>
+        /// A list of layer (z) coordiantes corresponding to the pages at the same indices.
+        /// </summary>
         public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
 
         private void Awake()
@@ -35,11 +58,19 @@ namespace MPewsey.ManiaMapUnity.Drawing
                 Container = transform;
         }
 
-        public List<string> SaveImages(string path)
+        /// <summary>
+        /// Saves the current pages of the layout to the specified base file path.
+        /// Returns a list of resulting layer file paths.
+        /// 
+        /// The file path for each layer will be constructed as: {BasePathWithoutExtension}_Z={LayerCoordinate}.{BasePathExtension}
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <returns></returns>
+        public List<string> SaveImages(string basePath)
         {
             var result = new List<string>(Pages.Count);
-            var extension = Path.GetExtension(path);
-            var name = Path.ChangeExtension(path, null);
+            var extension = Path.GetExtension(basePath);
+            var name = Path.ChangeExtension(basePath, null);
 
             for (int i = 0; i < Pages.Count; i++)
             {
@@ -53,6 +84,10 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return result;
         }
 
+        /// <summary>
+        /// Draws all pages of the Layout.
+        /// </summary>
+        /// <param name="layoutPack">The layout pack.</param>
         public void DrawPages(LayoutPack layoutPack)
         {
             LayoutPack = layoutPack;
@@ -66,6 +101,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Draws all pages of the Layout.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state. If null, the map will be drawn completely visible.</param>
         public void DrawPages(Layout layout, LayoutState layoutState = null)
         {
             layoutState ??= CreateFullyVisibleLayoutState(layout);
@@ -73,6 +113,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             DrawPages(layoutPack);
         }
 
+        /// <summary>
+        /// Creates or destroys the pages until they match the required number for the Layout.
+        /// </summary>
         private void SizePages()
         {
             while (Pages.Count > PageLayerCoordinates.Count)
@@ -97,6 +140,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// If the sprite renderer's assigned texture does not match the required,
+        /// resizes the texture and assigns a new sprite.
+        /// </summary>
+        /// <param name="spriteRenderer">The sprite renderer.</param>
         private void SizeTexture(SpriteRenderer spriteRenderer)
         {
             var size = GetTextureSize();
@@ -109,6 +157,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Creates a new texture with the required size.
+        /// </summary>
         private Texture2D CreateTexture()
         {
             var size = GetTextureSize();
@@ -118,6 +169,10 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return texture;
         }
 
+        /// <summary>
+        /// Creates a spite with the specified texture.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
         private Sprite CreateSprite(Texture2D texture)
         {
             var pivot = new Vector2(0.5f, 0.5f);
@@ -127,6 +182,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return sprite;
         }
 
+        /// <summary>
+        /// Returns the overall texture size required for drawing the map with padding.
+        /// </summary>
         private Vector2Int GetTextureSize()
         {
             var width = MapTileSet.TileSize.x * (Padding.Left + Padding.Right + LayoutPack.LayoutBounds.Width);
@@ -134,7 +192,15 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return new Vector2Int(width, height);
         }
 
-        public float SetOnionMapColors(float z, Gradient gradient, float drawDepth = 1)
+        /// <summary>
+        /// Sets the colors of the pages based on the specified layer (z) position and gradient.
+        /// This is useful for displaying map overlays like the pages are drawn on onionskin paper.
+        /// Returns the layer (z) position used with possible range clamping applied.
+        /// </summary>
+        /// <param name="z">The current layer (z) position. This value can be between layers and will be clamped as the end points.</param>
+        /// <param name="gradient">The gradient applied. The middle of the gradient (0.5) corresponds to the specified z. Pages with larger layer values receive colors to the right of center, while pages with smaller layer values receive colors to the left of center.</param>
+        /// <param name="drawDepth">The layer draw depth. This value corresponds to the layer distance between the middle of the gradient and its ends. Layers beyond this threshold are drawn at the nearest gradient end color.</param>
+        public float SetOnionskinColors(float z, Gradient gradient, float drawDepth = 1)
         {
             if (PageLayerCoordinates.Count > 0)
             {

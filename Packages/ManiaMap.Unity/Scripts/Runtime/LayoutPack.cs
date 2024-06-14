@@ -45,6 +45,13 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public RectangleInt LayoutBounds { get; }
 
+        /// <summary>
+        /// Initializes a new object.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state.</param>
+        /// <param name="settings">The Mania Map settings. If null, a new instance with default settings will be used.</param>
+        /// <exception cref="System.ArgumentException">Raised if the layout or layout state is null or their ID's do not match.</exception>
         public LayoutPack(Layout layout, LayoutState layoutState, ManiaMapSettings settings = null)
         {
             if (layout == null)

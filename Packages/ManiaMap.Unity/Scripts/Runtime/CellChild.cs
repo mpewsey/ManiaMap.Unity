@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
-    /// An object that has a Cell as a parent.
+    /// An object tied to the cell index of a RoomComponent.
     /// </summary>
     public abstract class CellChild : MonoBehaviour
     {
@@ -17,14 +17,23 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public bool AutoAssignCell { get => _autoAssignCell; set => _autoAssignCell = value; }
 
+        /// <summary>
+        /// True if the object has been initialized.
+        /// </summary>
         public bool IsInitialized { get; protected set; }
 
         [SerializeField]
         protected Vector2Int _cellIndex;
+        /// <summary>
+        /// The containing cell index.
+        /// </summary>
         public Vector2Int CellIndex { get => _cellIndex; set => _cellIndex = Vector2Int.Max(value, Vector2Int.zero); }
 
         [SerializeField]
         protected RoomComponent _room;
+        /// <summary>
+        /// The containing room.
+        /// </summary>
         public RoomComponent Room { get => _room; set => _room = value; }
 
         [SerializeField] private UnityEvent _onInitialize = new UnityEvent();
@@ -33,7 +42,14 @@ namespace MPewsey.ManiaMapUnity
         /// </summary>
         public UnityEvent OnInitialize { get => _onInitialize; set => _onInitialize = value; }
 
+        /// <summary>
+        /// The row index.
+        /// </summary>
         public int Row { get => CellIndex.x; set => CellIndex = new Vector2Int(value, CellIndex.y); }
+
+        /// <summary>
+        /// The column index.
+        /// </summary>
         public int Column { get => CellIndex.y; set => CellIndex = new Vector2Int(CellIndex.x, value); }
 
         protected virtual void Awake()
@@ -47,8 +63,9 @@ namespace MPewsey.ManiaMapUnity
         }
 
         /// <summary>
-        /// If auto assign is enabled, assigns the closest cell to the object.
+        /// Performs auto assignment on the object.
         /// </summary>
+        /// <param name="room">The containing room.</param>
         public virtual void AutoAssign(RoomComponent room)
         {
             Room = room;
@@ -57,6 +74,9 @@ namespace MPewsey.ManiaMapUnity
                 CellIndex = room.FindClosestActiveCellIndex(transform.position);
         }
 
+        /// <summary>
+        /// Initializes the object.
+        /// </summary>
         protected virtual void Initialize()
         {
             if (!IsInitialized)

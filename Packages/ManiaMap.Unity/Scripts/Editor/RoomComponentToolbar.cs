@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Editor
 {
+    /// <summary>
+    /// The toolbar for editing RoomComponent in the Unity scene view.
+    /// </summary>
     [InitializeOnLoad]
     public class RoomComponentToolbar : UnityEditor.Editor
     {

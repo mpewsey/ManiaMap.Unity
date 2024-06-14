@@ -13,6 +13,9 @@ namespace MPewsey.ManiaMapUnity
     {
         [SerializeField]
         private bool _editId;
+        /// <summary>
+        /// If true, the ID can be edited in the inspector.
+        /// </summary>
         public bool EditId { get => _editId; set => _editId = value; }
 
         [SerializeField]
@@ -38,6 +41,9 @@ namespace MPewsey.ManiaMapUnity
 
         [SerializeField]
         private string _prefabPath;
+        /// <summary>
+        /// The path of the prefab from the project root when the template was last updated.
+        /// </summary>
         public string PrefabPath { get => _prefabPath; private set => _prefabPath = value; }
 
         [SerializeField]
@@ -53,6 +59,12 @@ namespace MPewsey.ManiaMapUnity
             Id = Rand.AutoAssignId(Id);
         }
 
+        /// <summary>
+        /// Sets the properties for the room template.
+        /// </summary>
+        /// <param name="template">The Mania Map room template.</param>
+        /// <param name="prefabGuid">The prefab GUID.</param>
+        /// <param name="prefabPath">The prefab path.</param>
         public void Initialize(RoomTemplate template, string prefabGuid, string prefabPath)
         {
             SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
@@ -60,6 +72,10 @@ namespace MPewsey.ManiaMapUnity
             PrefabPath = prefabPath;
         }
 
+        /// <summary>
+        /// Creates a new Mania Map room template from the serialized text and returns it.
+        /// </summary>
+        /// <exception cref="RoomTemplateNotInitializedException">Raised if the serialized text has not been assigned.</exception>
         public RoomTemplate GetMMRoomTemplate()
         {
             if (string.IsNullOrWhiteSpace(SerializedText))
@@ -68,6 +84,9 @@ namespace MPewsey.ManiaMapUnity
             return JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
         }
 
+        /// <summary>
+        /// Returns the asset reference based on the assigned prefab GUID.
+        /// </summary>
         public AssetReferenceGameObject GetAssetReference()
         {
             return new AssetReferenceGameObject(PrefabGuid);

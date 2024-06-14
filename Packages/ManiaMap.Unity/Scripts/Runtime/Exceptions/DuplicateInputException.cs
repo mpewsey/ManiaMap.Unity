@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapUnity.Exceptions
     /// </summary>
     public class DuplicateInputException : Exception
     {
+        /// <inheritdoc/>
         public DuplicateInputException(string message) : base(message)
         {
 

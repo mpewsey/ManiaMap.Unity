@@ -4,15 +4,12 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The Feature editor.
+    /// The RoomFlag editor.
     /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RoomFlag))]
     public class RoomFlagEditor : CellChildEditor
     {
-        /// <summary>
-        /// Creates a new room flag Game Object.
-        /// </summary>
         [MenuItem("GameObject/Mania Map/Room Flag", priority = 20)]
         [MenuItem("Mania Map/Create Room Flag", priority = 100)]
         public static void CreateRoomFlag()

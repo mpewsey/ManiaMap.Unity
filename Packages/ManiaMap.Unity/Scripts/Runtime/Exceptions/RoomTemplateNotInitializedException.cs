@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapUnity.Exceptions
     /// </summary>
     public class RoomTemplateNotInitializedException : Exception
     {
+        /// <inheritdoc/>
         public RoomTemplateNotInitializedException(string message) : base(message)
         {
 

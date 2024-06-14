@@ -7,7 +7,7 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
-    /// A window for viewing and editing a LayoutGraph.
+    /// A window for viewing and editing a LayoutGraphResource.
     /// </summary>
     public class LayoutGraphWindow : EditorWindow
     {

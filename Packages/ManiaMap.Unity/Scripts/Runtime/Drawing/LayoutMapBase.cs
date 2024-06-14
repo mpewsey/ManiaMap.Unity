@@ -5,22 +5,42 @@ using UnityEngine.Tilemaps;
 
 namespace MPewsey.ManiaMapUnity.Drawing
 {
-    public class LayoutMapBase : MonoBehaviour
+    /// <summary>
+    /// The base class for layout maps.
+    /// </summary>
+    public abstract class LayoutMapBase : MonoBehaviour
     {
         [SerializeField]
         private MapTileSet _mapTileSet;
+        /// <summary>
+        /// The map tile set.
+        /// </summary>
         public MapTileSet MapTileSet { get => _mapTileSet; set => _mapTileSet = value; }
 
         [SerializeField]
         private DoorDrawMode _doorDrawMode = DoorDrawMode.AllDoors;
+        /// <summary>
+        /// The option used for drawing doors for visible cells in the layout.
+        /// </summary>
         public DoorDrawMode DoorDrawMode { get => _doorDrawMode; set => _doorDrawMode = value; }
 
         [SerializeField]
         private Color32 _roomColor = new Color32(75, 75, 75, 255);
+        /// <summary>
+        /// The room color used for a cell when a room is set as visible but the cell is not set as visible.
+        /// This is useful for making certain rooms appear on the map before they have been visited.
+        /// </summary>
         public Color32 RoomColor { get => _roomColor; set => _roomColor = value; }
 
+        /// <summary>
+        /// The layout pack used for the currently drawn map.
+        /// </summary>
         public LayoutPack LayoutPack { get; protected set; }
 
+        /// <summary>
+        /// Returns a new layout state will all cells marked as visible.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
         protected static LayoutState CreateFullyVisibleLayoutState(Layout layout)
         {
             var layoutState = new LayoutState(layout);
@@ -33,6 +53,10 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return layoutState;
         }
 
+        /// <summary>
+        /// Returns a bit mask of all features assigned to the cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
         protected long GetFeatureFlags(Cell cell)
         {
             long flags = 0;
@@ -45,6 +69,15 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return flags;
         }
 
+        /// <summary>
+        /// Returns the tile texture for the door or wall at the specified location.
+        /// Returns null if no door or wall exists.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="neighbor">The cell neighbor in the specified direction.</param>
+        /// <param name="position">The positional index of the cell within the room.</param>
+        /// <param name="direction">The direction from the cell towards the neighbor.</param>
         protected Texture2D GetTile(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && LayoutPack.DoorExists(room.Id, position, direction))
@@ -56,6 +89,15 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return null;
         }
 
+        /// <summary>
+        /// Returns the door or wall bit mask for the specified location.
+        /// Returns zero if no door or wall exists.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="neighbor">The cell neighbor in the specified direction.</param>
+        /// <param name="position">The positional index of the cell within the room.</param>
+        /// <param name="direction">The direction from the cell towards the neighbor.</param>
         protected long GetTileFlag(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && LayoutPack.DoorExists(room.Id, position, direction))
@@ -67,6 +109,12 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return 0;
         }
 
+        /// <summary>
+        /// Draws the cell feature tiles onto the specified texture.
+        /// </summary>
+        /// <param name="texture">The canvas texture.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="point">The draw point from the bottom left of the texture.</param>
         protected void DrawFeatureTiles(Texture2D texture, Cell cell, Vector2Int point)
         {
             foreach (var tileName in cell.Features)
@@ -76,6 +124,13 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Draws the visible tiles for the specified layer (z) coordinate onto the texture.
+        /// </summary>
+        /// <param name="texture">The canvas texture.</param>
+        /// <param name="z">The layer (z) coordinate.</param>
+        /// <param name="padding">The canvas padding.</param>
+        /// <param name="backgroundColor">The background color.</param>
         protected void DrawTiles(Texture2D texture, int z, Padding padding, Color32 backgroundColor)
         {
             var bounds = LayoutPack.LayoutBounds;
@@ -147,6 +202,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             texture.Apply();
         }
 
+        /// <summary>
+        /// Sets the tiles for specified layer (z) coordinate onto the tilemap.
+        /// </summary>
+        /// <param name="tilemap">The tilemap.</param>
+        /// <param name="z">The layer (z) coordinate.</param>
         protected void SetTiles(Tilemap tilemap, int z)
         {
             tilemap.ClearAllTiles();

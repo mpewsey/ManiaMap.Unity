@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
-    /// The LayoutNode editor.
+    /// The LayoutGraphNode editor.
     /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LayoutGraphNode))]

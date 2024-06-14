@@ -4,14 +4,11 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The RoomTemplate editor.
+    /// The RoomTemplateResource editor.
     /// </summary>
     [CustomEditor(typeof(RoomTemplateResource))]
     public class RoomTemplateResourceEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// If the assigned prefab GUID is valid, opens the prefab.
-        /// </summary>
         [UnityEditor.Callbacks.OnOpenAsset]
         public static bool OnOpenAsset(int instanceId, int line)
         {
@@ -40,10 +37,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        /// <summary>
-        /// Returns true if the GUID is not null and is in the project database.
-        /// </summary>
-        /// <param name="guid">The GUID.</param>
         private static bool PrefabGuidIsValid(string guid)
         {
             if (string.IsNullOrWhiteSpace(guid))
@@ -57,10 +50,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             return true;
         }
 
-        /// <summary>
-        /// Opens the prefab for the specified room template.
-        /// </summary>
-        /// <param name="template">The room template.</param>
         private static void OpenPrefab(RoomTemplateResource template)
         {
             var assetPath = AssetDatabase.GUIDToAssetPath(template.PrefabGuid);
@@ -68,9 +57,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             AssetDatabase.OpenAsset(obj);
         }
 
-        /// <summary>
-        /// Draws the inspector with all fields inactive.
-        /// </summary>
         private void DrawInspector()
         {
             var editId = ((RoomTemplateResource)serializedObject.targetObject).EditId;

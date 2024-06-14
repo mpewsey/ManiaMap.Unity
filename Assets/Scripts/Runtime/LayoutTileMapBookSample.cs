@@ -48,7 +48,7 @@ namespace MPewsey.ManiaMapUnity.Examples
 
         private void OnSliderValueChanged(float value)
         {
-            Map.SetOnionMapColors(value, Gradient);
+            Map.SetOnionskinColors(value, Gradient);
             ZLabel.text = value.ToString("0.00");
         }
 

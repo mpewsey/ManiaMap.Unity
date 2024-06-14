@@ -7,14 +7,11 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Graphs.Editor
 {
     /// <summary>
-    /// The LayoutGraph custom inspector.
+    /// The LayoutGraphResource editor.
     /// </summary>
     [CustomEditor(typeof(LayoutGraphResource))]
     public class LayoutGraphResourceEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// Shows the layout graph editor window.
-        /// </summary>
         [UnityEditor.Callbacks.OnOpenAsset]
         public static bool OnOpenAsset(int instanceId, int line)
         {

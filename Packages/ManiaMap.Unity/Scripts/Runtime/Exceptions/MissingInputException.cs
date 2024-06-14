@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapUnity.Exceptions
     /// </summary>
     public class MissingInputException : Exception
     {
+        /// <inheritdoc/>
         public MissingInputException(string message) : base(message)
         {
 

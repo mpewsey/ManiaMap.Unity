@@ -11,6 +11,9 @@ namespace MPewsey.ManiaMapUnity
     {
         [Header("Collectable Spot:")]
         [SerializeField] private bool _editId;
+        /// <summary>
+        /// If true, the ID can be edited in the inspector.
+        /// </summary>
         public bool EditId { get => _editId; set => _editId = value; }
 
         [SerializeField]
@@ -29,6 +32,9 @@ namespace MPewsey.ManiaMapUnity
 
         [SerializeField]
         private float _weight = 1;
+        /// <summary>
+        /// The manual draw weight of the collectable spot.
+        /// </summary>
         public float Weight { get => _weight; set => _weight = Mathf.Max(value, 0); }
 
         private void OnValidate()

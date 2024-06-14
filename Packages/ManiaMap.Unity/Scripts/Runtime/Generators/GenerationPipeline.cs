@@ -109,6 +109,7 @@ namespace MPewsey.ManiaMapUnity.Generators
         /// <summary>
         /// Validates and builts a dictionary of inputs for the pipeline.
         /// </summary>
+        /// <param name="manualInputs">A dictionary of manually specified pipeline inputs.</param>
         public Dictionary<string, object> BuildInputs(Dictionary<string, object> manualInputs = null)
         {
             manualInputs ??= new Dictionary<string, object>();
@@ -123,11 +124,18 @@ namespace MPewsey.ManiaMapUnity.Generators
             return result;
         }
 
+        /// <summary>
+        /// Validates the pipeline inputs and outputs and throws an exception of invalid.
+        /// </summary>
         public void Validate()
         {
             Validate(ManualInputNames);
         }
 
+        /// <summary>
+        /// Validates the pipeline inputs and outputs and throws an exception of invalid.
+        /// </summary>
+        /// <param name="manualInputNames">An enumerable of manual input names.</param>
         public void Validate(IEnumerable<string> manualInputNames)
         {
             manualInputNames ??= Enumerable.Empty<string>();
@@ -179,6 +187,11 @@ namespace MPewsey.ManiaMapUnity.Generators
             }
         }
 
+        /// <summary>
+        /// Sets the seed for the first RandomSeedInput child.
+        /// </summary>
+        /// <param name="seed">The random seed.</param>
+        /// <exception cref="MissingInputException">Raised if a random seed input is not found.</exception>
         public void SetRandomSeed(int seed)
         {
             var input = GetComponentInChildren<RandomSeedInput>();
