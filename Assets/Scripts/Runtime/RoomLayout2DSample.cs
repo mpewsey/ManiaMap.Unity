@@ -23,6 +23,9 @@ namespace MPewsey.ManiaMapUnity.Examples
         [SerializeField] private Camera2DController _camera;
         public Camera2DController Camera { get => _camera; set => _camera = value; }
 
+        [SerializeField] private Vector2 _cellSize = new Vector2(6, 6);
+        public Vector2 CellSize { get => _cellSize; set => _cellSize = value; }
+
         private GameObject Container { get; set; }
 
         private void Awake()
@@ -56,7 +59,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             var layoutPack = new LayoutPack(layout, new LayoutState(layout));
             CreateContainer();
             RoomTemplateDatabase.InstantiateAllRooms(layoutPack, Container.transform);
-            Camera.ResetPosition();
+            Camera.CenterCamera(layoutPack.LayoutBounds, CellSize);
         }
 
         private void CreateContainer()

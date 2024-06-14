@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Examples
@@ -38,6 +39,14 @@ namespace MPewsey.ManiaMapUnity.Examples
         {
             Camera.transform.position = InitialPosition;
             Camera.orthographicSize = InitialZoom;
+        }
+
+        public void CenterCamera(RectangleInt bounds, Vector2 cellSize)
+        {
+            var x = (bounds.X + bounds.Width * 0.5f) * cellSize.x;
+            var y = -(bounds.Y + bounds.Height * 0.5f) * cellSize.y;
+            Camera.transform.position = new Vector3(x, y, InitialPosition.z);
+            Camera.orthographicSize = 0.5f * (bounds.Height + 4) * cellSize.y;
         }
     }
 }

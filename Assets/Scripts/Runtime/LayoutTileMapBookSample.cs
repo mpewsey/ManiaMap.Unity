@@ -83,7 +83,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             Slider.maxValue = zs[zs.Count - 1];
             Slider.value = Mathf.FloorToInt((Slider.minValue + Slider.maxValue) * 0.5f);
             OnSliderValueChanged(Slider.value);
-            Camera.ResetPosition();
+            Camera.CenterCamera(layout.GetBounds(), Vector2.one);
         }
 
         private static Task<PipelineResults> GenerateLayout(int seed)
