@@ -38,6 +38,16 @@ Sample scenes are available in the project `Assets` directory. To explore them, 
 <table style='text-align: center'>
     <tr>
         <td width='50%' align='center'>
+            <img width=450 alt='2d layout' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/e170235f-df4f-475f-bd2c-bbdc90b464e7'><br>
+            2D layout generation sample.
+        </td>
+        <td width='50%' align='center'>
+            <img width=450 alt='3d layout' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/04453eaa-6d5f-4aa1-964c-b69b6c307ad8'><br>
+            3D layout generation sample.
+        </td>
+    </tr>
+    <tr>
+        <td width='50%' align='center'>
             <img width=450 alt='layout map book' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/866d377b-0887-42cf-b9fb-1204e3ebce61'><br>
             Layout tile map book sample with onionskin map display.
         </td>
@@ -52,8 +62,6 @@ Sample scenes are available in the project `Assets` directory. To explore them, 
             Layout map sample.
         </td>
         <td width='50%' align='center'>
-            <img width=450 alt='2d layout' src='https://github.com/mpewsey/ManiaMap.Unity/assets/23442063/e170235f-df4f-475f-bd2c-bbdc90b464e7'><br>
-            2D layout generation sample.
         </td>
     </tr>
 </table>
