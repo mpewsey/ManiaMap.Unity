@@ -4,19 +4,12 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The TemplateGroupEntry custom property drawer.
+    /// The TemplateGroupEntry custom property drawer. The drawer is drawn without the typical dropdown.
     /// </summary>
     [CustomPropertyDrawer(typeof(TemplateGroupEntry))]
     public class TemplateGroupEntryDrawer : PropertyDrawer
     {
-        /// <summary>
-        /// The spacing between properties.
-        /// </summary>
         private const float Spacing = 2;
-
-        /// <summary>
-        /// The top and bottom padding.
-        /// </summary>
         private const float Padding = 4;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

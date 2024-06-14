@@ -4,14 +4,11 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The TemplateSaveSettings editor.
+    /// The BatchUpdaterTool editor.
     /// </summary>
     [CustomEditor(typeof(BatchUpdaterTool))]
     public class BatchUpdaterToolEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// If a ManiaMap/BatchUpdaterTool resource does not already exist, creates it.
-        /// </summary>
         [MenuItem("Mania Map/Create Batch Updater Tool Settings", priority = 0)]
         public static void CreateBatchUpdaterToolSettings()
         {

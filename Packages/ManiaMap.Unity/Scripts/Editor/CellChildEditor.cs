@@ -3,7 +3,7 @@ using UnityEditor;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The CollectableSpot editor.
+    /// The CellChild editor.
     /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(CellChild))]

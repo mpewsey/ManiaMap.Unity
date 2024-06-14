@@ -4,15 +4,12 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity.Editor
 {
     /// <summary>
-    /// The Door editor.
+    /// The DoorComponent editor.
     /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(DoorComponent))]
     public class DoorComponentEditor : CellChildEditor
     {
-        /// <summary>
-        /// Creates a new door Game Object.
-        /// </summary>
         [MenuItem("GameObject/Mania Map/Door", priority = 20)]
         [MenuItem("Mania Map/Create Door", priority = 100)]
         public static void CreateDoor()

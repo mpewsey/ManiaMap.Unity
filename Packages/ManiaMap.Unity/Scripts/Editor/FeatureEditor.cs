@@ -10,9 +10,6 @@ namespace MPewsey.ManiaMapUnity.Editor
     [CustomEditor(typeof(Feature))]
     public class FeatureEditor : CellChildEditor
     {
-        /// <summary>
-        /// Creates a new collectable spot Game Object.
-        /// </summary>
         [MenuItem("GameObject/Mania Map/Feature", priority = 20)]
         [MenuItem("Mania Map/Create Feature", priority = 100)]
         public static void CreateFeature()

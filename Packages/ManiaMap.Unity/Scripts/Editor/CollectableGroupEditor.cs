@@ -17,9 +17,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        /// <summary>
-        /// Draws the drag and drop area and evaluates user input within the area.
-        /// </summary>
         private void DrawDragAndDropArea()
         {
             var rect = GUILayoutUtility.GetRect(0, 50, GUILayout.ExpandWidth(true));
@@ -42,9 +39,6 @@ namespace MPewsey.ManiaMapUnity.Editor
             }
         }
 
-        /// <summary>
-        /// Adds any dragged and dropped templates to the group.
-        /// </summary>
         private void AddDragAndDropTemplates()
         {
             var group = (CollectableGroup)serializedObject.targetObject;

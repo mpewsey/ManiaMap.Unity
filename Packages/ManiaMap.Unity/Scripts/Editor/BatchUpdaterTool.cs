@@ -12,6 +12,9 @@ namespace MPewsey.ManiaMapUnity.Editor
     {
         [SerializeField]
         private string[] _searchPaths = new string[] { "Assets" };
+        /// <summary>
+        /// An array of project paths to search for room prefabs.
+        /// </summary>
         public string[] SearchPaths { get => _searchPaths; set => _searchPaths = value; }
 
         [MenuItem("Mania Map/Batch Update Room Templates", priority = 0)]
@@ -20,6 +23,10 @@ namespace MPewsey.ManiaMapUnity.Editor
             LoadSettings().BatchUpdateRoomTemplates();
         }
 
+        /// <summary>
+        /// Returns the batch updater tool at ManiaMap/BatchUpdaterTool within a Resources folder if it exists.
+        /// If it does not exist, returns a new default instance.
+        /// </summary>
         private static BatchUpdaterTool LoadSettings()
         {
             var settings = Resources.Load<BatchUpdaterTool>("ManiaMap/BatchUpdaterTool");
@@ -30,6 +37,9 @@ namespace MPewsey.ManiaMapUnity.Editor
             return CreateInstance<BatchUpdaterTool>();
         }
 
+        /// <summary>
+        /// Performs batch update for all discovered rooms.
+        /// </summary>
         public void BatchUpdateRoomTemplates()
         {
             var count = 0;
@@ -45,6 +55,10 @@ namespace MPewsey.ManiaMapUnity.Editor
             Debug.Log($"<color=#00FF00><b>Completed room template batch update on {count} rooms.</b></color>");
         }
 
+        /// <summary>
+        /// Performs auto assignment on the specified room.
+        /// </summary>
+        /// <param name="room">The room.</param>
         public static void AutoAssign(RoomComponent room)
         {
             var count = room.AutoAssign();
@@ -60,6 +74,12 @@ namespace MPewsey.ManiaMapUnity.Editor
             Debug.Log($"<color=#00FF00><b>Auto assigned {count} cell children.</b></color>");
         }
 
+        /// <summary>
+        /// Updates or creates the room template for the room at the specified GUID.
+        /// If the object at the GUID does not contain a RoomComponent at its root, skips it and returns false.
+        /// Returns true when successful.
+        /// </summary>
+        /// <param name="roomGuid">The room GUID.</param>
         private bool UpdateRoomTemplate(string roomGuid)
         {
             var roomPath = AssetDatabase.GUIDToAssetPath(roomGuid);

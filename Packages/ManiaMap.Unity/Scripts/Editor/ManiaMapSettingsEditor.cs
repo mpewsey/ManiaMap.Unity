@@ -9,9 +9,6 @@ namespace MPewsey.ManiaMapUnity.Editor
     [CustomEditor(typeof(ManiaMapSettings))]
     public class ManiaMapSettingsEditor : UnityEditor.Editor
     {
-        /// <summary>
-        /// If a ManiaMap/ManiaMapSettings resource does not already exist, creates it.
-        /// </summary>
         [MenuItem("Mania Map/Create Mania Map Settings", priority = 100000)]
         public static void CreateManiaMapSettings()
         {
