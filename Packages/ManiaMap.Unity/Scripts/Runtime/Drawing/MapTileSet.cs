@@ -5,9 +5,15 @@ using UnityEngine.Tilemaps;
 
 namespace MPewsey.ManiaMapUnity.Drawing
 {
+    /// <summary>
+    /// Contains the map tiles used to draw maps for a Layout.
+    /// </summary>
     [CreateAssetMenu(menuName = "Mania Map/Map Tile Set")]
     public class MapTileSet : ScriptableObject
     {
+        /// <summary>
+        /// The maximum number of features that can be managed by the set.
+        /// </summary>
         public const int MaxFeatureCount = 64;
 
         [SerializeField]
@@ -134,9 +140,25 @@ namespace MPewsey.ManiaMapUnity.Drawing
         /// A dictionary of referenced tiles.
         /// </summary>
         private Dictionary<string, Texture2D> Textures { get; } = new Dictionary<string, Texture2D>();
+
+        /// <summary>
+        /// A dictionary of feature flags by feature name.
+        /// </summary>
         private Dictionary<string, long> FeatureFlags { get; } = new Dictionary<string, long>();
+
+        /// <summary>
+        /// A dictionary of feature names by flag.
+        /// </summary>
         private Dictionary<long, string> FeatureNames { get; } = new Dictionary<long, string>();
+
+        /// <summary>
+        /// A dictionary of map tiles by map tile keys.
+        /// </summary>
         private Dictionary<MapTileKey, Tile> Tiles { get; } = new Dictionary<MapTileKey, Tile>();
+
+        /// <summary>
+        /// True if the map tile set is dirty and requires update.
+        /// </summary>
         public bool IsDirty { get; private set; } = true;
 
         private void OnValidate()
@@ -144,11 +166,17 @@ namespace MPewsey.ManiaMapUnity.Drawing
             MarkDirty();
         }
 
+        /// <summary>
+        /// Sets the map tile set as dirty.
+        /// </summary>
         public void MarkDirty()
         {
             IsDirty = true;
         }
 
+        /// <summary>
+        /// Populates the map tile set textures and feature flags if it is dirty.
+        /// </summary>
         private void PopulateIfDirty()
         {
             if (IsDirty)
@@ -160,6 +188,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Populates the textures dictionary.
+        /// </summary>
         private void PopulateTextures()
         {
             Textures.Clear();
@@ -182,6 +213,9 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Populates the feature flag dictionaries.
+        /// </summary>
         private void PopulateFeatureFlags()
         {
             FeatureFlags.Clear();
@@ -205,6 +239,12 @@ namespace MPewsey.ManiaMapUnity.Drawing
             }
         }
 
+        /// <summary>
+        /// Adds the specified feature to the feature dictionaries.
+        /// Returns false if the feature already exists.
+        /// </summary>
+        /// <param name="name">The feature name.</param>
+        /// <exception cref="System.ArgumentException">Raised if the feature name is invalid or if the max feature count is exceeded.</exception>
         private bool AddFeatureFlag(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -222,6 +262,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return true;
         }
 
+        /// <summary>
+        /// Returns the texture corresponding to the feature name if it exists.
+        /// Returns null otherwise.
+        /// </summary>
+        /// <param name="name">The feature name.</param>
         public Texture2D GetTexture(string name)
         {
             PopulateIfDirty();
@@ -233,6 +278,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return null;
         }
 
+        /// <summary>
+        /// Returns the feature flag corresponding to the feature name if it exists.
+        /// Returns zero otherwise.
+        /// </summary>
+        /// <param name="name">The feature name.</param>
         public long GetFeatureFlag(string name)
         {
             PopulateIfDirty();
@@ -244,13 +294,26 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return 0;
         }
 
+        /// <summary>
+        /// Returns the feature name corresponding to the specified flag if it exists.
+        /// Returns null otherwise.
+        /// </summary>
+        /// <param name="flag">The feature flag.</param>
         public string GetFeatureName(long flag)
         {
+            PopulateIfDirty();
+
             if (FeatureNames.TryGetValue(flag, out string name))
                 return name;
             return null;
         }
 
+        /// <summary>
+        /// Returns the map tile with the specified feature flags and background color.
+        /// Creates the tile if it doesn't already exist.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The background color.</param>
         public Tile GetTile(long flags, Color32 color)
         {
             var key = new MapTileKey(flags, color);
@@ -264,6 +327,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return tile;
         }
 
+        /// <summary>
+        /// Returns a new tile with the specified feature flags and background color.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The background color.</param>
         private Tile CreateTile(long flags, Color32 color)
         {
             var tile = CreateInstance<Tile>();
@@ -274,6 +342,10 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return tile;
         }
 
+        /// <summary>
+        /// Creates a new sprite with the specified texture. The texture should include 1 pixel of padding.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
         private Sprite CreateSprite(Texture2D texture)
         {
             var pivot = new Vector2(0.5f, 0.5f);
@@ -283,6 +355,12 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return sprite;
         }
 
+        /// <summary>
+        /// Creates a new texture with the specified features and background color.
+        /// The returned texture has 1 pixel of border padding.
+        /// </summary>
+        /// <param name="flags">The feature flags.</param>
+        /// <param name="color">The background color.</param>
         private Texture2D CreateFeatureTexture(long flags, Color32 color)
         {
             var texture = new Texture2D(TileSize.x + 2, TileSize.y + 2);
@@ -294,6 +372,11 @@ namespace MPewsey.ManiaMapUnity.Drawing
             return texture;
         }
 
+        /// <summary>
+        /// Draws the feature tiles for the specified flags onto a texture.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="flags">The feature flags to draw.</param>
         private void DrawFeatures(Texture2D texture, long flags)
         {
             for (long i = flags; i != 0; i &= i - 1)

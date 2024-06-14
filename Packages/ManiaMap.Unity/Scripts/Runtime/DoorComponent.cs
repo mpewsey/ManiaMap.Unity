@@ -6,14 +6,14 @@ using UnityEngine;
 namespace MPewsey.ManiaMapUnity
 {
     /// <summary>
-    /// A component representing a door.
+    /// A component representing a possible door location.
     /// </summary>
     public class DoorComponent : CellChild
     {
         /// <summary>
-        /// A dictionary of doors by their room ID.
+        /// A dictionary of door components in the scene by their room ID.
         /// </summary>
-        private static Dictionary<Uid, LinkedList<DoorComponent>> Doors { get; } = new Dictionary<Uid, LinkedList<DoorComponent>>();
+        private static Dictionary<Uid, LinkedList<DoorComponent>> ActiveDoorsByRoom { get; } = new Dictionary<Uid, LinkedList<DoorComponent>>();
 
         [Header("Door:")]
         [SerializeField]
@@ -72,15 +72,16 @@ namespace MPewsey.ManiaMapUnity
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            RemoveFromDoorsDictionary();
+            RemoveFromActiveDoors();
         }
 
+        /// <inheritdoc/>
         protected override void Initialize()
         {
             if (!IsInitialized)
             {
                 IsInitialized = true;
-                AddToDoorsDictionary();
+                AddToActiveDoors();
                 Connection = FindDoorConnection();
                 OnInitialize.Invoke();
             }
@@ -94,7 +95,7 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="connection">The door connection.</param>
         public static DoorComponent FindDoor(Uid roomId, DoorConnection connection)
         {
-            if (connection != null && Doors.TryGetValue(roomId, out var doors))
+            if (connection != null && ActiveDoorsByRoom.TryGetValue(roomId, out var doors))
             {
                 foreach (var door in doors)
                 {
@@ -109,14 +110,14 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Adds the door to the doors dictionary.
         /// </summary>
-        private void AddToDoorsDictionary()
+        private void AddToActiveDoors()
         {
             var id = Room.RoomLayout.Id;
 
-            if (!Doors.TryGetValue(id, out var doors))
+            if (!ActiveDoorsByRoom.TryGetValue(id, out var doors))
             {
                 doors = new LinkedList<DoorComponent>();
-                Doors.Add(id, doors);
+                ActiveDoorsByRoom.Add(id, doors);
             }
 
             doors.AddLast(this);
@@ -125,9 +126,9 @@ namespace MPewsey.ManiaMapUnity
         /// <summary>
         /// Removes the door from the doors dictionary.
         /// </summary>
-        private void RemoveFromDoorsDictionary()
+        private void RemoveFromActiveDoors()
         {
-            if (Room.IsInitialized && Doors.TryGetValue(Room.RoomLayout.Id, out var doors))
+            if (Room.IsInitialized && ActiveDoorsByRoom.TryGetValue(Room.RoomLayout.Id, out var doors))
                 doors.Remove(this);
         }
 
@@ -153,6 +154,9 @@ namespace MPewsey.ManiaMapUnity
                 Direction = room.FindClosestDoorDirection(Row, Column, transform.position);
         }
 
+        /// <summary>
+        /// Returns the Mania Map door used by the procedural generator.
+        /// </summary>
         public Door GetMMDoor()
         {
             return new Door(Type, Code);
