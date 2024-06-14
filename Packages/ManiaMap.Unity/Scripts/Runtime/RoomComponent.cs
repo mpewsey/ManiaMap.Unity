@@ -579,7 +579,7 @@ namespace MPewsey.ManiaMapUnity
 
             for (int i = 0; i < count; i++)
             {
-                var distance = Vector2.Dot(delta, vectors[i]);
+                var distance = Vector3.Dot(delta, vectors[i]);
 
                 if (distance > maxDistance)
                 {

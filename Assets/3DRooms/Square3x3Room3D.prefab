@@ -18721,6 +18721,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897722540460372509}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.y
       value: 2
       objectReference: {fileID: 0}
@@ -18832,6 +18836,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8627009365570588215, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3
@@ -18976,6 +18984,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 2
@@ -19124,6 +19136,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.y
       value: 2
@@ -19309,6 +19325,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897722540460372509}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 2
       objectReference: {fileID: 0}
@@ -19342,6 +19362,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 2
@@ -19412,6 +19436,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 1
@@ -19523,6 +19551,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897722540460372509}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 1
       objectReference: {fileID: 0}
@@ -19592,6 +19624,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 2
@@ -19667,6 +19703,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897722540460372509}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 1
       objectReference: {fileID: 0}
@@ -19704,6 +19744,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 1
@@ -19888,6 +19932,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7438359242846073905, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: m_Name
       value: TopDoor3D
@@ -19992,6 +20040,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 2
@@ -20102,6 +20154,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.y
       value: 1
@@ -20386,6 +20442,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 2
@@ -20729,6 +20789,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897722540460372509}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.x
       value: 1
       objectReference: {fileID: 0}
@@ -20876,6 +20940,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
+      propertyPath: _direction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6209333558512376320, guid: 9ac5e95a09b7b7c4b99817f1b4839997, type: 3}
       propertyPath: _cellIndex.y
       value: 1
@@ -21130,6 +21198,10 @@ PrefabInstance:
       propertyPath: _room
       value: 
       objectReference: {fileID: 897722540460372509}
+    - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
+      propertyPath: _direction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6075926457614797504, guid: 9374c6aaeeea95f4c87f5d917d104d24, type: 3}
       propertyPath: _cellIndex.x
       value: 1

@@ -10,11 +10,11 @@ using UnityEngine.TestTools;
 
 namespace MPewsey.ManiaMapUnity.Tests
 {
-    public class TestRoomComponent2D
+    public class TestRoomComponent3D
     {
         private const int CellLayer = 20;
         private const int TriggeringLayer = 21;
-        private const string TestScene = "TestRoomComponent2D";
+        private const string TestScene = "TestRoomComponent3D";
         private RoomComponent Room { get; set; }
         private LayoutPack LayoutPack { get; set; }
 
@@ -26,7 +26,7 @@ namespace MPewsey.ManiaMapUnity.Tests
             settings.TriggeringLayers = 1 << TriggeringLayer;
 
             yield return Addressables.LoadSceneAsync(TestScene);
-            var handle = Addressables.LoadAssetAsync<RoomTemplateDatabase>("2DRoomTemplateDatabase");
+            var handle = Addressables.LoadAssetAsync<RoomTemplateDatabase>("3DRoomTemplateDatabase");
             yield return handle;
             var database = handle.Result;
             Assert.IsTrue(database != null);
@@ -51,11 +51,11 @@ namespace MPewsey.ManiaMapUnity.Tests
         public IEnumerator TestOnCellAreaEnteredAndExited()
         {
             var area = new GameObject("Area Tester");
-            area.transform.position = new Vector2(10000, 10000);
+            area.transform.position = new Vector3(10000, 10000, 10000);
             area.layer = TriggeringLayer;
-            area.AddComponent<Rigidbody2D>();
-            var collider = area.AddComponent<BoxCollider2D>();
-            collider.size = Vector2.one;
+            area.AddComponent<Rigidbody>();
+            var collider = area.AddComponent<BoxCollider>();
+            collider.size = Vector3.one;
 
             var indexes = new List<Vector2Int>();
             Room.OnCellAreaEntered.AddListener((area, collision) => indexes.Add(new Vector2Int(area.Row, area.Column)));
@@ -70,7 +70,7 @@ namespace MPewsey.ManiaMapUnity.Tests
             {
                 for (int j = 1; j < Room.Columns; j++)
                 {
-                    area.transform.position = new Vector2(j * Room.CellSize.x, -i * Room.CellSize.y);
+                    area.transform.position = new Vector3(j * Room.CellSize.x, 0, -i * Room.CellSize.y);
                     yield return new WaitForFixedUpdate();
                     Assert.AreEqual(4, indexes.Count);
                     Assert.IsTrue(indexes.Contains(new Vector2Int(i, j)));
@@ -99,13 +99,13 @@ namespace MPewsey.ManiaMapUnity.Tests
             Room.CellSize = new Vector3(100, 100, 100);
             Room.transform.position = new Vector3(543, 9084, 234);
 
-            Assert.AreEqual(new Vector3(50, -50, -50), Room.CellCenterLocalPosition(0, 0));
-            Assert.AreEqual(new Vector3(50, -150, -50), Room.CellCenterLocalPosition(1, 0));
-            Assert.AreEqual(new Vector3(50, -250, -50), Room.CellCenterLocalPosition(2, 0));
-            Assert.AreEqual(new Vector3(150, -50, -50), Room.CellCenterLocalPosition(0, 1));
-            Assert.AreEqual(new Vector3(250, -50, -50), Room.CellCenterLocalPosition(0, 2));
-            Assert.AreEqual(new Vector3(150, -150, -50), Room.CellCenterLocalPosition(1, 1));
-            Assert.AreEqual(new Vector3(250, -250, -50), Room.CellCenterLocalPosition(2, 2));
+            Assert.AreEqual(new Vector3(50, 50, -50), Room.CellCenterLocalPosition(0, 0));
+            Assert.AreEqual(new Vector3(50, 50, -150), Room.CellCenterLocalPosition(1, 0));
+            Assert.AreEqual(new Vector3(50, 50, -250), Room.CellCenterLocalPosition(2, 0));
+            Assert.AreEqual(new Vector3(150, 50, -50), Room.CellCenterLocalPosition(0, 1));
+            Assert.AreEqual(new Vector3(250, 50, -50), Room.CellCenterLocalPosition(0, 2));
+            Assert.AreEqual(new Vector3(150, 50, -150), Room.CellCenterLocalPosition(1, 1));
+            Assert.AreEqual(new Vector3(250, 50, -250), Room.CellCenterLocalPosition(2, 2));
         }
 
         [Test]
@@ -115,13 +115,13 @@ namespace MPewsey.ManiaMapUnity.Tests
             Room.CellSize = new Vector3(100, 100, 100);
             Room.transform.position = offset;
 
-            Assert.AreEqual(new Vector3(50, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 0));
-            Assert.AreEqual(new Vector3(50, -150, -50) + offset, Room.CellCenterGlobalPosition(1, 0));
-            Assert.AreEqual(new Vector3(50, -250, -50) + offset, Room.CellCenterGlobalPosition(2, 0));
-            Assert.AreEqual(new Vector3(150, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 1));
-            Assert.AreEqual(new Vector3(250, -50, -50) + offset, Room.CellCenterGlobalPosition(0, 2));
-            Assert.AreEqual(new Vector3(150, -150, -50) + offset, Room.CellCenterGlobalPosition(1, 1));
-            Assert.AreEqual(new Vector3(250, -250, -50) + offset, Room.CellCenterGlobalPosition(2, 2));
+            Assert.AreEqual(new Vector3(50, 50, -50) + offset, Room.CellCenterGlobalPosition(0, 0));
+            Assert.AreEqual(new Vector3(50, 50, -150) + offset, Room.CellCenterGlobalPosition(1, 0));
+            Assert.AreEqual(new Vector3(50, 50, -250) + offset, Room.CellCenterGlobalPosition(2, 0));
+            Assert.AreEqual(new Vector3(150, 50, -50) + offset, Room.CellCenterGlobalPosition(0, 1));
+            Assert.AreEqual(new Vector3(250, 50, -50) + offset, Room.CellCenterGlobalPosition(0, 2));
+            Assert.AreEqual(new Vector3(150, 50, -150) + offset, Room.CellCenterGlobalPosition(1, 1));
+            Assert.AreEqual(new Vector3(250, 50, -250) + offset, Room.CellCenterGlobalPosition(2, 2));
         }
 
         [Test]
@@ -135,8 +135,8 @@ namespace MPewsey.ManiaMapUnity.Tests
             {
                 for (int j = 0; j < Room.Columns; j++)
                 {
-                    var position = new Vector3(j * Room.CellSize.x, -i * Room.CellSize.y, 0)
-                        + offset + 0.5f * new Vector3(Room.CellSize.x, -Room.CellSize.y, Room.CellSize.z);
+                    var position = new Vector3(j * Room.CellSize.x, 0, -i * Room.CellSize.y)
+                        + offset + 0.5f * new Vector3(Room.CellSize.x, Room.CellSize.z, -Room.CellSize.y);
                     Assert.AreEqual(new Vector2Int(i, j), Room.GlobalPositionToCellIndex(position));
                 }
             }
@@ -155,8 +155,8 @@ namespace MPewsey.ManiaMapUnity.Tests
             {
                 for (int j = 0; j < Room.Columns; j++)
                 {
-                    var position = new Vector3(j * Room.CellSize.x, -i * Room.CellSize.y, 0)
-                        + 0.5f * new Vector3(Room.CellSize.x, -Room.CellSize.y, Room.CellSize.z);
+                    var position = new Vector3(j * Room.CellSize.x, 0, -i * Room.CellSize.y)
+                        + 0.5f * new Vector3(Room.CellSize.x, Room.CellSize.z, -Room.CellSize.y);
                     Assert.AreEqual(new Vector2Int(i, j), Room.LocalPositionToCellIndex(position));
                 }
             }
@@ -169,10 +169,12 @@ namespace MPewsey.ManiaMapUnity.Tests
         {
             Room.CellSize = new Vector3(100, 100, 100);
 
-            Assert.AreEqual(DoorDirection.North, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 0, 50)));
-            Assert.AreEqual(DoorDirection.West, Room.FindClosestDoorDirection(0, 0, new Vector3(0, -50, 50)));
-            Assert.AreEqual(DoorDirection.South, Room.FindClosestDoorDirection(0, 0, new Vector3(50, -100, 50)));
-            Assert.AreEqual(DoorDirection.East, Room.FindClosestDoorDirection(0, 0, new Vector3(100, -50, 50)));
+            Assert.AreEqual(DoorDirection.North, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 50, 0)));
+            Assert.AreEqual(DoorDirection.West, Room.FindClosestDoorDirection(0, 0, new Vector3(0, 50, -50)));
+            Assert.AreEqual(DoorDirection.South, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 50, -100)));
+            Assert.AreEqual(DoorDirection.East, Room.FindClosestDoorDirection(0, 0, new Vector3(100, 50, -50)));
+            Assert.AreEqual(DoorDirection.Top, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 100, -50)));
+            Assert.AreEqual(DoorDirection.Bottom, Room.FindClosestDoorDirection(0, 0, new Vector3(50, 0, -50)));
         }
 
         [Test]
@@ -182,9 +184,9 @@ namespace MPewsey.ManiaMapUnity.Tests
             Room.SetCellActivities(new Vector2Int(1, 1), new Vector2Int(2, 2), CellActivity.Deactivate);
 
             Assert.AreEqual(Vector2Int.zero, Room.FindClosestActiveCellIndex(Vector3.zero));
-            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(125, -50, 1000)));
-            Assert.AreEqual(new Vector2Int(1, 0), Room.FindClosestActiveCellIndex(new Vector3(125, -150, -1000)));
-            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(150, -125, 0)));
+            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(125, 1000, -50)));
+            Assert.AreEqual(new Vector2Int(1, 0), Room.FindClosestActiveCellIndex(new Vector3(125, -1000, -150)));
+            Assert.AreEqual(new Vector2Int(0, 1), Room.FindClosestActiveCellIndex(new Vector3(150, 0, -125)));
         }
 
         [Test]

@@ -32,13 +32,13 @@ namespace MPewsey.ManiaMapUnity
             return area;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter(Collider collision)
         {
             Room.RoomState.SetCellVisibility(Row, Column, true);
             Room.OnCellAreaEntered.Invoke(this, collision.gameObject);
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit(Collider collision)
         {
             Room.OnCellAreaExited.Invoke(this, collision.gameObject);
         }
