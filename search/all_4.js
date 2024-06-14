@@ -7,6 +7,5 @@ var searchData=
   ['edges_4',['Edges',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_layout_graph_resource.html#a4e6bb8a5c10168f8ec2fdd8d3f599748',1,'MPewsey::ManiaMapUnity::Graphs::LayoutGraphResource']]],
   ['edgesize_5',['EdgeSize',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html#adb4e06418b96e940f7c575da4ccaecf7',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindowSettings']]],
   ['encodetobytes_6',['EncodeToBytes',['../class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_texture_utility.html#ab0a817c2ae7ce98a9d977ab6db7bc302',1,'MPewsey::ManiaMapUnity::Drawing::TextureUtility']]],
-  ['entries_7',['Entries',['../class_m_pewsey_1_1_mania_map_unity_1_1_template_group.html#ae9f06dc17d6c89977676ef6e3834a4bc',1,'MPewsey::ManiaMapUnity::TemplateGroup']]],
-  ['exists_8',['Exists',['../class_m_pewsey_1_1_mania_map_unity_1_1_room_flag.html#aa9a207f89881ad3eeb418619bef880ed',1,'MPewsey::ManiaMapUnity::RoomFlag']]]
+  ['entries_7',['Entries',['../class_m_pewsey_1_1_mania_map_unity_1_1_template_group.html#ae9f06dc17d6c89977676ef6e3834a4bc',1,'MPewsey::ManiaMapUnity::TemplateGroup']]]
 ];
