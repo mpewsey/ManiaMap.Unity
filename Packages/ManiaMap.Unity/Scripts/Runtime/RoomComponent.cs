@@ -208,8 +208,10 @@ namespace MPewsey.ManiaMapUnity
 
         private void MoveToLayoutPosition()
         {
-            var position = new Vector2(RoomLayout.Position.Y, RoomLayout.Position.X) * CellSize;
-            transform.localPosition = GridToLocalPosition(position);
+            var x = CellSize.x * RoomLayout.Position.Y;
+            var y = CellSize.y * RoomLayout.Position.X;
+            var z = CellSize.z * RoomLayout.Position.Z;
+            transform.localPosition = GridToLocalPosition(new Vector3(x, y, z));
         }
 
         private void CreateCellAreas(LayerMask cellLayer, LayerMask triggeringLayers)

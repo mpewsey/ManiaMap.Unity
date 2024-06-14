@@ -161,7 +161,7 @@ MonoBehaviour:
   _id: 3
   _name: Node 3
   _templateGroup: {fileID: 11400000, guid: d24d7fabca9b8a34bb3e623f3803bd4e, type: 2}
-  _z: 0
+  _z: 1
   _color:
     serializedVersion: 2
     rgba: 4285535766
@@ -205,7 +205,7 @@ MonoBehaviour:
   _id: 6
   _name: Node 6
   _templateGroup: {fileID: 11400000, guid: d24d7fabca9b8a34bb3e623f3803bd4e, type: 2}
-  _z: 0
+  _z: 1
   _color:
     serializedVersion: 2
     rgba: 4285535766

@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202888106784723050}
   - component: {fileID: 1521180667018509638}
+  - component: {fileID: 3170962487583125381}
   m_Layer: 0
   m_Name: CollectableSpot3D
   m_TagString: Untagged
@@ -160,3 +161,15 @@ MonoBehaviour:
   _id: -1
   _group: {fileID: 11400000, guid: d7900d501eb58704a847d572707e09ff, type: 2}
   _weight: 1
+--- !u!114 &3170962487583125381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8417362979427284457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384a7ca9bbb93e14ba056a172ba8f692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
