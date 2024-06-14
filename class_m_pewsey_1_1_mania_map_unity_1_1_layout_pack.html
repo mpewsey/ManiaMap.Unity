@@ -128,6 +128,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a82e4cc1f910cb3487da81c2bd224b11f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of rooms corresponding to the specified layer (z) coordinate. If the layer does not exist, returns an empty list.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a82e4cc1f910cb3487da81c2bd224b11f">More...</a><br /></td></tr>
 <tr class="separator:a82e4cc1f910cb3487da81c2bd224b11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d8f91b7e5a835f903e3a98af8765a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a15d8f91b7e5a835f903e3a98af8765a3">LayoutPack</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a6860a4215b072014f8972b7611c569fd">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a> layoutState, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html">ManiaMapSettings</a> settings=null)</td></tr>
+<tr class="memdesc:a15d8f91b7e5a835f903e3a98af8765a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html#a15d8f91b7e5a835f903e3a98af8765a3">More...</a><br /></td></tr>
 <tr class="separator:a15d8f91b7e5a835f903e3a98af8765a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
@@ -191,7 +192,23 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00048">48</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p>Initializes a new object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layout</td><td>The layout.</td></tr>
+    <tr><td class="paramname">layoutState</td><td>The layout state.</td></tr>
+    <tr><td class="paramname">settings</td><td>The Mania Map settings. If null, a new instance with default settings will be used.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">System.ArgumentException</td><td>Raised if the layout or layout state is null or their ID's do not match.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00055">55</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -238,7 +255,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00108">108</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00115">115</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -284,7 +301,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00135">135</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00142">142</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -312,7 +329,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00071">71</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00078">78</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -333,7 +350,7 @@ Properties</h2></td></tr>
 
 <p>Returns an enumerable of unique layer (z) coordinates for the layout. The coordinates are not in any particular order. </p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00123">123</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00130">130</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -361,7 +378,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00095">95</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00102">102</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>
@@ -389,7 +406,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00083">83</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_pack_8cs_source.html#l00090">90</a> of file <a class="el" href="_layout_pack_8cs_source.html">LayoutPack.cs</a>.</p>
 
 </div>
 </div>

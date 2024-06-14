@@ -114,7 +114,7 @@ Inheritance diagram for CollectableSpotComponent:</div>
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.png" usemap="#CollectableSpotComponent_map" alt=""/>
   <map id="CollectableSpotComponent_map" name="CollectableSpotComponent_map">
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object that has a Cell as a parent." alt="CellChild" shape="rect" coords="0,56,163,80"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object tied to the cell index of a RoomComponent." alt="CellChild" shape="rect" coords="0,56,163,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -145,6 +145,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ad39512a9383949a23d73aeca1a839f19"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#ad39512a9383949a23d73aeca1a839f19">EditId</a><code> [getset]</code></td></tr>
+<tr class="memdesc:ad39512a9383949a23d73aeca1a839f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the ID can be edited in the inspector.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#ad39512a9383949a23d73aeca1a839f19">More...</a><br /></td></tr>
 <tr class="separator:ad39512a9383949a23d73aeca1a839f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a611dbbf90338baa4d20f3e42553537b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html">CollectableGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#a611dbbf90338baa4d20f3e42553537b7">Group</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a611dbbf90338baa4d20f3e42553537b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collectable group.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#a611dbbf90338baa4d20f3e42553537b7">More...</a><br /></td></tr>
@@ -153,23 +154,29 @@ Properties</h2></td></tr>
 <tr class="memdesc:afe0b47b3c92f2f69ea3da50cb72553eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The unique location ID, relative to the cell.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#afe0b47b3c92f2f69ea3da50cb72553eb">More...</a><br /></td></tr>
 <tr class="separator:afe0b47b3c92f2f69ea3da50cb72553eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02785bbeff9aeb714bad4ab67114f9a6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#a02785bbeff9aeb714bad4ab67114f9a6">Weight</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a02785bbeff9aeb714bad4ab67114f9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The manual draw weight of the collectable spot.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#a02785bbeff9aeb714bad4ab67114f9a6">More...</a><br /></td></tr>
 <tr class="separator:a02785bbeff9aeb714bad4ab67114f9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td colspan="2" onclick="javascript:toggleInherit('properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html">CellChild</a></td></tr>
 <tr class="memitem:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">AutoAssignCell</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell will be automatically assigned to the closest cell when update and save operations are performed.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">More...</a><br /></td></tr>
 <tr class="separator:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">Vector2Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">CellIndex</a><code> [getset]</code></td></tr>
+<tr class="memdesc:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing cell index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">More...</a><br /></td></tr>
 <tr class="separator:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">Column</a><code> [getset]</code></td></tr>
+<tr class="memdesc:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The column index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">More...</a><br /></td></tr>
 <tr class="separator:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the object has been initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">More...</a><br /></td></tr>
 <tr class="separator:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">OnInitialize</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event invoked after the object is initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">More...</a><br /></td></tr>
 <tr class="separator:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">Room</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing room.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">More...</a><br /></td></tr>
 <tr class="separator:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">Row</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The row index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">More...</a><br /></td></tr>
 <tr class="separator:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -194,6 +201,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:affb6ac8f8f08d515a8b74f5c213c2c52 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#affb6ac8f8f08d515a8b74f5c213c2c52">Awake</a> ()</td></tr>
 <tr class="separator:affb6ac8f8f08d515a8b74f5c213c2c52 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab32ab0cc76b4eaa37077e89ee9e3cdc1 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#ab32ab0cc76b4eaa37077e89ee9e3cdc1">Initialize</a> ()</td></tr>
+<tr class="memdesc:ab32ab0cc76b4eaa37077e89ee9e3cdc1 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#ab32ab0cc76b4eaa37077e89ee9e3cdc1">More...</a><br /></td></tr>
 <tr class="separator:ab32ab0cc76b4eaa37077e89ee9e3cdc1 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be5f5b23715843a7bfc4f2ebd6c7894 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a1be5f5b23715843a7bfc4f2ebd6c7894">OnDestroy</a> ()</td></tr>
 <tr class="separator:a1be5f5b23715843a7bfc4f2ebd6c7894 inherit pro_methods_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +235,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>If the collectable spot exists and has not already been acquired, adds it to the current layout state's acquired collectables and marks it as acquired. Returns true if this action is performed. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00079">79</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00085">85</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -259,7 +267,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#abf778c53ae65466af0bfe2647ec17473">CellChild</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00090">90</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00096">96</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -280,7 +288,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns true if the collectable can be acquired. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00069">69</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00075">75</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -301,7 +309,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>True if the collectable spot exists. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00053">53</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00059">59</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -322,7 +330,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The assigned collectable ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00042">42</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00048">48</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -343,7 +351,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns new generation data for the collectable spot. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00099">99</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00105">105</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -364,7 +372,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>True if the collectable spot is already acquired. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00061">61</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00067">67</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -391,7 +399,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00034">34</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00040">40</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -440,7 +448,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00024">24</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00027">27</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -464,7 +472,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00017">17</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00020">20</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -488,7 +496,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00031">31</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00034">34</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -513,7 +521,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00014">14</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p>If true, the ID can be edited in the inspector. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00017">17</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -539,7 +549,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The collectable group. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00028">28</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00031">31</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -565,7 +575,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The unique location ID, relative to the cell. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00021">21</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00024">24</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -589,7 +599,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00032">32</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
+<p>The manual draw weight of the collectable spot. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_spot_component_8cs_source.html#l00038">38</a> of file <a class="el" href="_collectable_spot_component_8cs_source.html">CollectableSpotComponent.cs</a>.</p>
 
 </div>
 </div>

@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>Contains global settings used by Mania Map components.  
+<p>Contains settings used by Mania Map components.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ManiaMapSettings:</div>
@@ -117,14 +117,16 @@ Inheritance diagram for ManiaMapSettings:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae88fc6edb360f3324cff278f34857837"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html">ManiaMapSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae88fc6edb360f3324cff278f34857837">LoadSettings</a> ()</td></tr>
-<tr class="memdesc:ae88fc6edb360f3324cff278f34857837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to load the settings from teh resources folder. If they do not exist, returns a new settings object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae88fc6edb360f3324cff278f34857837">More...</a><br /></td></tr>
+<tr class="memdesc:ae88fc6edb360f3324cff278f34857837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the settings from ManiaMap/ManiaMapSettings in a Resource folder if it exists. Otherwise, returns a new settings instance.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae88fc6edb360f3324cff278f34857837">More...</a><br /></td></tr>
 <tr class="separator:ae88fc6edb360f3324cff278f34857837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ae9b363b04dfc9b2f3868d59c4c2c4618"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae9b363b04dfc9b2f3868d59c4c2c4618">CellLayer</a><code> [getset]</code></td></tr>
+<tr class="memdesc:ae9b363b04dfc9b2f3868d59c4c2c4618"><td class="mdescLeft">&#160;</td><td class="mdescRight">The physics layer assigned to room cell area triggers.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae9b363b04dfc9b2f3868d59c4c2c4618">More...</a><br /></td></tr>
 <tr class="separator:ae9b363b04dfc9b2f3868d59c4c2c4618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae568f35a437743a1cf510b0f45661137"><td class="memItemLeft" align="right" valign="top">LayerMask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae568f35a437743a1cf510b0f45661137">TriggeringLayers</a><code> [getset]</code></td></tr>
+<tr class="memdesc:ae568f35a437743a1cf510b0f45661137"><td class="mdescLeft">&#160;</td><td class="mdescRight">The physics layers that trigger room cell area triggers.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_mania_map_settings.html#ae568f35a437743a1cf510b0f45661137">More...</a><br /></td></tr>
 <tr class="separator:ae568f35a437743a1cf510b0f45661137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -135,7 +137,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aaddf0ec48df2922c98c0dd3f86b9a376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Contains global settings used by Mania Map components. </p>
+<div class="textblock"><p >Contains settings used by Mania Map components. </p>
 
 <p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00008">8</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -162,9 +164,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Attempts to load the settings from teh resources folder. If they do not exist, returns a new settings object. </p>
+<p>Loads the settings from ManiaMap/ManiaMapSettings in a Resource folder if it exists. Otherwise, returns a new settings instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00022">22</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00028">28</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
 
 </div>
 </div>
@@ -213,7 +215,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00015">15</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00018">18</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
 
 </div>
 </div>
@@ -238,7 +240,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00012">12</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
+<p>The physics layer assigned to room cell area triggers. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00015">15</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
 
 </div>
 </div>
@@ -262,7 +266,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00016">16</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
+<p>The physics layers that trigger room cell area triggers. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mania_map_settings_8cs_source.html#l00022">22</a> of file <a class="el" href="_mania_map_settings_8cs_source.html">ManiaMapSettings.cs</a>.</p>
 
 </div>
 </div>

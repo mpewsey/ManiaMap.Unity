@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>A component representing a door.  
+<p>A component representing a possible door location.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for DoorComponent:</div>
@@ -116,7 +116,7 @@ Inheritance diagram for DoorComponent:</div>
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.png" usemap="#DoorComponent_map" alt=""/>
   <map id="DoorComponent_map" name="DoorComponent_map">
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object that has a Cell as a parent." alt="CellChild" shape="rect" coords="0,56,103,80"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html" title="An object tied to the cell index of a RoomComponent." alt="CellChild" shape="rect" coords="0,56,103,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -129,6 +129,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0944db48a6caa2be5c99e6849893637b"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the door exists in the layout.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a0944db48a6caa2be5c99e6849893637b">More...</a><br /></td></tr>
 <tr class="separator:a0944db48a6caa2be5c99e6849893637b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c886bf206612a8240877c4cf01f39d0"><td class="memItemLeft" align="right" valign="top">Door&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a4c886bf206612a8240877c4cf01f39d0">GetMMDoor</a> ()</td></tr>
+<tr class="memdesc:a4c886bf206612a8240877c4cf01f39d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Mania Map door used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a4c886bf206612a8240877c4cf01f39d0">More...</a><br /></td></tr>
 <tr class="separator:a4c886bf206612a8240877c4cf01f39d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4259a636d3d6543f6e0c35a50374853b"><td class="memItemLeft" align="right" valign="top">Uid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a4259a636d3d6543f6e0c35a50374853b">ToRoomId</a> ()</td></tr>
 <tr class="memdesc:a4259a636d3d6543f6e0c35a50374853b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The room ID of the room this door connects to.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a4259a636d3d6543f6e0c35a50374853b">More...</a><br /></td></tr>
@@ -143,6 +144,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae272c57053102794b03f581e91d8be05"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#ae272c57053102794b03f581e91d8be05">Initialize</a> ()</td></tr>
+<tr class="memdesc:ae272c57053102794b03f581e91d8be05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the object.   <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#ae272c57053102794b03f581e91d8be05">More...</a><br /></td></tr>
 <tr class="separator:ae272c57053102794b03f581e91d8be05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafb2e5ff9ac0b154ba7c920402922a91"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aafb2e5ff9ac0b154ba7c920402922a91">OnDestroy</a> ()</td></tr>
 <tr class="separator:aafb2e5ff9ac0b154ba7c920402922a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,6 +154,9 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:afde3c524ed03d7e3005ab0db67f55d50"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; Uid, LinkedList&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#afde3c524ed03d7e3005ab0db67f55d50">ActiveDoorsByRoom</a> = new Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt;&gt;()<code> [get]</code></td></tr>
+<tr class="memdesc:afde3c524ed03d7e3005ab0db67f55d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of door components in the scene by their room ID.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#afde3c524ed03d7e3005ab0db67f55d50">More...</a><br /></td></tr>
+<tr class="separator:afde3c524ed03d7e3005ab0db67f55d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a457b943be1c78fd0da4e349e2355ef83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a457b943be1c78fd0da4e349e2355ef83">AutoAssignDirection</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a457b943be1c78fd0da4e349e2355ef83"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the door direction will be automatically assigned to the cell when update and save operations are performed.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a457b943be1c78fd0da4e349e2355ef83">More...</a><br /></td></tr>
 <tr class="separator:a457b943be1c78fd0da4e349e2355ef83"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,9 +169,6 @@ Properties</h2></td></tr>
 <tr class="memitem:ae06a20523a81f67619a32a2dfe0310dd"><td class="memItemLeft" align="right" valign="top">DoorDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#ae06a20523a81f67619a32a2dfe0310dd">Direction</a><code> [getset]</code></td></tr>
 <tr class="memdesc:ae06a20523a81f67619a32a2dfe0310dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The door direction.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#ae06a20523a81f67619a32a2dfe0310dd">More...</a><br /></td></tr>
 <tr class="separator:ae06a20523a81f67619a32a2dfe0310dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff3dd45cbb06b2b26158c5114eb11e12"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; Uid, LinkedList&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aff3dd45cbb06b2b26158c5114eb11e12">Doors</a> = new Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt;&gt;()<code> [get]</code></td></tr>
-<tr class="memdesc:aff3dd45cbb06b2b26158c5114eb11e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of doors by their room ID.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aff3dd45cbb06b2b26158c5114eb11e12">More...</a><br /></td></tr>
-<tr class="separator:aff3dd45cbb06b2b26158c5114eb11e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3d710a2b3432fb5c02d22d166eccc9a"><td class="memItemLeft" align="right" valign="top">DoorType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aa3d710a2b3432fb5c02d22d166eccc9a">Type</a><code> [getset]</code></td></tr>
 <tr class="memdesc:aa3d710a2b3432fb5c02d22d166eccc9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The door type.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aa3d710a2b3432fb5c02d22d166eccc9a">More...</a><br /></td></tr>
 <tr class="separator:aa3d710a2b3432fb5c02d22d166eccc9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,30 +177,35 @@ Properties</h2></td></tr>
 <tr class="memdesc:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell will be automatically assigned to the closest cell when update and save operations are performed.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">More...</a><br /></td></tr>
 <tr class="separator:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">Vector2Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">CellIndex</a><code> [getset]</code></td></tr>
+<tr class="memdesc:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing cell index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">More...</a><br /></td></tr>
 <tr class="separator:af972e421890bfd131f41a575bb85b872 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">Column</a><code> [getset]</code></td></tr>
+<tr class="memdesc:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The column index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">More...</a><br /></td></tr>
 <tr class="separator:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the object has been initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">More...</a><br /></td></tr>
 <tr class="separator:acf7e27e5129fb4febbb44dbd372a8a5a inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">OnInitialize</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event invoked after the object is initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">More...</a><br /></td></tr>
 <tr class="separator:a380a20d833afe74daf49341eace63b3c inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">Room</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing room.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">More...</a><br /></td></tr>
 <tr class="separator:a521d3925fdda019cef949f78168e4a68 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">Row</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The row index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">More...</a><br /></td></tr>
 <tr class="separator:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a54612482b86ec29a144b19282af9e112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a54612482b86ec29a144b19282af9e112">AddToDoorsDictionary</a> ()</td></tr>
-<tr class="memdesc:a54612482b86ec29a144b19282af9e112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the door to the doors dictionary.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a54612482b86ec29a144b19282af9e112">More...</a><br /></td></tr>
-<tr class="separator:a54612482b86ec29a144b19282af9e112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cda8592beedf89e6edebb904b715a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#af3cda8592beedf89e6edebb904b715a2">AddToActiveDoors</a> ()</td></tr>
+<tr class="memdesc:af3cda8592beedf89e6edebb904b715a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the door to the doors dictionary.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#af3cda8592beedf89e6edebb904b715a2">More...</a><br /></td></tr>
+<tr class="separator:af3cda8592beedf89e6edebb904b715a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5420c5cef755c3fd4c1e279fed32e256"><td class="memItemLeft" align="right" valign="top">DoorConnection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a5420c5cef755c3fd4c1e279fed32e256">FindDoorConnection</a> ()</td></tr>
 <tr class="memdesc:a5420c5cef755c3fd4c1e279fed32e256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the door connection in the layout associated with the door. Returns null if the door connection does not exist in the layout.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a5420c5cef755c3fd4c1e279fed32e256">More...</a><br /></td></tr>
 <tr class="separator:a5420c5cef755c3fd4c1e279fed32e256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadaeca9f8086baab793a491cf93bc6ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aadaeca9f8086baab793a491cf93bc6ef">RemoveFromDoorsDictionary</a> ()</td></tr>
-<tr class="memdesc:aadaeca9f8086baab793a491cf93bc6ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the door from the doors dictionary.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#aadaeca9f8086baab793a491cf93bc6ef">More...</a><br /></td></tr>
-<tr class="separator:aadaeca9f8086baab793a491cf93bc6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0611c54d4db3dc711ffc2a6897ca3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a5c0611c54d4db3dc711ffc2a6897ca3c">RemoveFromActiveDoors</a> ()</td></tr>
+<tr class="memdesc:a5c0611c54d4db3dc711ffc2a6897ca3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the door from the doors dictionary.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a5c0611c54d4db3dc711ffc2a6897ca3c">More...</a><br /></td></tr>
+<tr class="separator:a5c0611c54d4db3dc711ffc2a6897ca3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -222,12 +229,12 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a9b0f6800722427b0d06c08212ca0971c inherit pro_attribs_class_m_pewsey_1_1_mania_map_unity_1_1_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >A component representing a door. </p>
+<div class="textblock"><p >A component representing a possible door location. </p>
 
 <p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00011">11</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a54612482b86ec29a144b19282af9e112" name="a54612482b86ec29a144b19282af9e112"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54612482b86ec29a144b19282af9e112">&#9670;&nbsp;</a></span>AddToDoorsDictionary()</h2>
+<a id="af3cda8592beedf89e6edebb904b715a2" name="af3cda8592beedf89e6edebb904b715a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cda8592beedf89e6edebb904b715a2">&#9670;&nbsp;</a></span>AddToActiveDoors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AddToDoorsDictionary </td>
+          <td class="memname">void AddToActiveDoors </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -251,7 +258,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Adds the door to the doors dictionary. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00112">112</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00113">113</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -283,7 +290,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#abf778c53ae65466af0bfe2647ec17473">CellChild</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00148">148</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00149">149</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -351,7 +358,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00095">95</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00096">96</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -380,7 +387,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the door connection in the layout associated with the door. Returns null if the door connection does not exist in the layout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00138">138</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00139">139</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -399,7 +406,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00156">156</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p>Returns the Mania Map door used by the procedural generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00160">160</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -426,9 +435,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html">CellChild</a>.</p>
+<p>Initializes the object.  </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00078">78</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#ab32ab0cc76b4eaa37077e89ee9e3cdc1">CellChild</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00079">79</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -461,8 +472,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aadaeca9f8086baab793a491cf93bc6ef" name="aadaeca9f8086baab793a491cf93bc6ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadaeca9f8086baab793a491cf93bc6ef">&#9670;&nbsp;</a></span>RemoveFromDoorsDictionary()</h2>
+<a id="a5c0611c54d4db3dc711ffc2a6897ca3c" name="a5c0611c54d4db3dc711ffc2a6897ca3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0611c54d4db3dc711ffc2a6897ca3c">&#9670;&nbsp;</a></span>RemoveFromActiveDoors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -471,7 +482,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RemoveFromDoorsDictionary </td>
+          <td class="memname">void RemoveFromActiveDoors </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -486,7 +497,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Removes the door from the doors dictionary. </p>
 
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00128">128</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00129">129</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>
@@ -609,6 +620,32 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="afde3c524ed03d7e3005ab0db67f55d50" name="afde3c524ed03d7e3005ab0db67f55d50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afde3c524ed03d7e3005ab0db67f55d50">&#9670;&nbsp;</a></span>ActiveDoorsByRoom</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt; &gt; ActiveDoorsByRoom = new Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt;&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A dictionary of door components in the scene by their room ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00016">16</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
+
+</div>
+</div>
 <a id="a457b943be1c78fd0da4e349e2355ef83" name="a457b943be1c78fd0da4e349e2355ef83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a457b943be1c78fd0da4e349e2355ef83">&#9670;&nbsp;</a></span>AutoAssignDirection</h2>
 
@@ -710,32 +747,6 @@ Additional Inherited Members</h2></td></tr>
 <p>The door direction. </p>
 
 <p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00032">32</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
-
-</div>
-</div>
-<a id="aff3dd45cbb06b2b26158c5114eb11e12" name="aff3dd45cbb06b2b26158c5114eb11e12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff3dd45cbb06b2b26158c5114eb11e12">&#9670;&nbsp;</a></span>Doors</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt; &gt; Doors = new Dictionary&lt;Uid, LinkedList&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html">DoorComponent</a>&gt;&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A dictionary of doors by their room ID. </p>
-
-<p class="definition">Definition at line <a class="el" href="_door_component_8cs_source.html#l00016">16</a> of file <a class="el" href="_door_component_8cs_source.html">DoorComponent.cs</a>.</p>
 
 </div>
 </div>

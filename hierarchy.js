@@ -3,32 +3,6 @@ var hierarchy =
     [ "ActiveCellsRow", "struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html", null ],
     [ "CollectableGroupEntry", "struct_m_pewsey_1_1_mania_map_unity_1_1_collectable_group_entry.html", null ],
     [ "ColorUtility", "class_m_pewsey_1_1_mania_map_unity_1_1_color_utility.html", null ],
-    [ "Editor", null, [
-      [ "BatchUpdaterToolEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_batch_updater_tool_editor.html", null ],
-      [ "CellChildEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_cell_child_editor.html", [
-        [ "CollectableSpotComponentEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_spot_component_editor.html", null ],
-        [ "DoorComponentEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_door_component_editor.html", null ],
-        [ "FeatureEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_feature_editor.html", null ],
-        [ "RoomFlagEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_flag_editor.html", null ]
-      ] ],
-      [ "CollectableGroupEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_group_editor.html", null ],
-      [ "CollectableResourceEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_resource_editor.html", null ],
-      [ "ManiaMapSettingsEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_mania_map_settings_editor.html", null ],
-      [ "RoomComponentEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_component_editor.html", null ],
-      [ "RoomComponentToolbar", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_component_toolbar.html", null ],
-      [ "RoomTemplateResourceEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_room_template_resource_editor.html", null ],
-      [ "TemplateGroupEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_template_group_editor.html", null ],
-      [ "GenerationInputEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_input_editor.html", null ],
-      [ "GenerationPipelineEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_pipeline_editor.html", null ],
-      [ "GenerationStepEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor_1_1_generation_step_editor.html", null ],
-      [ "LayoutGraphEdgeEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_edge_editor.html", null ],
-      [ "LayoutGraphNodeEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_node_editor.html", null ],
-      [ "LayoutGraphResourceEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_resource_editor.html", null ],
-      [ "LayoutGraphWindowEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_editor.html", null ]
-    ] ],
-    [ "EditorWindow", null, [
-      [ "LayoutGraphWindow", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html", null ]
-    ] ],
     [ "Exception", null, [
       [ "DuplicateInputException", "class_m_pewsey_1_1_mania_map_unity_1_1_exceptions_1_1_duplicate_input_exception.html", null ],
       [ "MissingInputException", "class_m_pewsey_1_1_mania_map_unity_1_1_exceptions_1_1_missing_input_exception.html", null ],
@@ -36,7 +10,6 @@ var hierarchy =
       [ "RoomTemplateNotInitializedException", "class_m_pewsey_1_1_mania_map_unity_1_1_exceptions_1_1_room_template_not_initialized_exception.html", null ]
     ] ],
     [ "FeatureMapTile", "struct_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_feature_map_tile.html", null ],
-    [ "FileUtility", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_file_utility.html", null ],
     [ "GenerationNamedInput< int >", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_named_input.html", [
       [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_int_input.html", null ]
     ] ],
@@ -45,10 +18,7 @@ var hierarchy =
       [ "MapTileKey", "struct_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_map_tile_key.html", null ],
       [ "Padding", "struct_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_padding.html", null ]
     ] ],
-    [ "LayoutMapBookEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_editor_1_1_layout_map_book_editor.html", null ],
     [ "LayoutPack", "class_m_pewsey_1_1_mania_map_unity_1_1_layout_pack.html", null ],
-    [ "LayoutTileMapBookEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_editor_1_1_layout_tile_map_book_editor.html", null ],
-    [ "LayoutTileMapEditor", "class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_editor_1_1_layout_tile_map_editor.html", null ],
     [ "MonoBehaviour", null, [
       [ "CellArea", "class_m_pewsey_1_1_mania_map_unity_1_1_cell_area.html", [
         [ "CellArea2D", "class_m_pewsey_1_1_mania_map_unity_1_1_cell_area2_d.html", null ],
@@ -81,17 +51,11 @@ var hierarchy =
       ] ],
       [ "RoomComponent", "class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html", null ]
     ] ],
-    [ "PropertyDrawer", null, [
-      [ "CollectableGroupEntryDrawer", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_collectable_group_entry_drawer.html", null ],
-      [ "TemplateGroupEntryDrawer", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_template_group_entry_drawer.html", null ]
-    ] ],
     [ "Rand", "class_m_pewsey_1_1_mania_map_unity_1_1_rand.html", null ],
     [ "ScriptableObject", null, [
       [ "CollectableGroup", "class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html", null ],
       [ "CollectableResource", "class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html", null ],
       [ "MapTileSet", "class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_map_tile_set.html", null ],
-      [ "BatchUpdaterTool", "class_m_pewsey_1_1_mania_map_unity_1_1_editor_1_1_batch_updater_tool.html", null ],
-      [ "LayoutGraphWindowSettings", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window_settings.html", null ],
       [ "LayoutGraphEdge", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_layout_graph_edge.html", null ],
       [ "LayoutGraphNode", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_layout_graph_node.html", null ],
       [ "LayoutGraphResource", "class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_layout_graph_resource.html", null ],

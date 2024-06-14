@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edgeeditor_0',['edgeEditor',['../class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_window.html#abf1cb50fdf11b5a0845325d3e08aeb8d',1,'MPewsey::ManiaMapUnity::Graphs::Editor::LayoutGraphWindow']]]
+  ['maxfeaturecount_0',['MaxFeatureCount',['../class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_map_tile_set.html#a296ce62e2af3973e8695698f1a7794ce',1,'MPewsey::ManiaMapUnity::Drawing::MapTileSet']]]
 ];

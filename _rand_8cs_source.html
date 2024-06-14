@@ -103,21 +103,23 @@ $(document).ready(function(){initNavTree('_rand_8cs_source.html',''); initResiza
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">    5</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">Rand</a></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> AutoAssignId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>            <span class="keywordflow">return</span> <span class="keywordtype">id</span> &lt;= 0 ? GetRandomId() : id;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        }</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> GetRandomId()</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keywordflow">return</span> Random.Range(1, <span class="keywordtype">int</span>.MaxValue);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        }</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
-<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_rand_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">MPewsey.ManiaMapUnity.Rand</a></div><div class="ttdef"><b>Definition:</b> <a href="_rand_8cs_source.html#l00005">Rand.cs:6</a></div></div>
-<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_batch_updater_tool_8cs_source.html#l00005">BatchUpdaterTool.cs:6</a></div></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">    8</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">Rand</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14">   15</a></span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14">AutoAssignId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keywordflow">return</span> <span class="keywordtype">id</span> &lt;= 0 ? <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">GetRandomId</a>() : id;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">   23</a></span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">GetRandomId</a>()</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">return</span> Random.Range(1, <span class="keywordtype">int</span>.MaxValue);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_rand_html"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html">MPewsey.ManiaMapUnity.Rand</a></div><div class="ttdoc">Contains methods for creating random ID's.</div><div class="ttdef"><b>Definition:</b> <a href="_rand_8cs_source.html#l00008">Rand.cs:9</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_rand_html_a834205ef77d08be138f0d7efaca85cb4"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">MPewsey.ManiaMapUnity.Rand.GetRandomId</a></div><div class="ttdeci">static int GetRandomId()</div><div class="ttdoc">Returns a random positive integer.</div><div class="ttdef"><b>Definition:</b> <a href="_rand_8cs_source.html#l00023">Rand.cs:23</a></div></div>
+<div class="ttc" id="aclass_m_pewsey_1_1_mania_map_unity_1_1_rand_html_ae2b124004be1cf0cd125457703e82d14"><div class="ttname"><a href="class_m_pewsey_1_1_mania_map_unity_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14">MPewsey.ManiaMapUnity.Rand.AutoAssignId</a></div><div class="ttdeci">static int AutoAssignId(int id)</div><div class="ttdoc">If the specified ID is greater than zero, returns the ID. Otherwise, returns a random positive intege...</div><div class="ttdef"><b>Definition:</b> <a href="_rand_8cs_source.html#l00015">Rand.cs:15</a></div></div>
+<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00005">ActiveCellsRow.cs:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

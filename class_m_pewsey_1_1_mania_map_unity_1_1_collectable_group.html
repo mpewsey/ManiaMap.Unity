@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>A class for creating groups of Collectable.  
+<p>A class for creating groups of <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html" title="An object representing a collectable with a unique ID.">CollectableResource</a>.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for CollectableGroup:</div>
@@ -116,12 +116,15 @@ Inheritance diagram for CollectableGroup:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a22816ec7393e36eb777d9e511c8a32e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#a22816ec7393e36eb777d9e511c8a32e5">AddCollectable</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html">CollectableResource</a> collectable)</td></tr>
-<tr class="separator:a22816ec7393e36eb777d9e511c8a32e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5831edc2cd167317e7037ca636ea0cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#aa5831edc2cd167317e7037ca636ea0cd">AddCollectable</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html">CollectableResource</a> collectable)</td></tr>
+<tr class="memdesc:aa5831edc2cd167317e7037ca636ea0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the collectable to the group if it is valid and doesn't already exist. Returns true if it is added.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#aa5831edc2cd167317e7037ca636ea0cd">More...</a><br /></td></tr>
+<tr class="separator:aa5831edc2cd167317e7037ca636ea0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e2602c965a168833e0c15fa6b38ca43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#a6e2602c965a168833e0c15fa6b38ca43">ContainsCollectable</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html">CollectableResource</a> collectable)</td></tr>
+<tr class="memdesc:a6e2602c965a168833e0c15fa6b38ca43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the group contains the collectable.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#a6e2602c965a168833e0c15fa6b38ca43">More...</a><br /></td></tr>
 <tr class="separator:a6e2602c965a168833e0c15fa6b38ca43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac86e9e77bb2b664e1433fa83b269c655"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#ac86e9e77bb2b664e1433fa83b269c655">GetCollectableIds</a> ()</td></tr>
-<tr class="separator:ac86e9e77bb2b664e1433fa83b269c655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#a7825e2dc5b8ed0eb36828ea9914c7582">GetCollectableIds</a> ()</td></tr>
+<tr class="memdesc:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of collectable ID's in the quantity specified by the entries.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html#a7825e2dc5b8ed0eb36828ea9914c7582">More...</a><br /></td></tr>
+<tr class="separator:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -140,22 +143,22 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a92749b8d4b3ef0c4b1d2a4532db9032e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >A class for creating groups of Collectable. </p>
+<div class="textblock"><p >A class for creating groups of <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html" title="An object representing a collectable with a unique ID.">CollectableResource</a>. </p>
 <p >The following are some design patterns to consider when implementing collectables so that they may be referenced by this class:</p><ol type="1">
-<li>If the collectables in your project are Scriptable Object and have low memory usage, simply have your collectables inherit from the Collectable class. The objects themselves may then be be directly added to the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html" title="A class for creating groups of Collectable.">CollectableGroup</a>.</li>
-<li>If the collectables in your project are other object types or have large memory usage, create Collectable Scriptable Objects in your project that will serve as the collectable unique ID's. Reference these collectables in your objects (so that the ID's are synced), as well as add the Collectable Scriptable Objects to the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html" title="A class for creating groups of Collectable.">CollectableGroup</a>. </li>
+<li>If the collectables in your project are Scriptable Object and have low memory usage, simply have your collectables inherit from the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html" title="An object representing a collectable with a unique ID.">CollectableResource</a> class. The objects themselves may then be be directly added to the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html" title="A class for creating groups of CollectableResource.">CollectableGroup</a>.</li>
+<li>If the collectables in your project are other object types or have large memory usage, create <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html" title="An object representing a collectable with a unique ID.">CollectableResource</a> Scriptable Objects in your project that will serve as the collectable unique ID's. Reference these collectables in your objects (so that the ID's are synced), as well as add the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html" title="An object representing a collectable with a unique ID.">CollectableResource</a> Scriptable Objects to the <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_group.html" title="A class for creating groups of CollectableResource.">CollectableGroup</a>. </li>
 </ol>
 
 <p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00020">20</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a22816ec7393e36eb777d9e511c8a32e5" name="a22816ec7393e36eb777d9e511c8a32e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22816ec7393e36eb777d9e511c8a32e5">&#9670;&nbsp;</a></span>AddCollectable()</h2>
+<a id="aa5831edc2cd167317e7037ca636ea0cd" name="aa5831edc2cd167317e7037ca636ea0cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5831edc2cd167317e7037ca636ea0cd">&#9670;&nbsp;</a></span>AddCollectable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AddCollectable </td>
+          <td class="memname">bool AddCollectable </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_resource.html">CollectableResource</a>&#160;</td>
           <td class="paramname"><em>collectable</em></td><td>)</td>
@@ -164,7 +167,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00047">47</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>Adds the collectable to the group if it is valid and doesn't already exist. Returns true if it is added. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collectable</td><td>The collectable.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00059">59</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>
@@ -184,18 +195,26 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00053">53</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>Returns true if the group contains the collectable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collectable</td><td>The collectable.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00074">74</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>
-<a id="ac86e9e77bb2b664e1433fa83b269c655" name="ac86e9e77bb2b664e1433fa83b269c655"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac86e9e77bb2b664e1433fa83b269c655">&#9670;&nbsp;</a></span>GetCollectableIds()</h2>
+<a id="a7825e2dc5b8ed0eb36828ea9914c7582" name="a7825e2dc5b8ed0eb36828ea9914c7582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7825e2dc5b8ed0eb36828ea9914c7582">&#9670;&nbsp;</a></span>GetCollectableIds()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerable&lt; int &gt; GetCollectableIds </td>
+          <td class="memname">List&lt; int &gt; GetCollectableIds </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -203,7 +222,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00036">36</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>Returns a list of collectable ID's in the quantity specified by the entries. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00039">39</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>

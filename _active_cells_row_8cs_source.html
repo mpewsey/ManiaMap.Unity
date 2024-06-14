@@ -103,28 +103,31 @@ $(document).ready(function(){initNavTree('_active_cells_row_8cs_source.html','')
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using</span> System.Linq;</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using</span> UnityEngine;</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespace_m_pewsey.html">    5</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    [System.Serializable]</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">    8</a></span>    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">ActiveCellsRow</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        [SerializeField]</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keyword">private</span> List&lt;bool&gt; _values;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">public</span> List&lt;bool&gt; Values { <span class="keyword">get</span> =&gt; _values; <span class="keyword">set</span> =&gt; _values = value; }</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">public</span> <a class="code hl_struct" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">ActiveCellsRow</a>(List&lt;bool&gt; values)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            _values = values;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">public</span> <a class="code hl_struct" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">ActiveCellsRow</a>(<span class="keywordtype">int</span> count, <span class="keywordtype">bool</span> value)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            _values = Enumerable.Repeat(value, count).ToList();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
-<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_batch_updater_tool_8cs_source.html#l00005">BatchUpdaterTool.cs:6</a></div></div>
-<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row_html"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">MPewsey.ManiaMapUnity.ActiveCellsRow</a></div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00008">ActiveCellsRow.cs:9</a></div></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    [System.Serializable]</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">   11</a></span>    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">ActiveCellsRow</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        [SerializeField]</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">private</span> List&lt;bool&gt; _values;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a485fd643e12421f558b2e71cea2e64b4">   18</a></span>        <span class="keyword">public</span> List&lt;bool&gt; <a class="code hl_property" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a485fd643e12421f558b2e71cea2e64b4">Values</a> { <span class="keyword">get</span> =&gt; _values; <span class="keyword">set</span> =&gt; _values = value; }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a027c15b958bdbe908f2334bd5ac24520">   24</a></span>        <span class="keyword">public</span> <a class="code hl_function" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a027c15b958bdbe908f2334bd5ac24520">ActiveCellsRow</a>(List&lt;bool&gt; values)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            _values = values;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#ac47dd142d87e107946398309a285cf33">   34</a></span>        <span class="keyword">public</span> <a class="code hl_function" href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#ac47dd142d87e107946398309a285cf33">ActiveCellsRow</a>(<span class="keywordtype">int</span> count, <span class="keywordtype">bool</span> value)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            _values = Enumerable.Repeat(value, count).ToList();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="ttc" id="anamespace_m_pewsey_1_1_mania_map_unity_html"><div class="ttname"><a href="namespace_m_pewsey_1_1_mania_map_unity.html">MPewsey.ManiaMapUnity</a></div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00005">ActiveCellsRow.cs:6</a></div></div>
+<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row_html"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html">MPewsey.ManiaMapUnity.ActiveCellsRow</a></div><div class="ttdoc">The row of the RoomComponent active cells list.</div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00011">ActiveCellsRow.cs:12</a></div></div>
+<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row_html_a027c15b958bdbe908f2334bd5ac24520"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a027c15b958bdbe908f2334bd5ac24520">MPewsey.ManiaMapUnity.ActiveCellsRow.ActiveCellsRow</a></div><div class="ttdeci">ActiveCellsRow(List&lt; bool &gt; values)</div><div class="ttdoc">Initializes a new struct.</div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00024">ActiveCellsRow.cs:24</a></div></div>
+<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row_html_a485fd643e12421f558b2e71cea2e64b4"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a485fd643e12421f558b2e71cea2e64b4">MPewsey.ManiaMapUnity.ActiveCellsRow.Values</a></div><div class="ttdeci">List&lt; bool &gt; Values</div><div class="ttdoc">The cell activities for the row.</div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00018">ActiveCellsRow.cs:18</a></div></div>
+<div class="ttc" id="astruct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row_html_ac47dd142d87e107946398309a285cf33"><div class="ttname"><a href="struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#ac47dd142d87e107946398309a285cf33">MPewsey.ManiaMapUnity.ActiveCellsRow.ActiveCellsRow</a></div><div class="ttdeci">ActiveCellsRow(int count, bool value)</div><div class="ttdoc">Initializes a new struct.</div><div class="ttdef"><b>Definition:</b> <a href="_active_cells_row_8cs_source.html#l00034">ActiveCellsRow.cs:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

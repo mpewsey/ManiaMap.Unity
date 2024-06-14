@@ -139,10 +139,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad6497f016502c9ffd0229b89128418f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts runs of the pipeline until a result is found. On each failed attempt, the seed is shifted in an attempt to find one that works within the attempt timeout.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#ad6497f016502c9ffd0229b89128418f2">More...</a><br /></td></tr>
 <tr class="separator:ad6497f016502c9ffd0229b89128418f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#ade0b33ad14fdc825c3bf70c6d7d39999">SetRandomSeed</a> (int seed)</td></tr>
+<tr class="memdesc:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the seed for the first <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_random_seed_input.html" title="A generation input for specifying a random seed.">RandomSeedInput</a> child.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#ade0b33ad14fdc825c3bf70c6d7d39999">More...</a><br /></td></tr>
 <tr class="separator:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#a6a17e4539f5b0c67dbd36bae0c2c0c8a">Validate</a> ()</td></tr>
+<tr class="memdesc:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the pipeline inputs and outputs and throws an exception of invalid.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#a6a17e4539f5b0c67dbd36bae0c2c0c8a">More...</a><br /></td></tr>
 <tr class="separator:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#aacca1d493ba3d24bb9fc8ffb31075a5e">Validate</a> (IEnumerable&lt; string &gt; manualInputNames)</td></tr>
+<tr class="memdesc:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the pipeline inputs and outputs and throws an exception of invalid.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_pipeline.html#aacca1d493ba3d24bb9fc8ffb31075a5e">More...</a><br /></td></tr>
 <tr class="separator:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
@@ -187,8 +190,14 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Validates and builts a dictionary of inputs for the pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputs</td><td>A dictionary of manually specified pipeline inputs.</td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00112">112</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00113">113</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -420,7 +429,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00182">182</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Sets the seed for the first <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_random_seed_input.html" title="A generation input for specifying a random seed.">RandomSeedInput</a> child. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The random seed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">MissingInputException</td><td>Raised if a random seed input is not found.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00195">195</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -439,7 +462,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00126">126</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Validates the pipeline inputs and outputs and throws an exception of invalid. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00130">130</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -459,7 +484,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00131">131</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Validates the pipeline inputs and outputs and throws an exception of invalid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputNames</td><td>An enumerable of manual input names.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00139">139</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -501,7 +534,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00144">144</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00152">152</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -543,7 +576,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00163">163</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00171">171</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>

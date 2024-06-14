@@ -27,20 +27,24 @@ var NAVTREE =
   [ "ManiaMap.Unity", "index.html", [
     [ "About", "index.html#autotoc_md2", null ],
     [ "Installation", "index.html#autotoc_md3", null ],
-    [ "Samples", "index.html#autotoc_md4", null ],
-    [ "Example", "index.html#autotoc_md5", [
-      [ "Step 1: Create Room Templates", "index.html#autotoc_md6", [
-        [ "Creating a Room", "index.html#autotoc_md7", null ],
-        [ "Creating Doors", "index.html#autotoc_md8", null ],
-        [ "Creating Collectable Spots", "index.html#autotoc_md9", null ],
-        [ "Saving Room Templates", "index.html#autotoc_md10", null ]
+    [ "Documentation", "index.html#autotoc_md4", null ],
+    [ "Samples", "index.html#autotoc_md5", null ],
+    [ "Generating a Layout", "md_pages_layout_generation_instructions.html", [
+      [ "Step 1: Create Rooms and Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md7", [
+        [ "Creating a Room", "md_pages_layout_generation_instructions.html#autotoc_md8", null ],
+        [ "Creating Doors", "md_pages_layout_generation_instructions.html#autotoc_md9", null ],
+        [ "Exporting Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md10", null ]
       ] ],
-      [ "Step 2: Create Room Template Groups", "index.html#autotoc_md11", null ],
-      [ "Step 3: Create Layout Graphs", "index.html#autotoc_md12", null ],
-      [ "Step 4: Create Generation Pipeline", "index.html#autotoc_md13", null ]
+      [ "Step 2: Create Room Template Groups", "md_pages_layout_generation_instructions.html#autotoc_md11", null ],
+      [ "Step 3: Create a Layout Graph", "md_pages_layout_generation_instructions.html#autotoc_md12", null ],
+      [ "Step 4: Create a Generation Pipeline", "md_pages_layout_generation_instructions.html#autotoc_md13", null ]
     ] ],
     [ "Packages", "namespaces.html", [
-      [ "Packages", "namespaces.html", "namespaces_dup" ]
+      [ "Packages", "namespaces.html", "namespaces_dup" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -50,7 +54,6 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
@@ -63,10 +66,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_active_cells_row_8cs_source.html",
-"class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_texture_utility.html#a84d977150b7b8c9c3f523f7dcfe0b4c1",
-"class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_editor_1_1_layout_graph_resource_editor.html#af226d66d8ca6f8d7b6d5f0c7da60c889",
-"class_m_pewsey_1_1_mania_map_unity_1_1_graphs_1_1_layout_graph_node.html#a9570814b6b21c0650932e5cea4c79017",
-"struct_m_pewsey_1_1_mania_map_unity_1_1_collectable_group_entry.html#a0a58474502da3cd84039b044d0aaa055"
+"class_m_pewsey_1_1_mania_map_unity_1_1_drawing_1_1_layout_map_book.html#a84287d558e08af92998e80568c3c461a",
+"class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_layout_generator_step.html#a320ff834377a70cddb26e83e1f48dfd1",
+"class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html#aa3c75357b4bff1a2191da82e55918223",
+"pages.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

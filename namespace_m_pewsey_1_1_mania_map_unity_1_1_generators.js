@@ -1,6 +1,5 @@
 var namespace_m_pewsey_1_1_mania_map_unity_1_1_generators =
 [
-    [ "Editor", "namespace_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor.html", "namespace_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_editor" ],
     [ "CollectableGeneratorStep", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_collectable_generator_step.html", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_collectable_generator_step" ],
     [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_collectable_groups_input.html", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_collectable_groups_input" ],
     [ "GenerationInput", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_unity_1_1_generators_1_1_generation_input" ],

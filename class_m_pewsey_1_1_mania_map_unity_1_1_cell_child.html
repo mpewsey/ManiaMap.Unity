@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_unity_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>An object that has a Cell as a parent.  
+<p>An object tied to the cell index of a <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html" title="A component for creating a room.">RoomComponent</a>.  
  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for CellChild:</div>
@@ -116,7 +116,7 @@ Inheritance diagram for CellChild:</div>
   <img src="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.png" usemap="#CellChild_map" alt=""/>
   <map id="CellChild_map" name="CellChild_map">
 <area href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html" title="Represents a collectable spot." alt="CollectableSpotComponent" shape="rect" coords="0,112,163,136"/>
-<area href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html" title="A component representing a door." alt="DoorComponent" shape="rect" coords="173,112,336,136"/>
+<area href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html" title="A component representing a possible door location." alt="DoorComponent" shape="rect" coords="173,112,336,136"/>
 <area href="class_m_pewsey_1_1_mania_map_unity_1_1_feature.html" title="A component for defining a cell feature." alt="Feature" shape="rect" coords="346,112,509,136"/>
 <area href="class_m_pewsey_1_1_mania_map_unity_1_1_room_flag.html" title="A unique room flag." alt="RoomFlag" shape="rect" coords="519,112,682,136"/>
   </map>
@@ -125,7 +125,7 @@ Inheritance diagram for CellChild:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abf778c53ae65466af0bfe2647ec17473"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#abf778c53ae65466af0bfe2647ec17473">AutoAssign</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a> room)</td></tr>
-<tr class="memdesc:abf778c53ae65466af0bfe2647ec17473"><td class="mdescLeft">&#160;</td><td class="mdescRight">If auto assign is enabled, assigns the closest cell to the object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#abf778c53ae65466af0bfe2647ec17473">More...</a><br /></td></tr>
+<tr class="memdesc:abf778c53ae65466af0bfe2647ec17473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs auto assignment on the object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#abf778c53ae65466af0bfe2647ec17473">More...</a><br /></td></tr>
 <tr class="separator:abf778c53ae65466af0bfe2647ec17473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -133,6 +133,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:affb6ac8f8f08d515a8b74f5c213c2c52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#affb6ac8f8f08d515a8b74f5c213c2c52">Awake</a> ()</td></tr>
 <tr class="separator:affb6ac8f8f08d515a8b74f5c213c2c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab32ab0cc76b4eaa37077e89ee9e3cdc1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#ab32ab0cc76b4eaa37077e89ee9e3cdc1">Initialize</a> ()</td></tr>
+<tr class="memdesc:ab32ab0cc76b4eaa37077e89ee9e3cdc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the object.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#ab32ab0cc76b4eaa37077e89ee9e3cdc1">More...</a><br /></td></tr>
 <tr class="separator:ab32ab0cc76b4eaa37077e89ee9e3cdc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be5f5b23715843a7bfc4f2ebd6c7894"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a1be5f5b23715843a7bfc4f2ebd6c7894">OnDestroy</a> ()</td></tr>
 <tr class="separator:a1be5f5b23715843a7bfc4f2ebd6c7894"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,17 +153,22 @@ Properties</h2></td></tr>
 <tr class="memdesc:a2984ccb0bc16a0eac64871fa0e541c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell will be automatically assigned to the closest cell when update and save operations are performed.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">More...</a><br /></td></tr>
 <tr class="separator:a2984ccb0bc16a0eac64871fa0e541c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af972e421890bfd131f41a575bb85b872"><td class="memItemLeft" align="right" valign="top">Vector2Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">CellIndex</a><code> [getset]</code></td></tr>
+<tr class="memdesc:af972e421890bfd131f41a575bb85b872"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing cell index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#af972e421890bfd131f41a575bb85b872">More...</a><br /></td></tr>
 <tr class="separator:af972e421890bfd131f41a575bb85b872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2883edf3ccc77815c7ca63d9c4a97fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">Column</a><code> [getset]</code></td></tr>
+<tr class="memdesc:aa2883edf3ccc77815c7ca63d9c4a97fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The column index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">More...</a><br /></td></tr>
 <tr class="separator:aa2883edf3ccc77815c7ca63d9c4a97fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the object has been initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#acf7e27e5129fb4febbb44dbd372a8a5a">More...</a><br /></td></tr>
 <tr class="separator:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a380a20d833afe74daf49341eace63b3c"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">OnInitialize</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a380a20d833afe74daf49341eace63b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event invoked after the object is initialized.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a380a20d833afe74daf49341eace63b3c">More...</a><br /></td></tr>
 <tr class="separator:a380a20d833afe74daf49341eace63b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a521d3925fdda019cef949f78168e4a68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html">RoomComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">Room</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a521d3925fdda019cef949f78168e4a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing room.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a521d3925fdda019cef949f78168e4a68">More...</a><br /></td></tr>
 <tr class="separator:a521d3925fdda019cef949f78168e4a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a389e27ee83b4a5d0eec4e321f4b2fe38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">Row</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a389e27ee83b4a5d0eec4e321f4b2fe38"><td class="mdescLeft">&#160;</td><td class="mdescRight">The row index.  <a href="class_m_pewsey_1_1_mania_map_unity_1_1_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">More...</a><br /></td></tr>
 <tr class="separator:a389e27ee83b4a5d0eec4e321f4b2fe38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -171,7 +177,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a6e2e08fd38d35895962043a68ee8a89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >An object that has a Cell as a parent. </p>
+<div class="textblock"><p >An object tied to the cell index of a <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_component.html" title="A component for creating a room.">RoomComponent</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00009">9</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -199,11 +205,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>If auto assign is enabled, assigns the closest cell to the object. </p>
+<p>Performs auto assignment on the object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The containing room.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Reimplemented in <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_collectable_spot_component.html#a911a31d74918b49341b0ef60e76bf79c">CollectableSpotComponent</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#a911a31d74918b49341b0ef60e76bf79c">DoorComponent</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_room_flag.html#a911a31d74918b49341b0ef60e76bf79c">RoomFlag</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00052">52</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00069">69</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -230,7 +242,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00039">39</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00055">55</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -257,7 +269,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00060">60</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>Initializes the object. </p>
+
+<p>Reimplemented in <a class="el" href="class_m_pewsey_1_1_mania_map_unity_1_1_door_component.html#ae272c57053102794b03f581e91d8be05">DoorComponent</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00080">80</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -284,7 +300,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00044">44</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00060">60</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -333,7 +349,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00023">23</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00026">26</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -357,7 +373,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00030">30</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00039">39</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -381,7 +397,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00027">27</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00033">33</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -432,7 +448,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00024">24</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>The containing cell index. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00030">30</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -456,7 +474,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00037">37</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>The column index. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00053">53</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -480,7 +500,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00020">20</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>True if the object has been initialized. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00023">23</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -506,7 +528,7 @@ Private Attributes</h2></td></tr>
 
 <p>The event invoked after the object is initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00034">34</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00043">43</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -530,7 +552,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00028">28</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>The containing room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00037">37</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
@@ -554,7 +578,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00036">36</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
+<p>The row index. </p>
+
+<p class="definition">Definition at line <a class="el" href="_cell_child_8cs_source.html#l00048">48</a> of file <a class="el" href="_cell_child_8cs_source.html">CellChild.cs</a>.</p>
 
 </div>
 </div>
