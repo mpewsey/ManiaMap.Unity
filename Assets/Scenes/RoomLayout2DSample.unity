@@ -263,6 +263,7 @@ MonoBehaviour:
   _generateButton: {fileID: 8313725074727684589}
   _messageLabel: {fileID: 4543133630579008471}
   _camera: {fileID: 5097382717039861220}
+  _cellSize: {x: 6, y: 6}
 --- !u!1 &2774609499174059343
 GameObject:
   m_ObjectHideFlags: 0

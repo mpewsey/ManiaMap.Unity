@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMapUnity
         }
 
         public static CellArea2D InstantiateCellArea2D(int row, int column, RoomComponent room,
-            LayerMask cellLayer, LayerMask triggeringLayer)
+            int cellLayer, LayerMask triggeringLayers)
         {
             var obj = new GameObject("Cell Area 2D");
             obj.transform.SetParent(room.transform);
@@ -26,10 +26,10 @@ namespace MPewsey.ManiaMapUnity
             collider.gameObject.layer = cellLayer;
             collider.isTrigger = true;
             collider.size = room.CellSize;
-            collider.includeLayers = triggeringLayer;
-            collider.excludeLayers = ~triggeringLayer;
-            collider.contactCaptureLayers = triggeringLayer;
-            collider.callbackLayers = triggeringLayer;
+            collider.includeLayers = triggeringLayers;
+            collider.excludeLayers = ~triggeringLayers;
+            collider.contactCaptureLayers = triggeringLayers;
+            collider.callbackLayers = triggeringLayers;
 
             return area;
         }

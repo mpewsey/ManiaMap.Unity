@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bcbab901c8344cb342c09e213e556, type: 3}
+  m_Name: Square3x3Room3D.room_template
+  m_EditorClassIdentifier: 
+  _editId: 0
+  _id: 1812656081
+  _name: 3D Square 3x3
+  _prefabGuid: f4f46a2140d3ae440b94c79ec7f6ce3a
+  _prefabPath: Assets/3DRooms/Square3x3Room3D.prefab
+  _serializedText: '{"Id":1812656081,"Name":"3D Square 3x3","Cells":{"Rows":3,"Columns":3,"Array":[{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":0,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":3,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}}]},"Features":[]},{"Doors":{"Map":[{"Key":4,"Value":{"Type":0,"Code":0}},{"Key":5,"Value":{"Type":0,"Code":0}},{"Key":1,"Value":{"Type":0,"Code":0}},{"Key":2,"Value":{"Type":0,"Code":0}}]},"Features":[]}]},"CollectableSpots":{"Map":[{"Key":1826336550,"Value":{"Position":{"X":0,"Y":0},"Group":"Collectable
+    Group 3D","Weight":1}},{"Key":858180744,"Value":{"Position":{"X":0,"Y":2},"Group":"Collectable
+    Group 3D","Weight":1}},{"Key":523073022,"Value":{"Position":{"X":2,"Y":2},"Group":"Collectable
+    Group 3D","Weight":1}},{"Key":1490962974,"Value":{"Position":{"X":2,"Y":0},"Group":"Collectable
+    Group 3D","Weight":1}}]}}'

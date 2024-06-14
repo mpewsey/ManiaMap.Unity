@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4149ce2c1e78c5946918af4a1d019eb2, type: 3}
+  m_Name: CollectableGroup3D
+  m_EditorClassIdentifier: 
+  _name: Collectable Group 3D
+  _collectables:
+  - _collectable: {fileID: 11400000, guid: 4ad270f3baffb574aacf6071f50a0d29, type: 2}
+    _quantity: 8

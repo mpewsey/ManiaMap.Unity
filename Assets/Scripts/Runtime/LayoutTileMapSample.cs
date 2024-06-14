@@ -50,7 +50,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             MessageLabel.text = string.Empty;
             var layout = result.GetOutput<Layout>("Layout");
             Map.DrawMap(layout);
-            Camera.ResetPosition();
+            Camera.CenterCamera(layout.GetBounds(), Vector2.one);
         }
     }
 }

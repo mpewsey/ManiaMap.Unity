@@ -144,18 +144,18 @@ namespace MPewsey.ManiaMapUnity
             var roomLayout = layoutPack.Layout.Rooms[id];
             var roomState = layoutPack.LayoutState.RoomStates[id];
             var cellLayer = layoutPack.Settings.CellLayer;
-            var triggeringLayer = layoutPack.Settings.TriggeringLayer;
-            return InstantiateRoomAsync(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
+            var triggeringLayers = layoutPack.Settings.TriggeringLayers;
+            return InstantiateRoomAsync(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayers, assignLayoutPosition);
         }
 
         public static AsyncOperationHandle<GameObject> InstantiateRoomAsync(AssetReferenceGameObject prefab, Transform parent,
             LayoutPack layoutPack, Room roomLayout, RoomState roomState,
-            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+            LayerMask cellLayer, LayerMask triggeringLayers, bool assignLayoutPosition)
         {
             var handle = prefab.InstantiateAsync(parent);
 
             handle.Completed += handle => handle.Result.GetComponent<RoomComponent>()
-                .Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
+                .Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayers, assignLayoutPosition);
 
             return handle;
         }
@@ -165,18 +165,17 @@ namespace MPewsey.ManiaMapUnity
         {
             var roomLayout = layoutPack.Layout.Rooms[id];
             var roomState = layoutPack.LayoutState.RoomStates[id];
-            var doorConnections = layoutPack.GetDoorConnections(id);
             var cellLayer = layoutPack.Settings.CellLayer;
-            var triggeringLayer = layoutPack.Settings.TriggeringLayer;
-            return InstantiateRoom(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
+            var triggeringLayers = layoutPack.Settings.TriggeringLayers;
+            return InstantiateRoom(prefab, parent, layoutPack, roomLayout, roomState, cellLayer, triggeringLayers, assignLayoutPosition);
         }
 
         public static RoomComponent InstantiateRoom(GameObject prefab, Transform parent,
             LayoutPack layoutPack, Room roomLayout, RoomState roomState,
-            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+            LayerMask cellLayer, LayerMask triggeringLayers, bool assignLayoutPosition)
         {
             var room = Instantiate(prefab, parent).GetComponent<RoomComponent>();
-            room.Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayer, assignLayoutPosition);
+            room.Initialize(layoutPack, roomLayout, roomState, cellLayer, triggeringLayers, assignLayoutPosition);
             return room;
         }
 
@@ -189,7 +188,7 @@ namespace MPewsey.ManiaMapUnity
         /// <param name="doorConnections">A list of door connections for the room.</param>
         /// <param name="position">The option guiding the position of the room.</param>
         public bool Initialize(LayoutPack layoutPack, Room roomLayout, RoomState roomState,
-            LayerMask cellLayer, LayerMask triggeringLayer, bool assignLayoutPosition)
+            LayerMask cellLayer, LayerMask triggeringLayers, bool assignLayoutPosition)
         {
             if (IsInitialized)
                 return false;
@@ -201,7 +200,7 @@ namespace MPewsey.ManiaMapUnity
             if (assignLayoutPosition)
                 MoveToLayoutPosition();
 
-            CreateCellAreas(cellLayer, triggeringLayer);
+            CreateCellAreas(cellLayer, triggeringLayers);
             IsInitialized = true;
             OnInitialize.Invoke();
             return true;
@@ -209,18 +208,20 @@ namespace MPewsey.ManiaMapUnity
 
         private void MoveToLayoutPosition()
         {
-            var position = new Vector2(RoomLayout.Position.Y, RoomLayout.Position.X) * CellSize;
-            transform.localPosition = GridToLocalPosition(position);
+            var x = CellSize.x * RoomLayout.Position.Y;
+            var y = CellSize.y * RoomLayout.Position.X;
+            var z = CellSize.z * RoomLayout.Position.Z;
+            transform.localPosition = GridToLocalPosition(new Vector3(x, y, z));
         }
 
-        private void CreateCellAreas(LayerMask cellLayer, LayerMask triggeringLayer)
+        private void CreateCellAreas(LayerMask cellLayer, LayerMask triggeringLayers)
         {
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
                 {
                     if (GetCellActivity(i, j))
-                        CellArea.InstantiateCellArea(i, j, this, cellLayer, triggeringLayer);
+                        CellArea.InstantiateCellArea(i, j, this, cellLayer, triggeringLayers);
                 }
             }
         }
@@ -429,7 +430,11 @@ namespace MPewsey.ManiaMapUnity
         {
             var row = Mathf.FloorToInt(position.y / CellSize.y);
             var column = Mathf.FloorToInt(position.x / CellSize.x);
-            return new Vector2Int(row, column);
+
+            if (CellIndexExists(row, column))
+                return new Vector2Int(row, column);
+
+            return new Vector2Int(-1, -1);
         }
 
         public Vector2Int LocalPositionToCellIndex(Vector3 position)
@@ -576,7 +581,7 @@ namespace MPewsey.ManiaMapUnity
 
             for (int i = 0; i < count; i++)
             {
-                var distance = Vector2.Dot(delta, vectors[i]);
+                var distance = Vector3.Dot(delta, vectors[i]);
 
                 if (distance > maxDistance)
                 {

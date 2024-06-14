@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MPewsey.ManiaMapUnity.Examples
 {
-    public class RoomLayout2DSample : MonoBehaviour
+    public class RoomLayout3DSample : MonoBehaviour
     {
         [SerializeField] private GenerationPipeline _pipeline;
         public GenerationPipeline Pipeline { get => _pipeline; set => _pipeline = value; }
@@ -20,8 +20,8 @@ namespace MPewsey.ManiaMapUnity.Examples
         [SerializeField] private Text _messageLabel;
         public Text MessageLabel { get => _messageLabel; set => _messageLabel = value; }
 
-        [SerializeField] private Camera2DController _camera;
-        public Camera2DController Camera { get => _camera; set => _camera = value; }
+        [SerializeField] private Camera3DController _camera;
+        public Camera3DController Camera { get => _camera; set => _camera = value; }
 
         [SerializeField] private Vector2 _cellSize = new Vector2(6, 6);
         public Vector2 CellSize { get => _cellSize; set => _cellSize = value; }
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMapUnity.Examples
             var layoutPack = new LayoutPack(layout, new LayoutState(layout));
             CreateContainer();
             RoomTemplateDatabase.InstantiateAllRooms(layoutPack, Container.transform);
-            Camera.CenterCamera(layoutPack.LayoutBounds, CellSize);
+            Camera.ResetPosition();
         }
 
         private void CreateContainer()

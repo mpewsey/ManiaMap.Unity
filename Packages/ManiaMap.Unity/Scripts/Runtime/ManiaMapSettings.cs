@@ -8,12 +8,12 @@ namespace MPewsey.ManiaMapUnity
     public class ManiaMapSettings : ScriptableObject
     {
         [SerializeField]
-        private LayerMask _cellLayer;
-        public LayerMask CellLayer { get => _cellLayer; set => _cellLayer = value; }
+        private int _cellLayer;
+        public int CellLayer { get => _cellLayer; set => _cellLayer = value; }
 
         [SerializeField]
-        private LayerMask _triggeringLayer;
-        public LayerMask TriggeringLayer { get => _triggeringLayer; set => _triggeringLayer = value; }
+        private LayerMask _triggeringLayers;
+        public LayerMask TriggeringLayers { get => _triggeringLayers; set => _triggeringLayers = value; }
 
         /// <summary>
         /// Attempts to load the settings from teh resources folder. If they do not exist,

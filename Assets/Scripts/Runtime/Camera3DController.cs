@@ -1,10 +1,9 @@
-using MPewsey.ManiaMap;
 using UnityEngine;
 
 namespace MPewsey.ManiaMapUnity.Examples
 {
     [RequireComponent(typeof(Camera))]
-    public class Camera2DController : MonoBehaviour
+    public class Camera3DController : MonoBehaviour
     {
         [SerializeField] private float _scrollSpeed = 1;
         public float ScrollSpeed { get => _scrollSpeed; set => _scrollSpeed = value; }
@@ -15,40 +14,31 @@ namespace MPewsey.ManiaMapUnity.Examples
         private Camera Camera { get; set; }
         private Vector3 InitialPosition { get; set; }
         private Quaternion InitialRotation { get; set; }
-        private float InitialZoom { get; set; }
 
         private void Awake()
         {
             Camera = GetComponent<Camera>();
             InitialPosition = Camera.transform.position;
             InitialRotation = Camera.transform.rotation;
-            InitialZoom = Camera.orthographicSize;
         }
 
         private void Update()
         {
-            var mouseScroll = Input.mouseScrollDelta.y;
-            Camera.orthographicSize = Mathf.Max(Camera.orthographicSize - ZoomSpeed * mouseScroll, 1);
+            var direction = Vector3.zero;
+            direction.z = Input.mouseScrollDelta.y * ZoomSpeed;
 
             if (Input.GetButton("Fire2"))
             {
-                var mouseDirection = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
-                Camera.transform.position -= ScrollSpeed * mouseDirection;
+                direction.x = Input.GetAxis("Mouse X") * ScrollSpeed;
+                direction.y = Input.GetAxis("Mouse Y") * ScrollSpeed;
             }
+
+            Camera.transform.position += Camera.transform.TransformDirection(direction);
         }
 
         public void ResetPosition()
         {
             Camera.transform.SetPositionAndRotation(InitialPosition, InitialRotation);
-            Camera.orthographicSize = InitialZoom;
-        }
-
-        public void CenterCamera(RectangleInt bounds, Vector2 cellSize)
-        {
-            var x = (bounds.X + bounds.Width * 0.5f) * cellSize.x;
-            var y = -(bounds.Y + bounds.Height * 0.5f) * cellSize.y;
-            Camera.transform.position = new Vector3(x, y, InitialPosition.z);
-            Camera.orthographicSize = 0.5f * (bounds.Height + 4) * cellSize.y;
         }
     }
 }

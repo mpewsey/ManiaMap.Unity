@@ -89,10 +89,11 @@ namespace MPewsey.ManiaMapUnity
             {
                 var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
                 var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
-                var roomInstance = await handle.Task;
-                result.Add(roomInstance.GetComponent<RoomComponent>());
+                handle.Completed += handle => OnInstantiationComplete(handle, result);
+                await handle.Task;
             }
 
+            ActivateRooms(result);
             return result;
         }
 
@@ -122,12 +123,28 @@ namespace MPewsey.ManiaMapUnity
                 {
                     var prefab = GetRoomTemplate(room.Template.Id).GetAssetReference();
                     var handle = RoomComponent.InstantiateRoomAsync(room.Id, layoutPack, prefab, parent, true);
-                    var roomInstance = await handle.Task;
-                    result.Add(roomInstance.GetComponent<RoomComponent>());
+                    handle.Completed += handle => OnInstantiationComplete(handle, result);
+                    await handle.Task;
                 }
             }
 
+            ActivateRooms(result);
             return result;
+        }
+
+        private static void ActivateRooms(List<RoomComponent> rooms)
+        {
+            foreach (var room in rooms)
+            {
+                room.gameObject.SetActive(true);
+            }
+        }
+
+        private static void OnInstantiationComplete(AsyncOperationHandle<GameObject> handle, List<RoomComponent> results)
+        {
+            var room = handle.Result.GetComponent<RoomComponent>();
+            room.gameObject.SetActive(false);
+            results.Add(room);
         }
 
         public List<RoomComponent> InstantiateRooms(LayoutPack layoutPack, Transform parent = null, int? z = null)
