@@ -9,6 +9,9 @@ namespace MPewsey.ManiaMapUnity
     {
         [Header("Room Flag:")]
         [SerializeField] private bool _editId;
+        /// <summary>
+        /// If true, the ID can be edited in the inspector.
+        /// </summary>
         public bool EditId { get => _editId; set => _editId = value; }
 
         [SerializeField] private int _id = -1;
