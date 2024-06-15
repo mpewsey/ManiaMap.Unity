@@ -1,10 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"pages.html":[],
-"struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html":[6,0,0,0,4],
-"struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html":[5,0,0,0,4],
-"struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a027c15b958bdbe908f2334bd5ac24520":[6,0,0,0,4,0],
-"struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a027c15b958bdbe908f2334bd5ac24520":[5,0,0,0,4,0],
 "struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a485fd643e12421f558b2e71cea2e64b4":[5,0,0,0,4,2],
 "struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#a485fd643e12421f558b2e71cea2e64b4":[6,0,0,0,4,2],
 "struct_m_pewsey_1_1_mania_map_unity_1_1_active_cells_row.html#ac47dd142d87e107946398309a285cf33":[5,0,0,0,4,1],
