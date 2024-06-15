@@ -1,7 +1,6 @@
 using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Exceptions;
-using MPewsey.ManiaMapUnity.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -128,12 +127,6 @@ namespace MPewsey.ManiaMapUnity
         {
             field = Vector2Int.Max(value, Vector2Int.one);
             SizeActiveCells();
-        }
-
-        private void Start()
-        {
-            if (!IsInitialized)
-                throw new RoomNotInitializedException($"Room not initialized: {this}.");
         }
 
         private void OnValidate()

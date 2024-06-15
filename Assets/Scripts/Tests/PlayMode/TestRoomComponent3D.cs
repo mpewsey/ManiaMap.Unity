@@ -295,5 +295,18 @@ namespace MPewsey.ManiaMapUnity.Tests
                 }
             }
         }
+
+        [Test]
+        public void TestGetCellViewDirection()
+        {
+            Assert.AreEqual(Quaternion.Euler(90, 0, 0), Room.GetCellViewDirection());
+        }
+
+        [Test]
+        public void TestCenterGlobalPosition()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+            Assert.AreEqual(new Vector3(150, 50, -150), Room.CenterGlobalPosition());
+        }
     }
 }

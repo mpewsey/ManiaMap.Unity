@@ -1,3 +1,4 @@
+using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Exceptions;
 using NUnit.Framework;
 using UnityEngine;
@@ -28,15 +29,39 @@ namespace MPewsey.ManiaMapUnity.Tests.EditMode
         [Test]
         public void TestAutoAssign()
         {
-            var flag = new GameObject("Flag 1").AddComponent<RoomFlag>();
+            var flag = new GameObject("Room Flag").AddComponent<RoomFlag>();
             flag.transform.SetParent(Room.transform);
             flag.transform.position = new Vector3(250, -150, 0);
+
+            var collectableSpot = new GameObject("Collectable Spot").AddComponent<CollectableSpotComponent>();
+            collectableSpot.transform.SetParent(Room.transform);
+            collectableSpot.transform.position = new Vector3(250, -150, 0);
+
+            var feature = new GameObject("Feature").AddComponent<Feature>();
+            feature.transform.SetParent(Room.transform);
+            feature.transform.position = new Vector3(250, -150, 0);
+
+            var door = new GameObject("Door").AddComponent<DoorComponent>();
+            door.transform.SetParent(Room.transform);
+            door.transform.position = new Vector3(0, -50, 0);
 
             Room.AutoAssign();
             Assert.AreEqual(Room, flag.Room);
             Assert.Greater(flag.Id, 0);
             Assert.AreEqual(1, flag.Row);
             Assert.AreEqual(2, flag.Column);
+
+            Assert.AreEqual(Room, collectableSpot.Room);
+            Assert.Greater(collectableSpot.Id, 0);
+            Assert.AreEqual(1, collectableSpot.Row);
+            Assert.AreEqual(2, collectableSpot.Column);
+
+            Assert.AreEqual(Room, feature.Room);
+            Assert.AreEqual(1, feature.Row);
+            Assert.AreEqual(2, feature.Column);
+
+            Assert.AreEqual(Room, door.Room);
+            Assert.AreEqual(DoorDirection.West, door.Direction);
         }
 
         [Test]

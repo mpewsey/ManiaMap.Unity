@@ -4,7 +4,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "MPewsey.ManiaMapUnity"
+        "MPewsey.ManiaMapUnity",
+        "MPewsey.ManiaMapUnity.Editor"
     ],
     "includePlatforms": [
         "Editor"

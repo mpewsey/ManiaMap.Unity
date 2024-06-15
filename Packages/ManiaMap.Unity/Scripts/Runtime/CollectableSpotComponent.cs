@@ -43,14 +43,14 @@ namespace MPewsey.ManiaMapUnity
         }
 
         /// <summary>
-        /// The assigned collectable ID.
+        /// The collectable ID. If the collectable spot does not exist in the layout, returns -1.
         /// </summary>
         public int CollectableId()
         {
             if (Room.RoomLayout.Collectables.TryGetValue(Id, out int value))
                 return value;
 
-            return int.MinValue;
+            return -1;
         }
 
         /// <summary>
