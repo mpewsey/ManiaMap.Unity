@@ -66,3 +66,4 @@ crashlytics-build.properties
 Assets/AddressableAssetsData/Windows.meta
 Assets/AddressableAssetsData/link.xml
 Assets/AddressableAssetsData/link.xml.meta
+/CodeCoverage
