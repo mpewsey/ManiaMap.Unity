@@ -25,7 +25,7 @@ https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity
 To lock into a specific version, append `#{VERSION_TAG}` to the end of the URL. For example:
 
 ```
-https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity#v0.0.3
+https://github.com/mpewsey/ManiaMap.Unity.git?path=Packages/ManiaMap.Unity#v1.0.0
 ```
 
 ## Documentation
