@@ -293,5 +293,45 @@ namespace MPewsey.ManiaMapUnity.Tests
                 }
             }
         }
+
+        [Test]
+        public void TestGetCellViewDirection()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+            Assert.AreEqual(Quaternion.Euler(0, 0, 0), Room.GetCellViewDirection());
+        }
+
+        [Test]
+        public void TestCenterGlobalPosition()
+        {
+            Room.CellSize = new Vector3(100, 100, 100);
+            Assert.AreEqual(new Vector3(150, -150, -50), Room.CenterGlobalPosition());
+        }
+
+        [Test]
+        public void TestLocalCellSize()
+        {
+            Assert.AreEqual(Room.CellSize, Room.LocalCellSize());
+        }
+
+        [Test]
+        public void TestFindDoor()
+        {
+            var doors = Object.FindObjectsOfType<DoorComponent>();
+            var count = 0;
+
+            foreach (var door in doors)
+            {
+                if (door.DoorExists())
+                {
+                    var foundDoor = DoorComponent.FindDoor(door.Room.RoomLayout.Id, door.Connection);
+                    Assert.IsTrue(foundDoor != null);
+                    Assert.AreEqual(door, foundDoor);
+                    count++;
+                }
+            }
+
+            Assert.Greater(count, 0);
+        }
     }
 }
